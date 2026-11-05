@@ -23,4 +23,8 @@ python3 build.py dd-timing  # 한 장만
 제목, 부제, 접근성 설명은 각 파일 위쪽 `TITLE`, `SUBTITLE`, `DESC`. 색, 글꼴, 글자 폭 검사, 페이지 틀은 `lib.py`. 글자가 칸을 넘치면 빌드가 AssertionError로 멈춘다.
 
 ## 검사
-`python3 .agents/skills/diagram-design/scripts/self_check.py <html>`은 로컬 글꼴 `url()`만 "non-fragment CSS url()"로 실패한다. 지시서가 로컬 Pretendard를 요구하므로 의도한 결과다. 나머지 항목은 통과한다.
+`build.py`는 PNG를 만들기 전에 `diagram-design` 자체 검사를 실행한다. 프로젝트 로컬 복사본에 `--local-font` 검사를 추가해 지정된 로컬 WOFF2 파일만 `@font-face`에서 허용한다. 지정이 없으면 원래처럼 모든 외부 CSS URL을 거부한다. 지정 파일의 경로·심볼릭 링크·확장자·WOFF2 서명도 검사한다. 이는 업스트림 스킬의 기능이 아니라 Evenstay의 로컬 수정이다.
+
+```bash
+python3 test_local_font.py  # 로컬 글꼴 허용과 잘못된 경로 거부 회귀 검사
+```

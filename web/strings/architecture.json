@@ -714,7 +714,7 @@
         "M1, 운영 전환 전 재확인"
       ]
     ],
-    "tools": "도식은 stack-diagram, archify, diagram-design 스킬로 만들었습니다."
+    "tools": "도식은 프로젝트 로컬 stack-diagram, Archify 3.2.0, diagram-design으로 만들었습니다. 지정한 Pretendard 글꼴을 자체 검사하고 도식을 다시 검증했습니다."
   },
   "figs": {
     "dd-roadmap": {
@@ -767,7 +767,7 @@
     },
     "arch-payment": {
       "t": "자동이체 상태",
-      "h": 755
+      "h": 558
     },
     "arch-agent": {
       "t": "승인 기반 에이전트",

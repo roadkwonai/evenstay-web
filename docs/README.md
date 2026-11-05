@@ -80,6 +80,7 @@
 - [릴리즈 기록](releases/README.md)
 - [v0.1.0 — 아키텍처 기준본](releases/202611051600-v0.1.0-baseline/RELEASE.md)
 - [v0.1.1 — 아키텍처 처리 규칙 보완](releases/202611051606-v0.1.1-architecture-hardening/RELEASE.md)
+- [v0.1.2 — 도식 도구 업데이트와 로컬 글꼴 검증](releases/202611051740-v0.1.2-diagram-validation/RELEASE.md)
 
 ## 조사와 아이디어
 

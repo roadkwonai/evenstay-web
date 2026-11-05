@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light dark">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme.js?v=3"></script>
+<title>v0.1.2 — 도식 도구 업데이트와 로컬 글꼴 검증 | Evenstay 문서</title>
+<meta name="description" content="v0.1.2 — 도식 도구 업데이트와 로컬 글꼴 검증. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+<link rel="stylesheet" href="../../shared/theme.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>v0.1.2 — 도식 도구 업데이트와 로컬 글꼴 검증</h1>
+
+
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#변경-내용">변경 내용</a></li><li class="lv2"><a href="#호환성과-범위">호환성과 범위</a></li><li class="lv2"><a href="#검증">검증</a></li></ol></details></nav></aside>
+  <article class="doc"><p>기록 시각: 2026-11-05 17:46 KST</p>
+<p>Archify를 공식 3.2.0으로 올리고 로컬 Pretendard 글꼴의 검사 실패를 해결한다. 기존 아키텍처의 업무 규칙은 유지하며 새 도식 스키마에 맞춰 형식을 변환한다.</p>
+<h2 id="변경-내용">변경 내용</h2>
+<ul>
+<li><p>프로젝트 Archify를 3.0.1에서 3.2.0으로 업데이트하고 공식 릴리즈 커밋을 고정한다.</p>
+</li>
+<li><p>자동이체 상태 도식을 새 lifecycle 스키마로 변환하고 나머지 Archify 도식도 다시 생성·검증한다.</p>
+</li>
+<li><p>diagram-design 검사기에 프로젝트 로컬 <code>--local-font</code> 옵션을 추가한다. 명시한 정확한 로컬 WOFF2 파일만 @font-face의 src에서 허용하며, 원격 URL·다른 경로·심볼릭 링크·비글꼴·임의 스크립트는 거부한다. 옵션 없는 기본 검사는 그대로 엄격하다.</p>
+</li>
+<li><p>문서용 도식 빌드에 자체 검사를 연결해 실패하면 PNG 생성 전에 중단한다. 검사 실패를 예외로 넘기던 절차를 없앤다.</p>
+</li>
+<li><p>회귀 테스트와 릴리즈 검사에 실제 글꼴 자체 검사를 추가하고 웹의 도식·버전·기록을 동기화한다.</p>
+</li>
+<li><p>main에 별도 반영된 모바일 테마 호환과 소개 이미지 원본 링크 수정도 릴리즈 기준본에 포함된다.</p>
+</li>
+</ul>
+<h2 id="호환성과-범위">호환성과 범위</h2>
+<p>업무 시스템이나 새로운 아키텍처 기능을 구현한 버전이 아니다. 기획 내용·모듈 경계·금전 및 의료 판단의 사람 경계는 유지한다. 기존 v0.1.1 기록과 태그는 보존한다. 프로젝트 로컬 검사기 수정은 업스트림 기본 기능과 구분해 출처 기록에 남긴다.</p>
+<h2 id="검증">검증</h2>
+<p>최종 실행 결과는 같은 버전의 <code>VERIFICATION.md</code>, 게시 결과는 GitHub Release의 <code>DEPLOYMENT.json</code>에 기록한다. 실제 클라우드·현장 설비·법률 적용 검증은 포함하지 않는다.</p>
+<p><a href="https://github.com/tt-a1i/archify/releases/tag/v3.2.0" rel="noopener noreferrer" target="_blank">Archify 3.2.0 공식 릴리즈</a> · <a href="https://github.com/roadkwonai/evenstay-web/releases/tag/v0.1.1" rel="noopener noreferrer" target="_blank">이전 버전</a> · <a href="https://github.com/roadkwonai/evenstay-web/compare/v0.1.1...v0.1.2" rel="noopener noreferrer" target="_blank">변경 비교</a></p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>
