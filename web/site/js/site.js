@@ -6,6 +6,16 @@
   const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
   const show = (name, on) => $$(`s-if[data-if="${name}"]`).forEach((x) => { x.hidden = !on; });
   const hole = (name, text) => $$(`[data-hole="${name}"]`).forEach((x) => { x.textContent = text; });
+  // 기존 이동 링크는 유지하고, 이미지를 원본 파일에 연결한다.
+  $$('.site main img').forEach((image) => {
+    if (!image.alt || image.closest('a, button, .hero-media, .s-media')) return;
+    const link = document.createElement('a');
+    link.className = 's-image-link'; link.href = image.src;
+    link.target = '_blank'; link.rel = 'noopener noreferrer';
+    link.title = '원본 이미지 보기 (새 창)';
+    link.setAttribute('aria-label', [image.alt, link.title].filter(Boolean).join(' · '));
+    image.replaceWith(link); link.append(image);
+  });
   const hero = $('section.hero');
   let shown = 0, key = '', wasDone = false, wasOpen = false, opener = null, toForm = false, sendTimer = 0;
 

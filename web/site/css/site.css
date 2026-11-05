@@ -406,3 +406,7 @@ s-if[hidden] { display: none; }
 /* 공통 상단 영역이 위에 붙어 건너뛰기 링크의 기준이 내려간다 */
 .s-skip { top: -160px; }
 .s-skip:focus { top: 12px; }
+
+.s-image-link { display: block; }
+.s-image-link img { cursor: zoom-in; }
+.site .s-image-link:focus-visible img { outline: 3px solid var(--primary); outline-offset: 2px; }
