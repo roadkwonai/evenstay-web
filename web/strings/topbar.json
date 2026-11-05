@@ -1,0 +1,13 @@
+{
+ "home": "메인 홈",
+ "site": "소개 사이트",
+ "title": "권한 고르기",
+ "pick": "권한 고르기",
+ "now": "지금 권한: {role}, {name}",
+ "nowShort": "{role}",
+ "all": "계정 전체 보기",
+ "help": "도움말",
+ "nav": "이동",
+ "homeShort": "홈",
+ "siteShort": "사이트"
+}

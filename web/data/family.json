@@ -1,0 +1,141 @@
+{
+ "n": 0,
+ "settings": {
+  "absenceNoticeStartedAt": "2026-11-01T00:00:00",
+  "scheduleProgramsStartedAt": "2026-11-01T00:00:00",
+  "draftInjectsHealth": true
+ },
+ "residents": [
+  {
+   "id": "R_EUNSOOK",
+   "name": "이은숙",
+   "room": "A동 201호",
+   "memberId": "m.eunsook"
+  },
+  {
+   "id": "R_MALSUN",
+   "name": "김말순",
+   "room": "B동 302호",
+   "memberId": "m.malsun"
+  },
+  {
+   "id": "R_JEONGHEE",
+   "name": "김정희",
+   "room": "A동 301호",
+   "memberId": "m.jeonghee"
+  }
+ ],
+ "links": [
+  {
+   "id": "GL_JIMIN",
+   "residentId": "R_EUNSOOK",
+   "personId": "g.jimin",
+   "name": "김지민",
+   "relation": "딸",
+   "status": "ACTIVE",
+   "seen": null
+  },
+  {
+   "id": "GL_TAEHO",
+   "residentId": "R_EUNSOOK",
+   "personId": "p.taeho",
+   "name": "김태호",
+   "relation": "아들",
+   "status": "ACTIVE",
+   "seen": null
+  },
+  {
+   "id": "GL_SUJIN",
+   "residentId": "R_MALSUN",
+   "personId": "g.sujin",
+   "name": "김수진",
+   "relation": "장녀",
+   "status": "ACTIVE",
+   "seen": null
+  },
+  {
+   "id": "GL_DOHYUN",
+   "residentId": "R_MALSUN",
+   "personId": "p.dohyun",
+   "name": "김도현",
+   "relation": "아들",
+   "status": "ACTIVE",
+   "seen": null
+  },
+  {
+   "id": "GL_LEESJ",
+   "residentId": "R_JEONGHEE",
+   "personId": "g.leesj",
+   "name": "이수진",
+   "relation": "딸",
+   "status": "ACTIVE",
+   "seen": null
+  },
+  {
+   "id": "GL_LEEMH",
+   "residentId": "R_JEONGHEE",
+   "personId": "g.leemh",
+   "name": "이민호",
+   "relation": "아들",
+   "status": "ACTIVE",
+   "seen": null
+  }
+ ],
+ "consent": [],
+ "changes": [],
+ "batches": [],
+ "sensitive": [],
+ "noticeAcks": [],
+ "queue": [],
+ "news": [],
+ "cards": [],
+ "reports": [],
+ "feedback": [],
+ "log": [],
+ "exports": [],
+ "withholds": [],
+ "acks": [
+  {
+   "personId": "m.eunsook",
+   "audience": "MEMBER",
+   "version": 1,
+   "at": "2026-11-11T09:00:00",
+   "acting": "SELF"
+  },
+  {
+   "personId": "g.jimin",
+   "audience": "GUARDIAN",
+   "version": 1,
+   "at": "2026-11-11T09:00:00",
+   "acting": "SELF"
+  },
+  {
+   "personId": "p.taeho",
+   "audience": "GUARDIAN",
+   "version": 1,
+   "at": "2026-11-11T09:00:00",
+   "acting": "SELF"
+  }
+ ],
+ "invites": [],
+ "inviteDraft": {
+  "name": "김지민",
+  "relation": "딸",
+  "phone": "010-○○○○-○○○○"
+ },
+ "money": [
+  {
+   "id": "MR0",
+   "at": "2026-11-11T10:20:00",
+   "by": "st.choims",
+   "residentId": "R_EUNSOOK",
+   "kind": "CASH",
+   "how": "DIRECT",
+   "handoff": [
+    "SELF"
+   ],
+   "contact": "DECLINED",
+   "followOf": null
+  }
+ ]
+}

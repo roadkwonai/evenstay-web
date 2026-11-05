@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>안심 알림 개발 인계 | Evenstay 문서</title>
+<meta name="description" content="안심 알림 개발 인계. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>안심 알림</span></p>
+  <h1>안심 알림 개발 인계</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-handoff"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="안심 알림의 다른 문서"><ul><li><a href="safety-strategy.html">전략</a></li><li><a href="safety-service-blueprint.html">서비스 설계도</a></li><li><a href="safety-prd.html">기획서(PRD)</a></li><li><a href="safety-user-stories.html">사용자 스토리</a></li><li><a href="safety-tech-design.html">기술 설계</a></li><li><a href="safety-roadmap.html">로드맵</a></li><li><a href="safety-handoff.html" aria-current="page">개발 인계</a></li><li><a href="safety-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#한-줄-요약">한 줄 요약</a></li><li class="lv2"><a href="#대상">대상</a></li><li class="lv2"><a href="#핵심-흐름-mvp">핵심 흐름 (MVP)</a></li><li class="lv2"><a href="#화면-목록">화면 목록</a></li><li class="lv2"><a href="#데이터-모델-초안">데이터 모델 초안</a></li><li class="lv2"><a href="#인수-조건">인수 조건</a></li><li class="lv2"><a href="#하지-않을-것">하지 않을 것</a></li><li class="lv2"><a href="#복사할-파일-허브가-검수-후">복사할 파일 (허브가 검수 후)</a></li><li class="lv2"><a href="#결정된-것과-남은-것-자세한-것은-각-문서-확인할-것">결정된 것과 남은 것 (자세한 것은 각 문서 &quot;확인할 것&quot;)</a></li><li class="lv2"><a href="#상태판">상태판</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-203" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-204" data-tip="회원이 받기로 한 정기 순회.">안부 방문</button></li><li><button class="term" type="button" data-modal="g-205" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-206" data-tip="B, C가 올린 본문 스냅샷.">건강 소식</button></li><li><button class="term" type="button" data-modal="g-207" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-208" data-tip="근무 시간과 자리.">당번표</button></li><li><button class="term" type="button" data-modal="g-209" data-tip="알림에서 이어진 동행의 직원과 시각만.">병원 동행</button></li><li><button class="term" type="button" data-modal="g-210" data-tip="사람이 쓴 경위, 통보, 신고만 담는다.">사고·학대 보고</button></li><li><button class="term" type="button" data-modal="g-211" data-tip="응급 때 직원이 누구에게 어떤 순서로 전화하는가.">비상 연락처</button></li><li><button class="term" type="button" data-modal="g-212" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-213" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li><li><button class="term" type="button" data-modal="g-214" data-tip="외부 연동 경계.">어댑터</button></li></ul></section></aside>
+  <article class="doc"><h2 id="한-줄-요약">한 줄 요약</h2>
+<p>시니어 레지던스의 침대 센서, 호출벨, 출입 기록(안부 전화는 P1) 신호를 한곳에 모아 당번 직원에게 알리고, 5분 동안 아무도 확인하지 않으면 다음 담당자에게 넘기며, 누가 언제 무엇을 했는지 남기는 모듈. 시스템은 판단하지 않는다. 결과는 회원이 허락한 보호자에게 D(Evenstay 패밀리)의 &quot;건강 소식&quot;으로 올라간다.</p>
+<h2 id="대상">대상</h2>
+<ul>
+<li>주 이용자: 야간 직원(당번·2차), 사업장 책임자(3차, 기록 검토)</li>
+<li>결과를 보는 사람: 보호자(D 화면, 회원이 건강 소식을 허락한 경우만)</li>
+<li>신호의 당사자: 회원(안심 알림 화면은 P1). 도움은 호출벨이나 방 전화로 부르고, 앱은 부른 뒤 보는 곳</li>
+</ul>
+<h2 id="핵심-흐름-mvp">핵심 흐름 (MVP)</h2>
+<ol>
+<li><strong>신호 → 사람</strong>: 수신 어댑터가 올린 신호 받기(원본 먼저 보관, 데모는 형식 시뮬레이션) → 어댑터 정규화 → (출처, 업체 이벤트 번호) 중복 확인 → 입주자 찾기 → 규칙·등급(즉시 확인 / 확인 필요 / 기록만) → 당번 알림 → 넘김(5분/15분, 1차 → 2차 → 3차 → 모두 호출) → [확인하러 갑니다] → 조치 기록</li>
+<li><strong>결과</strong>: 보호자 알림 미리보기(D <code>viewersOf</code>로 볼 보호자, 이름은 코어 <code>GuardianQuery.guardiansOf</code>, 문자 시각은 D <code>nextSendAt</code>) → [보내기]면 조치 완료 + 아웃박스 → D <code>HealthFeedCommand.post</code>(볼 보호자 0명이어도 올림) / [올리지 않기]는 회원 요청(MEMBER_REQUEST) 또는 건강 소식이 아님(NOT_A_HEALTH_EVENT)만 → D <code>withhold</code>. 직원 재량 버튼은 없다. 119·병원 이송 때는 맡은 직원이 코어 비상 연락처(<code>EmergencyContactQuery</code>, actor 전달)를 열어 전화하고 통화 결과를 남긴다</li>
+</ol>
+<ul>
+<li>데모 5단계와 시드: <code>prd.md</code> 9절. 통합 데모 주인공 A동 201호 이은숙(2026-11-10 승계 뒤, 데모는 2026-11-12 새벽), 딸 김지민(건강 소식 보호자, 비상 연락처 1순위), 대리인 아들 김태호(청구서·결제), 당번 김하진 · 2차 박서준 · 3차 최영미(SITE_MANAGER)</li>
+</ul>
+<h2 id="화면-목록">화면 목록</h2>
+<p><code>prd.md</code> 8절. P0: 지금 처리할 신호, 알림 상세, 조치 기록, 보호자 알림 미리보기, 알림 기록, 시뮬레이터 + 직원 휴대폰 패널, (D 의존) 건강 소식 목업. P0 확장: 알림 기록의 걸린 시간(F20), 첫 화면의 야간 당번 보기 한 줄(F24). P1: 기기 상태, 회원 안심 알림, 기기 연결·장치 동의, 규칙·당번표 설정, 안부 방문 기록(화면 ID 제안 SAF-12), 병원 동행 칸, 부재 중 표시. 새 문구는 반영됨(<code>copy.md</code> 2-1, 2-4, 2-7, 2-12, 2-13, 2-15~2-17, 4-2). 문구는 B <code>copy.md</code>. 2026-11-04 P1: 병원에 가신 분(SAF-13), 부재 중인 입주자(SAF-14), 호실 현황판(SAF-15 제안), 사고·학대 보고(SAF-16 제안), 비상 때 재실 명단(SAF-17 제안). 모든 화면을 클릭형 프로토타입으로 만든다(MVP 구현 없음).</p>
+<h2 id="데이터-모델-초안">데이터 모델 초안</h2>
+<p><code>tech-design.md</code> 2절(엔티티, ERD), 3절(상태 전이), 4절(규칙·넘김). 모든 테이블은 <code>safety</code> 스키마, 코어 엔티티는 ID만. 핵심 결정:</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ADR</th>
+<th>결정</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S1 수신</td>
+<td>원본 먼저 보관 → 정규화. 신호는 (source, vendor_event_id) 유일. 다시 오면 중복 수신 기록만</td>
+</tr>
+<tr>
+<td>S2 넘김</td>
+<td><code>escalation_due_at</code> + 상주 작업자. 전이는 조건부 갱신이라 중복 실행·동시 확인에도 한 번. 데모 시계와 함께 동작</td>
+</tr>
+<tr>
+<td>S3 보호자 문장</td>
+<td>B가 쓰고 D <code>post</code>에 요약·본문을 담아 올린다. D가 보인 그대로 스냅샷 저장, 동의 검사는 D(D 안 채택). 의존은 B → <code>family/api</code> 한 방향</td>
+</tr>
+<tr>
+<td>S4 비상 연락처</td>
+<td>복사하지 않고 볼 때마다 코어 <code>EmergencyContactQuery</code>. 통화 기록은 순위만</td>
+</tr>
+<tr>
+<td>S5 묶음</td>
+<td>같은 입주자 신호는 화면에서만 30분 창으로 묶음. 알림·타이머는 각자 [가설]</td>
+</tr>
+<tr>
+<td>S6 확장</td>
+<td>사업장마다 규칙·당번표·기기(<code>site_id</code> + 코어 RLS). 새 업체 = 어댑터 1개, 새 자산 유형 = 신호 종류와 규칙 조합</td>
+</tr>
+<tr>
+<td>S7 장기 부재</td>
+<td>B에 복사하지 않고 신호를 평가할 때마다 코어 <code>AbsenceQuery.absenceOf</code>로 읽는다. 코어 이벤트는 구독하지 않는다(모듈 경계 8번)</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>P1 추가 엔티티: VisitPlan·VisitRecord(안부 방문), HospitalEscort(병원 동행). 장기 부재는 저장하지 않고 코어 <code>AbsenceQuery</code>로 읽는다(ADR-S7). 사업장 단위 조회는 <code>safety/api</code> <code>SafetyBoardQuery.boardOf(siteId, at, actor)</code>이고 대시보드(<code>app/</code> D1)가 읽기만 한다. 2026-11-04: IncidentReport(사고·학대 보고), EvacuationAssist·EvacuationRoll·EvacuationCheck·EvacuationCheckCorrection(비상 때 재실 명단, 대피 확인 정정은 추가만). 생활 요청에서 옮긴 호출은 <code>safety/api</code> <code>SafetyFrontCallCommand.registerFromRequest</code>. 소유주 월 요약은 <code>SafetyBoardQuery.monthOf</code>(행동 <code>safety.owner_report.view</code>, 그달 숫자만).</li>
+</ul>
+<h2 id="인수-조건">인수 조건</h2>
+<p><code>user-stories.md</code> US-01<del>US-34(P0: US-01</del>14, US-22, US-23, US-27). 완료 기준은 <code>prd.md</code> 3절 KR1~KR3과 <code>tech-design.md</code> 11절 테스트 표.</p>
+<h2 id="하지-않을-것">하지 않을 것</h2>
+<ul>
+<li>상태 판단(낙상·응급 여부), 119 자동 신고, 의료 판단. 3차까지 아무도 확인하지 않아도 시스템은 신고하지 않는다</li>
+<li>감지 알고리즘, 영상·소리, AI 이상 탐지</li>
+<li>진단명·병명·투약 입력 칸, 비상 연락처 전화번호 저장, 출입 카드 번호 원문 저장</li>
+<li>보호자 동의 저장, 보호자 화면, 보호자 문자 발송(모두 D)</li>
+<li>문자에 내용·&quot;건강&quot;이라는 말·링크 넣기</li>
+<li>실제 기기·출입통제·안부 전화·푸시·문자 업체 연동(시뮬레이터와 목업까지)</li>
+<li>간호·요양 기록, 시설 밖 독거 가구 관제, 효과 수치 주장</li>
+<li>진단·치료·투약, 처치 방법 안내(의료인만 할 수 있는 의료행위다: 의료법 제27조 제1항, 2차 자료 기준이며 현행 원문은 [미확인], <a href="https://www.law.go.kr/법령/의료법" rel="noopener noreferrer" target="_blank">https://www.law.go.kr/법령/의료법</a> , 조회 2026-11-03)</li>
+<li>학대 여부·원인·책임 판정, 출입 신호로 재실 추정</li>
+<li>위치 추적, 병원 이름·진료 내용 저장, 장기 부재 저장(코어에서 읽기만)</li>
+</ul>
+<h2 id="복사할-파일-허브가-검수-후">복사할 파일 (허브가 검수 후)</h2>
+<p><code>strategy.md</code>, <code>service-blueprint.md</code>, <code>prd.md</code>, <code>user-stories.md</code>, <code>roadmap.md</code>, <code>tech-design.md</code>, <code>handoff.md</code> → <code>evenstay/docs/safety/</code></p>
+<ul>
+<li><code>evenstay/CLAUDE.md</code>(공통)에 더할 것: <code>tech-design.md</code> 2-1절 용어, &quot;시스템은 판단하지 않는다&quot;와 판단 단어 금지어 목록(<code>prd.md</code> KR3), 코어 ADR-2(v1.1)의 모듈 간 <code>api/</code> 의존 규칙</li>
+<li><code>evenstay/safety/CLAUDE.md</code>에 둘 것: 위 &quot;하지 않을 것&quot;, <code>tech-design.md</code> 1절 범위, ADR-S1~S6</li>
+</ul>
+<h2 id="결정된-것과-남은-것-자세한-것은-각-문서-확인할-것">결정된 것과 남은 것 (자세한 것은 각 문서 &quot;확인할 것&quot;)</h2>
+<p><strong>결정됨 (허브·사용자 확정)</strong></p>
+<ul>
+<li>건강 소식 올리지 않기: 직원 재량 없음. MEMBER_REQUEST(들은 직원·시각 필수)와 NOT_A_HEALTH_EVENT(다른 회원 기록·중복·기기 시험)만, 119·병원 기록 건은 MEMBER_REQUEST만, 운영 매니저 주간 확인 (<code>prd.md</code> 확인할 것 1)</li>
+<li>회원 요청으로 뺀 일의 회원 화면: D 회원 화면(D <code>copy.md</code> 2-9) 기준, B 안심 알림 기록(P1)에 같은 문장 (<code>prd.md</code> 2)</li>
+<li>보호자 알림 시각: D 조용한 시간(22~08시는 08:00). 미리보기 <code>FamilyNoticeQuery.nextSendAt</code>, 기록 <code>post</code> 결과 <code>noticeSendAt</code> (<code>prd.md</code> 3)</li>
+<li>데모 주인공: A동 201호 이은숙, 딸 김지민, 대리인 아들 김태호. 코어 시드 반영됨 (<code>prd.md</code> 4)</li>
+<li>코어 v1.1과 D 인터페이스 요청은 모두 반영됨. <code>ContractSucceeded</code> 구독자 B와 ADR-2 예시 정리도 코어에 들어갔다(코어 머리말의 &quot;B·D 동기화&quot;는 사용자 재승인 2026-11-03) (<code>tech-design.md</code> 확인할 것 1~7-1)</li>
+</ul>
+<p><strong>결정됨 [가설]</strong> (2026-11-03 사용자 결정: 제안값으로 확정)</p>
+<ul>
+<li>확인 필요 넘김 15분, 같은 입주자 묶음 30분(화면에서만), 3차 = 당직 책임자 → 모두 호출, &quot;아직 만나지 못했습니다&quot;면 책임자에게 바로 알림, 회원 화면(F14)은 P1 (<code>prd.md</code> 5~9)</li>
+<li>묶음 카드의 모두 맡기 버튼 둠, 조치 기록은 덧붙임으로만 정정 (<code>user-stories.md</code> 1·2)</li>
+<li>D 실연동은 Next(Now는 목업), G 도구는 읽기 2개만 (<code>roadmap.md</code> 1·2)</li>
+<li>H1이 틀리면 &quot;기록과 인계&quot; 중심으로 전환 (<code>strategy.md</code> 1)</li>
+<li>상주 작업자는 아웃박스 디스패처와 같은 프로세스, 직원 기록 열람 7일, 화면 갱신은 5초 폴링 (<code>tech-design.md</code> 8·9·11)</li>
+</ul>
+<p><strong>남은 것</strong></p>
+<ul>
+<li>[미정] North Star 정의 (<code>strategy.md</code> 2)</li>
+<li>[법률 검토] 센서·출입 신호 수집 근거, 조치 메모·보호자용 결과의 민감정보 해당 여부, 비상 연락 근거, 보존 기간 (<code>prd.md</code> 10, <code>tech-design.md</code> 12)</li>
+<li>[NEED] 종사자 인터뷰(H1), 야간 직원·시설장 검토, 침대 센서 사양, 프런트·내선 번호 (<code>strategy.md</code> 3, <code>prd.md</code> 11, <code>service-blueprint.md</code> 6)</li>
+<li>[미정] 기술 스택 세부: 컬럼 암호화 방식 등 (<code>tech-design.md</code> 13)</li>
+<li>[미정] 경보 임계값: 직원 알림 전달 실패 연속, 작업자 지연 (<code>tech-design.md</code> 15)</li>
+<li>[미정] 당번표를 바꿀 때 이미 넘김이 시작된 알림이 어느 당번표를 따르는지 (<code>tech-design.md</code> 16)</li>
+<li>허브에 요청: 코어 8-3 부재 이벤트 구독 열과 10절 B 줄을 &quot;B는 <code>AbsenceQuery</code>로 읽음&quot;으로, 운영 현황 카드의 B 조회 자리표시를 <code>SafetyBoardQuery.boardOf</code>로 맞추기 (<code>tech-design.md</code> 17)</li>
+<li>[미정] 부재·안부 방문·병원 동행 세부 (<code>tech-design.md</code> 18·19)</li>
+<li>[미확인] 사고·학대 보고의 신고 의무, 비상 때 재실 명단의 법 전제 (<code>tech-design.md</code> 21·22)</li>
+<li>[미정] 신고 기관 목록, 놓친 방문 알림의 조치 완료 (<code>tech-design.md</code> 23·24)</li>
+<li>[가설] 통합 데모 새 장면 B-1~B-3의 시각과 계정 (<code>prd.md</code> 9절, <code>tech-design.md</code> 25)</li>
+<li>[미정] 건물 인터넷이 끊겼을 때 직원 대체 절차, 앱 밖 외부 감시의 주기·도구·받는 사람 (<code>tech-design.md</code> 27)</li>
+<li>[미확인] 실제 벤더의 신호 수신 방식, 수신 어댑터 위치 (<code>tech-design.md</code> 28)</li>
+<li>[미정] 안부 전화 2회 미응답 규칙을 <code>tech-design.md</code> 4절에 넣을지 (<code>tech-design.md</code> 29)</li>
+<li>[미정] 닫힌 명단의 대피 확인 정정, [NEED: 카피] 정정 문구 (<code>tech-design.md</code> 30)</li>
+<li>카피 반영됨(2026-11-04 보완): 출처 &quot;생활 요청에서 옮김&quot;과 카드 문장(<code>copy.md</code> 2-11, <code>names.md</code> 4절), 맨 위 한 줄의 끊김 칸 없는 버전(2-1), 호실 현황(2-18), 사고·학대 보고(2-19), 비상 때 재실 명단과 조회 실패 안내(2-20), 도움 필요 설정(2-12, 4-1), 소유주 월 요약 묶음(2-21, 코어 CORE-14에 넣을 제안)</li>
+<li>카피 반영됨: 걸린 시간 표시(<code>copy.md</code> 2-7), 야간 당번 보기 한 줄(2-1), 병원 동행 칸과 병원에 가신 분(2-1, 2-4, 2-16), 안부 방문 화면·결과 선택지·놓친 방문 카드(2-15)·설정(2-13)·동의(2-12)·회원 안내(4-2), 부재 중 표시(2-1, 2-7, 2-15, 2-17), 출처 라벨 &quot;안부 방문&quot;(<code>names.md</code> 4절). 남은 [NEED: 카피] 없음</li>
+<li>카피 반영 대기 (2026-11-03 <code>copy.md</code>와 대조, <code>tech-design.md</code> 14): 비상 연락처 버튼·목록(<code>copy.md</code> 2-9), 직원 휴대폰 패널(2-10), &quot;모두 호출&quot; 라벨(2-5), 호출벨·정문 보호자 문장 틀(3-2), 예시 호실·주인공 맞춤은 반영됨. 2차 대조로 기기 연결·동의 화면(2-12), 규칙·당번표 설정 화면(2-13), 인용 맞춤에서 따옴표를 뺀 버튼·필터·기록 줄 문구(2-6, 2-7, 2-11, 2-12, 2-14)도 반영됨. 남은 대기는 맡은 뒤 오래 머문 알림 안내(Next)뿐</li>
+</ul>
+<h2 id="상태판">상태판</h2>
+<p><code>senior-lab/shared/idea-board.md</code>의 이 아이디어 단계는 허브가 바꾼다. 지금은 &quot;기획(초안)&quot;이 맞고, 사용자 승인과 허브 검수 후 &quot;인계&quot;로 바꾼다.</p>
+<h2 id="변경-기록">변경 기록</h2>
+<ul>
+<li>2026-11-03 기획 문서 한국어 검수(허브 요청, 사용자 지정 korean-skills, 사용자 재승인 2026-11-03). 호출한 스킬: <code>grammar-checker</code>, <code>style-guide</code>, <code>humanizer</code>(Skill 도구). 코드·ID·태그·숫자·화면 문구 인용은 고치지 않았다.<ul>
+<li>고친 곳 없음.</li>
+</ul>
+</li>
+<li>2026-11-03 화면 문구 인용 맞춤(허브 요청, 사용자 &quot;인용 맞추기&quot;, 사용자 재승인 2026-11-03). 따옴표 인용은 <code>copy.md</code>와 글자까지 같게 했고, <code>copy.md</code>에 없는 문구는 따옴표를 빼고 설명하거나 요약이라고 밝혔다. 1곳:<ul>
+<li>결정됨 [가설] [설명 문장(copy에 없음)]: - 묶음 [모두 맡기] 둠, → - 묶음 카드의 모두 맡기 버튼 둠,</li>
+</ul>
+</li>
+<li>2026-11-03 카피 반영 대기 목록 정리(허브 요청, 사용자 &quot;정리해&quot;, 사용자 재승인 2026-11-03): <code>copy.md</code>에 이미 들어간 항목은 지우지 않고 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 표시했고, 들어가지 않은 항목만 대기로 남겼다.</li>
+<li>2026-11-03 카피 반영 대기 표시 정리 2(허브 요청, 사용자 &quot;맡겨&quot;, 사용자 재승인 2026-11-03): B 카피 세션이 <code>copy.md</code> 2-11~2-14 절과 2-6·2-7 표에 넣은 문구, <code>names.md</code> 4절 출처 &quot;프런트 전화&quot;와 대조해, 들어간 항목을 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨다. 아직 없는 것은 맡은 뒤 오래 머문 알림 안내(Next)뿐이다.</li>
+<li>2026-11-03 안전 서비스 보완(허브 요청, 사용자 선택 &quot;넓게(N1 포함)&quot;, 사용자 재승인 2026-11-04). 화면 목록, 인수 조건 범위(US-28까지), 하지 않을 것 2줄, 남은 것 4줄.</li>
+<li>2026-11-03 코어 장기 부재 확정 맞춤(허브 요청, 사용자 재승인 2026-11-04): 코어가 <code>ResidentAbsenceStarted</code>/<code>ResidentAbsenceEnded</code>(absenceId, residentId, unitId, startedOn/endedOn, expectedReturnOn)와 <code>AbsenceQuery</code>를 확정했다(코어 <code>tech-design.md</code> 2-2·3-4·8절). 모듈 경계 8번(다른 모듈 데이터를 복사해 두지 않고 매 요청 <code>api/</code>로 읽는다)에 따라 B는 부재를 저장하지 않고 신호를 평가할 때마다 <code>AbsenceQuery.absenceOf</code>로 읽는다(<code>tech-design.md</code> ADR-S7). 이벤트는 구독하지 않는다. <code>SafetyBoardQuery.boardOf</code> 반환 형태를 코어 운영 현황 카드에 맞췄다(가장 긴 시간, 당번 이름).</li>
+<li>2026-11-03 안전 서비스 보완 카피 반영(허브 요청, 사용자 재승인 2026-11-04): B 카피 세션이 <code>copy.md</code> 2-15 안부 방문, 2-16 병원 동행, 2-17 부재 중과 기존 표(2-1, 2-4, 2-7, 2-12, 2-13, 4-2)에 줄을 넣고 <code>names.md</code> 4절에 출처 &quot;안부 방문&quot;을 넣었다. 해당 [NEED: 카피]를 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨고, 안부 방문 결과 선택지는 카피대로 &quot;입주자가 방문을 원하지 않으셨습니다&quot;(직원 화면 호칭 규칙)로 맞췄다.</li>
+<li>2026-11-04 전체 리뷰 보완(허브 지시서 <code>00-hub/reviews/supplement-orders-2026-11-04.md</code> 안심 알림 1~4, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04). 목표는 모든 화면이 흐름대로 움직이는 클릭형 프로토타입(MVP 구현 없음).<ul>
+<li>handoff: 화면 목록, 엔티티, US 범위, 하지 않을 것, 남은 것.</li>
+</ul>
+</li>
+<li>2026-11-04 소유주 월 리포트 숫자 열기(허브 전달, 사용자 결정 H5 &quot;모두 추천대로&quot;, 사용자 재승인 2026-11-04): 코어 CORE-14에 안심 알림 그달 숫자를 연다. 조회 <code>SafetyBoardQuery.monthOf(siteId, period, actor)</code>, 행동 <code>safety.owner_report.view</code>(소유주는 자기 소유 사업장만). 이름·호실·입주자 ID·직원·메모와 119·병원 이송 수는 주지 않는다.</li>
+<li>2026-11-04 전체 리뷰 보완 카피 반영(허브 요청, 사용자 재승인 2026-11-04): B 카피 세션이 <code>copy.md</code> 2-18 호실 현황, 2-19 사고·학대 보고, 2-20 비상 때 재실 명단, 2-21 소유주 월 리포트의 안심 알림 묶음과 기존 표(2-1, 2-11, 2-12, 2-16, 4-1)에 줄을 넣고 <code>names.md</code> 4절에 출처 &quot;생활 요청에서 옮김&quot;을 넣었다. 해당 [NEED: 카피]를 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨다.</li>
+<li>2026-11-04 앱 호출 표현 정리(허브 요청, 사용자 결정 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 &quot;도움을 부르는 길은 호출벨·방 전화·119 셋, 앱은 부른 뒤 보는 곳&quot;, 사용자 재승인 2026-11-04): 대상의 회원 줄을 고쳤다.</li>
+<li>2026-11-04 시니어 하우징 조사 반영(허브 지시 <a class="doc-ref" href="lab-research-reflection.html"><code>00-hub/reviews/research-reflection-2026-11-04.md</code></a> R1~R5, 사용자 &quot;검토 후 반영&quot;, 근거 <a class="doc-ref" href="lab-senior-housing-architecture.html"><code>senior-lab/01-research/outputs/senior-housing-architecture.md</code></a> 6·9절, 사용자 재승인 2026-11-04): 핵심 흐름 1의 수신 표현(R1), 남은 것에 <code>tech-design.md</code> 27·28(R1, R4).</li>
+<li>2026-11-04 프로토타입 확인 보완(허브 지시, 사용자 &quot;추천대로&quot;, 근거 <code>evenstay/design/prototype/REPORT.md</code> 2·4·10번, 사용자 재승인 2026-11-04): 데이터 모델 초안에 대피 확인 정정, 남은 것에 <code>tech-design.md</code> 29·30을 더했다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-handoff" data-title="개발 인계"><p>기획을 개발로 넘길 때 필요한 것을 한곳에 모은 문서입니다.</p></template>
+<template id="g-203" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-204" data-title="안부 방문"><p>회원이 받기로 한 정기 순회. 놓치면 신호가 된다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 안부 방문 계획, 안부 방문 기록 / 회원: 안부 방문</dd><dt>영문·코드 이름</dt><dd><code>VisitPlan</code>, <code>VisitRecord</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-205" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-206" data-title="건강 소식"><p>B, C가 올린 본문 스냅샷. 건강 소식이 보호자에게 가는 길은 D 하나다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 건강 소식. 종류: 직원이 다녀간 일 / 병원에 가신 일 / 그 밖의 건강 기록 / 생활 지원 단계가 바뀐 일 / 다른 기관 돌봄이 시작된 일</dd><dt>영문·코드 이름</dt><dd><code>HealthEvent</code>: <code>SAFETY_SIGNAL</code>, <code>HOSPITAL_TRANSFER</code>, <code>CARE_NOTE</code>, <code>CARE_STAGE_CHANGE</code>, <code>EXTERNAL_CARE_START</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-207" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-208" data-title="당번표"><p>근무 시간과 자리. 근무 기간은 겹치지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 당번표, 근무, 당번 자리(1차·2차·3차)</dd><dt>영문·코드 이름</dt><dd><code>OnCallRoster</code>, 저장은 <code>OnCallShift</code>, <code>OnCallSlot</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-209" data-title="병원 동행(알림 뒤)"><p>알림에서 이어진 동행의 직원과 시각만. 생활 요청의 병원 동행과 다른 기록이다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 병원 동행, 병원에 가신 분</dd><dt>영문·코드 이름</dt><dd><code>HospitalEscort</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-210" data-title="사고·학대 보고"><p>사람이 쓴 경위, 통보, 신고만 담는다. 판정 칸이 없다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사고·학대 보고</dd><dt>영문·코드 이름</dt><dd><code>IncidentReport</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-211" data-title="비상 연락처"><p>응급 때 직원이 누구에게 어떤 순서로 전화하는가. 계약에 딸리고 동의 항목과 무관하다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 비상 연락처 / 회원: 급할 때 연락할 분 / 보호자: 비상 연락처에 적힌 분(119 신고, 병원 이송 기록에서만)</dd><dt>영문·코드 이름</dt><dd><code>EmergencyContact</code></dd><dt>출처</dt><dd>core T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-212" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-213" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-214" data-title="어댑터"><p>외부 연동 경계. MVP는 목업이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>결제, ERP, 알림, 파일 저장, LLM</dd><dt>출처</dt><dd>core T1·9</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

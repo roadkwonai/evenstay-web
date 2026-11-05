@@ -1,0 +1,121 @@
+[
+ {
+  "id": "member",
+  "label": "입주자(회원)",
+  "as": "m.eunsook",
+  "go": "COM-07",
+  "url": "app.html?as=m.eunsook&go=COM-07",
+  "accounts": [
+   "m.eunsook",
+   "m.malsun",
+   "m.jeonghee"
+  ]
+ },
+ {
+  "id": "proxy",
+  "label": "대리인",
+  "as": "p.taeho",
+  "go": "COM-07",
+  "url": "app.html?as=p.taeho&go=COM-07",
+  "accounts": [
+   "p.taeho",
+   "p.dohyun"
+  ]
+ },
+ {
+  "id": "guardian",
+  "label": "보호자",
+  "as": "g.jimin",
+  "go": "FAM-06a",
+  "url": "app.html?as=g.jimin&go=FAM-06a",
+  "accounts": [
+   "g.jimin",
+   "g.sujin",
+   "g.leesj",
+   "g.leemh"
+  ]
+ },
+ {
+  "id": "front",
+  "label": "프런트",
+  "as": "st.choims",
+  "go": "REQ-12",
+  "url": "app.html?as=st.choims&go=REQ-12",
+  "accounts": [
+   "st.choims"
+  ]
+ },
+ {
+  "id": "life",
+  "label": "생활 지원",
+  "as": "st.kimhj",
+  "go": "SAF-12",
+  "url": "app.html?as=st.kimhj&go=SAF-12",
+  "accounts": [
+   "st.kimhj",
+   "st.yoonsy"
+  ]
+ },
+ {
+  "id": "care",
+  "label": "간호",
+  "as": "st.parksj",
+  "go": "SAF-12",
+  "url": "app.html?as=st.parksj&go=SAF-12",
+  "accounts": [
+   "st.parksj"
+  ]
+ },
+ {
+  "id": "night",
+  "label": "야간 당번",
+  "as": "st.kimhj",
+  "go": "SAF-01",
+  "url": "app.html?beat=14",
+  "accounts": [
+   "st.kimhj"
+  ]
+ },
+ {
+  "id": "manager",
+  "label": "사업장 책임자",
+  "as": "st.choiym",
+  "go": "CORE-01",
+  "url": "app.html?as=st.choiym&go=CORE-01",
+  "accounts": [
+   "st.choiym"
+  ]
+ },
+ {
+  "id": "accounting",
+  "label": "경리",
+  "as": "st.parksy",
+  "go": "CORE-01",
+  "url": "app.html?as=st.parksy&go=CORE-01",
+  "accounts": [
+   "st.parksy"
+  ]
+ },
+ {
+  "id": "hq",
+  "label": "본사",
+  "as": "hq.jung",
+  "go": "CORE-01",
+  "url": "app.html?as=hq.jung&go=CORE-01",
+  "accounts": [
+   "hq.jung",
+   "hq.han"
+  ]
+ },
+ {
+  "id": "owner",
+  "label": "소유주",
+  "as": "ow.onnuri",
+  "go": "CORE-09",
+  "url": "app.html?as=ow.onnuri&go=CORE-09",
+  "accounts": [
+   "ow.onnuri",
+   "ow.daon"
+  ]
+ }
+]

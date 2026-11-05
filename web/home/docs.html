@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>문서 | Evenstay 프로토타입</title>
+<meta name="description" content="서비스별 기획과 설계 문서를 모았습니다.">
+<link rel="icon" href="../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../css/proto.css">
+<link rel="stylesheet" href="../shared/topbar.css">
+<link rel="stylesheet" href="../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../index.html">홈</a></li><li><a href="../home/roles.html">권한별 화면</a></li><li><a href="../home/screens.html">화면 찾아보기</a></li><li><a href="../home/docs.html" aria-current="page">문서</a></li><li><a href="../home/research.html">조사와 결정</a></li><li><a href="../home/architecture.html">아키텍처</a></li><li><a href="../home/artboards.html">아트보드</a></li><li><a href="../home/tech.html">기술과 스킬</a></li><li><a href="../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap">
+
+<header class="hm-ph"><h1>문서</h1><p class="hm-lead">기획과 설계 문서 59개를 서비스별로 모았습니다. 처음이라면 아래 네 문서부터 읽어 보세요.</p></header>
+<section class="sec" aria-labelledby="h-first">
+  <h2 id="h-first">먼저 읽으면 좋은 문서</h2>
+  <ol class="doors"><li><a class="door" href="docs/project.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg><span class="door-t">프로젝트 개관</span><span class="door-d">서비스가 푸는 문제와 구성을 가장 빨리 파악할 수 있습니다.</span><svg class="i hm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></li><li><a class="door" href="docs/mvp-screens.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg><span class="door-t">화면 정의서</span><span class="door-d">눌러 볼 화면과 시연 순서를 미리 봅니다.</span><svg class="i hm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></li><li><a class="door" href="docs/core-prd.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17V7"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg><span class="door-t">계약·청구 코어 기획서(PRD)</span><span class="door-d">다른 서비스가 모두 계약과 청구 위에 올라가므로 여기서 범위를 잡습니다.</span><svg class="i hm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></li><li><a class="door" href="docs/core-tech-design.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg><span class="door-t">계약·청구 코어 기술 설계</span><span class="door-d">데이터 구조와 서비스 경계, 설계 결정을 확인합니다.</span><svg class="i hm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></li></ol>
+</section>
+<section class="sec" aria-labelledby="h-svc">
+  <div class="sec-row"><h2 id="h-svc">서비스별 문서</h2><button class="btn btn-ghost btn-sm kind-btn" type="button" data-modal="kinds"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>문서 종류 설명</button></div>
+  <ul class="svc-list"><li class="svc"><div class="svc-t"><h3>계약·청구 코어</h3><p>입주 계약, 요금, 식사 기록, 청구를 한 기준으로 처리합니다.</p></div><ul class="svc-l" aria-label="계약·청구 코어의 다른 문서"><li><a href="docs/core-strategy.html">전략</a></li><li><a href="docs/core-service-blueprint.html">서비스 설계도</a></li><li><a href="docs/core-prd.html">기획서(PRD)</a></li><li><a href="docs/core-user-stories.html">사용자 스토리</a></li><li><a href="docs/core-tech-design.html">기술 설계</a></li><li><a href="docs/core-roadmap.html">로드맵</a></li><li><a href="docs/core-handoff.html">개발 인계</a></li><li><a href="docs/core-copy.html">화면 문구</a></li></ul></li><li class="svc"><div class="svc-t"><h3>안심 알림</h3><p>들어온 신호를 규칙에 따라 당번 직원에게 넘기고 조치를 기록합니다.</p></div><ul class="svc-l" aria-label="안심 알림의 다른 문서"><li><a href="docs/safety-strategy.html">전략</a></li><li><a href="docs/safety-service-blueprint.html">서비스 설계도</a></li><li><a href="docs/safety-prd.html">기획서(PRD)</a></li><li><a href="docs/safety-user-stories.html">사용자 스토리</a></li><li><a href="docs/safety-tech-design.html">기술 설계</a></li><li><a href="docs/safety-roadmap.html">로드맵</a></li><li><a href="docs/safety-handoff.html">개발 인계</a></li><li><a href="docs/safety-copy.html">화면 문구</a></li></ul></li><li class="svc"><div class="svc-t"><h3>보호자 포털·동의</h3><p>회원이 항목마다 허락한 소식만 보호자에게 보여 줍니다.</p></div><ul class="svc-l" aria-label="보호자 포털·동의의 다른 문서"><li><a href="docs/family-strategy.html">전략</a></li><li><a href="docs/family-service-blueprint.html">서비스 설계도</a></li><li><a href="docs/family-prd.html">기획서(PRD)</a></li><li><a href="docs/family-user-stories.html">사용자 스토리</a></li><li><a href="docs/family-tech-design.html">기술 설계</a></li><li><a href="docs/family-roadmap.html">로드맵</a></li><li><a href="docs/family-handoff.html">개발 인계</a></li><li><a href="docs/family-copy.html">화면 문구</a></li></ul></li><li class="svc"><div class="svc-t"><h3>AI 생활 비서</h3><p>날짜와 청구는 기록으로 답하고, 판단이 필요한 일은 회원 확인 뒤 직원에게 넘깁니다.</p></div><ul class="svc-l" aria-label="AI 생활 비서의 다른 문서"><li><a href="docs/assistant-strategy.html">전략</a></li><li><a href="docs/assistant-service-blueprint.html">서비스 설계도</a></li><li><a href="docs/assistant-prd.html">기획서(PRD)</a></li><li><a href="docs/assistant-user-stories.html">사용자 스토리</a></li><li><a href="docs/assistant-tech-design.html">기술 설계</a></li><li><a href="docs/assistant-roadmap.html">로드맵</a></li><li><a href="docs/assistant-handoff.html">개발 인계</a></li><li><a href="docs/assistant-copy.html">화면 문구</a></li></ul></li><li class="svc"><div class="svc-t"><h3>생활 지원 단계</h3><p>평가, 제안, 설명을 거쳐 사람이 생활 지원 단계를 정합니다.</p></div><ul class="svc-l" aria-label="생활 지원 단계의 다른 문서"><li><a href="docs/transitions-strategy.html">전략</a></li><li><a href="docs/transitions-service-blueprint.html">서비스 설계도</a></li><li><a href="docs/transitions-prd.html">기획서(PRD)</a></li><li><a href="docs/transitions-user-stories.html">사용자 스토리</a></li><li><a href="docs/transitions-tech-design.html">기술 설계</a></li><li><a href="docs/transitions-roadmap.html">로드맵</a></li><li><a href="docs/transitions-handoff.html">개발 인계</a></li><li><a href="docs/transitions-copy.html">화면 문구</a></li></ul></li><li class="svc"><div class="svc-t"><h3>생활 요청</h3><p>회원의 요청을 접수해 처리하고, 회원이 확인하면 닫습니다.</p></div><ul class="svc-l" aria-label="생활 요청의 다른 문서"><li><a href="docs/requests-strategy.html">전략</a></li><li><a href="docs/requests-service-blueprint.html">서비스 설계도</a></li><li><a href="docs/requests-prd.html">기획서(PRD)</a></li><li><a href="docs/requests-user-stories.html">사용자 스토리</a></li><li><a href="docs/requests-tech-design.html">기술 설계</a></li><li><a href="docs/requests-roadmap.html">로드맵</a></li><li><a href="docs/requests-handoff.html">개발 인계</a></li><li><a href="docs/requests-copy.html">화면 문구</a></li></ul></li><li class="svc"><div class="svc-t"><h3>프로그램·시설·공지</h3><p>프로그램 신청과 출석, 시설 예약, 공지 확인을 다룹니다.</p></div><ul class="svc-l" aria-label="프로그램·시설·공지의 다른 문서"><li><a href="docs/community-strategy.html">전략</a></li><li><a href="docs/community-service-blueprint.html">서비스 설계도</a></li><li><a href="docs/community-prd.html">기획서(PRD)</a></li><li><a href="docs/community-user-stories.html">사용자 스토리</a></li><li><a href="docs/community-tech-design.html">기술 설계</a></li><li><a href="docs/community-roadmap.html">로드맵</a></li><li><a href="docs/community-handoff.html">개발 인계</a></li><li><a href="docs/community-copy.html">화면 문구</a></li></ul></li></ul>
+</section>
+<section class="sec" aria-labelledby="h-more">
+  <h2 id="h-more">함께 보면 좋은 자료</h2>
+  <ul class="doclist"><li><div><a href="docs/glossary.html"><strong>용어집</strong></a><span>서비스 용어와 화면에 쓰는 말을 모았습니다.</span></div></li><li><div><a href="research.html"><strong>조사와 결정</strong></a><span>왜 이렇게 설계했는지 보여 주는 조사, 평가, 검토, 결정 기록입니다.</span></div></li></ul>
+</section>
+</main>
+<footer class="foot">
+  <div class="hm-wrap foot-in">
+    <ul>
+      <li><a href="../index.html">홈</a></li>
+      <li><a href="../site/index.html">소개 사이트</a></li>
+      <li><a href="../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="kinds" data-title="문서 종류 설명"><dl class="hm-kv"><dt>전략</dt><dd>이 서비스가 왜 필요한지, 누구를 위해 무엇을 하고 무엇을 하지 않는지를 정리한 문서입니다.</dd><dt>서비스 설계도</dt><dd>이용자가 보는 화면 뒤에서 직원과 시스템이 무엇을 하는지 단계별로 그린 문서입니다.</dd><dt>기획서(PRD)</dt><dd>범위와 화면 목록, 데모 시나리오와 시드 값을 적은 제품 요구 문서입니다.</dd><dt>사용자 스토리</dt><dd>누가 무엇을 해서 무엇을 얻는지를 이야기로 쓰고, 끝났다고 말할 조건을 붙인 문서입니다.</dd><dt>기술 설계</dt><dd>데이터 구조, 상태 전이, 설계 결정 기록(ADR), API를 적은 문서입니다.</dd><dt>로드맵</dt><dd>기능을 결과 문장으로 바꾸고 먼저 할 것과 다음 버전으로 미룰 것을 나눈 문서입니다.</dd><dt>개발 인계</dt><dd>기획을 개발로 넘길 때 필요한 것을 한곳에 모은 문서입니다.</dd><dt>화면 문구</dt><dd>화면에 쓸 문장과 문구를 고른 기록입니다. 프로토타입의 화면 문장이 이 기록을 따릅니다.</dd></dl></template>
+<script src="../home/assets/home.js" defer></script>
+</body>
+</html>

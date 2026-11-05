@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>조사 결과 반영 검토 | Evenstay 문서</title>
+<meta name="description" content="조사 결과 반영 검토. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>조사 결과 반영 검토</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-반영할-것">1. 반영할 것</a></li><li class="lv2"><a href="#2-조사-문서에서-고칠-점">2. 조사 문서에서 고칠 점</a></li><li class="lv2"><a href="#3-반영하지-않는-것">3. 반영하지 않는 것</a></li><li class="lv2"><a href="#4-진행-순서">4. 진행 순서</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-762" data-tip="외부 연동 경계.">어댑터</button></li><li><button class="term" type="button" data-modal="g-763" data-tip="호출 경로의 사본을 받아 당번에게 다시 알리는 일.">2차 알림</button></li></ul></section></aside>
+  <article class="doc"><h2 id="1-반영할-것">1. 반영할 것</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>문서</th>
+<th>바꿀 내용</th>
+<th>허브 판단</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R1</td>
+<td>안심 <code>prd.md</code> F1, 13절, <code>tech-design.md</code> ADR-S1, 9절</td>
+<td>&quot;출처별 웹훅&quot;을 &quot;수신 어댑터(웹훅, 조회, 접점, 직렬) → 공통 신호 형식&quot;으로 쓴다. 서명은 어댑터가 클라우드로 올리는 구간에 둔다. 데모 웹훅은 &quot;형식 시뮬레이션, 실제 벤더 연동 [미확인]&quot;으로 표시</td>
+<td>국내 벤더 웹훅 근거가 없다. 원본 먼저 보관과 멱등은 그대로 쓸 수 있다</td>
+</tr>
+<tr>
+<td>R2</td>
+<td>안심 <code>tech-design.md</code> 4절, <code>prd.md</code> 6절</td>
+<td>5분의 표시를 <code>[사실, shortlist B 데모]</code>에서 <code>[가설]</code>로 고친다. &quot;운영 품질 목표이고, 열어 본 법령 본문에서 응답 시간 규정을 찾지 못했다&quot;를 넣는다</td>
+<td>값은 이미 <code>Rule.escalation_interval_min</code>으로 사업장 설정이다. 구조는 그대로 두고 근거만 고친다</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>안심 <code>prd.md</code> 1절, 데모 설명</td>
+<td>호출 접수와 표시는 건물 안 설비가 맡고 안심 알림은 2차 알림과 기록이라는 점을 적는다</td>
+<td>기존 경계와 같다. 문장만 더한다</td>
+</tr>
+<tr>
+<td>R4</td>
+<td>안심 <code>tech-design.md</code> ADR-S2, 11절</td>
+<td>건물 인터넷이 끊기면 2차 알림이 멈춘다고 쓴다. 직원 대체 절차는 [미정]으로 둔다. 앱 전체 중단을 잡는 외부 감시를 11절에 더한다</td>
+<td>설계 문서에 없던 빈칸이다</td>
+</tr>
+<tr>
+<td>R5</td>
+<td>안심 <code>prd.md</code> F13</td>
+<td>기본 2시간을 기기 종류별 표로 나눈다. 값은 [가설]로 두고 호출 설비 자체 고장 표시는 수신반 몫이라고 쓴다</td>
+<td>UL 수치를 그대로 옮기지 않는다. 국내 기준이 아니다</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>코어 <code>tech-design.md</code> 2-2, 3절, 9절</td>
+<td>CMS 자동이체 설계를 더한다: <code>DirectDebitMandate</code>, 결과 대기 상태, 예상 입금 매칭, 일괄 출금 어댑터. 화면은 추가하지 않는다</td>
+<td>건별 <code>requestPayment</code>로 담기 어렵다. 한도 수치는 조사 노트 기준이라 [추정]으로 쓴다</td>
+</tr>
+<tr>
+<td>R7</td>
+<td>코어 <code>tech-design.md</code> 9절, Payment 멱등</td>
+<td>&quot;(provider, event_id) 유일&quot;을 제공자별 검증과 멱등 키로 바꾼다. 제공자별 키는 [가설]</td>
+<td>토스 <code>PAYMENT_STATUS_CHANGED</code>에 <code>eventId</code>가 없다(허브 대조)</td>
+</tr>
+<tr>
+<td>R8</td>
+<td>코어 <code>tech-design.md</code> 9절</td>
+<td><code>ErpExporter</code>를 <code>LedgerExportBatch</code>와 상태 기록으로 넓힌다. 그룹 ERP는 [미확인]</td>
+<td>배치 번호와 멱등이 이미 있어 이름과 상태만 더한다</td>
+</tr>
+<tr>
+<td>R9</td>
+<td>코어 <code>tech-design.md</code> 5절 또는 확인할 것</td>
+<td>RLS 세션 설정, 시스템 작업 범위, 모듈별 DB 역할, 연결 풀 고정 실측을 설계 빈칸으로 적는다</td>
+<td>앞선 아키텍처 검토의 빈칸과 같다</td>
+</tr>
+<tr>
+<td>R10</td>
+<td>코어 <code>tech-design.md</code>, <code>prd.md</code> 확인할 것</td>
+<td>법 33조의2와 시행규칙 17조의2의 동반 입주자 90일 규정, 입법예고 영향을 [미확인]으로 올린다. 사별 승계 시나리오와 맞는지 적는다</td>
+<td>미러 기준이라 상태기계로 넣지 않고 확인할 것까지만 쓴다</td>
+</tr>
+<tr>
+<td>R11</td>
+<td><code>01-research</code> 세 문서</td>
+<td>Caremerge 서술 정정</td>
+<td>조사 세션이 고친다</td>
+</tr>
+<tr>
+<td>R12</td>
+<td><a class="doc-ref" href="lab-senior-housing-architecture.html"><code>01-research/outputs/senior-housing-architecture.md</code></a></td>
+<td>토스 서술 정정(2절)</td>
+<td>조사 세션이 고친다</td>
+</tr>
+<tr>
+<td>R13</td>
+<td>허브 <code>architecture-landscape</code> 6절</td>
+<td>건물 층을 (a) 기본, (b) 수집 한정, (c) 2차 알림까지로 적고 벤더 문의 뒤 닫는다고 표시</td>
+<td>허브가 고친다</td>
+</tr>
+</tbody></table></div>
+<h2 id="2-조사-문서에서-고칠-점">2. 조사 문서에서 고칠 점</h2>
+<p>허브가 토스 웹훅 문서를 직접 열어 대조했다.</p>
+<ul>
+<li>&quot;토스는 서명 헤더가 없다&quot;는 틀린 표현이다. 문서는 <code>tosspayments-webhook-signature</code>를 공통 헤더로 설명한다. 이벤트별 유무는 이 문서로 알 수 없다 [미확인].</li>
+<li><code>secret</code> 비교를 적은 이벤트는 <code>DEPOSIT_CALLBACK</code>뿐이다.</li>
+<li><code>PAYMENT_STATUS_CHANGED</code>에 <code>eventId</code>가 없는 것은 맞다.</li>
+<li><code>transactionKey</code>+<code>orderId</code> 멱등 키는 문서가 권장한 값이 아니다. [가설]로 쓴다.</li>
+</ul>
+<h2 id="3-반영하지-않는-것">3. 반영하지 않는 것</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>앱 봉투 암호화로 좁히기</td>
+<td>조사가 pgcrypto를 비교하지 않았다. 안심·가족 12절의 &quot;[미정]&quot;을 유지한다</td>
+</tr>
+<tr>
+<td>동반자 타이머를 상태기계로 넣기</td>
+<td>입법예고가 끝나지 않았고 법령 원본 대조 전이다. R10까지만 한다</td>
+</tr>
+<tr>
+<td>평가 기반 변동 요금, 보증보험 상태</td>
+<td>해외 사례 중심이고 이번 범위 밖이다. 조사 문서에 후보로 남긴다</td>
+</tr>
+<tr>
+<td>비서 MCP 변경</td>
+<td>조사 제안도 &quot;유지&quot;다</td>
+</tr>
+<tr>
+<td>가족 대리인 역할</td>
+<td>코어 권한 표에서 보호자와 대리인이 이미 다른 역할이다</td>
+</tr>
+</tbody></table></div>
+<h2 id="4-진행-순서">4. 진행 순서</h2>
+<ol>
+<li>코어, 안심 기획 세션이 <code>04-planning/ideas/</code>의 원본을 고치고 재승인 대기로 표시한다.</li>
+<li>허브가 변경분을 확인하고 재승인 묶음을 만든다.</li>
+<li>사용자 승인 뒤 <code>evenstay/docs/</code>로 복사한다.</li>
+</ol>
+<p>코어 Spring 결정의 12절·ADR-3 반영은 이번 범위가 아니다. 어긋난 용어 목록에 남아 있다.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-762" data-title="어댑터"><p>외부 연동 경계. MVP는 목업이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>결제, ERP, 알림, 파일 저장, LLM</dd><dt>출처</dt><dd>core T1·9</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-763" data-title="2차 알림"><p>호출 경로의 사본을 받아 당번에게 다시 알리는 일. Evenstay가 맡는 범위다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>secondary alert</dd><dt>출처</dt><dd>조사 10, 설계안 6.1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부동산 운영 시스템 지형 | Evenstay 문서</title>
+<meta name="description" content="부동산 운영 시스템 지형. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>부동산 운영 시스템 지형</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#a-제품-비교표">(a) 제품 비교표</a></li><li class="lv2"><a href="#b-공통-도메인-모델">(b) 공통 도메인 모델</a></li><li class="lv2"><a href="#c-시니어하우징-pms에만-필요한-것">(c) 시니어하우징 PMS에만 필요한 것</a></li><li class="lv2"><a href="#d-국내-공백">(d) 국내 공백</a></li><li class="lv2"><a href="#e-포트폴리오-mvp에-주는-시사점-백엔드-설계-포인트">(e) 포트폴리오 MVP에 주는 시사점 (백엔드 설계 포인트)</a></li><li class="lv2"><a href="#f-확인-못-한-것">(f) 확인 못 한 것</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-665" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-666" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-667" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-668" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-669" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-670" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-671" data-tip="외부 연동 경계.">어댑터</button></li><li><button class="term" type="button" data-modal="g-672" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li></ul></section></aside>
+  <article class="doc"><p>주의: 해외 시니어 SW는 공식 문서를 직접 못 열었고 제3자 목록 위주다. &quot;목록상&quot;으로 표시한 것은 확정 사실이 아니다.</p>
+<h2 id="a-제품-비교표">(a) 제품 비교표</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>분류</th>
+<th>제품</th>
+<th>모듈(확인된 범위)</th>
+<th>멀티사이트·오너</th>
+<th>API·연동</th>
+<th>시니어 특화</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>시니어 스위트</td>
+<td>Yardi Senior Living Suite</td>
+<td>Voyager Senior Housing(입주자 청구·census), EHR, eMAR, Senior IQ, Senior CRM [B1]</td>
+<td>Voyager는 다중 법인·자산 GL이라고 리뷰 설명 [B16, 낮은 신뢰]</td>
+<td>파트너 SafelyYou 등이 연동 목록에 표기 [B26]. 공개 API 범위 [미확인]</td>
+<td>예. 레벨오브케어 청구가 어떻게 요금에 반영되는지는 [미확인]. 케어 비용이 원장에 반영된다는 서술만 있음 [B1]</td>
+</tr>
+<tr>
+<td>시니어</td>
+<td>ALIS(Medtelligent)</td>
+<td>eMAR, EHR, CRM, 입주, 청구, 인사이트(목록상) [B4]</td>
+<td>[미확인]</td>
+<td>연동 약 60개, open API 여부 출처 상이 [B4]</td>
+<td>예</td>
+</tr>
+<tr>
+<td>시니어</td>
+<td>MatrixCare Senior Living</td>
+<td>청구·EHR 계열(목록상) [B5][B6]</td>
+<td>[미확인]</td>
+<td>API 유무 출처 간 상충 [B5]</td>
+<td>예</td>
+</tr>
+<tr>
+<td>시니어</td>
+<td>Eldermark</td>
+<td>임상·청구·분석·운영 올인원(목록상), API 있음으로 표기 [B6]</td>
+<td>[미확인]</td>
+<td>[B6]</td>
+<td>예</td>
+</tr>
+<tr>
+<td>시니어 CRM</td>
+<td>WelcomeHome / Sherpa / Enquire</td>
+<td>영업 CRM(리드·투어·입주). WelcomeHome은 open API 주장, PointClickCare 등 연동 예 [B29]. Sherpa·Enquire 세부 [미확인]</td>
+<td>[미확인]</td>
+<td>WelcomeHome API [B29]</td>
+<td>예(영업)</td>
+</tr>
+<tr>
+<td>입주자·가족 참여</td>
+<td>Caremerge → Icon</td>
+<td>가족 포털, eMAR, 약국 연동, API(목록상, Caremerge 이름 기준) [B28]. 참여·웰니스 사업은 2022-06 VoiceFriend 인수 후 Icon으로 개명, 검색요약(이력). 현재 제공 주체 [미확인]</td>
+<td>[미확인]</td>
+<td>API 주장 [B28]</td>
+<td>예</td>
+</tr>
+<tr>
+<td>IoT·안전</td>
+<td>SafelyYou, Inspiren, K4Connect</td>
+<td>낙상 감지 AI(SafelyYou), 안전·케어·인력 AI(Inspiren), 통합 허브 FusionOS 50+ 연결(K4Connect) [B25][B26][B27]</td>
+<td>해당 없음</td>
+<td>EHR 연동 주장은 있으나 공개 API 문서 못 찾음 [B26]</td>
+<td>예</td>
+</tr>
+<tr>
+<td>임대 PMS</td>
+<td>Yardi Voyager</td>
+<td>다자산 GL, 투자·분배 모듈(리뷰) [B16]</td>
+<td>멀티엔티티가 강점이라고 설명 [B16]</td>
+<td>스마트 액세스 업체들이 연동 주장 [B23]</td>
+<td>아니오</td>
+</tr>
+<tr>
+<td>임대 PMS</td>
+<td>AppFolio</td>
+<td>오너 명세서, 재무제표, 오너 포털(리뷰) [B14]</td>
+<td>오너별 통합 명세서 가능하나 사용성 불만 [B14][B15]</td>
+<td>[미확인]</td>
+<td>아니오</td>
+</tr>
+<tr>
+<td>임대 PMS</td>
+<td>Entrata</td>
+<td>properties/units/leases API 문서 존재 [B11]</td>
+<td>[미확인]</td>
+<td>공식 API, 방식(XML/JSON)은 출처 상충 [B11][B12]</td>
+<td>아니오</td>
+</tr>
+<tr>
+<td>임대 PMS</td>
+<td>RealPage / Buildium</td>
+<td>RPX 마켓(표준 API), Buildium Open API(웹훅·샌드박스, 제3자 설명) [B24]</td>
+<td>[미확인]</td>
+<td>[B24]. 요금제 제한은 상충</td>
+<td>아니오</td>
+</tr>
+<tr>
+<td>호텔 PMS</td>
+<td>Oracle OPERA Cloud</td>
+<td>3,100+ API, 개발자 포털, 샌드박스, 이벤트 구독, 역할별 접근 [B20]</td>
+<td>체인 코드 단위 분석·권한 [B20]</td>
+<td>OHIP + Oracle Cloud Marketplace [B20]</td>
+<td>아니오</td>
+</tr>
+<tr>
+<td>호텔 PMS</td>
+<td>Mews</td>
+<td>Enterprise/Property/Portfolio, 서비스·리소스·청구 [B8]</td>
+<td>Portfolio Access Token [B8]</td>
+<td>Connector API, 웹훅 [B9]</td>
+<td>아니오</td>
+</tr>
+<tr>
+<td>호텔 PMS</td>
+<td>Cloudbeds</td>
+<td>PMS/Insights/Accounting/유통 API, 그룹 계정, 웹훅, OAuth2 [B21]</td>
+<td>그룹 레벨 API(회사 주장) [B22]</td>
+<td>마켓플레이스 [B21][B22]</td>
+<td>아니오</td>
+</tr>
+<tr>
+<td>국내 호텔</td>
+<td>산하IT WINGS(야놀자 계열)</td>
+<td>클라우드, 모듈형, 키오스크·RMS·객실제어 연동 [B30]</td>
+<td>[미확인]</td>
+<td>연동 목록 수준 [B30]</td>
+<td>아니오. 국내 점유율 70%+는 회사 주장</td>
+</tr>
+<tr>
+<td>국내 임대</td>
+<td>제온스 ezREMS</td>
+<td>전자 계약서·고지서, 수납·청구, 공실·투어 앱 [B31]</td>
+<td>지점·객실타입 [B31]</td>
+<td>[미확인]</td>
+<td>아니오</td>
+</tr>
+<tr>
+<td>국내 주거</td>
+<td>트러스테이 노크타운</td>
+<td>단지 관리 앱 50여 기능, IoT, 시설 예약, AI 차량·화재 [B32]</td>
+<td>640개 단지 [B32]</td>
+<td>[미확인]</td>
+<td>아니오</td>
+</tr>
+<tr>
+<td>국내 요양</td>
+<td>케어포(한강시스템)</td>
+<td>장기요양기관 관리 프로그램 + 보호자 앱 [B33]</td>
+<td>[미확인]</td>
+<td>[미확인]</td>
+<td>요양(장기요양)용, 민간 시니어주거 아님</td>
+</tr>
+</tbody></table></div>
+<h2 id="b-공통-도메인-모델">(b) 공통 도메인 모델</h2>
+<p>확인 근거는 Mews 용어집이 가장 명확하다 [B8]. Entrata는 property/unit/lease/customer 필터가 확인된다 [B11]. 나머지는 제품별 문서에서 직접 확인하지 못해 아래 ERD의 시니어 확장 부분은 <strong>내 설계안</strong>이다 [판단].</p>
+<pre><code>Tenant(운영사/소유주 경계)       ← Mews: Enterprise / Portfolio [B8]
+  └─ Owner(소유주·펀드)  ──&lt; Property/Site(사업장)   ← Entrata property [B11], Mews Property [B8]
+                               └─ Building ─&lt; Unit(호실)  ← Entrata unit [B11], Mews Space/Resource [B8]
+Party(Contact) : Resident/Tenant | Family(보호자) | Company(법인)   ← Mews Customer/Company/Profile [B8]
+Lease/Contract ── Party, Unit, 기간, 상태       ← Entrata lease [B11]; Mews Reservation=계약(ServiceOrder) [B8]
+Charge/Invoice/Payment ── Bill(folio)에 귀속   ← Mews: Bill은 Profile에 귀속, AccountingItem=Order|Payment [B8]
+Service(서비스 정의) ─&lt; ServiceOrder(이용)     ← Mews Service/Product/Order [B8]
+Resource(예약 대상) ─&lt; Reservation              ← Mews [B8]
+WorkOrder/ServiceRequest                       ← 임대 PMS 일반 개념, 이번 조사에서 문서로 직접 확인 못 함 [미확인]
+Integration/Token(테넌트·사업장 범위)          ← Mews Access Token, Portfolio Access Token [B8]; Cloudbeds 그룹 계정 [B21]
+Webhook/Event                                  ← Mews [B9], Cloudbeds [B21], OHIP 이벤트 구독 [B20]</code></pre>
+<p>멀티테넌시·멀티오너 처리 방식 (확인된 것만)</p>
+<ul>
+<li><strong>Mews</strong>: Enterprise 아래 Property, 여러 Property는 Portfolio로 묶고, 토큰은 단일 Property용과 Portfolio용을 구분한다 [B8].</li>
+<li><strong>Cloudbeds</strong>: 그룹 단위 계정/크리덴셜로 여러 속성 접근(회사 주장) [B21][B22].</li>
+<li><strong>OHIP</strong>: 체인 코드 기준 분석, 역할별 접근, 파트너 접근을 고객이 철회 가능 [B20].</li>
+<li><strong>AppFolio(리뷰)</strong>: 오너별 명세서 발행이 핵심 산출물이고, 한 오너의 여러 자산을 합산한 명세서가 쓰임. 사용성은 불만 [B14][B15].</li>
+<li><strong>Mews 설계 힌트</strong>: Rate·제약이 Enterprise에서 Service 수준으로 내려왔다 [B10]. 청구가 예약이 아닌 Profile에 귀속되는 점은 입주자에게 여러 계약·서비스가 붙는 구조에 참고가 된다 [B8].</li>
+</ul>
+<h2 id="c-시니어하우징-pms에만-필요한-것">(c) 시니어하우징 PMS에만 필요한 것</h2>
+<p>다음은 해외 제품 목록의 모듈 [B1][B4][B28]과 우리 프로필 [shared/target-companies.md]을 합친 <strong>정리</strong>다. 국내 운영 실무 검증은 축 4가 맡는다.</p>
+<ol>
+<li><strong>입주 영업 CRM → 입주 전환</strong>: 리드, 투어, 상담 이력이 계약으로 이어짐. Yardi는 CRM 데이터가 스위트로 흐른다고 주장 [B3]. 독립 CRM(WelcomeHome 등)은 API로 PMS/EHR에 붙인다 [B29].</li>
+<li><strong>케어 레벨 기반 요금</strong>: 해외 스위트는 케어 비용이 원장에 반영된다고 설명하나 산식 [미확인] [B1]. 국내 노인복지주택은 장기요양보험이 아닌 민간 계약이라 월 생활비·서비스 이용료·식사 정산이 계약에 들어간다 [target-companies.md, S6][추정].</li>
+<li><strong>보호자(가족) 포털과 권한</strong>: Caremerge(참여·웰니스 사업은 2022-06 VoiceFriend 인수 후 Icon으로 개명, 검색요약)는 제3자 목록상 가족 포털/보안 메시징이다 [B28]. 현재 제공 주체 [미확인]. 입주자 본인과 다른 동의·열람 범위가 필요 [판단].</li>
+<li><strong>케어·복약 기록(eMAR)</strong>: 해외는 EHR/eMAR 모듈로 분리 [B1][B28]. 국내 민간 시니어주거에서 어디까지 PMS 범위인지는 [미확인]. MVP는 기록 자체보다 이벤트 연동 지점이 적절 [판단].</li>
+<li><strong>응급·안전 이벤트</strong>: 낙상 감지·호출벨(SafelyYou, Inspiren)과 직원 앱 알림 연동 [B26][B27]. 공개 API는 못 찾았으므로 어댑터+목업이 현실적 [판단].</li>
+<li><strong>보증금 구조</strong>: 분양형 실버타운은 입소보증금 일정 비율 보증보험을 노인복지법이 요구한다는 설명이 있으나 원문 확인 필요 [B34].</li>
+<li><strong>식사·프로그램 정산, 시설 예약</strong>: 해외 목록에서 식사·활동은 별 모듈/참여 도구로 존재(목록 수준) [B28]. 세부 정산 방식 [미확인].</li>
+</ol>
+<h2 id="d-국내-공백">(d) 국내 공백</h2>
+<ul>
+<li>호텔 PMS는 WINGS가 강한 점유율을 주장 [B30]. 임대는 제온스·트러스테이 등 단지·임대관리 솔루션이 있다 [B31][B32]. 요양은 케어포 같은 장기요양기관 프로그램이 있다 [B33].</li>
+<li><strong>시니어 주거 전용(입주 CRM+계약+케어 레벨 청구+가족 포털) PMS는 이번 검색에서 발견하지 못했다.</strong> [사실: 발견 못함] &quot;국내에 없다&quot;는 확정이 아니다. 운영사 내부 개발·비공개 SW 가능성이 있다 [추정].</li>
+<li>호텔·임대·요양 제품은 각각 따로 있지만, [지원 회사]처럼 시니어하우징+임대주택+숙박을 한 PMS로 묶는 국내 사례는 못 찾았다 [사실: 발견 못함]. MGRV가 제온스를 도입한 것은 코리빙 운영 디지털화 선례로 의미가 있다 [B31]. ([지원 회사] 대표가 MGRV 출신이라는 프로필 [target-companies.md]과의 연결은 추정)</li>
+</ul>
+<h2 id="e-포트폴리오-mvp에-주는-시사점-백엔드-설계-포인트">(e) 포트폴리오 MVP에 주는 시사점 (백엔드 설계 포인트)</h2>
+<ol>
+<li><strong>Tenant(운영사)–Owner–Site–Building–Unit 계층과 사업장 스코프 토큰</strong>: Mews의 Enterprise/Portfolio와 범위별 토큰 [B8], Cloudbeds 그룹 계정 [B21], OHIP 체인 단위 권한 [B20]. 수탁 운영이라 소유주별 데이터 분리·리포팅이 핵심 [target-companies.md]. RLS 또는 tenant_id 설계를 ADR로 남긴다.</li>
+<li><strong>Party 모델(입주자·보호자·법인)과 청구 귀속</strong>: Mews는 Bill을 Profile에 귀속 [B8]. 입주자 1명에 계약·서비스가 여러 개 붙는 구조, 보호자는 별도 Party와 관계로 표현.</li>
+<li><strong>Charge/Invoice/Payment 원장과 월 정산 배치</strong>: Mews AccountingItem(Order/Payment) [B8]. 케어 레벨 변경이 요금에 반영되는 규칙은 내 설계(해외 산식 [미확인] [B1])로 상태 전이와 소급 정산을 보여줄 수 있다. 소유주 명세서(owner statement) 산출은 AppFolio 사례 [B14].</li>
+<li><strong>계약(Lease/Contract) 상태 전이와 Unit 점유</strong>: Entrata의 lease가 property·customer·unit·기간으로 조회됨 [B11]. 입주 상담→계약→입주→퇴거 상태기계와 동시 예약 충돌 방지(이중 계약 방지).</li>
+<li><strong>이벤트·웹훅 수신과 멱등 어댑터</strong>: Mews는 폴링 대신 웹훅 권장 [B9], Cloudbeds·OHIP도 웹훅/이벤트 [B21][B20]. 출입통제/IoT/결제를 어댑터로 목업하고 중복 수신 멱등 처리, 재시도, 서명 검증 시연.</li>
+<li><strong>공개 API + 파트너 접근 철회 + 샌드박스</strong>: OHIP는 파트너 접근 철회, 역할별 접근, 샌드박스 [B20]. Cloudbeds도 샌드박스 [B21]. API Key/OAuth, 스코프, 감사 로그를 설계로 보여줌.</li>
+<li><strong>AI Agent를 도구 호출 계층으로</strong>: Yardi Virtuoso는 오픈 에이전트 구조와 마켓(회사 주장) [B18], RealPage Lumina는 에이전트들이 데이터 플랫폼 공유 [B19], EliseAI는 문의 응대·투어 예약 [B17]. 시니어 버전은 입주 문의 응대 에이전트가 PMS의 공실·요금 조회 API를 호출하고 직원 인계 지점과 개인정보 마스킹을 명시. 효과 수치는 모두 회사 주장이므로 MVP에서 &quot;측정 가능한 로그&quot; 설계로 대체.</li>
+<li><strong>RBAC·민감정보</strong>: 본사·사업장 직원·입주자·보호자·소유주 역할과 건강정보 열람 분리는 공통 요구 [target-companies.md]. 구현은 정책 테이블+감사 로그.</li>
+</ol>
+<h2 id="f-확인-못-한-것">(f) 확인 못 한 것</h2>
+<ul>
+<li>Yardi, MatrixCare, Eldermark, ALIS의 <strong>공식 API 공개 범위·마켓플레이스 조건</strong>. 출처 간 상충 [B4][B5][B6].</li>
+<li>레벨오브케어 평가가 요금 산식에 연결되는 방식 [B1].</li>
+<li>Sherpa·Enquire의 모듈·연동 [B29].</li>
+<li>Entrata API 방식(XML vs JSON)과 고객·원장 메서드 [B11][B12].</li>
+<li>Yardi/AppFolio 멀티 오너 정산의 공식 문서 기반 구조 [B14][B16].</li>
+<li>Work Order/Service Request 엔티티를 제품 문서로 직접 확인하는 것.</li>
+<li>Caremerge–Linked Senior 제휴(검색 요약에만 있음) [B28]. 2022 Icon 개명 뒤의 관계도 [미확인].</li>
+<li>Inspiren 투자 수치 [B27], SafelyYou 낙상 감지 정확도(회사 주장) [B26].</li>
+<li>국내 시니어주거 전용 PMS 부재의 확정, 국내 운영사 내부 시스템.</li>
+<li>케어포 앱 ID 정합성 [B33], 실버타운 보증보험 설명의 기사 출처 [B34].</li>
+<li>직접 열람 실패(403): Yardi 공식 페이지, Entrata 문서 본문.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-665" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-666" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-667" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-668" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-669" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-670" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-671" data-title="어댑터"><p>외부 연동 경계. MVP는 목업이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>결제, ERP, 알림, 파일 저장, LLM</dd><dt>출처</dt><dd>core T1·9</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-672" data-title="에이전트"><p>다음 단계를 스스로 고르며 도구를 호출하는 실행. Evenstay에서는 직원용 초안과 제안까지 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>agent</dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

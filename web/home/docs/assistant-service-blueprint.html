@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 생활 비서 서비스 설계도 | Evenstay 문서</title>
+<meta name="description" content="AI 생활 비서 서비스 설계도. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>AI 생활 비서</span></p>
+  <h1>AI 생활 비서 서비스 설계도</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-blueprint"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="AI 생활 비서의 다른 문서"><ul><li><a href="assistant-strategy.html">전략</a></li><li><a href="assistant-service-blueprint.html" aria-current="page">서비스 설계도</a></li><li><a href="assistant-prd.html">기획서(PRD)</a></li><li><a href="assistant-user-stories.html">사용자 스토리</a></li><li><a href="assistant-tech-design.html">기술 설계</a></li><li><a href="assistant-roadmap.html">로드맵</a></li><li><a href="assistant-handoff.html">개발 인계</a></li><li><a href="assistant-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#등장인물">등장인물</a></li><li class="lv2"><a href="#현재-상태-as-is-요약-추정">현재 상태 (as-is) 요약 [추정]</a></li><li class="lv2"><a href="#흐름-1-처음-열기-ai-사용-고지-확인">흐름 1. 처음 열기 (AI 사용 고지 확인)</a></li><li class="lv2"><a href="#흐름-2-큰-버튼으로-묻기-일정-조회-청구-설명">흐름 2. 큰 버튼으로 묻기 (일정 조회, 청구 설명)</a></li><li class="lv2"><a href="#흐름-3-말로-묻기-의도-분류와-민감-의도">흐름 3. 말로 묻기 (의도 분류와 민감 의도)</a></li><li class="lv2"><a href="#흐름-4-청구-문의-접수-이-금액이-이상해요-코어-문의">흐름 4. 청구 문의 접수 ([이 금액이 이상해요] → 코어 문의)</a></li><li class="lv2"><a href="#흐름-5-직원에게-넘기기와-처리">흐름 5. 직원에게 넘기기와 처리</a></li><li class="lv2"><a href="#흐름-6-기록-보기와-점검-직원운영사">흐름 6. 기록 보기와 점검 (직원·운영사)</a></li><li class="lv2"><a href="#흐름-7-대리인이-쓰는-비서-p1-코어-f13-이후">흐름 7. 대리인이 쓰는 비서 (P1, 코어 F13 이후)</a></li><li class="lv2"><a href="#실패-지점과-대응">실패 지점과 대응</a></li><li class="lv2"><a href="#대안-경로-디지털이-어려운-사람">대안 경로 (디지털이 어려운 사람)</a></li><li class="lv2"><a href="#읽어-낸-것">읽어 낸 것</a></li><li class="lv2"><a href="#확인할-것">확인할 것</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li><li class="lv3"><a href="#2026-11-03-기획-문서-한국어-검수-korean-skills-사용자-재승인-2026-11-03">2026-11-03 기획 문서 한국어 검수 (korean-skills, 사용자 재승인 2026-11-03)</a></li><li class="lv3"><a href="#2026-11-03-화면-문구-인용-맞춤-허브-요청-인용-맞추기">2026-11-03 화면 문구 인용 맞춤 (허브 요청 &quot;인용 맞추기&quot;)</a></li><li class="lv3"><a href="#2026-11-04-전체-리뷰-보완-사용자-재승인-2026-11-04">2026-11-04 전체 리뷰 보완 (사용자 재승인 2026-11-04)</a></li><li class="lv3"><a href="#2026-11-04-쉬운-말-재검수공용-문구-반영-사용자-재승인-2026-11-04">2026-11-04 쉬운 말 재검수·공용 문구 반영 (사용자 재승인 2026-11-04)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-323" data-tip="계약과 달마다 하나.">청구서</button></li><li><button class="term" type="button" data-modal="g-324" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li><li><button class="term" type="button" data-modal="g-325" data-tip="호출 기록.">도구 호출</button></li><li><button class="term" type="button" data-modal="g-326" data-tip="도구와 결과 상태마다 하나.">답 틀</button></li><li><button class="term" type="button" data-modal="g-327" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-328" data-tip="청구 항목에 대한 문의.">청구 문의</button></li><li><button class="term" type="button" data-modal="g-329" data-tip="입주자의 돈 관련 부탁을 받은 기록.">금전 부탁</button></li><li><button class="term" type="button" data-modal="g-330" data-tip="코어 하나로 검사한다.">권한 검사</button></li><li><button class="term" type="button" data-modal="g-331" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-332" data-tip="사람마다 한 번 받는 확인 기록">고지 확인</button></li><li><button class="term" type="button" data-modal="g-333" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-334" data-tip="왜 사람에게 넘겼는가.">넘긴 이유</button></li></ul></section></aside>
+  <article class="doc"><blockquote>
+<p>표기는 <code>strategy.md</code>와 같다. 화면 문구는 카피 <code>copy.md</code> 절 번호로 가리키고 여기에 다시 쓰지 않는다. 카피에 없는 문구는 [NEED: 카피]로 둔다.</p>
+</blockquote>
+<h2 id="등장인물">등장인물</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>사람</th>
+<th>이 블루프린트에서 하는 일</th>
+<th>쓰는 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RES</td>
+<td>회원(입주자, U1)</td>
+<td>고지 확인, 큰 버튼·말로 묻기, 넘기기 확인([네, 전해 주세요]), 지난 대화 보기</td>
+<td>Evenstay 홈 안 &quot;비서&quot; 메뉴, 프런트 전화</td>
+</tr>
+<tr>
+<td>REP</td>
+<td>대리인(코어 Representative, VIEW_INVOICE 범위)</td>
+<td>대신 처리하는 회원의 청구서 날짜·설명 묻기 (P1, 코어 F13 이후)</td>
+<td>Evenstay 홈(대리인으로 들어온 화면)</td>
+</tr>
+<tr>
+<td>FD</td>
+<td>프런트 직원(SITE_STAFF, 직무 FRONT)</td>
+<td>넘겨받은 요청 처리, 입주 때 비서 사용법 안내</td>
+<td>AI 생활 비서(직원 화면)</td>
+</tr>
+<tr>
+<td>LS</td>
+<td>생활지원 직원(SITE_STAFF, 직무 LIFE_SUPPORT)</td>
+<td>건강·금전 넘김 처리</td>
+<td>AI 생활 비서(직원 화면)</td>
+</tr>
+<tr>
+<td>ACC</td>
+<td>사업장 경리(SITE_ACCOUNTANT)</td>
+<td>비서가 접수한 청구 문의 답변</td>
+<td>코어 &quot;입주자가 문의한 청구&quot;(코어 화면)</td>
+</tr>
+<tr>
+<td>MGR</td>
+<td>사업장 책임자·본사 운영 매니저</td>
+<td>대화·도구 호출 기록과 요약 카드 확인, 권한 거부 점검</td>
+<td>AI 생활 비서(직원 화면)</td>
+</tr>
+<tr>
+<td>SYS</td>
+<td>비서 서버(<code>assistant</code> 모듈)</td>
+<td>고지 확인, 의도 분류, 도구 호출, 답 틀 채우기, 확인 토큰 발급·검사, 기록</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>상호작용선: 이용자 행동 | 프런트스테이지</li>
+<li>가시선: 프런트스테이지 | 백스테이지</li>
+<li>내부 상호작용선: 백스테이지 | 지원 프로세스</li>
+</ul>
+<h2 id="현재-상태-as-is-요약-추정">현재 상태 (as-is) 요약 [추정]</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>흐름</th>
+<th>지금 어떻게 할까</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>청구서 금액이 궁금함</td>
+<td>종이·앱 청구서를 보고, 모르면 프런트에 전화하거나 찾아간다. 자녀에게 묻는다</td>
+<td>[추정, 카피 <code>product-marketing.md</code> Core problem]</td>
+</tr>
+<tr>
+<td>계약 날짜가 궁금함</td>
+<td>계약서를 찾아보거나 프런트에 묻는다</td>
+<td>[추정]</td>
+</tr>
+<tr>
+<td>판단이 필요한 일(의심 전화, 몸 상태, 방 옮기기)</td>
+<td>프런트·직원에게 말로 하거나 혼자 판단한다. 무엇을 누구에게 말했는지 남지 않는다</td>
+<td>[추정]. 금전 부탁 지침은 시설별 [사실: 미확인, D P-048]</td>
+</tr>
+<tr>
+<td>AI 응대</td>
+<td>시설 업무와 이어진 AI 응대 사례를 찾지 못했다. AI 안부전화는 안부 확인에 머문다</td>
+<td>[사실, E7·E15, ai-assistant.md 0절]</td>
+</tr>
+</tbody></table></div>
+<p>이하는 <strong>비서 도입 후(to-be)</strong> 블루프린트다. 시드 이름은 <code>prd.md</code> 9절의 가상 데이터다(회원 A동 201호 이은숙, 대리인 아들 김태호, 프런트 최민수, 생활지원 김하진, 경리 박소연). 장면 날짜는 승계(2026-11-10) 뒤인 **2027-01-05 오전 [가설]**이다(<code>prd.md</code> 확인할 것 6). 이때 가장 최근 청구서는 1인 계약의 12월 청구서다.</p>
+<hr>
+<h2 id="흐름-1-처음-열기-ai-사용-고지-확인">흐름 1. 처음 열기 (AI 사용 고지 확인)</h2>
+<p>시나리오: 회원이 앱 홈에서 &quot;비서&quot;를 처음 누른다. 회원은 D 고지 v1만 읽었다(v2에 비서 덩어리가 더해짐).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 메뉴 누름</td>
+<td>앱 홈 &quot;비서&quot;</td>
+<td>RES가 누른다</td>
+<td>—</td>
+<td>SYS가 <code>acknowledged(personId, MEMBER, ASSISTANT)</code>를 묻는다. 거짓 → 고지 화면으로 보낸다. 비서 API는 이 검사를 매 요청 서버에서 다시 한다(화면만 막지 않음)</td>
+<td>D <code>AiNoticeQuery</code>, 코어 계정·역할</td>
+</tr>
+<tr>
+<td>2. 고지</td>
+<td>D 3-1 v2 화면(카피 4절), [더 자세히 보기]</td>
+<td>RES가 읽고 [읽었어요]</td>
+<td>&quot;안내를 읽으신 날을 기록해 두었어요.&quot;</td>
+<td>D에 확인 기록 요청(channel = ASSISTANT). 성공해야 다음 화면</td>
+<td>D <code>AiNoticeCommand.acknowledge</code>, D 감사</td>
+</tr>
+<tr>
+<td>2a. 고지를 불러오지 못함</td>
+<td>카피 6절 &quot;AI 사용 안내를 불러오지 못했을 때&quot;(프런트 전화 포함)</td>
+<td>—</td>
+<td>비서를 열지 않는다</td>
+<td>D 응답 실패 = 확인 안 됨으로 본다(닫힌 쪽으로 실패)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3. 첫 화면</td>
+<td>카피 2-1: 인사, 큰 버튼 4개, 작은 버튼 3개, &quot;AI 비서&quot; 표시</td>
+<td>RES가 본다</td>
+<td>큰 버튼은 그 회원에게 열린 도구만 보인다</td>
+<td>대화 1건 시작: 대상 회원 = 로그인한 회원, 행위자 = 본인, 확인한 고지 판 번호 저장</td>
+<td><code>assistant</code> 스키마</td>
+</tr>
+</tbody></table></div>
+<h2 id="흐름-2-큰-버튼으로-묻기-일정-조회-청구-설명">흐름 2. 큰 버튼으로 묻기 (일정 조회, 청구 설명)</h2>
+<p>시나리오(2027-01-05 10:00): 회원이 [계약·청구서 날짜]를 누르고, 이어서 [이번 달 청구서 설명]을 누른다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 날짜 버튼</td>
+<td>큰 버튼 1</td>
+<td>RES가 누른다</td>
+<td>—</td>
+<td><strong>LLM을 부르지 않는다.</strong> 버튼 코드 → 도구 <code>core.keyDates</code>. 인자에 회원 ID를 받지 않고 대화의 대상 회원으로 정한다. 코어 권한 검사 후 호출. 도구 호출 1행 기록(행위자, 도구, 권한 결과, 결과 상태)</td>
+<td>코어 <code>ContractQuery.keyDates</code>, <code>Authorization.authorize</code></td>
+</tr>
+<tr>
+<td>2. 날짜 답</td>
+<td>카피 2-3 답(12월 청구서 나온 날 12-31, 1월 10일까지, 다음 1월 31일 예정) + &quot;확인한 곳&quot; + 버튼 [계약 날짜 보기]</td>
+<td>RES가 듣는다(화면 읽기 [NEED: 읽어 주기 지원 여부])</td>
+<td>답 틀: 답 한 줄 → 사실 세 줄 이내 → 확인한 곳</td>
+<td>서버가 답 틀에 도구 결과를 채운다. 사실 줄마다 어느 결과 값에서 왔는지 출처를 붙이고, 출처 없는 줄은 내보내지 않는다. 비어 있는 날짜 줄은 빼고 &quot;퇴거&quot;라는 말을 꺼내지 않는다</td>
+<td>답 틀 렌더러</td>
+</tr>
+<tr>
+<td>2a. 납부 기록</td>
+<td>(기한이 지났을 때만) 카피 2-3 &quot;언제까지 내요?&quot; 갈래</td>
+<td>—</td>
+<td>&quot;미납&quot;, &quot;연체&quot;라는 말을 쓰지 않는다</td>
+<td>코어가 주는 납부 상태(계산값)가 있으면 갈래를 고르고, 없으면 &quot;볼 수 없음&quot; 갈래</td>
+<td>코어 <code>BillingQuery</code> 납부 상태 (HUB-1 반영)</td>
+</tr>
+<tr>
+<td>3. 청구서 버튼</td>
+<td>큰 버튼 2</td>
+<td>RES가 누른다</td>
+<td>—</td>
+<td>대상 회원의 가장 최근 발행(ISSUED) 청구서 ID를 서버가 고른다(<code>invoicesOf</code>) → <code>explainInvoice</code>. 청구서 ID는 LLM에서 오지 않는다. 보인 결과마다 코어 감사 READ 1줄</td>
+<td>코어 <code>BillingQuery</code>, <code>AuditWriter</code></td>
+</tr>
+<tr>
+<td>4. 청구서 답</td>
+<td>카피 2-4: 2,910,000원, 생활비·식비·드시지 않은 식사 3끼 + 확인한 곳 + [이 금액이 이상해요] [직원에게 전하기]</td>
+<td>RES가 듣는다</td>
+<td>금액은 코어 근거의 <code>plain</code> 재료를 그대로 쓴다. 비서는 더하거나 빼지 않는다</td>
+<td>답 틀 채움, 대화 턴 2개 기록</td>
+<td>코어 <code>Charge.evidence.plain</code></td>
+</tr>
+<tr>
+<td>4a. 코어 응답 실패</td>
+<td>카피 6절 &quot;지금은 청구서를 보여 드리지 못했어요.&quot;</td>
+<td>—</td>
+<td>프런트 전화 버튼</td>
+<td>도구 호출 결과 ERROR 기록, 재시도하지 않는다(회원이 다시 누름)</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<h2 id="흐름-3-말로-묻기-의도-분류와-민감-의도">흐름 3. 말로 묻기 (의도 분류와 민감 의도)</h2>
+<p>시나리오: 회원이 [말로 묻기]로 &quot;식비는 왜 이만큼이에요?&quot;라고 묻고, 잠시 뒤 &quot;은행이라는데 돈을 옮기래요&quot;라고 말한다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 말하기</td>
+<td>카피 2-2 &quot;듣고 있어요&quot;, [다 말했어요]</td>
+<td>RES가 말한다</td>
+<td>들은 말을 답 위에 보인다. [다시 말하기]</td>
+<td>기기(브라우저)에서 글자로 바꾼다. <strong>음성 원본은 서버로 보내지 않는다</strong></td>
+<td>음성 인식(브라우저 후보 [미정])</td>
+</tr>
+<tr>
+<td>2. 민감 의도 먼저</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>(1) 규칙(낱말 목록: 약·아파·쓰러·돈 옮기·송금·비밀번호·계약 끝·방 옮기·주식 …)이 먼저 본다. (2) 걸리지 않으면 LLM 라우터가 의도 하나를 고른다(정해진 목록 안에서만, JSON 형식 검사). <strong>둘 중 하나라도 건강·금전·계약·투자면 도구를 부르지 않는다</strong></td>
+<td>규칙 목록, LLM 어댑터(제공자 [미정]) 또는 녹화 응답</td>
+</tr>
+<tr>
+<td>3a. 도구 의도</td>
+<td>카피 2-4 &quot;식비는 왜 이만큼이에요?&quot; 답</td>
+<td>RES가 듣는다</td>
+<td>답 틀</td>
+<td>라우터 결과 = 청구 설명, 항목 MEAL_FEE. 서버가 청구서를 고르고 도구 호출. LLM에는 도구 결과를 돌려주지 않는다(답 문장은 서버가 만든다)</td>
+<td>코어 <code>explainInvoice</code></td>
+</tr>
+<tr>
+<td>3b. 금전·투자 의도</td>
+<td>카피 2-5 금전·투자 답 + [네, 전해 주세요] [프런트로 전화하기]</td>
+<td>RES가 본다</td>
+<td>판단하지 않는다는 한 문장 + 넘길지 묻기</td>
+<td>회원이 넘기기 버튼을 누르면 확인 토큰 행(= 넘김 후보)에 실행 인자(전할 말 = 들은 말 원문, 넘긴 이유 = 금전 판단)를 저장한다. 아직 직원에게 보이지 않는다</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3c. 건강 의도</td>
+<td>카피 2-5 건강 답(119·프런트 먼저)</td>
+<td>RES가 본다</td>
+<td>119·프런트 안내가 넘기기 질문보다 먼저</td>
+<td>위와 같음, 이유 = 건강 판단</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3d. 도구 밖·다른 사람·긴 이야기</td>
+<td>카피 2-5 표</td>
+<td>RES가 본다</td>
+<td>모른다/하지 않는다 한 문장 + 버튼</td>
+<td>도구 호출 없음. 다른 사람 정보 요청은 의도 OTHER_PERSON으로 기록</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3e. 두 번 못 알아들음</td>
+<td>카피 2-2 &quot;이번에도 잘 듣지 못했어요&quot;</td>
+<td>—</td>
+<td>큰 버튼과 프런트 전화로 돌려보냄</td>
+<td>막다른 답 1건으로 센다(North Star에서 빠짐, <code>strategy.md</code> 6절)</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<h2 id="흐름-4-청구-문의-접수-이-금액이-이상해요-코어-문의">흐름 4. 청구 문의 접수 ([이 금액이 이상해요] → 코어 문의)</h2>
+<p>시나리오: 회원이 청구서 답 아래 [이 금액이 이상해요]를 누른다. 이 흐름은 코어 청구 문의(F15, P1)가 있을 때다. 없으면 흐름 5로 간다(넘긴 이유 = 직접 요청, 주제 = 청구서).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 누름</td>
+<td>카피 2-4 &quot;금액은 제가 바꿀 수 없어요. … 전해 드릴까요?&quot;</td>
+<td>RES가 누른다</td>
+<td>확인 화면: 어느 청구서인지 보인다 (카피 2-4 &quot;청구 문의 확인·접수&quot;)</td>
+<td>SYS가 <strong>확인 토큰</strong>을 발급한다: (대화, 세션, 행위자, 도구 <code>core.createInquiry</code>, 저장한 인자{청구서 ID}와 해시, 5분 [가설], 1회용)</td>
+<td><code>assistant</code> 확인 토큰</td>
+</tr>
+<tr>
+<td>2. 확인</td>
+<td>[네, 전해 주세요] · [아니요]</td>
+<td>RES가 [네]</td>
+<td>—</td>
+<td>토큰 검사(세션·행위자·기한·미사용) → 저장한 인자로 코어 <code>createInquiry(invoiceId, null, actor, channel = ASSISTANT, confirmationToken)</code> → 성공하면 토큰 USED, 실패하면 다시 누를 수 있게 되돌림. 토큰 ID가 멱등 키라 문의는 1건</td>
+<td>코어 <code>InquiryCommand</code>, 멱등 키 = 토큰 ID</td>
+</tr>
+<tr>
+<td>3. 접수 안내</td>
+<td>카피 2-4 &quot;청구 문의 확인·접수&quot;의 접수 문장(코어 copy 3절과 같은 말)</td>
+<td>RES가 본다</td>
+<td>코어 문의 취소(접수 후 10분, 회원만)를 비서 화면에 둘지 [미정](확인할 것 3)</td>
+<td>도구 호출 기록에 문의 ID. 코어가 <code>InquiryReceived</code> 발행</td>
+<td>코어 아웃박스</td>
+</tr>
+<tr>
+<td>4. 경리 답변</td>
+<td>코어 &quot;입주자가 문의한 청구&quot; 목록</td>
+<td>ACC가 답한다</td>
+<td>답변은 코어 화면·청구서에서 회원에게 보인다(비서가 따로 알리지 않음)</td>
+<td>코어 문의 상태 전이</td>
+<td>코어</td>
+</tr>
+<tr>
+<td>2&#39;. [아니요]</td>
+<td>카피 2-6 &quot;전하지 않았어요.&quot;</td>
+<td>RES가 [아니요]</td>
+<td>—</td>
+<td>토큰 DECLINED, 아무것도 만들지 않음</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<h2 id="흐름-5-직원에게-넘기기와-처리">흐름 5. 직원에게 넘기기와 처리</h2>
+<p>시나리오: 흐름 3b에서 회원이 [네, 전해 주세요]를 누른다. 프런트 운영 시간 안이다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 확인 화면</td>
+<td>카피 2-6 &quot;이 말씀을 직원에게 전해 드릴까요?&quot; + 전할 말 원문</td>
+<td>RES가 읽는다</td>
+<td>—</td>
+<td>확인 토큰 발급(도구 <code>assistant.handoff</code>, 저장한 인자와 그 해시, 세션·행위자에 묶음)</td>
+<td><code>assistant</code> 확인 토큰</td>
+</tr>
+<tr>
+<td>2. 확인</td>
+<td>[네, 전해 주세요]</td>
+<td>RES가 누른다</td>
+<td>카피 2-6 &quot;직원에게 전했어요.&quot; + &quot;급하시면 … 프런트로&quot;</td>
+<td>토큰 검사 → 넘김 1건 NEW(회원 확인 시각, 토큰 ID). 코어 <code>AuditWriter</code>에 WRITE 1줄(행위자, 대상 회원, 이유). 이유가 도구 밖·직접 요청(그 밖의 일)이고 회원 본인이면 N1 <code>receiveFromAssistant</code>를 불러 성공 시 FORWARDED(실패해도 NEW 유지, <code>tech-design.md</code> 3-2)</td>
+<td>코어 <code>AuditWriter</code>, N1 <code>requests/api</code></td>
+</tr>
+<tr>
+<td>2a. 운영 시간 밖</td>
+<td>카피 2-6 운영 시간 밖 문구(건강일 때만 119 줄)</td>
+<td>—</td>
+<td>—</td>
+<td>넘김은 똑같이 저장</td>
+<td>[NEED: 프런트 운영 시간]</td>
+</tr>
+<tr>
+<td>3. 직원 알림</td>
+<td>직원 화면 &quot;넘겨받은 요청&quot; 목록에 새 요청(FORWARDED는 기본 목록에 없고 &quot;생활 요청으로 보냄&quot;(반영됨, copy 5-2) 필터, 처리는 N1 생활 요청 화면)</td>
+<td>FD가 연다</td>
+<td>—</td>
+<td>목록 조회 권한 검사. 요청 상세를 열면 SENSITIVE_READ 기록</td>
+<td>코어 <code>authorize</code>, <code>AuditWriter</code></td>
+</tr>
+<tr>
+<td>4. 처리</td>
+<td>카피 5-2 상세(전할 말, 비서가 한 답 원문, 입주자 확인 시각, 넘긴 이유별 안내)</td>
+<td>FD/LS가 [처리 시작] → 회원에게 전화·방문 → [처리 완료] + 메모</td>
+<td>회원은 직원의 전화·방문으로 결과를 받는다</td>
+<td>NEW → IN_PROGRESS → DONE. 메모가 비면 DONE 거부</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5. 금전 넘김</td>
+<td>카피 5-2 &quot;직원은 … 대신 다루지 않습니다&quot;</td>
+<td>처리한 직원(데모는 FD 최민수, 평소에는 LS)이 D 금전 부탁 접수 화면에 옮겨 적는다(최소 버전)</td>
+<td>—</td>
+<td>최소 버전은 직원이 손으로 옮긴다. 다음 판은 회원 본인이 넘긴 것만 비서가 D <code>MoneyRequestCommand.open({residentId, sourceRef, note})</code>을 부른다. 대리인이 넘긴 것은 다음 판에도 직원이 접수한다(G HUB-9(D 확인할 것 20), <code>roadmap.md</code> Next)</td>
+<td>D 금전 부탁(P1)</td>
+</tr>
+</tbody></table></div>
+<h2 id="흐름-6-기록-보기와-점검-직원운영사">흐름 6. 기록 보기와 점검 (직원·운영사)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 도구 호출 기록</td>
+<td>카피 5-3 요약 카드(대화 수, 도구 호출 수, 넘긴 비율, 권한 거부 수), 기록 한 줄</td>
+<td>MGR이 기간을 고른다</td>
+<td>거부 줄에 &quot;거부(다른 입주자)&quot;</td>
+<td>기록은 추가만 한다. 조회는 사업장 범위 안에서만</td>
+<td><code>assistant</code> 스키마, RLS</td>
+</tr>
+<tr>
+<td>2. 대화 기록</td>
+<td>카피 5-1 펼친 대화</td>
+<td>MGR이 펼친다</td>
+<td>&quot;직원은 대화 기록을 고치거나 지울 수 없습니다&quot; + 보관 안내(카피 5-1)</td>
+<td>펼칠 때마다 SENSITIVE_READ 기록(대화에 건강 이야기가 들어올 수 있어서)</td>
+<td>코어 <code>AuditWriter</code></td>
+</tr>
+<tr>
+<td>3. 확인 없는 쓰기</td>
+<td>카피 6절 &quot;입주자 확인 없이 들어온 넘기기 요청을 거부했습니다.&quot;</td>
+<td>—</td>
+<td>—</td>
+<td>토큰 없거나 틀린 쓰기 요청은 서버가 거부하고 DENIED로 남긴다</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4. AI 고지 현황</td>
+<td>D AI 고지·동의 현황(D F16, P1)</td>
+<td>MGR이 본다</td>
+<td>목적별 확인과 함께 비서 사용 요약</td>
+<td>화면 조립 계층이 G 공개 API(<code>AssistantUsageQuery</code>)를 부른다. D는 G를 import하지 않는다</td>
+<td><code>assistant/api</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="흐름-7-대리인이-쓰는-비서-p1-코어-f13-이후">흐름 7. 대리인이 쓰는 비서 (P1, 코어 F13 이후)</h2>
+<p>시나리오(데모 부록): 아들 김태호(대리인, 범위: 청구서 확인·결제)가 Evenstay 홈에 들어와 &quot;어머니 청구서 설명&quot;을 묻는다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 들어옴</td>
+<td>대리인 화면 &quot;대신 처리하실 수 있는 일: 청구서 확인, 결제&quot;(코어) → [비서]</td>
+<td>REP가 누른다</td>
+<td>카피 2-7 대리인용 인사 &quot;김태호 님, 이은숙 회원님 대신 물어보시는 화면이에요.&quot;</td>
+<td>AI 고지는 대리인 본인이 회원용(MEMBER) 판으로 확인한다. 보호자 판 확인은 세지 않는다. 확인 기록에 actingAs = REPRESENTATIVE(G HUB-8(D 확인할 것 18) 반영, 재승인 2026-11-03). 대화: 대상 회원 = 이은숙, 행위자 = 김태호, 대리인 행 ID</td>
+<td>코어 <code>RepresentationQuery.activeScopes</code></td>
+</tr>
+<tr>
+<td>2. 청구서 설명</td>
+<td>카피 2-4와 같은 답</td>
+<td>REP가 듣는다</td>
+<td>—</td>
+<td>코어 권한 검사 4단계(ACTIVE, 유효기간, VIEW_INVOICE)</td>
+<td>코어 <code>authorize</code></td>
+</tr>
+<tr>
+<td>3. 계약 날짜</td>
+<td>카피 2-7 범위 밖 줄</td>
+<td>REP가 [계약 날짜 보기]</td>
+<td>계약 날짜 줄을 보이지 않는다</td>
+<td>계약 날짜는 SIGN_CONTRACT가 있어야 한다는 규칙. 코어 <code>keyDates(actor)</code>가 계약 날짜를 null과 <code>hiddenFields</code>로 준다(HUB-3 반영)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4. 회원 쪽</td>
+<td>회원 &quot;지난 대화&quot;에 &quot;1월 5일 · 김태호 님(대신 처리하실 분) · 12월 청구서 설명&quot; 줄(카피 3절) [가설]</td>
+<td>RES가 본다</td>
+<td>—</td>
+<td>대리인이 나눈 대화도 대상 회원 기준으로 저장</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<h2 id="실패-지점과-대응">실패 지점과 대응</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>어디서</th>
+<th>무엇이 잘못될 수 있나</th>
+<th>대응 (설계)</th>
+<th>사람이 개입하는 지점</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>X1</td>
+<td>흐름 3-2</td>
+<td>건강·금전 말을 도구 질문으로 잘못 분류</td>
+<td>규칙이 먼저 보고, 규칙·LLM 중 하나라도 민감이면 넘김 쪽. 평가 세트 민감 문항을 CI에서 매번 돌린다</td>
+<td>회원이 [직원에게 전하기]를 언제든 누를 수 있다</td>
+</tr>
+<tr>
+<td>X2</td>
+<td>흐름 3-3a</td>
+<td>LLM이 그럴듯한 금액·날짜를 지어냄</td>
+<td>답 문장은 서버가 답 틀에 도구 결과를 채워 만든다. LLM 출력은 회원에게 보이지 않는다(의도·인자만). 사실 줄마다 출처가 없으면 내보내지 않는다</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>X3</td>
+<td>흐름 3-3a</td>
+<td>회원 말에 지시를 섞어(프롬프트 주입) 다른 회원 청구서를 요구</td>
+<td>도구 인자에 회원 ID가 없다. 청구서 ID는 서버가 대상 회원의 발행 청구서 중에서 고른다. 그 아래에서 코어가 매 호출 권한 검사, 거부는 기록(데모는 전용 경로로 이 검사를 보인다)</td>
+<td>MGR이 권한 거부 수를 본다</td>
+</tr>
+<tr>
+<td>X4</td>
+<td>흐름 4·5</td>
+<td>LLM이나 위조 요청이 회원 확인 없이 문의·넘김을 만듦</td>
+<td>쓰기 도구는 확인 토큰이 있어야 하고, 토큰은 확인 화면을 만들 때 서버가 발급하고 같은 세션의 [네]에서만 소비한다. LLM은 토큰을 만들 수 없다. 한계: 본인 기기의 스크립트까지 막는 &quot;사람 증명&quot;은 아니다(<code>tech-design.md</code> ADR-G3)</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>X5</td>
+<td>흐름 1</td>
+<td>고지 확인 전 비서가 열림(화면 우회, D 장애)</td>
+<td>모든 비서 API에서 서버가 다시 확인하고, D 장애는 &quot;확인 안 됨&quot;으로 본다</td>
+<td>FD가 프런트 전화로 응대</td>
+</tr>
+<tr>
+<td>X6</td>
+<td>흐름 2-2a</td>
+<td>기한이 지났는데 납부 기록이 없어 회원이 불안해함, 또는 이미 냈는데 &quot;내시면 돼요&quot;를 듣고 두 번 냄</td>
+<td>&quot;미납·연체&quot;를 쓰지 않고 낸 기록 유무만 말한다. 납부 상태를 볼 수 없으면 그렇다고 말하고 프런트로 안내</td>
+<td>FD</td>
+</tr>
+<tr>
+<td>X7</td>
+<td>흐름 5-3</td>
+<td>넘긴 요청을 아무도 보지 않음(야간·주말)</td>
+<td>최소 버전은 목록과 새 요청 수 표시뿐이다. 회신 기한과 알림은 [NEED: 운영사 회신 기한], 다음 판</td>
+<td>MGR</td>
+</tr>
+<tr>
+<td>X8</td>
+<td>흐름 7</td>
+<td>대리인 범위가 끝났는데 비서로 계속 봄</td>
+<td>코어가 매 호출 유효기간 검사. 비서는 권한을 캐시하지 않는다</td>
+<td>FD가 대리인 갱신 안내</td>
+</tr>
+<tr>
+<td>X9</td>
+<td>흐름 3</td>
+<td>말벗처럼 길게 이야기하거나 부적절한 말</td>
+<td>카피 2-5 &quot;긴 이야기&quot; 답. 대화 시간과 턴 수를 기록 [가설: 상한은 정하지 않음]</td>
+<td>MGR 표본 확인 [가설]</td>
+</tr>
+<tr>
+<td>X10</td>
+<td>흐름 6-2</td>
+<td>직원이 호기심으로 대화를 엶</td>
+<td>펼칠 때마다 SENSITIVE_READ 기록, 사업장 범위만</td>
+<td>MGR 주간 확인 [가설]</td>
+</tr>
+<tr>
+<td>X11</td>
+<td>보관</td>
+<td>대화 기록이 한없이 쌓임</td>
+<td>보관 기간 지난 대화 원문을 지우고 숫자만 남긴다 [운영사 기준 초안]</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<h2 id="대안-경로-디지털이-어려운-사람">대안 경로 (디지털이 어려운 사람)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>하고 싶은 일</th>
+<th>앱</th>
+<th>대안</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>청구서 이유 듣기</td>
+<td>[이번 달 청구서 설명]</td>
+<td>프런트 전화·방문 → 직원이 코어 근거 패널을 보고 설명. 종이 청구서(코어 F9 인쇄)</td>
+</tr>
+<tr>
+<td>계약 날짜 듣기</td>
+<td>[계약·청구서 날짜]</td>
+<td>프런트 전화</td>
+</tr>
+<tr>
+<td>직원에게 전하기</td>
+<td>[직원에게 전하기]</td>
+<td>프런트 전화. 모든 화면 같은 자리의 [프런트로 전화하기]</td>
+</tr>
+<tr>
+<td>비서를 쓰지 않기</td>
+<td>—</td>
+<td>쓰지 않아도 된다(D 고지 v2 비서 5). 프런트와 직원 안내는 그대로</td>
+</tr>
+<tr>
+<td>말로 묻기가 안 됨</td>
+<td>[말로 묻기]</td>
+<td>큰 버튼. 마이크 권한이 없으면 카피 6절 안내</td>
+</tr>
+<tr>
+<td>판단이 어려운 회원</td>
+<td>—</td>
+<td>대리인(VIEW_INVOICE)이 청구서만 대신 묻는다(P1). 그 밖은 직원</td>
+</tr>
+</tbody></table></div>
+<h2 id="읽어-낸-것">읽어 낸 것</h2>
+<ul>
+<li>백스테이지가 몰린 곳은 <strong>도구 호출 한 번</strong>(대상 회원 고정 → 권한 검사 → 호출 → 기록 → 답 틀)이다. 이것을 도구 등록부 한 곳에서 처리하면 B·D·C 도구가 붙어도 흐름 2·3이 바뀌지 않는다.</li>
+<li>상태를 바꾸는 지점은 두 곳(청구 문의, 넘김)뿐이고 둘 다 확인 토큰 하나로 묶인다. 사람이 판단하는 지점(회원 [네], 직원 처리, 경리 답변)은 모두 &quot;누가, 언제&quot;를 남긴다.</li>
+<li>LLM이 들어오는 곳은 흐름 3-2 하나다. 큰 버튼 흐름(2)은 LLM 없이 끝난다. 그래서 LLM이 멈춰도 핵심 흐름은 돈다(카피 6절 [가설]을 확정, <code>prd.md</code> 확인할 것 8 [가설]).</li>
+<li>기술로 막을 수 없는 것(넘긴 요청을 늦게 봄 X7, 직원의 호기심 열람 X10)은 기록과 확인으로만 줄인다. 면접에서 한계로 밝힌다.</li>
+</ul>
+<h2 id="확인할-것">확인할 것</h2>
+<blockquote>
+<p>2026-11-03 사용자 결정: <code>tech-design.md</code> 확인할 것 1<del>11과 <code>prd.md</code> 확인할 것 1</del>10은 제안값으로 확정하고 [가설]로 표시한다(검증 전 값). 법률 검토 항목, LLM 제공자, 사용자가 따로 정하지 않은 것은 남긴다. 번호는 다른 문서가 가리키므로 그대로 둔다.</p>
+</blockquote>
+<p><strong>결정됨 [가설] (2026-11-03 사용자 결정: 제안값으로 확정, 검증 전)</strong></p>
+<ul>
+<li>큰 버튼은 LLM 없이 답 틀로 답한다(<code>prd.md</code> 확인할 것 8). 흐름 2.</li>
+<li>청구 이의는 코어 문의로(흐름 4, <code>prd.md</code> 확인할 것 2). 투자 질문도 [직원에게 전하기]를 보인다(흐름 5, <code>prd.md</code> 확인할 것 10).</li>
+<li>확인 토큰 5분, 대화 닫힘 30분(<code>tech-design.md</code> 확인할 것 8·9).</li>
+</ul>
+<p><strong>남은 것</strong> (이 문서에서만 나온 것이라 사용자가 따로 정하지 않았다)</p>
+<ol>
+<li><strong>[NEED] 현장 검토</strong>: 프런트 경험자 1명과 흐름 4·5를 읽고 넘김을 받는 실제 순서(누가 먼저 보나, 야간 처리)를 확인한다.</li>
+<li><strong>[미정] 금전 넘김 연결(흐름 5-5)</strong>: 제안은 최소 버전에서 직원이 D 금전 부탁 화면에 옮겨 적고, 다음 판에 <code>MoneyRequestCommand</code>를 비서가 부른다(D <code>open</code>은 종류 인자 없이 회원 본인만, HUB-9 반영됨. 대리인 넘김은 계속 직원이 옮긴다). 대안은 최소 버전부터 D 호출(D P1에 묶여 일정 위험).</li>
+<li><strong>[미정] 비서 화면의 문의 취소(흐름 4-3)</strong>: 제안은 최소 버전에 두지 않는다. 코어 문의 취소는 접수 후 10분 안에 회원만 할 수 있어(코어 F15) 비서 화면에서는 프런트 안내가 맞는지 확인이 필요하다. 대안은 코어 10분 취소를 비서 버튼으로.</li>
+<li><strong>[NEED] 읽어 주기(화면 낭독) 지원</strong>: 제안은 기기 화면 낭독 기능에 맡기고 답 틀을 짧게 유지. 대안은 TTS 어댑터(다음 판).</li>
+</ol>
+<h2 id="변경-기록">변경 기록</h2>
+<h3 id="2026-11-03-기획-문서-한국어-검수-korean-skills-사용자-재승인-2026-11-03">2026-11-03 기획 문서 한국어 검수 (korean-skills, 사용자 재승인 2026-11-03)</h3>
+<p>호출한 스킬: <code>grammar-checker</code> → <code>style-guide</code> → <code>humanizer</code>. 코드·API·ID·숫자·태그·카피 원문은 그대로 두었다. 화면 문구 인용은 <code>copy.md</code>와 다른 곳만 맞췄다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>분류</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>용어</td>
+<td>Admin &quot;넘겨받은 요청&quot; 목록에 새 요청</td>
+<td>직원 화면 &quot;넘겨받은 요청&quot; 목록에 새 요청</td>
+</tr>
+<tr>
+<td>용어</td>
+<td>없으면 &quot;볼 수 없어요&quot; 갈래</td>
+<td>없으면 &quot;볼 수 없음&quot; 갈래</td>
+</tr>
+<tr>
+<td>문장</td>
+<td>넘김은 같게 저장</td>
+<td>넘김은 똑같이 저장</td>
+</tr>
+<tr>
+<td>맞춤법</td>
+<td>D 금전 부탁 접수 화면으로 옮겨 적는다</td>
+<td>D 금전 부탁 접수 화면에 옮겨 적는다</td>
+</tr>
+</tbody></table></div>
+<h3 id="2026-11-03-화면-문구-인용-맞춤-허브-요청-인용-맞추기">2026-11-03 화면 문구 인용 맞춤 (허브 요청 &quot;인용 맞추기&quot;)</h3>
+<p>따옴표로 인용한 화면 문구를 <code>copy.md</code>(D 문구는 D <code>copy.md</code>, 라벨 원칙은 <code>names.md</code>)와 글자까지 맞췄다. 없는 문구는 가까운 실제 문구로 바꾸거나 따옴표를 빼고 요약임을 밝혔다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>방식</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>흐름 7</td>
+<td>가까운 문구</td>
+<td>카피 2-7 대리인용 인사와 &quot;이은숙 회원님의 청구서&quot; 표시</td>
+<td>카피 2-7 대리인용 인사 &quot;김태호 님, 이은숙 회원님 대신 물어보시는 화면이에요.&quot;</td>
+</tr>
+</tbody></table></div>
+<h3 id="2026-11-04-전체-리뷰-보완-사용자-재승인-2026-11-04">2026-11-04 전체 리뷰 보완 (사용자 재승인 2026-11-04)</h3>
+<p>허브 지시서 <code>00-hub/reviews/supplement-orders-2026-11-04.md</code> &quot;AI 생활 비서&quot; 1<del>4(R3, R6·N1-G1</del>G4, R24, N2)를 반영했다.</p>
+<ul>
+<li>흐름 5-2 N1으로 보내기</li>
+<li>흐름 5-3 AST-09 목록 규칙</li>
+<li>2026-11-04 카피 대조: G 카피 5-2·5-4 반영, <code>[NEED: 카피]</code> → 반영됨(copy 절 번호), 카드 제목 &quot;AI 생활 비서 사용량&quot;, 가린 표시 <code>[가린 번호]</code>(해당하는 곳만)</li>
+</ul>
+<h3 id="2026-11-04-쉬운-말-재검수공용-문구-반영-사용자-재승인-2026-11-04">2026-11-04 쉬운 말 재검수·공용 문구 반영 (사용자 재승인 2026-11-04)</h3>
+<p>근거: <code>03-copywriting/ideas/senior-ai-assistant/plain-read-review-2026-11-04.md</code>, <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구 행. 회원 화면 문구 인용을 새 카피에 맞추고, 버전 뜻의 &quot;최소판&quot;을 &quot;최소 버전&quot;으로 바꿨다. 기능, 범위, 정책, 수치, 답변 갈래는 바꾸지 않았다. 이전 변경 기록 안의 옛 문구는 기록이라 그대로 둔다.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-blueprint" data-title="서비스 설계도"><p>이용자가 보는 화면 뒤에서 직원과 시스템이 무엇을 하는지 단계별로 그린 문서입니다.</p></template>
+<template id="g-323" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-324" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-325" data-title="도구 호출"><p>호출 기록. 결과 본문은 저장하지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 도구 호출, 도구 호출 기록 / 회원: 확인한 곳(답 아래 한 줄, assistant T2-1은 표시 안 함) <code>[문서 다름]</code></dd><dt>영문·코드 이름</dt><dd><code>ToolCall</code></dd><dt>출처</dt><dd>assistant T2-1·2-2, assistant M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-326" data-title="답 틀"><p>도구와 결과 상태마다 하나. 회원에게 보이는 문장은 기록을 틀에 채워 만든다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>회원: 답의 틀</dd><dt>영문·코드 이름</dt><dd><code>AnswerTemplate</code></dd><dt>출처</dt><dd>assistant T2-1, ADR-G1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-327" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-328" data-title="청구 문의"><p>청구 항목에 대한 문의. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자가 문의한 청구 / 회원: 이 금액이 이상해요</dd><dt>영문·코드 이름</dt><dd><code>Inquiry</code></dd><dt>출처</dt><dd>core T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-329" data-title="금전 부탁"><p>입주자의 돈 관련 부탁을 받은 기록. 직원은 대행하지 않고 넘길 곳을 정한다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 금전 부탁</dd><dt>영문·코드 이름</dt><dd><code>MoneyRequest</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-330" data-title="권한 검사"><p>코어 하나로 검사한다. ENFORCE는 감사 기록, CHECK는 기록 없음</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 권한 없음 화면(COM-04)</dd><dt>영문·코드 이름</dt><dd><code>authorize(actor, action, resource, at, mode)</code></dd><dt>출처</dt><dd>core T6-3·8-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-331" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-332" data-title="고지 확인"><p>사람마다 한 번 받는 확인 기록</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 확인</dd><dt>영문·코드 이름</dt><dd><code>AiNoticeAck</code></dd><dt>출처</dt><dd>family T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-333" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-334" data-title="넘긴 이유"><p>왜 사람에게 넘겼는가. 투자 질문은 금전 판단이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 건강 판단 / 금전 판단 / 계약 판단 / 도구 밖 질문 / 직접 요청</dd><dt>영문·코드 이름</dt><dd><code>HandoffReason</code>: <code>HEALTH</code>, <code>MONEY</code>, <code>CONTRACT</code>, <code>OUT_OF_SCOPE</code>, <code>MEMBER_ASKED</code></dd><dt>출처</dt><dd>assistant T2-1, assistant M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

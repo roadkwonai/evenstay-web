@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>생활 지원 단계 기획서(PRD) | Evenstay 문서</title>
+<meta name="description" content="생활 지원 단계 기획서(PRD). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>생활 지원 단계</span></p>
+  <h1>생활 지원 단계 기획서(PRD)</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-prd"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="생활 지원 단계의 다른 문서"><ul><li><a href="transitions-strategy.html">전략</a></li><li><a href="transitions-service-blueprint.html">서비스 설계도</a></li><li><a href="transitions-prd.html" aria-current="page">기획서(PRD)</a></li><li><a href="transitions-user-stories.html">사용자 스토리</a></li><li><a href="transitions-tech-design.html">기술 설계</a></li><li><a href="transitions-roadmap.html">로드맵</a></li><li><a href="transitions-handoff.html">개발 인계</a></li><li><a href="transitions-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-요약">1. 요약</a></li><li class="lv2"><a href="#2-배경">2. 배경</a></li><li class="lv2"><a href="#3-목표와-핵심-결과">3. 목표와 핵심 결과</a></li><li class="lv2"><a href="#4-시장-세그먼트">4. 시장 세그먼트</a></li><li class="lv2"><a href="#5-가치-제안-6요소">5. 가치 제안 (6요소)</a></li><li class="lv2"><a href="#6-범위-mvp-혼자-24주-코어-위">6. 범위 — MVP (혼자 2~4주, 코어 위)</a></li><li class="lv2"><a href="#7-기능-요구사항">7. 기능 요구사항</a></li><li class="lv2"><a href="#8-화면-목록">8. 화면 목록</a></li><li class="lv2"><a href="#9-데모-시나리오-5분와-시드-데이터">9. 데모 시나리오 (5분)와 시드 데이터</a></li><li class="lv3"><a href="#시드-데이터-모두-가상-코어bd-시드-위에-더한다">시드 데이터 (모두 가상, 코어·B·D 시드 위에 더한다)</a></li><li class="lv3"><a href="#진행">진행</a></li><li class="lv2"><a href="#10-역할과-권한-요약">10. 역할과 권한 (요약)</a></li><li class="lv2"><a href="#11-시니어-접근성">11. 시니어 접근성</a></li><li class="lv2"><a href="#12-개인정보와-안전">12. 개인정보와 안전</a></li><li class="lv2"><a href="#13-기술-메모">13. 기술 메모</a></li><li class="lv2"><a href="#14-릴리스">14. 릴리스</a></li><li class="lv2"><a href="#15-가정과-열린-질문">15. 가정과 열린 질문</a></li><li class="lv2"><a href="#확인할-것">확인할 것</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li><li class="lv3"><a href="#2026-11-03-기획-문서-한국어-검수-허브-요청-사용자-지정-korean-skills">2026-11-03 기획 문서 한국어 검수 (허브 요청, 사용자 지정 korean-skills)</a></li><li class="lv3"><a href="#2026-11-03-화면-문구-인용-맞춤-허브-요청-사용자-인용-맞추기">2026-11-03 화면 문구 인용 맞춤 (허브 요청, 사용자 &quot;인용 맞추기&quot;)</a></li><li class="lv3"><a href="#2026-11-04-전체-리뷰-보완-허브-보완-지시서-2026-11-04-사용자-추천대로-시작">2026-11-04 전체 리뷰 보완 (허브 보완 지시서 2026-11-04, 사용자 &quot;추천대로 시작&quot;)</a></li><li class="lv3"><a href="#2026-11-04-화면-문구-그대로인-것-풀어-쓰기-허브-요청-사용자-결정">2026-11-04 화면 문구 &quot;그대로인 것&quot; 풀어 쓰기 (허브 요청, 사용자 결정)</a></li><li class="lv3"><a href="#2026-11-04-쉬운-말-재검수-문구-반영-허브-요청-사용자-추천대로">2026-11-04 쉬운 말 재검수 문구 반영 (허브 요청, 사용자 &quot;추천대로&quot;)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-411" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-412" data-tip="당사자는 같고 조건만 바뀌는 일.">계약 변경</button></li><li><button class="term" type="button" data-modal="g-413" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-414" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-415" data-tip="B, C가 올린 본문 스냅샷.">건강 소식</button></li><li><button class="term" type="button" data-modal="g-416" data-tip="MVP는 C 안의 기록이고 경리 확인할 일에 한 줄 보인다">계약 변경 요청</button></li><li><button class="term" type="button" data-modal="g-417" data-tip="대리인 증빙 만료, 비상 연락처 없음, 예정 복귀일 지남 같은 할 일.">확인할 일</button></li><li><button class="term" type="button" data-modal="g-418" data-tip="금액 없는 묶음 코드.">요금 묶음</button></li><li><button class="term" type="button" data-modal="g-419" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li><li><button class="term" type="button" data-modal="g-420" data-tip="입주자별 서비스 요일과 시간">서비스 시간</button></li><li><button class="term" type="button" data-modal="g-421" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li><li><button class="term" type="button" data-modal="g-422" data-tip="운영사 전체나 여러 사업장을 맡는다">본사 운영 매니저</button></li></ul></section></aside>
+  <article class="doc"><blockquote>
+<p>표기 규칙은 <code>strategy.md</code>와 같다. 화면 문구와 라벨은 C <code>copy.md</code>와 <code>names.md</code>를 따르고, 이 문서에서는 절 번호로 가리킨다. 법적 효력이 있는 문구에는 [법률 검토 전 초안]을 붙인다.
+호칭: 직원 화면은 &quot;입주자&quot;(합쇼체), 회원 화면은 &quot;회원님&quot;(해요체). 단계 이름은 번호 없이 쓴다.</p>
+<ul>
+<li>직원 화면: 기본 서비스 / 생활 지원 추가 / 외부 돌봄 병행 / 거처 상담</li>
+<li>회원 화면: 기본 서비스 / 생활 지원 더하기 / 다른 기관 돌봄 함께 / 지낼 곳 함께 의논</li>
+</ul>
+</blockquote>
+<h2 id="1-요약">1. 요약</h2>
+<p>생활 지원 단계 모듈은 입주자의 건강이 바뀌었을 때 직원이 살펴본 것을 기록하고, 그 기록을 근거로 생활 지원 단계 변경을 제안하고, 입주자에게 설명한 뒤, 제안하지 않은 사람이 결정하게 하는 코어 위의 모듈이다. 회원 화면은 바뀌지 않는 것부터 보여 주고, 보호자에게는 결정된 변경만 D 건강 소식으로 간다. 2026-10 입법예고된 시행규칙 개정안이 &quot;서비스를 받으며 계속 거주&quot;를 열려고 해서 [사실, A3, 확정 전], 단계 변경을 근거와 함께 남기는 일이 운영사의 기록 과제가 될 수 있다 [추정].</p>
+<h2 id="2-배경">2. 배경</h2>
+<ul>
+<li>건강이 나빠지면 계속 살 수 있는지, 어떤 서비스로 이어지는지가 시설마다 다르고 잘 보이지 않는다(P-003) [사실, A15: 한 시설은 일반 → 생활보조거실 → 노인요양원 연계].</li>
+<li>병원은 퇴원 예정 환자를 주소지 시군구로 연계한다. 입주 시설이 이 경로에 있는지는 자료가 없다(P-020) [사실, E2 <a href="https://www.korea.kr/news/policyNewsView.do?newsId=148960792" rel="noopener noreferrer" target="_blank">https://www.korea.kr/news/policyNewsView.do?newsId=148960792</a>, 2026-03-13].</li>
+<li>개정안: 65세 이상이 지정 재가서비스(방문요양, 방문간호 등)를 받으며 독립생활이 가능하면 노인복지주택에 계속 거주할 수 있다. 입법예고 2026-10-13~11-23, 시행은 공포 3개월 뒤로 보도됐다 [사실, E12 <a href="https://www.imaeil.com/page/view/2026101215574176948" rel="noopener noreferrer" target="_blank">https://www.imaeil.com/page/view/2026101215574176948</a>, 2026-10-12]. 확정되면 외부 돌봄과 시설 서비스를 함께 맞추는 일이 늘어난다(P-019) [추정].</li>
+<li>코어(A)는 요금표를 체결 때 고정하고 일할 계산을 하지 않는다. 계약 변경 API는 Next다 [사실, 코어 <code>tech-design.md</code> 4절·8-2]. 그래서 C는 단계와 계약을 나눈다.</li>
+</ul>
+<h2 id="3-목표와-핵심-결과">3. 목표와 핵심 결과</h2>
+<p><strong>목표</strong>: 면접관과 운영 매니저가 &quot;시스템은 단계를 판정하지 않고, 사람이 기록하고 다른 사람이 정한다&quot;를 데모와 테스트로 5분 안에 확인한다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>KR</th>
+<th>결과</th>
+<th>확인</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KR1</td>
+<td>9절 데모 6단계를 [시드 초기화] 뒤 5분 안에 한 번에 진행한다</td>
+<td>리허설</td>
+</tr>
+<tr>
+<td>KR2</td>
+<td>제안과 결정의 모든 (상태, 동작) 조합과 결정 규칙(제안자 ≠ 결정자, 설명 전 결정 불가, 입주자당 열린 제안 1건, <code>tech-design.md</code> 3-1 결정 규칙 표 전체), 역할 × 행동 표(10절)가 표 기반 자동 테스트로 통과한다</td>
+<td>CI</td>
+</tr>
+<tr>
+<td>KR3</td>
+<td><code>transitions</code> 스키마에 점수·진단명·추천 칸이 없고, 보호자에게 가는 본문에 평가 내용과 입주자 의견이 들어가지 않으며, 화면에 금지어(&quot;판정&quot;, 단계를 뜻하는 &quot;등급&quot;, &quot;하향·상향&quot;, &quot;퇴소&quot; 등 C product-marketing Words to avoid)가 없다. 정상 문구(장기요양 칸의 &quot;등급&quot;, 병명 경고 안의 &quot;치매&quot; 예시)는 위치를 정한 예외 목록으로 둔다</td>
+<td>스키마 테스트, D 호출 계약 테스트, CI 금지어 검사</td>
+</tr>
+<tr>
+<td>KR4</td>
+<td>C 결정 뒤에도 코어 12월 청구서가 2,910,000원 그대로다(G 2027-01-05 장면과 같음). C는 <code>transitions</code> 스키마에만 쓰고 <code>core/api</code>, <code>family/api</code>, <code>platform</code>만 import한다</td>
+<td>코어 골든 테스트 + C 결정 시나리오, 경계 검사</td>
+</tr>
+</tbody></table></div>
+<h2 id="4-시장-세그먼트">4. 시장 세그먼트</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>문제</th>
+<th>제약</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S1 퇴원한 입주자를 맡은 간호·생활지원 직원 (첫 세그먼트)</td>
+<td>퇴원 뒤 달라진 도움을 근거와 함께 서비스에 반영하고 싶다(P-020)</td>
+<td>퇴원 정보가 시설로 체계적으로 오지 않는다</td>
+</tr>
+<tr>
+<td>S2 외부 돌봄을 함께 받는 입주자의 생활지원 직원</td>
+<td>방문요양 시간과 레지던스 서비스가 겹치지 않게 하고 싶다(P-019)</td>
+<td>외부 일정은 시설이 정하지 못한다</td>
+</tr>
+<tr>
+<td>S3 사업장 책임자·운영 매니저</td>
+<td>단계 결정을 누가 왜 했는지 설명하고 싶다</td>
+<td>사업장에 책임자가 1명인 경우가 있다 [추정]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>정보를 받는 사람: 회원 본인(바뀌지 않는 것과 새로 받으시는 도움), 보호자(회원이 건강 소식을 허락한 경우만, D).</li>
+</ul>
+<h2 id="5-가치-제안-6요소">5. 가치 제안 (6요소)</h2>
+<p><strong>S1 간호·생활지원 직원</strong></p>
+<ul>
+<li>Who: 퇴원한 입주자를 처음 살펴보는 직원</li>
+<li>Why: 퇴원 뒤 달라진 도움을 서비스로 바로 맞춰야 한다. 근거를 남길 틀이 없다</li>
+<li>What before: 종이나 메모로 남기고 말로 전한다. 평가와 서비스 변경, 요금이 따로 논다 [추정]</li>
+<li>How: 일상생활 7항목 × &quot;혼자 하심 / 가끔 도움을 드림 / 매번 도움을 드림 / 살펴보지 못함&quot; + 본 일 한 줄로 기록하고, 그 기록을 붙여 단계 변경을 제안한다. 결정되면 더해진 서비스 시간이 입주자 시간표에 들어간다</li>
+<li>What after: 근거가 붙은 제안이 결정자에게 가고, 결정 뒤 해야 할 일(서비스 시간, 경리 확인할 일, 건강 소식)이 한 번에 생긴다</li>
+<li>Alternatives: 종이 평가표, 엑셀, 구두 인계. 모두 결정과 근거를 잇지 못한다</li>
+<li>문장: 퇴원한 입주자를 살펴본 것을 정해진 틀로 남기고, 그 기록을 근거로 서비스 변경을 제안한다. 결정은 다른 사람이 한다.</li>
+</ul>
+<p><strong>S2 생활지원 직원 (외부 돌봄)</strong></p>
+<ul>
+<li>Who: 방문요양을 함께 받기 시작한 입주자를 맡은 직원</li>
+<li>Why: 외부 기관 시간과 레지던스 서비스 시간이 겹치면 한쪽이 빠진다</li>
+<li>What before: 회원 또는 가족의 말이나 기관 전화로 듣고 수기로 맞춘다 [추정]</li>
+<li>How: 외부 돌봄 일정을 입력하면 같은 입주자의 레지던스 서비스 시간과 겹침을 바로 보이고, 어느 쪽을 옮겼는지 기록한다</li>
+<li>What after: 서비스 날 전에 겹침을 알고 처리한다. 회원 화면에 바뀐 시간이 보인다</li>
+<li>Alternatives: 전화와 수기 메모</li>
+<li>문장: 방문요양 일정을 레지던스 서비스와 같은 시간표에 놓고, 겹치면 서비스 날 전에 직원에게 알린다.</li>
+</ul>
+<p><strong>S3 사업장 책임자·운영 매니저</strong></p>
+<ul>
+<li>Who: 단계 변경을 결정하고 나중에 설명해야 하는 사람</li>
+<li>Why: 결정이 분쟁이 되면 남은 근거가 없고, 결정 책임이 한 사람에게 쏠린다 [추정]</li>
+<li>What before: 상담 일지와 기억</li>
+<li>How: 제안자와 결정자를 나누고, 설명·의견 기록 전에는 결정을 막고, 결정한 까닭을 필수로 받고, 이력을 고칠 수 없게 한다</li>
+<li>What after: 결정 하나에서 평가, 의견, 제안자, 결정자로 따라간다</li>
+<li>Alternatives: 상담 일지, 내부 결재 메일</li>
+<li>문장: 단계 변경 하나마다 평가, 입주자 의견, 제안한 사람, 결정한 사람과 까닭이 한 이력으로 남는다.</li>
+</ul>
+<h2 id="6-범위-mvp-혼자-24주-코어-위">6. 범위 — MVP (혼자 2~4주, 코어 위)</h2>
+<p><strong>핵심 흐름 2개</strong></p>
+<ol>
+<li><strong>단계 변경</strong>: 평가 기록 → 단계 변경 제안 → 입주자 설명·의견 → 다른 사람의 결정 → 회원 화면, 경리 확인할 일, 건강 소식(D)</li>
+<li><strong>외부 돌봄 병행</strong>: 외부 돌봄 일정 입력 → 레지던스 서비스 시간과 겹침 경고 → 처리 기록 → 회원 화면</li>
+</ol>
+<ul>
+<li>단계는 양쪽으로 바뀐다. 기본 서비스로 돌아가는 것도 같은 흐름이다.</li>
+<li>단계 정의는 MVP에서 시드(사업장 1, 버전 1)로 두고 읽기 화면만 둔다. 편집과 새 버전은 P1이다.</li>
+<li>요금은 바꾸지 않는다. 단계마다 &quot;요금 묶음&quot;을 두고, 결정 전후의 요금 묶음이 다르면 요금 영향이 &quot;계약 변경 필요&quot;가 되어 결정 때 경리 확인할 일에 계약 변경 요청 한 줄을 남기는 것까지 한다(양쪽 방향 모두). 청구는 계약을 바꾸기 전까지 그대로다.</li>
+<li>외부 돌봄 병행과 거처 상담은 레지던스 서비스와 요금 묶음을 지금 그대로 이어받는다(카피 <code>names.md</code> 1절 &quot;레지던스에서 받으시는 도움은 그대로예요&quot;, copy 2-3 &quot;입주 계약은 바뀌지 않습니다&quot;) [가설]. 그래서 이 두 단계로 바뀔 때는 계약 변경 요청이 생기지 않는다.</li>
+<li><strong>하지 않는다</strong>: 장기요양 등급 판정, 요양 급여 청구, 의료 판단, 퇴거 결정(14절).</li>
+</ul>
+<h2 id="7-기능-요구사항">7. 기능 요구사항</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>기능</th>
+<th>우선</th>
+<th>요구사항 요약</th>
+<th>스토리</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>F1</td>
+<td>단계 정의 (시드, 버전, 읽기)</td>
+<td>P0</td>
+<td>사업장마다 단계 4개(코드 BASIC, LIVING_SUPPORT, WITH_EXTERNAL_CARE, PLACE_CONSULT). 단계마다 직원·회원 라벨, 한 줄 설명, 서비스 방식(자기 서비스 목록 / 지금 서비스 그대로 이어받기), 추가 서비스(서비스 코드, 기본 요일·시간 여러 줄), 요금 묶음, 바뀌지 않는 것, 단계가 바뀌는 때. 요금 영향(요금 변화 없음 / 계약 변경 필요)은 결정 전후 요금 묶음을 비교해 계산한다. 버전이 있고, 결정은 그때의 버전을 기록한다. 화면에 번호 없음</td>
+<td>US-01</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>평가 기록</td>
+<td>P0</td>
+<td>머리(살펴본 날, 살펴본 사람과 직무, 외부 전문가 이름과 소속, 계기 8종, 입주자와 함께 여부), 일상생활 7항목 × 4선택지 + 본 일, 기억·판단 관련 본 일과 검사 안내, 장기요양 인정 결과(없음/신청 중/받음: 등급, 유효기간, 증빙 받은 날), 퇴원 안내 받음 여부, 외부 전문가 의견 받은 날·곳, 입주자가 말씀하신 바람. <strong>점수·진단명·추천 칸 없음.</strong> 본 일 칸 병명 낱말 경고(저장은 허용). 고치지 않고 정정 버전을 덧붙인다</td>
+<td>US-02, US-03</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>단계 변경 제안</td>
+<td>P0</td>
+<td>지금 단계 → 제안 단계(어느 방향이든), 근거 평가 1건 이상(30일 안 [가설]), 제안하는 까닭(입주자에게 설명할 말). 바뀌는 것, 바뀌지 않는 것, 요금 영향 미리보기. 입주자당 열린 제안 1건. 제안자 또는 사업장 책임자가 거둘 수 있음(사유 필수). 상태: 작성 중 → 설명 전 → 결정 대기 → 변경 결정 / 유지 결정, 제안 취소</td>
+<td>US-04</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>입주자 설명·의견</td>
+<td>P0</td>
+<td>설명한 날, 설명한 사람, 함께한 사람(대리인 / 입주자가 고른 가족 / 없음, 방식: 대면 / 전화), 의견 4종(동의하심 / 더 생각하고 싶어 하심 / 동의하지 않으심 / 의견을 듣지 못함: 사유 필수), 입주자가 하신 말, &quot;가족에게 알리지 말아 달라고 하심&quot;(들은 시각). 덧붙이기만 하고 의견은 마지막 기록이 유효. &quot;알리지 말아 달라고 하심&quot;은 이번 차례 설명 중 한 번이라도 있으면 유효(좁히는 쪽 우선, D ADR-F3와 같은 생각). 첫 기록으로 상태가 결정 대기</td>
+<td>US-05</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>결정</td>
+<td>P0</td>
+<td>결정자 = 사업장 책임자 또는 본사 운영 매니저(범위 안) [가설]. 둘 다 자기 제안은 결정할 수 없다. 본사 운영 매니저는 주로 책임자가 제안한 경우에 결정한다(운영 관행, 시스템이 강제하지 않음). <strong>제안자는 같은 제안을 결정할 수 없다</strong>(정책, 애플리케이션, DB 세 겹). 결정 3종(제안대로 바꾸기 / 지금 단계 유지 / 다시 살펴본 뒤 결정), 결정한 까닭 필수. 막는 규칙: 설명 기록 없음, 거처 상담 + 의견을 듣지 못함, 마지막 의견이 &quot;더 생각하고 싶어 하심&quot;이면 바꾸기 불가 [가설], 거처 상담 + 동의하지 않으심이면 바꾸기 불가 [가설]. 근거가 기억·판단 기록뿐이면 안내(막지 않음). 효력일 = 결정일</td>
+<td>US-06, US-07</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>단계 구간과 서비스 시간</td>
+<td>P0</td>
+<td>결정(바꾸기)이면 지금 단계 구간을 닫고 새 구간을 연다. 기록이 없는 입주자의 단계는 코어 입주일부터 기본 서비스로 계산한다. 새 단계가 자기 서비스 목록을 가지면: 목록에 있고 이미 열린 서비스(옮긴 시간 포함)는 그대로 두고, 열린 칸이 없는 서비스만 기본 요일·시간으로 열고, 목록에 없는 열린 칸은 결정일 전날로 닫는다. 이어받는 단계(외부 돌봄 병행, 거처 상담)는 서비스 시간을 그대로 둔다. 직원이 옮길 수 있다(지금 시간의 마지막 날과 새 시간의 첫날을 받음)</td>
+<td>US-08</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>회원 화면 &quot;생활 지원 단계&quot;</td>
+<td>P0</td>
+<td>copy 3-1~3-4, 3-6, 3-7. 순서: 이번에 바뀌지 않아요(단계가 바뀐 적 없는 회원에게는 이 제목을 숨긴다, copy 3-1) → 새로 받으시는 도움(경우별: 서비스가 더해지면 &quot;12월 10일부터 새로 받으시는 도움&quot;, 이어받는 단계면 &quot;받고 계신 도움은 그대로예요&quot; + 지금 서비스, 기본 서비스로 돌아가면 &quot;○월 ○일부터 받지 않으시는 도움&quot;. 더해진 것과 받지 않게 된 것이 모두 없으면(예: 외부 돌봄 병행 → 생활 지원 추가) 이어받는 단계 문구를 쓴다. 모두 copy 3-1) → 지금 단계 → 누가 정했나 → 내실 돈 → [다시 봐 주세요](P1), [프런트로 전화하기]. 모든 단계 보기, 단계가 바뀌는 때, 직원이 드린 제안(결정 전), 다른 기관 돌봄, 지난 단계 기록. 평가 내용과 결정한 까닭은 보이지 않는다. 프런트 직원이 같은 화면을 읽어 드릴 수 있다</td>
+<td>US-09</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>건강 소식 올리기</td>
+<td>P0</td>
+<td>바꾸기 결정만 D <code>HealthFeedCommand.post</code>(sourceModule TRANSITIONS, sourceId = 결정 ID, revision 1(본문 정정은 같은 sourceId의 새 버전, P1), kind CARE_STAGE_CHANGE [가설: D 종류 반영됨, HUB-D1 사용자 재승인 2026-11-03], involvesEmergencyCall false). 본문은 copy 4절 틀(바뀐 날, 이전·새 단계 회원 라벨, 살펴본·설명한·정한 사람과 날, 새로 받으시는 도움, 받지 않으시는 도움, 받고 계신 도움 중 해당하는 것, 바뀌지 않는 것, 내실 돈 안내(계약 변경 필요일 때만), 문의처). 외부 돌봄 시작은 copy 4절 &quot;상세 (외부 돌봄 시작)&quot;, 돌아간 경우와 이어받는 단계는 copy 4절 &quot;상세 (돌아간 경우)&quot;와 &quot;상세 (이어받는 단계)&quot;(이어받는 단계는 내실 돈 줄 없음). 회원이 알리지 말라고 한 경우는 copy 2-3, 2-4, 3-1, 4절 아래. 유지와 다시 살펴봄은 올리지 않는다. 회원이 알리지 말라고 했으면 <code>withhold(MEMBER_REQUEST)</code>. 아웃박스로 보내고 실패하면 다시 보냄. MVP는 <code>family/api</code> 목업 먼저</td>
+<td>US-10</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>요금 영향과 계약 변경 요청</td>
+<td>P0</td>
+<td>결정 전후의 요금 묶음이 다르면(양쪽 방향) 계약 변경 요청 1행(입주자, 결정, 코어 활성 계약 ID, 요청한 사람 = 결정자). 경리 확인할 일 한 줄(copy 2-4) → 경리 [확인함](처리 메모). 코어 계약·청구는 바꾸지 않는다</td>
+<td>US-11</td>
+</tr>
+<tr>
+<td>F10</td>
+<td>외부 돌봄 일정과 시간 겹침</td>
+<td>P0</td>
+<td>기관 이름, 서비스 종류 5종, 요일과 시간(여러 줄), 시작일, 종료일, 정보를 준 곳, 기관 연락처(직원만). 저장할 때 입주자 서비스 시간과 겹침 계산 → 경고(저장 막지 않음) → 처리 3종(레지던스 서비스 시간 옮김 / 기관에 시간 조정 요청 / 둘 다 그대로: 까닭) 기록. 회원 화면에 기관, 종류, 때, 옮긴 시간</td>
+<td>US-12, US-13</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>단계 변경 이력</td>
+<td>P0</td>
+<td>평가, 제안, 설명, 결정, 계약 변경 요청, 외부 돌봄, 겹침 처리를 시간 순 한 줄로(copy 2-6). 고치거나 지울 수 없고, 열면 기록이 남는다</td>
+<td>US-14</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>권한과 감사</td>
+<td>P0</td>
+<td>코어 <code>authorize()</code> + <code>transitions.*</code> 정책(10절). 쓰기 WRITE, 평가·설명·이력 열람 SENSITIVE_READ, 거부 DENIED. 다른 사업장 입주자 거부</td>
+<td>US-15</td>
+</tr>
+<tr>
+<td>F13</td>
+<td>다시 검토 요청</td>
+<td>P1</td>
+<td>회원 [다시 봐 주세요] 또는 직원 대신 등록(프런트 또는 전화). 접수 → 다시 살펴봄(평가 연결). 확인할 일에 표시</td>
+<td>US-16</td>
+</tr>
+<tr>
+<td>F14</td>
+<td>단계 정의 편집·새 버전</td>
+<td>P1</td>
+<td>본사 관리자 또는 사업장 책임자 [가설]. 새 버전은 시작일부터의 결정에 쓰고, 이미 정한 입주자의 단계는 결정 때 버전 그대로(copy 2-1)</td>
+<td>US-17</td>
+</tr>
+<tr>
+<td>F15</td>
+<td>외부 돌봄 시작 소식과 다시 살펴보기 안내</td>
+<td>P1</td>
+<td>시작일 09:00에 D <code>post</code>(kind EXTERNAL_CARE_START [가설]). 기관 이름·연락처 없음. 일정 입력에 &quot;가족에게 알리지 말아 달라고 하심&quot;(들은 시각) 칸을 두고, 있으면 <code>withhold(MEMBER_REQUEST)</code>. 입력 때 &quot;단계를 다시 살펴볼까요?&quot; 안내</td>
+<td>US-18</td>
+</tr>
+<tr>
+<td>F16</td>
+<td>대리인의 회원 화면</td>
+<td>P1</td>
+<td>SIGN_CONTRACT 범위 대리인이 회원 화면을 보고 [다시 봐 주세요]를 대신 누를 수 있다 [가설]. 코어 6-3 대응표에 반영됨(HUB-C3, 사용자 재승인 2026-11-03). 김태호(VIEW_INVOICE·PAY)는 거부</td>
+<td>US-19</td>
+</tr>
+</tbody></table></div>
+<h2 id="8-화면-목록">8. 화면 목록</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>화면</th>
+<th>이용자</th>
+<th>우선</th>
+<th>문구</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>단계 정의(읽기)</td>
+<td>직원 전체, 책임자</td>
+<td>P0</td>
+<td>copy 2-1</td>
+</tr>
+<tr>
+<td>입주자 단계 요약(지금 단계, 열린 제안, 외부 돌봄, 확인할 일)</td>
+<td>간호·생활지원, 책임자</td>
+<td>P0</td>
+<td>copy 2-7</td>
+</tr>
+<tr>
+<td>평가 기록</td>
+<td>간호·생활지원</td>
+<td>P0</td>
+<td>copy 2-2</td>
+</tr>
+<tr>
+<td>단계 변경 제안·입주자 설명</td>
+<td>간호·생활지원</td>
+<td>P0</td>
+<td>copy 2-3</td>
+</tr>
+<tr>
+<td>결정 대기 목록·결정</td>
+<td>책임자, 본사 운영 매니저</td>
+<td>P0</td>
+<td>copy 2-4</td>
+</tr>
+<tr>
+<td>외부 돌봄 일정·겹침</td>
+<td>간호·생활지원</td>
+<td>P0</td>
+<td>copy 2-5</td>
+</tr>
+<tr>
+<td>단계 변경 이력</td>
+<td>간호·생활지원, 책임자</td>
+<td>P0</td>
+<td>copy 2-6</td>
+</tr>
+<tr>
+<td>경리 확인할 일(계약 변경 요청 줄)</td>
+<td>경리</td>
+<td>P0</td>
+<td>copy 2-4 마지막 줄</td>
+</tr>
+<tr>
+<td>회원 &quot;생활 지원 단계&quot;(첫 화면, 단계가 바뀌는 때, 모든 단계, 직원이 드린 제안, 다른 기관 돌봄, 지난 단계 기록)</td>
+<td>회원, 프런트(읽어 드림)</td>
+<td>P0</td>
+<td>copy 3-1~3-4, 3-6, 3-7</td>
+</tr>
+<tr>
+<td>(D 의존) 보호자 건강 소식 목업</td>
+<td>보호자</td>
+<td>P0</td>
+<td>copy 4절</td>
+</tr>
+<tr>
+<td>다시 봐 주세요</td>
+<td>회원</td>
+<td>P1</td>
+<td>copy 3-5</td>
+</tr>
+<tr>
+<td>단계 정의 편집</td>
+<td>본사 관리자, 책임자</td>
+<td>P1</td>
+<td>copy 2-1</td>
+</tr>
+</tbody></table></div>
+<h2 id="9-데모-시나리오-5분와-시드-데이터">9. 데모 시나리오 (5분)와 시드 데이터</h2>
+<h3 id="시드-데이터-모두-가상-코어bd-시드-위에-더한다">시드 데이터 (모두 가상, 코어·B·D 시드 위에 더한다)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>사업장</td>
+<td>새봄 레지던스(사업장 1). 다온하우스(임대주택)에는 C를 켜지 않는다 [가설]</td>
+</tr>
+<tr>
+<td>단계 정의 버전 1 (2026-10-01부터)</td>
+<td>C <code>names.md</code> 1절 네 단계. 기본 서비스: 추가 서비스 없음, 요금 묶음 BASE. 생활 지원 추가: 목욕 도움 주 1회(화 10:00<del>10:40), 약 챙기기 도움 하루 두 번(매일 08:00</del>08:15, 19:00~19:15 [가설]), 방 방문 안부 하루 한 번(시간 없음), 요금 묶음 LIVING_SUPPORT. 외부 돌봄 병행과 거처 상담: 서비스와 요금 묶음을 지금 그대로 이어받음 [가설]. 그래서 기본 서비스 ↔ 생활 지원 추가 사이에서만 &quot;계약 변경 필요&quot;가 생긴다</td>
+</tr>
+<tr>
+<td>주인공</td>
+<td>A동 201호 이은숙. 코어 입주일 2026-10-01(김한결과의 부부 계약, 승계 사슬의 첫 계약 기준), 2026-11-10 사별 승계로 1인 계약. C 기록이 없으므로 입주일부터 기본 서비스</td>
+</tr>
+<tr>
+<td>사람</td>
+<td>간호 박서준(CARE), 생활지원 김하진(LIFE_SUPPORT), 프런트 최민수(FRONT), 사업장 책임자 최영미(SITE_MANAGER), 경리 박소연, 본사 운영 매니저 정하늘(결정자 대체 시연용). 모두 코어 시드</td>
+</tr>
+<tr>
+<td>가족</td>
+<td>딸 김지민: 보호자, 건강 소식 별도 동의(D 시드 2026-11-11), 청구서·생활 허락. 아들 김태호: 대리인(VIEW_INVOICE·PAY), 보호자 관계는 있으나 건강 소식 동의 없음</td>
+</tr>
+<tr>
+<td>12월 입원 기간(C 밖, 앞 장면)</td>
+<td>2026-12-02(수) 산책길에 넘어져 입원, 12-07(월) 퇴원. 이 배경은 C 기록이 아니다. 통합 데모에서는 C 1단계 앞에 이 기간을 다른 모듈 장면으로 잇는다(허브 보완 지시서 2026-11-04): 12/2 10:20 프런트 최민수가 전화 호출 등록 → 10:22 윤서연이 맡음, 10:35 만남 → 10:40 김지민 통화 → 10:50 병원 동행 출발 → 10:55 건강 소식(병원에 가신 일)(안심 알림) → 11:10 전후 최민수가 장기 부재 시작, 예정 복귀일 모름(코어) → 김지민에게 &quot;12월 2일부터 자리를 비우셨어요&quot;, 김태호에게는 없음(보호자 포털·동의) → 12/7 16:20 돌아오심, 16:30 윤서연 [돌아오셨습니다](안심 알림) → 16:40 전후 복귀 기록(코어) → 김지민에게 &quot;돌아오셨어요&quot;(보호자 포털·동의) → C 시작점 12/7 18:00. 시각과 계정은 각 모듈이 정한 값이다(HUB-A1, 허브 전달 2026-11-04). 문구는 각 모듈 카피를 따른다. 부재 종류와 병원 이름은 어느 모듈도 기록하지 않는다. C는 이 기간에 아무것도 기록하지 않고 코어 장기 부재 기록도 읽지 않는다. 평가 계기 &quot;퇴원 뒤&quot;는 직원이 고른다. <strong>입원 기간 끼니는 코어 시드에 결식으로 넣지 않는다</strong> [가설, 확인할 것 5]. 12월 결식은 코어 시드 그대로 사전 신청 3끼(2026-12-24 아침·점심·저녁, 코어 <code>prd.md</code> 9절)뿐이고 입원 기간과 겹치지 않는다. 장기 부재 기록이 결식을 만들지 않는다는 것도 이 금액의 전제다 [가설, 코어가 정함, HUB-A1]</td>
+</tr>
+<tr>
+<td>12월 청구서(코어, 12/31 발행)</td>
+<td>생활비 2,100,000 + 식비 837,000(31일 × 3끼 × 9,000) − 사전 결식 3끼 27,000 = <strong>2,910,000원</strong>(코어 시드 값). C 결정과 상관없이 같다. G 2027-01-05 장면과 같은 금액</td>
+</tr>
+<tr>
+<td>외부 돌봄</td>
+<td>○○방문요양센터(가상), 방문요양 화 09:30~12:30, 2027-01-12 시작, 정보를 준 곳 입주자</td>
+</tr>
+<tr>
+<td>[시드 초기화] 시작점</td>
+<td>&quot;퇴원 후&quot;(<code>C_AFTER_DISCHARGE</code>, 시계 2026-12-07 18:00:00, C 기록 없음) / &quot;결정 후&quot;(12/10 결정까지 끝남, 1/8 장면용). 코어 <code>/demo/reset</code>(8-1)은 <code>app/</code> 데모 라우트가 core → safety → family → assistant → transitions 순서로 각 <code>&lt;모듈&gt;/seed</code>의 <code>reset(state)</code>를 부른다. C 시작점: <code>AFTER_SUCCESSION</code> → C 기록 없음, <code>C_AFTER_DISCHARGE</code> → &quot;퇴원 후&quot;, <code>G_START</code>(2027-01-05) → &quot;결정 후&quot;. 목록에 없는 상태 이름은 400(HUB-C8 반영됨, 코어 사용자 재승인 2026-11-03). 통합 데모에서는 시드 초기화를 하지 않고 시계만 12/8로 옮겨 앞 장면(12/2<del>12/7 포함)에 잇는다(허브 보완 지시서 공통 규칙). [시드 초기화]는 C만 따로 시연할 때 쓴다. <code>C_AFTER_DISCHARGE</code>에 12/2</del>12/7의 병원 동행, 장기 부재, 부재 소식 기록이 들어가는지는 각 모듈이 정한다 [미정, HUB-A1]</td>
+</tr>
+</tbody></table></div>
+<h3 id="진행">진행</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>시간</th>
+<th>계정, 기준일</th>
+<th>보여 줄 것</th>
+<th>확인 포인트</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 (앞 장면, C 밖)</td>
+<td>—</td>
+<td>프런트 최민수, 윤서연(안심 알림), 김지민(보호자 포털·동의), 2026-12-02 10:20<del>11:10, 12-07 16:20</del>16:40</td>
+<td>전화 호출 → 병원 동행 출발(10:50) → 장기 부재 시작(11:10 전후) → 김지민 부재 소식 → 12/7 돌아오심(16:30 [돌아오셨습니다]) → 복귀 기록(16:40 전후) → &quot;돌아오셨어요&quot;. 시계를 12/7 18:00으로 옮겨 C로 잇는다. C 화면은 나오지 않는다</td>
+<td>C 장면 앞의 맥락. 5분에 넣지 않는다</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0:30</td>
+<td>책임자 최영미, 2026-12-08</td>
+<td>단계 정의 네 단계(번호 없음, 단계마다 추가 서비스 또는 &quot;지금 서비스 그대로&quot;, 요금 묶음, 바뀌지 않는 것). 상단 &quot;시스템은 단계를 정하지 않습니다.&quot;</td>
+<td>단계 = 서비스 묶음</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1:00</td>
+<td>간호 박서준, 12-08 15:30</td>
+<td>평가 기록: 계기 퇴원 뒤, 김하진과 함께, &quot;씻기 · 매번 도움을 드림 · 12월 8일 오전, 욕실 턱을 넘으실 때 손을 잡아 드렸습니다.&quot;, &quot;약 챙기기 · 가끔 도움을 드림 · 12월 7일 저녁 약을 드셨는지 물으셔서 약 상자를 함께 확인했습니다.&quot;(copy 2-2 입력 예. 약 챙기기는 퇴원한 날 저녁 일). 본 일 칸에 &quot;치매&quot;를 넣어 경고를 보이고 고친다</td>
+<td>점수·병명·추천 칸이 없다</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1:00</td>
+<td>박서준 → 최영미 → 박서준, 12-09 10:05~11:20</td>
+<td>제안 &quot;기본 서비스 → 생활 지원 추가&quot;, 미리보기(추가 서비스, 바뀌지 않는 것, 계약 변경 필요) → 최영미 계정으로 입주자 단계 요약(copy 2-7)의 &quot;열린 제안&quot; 줄을 눌러 제안 화면을 열고 [제안대로 바꾸기] → 422 <code>EXPLANATION_MISSING</code>, copy 5절 &quot;설명 전 결정&quot; 문구 → 박서준 계정으로 설명 기록(김지민 전화 동석, 동의하심, &quot;목욕은 오전에 해 주면 좋겠다&quot;) → 결정 대기</td>
+<td>설명 전 결정 불가</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1:00</td>
+<td>최영미, 12-10 16:20</td>
+<td>근거 묶음 → [제안대로 바꾸기] + 결정한 까닭 → 확인 창 → 결과: 경리 확인할 일 1줄, 건강 소식 김지민에게. 경리 박소연 계정으로 확인할 일 한 줄. 김지민 계정(D 목업)에 한 줄, 김태호 계정에는 없음</td>
+<td>결정 하나에 따라오는 일. 계약·청구는 그대로</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0:45</td>
+<td>회원 이은숙, 12-10 저녁</td>
+<td>회원 화면: 이번에 바뀌지 않아요 → 12월 10일부터 새로 받으시는 도움 → 지금 단계 생활 지원 더하기 → 누가 정했나 → 내실 돈 &quot;계약을 바꾸기 전까지 청구서는 그대로예요&quot; → 지난 단계 기록 &quot;입주하신 날부터 · 기본 서비스&quot;</td>
+<td>바뀌지 않는 것이 먼저</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0:45</td>
+<td>생활지원 김하진, 2027-01-08</td>
+<td>외부 돌봄 일정 입력 → 화 10:00~10:40 목욕 도움과 겹침 경고(첫 겹침 1/12) → [레지던스 서비스 시간 옮김]: 화 시간의 마지막 날 1/11(마지막 화요일 목욕 1/5), 목 10:00 첫날 1/14 → 겹침 해결 → 회원 화면 다른 기관 돌봄</td>
+<td>겹침은 경고, 처리는 사람</td>
+</tr>
+<tr>
+<td>(부록)</td>
+<td>0:30</td>
+<td>최영미가 제안 → 최영미가 결정 시도하면 &quot;이 제안을 만든 직원은…&quot;으로 막힘 → 정하늘 결정(제안자 ≠ 결정자) / 거처 상담 + 의견을 듣지 못함 → 거부 / 회복 뒤 기본 서비스로 돌아가는 제안</td>
+<td>결정자 대체, 거처 상담 규칙, 양방향</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>업무 기준일은 코어 데모의 멈춘 시계다. 통합 데모 순서는 D 1<del>2단계(11/11) → B(11/12 새벽) → D 3</del>5단계(11/12<del>11/23) → 12/2</del>12/7 입원 기간(안심 알림 병원 동행 → 코어 장기 부재 → 보호자 포털·동의 부재 소식 → 12/7 복귀 기록) → C 1<del>5단계(12/8</del>12/10) → G(2027-01-05) → C 6단계(2027-01-08)다(D <code>prd.md</code> 9절 순서를 따름). 장면 사이는 시계만 옮긴다. 허브가 더한 다른 새 장면(11/12 오전, 11/17, 11/20 전후, 11/30 또는 12/1)의 자리는 <code>evenstay/design/mvp-screens.md</code> 5절을 따른다. C만 시연할 때는 [시드 초기화] 시작점을 고른다.</li>
+</ul>
+<h2 id="10-역할과-권한-요약">10. 역할과 권한 (요약)</h2>
+<p>자세한 정책은 <code>tech-design.md</code> 6절. 모든 행동은 코어 <code>authorize()</code>를 거치고, C는 <code>transitions.*</code> 이름공간에만 허용 정책을 등록한다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>역할 (코어 6-1)</th>
+<th>할 수 있는 일 (C)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>사업장 직원 · 간호(CARE)·생활지원(LIFE_SUPPORT) 직무</td>
+<td>평가 기록, 제안, 거두기, 입주자 설명·의견 기록, 외부 돌봄 일정·겹침 처리, 평가·이력 보기</td>
+</tr>
+<tr>
+<td>사업장 직원 · 프런트(FRONT) 직무</td>
+<td>지금 단계 이름 보기, 회원 화면 읽어 드리기(회원 화면 범위: 새로 받으시는 도움, 다른 기관 돌봄, 직원이 드린 제안 요약), 다시 검토 요청 대신 등록(P1). 평가 내용은 보지 않는다</td>
+</tr>
+<tr>
+<td>사업장 책임자(SITE_MANAGER)</td>
+<td>결정(자기 제안 제외), 평가 기록, 제안·설명 기록, 외부 돌봄 일정·겹침 처리, 평가·이력 보기, 계약 변경 요청 보기, 확인함, 단계 정의 편집(P1)</td>
+</tr>
+<tr>
+<td>본사 운영 매니저(HQ_MANAGER)</td>
+<td>결정(범위 안, 자기 제안 제외) [가설], 평가·이력 보기, 계약 변경 요청 보기, 확인함</td>
+</tr>
+<tr>
+<td>본사 관리자(HQ_ADMIN)</td>
+<td>단계 정의 편집(P1). 결정하지 않는다</td>
+</tr>
+<tr>
+<td>경리(SITE_ACCOUNTANT)</td>
+<td>지금 단계 이름 보기, 계약 변경 요청 보기, 확인함</td>
+</tr>
+<tr>
+<td>회원(MEMBER)</td>
+<td>본인 회원 화면, 다시 봐 주세요(P1)</td>
+</tr>
+<tr>
+<td>대리인</td>
+<td>SIGN_CONTRACT 범위면 회원 화면과 다시 봐 주세요(P1) [가설]. 김태호(VIEW_INVOICE·PAY)는 없음</td>
+</tr>
+<tr>
+<td>보호자(GUARDIAN)</td>
+<td>C 화면 없음. D 건강 소식만</td>
+</tr>
+<tr>
+<td>소유주</td>
+<td>없음</td>
+</tr>
+</tbody></table></div>
+<h2 id="11-시니어-접근성">11. 시니어 접근성</h2>
+<ul>
+<li><strong>큰 글씨와 터치 영역</strong>: 회원 화면 본문 18px 이상, 버튼 44×44 CSS px 이상 [사실, WCAG 2.1 2.5.5 <a href="https://www.w3.org/TR/WCAG21/#target-size" rel="noopener noreferrer" target="_blank">https://www.w3.org/TR/WCAG21/#target-size</a>, 2018], 200% 확대에서 가로 스크롤 없음(코어와 같음).</li>
+<li><strong>한 화면에 하나의 행동</strong>: 회원 첫 화면의 주된 행동은 읽기다. [다시 봐 주세요]는 확인 창에서 한 번 더 묻는다.</li>
+<li><strong>쉬운 말</strong>: 단계 번호, &quot;판정&quot;, &quot;등급&quot;, &quot;케어 플랜&quot;, &quot;전원&quot; 같은 말을 쓰지 않는다(C product-marketing Words to avoid).</li>
+<li><strong>되돌리기</strong>: 단계는 양쪽으로 바뀐다. 회원은 [다시 봐 주세요]로 다시 살펴봐 달라고 한다(P1). 직원의 결정은 되돌리지 않고 새 제안·결정으로 바꾼다.</li>
+<li><strong>음성·전화 대안</strong>: [프런트로 전화하기] 버튼, 다시 봐 주세요의 [말로 하기]. 설명과 의견은 대면이 기본이다.</li>
+<li><strong>보호자·직원 대행</strong>: 프런트 직원이 회원 화면을 읽어 드린다. 설명 자리에 대리인(회원 화면에서는 &quot;대신 처리하실 분&quot;)이나 회원이 고른 가족이 함께한다. 의견은 회원 본인의 말로 적는다.</li>
+</ul>
+<h2 id="12-개인정보와-안전">12. 개인정보와 안전</h2>
+<ul>
+<li><strong>민감정보</strong>: 평가 기록(일상생활 도움, 기억·판단 관련 본 일), 장기요양 인정 결과, 외부 돌봄 일정은 건강 관련 정보로 다룬다 [추정, 법률 검토: 개인정보 보호법 제23조 민감정보 해당 여부]. 진단명, 진료 결과, 처방, 점수는 받지 않는다. 외부 전문가 의견 원문, 퇴원 서류 내용은 저장하지 않는다(받은 날·곳만).</li>
+<li><strong>최소 수집</strong>: 장기요양은 상태(없음/신청 중/받음)와 등급, 유효기간, 증빙 받은 날만. 등급을 받는 근거와 보관 기간은 [법률 검토].</li>
+<li><strong>열람</strong>: 평가, 설명, 이력은 간호·생활지원 직무와 책임자, 본사 운영 매니저만 보고, 볼 때마다 SENSITIVE_READ. 경리는 단계 이름과 계약 변경 요청만. 프런트는 회원 화면 범위(평가 내용 없음)만 보고, 프런트나 대리인이 회원 화면을 열 때도 SENSITIVE_READ로 남긴다(외부 돌봄·의견 요약이 들어 있어서). 소유주와 보호자는 C 화면이 없다.</li>
+<li><strong>보호자 공유</strong>: 결정된 변경만 D 건강 소식으로. D가 건강 소식 별도 동의를 검사한다. 평가 내용, 기억·판단 기록, 입주자 의견, 다시 검토 요청, 결정 전 제안은 보내지 않는다. 회원이 알리지 말라고 하면 올리지 않는다(MEMBER_REQUEST). D가 받는 올리지 않는 이유는 MEMBER_REQUEST·NOT_A_HEALTH_EVENT 두 가지뿐이고(D 확정), C는 MEMBER_REQUEST만 쓴다.</li>
+<li><strong>사람이 개입하는 지점</strong>: 평가(간호·생활지원), 제안(직원), 설명·의견(직원 + 회원), 결정(제안하지 않은 책임자), 계약 변경(경리 + 회원 서명, 코어 Next), 겹침 처리(생활지원). 시스템은 어느 지점도 대신하지 않는다.</li>
+<li><strong>응급</strong>: C는 응급 대응을 하지 않는다. 입원과 이송은 B와 코어 비상 연락처의 일이다.</li>
+<li><strong>법적 문구</strong>: 회원 화면 copy 3-3 두 줄과 4절 &quot;지낼 곳 함께 의논&quot; 상세는 [법률 검토 전 초안]이다. 입주 계약서의 변경·해지 조항을 확인하기 전에는 실서비스에 쓰지 않는다 [NEED].</li>
+</ul>
+<h2 id="13-기술-메모">13. 기술 메모</h2>
+<ul>
+<li>상세 설계는 <code>tech-design.md</code>. 기술 방향: 프로토타입 HTML과 JS, MVP Next.js, PostgreSQL. 나머지 스택은 [미정](코어 12절).</li>
+<li><strong>목업으로 대체하는 것</strong>: 계약 변경(코어 Next) → C 안의 계약 변경 요청 기록과 경리 확인할 일, D 건강 소식 → <code>family/api</code> 목업 먼저(같은 계약 테스트로 실구현 전환), 외부 돌봄 기관 → 직원 입력(연동 없음), 문자 → D가 처리(C는 보내지 않음).</li>
+<li>경리 확인할 일은 <code>app/</code>이 코어 <code>TodoQuery.itemsOf(siteId, at, actor)</code>와 C <code>TransitionsInboxQuery</code>를 붙여 대시보드 &quot;확인할 일&quot;로 보인다. 코어는 C를 모른다(HUB-C6 반영됨, 코어 사용자 재승인 2026-11-03).</li>
+<li>데모 시계: 코어의 멈춘 시계. 외부 돌봄 시작 소식(P1)은 시작일 09:00이 지나면 보낸다.</li>
+</ul>
+<h2 id="14-릴리스">14. 릴리스</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>시기</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1주</td>
+<td>스키마와 시드(F1), 권한 정책과 감사(F12), 평가 기록(F2), 경계 검사</td>
+</tr>
+<tr>
+<td>2주</td>
+<td>제안·설명·결정 상태 전이와 결정 규칙(F3~F5), 단계 구간(F6), 이력(F11), 전이·권한 표 테스트</td>
+</tr>
+<tr>
+<td>3주</td>
+<td>회원 화면(F7), 계약 변경 요청(F9), 건강 소식 목업 연동(F8), 외부 돌봄과 겹침(F10) → 데모 6단계</td>
+</tr>
+<tr>
+<td>4주</td>
+<td>P1을 F13 → F15 → F14 → F16 순서로. 리허설</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li><strong>자르는 선</strong>: 2주 차 끝에 결정 규칙 테스트가 통과하지 않으면 P1을 모두 다음 버전으로 보낸다. 3주 차에 시간이 모자라면 F10을 데모 부록으로 내리고 흐름 1을 지킨다.</li>
+<li><strong>다음 버전</strong>: 코어 계약 변경 API 연동(요금 플랜 변경, 효력일), 정기 살펴보기 주기, 외부 돌봄 끝 소식, 결정 효력일을 미래로 정하기, G 비서 도구 &quot;내 생활 지원 단계 설명&quot;, B 안전 기록 요약 참조(<code>roadmap.md</code>).</li>
+<li><strong>하지 않는다</strong>: 장기요양 등급 판정, 요양 급여 청구, 의료 판단(진단·처방·진료 결과 입력 포함), 퇴거 결정, 퇴거 요청, 단계 판정·추천(점수, 규칙 엔진, AI), 요금 자동 반영, 보호자에게 직접 보내기, 외부 기관·통합돌봄 시스템 연동, 효과 수치 주장.</li>
+</ul>
+<h2 id="15-가정과-열린-질문">15. 가정과 열린 질문</h2>
+<ul>
+<li>[가설] 단계 4개와 서비스 묶음으로 한 사업장의 단계를 표현할 수 있다(<code>strategy.md</code> H4).</li>
+<li>[가설] 결정 효력일을 결정일로 두어도 데모와 설계 설명에 충분하다. 실서비스는 &quot;다음 주 화요일부터&quot; 같은 미래 효력일을 원할 수 있다 [추정].</li>
+<li>[가설] 사업장 책임자가 1명이어도 본사 운영 매니저로 대체하면 제안자 ≠ 결정자를 지킬 수 있다(<code>strategy.md</code> H3).</li>
+<li>[NEED] 입주 계약서의 변경·해지 조항, 식비 조항(입원 기간 식비), 다시 봐 주세요 회신 기한, 프런트 전화번호.</li>
+<li>[NEED] 간호·생활지원 경험자의 화면 검토 1회.</li>
+<li>[미확인] 개정안 확정본(2026-11-23 입법예고 종료 뒤).</li>
+</ul>
+<h2 id="확인할-것">확인할 것</h2>
+<p><strong>결정됨 [가설]</strong> (2026-11-03 사용자 결정: 1<del>6은 제안값으로 확정, 7</del>12는 허브 지시로 제안값을 [가설]로 확정. <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 기록)</p>
+<ol>
+<li><strong>D 건강 소식 종류</strong>: D <code>HealthEvent.kind</code>에 <code>CARE_STAGE_CHANGE</code>(생활 지원 단계가 바뀐 일)와 <code>EXTERNAL_CARE_START</code>(다른 기관 돌봄이 시작된 일)를 더한다. 끝난 일(<code>EXTERNAL_CARE_END</code>)은 Next. 버린 대안: <code>CARE_NOTE</code>에 넣기(보호자가 구분하기 어려움). → 반영됨(사용자 재승인 2026-11-03) HUB-D1.</li>
+<li><strong>결정자와 직무</strong>: 결정자는 SITE_MANAGER 또는 같은 범위의 HQ_MANAGER이고, 둘 다 자기 제안은 결정할 수 없다(HQ_MANAGER는 주로 책임자가 제안했을 때, 운영 관행). 평가, 제안, 설명은 duties CARE·LIFE_SUPPORT인 SITE_STAFF와 SITE_MANAGER가 한다. 코어 변경 없음. 버린 대안: SITE_MANAGER만.</li>
+<li><strong>MVP 계약 변경 경로</strong>: C가 <code>transitions</code>에 계약 변경 요청을 기록하고, <code>app/</code>이 <code>transitions/api</code>를 붙여 경리 &quot;확인할 일&quot;에 보인다. 코어 <code>requestAmendment</code>는 Next. 버린 대안: 코어 공용 &quot;확인할 일&quot; API. → 반영됨(사용자 재승인 2026-11-03) HUB-C6.</li>
+<li><strong>단계별 서비스 요금</strong>: MVP는 요금 묶음 코드(BASE, LIVING_SUPPORT)만 두고 금액은 두지 않는다. 결정 전후 묶음이 다르면(어느 방향이든) 계약 변경 요청을 만든다. 외부 돌봄 병행과 거처 상담은 지금 서비스와 묶음을 이어받는다. 계약 변경 전까지 청구는 그대로다. Next에서는 코어 요금 플랜(예: <code>SINGLE_LIVING_SUPPORT</code>)과 <code>requestAmendment(effectiveDate = 매월 1일만, reasonRef = 결정 ID)</code>로 바꾼다. 계약의 고정 요금표 버전에 그 플랜이 없을 때의 처리는 코어 [미정](코어 확인할 것 19). 버린 대안: 넷째 요금 규칙 <code>CARE_SERVICE_FEE</code>. → 반영됨(사용자 재승인 2026-11-03) HUB-C4.</li>
+<li><strong>12월 입원 기간 결식</strong>: 입원 기간 끼니는 코어 시드에 결식으로 넣지 않는다. 12월 결식은 12/24 사전 신청 3끼뿐이고, 청구서는 2,910,000원 그대로다(G 장면과 같음). 입원 기간 식비 규칙은 코어 [미정]이다. 버린 대안: &quot;사전 신청 아님&quot; 15끼(먹지 않은 식사 135,000원 청구), 12/3부터 감면(G 금액이 바뀜). → 반영됨(사용자 재승인 2026-11-03) HUB-C2.</li>
+<li><strong>이은숙 입주일</strong>: <code>keyDates.moveInDate</code> = 승계 사슬의 첫 계약 입주일 2026-10-01. 코어에 이미 들어가 있다. → 반영됨(사용자 재승인 2026-11-03) HUB-C1.</li>
+<li><strong>의견에 따른 결정 막기</strong>: (가) 마지막 의견이 &quot;더 생각하고 싶어 하심&quot;이면 [제안대로 바꾸기] 불가. (나) 거처 상담 + &quot;동의하지 않으심&quot;이면 바꾸기 불가. (다) 거처 상담 + &quot;의견을 듣지 못함&quot;이면 결정 불가(승인 카피 5절). 그 밖의 단계는 &quot;동의하지 않으심&quot;이어도 결정할 수 있고, 결정 화면에 입주자 의견을 먼저 보인다. 버린 대안: (다)만 두기.</li>
+<li><strong>근거 평가 기간</strong>: 제안일 기준 30일 안. 버린 대안: 90일. → 카피 5절에 반영됨(HUB-K3, 사용자 재승인 2026-11-03).</li>
+<li><strong>대리인의 회원 화면</strong>: SIGN_CONTRACT 범위 대리인만(P1). → 반영됨(사용자 재승인 2026-11-03) HUB-C3.</li>
+<li><strong>단계 이름 편집</strong>: 코드 4개는 고정하고, 라벨, 설명, 서비스 방식, 서비스, 요금 묶음은 사업장이 새 버전으로 바꾼다(P1). 버린 대안: 단계 수도 사업장이 정함.</li>
+<li><strong>정기 살펴보기 주기</strong>: MVP는 계기 선택지만 둔다. 주기 알림은 Next(6개월).</li>
+<li><strong>효력일</strong>: 결정일부터. 미래 효력일은 Next. 같은 입주자에게 같은 날 두 번째 CHANGE 결정은 409로 막는다(구간이 하루도 없게 되므로) [가설].
+12-1. <strong>G 비서 C 도구</strong>: Next 후보로만 둔다(<code>roadmap.md</code>, HUB-G2).</li>
+</ol>
+<p><strong>반영됨 (사용자 재승인 2026-11-03)</strong> (상태는 <code>tech-design.md</code> 확인할 것 표)</p>
+<ul>
+<li>반영됨(사용자 재승인 2026-11-03): 코어 HUB-C1<del>C9, D HUB-D1</del>D3, G HUB-G2. 각 문서에서 직접 확인했다.</li>
+<li>반영됨(사용자 재승인 2026-11-03): C 카피 HUB-K1~K4(위치는 copy 7절 &quot;2026-11-03 C 기획 반영&quot; 표와 &quot;2026-11-03 이어받는 단계·돌아간 경우&quot; 소절). HUB-K1 중 copy 2-2 약 챙기기 입력 예의 날짜(12월 8일 저녁 → 12월 7일 저녁)도 카피에서 고쳤다(copy 7절 변경 기록, 확인할 것 18).</li>
+<li>D가 C에 보낸 요청(D <code>tech-design.md</code> 확인할 것 22: sourceId는 정정 사슬의 첫 ID, 잘못 올린 소식은 같은 sourceId의 새 버전으로 정정)은 받아들여 C <code>tech-design.md</code> ADR-T6·8-3에 넣었다.</li>
+<li>남은 것: HUB-K5(개정안 확정본으로 법률 문구 재확인).</li>
+<li>처리됨(허브): HUB-S1·S2.</li>
+</ul>
+<p><strong>선행 조건 (사용자가 할 일)</strong>: C 설계는 코어(HUB-C1<del>C9, 코어 <code>prd.md</code> 확인할 것 10), D(HUB-D1</del>D3), G(HUB-G2), C 카피(HUB-K1~K4)의 &quot;사용자 재승인 2026-11-03&quot; 버전을 전제로 한다. 이 재승인이 C 승인보다 먼저다.</p>
+<p><strong>남은 것</strong> (법률 검토, [미정] 판단, [NEED]·[미확인] 외부 자료)
+13. <strong>[법률 검토]</strong> 평가, 장기요양 결과, 외부 돌봄 일정의 민감정보 해당 여부와 수집 근거, 보관 기간, 기관 연락처 수집 근거, 단계 변경을 건강 소식으로 보내는 것이 D 별도 동의로 충분한지(C copy 6절).
+14. <strong>[미확인] 카피 3-3 법률 문구 재확인</strong>: 개정안 입법예고가 2026-11-23에 끝나면 확정본으로 다시 본다(HUB-K5).
+15. <strong>[NEED]</strong> 입주 계약서 변경·해지·식비 조항, 다시 봐 주세요 회신 기한, 현장 검토, 인터뷰(<code>strategy.md</code> 3).
+17. <strong>[미정] 경리 처리 메모를 필수로 할지</strong>: C 카피 2-4에서 남긴 판단. 제안 — 선택(빈칸 허용). 메모 없이 [확인함]만 눌러도 계약 변경 요청을 확인한 사실은 남기 때문이다. 필수로 하면 &quot;확인함&quot;이 늦어질 수 있다 [추정].
+18. <strong>카피 한 줄(HUB-K1, 처리됨)</strong>: copy 2-2 약 챙기기 입력 예 날짜를 12월 8일 저녁에서 12월 7일 저녁으로 고쳤다(평가 기록 시각 12-08 15:30보다 앞선 일, copy 7절 변경 기록). 남은 일 없음.</p>
+<h2 id="변경-기록">변경 기록</h2>
+<h3 id="2026-11-03-기획-문서-한국어-검수-허브-요청-사용자-지정-korean-skills">2026-11-03 기획 문서 한국어 검수 (허브 요청, 사용자 지정 korean-skills)</h3>
+<p>방법: <code>grammar-checker</code>(맞춤법·문법·구두점) → <code>style-guide</code>(용어 일관성, 기준: 코어 <code>product-marketing.md</code> Glossary, <code>names.md</code> v4, 직원 화면 모듈 이름, 브랜드) → <code>humanizer</code>(번역투·피동·명사 나열). 백틱 안, ID, 날짜, 숫자, 태그, 화면 문구 인용은 그대로 두었다. 뜻은 바꾸지 않았다.</p>
+<ul>
+<li>맞춤법 45: 단순 나열·대안의 가운뎃점을 쉼표, &quot;와/과&quot;, &quot;나&quot;, &quot;또는&quot;으로(입력 줄, 3<del>4절, F1</del>F14, 9~14절, 확인할 것 2·4·10·13). F4 방식은 같은 칸의 표기에 맞춰 &quot;대면 / 전화&quot;. 이름·라벨로 쓰는 가운뎃점(&quot;간호·생활지원&quot;, &quot;입주자 설명·의견&quot; 등)은 그대로.</li>
+<li>용어 6: 직원 쪽 행위와 데이터의 &quot;회원&quot; → &quot;입주자&quot;(1절 &quot;입주자에게 설명한 뒤&quot;, F3, KR3·S3·12절·확인할 것 7의 &quot;입주자 의견&quot;).</li>
+<li>문장 2: 6절 &quot;이들은 결정과 근거를&quot; → &quot;모두 결정과 근거를&quot;, 7.4 &quot;본사 운영 매니저 대체로&quot; → &quot;본사 운영 매니저로 대체하면&quot;(부사 &quot;대체로&quot;로 잘못 읽힘).</li>
+</ul>
+<h3 id="2026-11-03-화면-문구-인용-맞춤-허브-요청-사용자-인용-맞추기">2026-11-03 화면 문구 인용 맞춤 (허브 요청, 사용자 &quot;인용 맞추기&quot;)</h3>
+<p>따옴표로 인용한 화면 문구를 C <code>copy.md</code>와 대조했다. &quot;…&quot;로 앞뒤를 줄인 인용은 남은 조각이 copy.md와 글자까지 같고 순서도 같아 그대로 두었다. 라벨, 원칙 문장, 상태 값처럼 화면 문구가 아닌 따옴표는 대상이 아니다.</p>
+<ul>
+<li>9절 데모 2단계: 씻기·약 챙기기 입력 예를 copy 2-2 원문 전체로(&quot;씻기 · 매번 도움을 드림 · 12월 8일 오전, 욕실 턱을 넘으실 때 손을 잡아 드렸습니다.&quot; 등). 원문 일치.</li>
+<li>F7: &quot;○월 ○일부터 더해진 도움&quot; → &quot;12월 10일부터 더해진 도움&quot;(copy 3-1). 원문 일치.</li>
+<li>2-2 날짜 메모: copy 2-2 약 챙기기 입력 예가 이미 &quot;12월 7일 저녁&quot;이다(copy 7절 변경 기록). 확인할 것 반영 상태 줄, &quot;남은 것&quot; 머리, 확인할 것 18을 처리됨으로 고쳤다.</li>
+</ul>
+<h3 id="2026-11-04-전체-리뷰-보완-허브-보완-지시서-2026-11-04-사용자-추천대로-시작">2026-11-04 전체 리뷰 보완 (허브 보완 지시서 2026-11-04, 사용자 &quot;추천대로 시작&quot;)</h3>
+<ul>
+<li>9절 시드 &quot;12월 입원 기간(C 밖, 앞 장면)&quot;: C 1단계 앞에 안심 알림 병원 동행(12/2) → 코어 장기 부재 시작 → 보호자 포털·동의 부재 소식(허락 범위) → 12/7 복귀 기록을 잇는다. 시각과 계정은 [미정](HUB-A1). 부재 종류와 병원 이름은 기록하지 않는다. C는 이 기간에 기록하지 않고 장기 부재도 읽지 않는다. 장기 부재가 결식을 만들지 않는다는 전제를 12월 청구서 줄에 적었다.</li>
+<li>9절 [시드 초기화] 줄: 통합 데모는 시계만 옮겨 잇고, [시드 초기화]는 C만 따로 시연할 때 쓴다. <code>C_AFTER_DISCHARGE</code>에 앞 장면 기록이 들어가는지는 [미정].</li>
+<li>9절 진행표에 0단계(앞 장면, C 밖)를 더하고, 통합 데모 순서에 12/2<del>12/7을 넣었다. C의 1</del>6단계와 부록은 그대로다.</li>
+<li>공통 규칙: 버전을 뜻하는 &quot;판&quot;을 &quot;버전&quot;으로 바꿨다(15곳). 백틱 안 코드, 따옴표 안 화면 문구 인용, 변경 기록은 그대로다.</li>
+<li>HUB-A1 확정값(허브 전달 2026-11-04)으로 앞 장면 [미정]을 닫았다: 12/2 10:20 전화 호출 → 10:50 병원 동행 → 11:10 전후 장기 부재 시작, 12/7 16:30 [돌아오셨습니다] → 16:40 전후 복귀 기록, C 시작점 12/7 18:00. <code>C_AFTER_DISCHARGE</code>의 앞 장면 기록 포함 여부와 장기 부재·결식 관계는 코어 몫으로 남겼다.</li>
+</ul>
+<h3 id="2026-11-04-화면-문구-그대로인-것-풀어-쓰기-허브-요청-사용자-결정">2026-11-04 화면 문구 &quot;그대로인 것&quot; 풀어 쓰기 (허브 요청, 사용자 결정)</h3>
+<ul>
+<li>C 카피를 따라 화면 문구와 화면 항목 이름을 맞췄다(20곳): 회원·보호자 화면 제목 &quot;그대로예요&quot; → &quot;이번에 바뀌지 않아요&quot;, 항목 이름 &quot;그대로인 것&quot; → &quot;바뀌지 않는 것&quot;, &quot;더해진 도움&quot; → &quot;새로 받으시는 도움&quot;, 직원 화면 &quot;더하는 서비스&quot; → &quot;추가 서비스&quot;, 건강 소식 한 줄 &quot;목욕 도움이 더해졌어요&quot; → &quot;목욕 도움을 새로 받으시게 됐어요&quot; 중 이 문서에 있는 것.</li>
+<li>뜻이 같은 개념 설명(&quot;그대로인 방·계약&quot;, &quot;더해진 서비스 시간&quot;), 문장으로 쓴 &quot;입주 계약은 그대로예요&quot;, 확정 단계 이름 &quot;생활 지원 더하기&quot;, 이 기록 안의 옛 말은 그대로 두었다.</li>
+</ul>
+<h3 id="2026-11-04-쉬운-말-재검수-문구-반영-허브-요청-사용자-추천대로">2026-11-04 쉬운 말 재검수 문구 반영 (허브 요청, 사용자 &quot;추천대로&quot;)</h3>
+<ul>
+<li>근거: C 카피 <code>plain-read-review-2026-11-04.md</code>, <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구 행.</li>
+<li>&quot;레지던스 서비스는 그대로예요&quot; → &quot;레지던스에서 받으시는 도움은 그대로예요&quot;(73행), &quot;그전까지 청구서는 그대로예요&quot; → &quot;계약을 바꾸기 전까지 청구서는 그대로예요&quot;(9절 5단계). F7에 단계가 바뀐 적 없는 회원에게 &quot;이번에 바뀌지 않아요&quot; 제목을 숨기는 조건을 적었다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-prd" data-title="기획서(PRD)"><p>범위와 화면 목록, 데모 시나리오와 시드 값을 적은 제품 요구 문서입니다.</p></template>
+<template id="g-411" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-412" data-title="계약 변경"><p>당사자는 같고 조건만 바뀌는 일. 코어 명령은 다음 버전이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 계약 변경 요청</dd><dt>영문·코드 이름</dt><dd><code>ContractCommand.requestAmendment</code>(Next)</dd><dt>출처</dt><dd>core T ADR-5·8-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-413" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-414" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-415" data-title="건강 소식"><p>B, C가 올린 본문 스냅샷. 건강 소식이 보호자에게 가는 길은 D 하나다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 건강 소식. 종류: 직원이 다녀간 일 / 병원에 가신 일 / 그 밖의 건강 기록 / 생활 지원 단계가 바뀐 일 / 다른 기관 돌봄이 시작된 일</dd><dt>영문·코드 이름</dt><dd><code>HealthEvent</code>: <code>SAFETY_SIGNAL</code>, <code>HOSPITAL_TRANSFER</code>, <code>CARE_NOTE</code>, <code>CARE_STAGE_CHANGE</code>, <code>EXTERNAL_CARE_START</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-416" data-title="계약 변경 요청"><p>MVP는 C 안의 기록이고 경리 확인할 일에 한 줄 보인다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 계약 변경 요청 / 회원: 입주 계약을 바꿀지 직원이 따로 여쭤봐요</dd><dt>영문·코드 이름</dt><dd><code>AmendmentRequest</code>: <code>OPEN</code>, <code>ACKNOWLEDGED</code></dd><dt>출처</dt><dd>transitions T2-1·2-2, ADR-T3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-417" data-title="확인할 일"><p>대리인 증빙 만료, 비상 연락처 없음, 예정 복귀일 지남 같은 할 일. 코어가 모으지 않고 <code>app/</code>이 붙인다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 확인할 일</dd><dt>영문·코드 이름</dt><dd><code>TodoQuery.itemsOf</code>, 모듈 조회(<code>TransitionsInboxQuery</code> 등)</dd><dt>출처</dt><dd>core T8-2·10</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-418" data-title="요금 묶음"><p>금액 없는 묶음 코드. 전후를 비교해 요금 영향을 계산한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 기본 묶음 / 생활 지원 묶음</dd><dt>영문·코드 이름</dt><dd><code>FeeGroup</code>: <code>BASE</code>, <code>LIVING_SUPPORT</code></dd><dt>출처</dt><dd>transitions T2-1, transitions N4</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-419" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-420" data-title="서비스 시간"><p>입주자별 서비스 요일과 시간</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 서비스 시간 / 회원: 새로 받으시는 도움의 때</dd><dt>영문·코드 이름</dt><dd><code>ServiceSlot</code></dd><dt>출처</dt><dd>transitions T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-421" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-422" data-title="본사 운영 매니저"><p>운영사 전체나 여러 사업장을 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 본사 운영 매니저</dd><dt>영문·코드 이름</dt><dd><code>HQ_MANAGER</code></dd><dt>출처</dt><dd>core T6-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

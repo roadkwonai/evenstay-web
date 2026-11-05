@@ -1,0 +1,368 @@
+{
+ "seq": 6,
+ "occSeq": 0,
+ "draft": null,
+ "skips": [],
+ "occ": [],
+ "fees": {
+  "LAUNDRY_BEDDING": 10000
+ },
+ "teams": {
+  "FRONT": [
+   "st.choims"
+  ],
+  "FACILITY": [
+   "st.handy"
+  ],
+  "HOUSEKEEPING": [
+   "st.ohsj"
+  ],
+  "DRIVER": [
+   "st.jungty"
+  ],
+  "LIFE_SUPPORT": [
+   "st.yoonsy",
+   "st.kimhj"
+  ]
+ },
+ "settings": [
+  {
+   "type": "REPAIR",
+   "team": "FACILITY",
+   "base": "CREATED",
+   "hours": 48
+  },
+  {
+   "type": "CLEANING",
+   "team": "HOUSEKEEPING",
+   "base": "DAYEND",
+   "hours": 0
+  },
+  {
+   "type": "LAUNDRY",
+   "team": "HOUSEKEEPING",
+   "base": "PICKUP",
+   "hours": 48
+  },
+  {
+   "type": "TRANSPORT",
+   "team": "DRIVER",
+   "base": "PREFERRED",
+   "hours": 0
+  },
+  {
+   "type": "HOSPITAL_ESCORT",
+   "team": "LIFE_SUPPORT",
+   "base": "PREFERRED",
+   "hours": 0
+  },
+  {
+   "type": "FEEDBACK",
+   "team": "FRONT",
+   "base": "CREATED",
+   "hours": 72
+  },
+  {
+   "type": "OTHER",
+   "team": "FRONT",
+   "base": "CREATED",
+   "hours": 48
+  },
+  {
+   "type": "INSPECTION",
+   "team": "FACILITY",
+   "base": "DAYEND",
+   "hours": 0
+  }
+ ],
+ "tasks": [
+  {
+   "id": "T-1",
+   "name": "A동 청소",
+   "type": "CLEANING",
+   "rule": {
+    "kind": "WEEKLY",
+    "days": [
+     2,
+     5
+    ]
+   },
+   "target": {
+    "kind": "BUILDING",
+    "building": "A동"
+   },
+   "team": "HOUSEKEEPING",
+   "assignee": "st.ohsj",
+   "startsOn": "2026-11-17",
+   "endsOn": null,
+   "endedOn": null,
+   "allowSkip": true,
+   "skipCutoff": {
+    "daysBefore": 1,
+    "time": "18:00"
+   },
+   "generatedThrough": "2026-11-16"
+  },
+  {
+   "id": "T-2",
+   "name": "승강기 자체 점검",
+   "type": "INSPECTION",
+   "rule": {
+    "kind": "MONTHLY_NTH",
+    "nth": 1,
+    "weekday": 1
+   },
+   "target": {
+    "kind": "COMMON",
+    "label": "승강기"
+   },
+   "team": "FACILITY",
+   "assignee": "st.handy",
+   "startsOn": "2026-12-07",
+   "endsOn": null,
+   "endedOn": null,
+   "allowSkip": false,
+   "skipCutoff": {
+    "daysBefore": 1,
+    "time": "18:00"
+   },
+   "generatedThrough": "2026-12-06"
+  }
+ ],
+ "reqs": [
+  {
+   "id": "R-01",
+   "residentId": "R_MALSUN",
+   "room": "B동 302호",
+   "type": "REPAIR",
+   "team": "FACILITY",
+   "source": "RESIDENT_APP",
+   "byId": "m.malsun",
+   "heardVia": null,
+   "createdAt": "2026-11-06T10:00:00",
+   "body": "베란다 문이 잘 안 닫혀요",
+   "details": {
+    "entry": "ALLOWED_WHEN_ABSENT"
+   },
+   "preferredAt": null,
+   "dueAt": "2026-11-08T10:00:00",
+   "feeCode": null,
+   "charge": null,
+   "handoffId": null,
+   "trans": [
+    {
+     "at": "2026-11-06T10:00:00",
+     "act": "CREATE",
+     "by": "m.malsun",
+     "pending": false
+    }
+   ]
+  },
+  {
+   "id": "R-02",
+   "residentId": "R_JEONGHEE",
+   "room": "A동 301호",
+   "type": "REPAIR",
+   "team": "FACILITY",
+   "source": "STAFF_ENTRY",
+   "byId": "st.choims",
+   "heardVia": "PHONE",
+   "createdAt": "2026-11-02T09:30:00",
+   "body": "싱크대 물이 천천히 빠져요",
+   "details": {
+    "entry": "ALLOWED_WHEN_ABSENT"
+   },
+   "preferredAt": null,
+   "dueAt": "2026-11-04T09:30:00",
+   "feeCode": null,
+   "charge": null,
+   "handoffId": null,
+   "trans": [
+    {
+     "at": "2026-11-02T09:30:00",
+     "act": "CREATE",
+     "by": "st.choims",
+     "pending": false
+    },
+    {
+     "at": "2026-11-02T09:40:00",
+     "act": "ASSIGN",
+     "by": "st.choims",
+     "to": "st.handy",
+     "from": null,
+     "why": null
+    },
+    {
+     "at": "2026-11-02T14:00:00",
+     "act": "START",
+     "by": "st.handy"
+    },
+    {
+     "at": "2026-11-09T11:00:00",
+     "act": "COMPLETE",
+     "by": "st.handy",
+     "note": "배수구를 청소했어요"
+    }
+   ]
+  },
+  {
+   "id": "R-03",
+   "residentId": "R_OKJA",
+   "room": "A동 202호",
+   "type": "TRANSPORT",
+   "team": "DRIVER",
+   "source": "RESIDENT_APP",
+   "byId": null,
+   "heardVia": null,
+   "createdAt": "2026-11-08T14:00:00",
+   "body": null,
+   "details": {
+    "rideAt": "2026-11-19T10:00:00",
+    "dest": "마트",
+    "ret": true
+   },
+   "preferredAt": "2026-11-19T10:00:00",
+   "dueAt": "2026-11-19T10:00:00",
+   "feeCode": null,
+   "charge": null,
+   "handoffId": null,
+   "trans": [
+    {
+     "at": "2026-11-08T14:00:00",
+     "act": "CREATE",
+     "by": null,
+     "pending": false
+    },
+    {
+     "at": "2026-11-08T15:00:00",
+     "act": "ASSIGN",
+     "by": "st.choims",
+     "to": "st.jungty",
+     "from": null,
+     "why": null
+    }
+   ]
+  },
+  {
+   "id": "R-04",
+   "residentId": "R_KYUNGSOOK",
+   "room": "B동 201호",
+   "type": "FEEDBACK",
+   "team": "FRONT",
+   "source": "RESIDENT_APP",
+   "byId": null,
+   "heardVia": null,
+   "createdAt": "2026-11-07T20:00:00",
+   "body": "밤에 위층 소리가 들려요",
+   "details": {},
+   "preferredAt": null,
+   "dueAt": "2026-11-10T20:00:00",
+   "feeCode": null,
+   "charge": null,
+   "handoffId": null,
+   "trans": [
+    {
+     "at": "2026-11-07T20:00:00",
+     "act": "CREATE",
+     "by": null,
+     "pending": false
+    },
+    {
+     "at": "2026-11-07T20:20:00",
+     "act": "ASSIGN",
+     "by": "st.choims",
+     "to": "st.choims",
+     "from": null,
+     "claim": true
+    },
+    {
+     "at": "2026-11-09T09:10:00",
+     "act": "START",
+     "by": "st.choims"
+    }
+   ]
+  },
+  {
+   "id": "R-05",
+   "residentId": "R_OKJA",
+   "room": "A동 202호",
+   "type": "HOSPITAL_ESCORT",
+   "team": "LIFE_SUPPORT",
+   "source": "STAFF_ENTRY",
+   "byId": "st.choims",
+   "heardVia": "IN_PERSON",
+   "createdAt": "2026-11-09T11:00:00",
+   "body": null,
+   "details": {
+    "rideAt": "2026-11-24T10:00:00",
+    "dest": "",
+    "ret": true
+   },
+   "preferredAt": "2026-11-24T10:00:00",
+   "dueAt": "2026-11-24T10:00:00",
+   "feeCode": null,
+   "charge": null,
+   "handoffId": null,
+   "trans": [
+    {
+     "at": "2026-11-09T11:00:00",
+     "act": "CREATE",
+     "by": "st.choims",
+     "pending": false
+    },
+    {
+     "at": "2026-11-09T11:30:00",
+     "act": "ASSIGN",
+     "by": "st.choims",
+     "to": "st.yoonsy",
+     "from": null,
+     "why": null
+    }
+   ]
+  },
+  {
+   "id": "R-06",
+   "residentId": "R_SOONDEOK",
+   "room": "B동 402호",
+   "type": "CLEANING",
+   "team": "HOUSEKEEPING",
+   "source": "RESIDENT_APP",
+   "byId": null,
+   "heardVia": null,
+   "createdAt": "2026-11-05T15:00:00",
+   "body": "베란다",
+   "details": {},
+   "preferredAt": "2026-11-13T09:00:00",
+   "dueAt": "2026-11-13T23:59:00",
+   "feeCode": null,
+   "charge": null,
+   "handoffId": null,
+   "trans": [
+    {
+     "at": "2026-11-05T15:00:00",
+     "act": "CREATE",
+     "by": null,
+     "pending": false
+    },
+    {
+     "at": "2026-11-06T09:00:00",
+     "act": "ASSIGN",
+     "by": "st.choims",
+     "to": "st.ohsj",
+     "from": null,
+     "why": null
+    },
+    {
+     "at": "2026-11-09T21:30:00",
+     "act": "HOLD",
+     "by": "st.ohsj",
+     "reason": "RESIDENT_DATE",
+     "date": "2026-11-13",
+     "note": ""
+    }
+   ]
+  }
+ ],
+ "settingsVersion": 1,
+ "settingsLog": []
+}

@@ -1,0 +1,455 @@
+{
+ "sigSeq": 0,
+ "alertSeq": 0,
+ "rules": [
+  {
+   "key": "NIGHT_BED_EXIT_30",
+   "name": "밤 침대 떠남 30분",
+   "source": "BED_SENSOR",
+   "kind": "BED_EXIT_NO_RETURN",
+   "minDurationMin": 30,
+   "from": "22:00",
+   "to": "06:00",
+   "severity": "IMMEDIATE",
+   "intervalMin": 5,
+   "version": 1,
+   "template": "{날짜} {시각}에 침대에서 일어나신 뒤 30분 동안 돌아오지 않으셔서, 직원이 방에 다녀왔어요."
+  },
+  {
+   "key": "CALL_BELL",
+   "name": "호출벨",
+   "source": "CALL_BELL",
+   "kind": "CALL_BELL_PRESSED",
+   "minDurationMin": 0,
+   "from": null,
+   "to": null,
+   "severity": "IMMEDIATE",
+   "intervalMin": 5,
+   "version": 1,
+   "template": null
+  },
+  {
+   "key": "NIGHT_DOOR",
+   "name": "밤(23:00~06:00) 정문 출입",
+   "source": "ACCESS_LOG",
+   "kind": "DOOR_OPENED",
+   "minDurationMin": 0,
+   "from": "23:00",
+   "to": "06:00",
+   "severity": "CHECK",
+   "intervalMin": 15,
+   "version": 1,
+   "template": null
+  },
+  {
+   "key": "VISIT_MISSED",
+   "name": "안부 방문 놓침",
+   "source": "VISIT",
+   "kind": "VISIT_MISSED",
+   "minDurationMin": 0,
+   "from": null,
+   "to": null,
+   "severity": "CHECK",
+   "intervalMin": 15,
+   "version": 1,
+   "template": null
+  },
+  {
+   "key": "FRONT_CALL",
+   "name": "프런트 전화",
+   "source": "FRONT_CALL",
+   "kind": "FRONT_CALL",
+   "minDurationMin": 0,
+   "from": null,
+   "to": null,
+   "severity": "IMMEDIATE",
+   "intervalMin": 5,
+   "version": 1,
+   "template": null
+  }
+ ],
+ "shifts": [
+  {
+   "key": "NIGHT",
+   "from": "22:00",
+   "to": "08:00",
+   "slots": [
+    "st.kimhj",
+    "st.parksj",
+    "st.choiym"
+   ]
+  },
+  {
+   "key": "DAY",
+   "from": "08:00",
+   "to": "22:00",
+   "slots": [
+    "st.yoonsy",
+    "st.kimhj",
+    "st.choiym"
+   ]
+  }
+ ],
+ "visitPlan": {
+  "days": [
+   "2026-11-12"
+  ],
+  "start": "10:00",
+  "end": "18:00",
+  "residentIds": [
+   "R_OKJA",
+   "R_YEONGSUN",
+   "R_JEONGHEE"
+  ],
+  "consents": {
+   "R_OKJA": {
+    "at": "2026-05-30T14:20:00",
+    "staff": "st.choims",
+    "by": "SELF"
+   },
+   "R_YEONGSUN": {
+    "at": "2026-06-29T15:40:00",
+    "staff": "st.choims",
+    "by": "SELF"
+   },
+   "R_JEONGHEE": {
+    "at": "2026-03-30T11:10:00",
+    "staff": "st.choims",
+    "by": "REPRESENTATIVE"
+   }
+  }
+ },
+ "devices": [
+  {
+   "id": "bed-a201",
+   "kind": "BED_SENSOR",
+   "residentId": "R_EUNSOOK",
+   "room": "A동 201호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bed-a201h",
+   "kind": "BED_SENSOR",
+   "residentId": "R_HANGYEOL",
+   "room": "A동 201호",
+   "live": true,
+   "retiredOn": "2026-11-10",
+   "lastSeenAt": null
+  },
+  {
+   "id": "bed-a202",
+   "kind": "BED_SENSOR",
+   "residentId": "R_OKJA",
+   "room": "A동 202호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bed-a301",
+   "kind": "BED_SENSOR",
+   "residentId": "R_JEONGHEE",
+   "room": "A동 301호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bed-a401",
+   "kind": "BED_SENSOR",
+   "residentId": "R_YEONGSUN",
+   "room": "A동 401호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bed-b201",
+   "kind": "BED_SENSOR",
+   "residentId": "R_KYUNGSOOK",
+   "room": "B동 201호",
+   "live": false,
+   "retiredOn": null,
+   "lastSeenAt": null,
+   "silentHours": 2
+  },
+  {
+   "id": "bed-b302",
+   "kind": "BED_SENSOR",
+   "residentId": "R_MALSUN",
+   "room": "B동 302호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bed-b402",
+   "kind": "BED_SENSOR",
+   "residentId": "R_SOONDEOK",
+   "room": "B동 402호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-a201",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "A동 201호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-a202",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "A동 202호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-a301",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "A동 301호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-a302",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "A동 302호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-a401",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "A동 401호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-a402",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "A동 402호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-b201",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "B동 201호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-b202",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "B동 202호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-b301",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "B동 301호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-b302",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "B동 302호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-b401",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "B동 401호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "bell-b402",
+   "kind": "CALL_BELL",
+   "residentId": null,
+   "room": "B동 402호",
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  },
+  {
+   "id": "door-main",
+   "kind": "ACCESS_LOG",
+   "residentId": null,
+   "room": null,
+   "live": true,
+   "retiredOn": null,
+   "lastSeenAt": null
+  }
+ ],
+ "signals": [],
+ "alerts": [],
+ "events": [],
+ "phones": [],
+ "visits": [],
+ "escorts": [],
+ "links": [
+  {
+   "id": "L1",
+   "source": "BED_SENSOR",
+   "residentId": "R_EUNSOOK",
+   "from": "2026-10-01",
+   "to": null,
+   "consent": {
+    "at": "2026-09-28T10:30:00",
+    "staff": "st.choims",
+    "by": "SELF"
+   }
+  },
+  {
+   "id": "L2",
+   "source": "BED_SENSOR",
+   "residentId": "R_HANGYEOL",
+   "from": "2026-10-01",
+   "to": "2026-11-10",
+   "ended": "SUCCESSION",
+   "consent": {
+    "at": "2026-09-28T10:30:00",
+    "staff": "st.choims",
+    "by": "SELF"
+   }
+  },
+  {
+   "id": "L3",
+   "source": "BED_SENSOR",
+   "residentId": "R_OKJA",
+   "from": "2026-06-01",
+   "to": null,
+   "consent": {
+    "at": "2026-05-30T14:00:00",
+    "staff": "st.choims",
+    "by": "SELF"
+   }
+  },
+  {
+   "id": "L4",
+   "source": "BED_SENSOR",
+   "residentId": "R_JEONGHEE",
+   "from": "2026-04-01",
+   "to": null,
+   "consent": {
+    "at": "2026-03-30T11:00:00",
+    "staff": "st.choims",
+    "by": "REPRESENTATIVE"
+   }
+  },
+  {
+   "id": "L5",
+   "source": "BED_SENSOR",
+   "residentId": "R_YEONGSUN",
+   "from": "2026-07-01",
+   "to": null,
+   "consent": {
+    "at": "2026-06-29T15:30:00",
+    "staff": "st.choims",
+    "by": "SELF"
+   }
+  },
+  {
+   "id": "L6",
+   "source": "BED_SENSOR",
+   "residentId": "R_KYUNGSOOK",
+   "from": "2026-05-01",
+   "to": null,
+   "consent": {
+    "at": "2026-04-29T10:00:00",
+    "staff": "st.choims",
+    "by": "SELF"
+   }
+  },
+  {
+   "id": "L7",
+   "source": "BED_SENSOR",
+   "residentId": "R_MALSUN",
+   "from": "2026-05-01",
+   "to": null,
+   "consent": {
+    "at": "2026-04-29T11:00:00",
+    "staff": "st.choims",
+    "by": "REPRESENTATIVE"
+   }
+  },
+  {
+   "id": "L8",
+   "source": "BED_SENSOR",
+   "residentId": "R_SOONDEOK",
+   "from": "2026-08-01",
+   "to": null,
+   "consent": {
+    "at": "2026-07-30T16:00:00",
+    "staff": "st.choims",
+    "by": "SELF"
+   }
+  },
+  {
+   "id": "L9",
+   "source": "ACCESS_LOG",
+   "residentId": "R_EUNSOOK",
+   "from": "2026-10-01",
+   "to": null,
+   "consent": {
+    "at": "2026-09-28T10:40:00",
+    "staff": "st.choims",
+    "by": "SELF"
+   }
+  },
+  {
+   "id": "L10",
+   "source": "ACCESS_LOG",
+   "residentId": "R_OKJA",
+   "from": "2026-06-01",
+   "to": null,
+   "consent": {
+    "at": "2026-05-30T14:10:00",
+    "staff": "st.choims",
+    "by": "SELF"
+   }
+  }
+ ],
+ "linkSeq": 10,
+ "assist": {},
+ "evac": {
+  "roll": null,
+  "seq": 0
+ },
+ "incidents": [],
+ "incidentOpens": [],
+ "shiftEdits": [],
+ "cfgLog": [],
+ "ruleHist": [],
+ "deviceChecks": []
+}

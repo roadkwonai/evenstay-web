@@ -1,0 +1,563 @@
+# 프롬프트 기록: 빈 곳 보완과 범위 확장
+
+[이력 개요](../README.md) · 전체 45건 (사용자 17, 허브 지시 25, 에이전트 지시 3)
+
+### p0373
+
+2026-11-03 22:19 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+그리고 시니어들의 안전을 위해 긴급 경보로 즉시 출동하거나 진단, 응급처치, 긴급치료, 병원이송, 긴급벨 알람 출동, 숙소 체크나 시니어들을 수시로 모니터링해야되는 이런 서비스나 페이지도 부족한거 같은데 다시 한번 검토해줘 이런 부분들 랜딩페이지에도 모두 포함되어야 될거같은데
+~~~~
+
+### p0375
+
+2026-11-03 22:21 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+그외 내가 시니어 하우징 서비스 내가 놓친 부분들까지 모두 검토해서 보완해야될 것 같아
+~~~~
+
+### p0376
+
+2026-11-03 22:22 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+운영자가 모니터링하는 대시보드 서비스도 안보이는 것 같아
+~~~~
+
+### p0377
+
+2026-11-03 22:22 · 허브 지시 · 시니어 하우징 서비스 전체 지도와 빈 곳 검토
+
+~~~~text
+Background (from the session that started this one):
+senior-lab은 시니어 레지던스 PMS 'Evenstay' 포트폴리오 기획 워크스페이스예요([지원 회사] Tech Lead / Senior Backend 지원용). 코어(계약·청구) + 모듈(안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계) 구조로 기획이 승인됐고 evenstay 저장소에 인계돼 프로토타입이 있어요. 오늘 사용자가 소개 사이트 페이지와 안전 서비스가 빠졌다고 지적했고, 이제 시니어 하우징 서비스 전체에서 놓친 부분을 검토해 보완하자고 했어요. 허브(00-hub)가 단계 세션에 일을 맡기고 보고를 파일로 확인해요. 이 세션은 리서치 단계(빈 곳 지도)만 맡고, 무엇을 넣을지는 허브가 사용자와 정해요. 결과는 한국어로, 커밋하지 않아요(git 저장소 아님).
+
+Task:
+허브 요청: 시니어 하우징(노인복지주택, 시니어 레지던스, 실버타운) 운영에 필요한 서비스 전체를 지도로 만들고, 지금 Evenstay 기획이 다루지 않는 빈 곳을 찾아 주세요.
+사용자 말(그대로): "그외 내가 시니어 하우징 서비스 내가 놓친 부분들까지 모두 검토해서 보완해야될 것 같아". 직전에 사용자가 안전 서비스(긴급 출동, 응급처치, 병원 이송, 호출벨 출동, 숙소 체크, 수시 모니터링)와 소개 사이트 페이지(직원·센터장, 시설·전경·숙소 사진, 오시는 길)가 빠졌다고 지적했어요. 안전 항목은 B 기획 세션이 따로 자세히 검토 중이니 여기서는 지도 수준으로만 다뤄요.
+
+산출물: `outputs/service-coverage-review.md` (상태: 초안)
+1. 서비스 지도: 입주 전(상담, 견학, 계약, 입주 준비) → 거주 중(주거·시설, 식사, 청소·세탁, 수리·유지보수, 안전·건강, 여가·프로그램·커뮤니티, 이동·셔틀, 방문객·택배, 금전·청구, 가족 소통, 민원·의견, 개인정보·동의) → 변화(돌봄 필요 증가, 병원 입원·퇴원, 외부 돌봄 연계) → 퇴거·이별(계약 종료, 사별·승계, 짐 정리) 그리고 운영 쪽(직원 근무·교육, 재난·화재 대피, 감염병, 시설 점검, 본사·소유주 보고). 빠진 범주가 있으면 더해요.
+2. 서비스마다: 이용자(시니어 본인, 보호자, 직원, 본사·소유주, 지자체), 한국 제도·법 근거(출처 URL과 기준 날짜, 없으면 [미확인]), 해외 시니어 리빙 사례가 있으면 출처와 함께.
+3. 지금 다루는 곳 대조: 모듈 A 코어(`../04-planning/ideas/pms-core-billing/`), B 안심 알림(safety-signal-hub), C 생활 지원 단계(care-stage-transition), D 보호자 포털·동의(family-consent-portal), G AI 생활 비서(senior-ai-assistant), E 입주 상담(예비, move-in-crm-agent, 02-ideation 쪽), 진행 중인 랜딩·소개 사이트(evenstay-landing), MVP 화면 정의서(`~/ai/evenstay/design/mvp-screens.md`). 표시는 "소프트웨어 기능 있음 / 운영 절차만 / 소개 콘텐츠만 / 없음".
+4. 빈 곳마다 제안: 어디에 넣을지(기존 모듈 확장 / 새 모듈 후보 / 소개 사이트 콘텐츠만 / 범위 밖)와 이유, 포트폴리오 데모 가치([지원 회사] Tech Lead·Senior Backend 지원, 2~4주 1인 MVP)를 고려한 우선순위 후보(높음/중간/낮음). 최종 우선순위는 허브가 사용자와 정해요.
+5. 기존 `outputs/problem-bank.md`, `pms-landscape.md`, `competitive-landscape.md`에 이미 있는 근거는 다시 찾지 말고 연결해요.
+
+쓸 스킬(Skill 도구로 호출): `competitor-analysis`(해외·국내 사례 비교), 필요하면 `customer-research`, `jobs-to-be-done`. 웹 조사는 출처를 남겨요.
+
+지킬 것:
+- 없는 사실·수치·인터뷰를 만들지 않아요. 문장마다 [사실]/[추정]/[가설]/[미정]. 정책·법은 시행일과 개정 여부를 확인해요.
+- 의료 행위(진단, 치료)를 시설·소프트웨어가 한다고 쓰지 않아요. 사람의 개입 지점을 적어요.
+- 존중하는 표현. [지원 회사] 이름과 표지는 문서 본문에 회사 분석 맥락 외에 쓰지 않아요.
+- 용어는 "판" 대신 "버전".
+- 01-research 밖(shared/, 다른 단계, evenstay)은 고치지 않아요.
+
+보고(한국어): 범주별 서비스 수, "없음"으로 나온 빈 곳 목록(제안 위치·우선순위 후보 포함), 높음 후보 상위 5~8개와 이유, 실제 호출한 스킬.
+
+Shared notes folder for this group of sessions (outside the repo; read siblings' notes there, leave hand-over notes or large findings there instead of pasting them into messages): ~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19
+~~~~
+
+### p0378
+
+2026-11-03 22:23 · 에이전트 지시 · 시니어 하우징 서비스 전체 지도와 빈 곳 검토
+
+~~~~text
+읽기 전용 작업이에요. 한국어로 답해 주세요.
+
+목표: 시니어 레지던스 PMS 기획 'Evenstay'의 각 모듈이 시니어 하우징 서비스 범주 중 무엇을 다루는지 대조표 재료를 뽑아 주세요. 판단은 문서에 적힌 것만으로 하고, 추측은 "[추정]"으로 표시해요.
+
+읽을 파일 (전부 읽어 주세요. 문서마다 범위/비범위/기능 목록/화면 목록 절이 중요해요):
+- ~/ai/senior-lab/04-planning/ideas/pms-core-billing/prd.md (모듈 A 코어: 계약·청구) + 같은 폴더 service-blueprint.md, roadmap.md
+- ~/ai/senior-lab/04-planning/ideas/safety-signal-hub/prd.md (B 안심 알림) + roadmap.md
+- ~/ai/senior-lab/04-planning/ideas/care-stage-transition/prd.md (C 생활 지원 단계) + roadmap.md
+- ~/ai/senior-lab/04-planning/ideas/family-consent-portal/prd.md (D 보호자 포털·동의) + roadmap.md
+- ~/ai/senior-lab/04-planning/ideas/senior-ai-assistant/prd.md (G AI 생활 비서) + roadmap.md
+- ~/ai/senior-lab/04-planning/ideas/evenstay-landing/prd.md, screen-spec.md, asset-plan.md (소개 사이트, 진행 중)
+- ~/ai/evenstay/design/mvp-screens.md (MVP 화면 정의서)
+- ~/ai/senior-lab/02-ideation/outputs/shortlist.md 와 idea-longlist.md 에서 E 입주 상담(move-in-crm-agent)과 탈락·보류된 아이디어 (어떤 서비스 범주였는지)
+
+아래 범주마다, 어느 모듈이 어떤 수준으로 다루는지 표로 정리해 주세요. 수준은 넷 중 하나: "소프트웨어 기능 있음"(MVP 또는 Next 로드맵인지도 적기) / "운영 절차만"(문서에 사람 절차로만 언급) / "소개 콘텐츠만"(랜딩에만) / "없음". 근거는 파일명:줄번호 또는 절 제목과 짧은 인용(15단어 이하).
+
+범주:
+입주 전: 상담·문의, 견학 예약, 입주 심사·자격 확인, 계약(보증금·전세·임대·분양형 구분), 입주 준비(이사·가구·서류)
+거주 중: 호실·시설 배정과 공용시설 예약, 식사(식단·결식·특식·알레르기), 청소·세탁(하우스키핑), 수리·유지보수 요청(작업 지시), 안전(호출벨, 응급, 야간 순회, 안부 확인, 낙상), 건강(건강 상담, 복약 알림, 간호사, 협력 병원), 여가·프로그램·동호회·커뮤니티 공지, 이동·셔틀·외출, 방문객 출입·택배·우편, 금전(청구·관리비·식비 차감·결제·미납), 가족 소통(보호자 포털), 민원·의견·만족도, 개인정보·동의·열람권한
+변화: 돌봄 필요 증가(등급 변화), 병원 입원·퇴원(부재 처리, 식비 정지), 외부 돌봄 연계(장기요양, 방문요양, 통합돌봄)
+퇴거·이별: 계약 종료·보증금 정산, 사별·승계·상속인 안내, 짐 정리
+운영: 직원 근무표·교대·인수인계, 직원 교육·자격, 재난·화재 대피, 감염병 대응, 시설 점검(소방·승강기 등), 본사·소유주 보고(지표, 대시보드), 다지점 관리, 권한·감사 로그, 외부 연동(결제, 문자·알림톡, 회계)
+소개 사이트: 직원·센터장 소개, 시설·전경·숙소 사진, 오시는 길, 요금 안내, 입주 문의 폼
+
+추가로: 위 범주에 없는데 문서에 등장하는 기능이 있으면 따로 적어 주세요. 또한 각 PRD에서 "비범위/하지 않는 것"으로 명시한 항목을 모듈별로 목록화해 주세요.
+
+출력은 표 하나(범주 × 모듈 A/B/C/D/G/E/랜딩/mvp-screens) + 근거 목록 + 비범위 목록 + 추가 기능 목록. 1500단어 이내로.
+~~~~
+
+### p0379
+
+2026-11-03 22:25 · 허브 지시 · 시니어 하우징 서비스 전체 지도와 빈 곳 검토
+
+~~~~text
+허브 추가 요청: 검토에 "운영자가 모니터링하는 대시보드"를 꼭 넣어 주세요.
+사용자 말(그대로): "운영자가 모니터링하는 대시보드 서비스도 안보이는 것 같아".
+
+허브가 확인한 현재 상태: MVP 화면 정의서(`~/ai/evenstay/design/mvp-screens.md`)에는 CORE-01 "오늘의 운영"(본사·경리의 확인할 일 목록), CORE-09 "소유주 현황"(사업장 합계, 이름 가림), SAF-01 "지금 처리할 신호"(야간 직원 신호 목록)만 있어요. 여러 모듈을 한눈에 보는 실시간 운영 현황(사업장·동별 상태, 열린 신호와 응답 상황, 기기 상태, 오늘 당번, 청구·수납 현황, 생활 지원 단계 변경 대기, 보호자 동의·문의 등)은 없어요.
+
+검토에 넣을 것: 운영자 역할별(현장 책임자, 야간 당번, 본사 운영, 경리, 소유주) 대시보드에 보통 무엇이 있는지 사례(출처 포함)와, Evenstay 모듈에서 읽을 수 있는 데이터로 무엇을 보여 줄 수 있는지. 설계 제약: 대시보드는 `app/`이 각 모듈 `api/`를 읽어 조립하고 다른 모듈 데이터를 복사해 두지 않아요(`~/ai/evenstay/CLAUDE.md` 모듈 경계 8번). 지표 목표값·효과 수치는 지어내지 않아요. 우선순위 후보와 이유도 다른 빈 곳처럼 적어 주세요.
+~~~~
+
+### p0381
+
+2026-11-03 22:37 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+넓게(N1 포함)
+~~~~
+
+### p0387
+
+2026-11-03 22:52 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+식사 메뉴와 메뉴 사진, 시니어들 식사하는 사진도 포함되면 좋을것 같은데 없는것 같아 
+식사에 대한 디테일한 소개 페이지가 없는것 같아
+~~~~
+
+### p0392
+
+2026-11-03 22:58 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+추천대로
+~~~~
+
+### p0393
+
+2026-11-03 22:58 · 허브 지시 · N1 카피: 생활 요청(작업 지시)
+
+~~~~text
+허브 전달: 사용자가 copy.md "사용자가 정할 것" 5가지를 추천대로 정했어요. 사용자 말(그대로): "추천대로".
+1. 보호자 허락 방식: (가) D 허락 항목에 "생활 요청"을 더함(보기 + 대신 올리기, 기본값 "안 보여요").
+2. 병원 동행 요청이 보호자에게 보이는 조건: 건강 소식을 허락받은 보호자에게만, 병원 이름은 빼고.
+3. 확인 없이 닫히는 기간: 7일.
+4. 정기 청소 회차: 확인 없이 완료로 닫고 [다시 봐 주세요]만 둠.
+5. 모듈 이름: "생활 요청".
+
+반영해 주세요: 4개 파일에서 해당 [미정]·후보 표시를 결정으로 바꾸고, "사용자가 정할 것" 절은 "정한 것(2026-11-03, 사용자 '추천대로')"로 옮겨요. 상태는 `초안` 그대로예요(카피 승인은 사용자가 따로 해요). D 허락 항목 추가는 D 기획·카피 몫이라 "다른 모듈에 필요한 것"으로 적어만 두세요. 다른 slug, 04-planning, shared/, evenstay는 고치지 않아요.
+보고: 바꾼 곳 수와 남은 [미정] 목록만 짧게.
+~~~~
+
+### p0399
+
+2026-11-03 23:02 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+승인하고 기획 시작
+~~~~
+
+### p0401
+
+2026-11-03 23:19 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+기획, PRD, 화면정의서 모두 완료되면 korean-skills 로 한국어 문장 및 검수도 진행해줘
+~~~~
+
+### p0407
+
+2026-11-03 23:25 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+끝나면 우선 전체적으로 보완해야될 부분은 없는지 필요한 스킬로 리뷰 및 검수 해서 보완해야될 부분들 누락된 부분들 전체적으로 검토해서 보완부터 먼저 진행할 수 있도록해줘
+~~~~
+
+### p0409
+
+2026-11-03 23:27 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+허브 확인: 세션이 멈춰 있어요. 검토 에이전트 결과가 이미 왔다면 반영하고, 오지 않았다면 기다리지 말고 지금 결과로 마무리해 주세요. 남은 일: evenstay/docs/requests/(기획 7종)와 docs/requests/copy/(카피 4종) 복사, diff 확인(경로 줄만 다른지), 요청한 형식의 보고. `requests/CLAUDE.md`는 이미 있어요.
+~~~~
+
+### p0410
+
+2026-11-03 23:27 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+pm-skills 를 사용해서 프로젝트 관리 및 진행하고 있어?
+~~~~
+
+### p0412
+
+2026-11-03 23:51 · 에이전트 지시 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+You are reviewing planning documents for "Evenstay", a senior-residence PMS portfolio project (modular monolith). Reply in Korean. READ-ONLY: do not edit any file.
+
+Goal: find cross-module inconsistencies and gaps that would break implementation or a demo. Be concrete; every finding must cite file:line on both sides of the mismatch.
+
+Sources (evenstay handoff copies are the implementation baseline; senior-lab sources are identical except path lines):
+- ~/ai/evenstay/CLAUDE.md (module boundary rules 1–9: own schema, import only core/api and other modules' api/, no cross-module data copies, outbox events + idempotent consumers, single authorize(), AuditWriter, demo reset order, seed states AFTER_SUCCESSION / G_START / C_AFTER_DISCHARGE)
+- ~/ai/evenstay/docs/{core,safety,family,assistant,transitions,requests}/ — each has prd.md, tech-design.md, user-stories.md, handoff.md, service-blueprint.md, roadmap.md, strategy.md, and copy/ (copy.md, names.md, product-marketing.md, value-prop.md)
+- ~/ai/evenstay/design/mvp-screens.md (screen definition, just extended: Must 66 / Next 34)
+- Notes already collected by the screen-definition session (read first, verify, do not just repeat): ~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19/screens-add-2026-11-03/*.md
+
+Today's additions to check especially: core long absence (ResidentAbsenceStarted/Ended, AbsenceQuery with status/returnedOn), operations dashboard cards (app/ assembly reading SafetyBoardQuery.boardOf, FamilyConsentSummaryQuery.siteSummary, ServiceRequestQuery.openCount, AssistantUsageQuery.summary), safety F20–F25 (ack time display, hospital accompaniment, check-in visits, absence pause read via AbsenceQuery, night duty view), family F18–F20 (absence news, consent summary, LIFE_REQUEST consent item), new module requests (REQ-01~19) and its outbound requests N1-C1~C4, N1-D1~D6, N1-G1~G4, N1-B1~B4 — check whether the target modules' docs already contain what N1 asks for or not.
+
+Check: event names/payloads producer vs consumers; query/command names and signatures caller vs owner; authorize action names registered vs used; enum/consent item lists; demo seed people, units, dates per seed state across modules (protagonist 이은숙 A동 201호); screen IDs and priorities (P0/P1/Next) between each prd and mvp-screens.md; copy references ("반영됨(copy 절)") pointing to sections that exist; violations of module boundary rules; banned words on screens (낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정); anything the G assistant module needs to change for N1 hand-off that G docs don't have yet.
+
+Output: a table grouped by severity (차단 = breaks build/demo or rule; 높음 = will cause rework; 중간; 낮음), columns: 번호, 심각도, 모듈, 내용, 근거(file:line 양쪽), 고칠 곳(which module's planning session should fix), 제안. Then a short list of what you could not verify. Keep it under ~120 lines.
+~~~~
+
+### p0413
+
+2026-11-03 23:51 · 에이전트 지시 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+You are reviewing an Evenstay (Korean senior-residence PMS portfolio) planning set for completeness — what is still missing or weak after today's additions. Reply in Korean. READ-ONLY: do not edit files.
+
+Context: the user (applying for Tech Lead / Senior Backend at a senior-housing company) kept finding gaps today: website/intro pages (staff, director, directions, facility/exterior/room photos, dining page with menus), safety services (dispatch on alarm, first aid/hospital transport handled by people, call-bell dispatch, room checks, frequent monitoring), an operator monitoring dashboard, and "anything else I missed". The team responded with: core long absence + dashboard cards, safety F20–F25, family F18–F20, a new module "생활 요청" (requests), and an intro-site plan (evenstay-landing). Constraints: 1-person 2–4 week MVP; no fabricated facts or numbers; medical diagnosis/treatment is never done by software or general staff; judgment words banned on screens; marketing (SEO/ads/pricing experiments) out of scope.
+
+Read:
+- ~/ai/senior-lab/01-research/outputs/service-coverage-review.md (62-service map, gaps, priorities)
+- ~/ai/senior-lab/shared/decisions.md (last ~25 rows = today's decisions) and shared/idea-board.md
+- ~/ai/evenstay/design/mvp-screens.md
+- ~/ai/senior-lab/04-planning/ideas/evenstay-landing/{prd,screen-spec,asset-plan,handoff}.md
+- ~/ai/evenstay/docs/*/handoff.md and prd.md (skim)
+- ~/ai/senior-lab/shared/target-companies.md (what the target company does)
+
+Answer:
+1. Which items the user explicitly asked for today are still missing or only partly covered (in product docs, screen definition, or intro-site plan)? Cite where you looked.
+2. Which "high" or "medium" gaps from service-coverage-review are still not assigned anywhere, and which deferred-to-Next items look risky to leave out for a senior-housing portfolio demo?
+3. Intro-site plan vs product: pages promising things the product plan does not support, or product features that the site never mentions; open user decisions blocking it (list them).
+4. Things a senior-housing operator interviewer would expect to see that are absent (be specific, no generic advice), each with where it should live (existing module / new / site only / out of scope) and a priority suggestion.
+5. Scope risk: with Must now 66 screens plus a new module, list what you would cut or defer, with reasons.
+
+Format: numbered sections, tables where useful, every claim with a file reference. Keep under ~120 lines. Do not invent facts; mark guesses as [추정].
+~~~~
+
+### p0414
+
+2026-11-04 00:01 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+어떻게 하는게 좋을까? 다시한번 검토해서 추천해줘
+~~~~
+
+### p0415
+
+2026-11-04 00:03 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+일단 MVP 까지 만들지는 않을꺼고 모든 화면만 만들꺼라서 모든 페이지를 만들어도 괜찮을거같아
+~~~~
+
+### p0416
+
+2026-11-04 00:05 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+화면만 만들더라도 화면의 흐름대로 실제 사용 가능한 것처럼 페이지 구성은 흐름대로 동작하도록 모두 구현하는것이 목표야
+~~~~
+
+### p0417
+
+2026-11-04 00:06 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+추천대로 시작
+~~~~
+
+### p0422
+
+2026-11-04 00:08 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+허브 요청: 전체 리뷰 뒤 보완을 시작해요. 사용자 말(그대로): "추천대로 시작". 목표는 모든 화면이 흐름대로 실제처럼 동작하는 클릭형 프로토타입이에요(MVP 구현 없음).
+지시서: `~/ai/senior-lab/00-hub/reviews/supplement-orders-2026-11-04.md` — "공통 규칙", "통합 데모에 넣을 새 장면", "생활 요청" 절(1~4)을 읽고 그대로 해 주세요. 4번(코어 직원 4명, D 허락 시작점, G FORWARDED)은 각 세션이 지금 반영 중이라, 허브가 확정값을 보내면 맞춰 주세요. 지금은 1~3을 먼저 해요.
+보고: 바꾼 곳, 통합 데모 장면(11/17), diff 결과, 실제 호출한 스킬.
+~~~~
+
+### p0427
+
+2026-11-04 00:08 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+클릭형 프로토타입을 바로 제작하는건 아니야 우선 /design 아트보드 프로토타입부터 완성해야돼
+~~~~
+
+### p0430
+
+2026-11-04 00:24 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+허브 전달: 보완 지시 4번의 확정값이에요. N1 기획 7종에 맞추고 docs/requests/로 재인계해 주세요.
+- 코어(확정): 직원 한도윤·오수진·정태영(SITE_STAFF), 윤서연(SITE_STAFF, LIFE_SUPPORT)이 모든 시드 상태와 데모 계정에 있어요. 청구: `ServiceChargeCommand.record`(N1은 `sourceLabel`, `sourceType`을 넘겨야 함), `ServiceChargeQuery.previewTargetPeriod`/`pendingUsages`, `ServiceFeeQuery.priceOf`/`priceIn`, 항목 `SERVICE_FEE`, 요금표 `SERVICE_FEES.LAUNDRY_BEDDING` 10,000원 [가설]. 넣을 달: 사용일에 유효한 계약의 청구 기간 중 ISSUED 청구서가 없는 가장 이른 달(이은숙 11/17 → 12월). 호출 주체는 `SYSTEM:requests`이고, N1이 부팅 때 `registerSystemPrincipal('requests')`로 등록해요. 허용된 코어 행동은 `core.service_charge.record` 하나예요. `openCount` 반환은 N1 8-2 형태 그대로 코어 10절에 들어갔고, `/demo/reset` 순서 끝에 requests가 있어요.
+- 코어 장기 부재 시드(확정): 김정희 A동 301호 11/8~11/19(예정 복귀 11/20), 최순덕 B동 402호 12/1~12/9(예정 12/6), 이은숙 12/2~12/7(데모에서 실시간 등록, C_AFTER_DISCHARGE·G_START에서는 ENDED). L0의 "401호 박영순 장기 부재라 쉼"을 301호 김정희로 바꾸고, C_AFTER_DISCHARGE 행의 이은숙 부재 [미정]을 닫아요.
+- D(확정): 김지민의 `LIFE_REQUEST` 허락은 D 시드(C_AFTER_DISCHARGE, G_START)와 통합 흐름 11/17 15:00 장면 D-N1-1(이은숙이 직접 허락, 15:10 김지민이 대신 올림)에서 생겨요. D가 `ServiceRequestStatusChanged`를 구독해 보호자가 올린 요청의 ASSIGNED·DONE 때 문자를 보내요. D는 생활 소식 재료로 [가설] `ServiceRequestQuery.doneIn(residentId, from, to)`를 요청했어요. 이름을 확정해 주세요.
+- G(확정): Handoff 상태 FORWARDED. 보내는 조건은 이유 OUT_OF_SCOPE이거나 MEMBER_ASKED + 주제 OTHER/null, 회원 본인이 넘긴 것, requests 배포됨. 넘김 저장 뒤 `receiveFromAssistant`를 동기 호출하고, 실패하면 넘김은 NEW로 남아요. `external_ref`에 N1 요청 ID.
+- B(확정): `SafetyFrontCallCommand.registerFromRequest({siteId, unitId, residentId, actor, sourceModule: 'REQUESTS', sourceId}) → {alertId}`, 출처 라벨 "생활 요청에서 옮김"(요청 글은 넘기지 않음). N1 병원 동행 신청과 B 병원 동행 기록은 연결하지 않아요.
+- 열린 결정(사용자에게 올림, 지금은 그대로 두세요): 11/17 L9의 유료 요청이 이은숙 12월 청구서를 2,920,000원으로 바꾸는 문제. 그리고 소유주 월 리포트(CORE-14)에 N1 월 요약을 OWNER_VIEWER에게 열지.
+보고: 바꾼 곳, 확정한 `doneIn` 이름, diff 결과.
+~~~~
+
+### p0433
+
+2026-11-04 00:26 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+모두 추천대로
+~~~~
+
+### p0434
+
+2026-11-04 00:26 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+허브 전달: 사용자가 열린 결정을 모두 추천대로 정했어요(그대로: "모두 추천대로"). N1에 해당하는 것:
+- H1: 11/17 L9의 유료 요청(이불 세탁 10,000원)은 배경 입주자 정옥자 회원님 것으로 옮겨요. 이은숙 12월 청구서는 2,910,000원 그대로예요.
+- H4: 11/17 장면에서 회원은 회원 앱 화면(REQ)으로 요청해요. 비서 경로는 쓰지 않아요(G 고지 게이트는 2027-01-05 그대로).
+- H5: 소유주 월 리포트(코어 CORE-14)에 생활 요청 월 숫자를 열어요(이름·호실 없음). OWNER_VIEWER용 월 요약 조회와 행동 이름을 정해 주세요.
+[미정] 표시를 닫고 docs/requests/로 재인계해 주세요. 보고: 바꾼 곳, 월 요약 조회·행동 이름, diff.
+~~~~
+
+### p0439
+
+2026-11-04 00:27 · 허브 지시 · N2 카피: 커뮤니티(프로그램·공용시설·공지)
+
+~~~~text
+허브 전달: 사용자가 copy.md "사용자가 정할 것" 5개를 추천대로 정했어요(그대로: "모두 추천대로"). 1 모듈 이름 직원 "프로그램·시설·공지", 회원 버튼 셋(프로그램, 시설 예약, 공지) · 2 D 허락 항목 "일정"에 신청 프로그램 포함, 대기·시설 예약은 안 보임 · 3 마감 전 대기 첫 번째 자동 승급+문자, 마감 뒤 직원 전화 · 4 이번 버전은 무료 프로그램만 · 5 공지는 직원이 고르고 기본 끔.
+4개 파일에서 [미정]·후보 표시를 결정으로 바꾸고 "정한 것(2026-11-04, 사용자 '모두 추천대로')"로 옮겨 주세요. 상태는 초안 그대로예요(카피 승인은 따로). 보고: 바꾼 곳 수와 남은 [미정].
+~~~~
+
+### p0441
+
+2026-11-04 00:28 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+승인하고 기획 시작
+~~~~
+
+### p0442
+
+2026-11-04 00:29 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+허브 전달(H1 보충): 코어가 확인했어요. 11/17 정옥자 회원님(A동 202호)의 이불 세탁 10,000원은 넣을 달 규칙에 따라 **11월** 청구서에 들어가요(12월이 아님). 11/30 마감 장면에 "정옥자 11월 청구서에 서비스 항목 한 줄"이 있어요. N1 문서에서 이 요청의 청구 달을 11월로 맞춰 주세요.
+~~~~
+
+### p0452
+
+2026-11-04 00:49 · 허브 지시 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+허브 요청: Evenstay 소개 사이트의 문구를 써 주세요. slug `evenstay-landing`, 폴더 `ideas/evenstay-landing/`.
+입력: 기획 `../04-planning/ideas/evenstay-landing/`(prd, screen-spec, asset-plan, handoff; 초안, 사용자 결정 U-01~U-25 반영). 문구 자리는 `screen-spec.md` 6절의 C-01~C-50이고, `handoff.md` "카피 세션" 절에 지킬 것이 있어요. 근거 문장은 각 모듈 승인 카피(`ideas/*/value-prop.md`, `product-marketing.md`, `names.md`, `copy.md`)에서 가져와요.
+
+만들 것: `copy.md`(C-01~C-50을 섹션·페이지 순서로, 버튼·캡션·대체 텍스트·폼 안내·오류·빈 상태 포함, 예시 식단표 메뉴 이름 C-44 포함). 필요하면 `names.md`(사이트 메뉴·페이지 이름)도. Skill `copywriting` 뒤 `copy-editing`, 그리고 `grammar-checker` → `style-guide` → `humanizer`로 검수.
+
+지킬 것:
+- 해요체, "회원님". 사이트 이름은 Evenstay(U-09). 브랜드 Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서. 직원은 시드 이름(최영미 센터장, 최민수, 김하진, 박서준), 식당 직원 이름은 정해 주세요(가상).
+- 지어내지 않기: 효과 수치, 후기, 입주자 수, 정원 수, 면적, 가격, 수상, 인증, 협력 병원, 센터장·직원 경력·자격·학력. 운영 확인 전 항목(U-17: 간호 인력, 밤 근무 인원, 응급처치 교육, 병원 동행, 협력 의료기관, 식사 시각, 영양사, 원산지, 프런트 운영 시간 등)은 사실처럼 쓰지 않아요.
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)와 U-14 표의 피할 말(진단, 치료, 모니터링, 즉시 출동, 숙소 체크 등)은 대체 표현으로. 진단·치료를 한다는 문장 금지. 넘김 5분 숫자 없음(U-15). 안부 방문은 주기·시간 숫자 없이(U-25).
+- 메인 순서는 생활(공간, 식사, 여가)이 먼저, 안심·건강 지원은 뒤. 식사는 "예시 식단" 표시, "의무식"·"의료식"·"치료식" 없음(U-21). 식이 선택은 "상담 때 말씀해 주세요" 한 줄만(U-23).
+- AI 생성 이미지·영상 표기 문구, 가상 주소·가상 번호 표기, 상담 폼이 보내지 않는 목업이라는 안내.
+- 프로그램 이름은 `ideas/community/names.md` 2-1과 같게(수채화, 가벼운 체조, 텃밭 가꾸기). 생활 요청은 `ideas/life-requests/` 이름 그대로.
+- 이모지 금지, "판" 대신 "버전". 문장마다 [사실]/[추정]/[가설]/[미정] 구분이 되게.
+- 상태 `상태: 초안`. shared/, 다른 slug, 04-planning, evenstay는 고치지 않아요.
+
+보고(한국어): C 번호별 작성 여부, 남긴 [미정], 사용자가 정할 것(추천 포함), 실제 호출한 스킬.
+~~~~
+
+### p0458
+
+2026-11-04 00:54 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+허브 요청: N1 카피 세션이 copy.md에 새 10절(9개 소절, 59줄)을 넣어 기획 `[NEED: 카피]` 17개 항목에 답했어요. N1 기획 본문의 `[NEED: 카피]`를 "반영됨(copy 10-n)"으로 바꾸고 기획 7종과 copy 폴더를 docs/requests/로 재인계해 주세요. 부록 예문 "은행 → 시장"은 이미 기획에서 바꿨다면 카피와 맞는지만 확인해요. 보고: 바꾼 수, 남은 `[NEED: 카피]`, diff.
+~~~~
+
+### p0472
+
+2026-11-04 01:08 · 허브 지시 · N2 기획: 커뮤니티(프로그램·시설·공지)
+
+~~~~text
+허브 요청: 사용자가 보류분을 승인했어요(그대로: "보류된것 승인해"). N2 기획 7종은 이제 승인(2026-11-04) 상태예요. N2 카피 세션이 prd 12절 `[NEED: 카피]` 14개를 copy.md에 넣었어요(3-1 대리인 문장 수정 포함). 기획 본문의 `[NEED: 카피]`를 "반영됨(copy 절 번호)"으로 바꾸고, 기획 7종과 copy 폴더를 docs/community/로 재인계해 주세요(지금 docs/community/copy/가 원본과 79줄 달라요). 앞으로 고치는 곳은 상태 줄 그대로 두고 "변경: … (재승인 대기)" 메모를 붙여요. 보고: 바꾼 수, 남은 `[NEED: 카피]`, diff.
+~~~~
+
+### p0497
+
+2026-11-04 07:39 · 허브 지시 · N1 카피: 생활 요청(작업 지시)
+
+~~~~text
+허브 요청(문구 규칙 정리): 프런트 번호 표기를 통일해요(허브 결정, 레이아웃 검토). 회원·보호자 화면은 "02-000-0000 (가상 번호)" 하나, "내선 0번"은 회원 방 전화로 거는 경우에만 그 용도를 문구에 밝혀서. `ideas/life-requests/copy.md` 12곳과 `product-marketing.md` 1곳을 맞춰요. 승인 문구를 바꾸는 것이니 교정 기록에 분명히 적고, 상태 줄 그대로 "변경: 2026-11-04 프런트 번호 표기 통일(재승인 대기)" 메모. 보고는 바꾼 곳 수만.
+~~~~
+
+### p0523
+
+2026-11-04 10:18 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+N1 카피 문구 규칙 정리가 끝났으니 `docs/requests/copy/`에 다시 인계해 주세요.
+바뀐 원본은 `senior-lab/03-copywriting/ideas/life-requests/`의 두 파일이에요.
+- `copy.md`: 프런트 번호 12곳을 고쳤어요.
+- `product-marketing.md`: 프런트 번호 1곳을 고쳤어요.
+
+할 일: copy/ 파일을 다시 복사하고 diff로 확인해요. 경로 줄 말고는 차이가 0이어야 해요.
+같이 볼 것: 통합 데모는 시드를 초기화하지 않고 시계만 옮겨요. 그런데 11/17 장면에 쓸 N1 시드 요청이 언제, 어디서 생기는지 prd 9절에 드러나 있지 않아요. 이 부분을 분명히 적어요. 기획을 고쳤으면 재인계하고 상태 줄 메모는 "(재승인 대기)"로 달아요.
+보고: 파일별 diff 줄 수, 그리고 시드 출처를 어떻게 처리했는지.
+~~~~
+
+### p0524
+
+2026-11-04 10:18 · 허브 지시 · N2 기획: 커뮤니티(프로그램·시설·공지)
+
+~~~~text
+N2 카피 문구 규칙 정리가 끝났으니 `docs/community/copy/`에 다시 인계해 주세요.
+바뀐 원본: `senior-lab/03-copywriting/ideas/community/copy.md`
+- 5-1 직원 화면의 "회원" 3곳을 "입주자"로 바꿨어요.
+- 프런트 번호 7곳을 고쳤어요.
+
+할 일: copy/ 파일을 다시 복사하고 diff로 확인해요. 경로 줄 말고는 차이가 0이어야 해요.
+같이 볼 것: 통합 데모는 시드를 초기화하지 않고 시계만 옮겨요. 그런데 11/20 장면에 쓸 N2 시드(프로그램·회차·신청)가 언제, 어디서 생기는지 prd 9절에 드러나 있지 않아요. 이 부분을 분명히 적어요. 기획을 고쳤으면 재인계하고 상태 줄 메모는 "(재승인 대기)"로 달아요.
+보고: 파일별 diff 줄 수, 그리고 시드 출처를 어떻게 처리했는지.
+~~~~
+
+### p0574
+
+2026-11-04 12:23 · 허브 지시 · N1 카피: 생활 요청(작업 지시)
+
+~~~~text
+N1 카피 두 가지를 고쳐 주세요.
+
+1. 2-1 첫 화면 문구가 합치기 전 구성이에요. 화면 정의서 결정 15(`evenstay/design/mvp-screens.md`)에서 REQ-01은 종류 타일 6개와 "내 요청" 구역이 됐고, REQ-02는 REQ-01로 합쳐졌어요. "요청하기", "내 요청 보기" 큰 버튼 문구를 이 구성에 맞게 고쳐요.
+2. 사업장 책임자 "문해진"을 최영미로 고쳐요. N1 기획이 이미 최영미로 정했어요.
+
+규칙: 상태 줄을 그대로 두고 "(재승인 대기)" 메모와 교정 기록을 달아요.
+보고: 고친 곳 수와 새 문구.
+~~~~
+
+### p0580
+
+2026-11-04 12:33 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+N1 카피가 바뀌었으니 기획을 맞추고 다시 인계해 주세요.
+
+바뀐 원본: `03-copywriting/ideas/life-requests/copy.md`, `names.md`. 첫 화면을 종류 타일 6개와 "내 요청" 구역으로 고쳤고, 책임자를 최영미로 고쳤어요(화면 정의서 결정 15).
+
+할 일
+- `prd.md` 8절 등 기획 문서에서 옛 첫 화면 설명을 찾아 고쳐요. "요청하기"·"내 요청 보기" 큰 버튼, REQ-02 "종류 고르기" 행이에요. REQ-02는 REQ-01로 합쳐졌어요. 화면 ID는 지우지 말고 "→ REQ-01" 식으로 표시해요.
+- 기획을 고쳤으면 상태 줄에 "(재승인 대기)" 메모와 변경 기록을 달아요.
+- copy/와 기획 파일을 `evenstay/docs/requests/`로 다시 복사하고 diff로 확인해요. 경로 줄 말고는 차이가 0이어야 해요.
+
+보고: 고친 곳, 파일별 diff 줄 수.
+~~~~
+
+### p0581
+
+2026-11-04 12:33 · 허브 지시 · N2 기획: 커뮤니티(프로그램·시설·공지)
+
+~~~~text
+N2 카피가 바뀌었으니 `docs/community/copy/`에 다시 인계해 주세요.
+
+바뀐 원본: `03-copywriting/ideas/community/copy.md`, `names.md`. 책임자를 최영미로 고쳤고, "첫 화면 버튼 셋"을 결정 14(묶음 화면 COM-09)에 맞췄어요.
+
+할 일
+- 기획 문서에 "첫 화면 버튼 셋" 같은 낡은 문장이 있으면 함께 고치고 "(재승인 대기)" 메모를 달아요.
+- 복사하고 diff로 확인해요. 경로 줄 말고는 차이가 0이어야 해요.
+
+보고: 고친 곳, 파일별 diff 줄 수.
+~~~~
+
+### p0615
+
+2026-11-04 13:38 · 허브 지시 · N1 카피: 생활 요청(작업 지시)
+
+~~~~text
+앱 캔버스에 가칭으로 쓴 문구를 카피로 확정해 주세요. 목록은 `evenstay/design/canvas-notes.md` 1-1절과 1-2절의 "N1" 줄이에요.
+
+REQ-01-c-req06 빈 상태 둘째 줄(종류 타일을 가리키게), REQ-03-c-ride-time 단계 제목과 칩, REQ-07-c-req08-b 버튼, REQ-09, REQ-10, REQ-11, REQ-18이에요. 차량 운행 시간처럼 운영이 정할 값은 지어내지 말고 [미정]으로 보고해요.
+
+`life-requests/copy.md`에 적고 "(재승인 대기)" 메모와 교정 기록을 달아요.
+보고: 보드 ID별 확정 문구.
+~~~~
+
+### p0621
+
+2026-11-04 13:44 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+N1 카피 10-10절이 더해졌으니 `docs/requests/copy/`에 다시 인계해 주세요. 앱 캔버스 가칭 문구를 확정했어요. 복사하고 diff로 확인해요. 경로 줄 말고는 차이가 0이어야 해요. 보고: 파일별 diff 줄 수.
+~~~~
+
+### p0622
+
+2026-11-04 13:44 · 허브 지시 · N2 기획: 커뮤니티(프로그램·시설·공지)
+
+~~~~text
+N2 카피에 앱 캔버스 가칭 문구가 확정됐으니 `docs/community/copy/`에 다시 인계해 주세요. 복사하고 diff로 확인해요. 경로 줄 말고는 차이가 0이어야 해요. 보고: 파일별 diff 줄 수.
+~~~~
+
+### p0627
+
+2026-11-04 13:48 · 허브 지시 · N2 기획: 커뮤니티(프로그램·시설·공지)
+
+~~~~text
+기획 문서의 면회 시간과 이용 규칙 `[NEED]` 표기를 카피와 같은 [미정]으로 맞추고 `docs/community/`에 다시 인계해 주세요. 운영이 정할 값이에요. "(재승인 대기)" 메모를 달아요. 보고는 한 줄이면 돼요.
+~~~~
+
+### p0675
+
+2026-11-04 15:25 · 허브 지시 · N1 카피: 생활 요청(작업 지시)
+
+~~~~text
+공용 문구 확정안을 생활 요청(`ideas/life-requests/`)에 반영해 주세요. 사용자가 "추천대로"로 확정했습니다.
+
+이 모듈에 해당하는 줄만 고칩니다. 교정 기록과 과거 수정 기록은 고치지 않습니다.
+
+| 지금 | 확정 |
+|---|---|
+| 잠시 연결이 끊겼어요 | 앱 연결이 잠시 끊겼어요 |
+| 대신 올려 드려요, 요청을 올릴 수도 있어요 | 대신 요청해 드려요, 요청하실 수도 있어요 |
+| ○○ 보여 주기를 바꾸셨어요 | ○○을 보여 주지 않기로 하셨어요 (끄는 경우만. 켜는 경우에도 쓰는 문장이면 두 경우로 나눕니다) |
+| 보여 주기로 한 | 허락하신 |
+
+"지나온 일"은 유지합니다. 보고에 남긴 직원 화면 4-3의 어긋난 인용도 회원 문장과 같게 맞춰 주세요.
+
+같은 모듈의 `names.md`, `value-prop.md`, `product-marketing.md`에 같은 문장이 있으면 함께 맞추고, `evenstay/docs/requests/copy/`도 같게 고쳐 경로 줄을 뺀 차이가 0인지 확인합니다. 기획 문서는 고치지 않습니다. 커밋 금지.
+
+보고: 고친 줄 수, docs 차이 결과, 기획 문서·`mvp-screens.md`에 같은 문구가 남은 곳 목록을 `plain-read-review-2026-11-04.md`에 덧붙이고 알려 주세요.
+~~~~
+
+### p0684
+
+2026-11-04 15:29 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+생활 요청 기획 문서의 인용 문구를 바뀐 카피에 맞춰 주세요. 사용자가 쉬운 말 재검수와 공용 문구를 "추천대로"로 확정했습니다.
+
+근거: `03-copywriting/ideas/life-requests/plain-read-review-2026-11-04.md`의 전후 표, 공용 문구 반영 절, 옛 문구 표. `shared/decisions.md` 2026-11-04 공용 문구 행도 봅니다.
+
+범위: `ideas/life-requests/` 기획 문서에서 회원·보호자 화면 문구를 인용한 줄을 새 문구로 맞추고, `evenstay/docs/requests/`의 같은 파일도 같게 고칩니다. 경로 줄을 뺀 차이가 0인지 확인합니다. `mvp-screens.md` 줄은 앱 캔버스 세션이 맡습니다.
+
+하지 않을 것: 기능, 범위, 정책, 수치 변경. 카피 파일과 `mvp-screens.md` 수정. 커밋. 고친 문서의 상태 줄에 "재승인 대기"를 적습니다.
+
+보고: 파일별 고친 줄 수, docs 차이 결과, 옛 문구를 다시 찾은 결과, 판단이 필요해 남긴 곳.
+~~~~
+
+### p0685
+
+2026-11-04 15:29 · 허브 지시 · N2 기획: 커뮤니티(프로그램·시설·공지)
+
+~~~~text
+커뮤니티 기획 문서의 인용 문구를 바뀐 카피에 맞춰 주세요. 사용자가 쉬운 말 재검수와 공용 문구를 "추천대로"로 확정했습니다.
+
+근거: `03-copywriting/ideas/community/plain-read-review-2026-11-04.md`의 전후 표, 공용 문구 반영 절, 남은 곳 표. `shared/decisions.md` 2026-11-04 공용 문구 행도 봅니다.
+
+범위: `ideas/community/` 기획 문서에서 회원·보호자 화면 문구를 인용한 줄을 새 문구로 맞추고, `evenstay/docs/community/`의 같은 파일도 같게 고칩니다. 경로 줄을 뺀 차이가 0인지 확인합니다. 직원 칸 "14일 앞까지만"은 범위 밖이라 그대로 둡니다. `mvp-screens.md` 줄은 앱 캔버스 세션이 맡습니다.
+
+하지 않을 것: 기능, 범위, 정책, 수치 변경. 카피 파일과 `mvp-screens.md` 수정. 커밋. 고친 문서의 상태 줄에 "재승인 대기"를 적습니다.
+
+보고: 파일별 고친 줄 수, docs 차이 결과, 옛 문구를 다시 찾은 결과, 판단이 필요해 남긴 곳.
+~~~~

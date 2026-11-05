@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>안심 알림 서비스 설계도 | Evenstay 문서</title>
+<meta name="description" content="안심 알림 서비스 설계도. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>안심 알림</span></p>
+  <h1>안심 알림 서비스 설계도</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-blueprint"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="안심 알림의 다른 문서"><ul><li><a href="safety-strategy.html">전략</a></li><li><a href="safety-service-blueprint.html" aria-current="page">서비스 설계도</a></li><li><a href="safety-prd.html">기획서(PRD)</a></li><li><a href="safety-user-stories.html">사용자 스토리</a></li><li><a href="safety-tech-design.html">기술 설계</a></li><li><a href="safety-roadmap.html">로드맵</a></li><li><a href="safety-handoff.html">개발 인계</a></li><li><a href="safety-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#등장인물">등장인물</a></li><li class="lv2"><a href="#현재-상태-as-is-요약-추정">현재 상태 (as-is) 요약 [추정]</a></li><li class="lv2"><a href="#흐름-1-신호-수신-알림-넘김-확인-조치-기록-데모-시나리오">흐름 1. 신호 수신 → 알림 → 넘김 → 확인 → 조치 기록 (데모 시나리오)</a></li><li class="lv2"><a href="#흐름-2-조치-완료-건강-소식d">흐름 2. 조치 완료 → 건강 소식(D)</a></li><li class="lv2"><a href="#흐름-3-119-신고병원-이송-같은-신호의-다른-결말">흐름 3. 119 신고·병원 이송 (같은 신호의 다른 결말)</a></li><li class="lv2"><a href="#흐름-4-회원이-호출벨을-누를-때-회원-시점-p1">흐름 4. 회원이 호출벨을 누를 때 (회원 시점, P1)</a></li><li class="lv2"><a href="#흐름-5-입주-때-기기-연결과-회원-동의-p1-낮">흐름 5. 입주 때 기기 연결과 회원 동의 (P1, 낮)</a></li><li class="lv2"><a href="#흐름-6-안부-방문과-장기-부재-p1-낮">흐름 6. 안부 방문과 장기 부재 (P1, 낮)</a></li><li class="lv2"><a href="#흐름-7-이은숙-회원님-병원-동행과-장기-부재-통합-데모-장면-b-3-p1">흐름 7. 이은숙 회원님 병원 동행과 장기 부재 (통합 데모 장면 B-3, P1)</a></li><li class="lv2"><a href="#흐름-8-사고학대-보고와-비상-때-재실-명단-부록-p1">흐름 8. 사고·학대 보고와 비상 때 재실 명단 (부록, P1)</a></li><li class="lv2"><a href="#실패-지점과-대응">실패 지점과 대응</a></li><li class="lv2"><a href="#대안-경로-디지털이-어려운-회원">대안 경로 (디지털이 어려운 회원)</a></li><li class="lv2"><a href="#읽어-낸-것">읽어 낸 것</a></li><li class="lv2"><a href="#확인할-것">확인할 것</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-148" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-149" data-tip="B, C가 올린 본문 스냅샷.">건강 소식</button></li><li><button class="term" type="button" data-modal="g-150" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-151" data-tip="응급 때 직원이 누구에게 어떤 순서로 전화하는가.">비상 연락처</button></li><li><button class="term" type="button" data-modal="g-152" data-tip="만남 여부와 한 일.">조치 기록</button></li><li><button class="term" type="button" data-modal="g-153" data-tip="근무 시간과 자리.">당번표</button></li><li><button class="term" type="button" data-modal="g-154" data-tip="회원이 받기로 한 정기 순회.">안부 방문</button></li><li><button class="term" type="button" data-modal="g-155" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-156" data-tip="기기, 출입 카드, 안부 전화 가입을 입주자와 잇고 장치 동의를 담는다">기기 연결</button></li><li><button class="term" type="button" data-modal="g-157" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li><li><button class="term" type="button" data-modal="g-158" data-tip="알림 타임라인.">알림 기록</button></li><li><button class="term" type="button" data-modal="g-159" data-tip="사업장 운영을 맡고 운영 현황 카드를 본다">사업장 책임자</button></li></ul></section></aside>
+  <article class="doc"><blockquote>
+<p>표기 규칙은 <code>strategy.md</code>와 같다. 야간 현장 업무를 관찰하거나 인터뷰한 근거가 없다 [사실, personas U4 &quot;매우 약함&quot;]. 현재 상태(as-is)는 공개 자료로 짐작한 것이라 모두 [추정]이다. 야간 직원·시설장과 검토해야 한다(맨 끝 &quot;확인할 것&quot;).
+시각과 사람은 B <code>copy.md</code>의 데모 시각표와 <code>prd.md</code> 9절 가상 시드 데이터를 쓴다.</p>
+</blockquote>
+<h2 id="등장인물">등장인물</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>사람</th>
+<th>이 블루프린트에서 하는 일</th>
+<th>쓰는 화면·수단</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ON1</td>
+<td>당번(1차 담당, 야간 생활지원 직원 U4)</td>
+<td>알림을 받고 확인하러 간다. 조치를 기록한다</td>
+<td>안심 알림 직원 화면(태블릿·휴대폰 웹), 휴대폰 알림(MVP 목업)</td>
+</tr>
+<tr>
+<td>ON2</td>
+<td>2차 담당(야간 직원)</td>
+<td>당번이 5분 동안 확인하지 않은 알림을 받는다</td>
+<td>같은 화면, 휴대폰 알림</td>
+</tr>
+<tr>
+<td>MGR</td>
+<td>사업장 책임자(시설장 또는 당직 책임자)</td>
+<td>3차 담당, 규칙·당번표 설정, 알림 기록 검토</td>
+<td>안심 알림 기록 화면</td>
+</tr>
+<tr>
+<td>RES</td>
+<td>회원(입주자, U1)</td>
+<td>호출벨을 누른다. 장치 설명을 보고 정한다</td>
+<td>호출벨, 프런트 전화(내선), 안심 알림(Evenstay 홈, P1)</td>
+</tr>
+<tr>
+<td>GRD</td>
+<td>보호자(U3) 중 회원이 건강 소식을 보여 주기로 한 분</td>
+<td>새 소식 문자를 받고 건강 소식을 본다</td>
+<td>문자, Evenstay 패밀리(D)</td>
+</tr>
+<tr>
+<td>EC</td>
+<td>비상 연락처(코어 입주 계약의 &quot;급할 때 연락할 분&quot;)</td>
+<td>119 신고·병원 이송 때 직원의 전화를 받는다</td>
+<td>전화, 닿지 않으면 문자</td>
+</tr>
+<tr>
+<td>FD</td>
+<td>낮 프런트 직원</td>
+<td>입주 때 기기 연결과 회원 동의를 기록한다. 기기 점검을 맡긴다</td>
+<td>안심 알림 설정 화면</td>
+</tr>
+<tr>
+<td>SYS</td>
+<td>안심 알림 백엔드</td>
+<td>수신, 중복 확인, 규칙, 알림, 넘김 타이머, 기록</td>
+<td>—</td>
+</tr>
+<tr>
+<td>DEV</td>
+<td>기기·업체(침대 센서, 호출벨, 출입통제, 외부 안부 전화)</td>
+<td>웹훅으로 신호를 보낸다. MVP는 시뮬레이터</td>
+<td>시뮬레이터 화면</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>상호작용선: 이용자 행동 | 프런트스테이지</li>
+<li>가시선: 프런트스테이지 | 백스테이지</li>
+<li>내부 상호작용선: 백스테이지 | 지원 프로세스</li>
+<li>이 블루프린트에서 &quot;이용자&quot;는 흐름마다 다르다. 흐름 1·2는 직원, 흐름 3은 보호자·비상 연락처, 흐름 4는 회원이다.</li>
+</ul>
+<h2 id="현재-상태-as-is-요약-추정">현재 상태 (as-is) 요약 [추정]</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>흐름</th>
+<th>지금 어떻게 할까</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>신호 받기</td>
+<td>호출벨은 너스콜 수신반, 센서는 업체 앱, 외부 안부 전화는 기관 연락으로 따로 온다</td>
+<td>서비스별 별도 알림 [사실, P-025]. 시설 안 구성은 [추정]</td>
+</tr>
+<tr>
+<td>야간 대응</td>
+<td>간호 인력이 없는 시간에는 생활지원 직원이 대응한다</td>
+<td>간호사 08~19시 상주 사례 [사실, A12]. 야간 인원·절차는 [미확인]</td>
+</tr>
+<tr>
+<td>받지 못한 알림</td>
+<td>수신반 앞에 있는 사람이 받거나, 순찰 때 발견한다</td>
+<td>[추정]</td>
+</tr>
+<tr>
+<td>기록</td>
+<td>종이 대장, 교대 인계 메모, 단톡방</td>
+<td>[추정, B <code>product-marketing.md</code>]</td>
+</tr>
+<tr>
+<td>보호자 연락</td>
+<td>큰일이면 직원이 입주 서류의 연락처로 전화한다</td>
+<td>[추정, 코어 블루프린트 as-is]</td>
+</tr>
+</tbody></table></div>
+<p>이하는 <strong>안심 알림 도입 후(to-be)</strong> 블루프린트다.</p>
+<hr>
+<h2 id="흐름-1-신호-수신-알림-넘김-확인-조치-기록-데모-시나리오">흐름 1. 신호 수신 → 알림 → 넘김 → 확인 → 조치 기록 (데모 시나리오)</h2>
+<p>시나리오: 새봄 레지던스(가상) A동 201호 이은숙 입주자(가상, 2026-11-10 남편 사별·계약 승계 뒤 혼자 지냄)가 11월 12일 02:10에 침대를 떠나 30분 동안 돌아오지 않는다. 당번 김하진(가상)은 02:30에 A동 401호 호출벨을 맡아 그 방에 있어 5분 안에 확인하지 못한다. 2차 박서준(가상)은 02:35 정문 출입 알림을 맡아 확인 중이다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자(직원) 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0. 근무 시작</td>
+<td>첫 화면 &quot;지금 처리할 신호&quot;, 당번 표시 &quot;당번 김하진 · 2차 박서준 · 3차 최영미(당직 책임자)&quot;</td>
+<td>ON1이 근무를 시작하며 화면을 연다</td>
+<td>오늘 밤 당번표와 기기 상태(&quot;기기 n대 중 n대에서 신호가 오고 있습니다&quot;)를 보인다</td>
+<td>기준 시각의 당번표 근무(22:00~08:00)를 찾는다. 기기마다 마지막 신호 시각으로 신호 끊김을 계산</td>
+<td>당번표(B), 코어 <code>StaffQuery.listStaff</code>(직원 이름·역할), 기기 목록(B)</td>
+</tr>
+<tr>
+<td>1. 신호 도착</td>
+<td>(화면 밖)</td>
+<td>—</td>
+<td>—</td>
+<td>02:40:03 웹훅 수신 → 서명 검증 → <strong>원본 그대로 보관</strong> → 어댑터가 공통 신호 형식으로 바꾼다(출처 BED_SENSOR, 업체 이벤트 번호 bed-a201-0210, 생긴 시각 02:10, 30분 미복귀)</td>
+<td>웹훅 수신기, 기기별 어댑터, 원본 보관</td>
+</tr>
+<tr>
+<td>2. 중복 확인</td>
+<td>(화면 밖)</td>
+<td>—</td>
+<td>—</td>
+<td>(출처, 업체 이벤트 번호)로 이미 받은 신호인지 본다. 처음이므로 저장</td>
+<td>신호 저장소의 유일 제약</td>
+</tr>
+<tr>
+<td>3. 입주자 찾기</td>
+<td>(화면 밖)</td>
+<td>—</td>
+<td>—</td>
+<td>기기 연결(침대 센서 → A동 201호, 이은숙 침대)에서 입주자를 찾는다. 기기 연결이 없으면 호실만 표시</td>
+<td>기기 연결(B), <code>ResidentQuery.residentsInUnit</code>(코어)</td>
+</tr>
+<tr>
+<td>4. 규칙 적용</td>
+<td>(화면 밖)</td>
+<td>—</td>
+<td>—</td>
+<td>사업장 규칙 &quot;밤 침대 떠남 30분&quot;(22:00~06:00, 생긴 시각 기준)에 맞으므로 등급 <strong>즉시 확인</strong>. 알림 생성(상태 접수), 넘김 기한 = 02:45:03</td>
+<td>규칙(B, 사업장마다 5개 이내)</td>
+</tr>
+<tr>
+<td>5. 당번 알림</td>
+<td>알림 카드: &quot;<strong>즉시 확인</strong> · A동 201호 이은숙 입주자 · 침대를 떠난 뒤 30분 동안 돌아오지 않았습니다. · 02:10 침대 떠남 · 02:40 알림 · 출처: 침대 센서 · 규칙: 밤 침대 떠남 30분 · [확인하러 갑니다]&quot;, 화면 아래 고정 문구 &quot;입주자의 상태 판단과 119 신고는 직원이 합니다.&quot;</td>
+<td>ON1의 휴대폰이 울리지만 ON1은 다른 방에서 돕는 중이다</td>
+<td>카드 안 남은 시간 &quot;3분 12초 뒤 2차 담당 박서준 님에게 넘어갑니다.&quot;</td>
+<td>직원 알림을 아웃박스에 넣고 보낸다. 전달 결과를 기록. 전달 실패면 5분을 기다리지 않고 바로 넘긴다</td>
+<td>직원 알림 어댑터(MVP 목업: 시뮬레이터의 휴대폰 패널), 아웃박스</td>
+</tr>
+<tr>
+<td>6. 중복 수신</td>
+<td>카드 배지 &quot;중복 수신 1건&quot;</td>
+<td>—</td>
+<td>알림은 다시 울리지 않는다. 배지를 누르면 두 수신 시각과 이벤트 번호가 보인다</td>
+<td>02:40:08 같은 이벤트 번호가 다시 온다 → 원본은 보관하고 신호는 새로 만들지 않는다. 중복 수신 기록만 늘린다</td>
+<td>유일 제약, 중복 수신 기록</td>
+</tr>
+<tr>
+<td>7. 2차 호출</td>
+<td>카드 기록 &quot;02:45 · 5분 동안 확인이 없어 박서준 님에게 넘겼습니다.&quot;, 상태 &quot;2차 호출&quot;, ON2 휴대폰 &quot;[2차 호출] 201호 이○○ 입주자 · …당번에게 5분 동안 확인이 없어 넘어왔습니다.&quot;</td>
+<td>ON2가 알림을 받는다</td>
+<td>ON1 화면에는 &quot;이 알림은 02:45에 박서준 님에게 넘어갔습니다. 지금 갈 수 있으면 [확인하러 갑니다]를 누르세요.&quot;</td>
+<td>넘김 기한이 지난 알림을 찾아 단계를 올린다(1차 → 2차). 상태가 아직 접수·호출일 때만 올린다(조건부 갱신으로 두 번 올리지 않음). 새 기한 02:50:03</td>
+<td>넘김 타이머(B, 데모 시계와 함께 동작)</td>
+</tr>
+<tr>
+<td>8. 확인</td>
+<td>카드 상단 &quot;확인 중 · 박서준 님이 02:46에 맡았습니다.&quot;, 다른 직원 화면 &quot;박서준 님이 확인 중입니다.&quot;</td>
+<td>ON2가 [확인하러 갑니다]를 누르고 201호로 간다</td>
+<td>맡은 뒤 카드 안내(<code>copy.md</code> 2-4 원문): 119 신고가 필요하면 직접 전화하세요. 신고한 뒤 조치 기록에서 &quot;119에 신고함&quot;을 골라 주세요.</td>
+<td>상태 → 확인 중, 넘김 타이머 멈춤. 같은 순간 ON1도 누르면 먼저 누른 한 명만 맡는다(나머지는 &quot;박서준 님이 02:46에 먼저 맡았습니다.&quot;)</td>
+<td>알림 상태 전이(B), 변경 이력(코어 <code>AuditWriter</code>)</td>
+</tr>
+<tr>
+<td>9. 만남과 조치</td>
+<td>조치 기록 화면</td>
+<td>ON2가 02:49 거실 소파에 앉아 계신 입주자를 만나 다친 곳이 있는지 여쭙고 침대까지 같이 간다</td>
+<td>만남 &quot;입주자를 만났습니다&quot;, 한 일 &quot;이상 없음을 직접 확인&quot;, 메모 &quot;거실 소파에 앉아 계셨음. 다친 곳 없다고 하심. 침대까지 같이 감.&quot;</td>
+<td>조치 기록 저장(만남 시각, 한 일, 메모). 메모는 민감정보로 다룬다(암호화, 조회 기록). 진단명 칸은 없다</td>
+<td>조치 기록(B), 감사(코어)</td>
+</tr>
+<tr>
+<td>10. 건강 소식 올리기</td>
+<td>보호자 알림 미리보기 → 흐름 2</td>
+<td>ON2가 미리보기를 보고 [보내기]를 누른다</td>
+<td>흐름 2</td>
+<td>흐름 2</td>
+<td>흐름 2</td>
+</tr>
+<tr>
+<td>11. 조치 완료</td>
+<td>&quot;조치를 기록했습니다. 02:46 확인 → 02:49 만남 → 02:58 조치 완료&quot;</td>
+<td>—</td>
+<td>카드가 &quot;오늘 조치 완료&quot;로 옮겨 간다</td>
+<td>상태 → 조치 완료(조치 기록과 건강 소식 처리(올림 또는 정해진 이유로 올리지 않음)가 모두 있어야 함). <code>SafetyAlertResolved</code> 이벤트</td>
+<td>아웃박스</td>
+</tr>
+<tr>
+<td>12. 다음 날 보기</td>
+<td>기록 화면 &quot;알림 기록&quot; 한 줄: &quot;02:40:03 신호 수신(침대 센서) · 02:40:04 김하진 님에게 알림 · 02:45:03 박서준 님에게 넘김(2차 호출) · 02:46 박서준 님 확인 · 02:58 조치 완료 · 02:59 보호자 알림 예약(08:00)&quot;(02:59는 아웃박스가 D <code>post</code>를 마친 시각. 데모의 멈춘 시계에서는 02:58일 수 있음)</td>
+<td>MGR이 아침에 밤사이 기록을 본다</td>
+<td>넘김이 있었던 알림, 건강 소식에 올리지 않은 알림을 따로 모아 보인다. 올리지 않은 건의 확인은 운영 매니저가 D의 주간 목록에서 한다</td>
+<td>알림·넘김·조치·건강 소식 처리를 한 타임라인으로 합친다</td>
+<td>알림 기록(B)</td>
+</tr>
+</tbody></table></div>
+<h2 id="흐름-2-조치-완료-건강-소식d">흐름 2. 조치 완료 → 건강 소식(D)</h2>
+<p>시나리오: 흐름 1의 조치 완료 직전. 이은숙 회원은 딸 김지민(가상)에게만 건강 소식을 보여 주기로 했다(D 동의). 김지민은 비상 연락처 1순위이기도 하다. 아들 김태호(가상)는 대리인(청구서 확인·결제)이고 건강 소식을 보지 않는다.
+원칙(2026-11-03 허브·사용자 확정): 직원 재량으로 빼는 버튼은 없다. 조치를 기록한 일은 건강 소식에 올라가고, 올리지 않는 것은 ① 회원(또는 대리인)이 &quot;이번 일은 알리지 말아 줘&quot;라고 한 경우(MEMBER_REQUEST)와 ② 건강 소식이 아닌 기록(NOT_A_HEALTH_EVENT: 다른 회원 기록, 중복, 기기 시험)뿐이다. 119·병원 이송이 기록된 일은 ①만 된다. 운영 매니저가 매주 확인한다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 미리보기</td>
+<td>&quot;보호자 알림 미리보기&quot; · &quot;이○○ 입주자가 건강 소식을 보여 주기로 한 보호자 1명(딸 김○○ 님)에게 아래 내용이 건강 소식으로 올라갑니다. 문자에는 내용 없이 새 소식이 있다는 것만 갑니다.&quot; · 보내는 시각 &quot;새 소식 문자는 08:00에 보냅니다.&quot;</td>
+<td>ON2가 보호자에게 보일 문장을 확인한다</td>
+<td>첫 문장은 규칙 문장에서 자동으로 채운다(&quot;11월 12일 새벽 2시 10분에 침대에서 일어나신 뒤 30분 동안 돌아오지 않으셔서, 직원이 방에 다녀왔어요.&quot;). 나머지는 ON2가 해요체로 적는다(&quot;직원이 2시 49분에 거실에 계신 이은숙 회원님을 만났어요. 다친 곳은 없다고 하셨고, 침대로 가셨어요.&quot;)</td>
+<td>D <code>FamilyConsentQuery.viewersOf(회원, HEALTH_EVENT, 지금)</code>으로 볼 보호자의 연결 ID·관계를 받고, 이름은 코어 <code>GuardianQuery.guardiansOf</code>로 채운다. 문자 예정 시각은 D <code>nextSendAt(siteId, 지금)</code>으로 받는다(2026-11-03 허브 결정). 내부 메모는 보호자 문장에 들어가지 않는다</td>
+<td>D 공개 API, 코어 <code>GuardianQuery</code>, 문장 틀(B 규칙)</td>
+</tr>
+<tr>
+<td>2a. 올리기</td>
+<td>기록 &quot;02:58 조치 완료&quot; → &quot;02:59 보호자 알림 예약(08:00)&quot;</td>
+<td>ON2가 [보내기]</td>
+<td>—</td>
+<td>[보내기]와 조치 완료는 한 트랜잭션(02:58). 보호자용 결과(요약 한 줄, 본문, 종류 SAFETY_SIGNAL, 생긴 시각, 기록한 직원)를 B에 저장하고 아웃박스에 넣는다. 디스패처가 D <code>HealthFeedCommand.post</code>(출처 SAFETY, 출처 ID, 버전 1, involvesEmergencyCall)를 부르고 결과(건강 소식 ID, 볼 수 있는 보호자 수, 문자 예정 시각 <code>noticeSendAt</code>)를 기록한다</td>
+<td>아웃박스 → D</td>
+</tr>
+<tr>
+<td>2b. 회원 요청으로 올리지 않기</td>
+<td>[올리지 않기] → 이유 ① &quot;입주자(또는 대리인)가 이번 일은 알리지 말아 달라고 말씀하셨습니다.&quot; · 들은 직원 · 들은 시각(카피 2-8, 재승인)</td>
+<td>회원이 &quot;가족한테는 말하지 마&quot;라고 하고, ON2가 그 말을 고른다</td>
+<td>들은 직원(본인)과 들은 시각, 말한 사람(회원 본인 / 대리인)을 넣어야 저장된다. 메모는 선택</td>
+<td>B 기록에 남기고 D <code>withhold</code>(MEMBER_REQUEST, residentId·kind·occurredAt, 들은 직원·heardAt, requestedByKind, involvesEmergencyCall. 인자는 <code>tech-design.md</code> 10-2절)를 부른다(post는 하지 않는다). 회원 화면 표시는 D 회원 화면(D <code>copy.md</code> 2-9 &quot;…회원님 말씀대로 건강 소식에서 뺐어요&quot;)이 기준이고, B 안심 알림 기록(P1)에도 그 일의 줄에 같은 문장을 붙인다(2026-11-03 사용자 확정). 운영 매니저 주간 목록은 D가 만든다</td>
+<td>D 공개 API, 감사(코어)</td>
+</tr>
+<tr>
+<td>2c. 건강 소식이 아님</td>
+<td>[올리지 않기] → 이유 ② &quot;건강과 무관한 신호입니다.&quot; · 다른 입주자의 신호가 잘못 붙음 / 같은 일이 이미 올라감 / 기기 시험(카피 2-8)</td>
+<td>ON2가 하위 이유를 고른다</td>
+<td>&quot;119에 신고함&quot;·&quot;병원으로 가심&quot;이 기록된 알림에서는 이 선택지가 보이지 않는다</td>
+<td>D <code>withhold</code>(NOT_A_HEALTH_EVENT, residentId·kind·occurredAt, subReason, involvesEmergencyCall = false). 운영 매니저 주간 목록</td>
+<td>D 공개 API</td>
+</tr>
+<tr>
+<td>2d. 볼 보호자가 없음</td>
+<td>&quot;이은숙 입주자가 건강 소식을 보여 주기로 한 보호자가 없습니다. 보호자 알림을 보내지 않고 기록에 남깁니다. 119에 신고했거나 병원으로 모셨다면 비상 연락처로 전화하세요.&quot;</td>
+<td>ON2가 [보내기] ([올리지 않기]도 고를 수 있다)</td>
+<td>문자가 가지 않는다는 안내</td>
+<td>2a와 똑같이 <code>post</code>한다. D는 보호자가 0명이어도 저장하고 문자는 보내지 않는다. 회원이 나중에 동의하면 동의한 날 0시 이후 소식부터 보인다(D 규칙)</td>
+<td>D 공개 API</td>
+</tr>
+<tr>
+<td>3. 건강 소식 등록</td>
+<td>(화면 밖)</td>
+<td>—</td>
+<td>—</td>
+<td>D가 (출처, 출처 ID, 버전 번호)로 멱등 저장한다. 본문은 보호자에게 보인 그대로 D에 스냅샷으로 남는다(D ADR-F4). 문자는 D의 알림 대기(22~08시는 08:00)로 간다</td>
+<td>D</td>
+</tr>
+<tr>
+<td>4. 새 소식 문자</td>
+<td>&quot;[Evenstay 패밀리] 이은숙 회원님의 새 소식이 있어요. Evenstay 패밀리에서 보시거나 프런트 02-000-0000 (가상 번호)로 전화 주세요.&quot;</td>
+<td>GRD가 08:00에 문자를 받는다</td>
+<td>문자에는 내용, &quot;건강&quot;이라는 말, 링크가 없다</td>
+<td>보내는 일과 시각 계산은 D가 한다(조용한 시간 22~08시)</td>
+<td>D의 문자 발송(MVP 화면 로그)</td>
+</tr>
+<tr>
+<td>5. 보호자 확인</td>
+<td>Evenstay 패밀리 건강 소식 목록 &quot;11월 12일 새벽 · 직원이 다녀간 일 · 다친 곳은 없다고 하셨어요&quot;, 상세, &quot;박서준 직원이 기록했어요. 궁금한 점은 프런트 02-000-0000 (가상 번호)로 전화 주세요.&quot;(D <code>copy.md</code>)</td>
+<td>GRD가 앱을 열어 상세를 본다</td>
+<td>무슨 일이 있었는지 → 직원이 한 일 → 지금 상태 순서</td>
+<td>D가 볼 때마다 동의를 다시 확인한다. 동의를 거둔 뒤에는 보이지 않는다. B는 이 단계에 관여하지 않는다</td>
+<td>D, 코어 <code>authorize()</code></td>
+</tr>
+<tr>
+<td>6. 낮에 회원이 빼 달라고 할 때</td>
+<td>D 직원 화면에서 한 건 빼기</td>
+<td>회원이 아침에 프런트에 &quot;어젯밤 일은 딸한테 안 보이게 해 줘&quot;라고 한다</td>
+<td>프런트가 D 화면에서 회원 요청으로 뺀다</td>
+<td>D가 WITHHELD로 바꾸고 <code>HealthEventWithheld</code>를 낸다. B는 받아서 자기 알림 기록에 회원 요청으로 건강 소식에서 뺐다는 표시를 붙인다(회원 안심 알림 기록의 문장은 <code>copy.md</code> 4-4). 이미 본 보호자의 기록은 지울 수 없고 다음 열람부터 막힌다(D 규칙)</td>
+<td>이벤트 구독</td>
+</tr>
+</tbody></table></div>
+<h2 id="흐름-3-119-신고병원-이송-같은-신호의-다른-결말">흐름 3. 119 신고·병원 이송 (같은 신호의 다른 결말)</h2>
+<p>시나리오: 흐름 1의 9단계에서 ON2가 02:49에 바닥에 앉아 계신 입주자를 만난다. 데모 본 흐름과는 별개의 예시다(B <code>copy.md</code> 3-2).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 판단과 신고</td>
+<td>(전화)</td>
+<td>ON2가 상태를 보고 119에 직접 전화한다</td>
+<td>화면은 판단하지 않는다. &quot;119 신고가 필요하면 직접 전화하세요.&quot; 문구만</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2. 비상 연락처 보기</td>
+<td>알림 상세의 [비상 연락처 보기] → 순서대로 &quot;1순위 · 김지민 · 자녀 · 010-○○○○-○○○○ [전화 걸기]&quot;</td>
+<td>ON2가 비상 연락처를 연다</td>
+<td>알림을 맡은 직원에게만 버튼이 보인다</td>
+<td>코어 <code>EmergencyContactQuery.emergencyContactsOf(residentId, at, actor)</code> 호출. B가 조회한 직원을 actor로 넘기면 코어가 권한을 검사하고 SENSITIVE_READ를 남긴다(코어 v1.1). B는 전화번호를 저장하지 않는다</td>
+<td>코어 비상 연락처(입주 계약), 감사</td>
+</tr>
+<tr>
+<td>3. 전화</td>
+<td>(전화)</td>
+<td>03:05 ON2가 김지민에게 전화로 알린다. EC가 받는다</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4. 기록</td>
+<td>조치 기록 &quot;119에 신고함&quot;, &quot;병원으로 가심&quot;, &quot;비상 연락처에 전화함&quot;, 통화 기록 &quot;03:05 · 1순위 김지민 님 · 통화함&quot;</td>
+<td>ON2가 기록한다</td>
+<td>—</td>
+<td>비상 연락처 통화 결과(순위, 시각, 통화함/닿지 않음)를 기록. 전화번호·이름은 저장하지 않고 순위만 남긴다</td>
+<td>조치 기록(B)</td>
+</tr>
+<tr>
+<td>4b. 병원 동행 (P1)</td>
+<td>조치 기록의 동행 칸(동행 직원, 출발 시각) 반영됨(<code>copy.md</code> 2-4, 2-16)</td>
+<td>ON2가 동행 직원과 출발 시각을 고른다. 돌아오신 뒤 아침 근무자가 돌아오신 시각을 덧붙인다</td>
+<td>돌아오심 기록 전까지 첫 화면에 병원에 가신 분 수 반영됨(<code>copy.md</code> 2-4, 2-16)</td>
+<td>HospitalEscort 저장. 병원 이름·진료 내용은 받지 않는다</td>
+<td>조치 기록(B)</td>
+</tr>
+<tr>
+<td>4a. 닿지 않음 (P1)</td>
+<td>EC에게 문자 &quot;[Evenstay 패밀리] 이은숙 회원님 일로 전화드렸는데 통화가 안 됐어요. 직원이 다시 전화드릴게요. 급하시면 프런트 02-000-0000 (가상 번호)로 전화 주세요.&quot;</td>
+<td>ON2가 [닿지 않음 문자 보내기]를 누르고 2순위에게 전화한다</td>
+<td>건강 내용은 문자에 넣지 않는다</td>
+<td>문자 발송 기록. 다시 전화할 일을 카드에 남긴다</td>
+<td>문자 발송 어댑터(목업) [법률 검토: 비상 연락 근거]</td>
+</tr>
+<tr>
+<td>5. 건강 소식</td>
+<td>흐름 2와 같은 미리보기. 첫 줄 &quot;박서준 직원이 새벽 3시 5분에 비상 연락처에 적힌 분께 전화로 먼저 알렸어요.&quot;</td>
+<td>ON2가 [보내기] (올리지 않으려면 회원 요청만 가능)</td>
+<td>종류는 병원에 가신 일(HOSPITAL_TRANSFER)</td>
+<td>&quot;병원으로 가심&quot;이 있을 때만 종류를 HOSPITAL_TRANSFER로 정한다. &quot;119에 신고함&quot;만 있으면 SAFETY_SIGNAL로 두고 본문에 신고 사실을 쓴다(이송을 관찰하지 않았는데 단정하지 않는다). 첫 줄은 비상 연락처 통화 기록에서 만든다</td>
+<td>흐름 2와 같음</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>비상 연락처 전화는 건강 소식 동의와 상관없다. 데모에서는 딸 김지민이 비상 연락처 1순위이자 건강 소식 보호자라 전화와 앱 기록을 모두 받는다. 둘이 다른 사람일 수 있다는 점(동의 없는 비상 연락처에게는 전화만 간다)은 자동 테스트로 확인한다.</li>
+</ul>
+<h2 id="흐름-4-회원이-호출벨을-누를-때-회원-시점-p1">흐름 4. 회원이 호출벨을 누를 때 (회원 시점, P1)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>회원 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 누름</td>
+<td>욕실 호출벨</td>
+<td>RES가 호출벨을 누른다</td>
+<td>안심 알림 화면 &quot;직원에게 알렸어요.&quot;</td>
+<td>호출벨 신호 → 규칙 &quot;호출벨&quot; → 즉시 확인</td>
+<td>흐름 1의 1~5단계</td>
+</tr>
+<tr>
+<td>2. 넘김 (아무도 맡지 않았을 때)</td>
+<td>&quot;다른 직원에게도 알렸어요.&quot;</td>
+<td>—</td>
+<td>—</td>
+<td>2차 호출</td>
+<td>넘김 타이머</td>
+</tr>
+<tr>
+<td>3. 맡음</td>
+<td>&quot;○○○ 직원이 가고 있어요.&quot;(데모에서는 박서준)</td>
+<td>—</td>
+<td>직원이 [확인하러 갑니다]를 누른 뒤에만 이 문장으로 바뀐다. 맡은 뒤에는 넘어가지 않는다</td>
+<td>상태 확인 중</td>
+<td>알림 상태</td>
+</tr>
+<tr>
+<td>4. 다녀감</td>
+<td>&quot;직원이 다녀갔어요.&quot;, 기록 &quot;11월 12일 새벽 2시 49분 · 박서준 직원이 다녀갔어요&quot;</td>
+<td>—</td>
+<td>회원 화면에는 등급, 규칙, 메모를 보이지 않는다</td>
+<td>조치 완료</td>
+<td>—</td>
+</tr>
+<tr>
+<td>대안</td>
+<td>프런트 전화(내선 0번 [NEED: 실제 번호])</td>
+<td>RES가 호출벨 대신 방 전화로 프런트에 전화한다</td>
+<td>받은 직원이 화면에서 전화로 받은 호출을 등록해 같은 알림을 만든다(P1, 버튼 문구는 반영됨(<code>copy.md</code> 2-11))</td>
+<td>출처 FRONT_CALL(직원 입력). 같은 넘김 규칙</td>
+<td>같은 알림 큐</td>
+</tr>
+<tr>
+<td>생활 요청에서 옮김 (P1)</td>
+<td>알림 카드 출처 &quot;생활 요청에서 옮김&quot;(반영됨(<code>copy.md</code> 2-11))</td>
+<td>생활 요청을 본 직원이 [안심 알림으로 옮기기]를 누른다(N1)</td>
+<td>다른 호출과 같은 카드, 즉시 확인</td>
+<td>N1이 <code>SafetyFrontCallCommand.registerFromRequest</code>를 부른다. B는 호실·입주자·출처만 받고 요청 글은 받지 않는다. (sourceModule, sourceId)로 멱등</td>
+<td><code>safety/api</code> 명령</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>호출벨을 잘못 눌러도 직원이 한 번 들러 확인한다(&quot;잘못 누르셨어도 괜찮아요.&quot;). 취소 버튼은 두지 않는다. 회원이 취소한 뒤 실제로 도움이 필요한 경우를 막기 위해서다.</li>
+</ul>
+<h2 id="흐름-5-입주-때-기기-연결과-회원-동의-p1-낮">흐름 5. 입주 때 기기 연결과 회원 동의 (P1, 낮)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 입주 알림</td>
+<td>기기 연결이 필요한 입주자 목록(요약, 문구는 반영됨(<code>copy.md</code> 2-12))</td>
+<td>FD가 목록을 본다</td>
+<td>—</td>
+<td>코어 <code>ContractActivated</code> 이벤트를 받아 할 일을 만든다</td>
+<td>이벤트 구독</td>
+</tr>
+<tr>
+<td>2. 장치 설명</td>
+<td>회원용 안내 &quot;내 방 장치&quot;(B <code>copy.md</code> 4-2) 종이 또는 화면</td>
+<td>RES가 침대 센서, 출입 기록, 안부 전화가 무엇을 알리는지 듣는다</td>
+<td>FD가 설명한다</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3. 동의 기록</td>
+<td>기기 연결 화면</td>
+<td>RES가 침대 센서, 밤 출입 알림, 안부 전화를 쓸지 정한다</td>
+<td>FD가 장치별 동의(일시, 받은 직원, 경로)를 입력</td>
+<td>동의가 없는 장치는 연결하지 않는다. 호출벨은 회원이 직접 누르는 것이라 동의 없이 연결한다</td>
+<td>기기 연결(B) [법률 검토: 센서 정보 수집 근거]</td>
+</tr>
+<tr>
+<td>4. 퇴거</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>코어 <code>ContractTerminationRequested</code>의 퇴거일에 기기 연결을 끝낸다</td>
+<td>이벤트 구독</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>MVP 데모는 시드에 기기 연결과 동의가 이미 들어 있다.</li>
+</ul>
+<hr>
+<h2 id="흐름-6-안부-방문과-장기-부재-p1-낮">흐름 6. 안부 방문과 장기 부재 (P1, 낮)</h2>
+<p>시나리오: 회원이 안부 방문 받기에 동의했다(흐름 5와 같은 동의 기록). 사업장은 하루 1회, 10:00~18:00에 방문한다 [가설]. 문구는 반영됨(<code>copy.md</code> 2-15, 2-17, 동의 2-12, 설정 2-13).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 방문 목록</td>
+<td>안부 방문 목록(SAF-12 제안): 오늘 들를 호실, 다녀온 곳과 남은 곳</td>
+<td>생활지원 직원이 목록을 연다</td>
+<td>부재 중인 회원은 &quot;부재 중&quot;으로 따로 보인다</td>
+<td>VisitPlan과 오늘 VisitRecord로 목록을 계산</td>
+<td>안부 방문 계획(B)</td>
+</tr>
+<tr>
+<td>2. 방문</td>
+<td>(방 앞, 대화)</td>
+<td>직원이 방에 들러 안부를 여쭌다</td>
+<td>결과 세 가지 중 하나를 고른다: 다녀왔습니다 / 방에 계시지 않았습니다 / 입주자가 방문을 원하지 않으셨습니다</td>
+<td>VisitRecord 저장. 상태 판단 칸 없음. &quot;방에 계시지 않았습니다&quot;는 기록만 [미정: 알림으로 올릴지]</td>
+<td>안부 방문 기록(B), 변경 이력(코어 <code>AuditWriter</code>)</td>
+</tr>
+<tr>
+<td>3. 놓친 방문</td>
+<td>알림 카드(출처: 안부 방문)</td>
+<td>18:00까지 기록이 없다</td>
+<td>흐름 1과 같은 알림 카드와 [확인하러 갑니다]</td>
+<td>작업자가 SignalEvent(VISIT, VISIT_MISSED)를 한 번만 만든다 → 규칙 &quot;안부 방문 놓침&quot;(확인 필요 [가설]) → 흐름 1의 알림·넘김</td>
+<td>상주 작업자, 규칙(B)</td>
+</tr>
+<tr>
+<td>4. 장기 부재 중</td>
+<td>첫 화면·카드·방문 목록의 &quot;부재 중&quot;</td>
+<td>(회원이 집을 오래 비운다. 직원이 코어 화면에 등록한다. 이유는 받지 않는다)</td>
+<td>—</td>
+<td>B는 부재를 저장하지 않는다. 신호를 평가할 때 코어 <code>AbsenceQuery.absenceOf(residentId, at)</code>로 읽어 침대 센서·밤 정문 출입·안부 방문 규칙을 멈춘다. 들어온 신호는 기록만. 표시는 <code>openAbsences</code>로 읽는다(ADR-S7)</td>
+<td>코어 <code>AbsenceQuery</code></td>
+</tr>
+<tr>
+<td>5. 장기 부재 끝</td>
+<td>&quot;부재 중&quot; 표시가 사라짐</td>
+<td>—</td>
+<td>—</td>
+<td>코어에서 복귀·취소·자동 종료되면 다음 평가부터 규칙이 다시 적용된다</td>
+<td>코어 <code>AbsenceQuery</code></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>호출벨과 프런트 전화는 부재 중에도 멈추지 않는다(누가 방에 있을 수 있다).</li>
+</ul>
+<h2 id="흐름-7-이은숙-회원님-병원-동행과-장기-부재-통합-데모-장면-b-3-p1">흐름 7. 이은숙 회원님 병원 동행과 장기 부재 (통합 데모 장면 B-3, P1)</h2>
+<p>시나리오(모두 가상 시드 값 [가설]): 2026-12-02 오전, 이은숙 회원님이 산책 중 휴대폰으로 프런트에 전화해 도움을 청한다. 낮 당번표는 1차 윤서연, 2차 김하진, 3차 최영미다. C 장면의 입원 기간(12/2~12/7)과 잇는다. 부재 종류·병원 이름은 어디에도 기록하지 않는다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 전화</td>
+<td>프런트 전화</td>
+<td>10:20 이은숙 회원님이 프런트에 전화한다</td>
+<td>최민수가 [전화로 받은 호출 등록](<code>copy.md</code> 2-11)</td>
+<td>SignalEvent(FRONT_CALL) → 즉시 확인 알림 → 낮 당번 윤서연</td>
+<td>당번표(B), 직원 알림</td>
+</tr>
+<tr>
+<td>2. 맡음과 만남</td>
+<td>알림 카드, 조치 기록</td>
+<td>10:22 윤서연 [확인하러 갑니다], 10:35 만남</td>
+<td>흐름 1과 같다</td>
+<td>넘김 타이머 멈춤</td>
+<td>알림 상태 전이</td>
+</tr>
+<tr>
+<td>3. 연락과 동행</td>
+<td>비상 연락처, 조치 기록의 동행 칸(<code>copy.md</code> 2-4)</td>
+<td>10:40 1순위 김지민 통화함. 10:50 윤서연이 병원까지 함께 간다</td>
+<td>한 일 &quot;직원이 도와 드림&quot;, &quot;비상 연락처에 전화함&quot;, &quot;병원으로 가심&quot;, 동행 윤서연, 출발 10:50</td>
+<td>HospitalEscort 저장. 병원 이름 없음</td>
+<td>조치 기록(B), 코어 <code>EmergencyContactQuery</code></td>
+</tr>
+<tr>
+<td>4. 건강 소식</td>
+<td>보호자 알림 미리보기</td>
+<td>10:55 [보내기]</td>
+<td>종류 병원에 가신 일</td>
+<td>D <code>post</code>. 문자 시각은 D 규칙</td>
+<td>D 공개 API</td>
+</tr>
+<tr>
+<td>5. 부재 시작</td>
+<td>첫 화면 &quot;병원에 가신 분 1명&quot;, &quot;부재 중인 입주자 2명&quot;(최순덕 12/1부터, 이은숙), 병원에 가신 분 줄의 &quot;부재 중&quot;</td>
+<td>(코어) 11:10 프런트 최민수가 장기 부재를 등록한다(시작일 12/2, 예정 복귀일 모름)</td>
+<td>B는 다음 평가부터 침대 센서·밤 정문 출입·안부 방문 규칙을 멈춘다</td>
+<td><code>AbsenceQuery.absenceOf</code>(ADR-S7)</td>
+<td>코어</td>
+</tr>
+<tr>
+<td>6. 돌아오심</td>
+<td>병원에 가신 분 목록(SAF-13)</td>
+<td>12/7 16:30 윤서연이 [돌아오셨습니다], 돌아오신 시각 16:20</td>
+<td>목록에서 빠진다</td>
+<td>HospitalEscort.returned_at 덧붙임</td>
+<td>—</td>
+</tr>
+<tr>
+<td>7. 부재 끝</td>
+<td>&quot;부재 중&quot; 표시가 사라짐</td>
+<td>(코어) 12/7 16:40 복귀 기록. 최순덕은 부재 중으로 남는다</td>
+<td>다음 평가부터 규칙 다시 적용</td>
+<td>코어 <code>AbsenceQuery</code></td>
+<td>코어</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>이어서 C 시작점(12/7 18:00, 퇴원 뒤 장면)으로 간다. 보호자 부재 소식은 D 몫이다.</li>
+</ul>
+<h2 id="흐름-8-사고학대-보고와-비상-때-재실-명단-부록-p1">흐름 8. 사고·학대 보고와 비상 때 재실 명단 (부록, P1)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>프런트스테이지</th>
+<th>백스테이지</th>
+<th>지원 프로세스</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 보고 열기</td>
+<td>알림 상세 더보기 → 사고·학대 보고(SAF-16 제안, 반영됨(<code>copy.md</code> 2-19))</td>
+<td>알림을 맡은 직원이나 책임자가 연다</td>
+<td>칸: 경위, 보호자 통보, 신고함/하지 않음·신고 기관</td>
+<td>IncidentReport 추가만. 판정 칸 없음</td>
+<td>코어 <code>AuditWriter</code></td>
+</tr>
+<tr>
+<td>2. 보고 보기</td>
+<td>같은 화면</td>
+<td>책임자·본사가 연다</td>
+<td>신고의무 근거 [미확인] 표시</td>
+<td>SENSITIVE_READ</td>
+<td>코어 감사</td>
+</tr>
+<tr>
+<td>3. 명단 열기</td>
+<td>비상 때 재실 명단(SAF-17 제안, 반영됨(<code>copy.md</code> 2-20))</td>
+<td>직원이 [비상 명단 열기]</td>
+<td>동·층별 명단, &quot;부재 중&quot;, &quot;도움 필요&quot;</td>
+<td>EvacuationRoll 생성. 명단은 코어 입주자·호실·부재로 계산, 출입 신호를 쓰지 않음</td>
+<td>코어 <code>ResidentQuery</code>·<code>SiteQuery</code>·<code>AbsenceQuery</code></td>
+</tr>
+<tr>
+<td>4. 확인</td>
+<td>사람마다 [대피 확인함]</td>
+<td>직원이 누른다</td>
+<td>확인한 직원과 시각</td>
+<td>EvacuationCheck. 정정되지 않은 확인은 (명단, 입주자)마다 하나. 잘못 누르면 EvacuationCheckCorrection을 더하고 원 기록은 그대로 둔다</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<h2 id="실패-지점과-대응">실패 지점과 대응</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>어디서</th>
+<th>무엇이 잘못되나</th>
+<th>대응</th>
+<th>화면 문구</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>F1</td>
+<td>흐름 1-1</td>
+<td>업체가 알 수 없는 형식을 보낸다</td>
+<td>원본을 보관하고 처리 실패로 표시. 관리자 화면에 보인다. 버리지 않는다</td>
+<td>&quot;출입 기록 업체에서 알 수 없는 형식의 신호가 들어와 처리하지 못했습니다(02:31). 원본은 보관했습니다. 어댑터 설정을 확인해 주세요.&quot;</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>흐름 1-1</td>
+<td>신호가 늦게 도착한다(02:38 생김, 02:44 도착)</td>
+<td>알림은 그대로 보낸다. 넘김 타이머는 도착 시각부터. 목록은 생긴 시각 순서. 규칙의 시간대(밤)는 생긴 시각으로 판단</td>
+<td>&quot;02:38에 생긴 신호가 02:44에 들어왔습니다. 생긴 시각 순서로 정리해 보여 줍니다.&quot;</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>흐름 1-2</td>
+<td>같은 신호가 다시 온다</td>
+<td>한 건으로 처리, 중복 수신 기록만</td>
+<td>&quot;같은 신호가 두 번 들어와 한 건으로 처리했습니다. 알림은 한 번만 보냈습니다.&quot;</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>흐름 1-5</td>
+<td>직원 휴대폰에 알림이 가지 않는다</td>
+<td>5분을 기다리지 않고 바로 다음 담당자에게 넘긴다</td>
+<td>&quot;김하진 님 휴대폰에 알림이 전달되지 않았습니다(03:12, A동 401호 호출벨). 5분을 기다리지 않고 박서준 님에게 바로 넘겼습니다.&quot;</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>흐름 1-7</td>
+<td>3차(책임자)에게도 5분 동안 확인이 없다</td>
+<td>오늘 밤 당번표의 모두에게 다시 알리고, 확인될 때까지 5분마다 다시 알린다[가설](확인할 것 4). 시스템이 119에 신고하지 않는다</td>
+<td>&quot;당직 책임자에게도 5분 동안 확인이 없어 오늘 밤 당번 모두에게 다시 알렸습니다. 누가 맡을 때까지 5분마다 다시 알립니다.&quot; (2-5 모두 호출 기록)</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>흐름 1-0</td>
+<td>당번표의 자리가 비어 있다(2차 없음)</td>
+<td>빈 자리는 건너뛰고 다음 자리로. 당번이 아무도 없으면 코어 <code>StaffQuery.listStaff</code>의 그 사업장 직원 모두와 사업장 책임자에게 보내고, 첫 화면 위에 경고를 띄운다</td>
+<td>&quot;오늘 밤 당번표가 비어 있습니다. 알림은 이 사업장 직원 모두와 사업장 책임자에게 갑니다. 당번표는 사업장 책임자가 채울 수 있습니다.&quot;</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>흐름 1-8</td>
+<td>두 직원이 동시에 맡는다</td>
+<td>먼저 누른 한 명만. 나머지에게 안내</td>
+<td>&quot;박서준 님이 02:46에 먼저 맡았습니다. 함께 가야 하면 박서준 님에게 전화하세요.&quot;</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>흐름 1-9</td>
+<td>방에 갔는데 입주자를 만나지 못했다</td>
+<td>알림은 확인 중으로 남고 &quot;찾는 중&quot; 표시. 책임자(3차 자리)에게 바로 알린다[가설](확인할 것 5)</td>
+<td>&quot;알림은 확인 중으로 남고, 책임자 최○○ 님에게도 알립니다.&quot;</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>흐름 1-9</td>
+<td>조치 기록 저장 중 연결이 끊긴다</td>
+<td>적은 내용을 기기에 남겨 두고 다시 저장. 같은 요청 키로 두 번 저장되지 않는다</td>
+<td>&quot;조치 기록이 저장되지 않았습니다. 연결이 잠시 끊겼습니다. 적은 내용은 이 기기에 남아 있으니 [다시 저장]을 눌러 주세요.&quot;</td>
+</tr>
+<tr>
+<td>F10</td>
+<td>흐름 1-8~11</td>
+<td>맡은 뒤 오래 조치 기록이 없다</td>
+<td>확인 중 30분이 지나면 책임자 화면에 표시(Next, <code>roadmap.md</code>)</td>
+<td>[카피 반영 대기]</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>흐름 1-0</td>
+<td>기기에서 오래 신호가 없다</td>
+<td>신호 끊김으로 따로 보인다. &quot;이상 없음&quot;으로 보이지 않게 한다(P1)</td>
+<td>&quot;B동 201호 침대 센서에서 2시간째 신호가 오지 않습니다. 이 시간 동안 입주자가 침대를 떠나셨는지는 알 수 없습니다. 배터리와 연결을 확인해 주세요.&quot;</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>흐름 2-4</td>
+<td>보호자 문자 발송 실패</td>
+<td>건강 소식은 앱에 그대로 있다. 직원에게 실패 표시(D가 처리, B 화면에도 결과 표시는 D 응답에 따름)</td>
+<td>&quot;딸 김○○ 님에게 새 소식 문자를 보내지 못했습니다. … 보호자 연락처를 확인해 주세요.&quot;</td>
+</tr>
+<tr>
+<td>F13</td>
+<td>흐름 2-2a</td>
+<td>D <code>post</code>가 실패한다</td>
+<td>아웃박스 재시도. D는 (출처 모듈, 출처 ID, 버전 번호)로 멱등이라 두 번 와도 한 건. 계속 실패하면 책임자 화면에 안내(US-09 인수 조건 5)</td>
+<td>&quot;A동 201호 이은숙 입주자의 02:58 조치 결과를 건강 소식에 아직 올리지 못했습니다. Evenstay 패밀리가 응답하지 않아 자동으로 다시 보내고 있습니다. 조치 기록은 저장되어 있습니다.&quot; (몇 분 뒤 누구에게 알릴지는 [미정])</td>
+</tr>
+<tr>
+<td>F14</td>
+<td>흐름 3-2</td>
+<td>비상 연락처가 등록되어 있지 않다</td>
+<td>안내를 띄운다. 기록 화면의 비상 연락처가 없던 알림 필터에 나온다</td>
+<td>&quot;이 입주자는 아직 비상 연락처가 없습니다. 입주 서류를 확인하고 당직 책임자 최영미 님에게 알려 주세요.&quot;</td>
+</tr>
+<tr>
+<td>F15</td>
+<td>전체</td>
+<td>서버 연결이 끊긴다</td>
+<td>직원 화면에 끊김을 띄운다. 호출벨 수신반이 있는 사업장은 수신반도 함께 본다 [가설]</td>
+<td>&quot;서버와 연결이 잠시 끊겼습니다. 새 신호는 연결이 돌아오면 바로 보입니다.&quot;</td>
+</tr>
+<tr>
+<td>F16</td>
+<td>흐름 6-3</td>
+<td>직원이 안부 방문을 기록하지 못했다</td>
+<td>놓친 방문이 신호로 들어와 넘김을 탄다. 직원 탓이 아니라 회원을 챙기는 일로 쓴다</td>
+<td>&quot;오늘 안부 방문 기록이 아직 없습니다.&quot;(놓친 방문 카드, <code>copy.md</code> 2-15)</td>
+</tr>
+<tr>
+<td>F17</td>
+<td>흐름 6-4</td>
+<td>예정 복귀일이 지났는데 코어에 복귀가 기록되지 않았다</td>
+<td>코어에서 열려 있는 동안 규칙은 계속 멈춘다 [가설]. 직원에게는 코어 &quot;확인할 일&quot;(<code>TodoQuery</code> 예정 복귀일 지남)이 보인다</td>
+<td>코어 문구</td>
+</tr>
+<tr>
+<td>F19</td>
+<td>흐름 6-4</td>
+<td>코어 <code>AbsenceQuery</code> 조회가 실패한다</td>
+<td>규칙을 멈추지 않고 그대로 적용한다(알림이 더 가는 쪽)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>F20</td>
+<td>흐름 4 생활 요청에서 옮김</td>
+<td><code>registerFromRequest</code>가 실패한다</td>
+<td>N1 요청은 그대로 남고 N1 화면이 실패를 보인다(N1 몫)</td>
+<td>N1 카피</td>
+</tr>
+<tr>
+<td>F21</td>
+<td>흐름 8-3</td>
+<td>비상 명단을 여는 중 코어 조회가 실패한다</td>
+<td>명단을 열지 못했다고 보이고 종이 명단 등 사업장 절차로 넘긴다 [가설]</td>
+<td>반영됨(<code>copy.md</code> 2-20 &quot;명단을 열지 못했을 때&quot;)</td>
+</tr>
+<tr>
+<td>F18</td>
+<td>흐름 3-4</td>
+<td>병원에 가신 분이 돌아오셨는지 다음 근무자가 모른다</td>
+<td>돌아오심 기록 전까지 첫 화면에 병원에 가신 분 수가 남는다(F21)</td>
+<td>&quot;병원에 가신 분 1명 [보기]&quot;(<code>copy.md</code> 2-1, 목록은 2-16)</td>
+</tr>
+</tbody></table></div>
+<h2 id="대안-경로-디지털이-어려운-회원">대안 경로 (디지털이 어려운 회원)</h2>
+<ul>
+<li>도움을 부르는 길은 호출벨, 방 전화, 119 셋이다. 앱은 부른 뒤 보는 곳이다. 프런트에서 받은 호출은 직원이 같은 알림 큐에 넣는다(P1).</li>
+<li>회원이 건강 소식을 누구에게 보여 줄지는 D &quot;소식 함께 보기&quot;에서 정하고, 프런트에 말해도 직원이 대신 입력한다(D 규칙: 넓히는 일은 회원 확인 후 적용, 좁히는 일은 즉시 적용).</li>
+<li>장치 설명은 종이 안내문으로도 준다(흐름 5-2).</li>
+<li>119는 회원이 직접 걸어도 된다(&quot;급하시면 119에 바로 전화하셔도 돼요.&quot;).</li>
+</ul>
+<h2 id="읽어-낸-것">읽어 낸 것</h2>
+<ul>
+<li><strong>백스테이지가 가장 빽빽한 곳은 흐름 1의 1~4단계</strong>(수신, 원본 보관, 정규화, 중복, 입주자 찾기, 규칙)다. 직원 눈에는 보이지 않지만 여기서 틀리면 알림이 두 번 울리거나 울리지 않는다. 테스트를 이곳에 몰아 둔다(<code>tech-design.md</code> 11절).</li>
+<li><strong>지원 프로세스가 여러 개 걸린 단계</strong>는 흐름 2(D 동의 조회, D <code>post</code>·<code>withhold</code>, D 문자, 코어 <code>GuardianQuery</code>)다. D가 없을 때 단독 데모가 깨지지 않도록 D 목업을 둔다(<code>prd.md</code> 13절).</li>
+<li><strong>가시선 위의 약속과 백스테이지가 어긋날 수 있는 곳</strong>: 회원 화면 &quot;직원이 가고 있어요&quot;는 [확인하러 갑니다]를 누른 뒤에만 보인다. 직원이 누르고 가지 않는 경우를 시스템이 알 수 없으므로 실패 지점 F10(확인 중 오래 머묾)을 다음 버전에 둔다.</li>
+<li><strong>이용자가 기다리는 긴 구간</strong>: 보호자는 02:58 조치 완료 뒤 08:00까지 모른다. 119·병원 이송은 그 사이 직원이 비상 연락처로 먼저 전화해서 메운다.</li>
+</ul>
+<h2 id="확인할-것">확인할 것</h2>
+<p><strong>결정됨 (허브·사용자 확정)</strong></p>
+<ol>
+<li><strong>건강 소식 올리지 않기</strong>(2026-11-03): 직원 재량 버튼은 없다. MEMBER_REQUEST(들은 직원·시각 필수)와 NOT_A_HEALTH_EVENT(다른 회원 기록, 중복, 기기 시험)만, 119·병원 이송 기록 건은 MEMBER_REQUEST만. 운영 매니저가 매주 확인한다(흐름 2). 카피 2-8 재승인.</li>
+<li><strong>회원 요청으로 뺀 일의 회원 화면 표시</strong>(2026-11-03 사용자 확정): D 회원 화면(D <code>copy.md</code> 2-9 &quot;…회원님 말씀대로 건강 소식에서 뺐어요&quot;)이 기준이다. B 안심 알림 기록(P1)에는 그 일의 줄에 같은 문장을 붙인다(흐름 2-2b).</li>
+<li><strong>보호자 알림을 보내는 시각</strong>(2026-11-03 허브 결정): D 조용한 시간(22~08시는 08:00). 미리보기는 D <code>FamilyNoticeQuery.nextSendAt</code>, 기록은 <code>post</code> 결과 <code>noticeSendAt</code>. 119·병원 이송은 문자와 상관없이 직원이 비상 연락처로 먼저 전화한다.</li>
+</ol>
+<p><strong>결정됨 [가설]</strong> (2026-11-03 사용자 결정: 문서의 제안값으로 확정하고 [가설]로 표시)
+4. <strong>3차 호출 대상과 3차 무응답</strong> [가설]: 3차는 당번표의 셋째 자리이고 기본값은 그날 밤 당직 책임자(없으면 사업장 책임자). 3차도 확인이 없으면 오늘 밤 당번표 모두(1·2·3차)에게 동시에 다시 알리고 확인될 때까지 넘김 간격마다 다시 알린다(상태 라벨 &quot;모두 호출&quot;, <code>copy.md</code> 2-5). 버린 대안: 3차를 본사 당직으로(본사 당직 체계가 있는지 [미확인]. <code>roadmap.md</code> Later).
+5. <strong>&quot;아직 만나지 못했습니다&quot;면 책임자에게 바로 알림</strong> [가설]: 3차 자리(책임자)에게 바로 알리고 알림은 확인 중 + &quot;찾는 중&quot;으로 남는다. 버린 대안: 10분 뒤에도 만나지 못하면 알린다.</p>
+<p><strong>남은 것</strong>
+6. <strong>[NEED] 야간 직원·시설장 검토</strong>: 당번표 3단계 구조, 5분 넘김, 수신반이 있는지를 현장 경험자 1명에게 확인한다. 결과에 따라 4·5번 [가설]을 다시 본다.
+7. <strong>카피 반영 대기</strong> (2026-11-03 <code>copy.md</code>와 대조)
+    - 반영됨: 당번표가 빈 경우 경고(<code>copy.md</code> 2-1), 비상 연락처가 없을 때 안내(2-9), 건강 소식을 올리지 못했을 때 책임자 안내(2-8).
+    - 반영됨(2차 대조): 입주 알림의 기기 연결 목록 문구(흐름 5, <code>copy.md</code> 2-12), 전화로 받은 호출 등록 버튼(흐름 4, 2-11).
+    - 대기: 맡은 뒤 오래 머문 알림 안내(Next, F10).</p>
+<h2 id="변경-기록">변경 기록</h2>
+<ul>
+<li>2026-11-03 기획 문서 한국어 검수(허브 요청, 사용자 지정 korean-skills, 사용자 재승인 2026-11-03). 호출한 스킬: <code>grammar-checker</code>, <code>style-guide</code>, <code>humanizer</code>(Skill 도구). 코드·ID·태그·숫자·화면 문구 인용은 고치지 않았다.<ul>
+<li>고친 곳 2곳: 맞춤법 2. 맞춤법(구두점)은 독립 항목을 나열할 때 가운뎃점을 쉼표로 바꾼 것이다.</li>
+<li>[맞춤법(구두점)] RES가 침대 센서·출입 기록·안부 전화가 무엇을 알리는지 듣는다 → RES가 침대 센서, 출입 기록, 안부 전화가 무엇을 알리는지 듣는다</li>
+<li>[맞춤법(구두점)] RES가 침대 센서·밤 출입 알림·안부 전화를 쓸지 정한다 → RES가 침대 센서, 밤 출입 알림, 안부 전화를 쓸지 정한다</li>
+</ul>
+</li>
+<li>2026-11-03 화면 문구 인용 맞춤(허브 요청, 사용자 &quot;인용 맞추기&quot;, 사용자 재승인 2026-11-03). 따옴표 인용은 <code>copy.md</code>와 글자까지 같게 했고, <code>copy.md</code>에 없는 문구는 따옴표를 빼고 설명하거나 요약이라고 밝혔다. 10곳:<ul>
+<li>실패 지점 F4 (copy 5절) [원문 일치]: &quot;김하진 님 휴대폰에 알림이 전달되지 않았습니다(03:12, 401호 호출벨). 5분을 기다리지 않고 박서준 님에게 바로 넘겼습니다.&quot; → &quot;김하진 님 휴대폰에 알림이 전달되지 않았습니다(03:12, A동 401호 호출벨). 5분을 기다리지 않고 박서준 님에게 바로 넘겼습니다.&quot;</li>
+<li>실패 지점 F5 (copy 2-5) [원문 일치]: &quot;책임자에게도 5분 동안 확인이 없습니다. 오늘 밤 당번 모두에게 다시 알립니다.&quot; → &quot;당직 책임자에게도 5분 동안 확인이 없어 오늘 밤 당번 모두에게 다시 알렸습니다. 누가 맡을 때까지 5분마다 다시 알립니다.&quot; (2-5 모두 호출 기록)</li>
+<li>실패 지점 F6 (copy 2-1, [카피 반영 대기] 표시 뺌) [원문 일치]: 첫 화면 위에 &quot;오늘 밤 당번표가 비어 있습니다&quot;를 띄운다 | [카피 반영 대기] | → 첫 화면 위에 경고를 띄운다 | &quot;오늘 밤 당번표가 비어 있습니다. 알림은 이 사업장 직원 모두와 사업장 책임자에게 갑니다. 당번표는 사업장 책임자가 채울 수 있습니다.&quot; |</li>
+<li>실패 지점 F11 (copy 5절) [원문 일치]: &quot;510호 침대 센서에서 2시간째 신호가 오지 않습니다. 이 시간 동안 입주자가 침대를 떠나셨는지는 알 수 없습니다.&quot; (호실은 시드에 맞춰 B동 201호로) → &quot;B동 201호 침대 센서에서 2시간째 신호가 오지 않습니다. 이 시간 동안 입주자가 침대를 떠나셨는지는 알 수 없습니다. 배터리와 연결을 확인해 주세요.&quot;</li>
+<li>실패 지점 F13 (copy 2-8, [카피 반영 대기] 표시 뺌) [원문 일치]: &quot;건강 소식을 올리지 못했습니다&quot; [카피 반영 대기] → &quot;A동 201호 이은숙 입주자의 02:58 조치 결과를 건강 소식에 아직 올리지 못했습니다. Evenstay 패밀리가 응답하지 않아 자동으로 다시 보내고 있습니다. 조치 기록은 저장되어 있습니다.&quot; (몇 분 뒤 누구에게 알릴지는 [미정])</li>
+<li>실패 지점 F14 (copy 2-9) [원문 일치(안내) + 설명 문장(필터 이름, copy에 없음)]: &quot;등록된 비상 연락처가 없습니다. 입주 서류를 확인하세요.&quot;[가설] 표시. 기록 화면의 &quot;비상 연락처가 없던 알림&quot; 필터에 나온다 | [카피 반영 대기] | → 안내를 띄운다. 기록 화면의 비상 연락처가 없던 알림 필터에 나온다 | &quot;이 입주자는 아직 비상 연락처가 없습니다. 입주 서류를 확인하고 당직 책임자 최영미 님에게 알려 주세요.&quot; |</li>
+<li>흐름 2 6단계 [설명 문장(copy에 없음)]: &quot;건강 소식에서 뺌(회원 요청)&quot;을 붙인다 → 회원 요청으로 건강 소식에서 뺐다는 표시를 붙인다(회원 안심 알림 기록의 문장은 <code>copy.md</code> 4-4)</li>
+<li>흐름 5 1단계 [요약 표시(copy에 없음)]: | 1. 입주 알림 | &quot;기기 연결이 필요한 입주자 1명&quot; | → | 1. 입주 알림 | 기기 연결이 필요한 입주자 목록(요약, 문구는 [카피 반영 대기]) |</li>
+<li>흐름 4 대안 [설명 문장(copy에 없음)]: 받은 직원이 화면에서 [전화로 받은 호출 등록]을 눌러 같은 알림을 만든다(P1) → 받은 직원이 화면에서 전화로 받은 호출을 등록해 같은 알림을 만든다(P1, 버튼 문구는 [카피 반영 대기])</li>
+<li>확인할 것 4 [원문 일치(낡은 대기 표시 정리)]: (상태 라벨 &quot;모두 호출&quot;, 카피 반영 대기) → (상태 라벨 &quot;모두 호출&quot;, <code>copy.md</code> 2-5)</li>
+<li>(같은 작업, 전수 대조로 더 찾은 7곳)</li>
+<li>흐름 1 0단계 [원문 일치]: 당번 표시 &quot;당번 김하진 · 2차 박서준 · 3차 최영미(책임자)&quot; → 당번 표시 &quot;당번 김하진 · 2차 박서준 · 3차 최영미(당직 책임자)&quot;</li>
+<li>흐름 1 5단계 [원문 일치]: 알림 카드: &quot;<strong>즉시 확인</strong> · 201호 이○○ 입주자 · 침대를 떠난 뒤 30분 동안 돌아오지 않았습니다. · 02:10 침대 떠남 · 02:40 알림 · 출처: 침대 센서 · 규칙: 밤 침대 떠남 30분 · [확인하러 갑니다]&quot; → 알림 카드: &quot;<strong>즉시 확인</strong> · A동 201호 이은숙 입주자 · 침대를 떠난 뒤 30분 동안 돌아오지 않았습니다. · 02:10 침대 떠남 · 02:40 알림 · 출처: 침대 센서 · 규칙: 밤 침대 떠남 30분 · [확인하러 갑니다]&quot;</li>
+<li>흐름 2 2d [원문 일치]: &quot;김○○ 입주자가 건강 소식을 보여 주기로 한 보호자가 없습니다. 보호자 알림을 보내지 않고 기록에 남깁니다. 119에 신고했거나 병원으로 모셨다면 비상 연락처로 전화하세요.&quot; → &quot;이은숙 입주자가 건강 소식을 보여 주기로 한 보호자가 없습니다. 보호자 알림을 보내지 않고 기록에 남깁니다. 119에 신고했거나 병원으로 모셨다면 비상 연락처로 전화하세요.&quot;</li>
+<li>흐름 2 5단계 [원문 일치(D 카피)]: &quot;박서준 직원이 기록했어요. 궁금한 점은 프런트로 전화 주세요.&quot; → &quot;박서준 직원이 기록했어요. 궁금한 점은 프런트(02-○○○-○○○○)로 전화 주세요.&quot;(D <code>copy.md</code>)</li>
+<li>흐름 3 2단계 [원문 일치]: 순서대로 &quot;1순위 김지민(딸) 010-…&quot;, 누르면 전화 걸기 → 순서대로 &quot;1순위 · 김지민 · 자녀 · 010-○○○○-○○○○ [전화 걸기]&quot;</li>
+<li>흐름 3 4단계 [원문 일치]: &quot;비상 연락처에 전화함(1순위, 03:05, 통화함)&quot; → &quot;비상 연락처에 전화함&quot;, 통화 기록 &quot;03:05 · 1순위 김지민 님 · 통화함&quot;</li>
+<li>흐름 4 4단계 [원문 일치(시각도 copy와 같게)]: 기록 &quot;11월 12일 새벽 3시 20분 · 박서준 직원이 다녀갔어요&quot; → 기록 &quot;11월 12일 새벽 2시 49분 · 박서준 직원이 다녀갔어요&quot;</li>
+<li>흐름 1 8단계 [원문 일치(바깥 따옴표를 빼고 안쪽 큰따옴표를 copy와 같게)]: 맡은 뒤 카드 안내 &quot;119 신고가 필요하면 직접 전화하세요. 신고한 뒤 조치 기록에서 &#39;119에 신고함&#39;을 골라 주세요.&quot; → 맡은 뒤 카드 안내(<code>copy.md</code> 2-4 원문): 119 신고가 필요하면 직접 전화하세요. 신고한 뒤 조치 기록에서 &quot;119에 신고함&quot;을 골라 주세요.</li>
+<li>흐름 4 3단계 [원문 일치(이름만 가림)]: | 3. 맡음 | &quot;박서준 직원이 가고 있어요.&quot; | → | 3. 맡음 | &quot;○○○ 직원이 가고 있어요.&quot;(데모에서는 박서준) |</li>
+</ul>
+</li>
+<li>2026-11-03 카피 반영 대기 목록 정리(허브 요청, 사용자 &quot;정리해&quot;, 사용자 재승인 2026-11-03): <code>copy.md</code>에 이미 들어간 항목은 지우지 않고 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 표시했고, 들어가지 않은 항목만 대기로 남겼다.</li>
+<li>2026-11-03 카피 반영 대기 표시 정리 2(허브 요청, 사용자 &quot;맡겨&quot;, 사용자 재승인 2026-11-03): B 카피 세션이 <code>copy.md</code> 2-11~2-14 절과 2-6·2-7 표에 넣은 문구, <code>names.md</code> 4절 출처 &quot;프런트 전화&quot;와 대조해, 들어간 항목을 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨다. 아직 없는 것은 맡은 뒤 오래 머문 알림 안내(Next)뿐이다.</li>
+<li>2026-11-03 안전 서비스 보완(허브 요청, 사용자 선택 &quot;넓게(N1 포함)&quot;, 사용자 재승인 2026-11-04). 호출한 스킬: <code>service-blueprint</code>. 흐름 3에 4b 병원 동행(P1), 흐름 6 안부 방문과 장기 부재(P1), 실패 지점 F16~F18. 새 문구는 [NEED: 카피]. &quot;판&quot;은 &quot;버전&quot;으로.</li>
+<li>2026-11-03 코어 장기 부재 확정 맞춤(허브 요청, 사용자 재승인 2026-11-04): 코어가 <code>ResidentAbsenceStarted</code>/<code>ResidentAbsenceEnded</code>(absenceId, residentId, unitId, startedOn/endedOn, expectedReturnOn)와 <code>AbsenceQuery</code>를 확정했다(코어 <code>tech-design.md</code> 2-2·3-4·8절). 모듈 경계 8번(다른 모듈 데이터를 복사해 두지 않고 매 요청 <code>api/</code>로 읽는다)에 따라 B는 부재를 저장하지 않고 신호를 평가할 때마다 <code>AbsenceQuery.absenceOf</code>로 읽는다(<code>tech-design.md</code> ADR-S7). 이벤트는 구독하지 않는다. <code>SafetyBoardQuery.boardOf</code> 반환 형태를 코어 운영 현황 카드에 맞췄다(가장 긴 시간, 당번 이름).</li>
+<li>2026-11-03 안전 서비스 보완 카피 반영(허브 요청, 사용자 재승인 2026-11-04): B 카피 세션이 <code>copy.md</code> 2-15 안부 방문, 2-16 병원 동행, 2-17 부재 중과 기존 표(2-1, 2-4, 2-7, 2-12, 2-13, 4-2)에 줄을 넣고 <code>names.md</code> 4절에 출처 &quot;안부 방문&quot;을 넣었다. 해당 [NEED: 카피]를 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨고, 안부 방문 결과 선택지는 카피대로 &quot;입주자가 방문을 원하지 않으셨습니다&quot;(직원 화면 호칭 규칙)로 맞췄다.</li>
+<li>2026-11-04 전체 리뷰 보완(허브 지시서 <code>00-hub/reviews/supplement-orders-2026-11-04.md</code> 안심 알림 1~4, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04). 목표는 모든 화면이 흐름대로 움직이는 클릭형 프로토타입(MVP 구현 없음).<ul>
+<li>blueprint: 흐름 4에 생활 요청에서 옮긴 호출, 흐름 7 이은숙 병원 동행과 장기 부재(장면 B-3), 흐름 8 사고·학대 보고와 비상 때 재실 명단, 실패 지점 F20·F21. 호출한 스킬: <code>service-blueprint</code>.</li>
+</ul>
+</li>
+<li>2026-11-04 전체 리뷰 보완 카피 반영(허브 요청, 사용자 재승인 2026-11-04): B 카피 세션이 <code>copy.md</code> 2-18 호실 현황, 2-19 사고·학대 보고, 2-20 비상 때 재실 명단, 2-21 소유주 월 리포트의 안심 알림 묶음과 기존 표(2-1, 2-11, 2-12, 2-16, 4-1)에 줄을 넣고 <code>names.md</code> 4절에 출처 &quot;생활 요청에서 옮김&quot;을 넣었다. 해당 [NEED: 카피]를 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨다.</li>
+<li>2026-11-04 데모 장면 시드 맞춤(허브 요청, 화면 정의서 검토 지적, 사용자 재승인 2026-11-04): 코어 시드에서 A동 301호 김정희가 11/8~11/19 장기 부재라 11/12 안부 방문 장면(B-2)에서 놓친 방문 대상으로 쓸 수 없었다. 김정희는 방문 목록에 &quot;부재 중 · 오늘은 들르지 않습니다&quot;(<code>copy.md</code> 2-15)로만 보이고 놓친 방문 신호가 생기지 않게 했다. 놓친 방문은 B동 402호 최순덕(부재 12/1부터라 11/12에는 해당 없음)으로 바꿨다. B-3은 코어 장면 시각(12/2 11:10 부재 시작, 12/7 16:40 복귀)과 최순덕 부재(12/1부터)를 반영해 &quot;부재 중인 입주자 2명&quot;으로 고쳤다.</li>
+<li>2026-11-04 앱 호출 표현 정리(허브 요청, 사용자 결정 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 &quot;도움을 부르는 길은 호출벨·방 전화·119 셋, 앱은 부른 뒤 보는 곳&quot;, 사용자 재승인 2026-11-04): 흐름 4 대안, 흐름 7 시나리오, 대안 경로에서 앱으로 부른다고 읽히는 문장을 고쳤다.</li>
+<li>2026-11-04 공용 문구 인용 맞춤(허브 요청, 사용자 &quot;추천대로&quot;, 근거 <code>03-copywriting/ideas/safety-signal-hub/plain-read-review-2026-11-04.md</code>와 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구 행, 사용자 재승인 2026-11-04): 인용만 바꿨고 기능·범위·정책·수치는 그대로다. 흐름 2의 1·4·5단계와 흐름 3의 4a·5단계 인용을 <code>copy.md</code> 3-1~3-3과 D <code>copy.md</code> 상세 아래 문장에 글자까지 맞췄다(침대로 가셨어요, 통화가 안 됐어요, 비상 연락처에 적힌 분께, 프런트 번호 표기, 이름).</li>
+<li>2026-11-04 프로토타입 확인 보완(허브 지시, 사용자 &quot;추천대로&quot;, 근거 <code>evenstay/design/prototype/REPORT.md</code> 2·4·10번, 사용자 재승인 2026-11-04): 흐름 8의 4단계에 대피 확인 정정을 더했다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-blueprint" data-title="서비스 설계도"><p>이용자가 보는 화면 뒤에서 직원과 시스템이 무엇을 하는지 단계별로 그린 문서입니다.</p></template>
+<template id="g-148" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-149" data-title="건강 소식"><p>B, C가 올린 본문 스냅샷. 건강 소식이 보호자에게 가는 길은 D 하나다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 건강 소식. 종류: 직원이 다녀간 일 / 병원에 가신 일 / 그 밖의 건강 기록 / 생활 지원 단계가 바뀐 일 / 다른 기관 돌봄이 시작된 일</dd><dt>영문·코드 이름</dt><dd><code>HealthEvent</code>: <code>SAFETY_SIGNAL</code>, <code>HOSPITAL_TRANSFER</code>, <code>CARE_NOTE</code>, <code>CARE_STAGE_CHANGE</code>, <code>EXTERNAL_CARE_START</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-150" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-151" data-title="비상 연락처"><p>응급 때 직원이 누구에게 어떤 순서로 전화하는가. 계약에 딸리고 동의 항목과 무관하다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 비상 연락처 / 회원: 급할 때 연락할 분 / 보호자: 비상 연락처에 적힌 분(119 신고, 병원 이송 기록에서만)</dd><dt>영문·코드 이름</dt><dd><code>EmergencyContact</code></dd><dt>출처</dt><dd>core T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-152" data-title="조치 기록"><p>만남 여부와 한 일. 진단, 투약 칸이 없다. 정정은 새 행</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 조치 기록 / 회원: 직원이 한 일</dd><dt>영문·코드 이름</dt><dd><code>ActionRecord</code></dd><dt>출처</dt><dd>safety T2-2, safety M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-153" data-title="당번표"><p>근무 시간과 자리. 근무 기간은 겹치지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 당번표, 근무, 당번 자리(1차·2차·3차)</dd><dt>영문·코드 이름</dt><dd><code>OnCallRoster</code>, 저장은 <code>OnCallShift</code>, <code>OnCallSlot</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-154" data-title="안부 방문"><p>회원이 받기로 한 정기 순회. 놓치면 신호가 된다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 안부 방문 계획, 안부 방문 기록 / 회원: 안부 방문</dd><dt>영문·코드 이름</dt><dd><code>VisitPlan</code>, <code>VisitRecord</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-155" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-156" data-title="기기 연결"><p>기기, 출입 카드, 안부 전화 가입을 입주자와 잇고 장치 동의를 담는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 기기 연결 / 회원: 내 방 장치</dd><dt>영문·코드 이름</dt><dd><code>ResidentLink</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-157" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-158" data-title="알림 기록"><p>알림 타임라인. 추가만 한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 알림 기록 한 줄</dd><dt>영문·코드 이름</dt><dd><code>AlertEvent</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-159" data-title="사업장 책임자"><p>사업장 운영을 맡고 운영 현황 카드를 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 책임자 / 회원 공지: 센터장</dd><dt>영문·코드 이름</dt><dd><code>SITE_MANAGER</code></dd><dt>출처</dt><dd>core T6-1, requests N</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

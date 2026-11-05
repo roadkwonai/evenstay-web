@@ -1,0 +1,370 @@
+{
+ "seq": 0,
+ "fallbackMoveIn": {
+  "R_EUNSOOK": "2026-10-01"
+ },
+ "roleWords": {
+  "CARE": {
+   "staff": "간호",
+   "member": "간호 담당"
+  },
+  "LIFE": {
+   "staff": "생활 지원",
+   "member": "생활 지원 담당"
+  },
+  "MANAGER": {
+   "staff": "사업장 책임자",
+   "member": "책임자"
+  },
+  "HQ_OPS": {
+   "staff": "본사 운영 매니저",
+   "member": "본사 운영 매니저"
+  }
+ },
+ "assessDefaults": {
+  "trigger": "AFTER_DISCHARGE",
+  "coIds": [
+   "st.kimhj",
+   "st.parksj"
+  ]
+ },
+ "explainDefaults": {
+  "companion": {
+   "name": "김지민",
+   "relation": "딸",
+   "via": "전화"
+  }
+ },
+ "bannedWords": [
+  "치매",
+  "알츠하이머",
+  "파킨슨",
+  "뇌졸중",
+  "중풍",
+  "당뇨",
+  "고혈압",
+  "우울증",
+  "폐렴"
+ ],
+ "weekdayShort": [
+  "일",
+  "월",
+  "화",
+  "수",
+  "목",
+  "금",
+  "토"
+ ],
+ "triggerLabels": {
+  "AFTER_DISCHARGE": "퇴원 뒤",
+  "SCHEDULED": "정기 살펴보기",
+  "RESIDENT_REQUEST": "입주자 요청",
+  "STAFF_OBSERVATION": "직원이 본 일"
+ },
+ "items": [
+  {
+   "code": "MEAL",
+   "label": "식사"
+  },
+  {
+   "code": "MOBILITY",
+   "label": "걷기·움직이기"
+  },
+  {
+   "code": "BATHING",
+   "label": "씻기"
+  },
+  {
+   "code": "DRESSING",
+   "label": "옷 입기"
+  },
+  {
+   "code": "TOILETING",
+   "label": "화장실"
+  },
+  {
+   "code": "MEDICATION",
+   "label": "약 챙기기"
+  },
+  {
+   "code": "GOING_OUT",
+   "label": "외출"
+  }
+ ],
+ "levels": [
+  {
+   "code": "INDEPENDENT",
+   "label": "혼자 하심"
+  },
+  {
+   "code": "SOMETIMES_HELPED",
+   "label": "가끔 도움을 드림"
+  },
+  {
+   "code": "ALWAYS_HELPED",
+   "label": "매번 도움을 드림"
+  },
+  {
+   "code": "NOT_OBSERVED",
+   "label": "살펴보지 못함"
+  }
+ ],
+ "opinions": [
+  {
+   "code": "AGREES",
+   "label": "동의하심",
+   "member": "좋다고 하셨어요"
+  },
+  {
+   "code": "WANTS_TIME",
+   "label": "더 생각하고 싶어 하심",
+   "member": "더 생각해 보기로 하셨어요"
+  },
+  {
+   "code": "DISAGREES",
+   "label": "동의하지 않으심",
+   "member": "원하지 않는다고 하셨어요"
+  },
+  {
+   "code": "COULD_NOT_HEAR",
+   "label": "의견을 듣지 못함(사유)",
+   "member": ""
+  }
+ ],
+ "statusLabels": {
+  "DRAFT": "작성 중",
+  "AWAITING_EXPLANATION": "설명 전",
+  "AWAITING_DECISION": "결정 대기",
+  "DECIDED_CHANGE": "변경 결정",
+  "DECIDED_KEEP": "유지 결정",
+  "WITHDRAWN": "제안 취소"
+ },
+ "choices": [
+  {
+   "code": "CHANGE",
+   "label": "제안대로 바꾸기"
+  },
+  {
+   "code": "KEEP",
+   "label": "지금 단계 유지"
+  },
+  {
+   "code": "REASSESS",
+   "label": "다시 살펴본 뒤 결정"
+  }
+ ],
+ "kindLabels": {
+  "ASSESSMENT": "평가 기록",
+  "PROPOSAL": "단계 변경 제안",
+  "EXPLANATION": "입주자 설명",
+  "DECISION_CHANGE": "단계 변경 결정",
+  "DECISION_KEEP": "유지 결정",
+  "DECISION_REASSESS": "다시 살펴본 뒤 결정",
+  "AMENDMENT": "계약 변경 요청",
+  "EXTERNAL": "외부 돌봄 일정",
+  "OVERLAP": "겹침 처리"
+ },
+ "careTypes": [
+  {
+   "code": "HOME_CARE",
+   "label": "방문요양"
+  },
+  {
+   "code": "HOME_NURSING",
+   "label": "방문간호"
+  },
+  {
+   "code": "HOME_BATHING",
+   "label": "방문목욕"
+  },
+  {
+   "code": "DAY_NIGHT_CARE",
+   "label": "주야간보호"
+  },
+  {
+   "code": "OTHER",
+   "label": "그 밖의 돌봄"
+  }
+ ],
+ "infoSources": [
+  {
+   "code": "RESIDENT",
+   "label": "입주자"
+  },
+  {
+   "code": "FAMILY_OR_REPRESENTATIVE",
+   "label": "가족·대리인"
+  },
+  {
+   "code": "PROVIDER",
+   "label": "기관"
+  }
+ ],
+ "fixMethods": [
+  {
+   "code": "MOVE",
+   "label": "레지던스 서비스 시간 옮김"
+  },
+  {
+   "code": "ASK_PROVIDER",
+   "label": "기관에 시간 조정 요청"
+  },
+  {
+   "code": "KEEP_BOTH",
+   "label": "둘 다 그대로(까닭)"
+  }
+ ],
+ "defVersions": [
+  {
+   "version": 1,
+   "validFrom": "2026-10-01",
+   "unchanged": "지금 방, 입주 계약, 식당 식사와 프로그램, 급할 때 연락할 분, 함께 보실 분이 보는 범위",
+   "memberUnchanged": [
+    "입주 계약",
+    "식당 식사와 프로그램",
+    "급할 때 연락할 분",
+    "함께 보실 분께 보여 드리는 소식"
+   ],
+   "stages": [
+    {
+     "code": "BASIC",
+     "staffLabel": "기본 서비스",
+     "staffTo": "기본 서비스로",
+     "memberLabel": "기본 서비스",
+     "mode": "OWN",
+     "fee": "BASE",
+     "feeLabel": "기본 묶음",
+     "servicesNote": "추가 서비스 없음",
+     "keepNote": "",
+     "newsListLine": "기본 서비스로 돌아갔어요",
+     "proposeNote": "",
+     "explainExample": "",
+     "memberDesc": "입주 계약에 있는 식사, 생활 도움, 프로그램을 받으시는 단계예요.",
+     "services": []
+    },
+    {
+     "code": "LIVING_SUPPORT",
+     "staffLabel": "생활 지원 추가",
+     "staffTo": "생활 지원 추가로",
+     "memberLabel": "생활 지원 더하기",
+     "mode": "OWN",
+     "fee": "LIVING_SUPPORT",
+     "feeLabel": "생활 지원 묶음",
+     "servicesNote": "",
+     "keepNote": "",
+     "newsListLine": "목욕 도움을 새로 받으시게 됐어요",
+     "proposeNote": "",
+     "explainExample": "회원님, 퇴원하신 뒤로 목욕하실 때 저희가 손을 잡아 드렸지요. 앞으로 화요일 오전마다 목욕을 도와 드리고, 아침저녁으로 약 드시는 것도 함께 챙겨 드리면 어떨까 해요. 방과 입주 계약은 그대로예요. 회원님 생각은 어떠세요?",
+     "memberDesc": "기본 서비스에 목욕, 약 챙기기 같은 도움을 더 받으시는 단계예요.",
+     "services": [
+      {
+       "code": "BATH_HELP",
+       "staffLabel": "목욕 도움 주 1회(화요일 오전)",
+       "previewLabel": "목욕 도움 주 1회(화요일 오전)",
+       "memberLabel": "화요일 오전 목욕 도움",
+       "familyLabel": "화요일 오전 목욕 도움",
+       "shortLabel": "목욕 도움",
+       "times": [
+        {
+         "wds": [
+          2
+         ],
+         "start": "10:00",
+         "end": "10:40"
+        }
+       ]
+      },
+      {
+       "code": "MEDICATION_HELP",
+       "staffLabel": "약 챙기기 도움 하루 두 번(아침, 저녁)",
+       "previewLabel": "약 챙기기 도움 하루 두 번",
+       "memberLabel": "아침저녁 약 챙기기 도움",
+       "familyLabel": "아침저녁 약 챙기기 도움",
+       "shortLabel": "약 챙기기 도움",
+       "times": [
+        {
+         "wds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+         ],
+         "start": "08:00",
+         "end": "08:15"
+        },
+        {
+         "wds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+         ],
+         "start": "19:00",
+         "end": "19:15"
+        }
+       ]
+      },
+      {
+       "code": "ROOM_VISIT",
+       "staffLabel": "방 방문 안부 하루 한 번",
+       "previewLabel": "방 방문 안부 하루 한 번",
+       "memberLabel": "하루 한 번 직원이 방에 들러요",
+       "familyLabel": "하루 한 번 직원 방문",
+       "shortLabel": "방 방문 안부",
+       "times": []
+      }
+     ]
+    },
+    {
+     "code": "WITH_EXTERNAL_CARE",
+     "staffLabel": "외부 돌봄 병행",
+     "staffTo": "외부 돌봄 병행으로",
+     "memberLabel": "다른 기관 돌봄 함께",
+     "mode": "KEEP_CURRENT",
+     "fee": "",
+     "feeLabel": "지금 서비스 그대로 이어받기",
+     "servicesNote": "지금 서비스 그대로 이어받기",
+     "keepNote": "이 단계로 바뀌어도 입주자가 지금 받는 서비스와 요금 묶음을 그대로 이어받습니다.",
+     "newsListLine": "받고 계신 도움은 그대로예요",
+     "proposeNote": "",
+     "explainExample": "",
+     "memberDesc": "방문요양처럼 다른 기관의 돌봄도 함께 받으시는 단계예요. 레지던스에서 받으시는 도움은 그대로예요.",
+     "services": []
+    },
+    {
+     "code": "PLACE_CONSULT",
+     "staffLabel": "거처 상담",
+     "staffTo": "거처 상담으로",
+     "memberLabel": "지낼 곳 함께 의논",
+     "mode": "KEEP_CURRENT",
+     "fee": "",
+     "feeLabel": "지금 서비스 그대로 이어받기",
+     "servicesNote": "지금 서비스 그대로 이어받기",
+     "keepNote": "이 단계로 바뀌어도 입주자가 지금 받는 서비스와 요금 묶음을 그대로 이어받습니다.",
+     "newsListLine": "앞으로 지낼 곳을 함께 의논하기로 했어요",
+     "proposeNote": "거처 상담은 입주자와 가족이 앞으로 지낼 곳을 함께 의논하는 단계입니다. 입주 계약은 바뀌지 않습니다. 입주자 설명과 의견 없이는 결정할 수 없고, 설명할 때 대리인이나 입주자가 고른 가족이 함께하도록 해 주세요.",
+     "explainExample": "",
+     "memberDesc": "지금 받는 도움으로 이곳에서 지내시기 어려울 수 있어, 앞으로 지낼 곳을 회원님, 가족, 직원이 함께 의논해요. 의논하는 동안에도 입주 계약은 그대로예요.",
+     "services": []
+    }
+   ]
+  }
+ ],
+ "active": {},
+ "assessments": [],
+ "proposals": [],
+ "explanations": [],
+ "decisions": [],
+ "assignments": [],
+ "slots": [],
+ "amendments": [],
+ "externals": [],
+ "overlaps": [],
+ "log": []
+}

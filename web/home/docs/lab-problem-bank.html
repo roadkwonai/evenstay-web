@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>문제 목록 | Evenstay 문서</title>
+<meta name="description" content="문제 목록. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>문제 목록</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#근거가-약한-곳-인터뷰로-보완할-것">근거가 약한 곳 (인터뷰로 보완할 것)</a></li><li class="lv2"><a href="#핵심-숫자-원문-대조함">핵심 숫자 (원문 대조함)</a></li><li class="lv2"><a href="#a-시설-운영과-입주-계약">A. 시설 운영과 입주 계약</a></li><li class="lv2"><a href="#b-돌봄-연계와-정보-단절">B. 돌봄 연계와 정보 단절</a></li><li class="lv2"><a href="#c-시니어-일상-건강-안전-고립">C. 시니어 일상 (건강, 안전, 고립)</a></li><li class="lv2"><a href="#d-디지털-금융-사회참여">D. 디지털, 금융, 사회참여</a></li><li class="lv2"><a href="#e-보호자와-돌봄-인력">E. 보호자와 돌봄 인력</a></li><li class="lv2"><a href="#f-재산-관리와-금융-축-8">F. 재산 관리와 금융 (축 8)</a></li><li class="lv2"><a href="#g-ai-비서-축-9">G. AI 비서 (축 9)</a></li><li class="lv2"><a href="#h-금융-자산관리-서비스-축-10">H. 금융 자산관리 서비스 (축 10)</a></li><li class="lv2"><a href="#분포">분포</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-683" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-684" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-685" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-686" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-687" data-tip="수익이 아니라 맡긴 돈.">보증금</button></li><li><button class="term" type="button" data-modal="g-688" data-tip="호실과 입주자를 잇는 계약.">입주 계약</button></li></ul></section></aside>
+  <article class="doc"><p>출처 번호: S = <code>sources/company-[지원 회사].md</code>, A = <code>sources/axis4-senior-housing-ops.md</code>, B = <code>sources/axis7-pms-proptech.md</code>, D = <code>sources/axis5-senior-life.md</code>, E = <code>sources/axis6-existing-services.md</code>, F = <code>sources/axis8-senior-finance.md</code>, G = <code>sources/axis9-senior-ai-assistant.md</code>, K = <code>sources/axis10-senior-wealth-services.md</code>
+축별 원래 후보(C-, D-, E-, F-, H-, W-)는 각 notes/outputs 파일에 있다. 여기서는 겹치는 후보를 합쳤다. v0.3에서 축 8 후보 중 근거가 없는 F-14(의료비 영수증 정리)는 넣지 않았다.</p>
+<h2 id="근거가-약한-곳-인터뷰로-보완할-것">근거가 약한 곳 (인터뷰로 보완할 것)</h2>
+<ul>
+<li><strong>보호자</strong> 관련 한국 정량 자료가 거의 없다(원거리 돌봄, 형제 분담, 행정 대행). → <code>mom-test</code>로 보호자 인터뷰</li>
+<li><strong>시니어 당사자 목소리</strong>가 거의 없다(3년 넘은 기사 1건). → 부모님·지인 인터뷰, 커뮤니티 후기</li>
+<li><strong>시설 직원 업무</strong>(직원 부족, 식사 품질, 보호자 응대)의 직접 근거가 없다. → 업계 종사자 인터뷰</li>
+<li>전체 노인 통계(D)는 입주 대상(비교적 고소득이고 자립 가능)과 다르다. 하우징 연관성 판단은 [추정]이다.</li>
+</ul>
+<h2 id="핵심-숫자-원문-대조함">핵심 숫자 (원문 대조함)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>숫자</th>
+<th>내용</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1,051만명, 20.3%</td>
+<td>65세 이상 인구(2025)</td>
+<td>S4, D6</td>
+</tr>
+<tr>
+<td>32.8%</td>
+<td>독거노인 가구 비율(2023, 2020년 19.8%)</td>
+<td>D3, D4</td>
+</tr>
+<tr>
+<td>95.3%</td>
+<td>건강할 때 현재 집(또는 더 나은 집)에서 살고 싶다</td>
+<td>D1</td>
+</tr>
+<tr>
+<td>44.2%</td>
+<td>건강이 나빠지면 요양시설(27.7%)이나 노인전용주택(16.5%)을 원한다(2017년 31.9%, 2020년 31.3%)</td>
+<td>D1</td>
+</tr>
+<tr>
+<td>9.8%</td>
+<td>응급 안전기기 설치율(필요하다는 응답 38.8%)</td>
+<td>D1</td>
+</tr>
+<tr>
+<td>47곳, 11,090세대</td>
+<td>전국 노인복지주택</td>
+<td>A4</td>
+</tr>
+<tr>
+<td>8,905건 → 643건(7.2%)</td>
+<td>통합돌봄 시행 2주간 신청 대비 서비스 연계, 연계까지 1~2개월</td>
+<td>E3</td>
+</tr>
+<tr>
+<td>2026-10-13~11-23</td>
+<td>노인복지법 시행규칙 개정안 입법예고(계속 거주, 입소자대표회의, 위탁운영자 신고)</td>
+<td>A3</td>
+</tr>
+<tr>
+<td>154조원</td>
+<td>65세 이상 치매 환자 보유 자산(2023, GDP 6.4%). 2050년 488조원 전망</td>
+<td>F1</td>
+</tr>
+<tr>
+<td>30.2%</td>
+<td>만 55세 이상의 AI 서비스 경험률(일반 국민 59.4%). 2025 디지털정보격차 실태조사, 2026-03-26 발표</td>
+<td>G3</td>
+</tr>
+<tr>
+<td>2026-01-22</td>
+<td>AI 기본법 시행. 생성형·고영향 AI 사전 고지 의무(과태료는 계도기간)</td>
+<td>G4</td>
+</tr>
+<tr>
+<td>제휴 불가</td>
+<td>한국투자증권 KIS: 제3자 서비스 제휴는 투자일임·자문업 금융회사만, 핀테크 등은 불가</td>
+<td>K25</td>
+</tr>
+<tr>
+<td>2026-08-13</td>
+<td>토스증권 OpenAPI 전 고객 공개. 본인 키를 외부 LLM에 연결해 대화형 조회·주문 가능</td>
+<td>K30</td>
+</tr>
+<tr>
+<td>2026-06-01</td>
+<td>주택연금: 노인주거복지시설 입주 등 불가피한 사유로 실거주하지 않아도 신규 가입 가능(부부합산 1주택자)</td>
+<td>F8</td>
+</tr>
+</tbody></table></div>
+<h2 id="a-시설-운영과-입주-계약">A. 시설 운영과 입주 계약</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>문제</th>
+<th>겪는 사람</th>
+<th>상황</th>
+<th>근거</th>
+<th>현재 대안과 한계</th>
+<th>빈도·심각도</th>
+<th>하우징 연관성</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P-001</td>
+<td>약속한 서비스(식당, 의원, 체력단련실)가 중단되어도 월 비용은 그대로이고, 입주자가 이행 여부를 확인할 수단이 없다</td>
+<td>입주자, 보호자</td>
+<td>사업자 부도, 운영 축소</td>
+<td>A14, A15</td>
+<td>서비스 기준이 구체적이지 않아 소송으로 간다(약 10년 사례)</td>
+<td>드묾·매우 심각</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-002</td>
+<td>보증금 반환이 늦거나 불확실하고, 입주자가 보증 상태를 확인할 수단이 없다</td>
+<td>입주자, 보호자</td>
+<td>퇴거, 운영사 교체, 사업자 부실</td>
+<td>A14, A16, A3, F-11</td>
+<td>보증보험 의무(50%)가 근저당·전세권 설정 시 면제된다</td>
+<td>드묾·매우 심각</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-003</td>
+<td>건강이 나빠지면 계속 살 수 있는지, 어떤 서비스로 이어지는지 불안하다. 시설마다 단계 전환 규칙이 다르다</td>
+<td>입주자, 보호자, 시설 직원</td>
+<td>낙상, 경증 치매, 퇴원 (평균 연령 84세 사례)</td>
+<td>A3, A6, A15, E12, D11</td>
+<td>개정안에 서비스를 받으며 독립생활이 가능하면 계속 거주할 근거를 둔다(확정 전). 인지 저하자 24.6%</td>
+<td>흔함·심각</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-004</td>
+<td>인기 시설은 대기가 2년 이상이다. 대기자의 상태와 희망 조건을 관리하기 어렵다</td>
+<td>입주 희망자, 상담 직원</td>
+<td>문의부터 계약까지</td>
+<td>A7, A16</td>
+<td>수기·엑셀 관리 [추정]</td>
+<td>흔함·중간</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-005</td>
+<td>시설마다 비용 항목, 보증금, 대기, 심사 기준이 달라 입주 전에 비교하기 어렵다. 연금·주택 수입 대비 입주 후 현금흐름을 가늠하지 못한다</td>
+<td>입주 고려자, 보호자</td>
+<td>시설 비교와 입주 결정</td>
+<td>A6, A12, A16, D1, D18, K17, K19, F-04, W-08</td>
+<td>상담 전화와 체험 입주. 시설별 표준이 없다. 계산 결과를 상품 추천으로 쓰면 안 된다</td>
+<td>의사결정 시·중간</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-006</td>
+<td>의무식과 결식 감면 때문에 식사 기록이 곧 청구 근거다. 수기 관리는 오류·분쟁 위험이 있다</td>
+<td>입주자, 경리, 영양사</td>
+<td>매일 식사, 월 정산(한 끼 600여 명 사례)</td>
+<td>A6, A16</td>
+<td>시설 내부 방식 [미확인]</td>
+<td>매일·중간</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-007</td>
+<td>입소 심사가 방문 조사 중심이라 그날 컨디션에 따라 결과가 달라질 수 있다</td>
+<td>입주 희망자, 보호자, 시설장</td>
+<td>입주 심사</td>
+<td>A16</td>
+<td>기준이 시설마다 다르다</td>
+<td>가끔·중간</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-008</td>
+<td>관리비 사용 내역 공개 규정이 없어 비용이 타당한지 확인하기 어렵다</td>
+<td>입주자</td>
+<td>관리비·생활비 인상</td>
+<td>A14(근거 약함)</td>
+<td>개별 문의</td>
+<td>가끔·중간</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-009</td>
+<td>설치자와 위탁 운영사가 분리되어 책임 소재가 불분명하고 운영사 변경 이력이 관리되지 않는다</td>
+<td>입주자, 소유주, 운영사</td>
+<td>위탁 운영, 운영사 변경</td>
+<td>A3, A14, S4</td>
+<td>개정안에 위탁운영자 신고 의무와 준수사항이 신설된다(입법예고)</td>
+<td>가끔·심각</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-010</td>
+<td>간호·안전 인력이 적은 시간대에 응급 대응 책임과 기록이 모호하다</td>
+<td>입주자, 보호자, 야간 직원</td>
+<td>야간·휴일 (간호사 08~19시 상주 사례)</td>
+<td>A12, B26, B27</td>
+<td>센서·AI 모니터링을 도입한 시설이 있다. 연동 구조는 [미확인]</td>
+<td>가끔·매우 심각</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-011</td>
+<td>보증금 마련을 위해 집을 정리해야 해서 입주가 늦어진다. 보증금과 월비 교환, 주택연금 같은 현금화 선택지를 비교하기 어렵다</td>
+<td>입주 희망자, 상담 직원</td>
+<td>입주 결정</td>
+<td>A12, A15, F8, F-05, F-15</td>
+<td>상담 직원 설명에 의존한다. 2026-06부터 시설 입주로 실거주하지 않아도 주택연금에 새로 가입할 수 있다(F8)</td>
+<td>흔함·중간</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-012</td>
+<td>민간 노인복지주택은 분양이 안 되고 임대 수익뿐이라 사업성이 낮다. 운영 효율이 생존 조건이다 [추정]</td>
+<td>소유주, 운영사</td>
+<td>사업 운영 전반</td>
+<td>A2, S5</td>
+<td>요양 중심 경쟁사도 적자다(KB골든라이프케어 영업손실 106억원, 요양 포함 회사 전체). 노인복지주택만의 수익성 자료는 [미확인]</td>
+<td>상시·심각</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-013</td>
+<td>입주자 의견을 모을 공식 창구가 없어 민원이 개인 단위로 흩어진다</td>
+<td>입주자, 시설장</td>
+<td>민원, 운영 개선</td>
+<td>A3, A14</td>
+<td>개정안에 입소자대표회의 근거가 들어간다(입법예고)</td>
+<td>흔함·중간</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-014</td>
+<td>부부 입주, 배우자 사별 시 계약 승계와 요금 변경 처리가 필요하다</td>
+<td>입주자(부부), 경리</td>
+<td>사별, 2인에서 1인으로</td>
+<td>A8</td>
+<td>개별 처리 [추정]</td>
+<td>가끔·중간</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-015</td>
+<td>선불금과 중도 해지 시 환불·몰취 계산이 복잡하다</td>
+<td>입주자, 경리</td>
+<td>중도 퇴거</td>
+<td>A11, A18, A21</td>
+<td>일본은 상각 스케줄 공개와 90일 내 전액 반환, 한국은 5% 몰취 사례</td>
+<td>가끔·중간</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-016</td>
+<td>실버타운을 요양시설로 오해해 입주 후 기대가 어긋난다</td>
+<td>입주 희망자, 보호자</td>
+<td>입주 상담</td>
+<td>A15</td>
+<td>상담 때 설명</td>
+<td>흔함·중간</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-017</td>
+<td>시니어하우징 전용 운영 SW와 입주자·가족 앱이 국내에서 확인되지 않는다 [추정]</td>
+<td>운영사, 직원, 입주자, 보호자</td>
+<td>시설 운영, 다자산 운영</td>
+<td>B30~B33, E31, E32, S2</td>
+<td>호텔·임대·요양 SW가 따로 있다. &quot;없다&quot;는 확정이 아니다</td>
+<td>상시·중간</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-018</td>
+<td>위탁 운영사는 소유주(펀드)마다 데이터를 분리하고 정산·리포트를 내야 한다</td>
+<td>운영사, 소유주</td>
+<td>월 결산, 소유주 보고</td>
+<td>S4, S6, B14</td>
+<td>해외 임대 PMS는 owner statement가 핵심 산출물이다(리뷰 기준)</td>
+<td>매월·중간</td>
+<td>상</td>
+</tr>
+</tbody></table></div>
+<h2 id="b-돌봄-연계와-정보-단절">B. 돌봄 연계와 정보 단절</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>문제</th>
+<th>겪는 사람</th>
+<th>상황</th>
+<th>근거</th>
+<th>현재 대안과 한계</th>
+<th>빈도·심각도</th>
+<th>하우징 연관성</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P-019</td>
+<td>입주자가 외부 공공 돌봄(방문요양, 통합돌봄)을 함께 받으면 시설 서비스와 역할·이력이 분리되어 중복이나 누락이 생긴다</td>
+<td>시설 직원, 입주자, 보호자</td>
+<td>개정안으로 재가서비스를 받으며 거주하는 경우가 늘 때</td>
+<td>E12, E1, E9, A3</td>
+<td>조정은 시설별 수기 [추정]. 통합돌봄의 시설 입주자 적용 여부 [미확인]</td>
+<td>신규·중간 [추정]</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-020</td>
+<td>퇴원할 때 병원에서 지자체로 가는 경로에 입주 시설이 빠져 있어 복귀 후 케어 계획이 맞지 않는다</td>
+<td>입주자, 시설 간호 직원, 병원</td>
+<td>입원 후 퇴원</td>
+<td>E2</td>
+<td>협약병원이 주소지 지자체로 연계한다. 시설 경로는 자료 없음</td>
+<td>가끔·심각 [추정]</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-021</td>
+<td>퇴거, 전원, 운영사 변경 때 건강 상태, 복약, 선호, 보호자 연락처를 다음 기관에 넘기는 표준이 없다</td>
+<td>입주자, 보호자, 이전·인수 기관</td>
+<td>퇴거, 전원, 운영사 교체</td>
+<td>E12, E33, A3</td>
+<td>공개 자료로는 확인 못 함 [미확인]</td>
+<td>가끔·심각 [추정]</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-022</td>
+<td>필요한 돌봄 서비스를 찾고 신청하기 어렵고, 통합돌봄은 신청부터 연계까지 1~2개월 걸린다</td>
+<td>시니어, 보호자</td>
+<td>퇴원 직후, 낙상 후, 돌봄 부족(18.3%)</td>
+<td>D2, E3, E2, G9</td>
+<td>장기요양 등급 신청, 지자체 상담. 시설 직원의 대행 신청 가능 여부 [미확인]</td>
+<td>흔함·중간</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-023</td>
+<td>보호자가 부모의 상태를 시설, 병원, 방문요양, 공공 서비스에서 따로 확인해야 하고, 원거리 자녀는 간접 정보만 얻는다</td>
+<td>보호자(원거리)</td>
+<td>자녀 동거 10.3%로 감소</td>
+<td>D4, D14·D17·D23(정성), E18, E19, E22, E13</td>
+<td>전화, 서비스별 앱. 통합 보호자 화면은 국내 자료 없음 [미확인]</td>
+<td>상시·중간</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-024</td>
+<td>병원 일정, 진료 결과, 처방 변경이 흩어져 있어 본인과 보호자가 한눈에 알 수 없다</td>
+<td>시니어, 보호자</td>
+<td>월 외래 이용 68.8%, 80세 이상 월 1.9회</td>
+<td>D2, D17</td>
+<td>부모의 설명에 의존한다 [추정]</td>
+<td>흔함·중간</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-025</td>
+<td>안부 확인 수단(센서, AI 전화, 인형, 방문)이 서비스마다 따로여서 한 사람의 이상 신호를 모아 볼 수 없고, 미응답·이상 징후의 후속 확인을 사람이 기관마다 따로 한다(H-02, H-10)</td>
+<td>시니어, 보호자, 야간 직원</td>
+<td>독거, 야간</td>
+<td>E7, E15, E17, E18, G7, G10, G16, G24</td>
+<td>서비스별 별도 알림. 케어콜 약 150개 기관·6만 명(회사 주장)</td>
+<td>상시·심각</td>
+<td>상 (P-010과 연결)</td>
+</tr>
+<tr>
+<td>P-026</td>
+<td>AI 돌봄 기기의 정서적 과의존, 부적절한 발화, 사고 시 책임 소재가 불분명하다(H-03)</td>
+<td>시니어, 보호자, 운영사</td>
+<td>AI 안부·대화 도입</td>
+<td>E17, G8, G20, G27</td>
+<td>정부 가이드라인 없음(기사 기준)</td>
+<td>가끔·심각</td>
+<td>중</td>
+</tr>
+</tbody></table></div>
+<h2 id="c-시니어-일상-건강-안전-고립">C. 시니어 일상 (건강, 안전, 고립)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>문제</th>
+<th>겪는 사람</th>
+<th>상황</th>
+<th>근거</th>
+<th>현재 대안과 한계</th>
+<th>빈도·심각도</th>
+<th>하우징 연관성</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P-027</td>
+<td>여러 병원에서 받은 약이 많아 복용 일정, 중복, 부작용 확인이 어렵다</td>
+<td>시니어, 보호자</td>
+<td>만성질환 평균 2.2개, 3개 이상 35.9%. 10개 이상 복용 10.26%</td>
+<td>D2, D14</td>
+<td>약국 복약지도, 건보 다제약물 관리(대상 한정)</td>
+<td>매일·중간~심각</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-028</td>
+<td>집 안에서 넘어졌을 때 발견이 늦거나 도움을 부르지 못한다</td>
+<td>독거 시니어, 보호자</td>
+<td>낙상이 65세 이상 손상 입원의 65.1%. 응급기기 설치 9.8%</td>
+<td>D1, D3, D15, D16</td>
+<td>응급안전안심서비스(약 27만 가구). 대상·설치 한정</td>
+<td>드묾~흔함·매우 심각</td>
+<td>상 (입주 동기)</td>
+</tr>
+<tr>
+<td>P-029</td>
+<td>혼자 살며 연락할 사람이 줄어 고립되고, 이상이 생겨도 알려줄 사람이 없다</td>
+<td>독거 시니어, 가족</td>
+<td>독거 32.8%, 연락하는 자녀 없음 9.2%. 고독사 발견자 집주인 43.1%</td>
+<td>D3, D4, D10, E14</td>
+<td>지자체 안부 확인, 노인맞춤돌봄. 대상·주기 한정</td>
+<td>흔함·심각</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-030</td>
+<td>외로움과 우울이 드러나지 않아 개입이 늦다</td>
+<td>80세 이상 시니어</td>
+<td>우울 위험군 11.3%, 90세 이상 30.4%</td>
+<td>D2</td>
+<td>검진 중 우울 검사. 본인 신고에 의존</td>
+<td>흔함·심각</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-031</td>
+<td>인지 저하가 초기에 발견되지 않아 대응이 늦다</td>
+<td>시니어, 보호자</td>
+<td>인지 저하자 24.6%. 치매 가구 52.6%가 1인 가구</td>
+<td>D2, D11</td>
+<td>치매안심센터 조기검진. 본인이 받아야 시작된다</td>
+<td>흔함·매우 심각</td>
+<td>상 (P-003과 직결)</td>
+</tr>
+<tr>
+<td>P-032</td>
+<td>혼자 먹다 보니 끼니를 거르거나 영양이 부족하다</td>
+<td>독거 시니어</td>
+<td>독거 44.8% 영양위험군(2020 자료 인용)</td>
+<td>D2, D22</td>
+<td>도시락 배달, 경로식당. 최신 결식률 [미확인]</td>
+<td>매일·중간</td>
+<td>상 (P-006과 연결)</td>
+</tr>
+<tr>
+<td>P-033</td>
+<td>혼자 병원에 가기 어렵고 동행할 사람을 구하지 못하거나 가족이 매번 휴가를 쓴다</td>
+<td>시니어, 보호자</td>
+<td>외출 불편 56.6%. 비공식 돌봄 중 외출 동행 79.4%</td>
+<td>D1, D2, D17, E13</td>
+<td>공공 동행(서울 월 10회 상한), 민간 동행</td>
+<td>월 1회 이상·중간</td>
+<td>상</td>
+</tr>
+<tr>
+<td>P-034</td>
+<td>운전을 그만두면 이동 수단과 외출 기회가 함께 줄어든다</td>
+<td>시니어</td>
+<td>운전 26.2%, 그만둔 평균 66.8세</td>
+<td>D1</td>
+<td>대중교통, 택시. 읍면부는 더 열악</td>
+<td>연령 증가 시·중간</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-035</td>
+<td>집 안 안전설비가 부족해 낙상 위험이 남는다</td>
+<td>시니어</td>
+<td>욕실 손잡이 설치 18.2%(필요 38.2%)</td>
+<td>D1</td>
+<td>지자체 주택 개조 지원</td>
+<td>흔함·중간</td>
+<td>하 (입주 동기 근거)</td>
+</tr>
+<tr>
+<td>P-036</td>
+<td>건강이 나빠지면 어디로 갈지 미리 정해두지 못한다</td>
+<td>시니어, 보호자</td>
+<td>악화 시 현재 집 48.9%, 시설·전용주택 44.2%</td>
+<td>D1</td>
+<td>재가서비스, 주택 개조. 전환 시점 판단은 개인 몫 [추정]</td>
+<td>흔함·중간</td>
+<td>상 (하우징 수요 근거)</td>
+</tr>
+</tbody></table></div>
+<h2 id="d-디지털-금융-사회참여">D. 디지털, 금융, 사회참여</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>문제</th>
+<th>겪는 사람</th>
+<th>상황</th>
+<th>근거</th>
+<th>현재 대안과 한계</th>
+<th>빈도·심각도</th>
+<th>하우징 연관성</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P-037</td>
+<td>키오스크, 예약 앱, 민원 앱을 못 써서 서비스를 포기하거나 남에게 맡긴다. 시설이 앱 중심이 되면 입주자도 소외된다</td>
+<td>시니어, 입주자, 직원</td>
+<td>스마트폰 76.6% 보유, 정보화 적응 어려움 67.2%</td>
+<td>D3, D5, D19, G3, G13</td>
+<td>디지털 교육, 가족·직원 대행. 직원 업무가 늘어난다. 55세 이상 AI 서비스 경험 30.2%로 음성 단독 비서는 어렵다(H-01)</td>
+<td>매일·중간</td>
+<td>상 (대안 경로 원칙)</td>
+</tr>
+<tr>
+<td>P-038</td>
+<td>은행 점포가 줄고 앱 이체·자동이체 설정이 어려워 금융 업무와 월비 납부를 남에게 의존한다</td>
+<td>시니어</td>
+<td>70세 이상 창구 인출 53.8%(2021 기사)</td>
+<td>D20, D24, F22, F-08</td>
+<td>시니어 특화 점포</td>
+<td>흔함·중간</td>
+<td>중 (시설의 금융 대행은 금지 원칙)</td>
+</tr>
+<tr>
+<td>P-039</td>
+<td>기관 사칭 보이스피싱으로 큰돈을 잃는다. 고위험 상품 가입 외에 일상 이체·고액 인출은 가족이 함께 확인할 수단이 거의 없다</td>
+<td>시니어, 보호자</td>
+<td>기관사칭형 60대 이상 비중 5%→16%, 건당 4,426만원(2024.1~9)</td>
+<td>D12, D13, E24, E25, F14, K8, K32, K34, F-09, W-02</td>
+<td>은행 모니터링, 가족 알림 앱. 지정인 알림 제도는 보험·투자 상품 가입 한정(2019 자료). 계좌 자동 연동은 마이데이터 허가가 필요하다</td>
+<td>드묾·매우 심각</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-040</td>
+<td>일을 하고 싶지만 일자리와 역할이 부족하다</td>
+<td>시니어</td>
+<td>일하는 노인 29.0%, 취업 희망 57.6%</td>
+<td>D5, D6</td>
+<td>노인일자리 사업</td>
+<td>흔함·중간</td>
+<td>하 (사회참여 프로그램은 중)</td>
+</tr>
+</tbody></table></div>
+<h2 id="e-보호자와-돌봄-인력">E. 보호자와 돌봄 인력</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>문제</th>
+<th>겪는 사람</th>
+<th>상황</th>
+<th>근거</th>
+<th>현재 대안과 한계</th>
+<th>빈도·심각도</th>
+<th>하우징 연관성</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P-041</td>
+<td>치매·중증 가족을 집에서 오래 돌보다 보호자가 소진된다</td>
+<td>보호자</td>
+<td>돌봄 부담 45.8%, 입소 전 평균 27.3개월 가정 돌봄. 가족의 51.6%가 부담을 느낀다</td>
+<td>D11, E9</td>
+<td>장기요양, 주야간보호. 가족 지원 정책 인지도 낮음</td>
+<td>상시·심각</td>
+<td>상 (입주 결정 계기) [추정]</td>
+</tr>
+<tr>
+<td>P-042</td>
+<td>돌봄과 비용 분담이 배우자·딸에게 쏠리고, 부모 재산을 누가 어떻게 썼는지 형제간에 투명하지 않다</td>
+<td>주 돌봄 보호자, 형제</td>
+<td>일과 돌봄의 충돌, 대리 지출</td>
+<td>D2, D23, F-07</td>
+<td>개인 부담. 갈등 비율 [미확인]</td>
+<td>흔함·중간</td>
+<td>중 (비용 분담 갈등 [가설])</td>
+</tr>
+<tr>
+<td>P-043</td>
+<td>돌봄 인력 처우가 낮아 사람에 의존하는 돌봄 서비스를 늘리기 어렵다</td>
+<td>생활지원사, 요양보호사, 이용자</td>
+<td>재가 요양보호사 월 평균 108.8만원</td>
+<td>E6, E9</td>
+<td>처우 개선, 일부 로봇 도입 논의</td>
+<td>상시·심각</td>
+<td>중 (시설 인력 근거 없음)</td>
+</tr>
+</tbody></table></div>
+<h2 id="f-재산-관리와-금융-축-8">F. 재산 관리와 금융 (축 8)</h2>
+<p>규제 경계: 투자 추천·자문(자본시장법 등록), 계좌 자동 수집(마이데이터 허가), 금융상품 판매·중개는 범위 밖이다. 본인 입력 기반 정리, 절차 안내, 자격 있는 전문가 연결, 권한·기록 관리까지가 범위다(F16, F17. 법령 조문은 [미확인]).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>문제</th>
+<th>겪는 사람</th>
+<th>상황</th>
+<th>근거</th>
+<th>현재 대안과 한계</th>
+<th>빈도·심각도</th>
+<th>하우징 연관성</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P-044</td>
+<td>판단 능력이 떨어진 부모의 계좌에서 자녀가 병원비·시설비를 낼 수 없다. 대리권이 없어 은행이 거절한다. 부모 자산이 어디 있는지도 모른다(W-03)</td>
+<td>보호자, 시니어</td>
+<td>치매 진단 후 입원·입주비 납부</td>
+<td>F1, F10, F19, K3</td>
+<td>성년후견 신청(법원 절차). 후견 선임 전까지 공백이 있다. 후견 접수 연 1.15만건(2021)</td>
+<td>흔함·매우 심각 [추정]</td>
+<td>상 (P-031과 직결)</td>
+</tr>
+<tr>
+<td>P-045</td>
+<td>판단 능력이 있을 때 후견·신탁을 준비해야 하는데 구조가 어렵고 사전 준비를 하지 않는다</td>
+<td>시니어, 보호자</td>
+<td>입주 계약 시점, 70대 전후</td>
+<td>F1, F2, F3, F13, F20, K17, W-10</td>
+<td>은행 치매안심신탁·유언대용신탁, 임의후견(이용 통계 [미확인]). 치매 환자 보유 자산 154조원(2023)</td>
+<td>흔함·매우 심각, 준비는 드묾 [추정]</td>
+<td>중 (운영사가 상품을 팔면 이해상충)</td>
+</tr>
+<tr>
+<td>P-046</td>
+<td>후견인이 된 보호자가 은행·기관마다 같은 서류를 반복 제출하고 대리권 범위를 확인받기 어렵다</td>
+<td>후견인(보호자), 기관 직원</td>
+<td>후견 개시 후 거래</td>
+<td>F10</td>
+<td>금융위·은행연합회 성년후견인 금융거래 매뉴얼(2023). 현장 적용 [미확인]</td>
+<td>가끔·중간</td>
+<td>중 (시설 계약 서류에도 같은 대리권 확인 필요)</td>
+</tr>
+<tr>
+<td>P-047</td>
+<td>월 청구서(의무식, 결식 감면, 난방·전기, 선납)를 입주자와 보호자가 이해하고 검증하기 어렵다</td>
+<td>입주자, 보호자, 경리</td>
+<td>매월 청구, 이의 제기</td>
+<td>A6, A16, F-06</td>
+<td>개별 문의. 청구 근거 공개 규정 없음(P-008)</td>
+<td>매월·중간</td>
+<td>상 (P-006, P-008과 연결, PMS 청구 도메인)</td>
+</tr>
+<tr>
+<td>P-048</td>
+<td>직원이 입주자의 통장, 현금, 이체 대행을 요구받는다. 경계 규칙이 없으면 경제적 착취 의혹과 분쟁 책임이 운영사에 쏠린다. 운영사가 입주자 자산 정보를 알거나 금융상품·전문가를 연결해도 이해상충이 생긴다(W-07)</td>
+<td>입주자, 직원, 운영사</td>
+<td>일상 부탁, 인지 저하 입주자, 입주 상담</td>
+<td>F25, A3, K20, K36</td>
+<td>시설별 내부 지침 [미확인]. 입주자 금전 관리를 직접 규율하는 조문은 찾지 못함</td>
+<td>빈도 [미확인]·매우 심각 [추정]</td>
+<td>상 (권한 분리·감사 로그)</td>
+</tr>
+<tr>
+<td>P-049</td>
+<td>입주 중 인지 저하가 오면 계약 당사자 능력, 대리 서명, 계약 승계를 처리할 기록과 절차가 없다</td>
+<td>입주자, 후견인, 경리·상담 직원</td>
+<td>입주 후 5~10년</td>
+<td>F10, F19, A6</td>
+<td>시설별 수기 대응 [추정]. 후견등기사항증명서로 대리권 범위 확인이 표준(F10)</td>
+<td>가끔·매우 심각 [추정]</td>
+<td>상 (P-003, P-014와 연결, 계약 상태 전이)</td>
+</tr>
+<tr>
+<td>P-050</td>
+<td>연금 중심 소득으로 생활비·의료비를 가늠하지 못하고 지출 기록을 남기지 못해 보호자가 도울 수 없다</td>
+<td>시니어(일반), 보호자</td>
+<td>일상 가계</td>
+<td>F5, F6, D6</td>
+<td>가계부 앱(디지털 장벽), 지자체 상담. 월 평균 연금 69.5만원(D6)</td>
+<td>흔함·중간</td>
+<td>하 (입주 대상은 평균보다 소득이 높다 [추정])</td>
+</tr>
+</tbody></table></div>
+<h2 id="g-ai-비서-축-9">G. AI 비서 (축 9)</h2>
+<p>AI 기본법(2026-01-22 시행)의 사전 고지, 건강정보 민감정보 별도 동의가 설계 요건이다(G4, G14). 효과 수치는 거의 회사 주장이다(G1, G2).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>문제</th>
+<th>겪는 사람</th>
+<th>상황</th>
+<th>근거</th>
+<th>현재 대안과 한계</th>
+<th>빈도·심각도</th>
+<th>하우징 연관성</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P-051</td>
+<td>AI가 약·건강 질문에 틀리게 답하거나 진단·복약 조언에 가까워지면 의료기기·고영향 AI 경계에 걸린다</td>
+<td>시니어, 운영사</td>
+<td>복약·증상 질문</td>
+<td>G5, G15, G21</td>
+<td>알림만 하고 판단은 사람에게 인계(제안 단계). 한국 사고 사례 [미확인]</td>
+<td>흔함·심각</td>
+<td>상 (시설 간호 업무와 인계 지점이 명확)</td>
+</tr>
+<tr>
+<td>P-052</td>
+<td>입주자가 말로 한 요청(전등, 수리, 식사 변경)을 요청 큐로 넘기는 구조가 국내 시설에서 확인되지 않아 직원이 전화로 받아 적는다 [추정]</td>
+<td>입주자, 현장 직원</td>
+<td>주간·야간 요청</td>
+<td>G12, G16</td>
+<td>프런트 전화, 종이 메모. 국내 연동 사례 [미확인]</td>
+<td>상시·중간</td>
+<td>상 (PMS 요청 큐)</td>
+</tr>
+<tr>
+<td>P-053</td>
+<td>대화 속 건강 발화와 보호자 공유는 민감정보 별도 동의 대상인데, 동의 범위와 열람 권한 설계가 서비스마다 다르다</td>
+<td>시니어, 보호자, 운영사</td>
+<td>보호자에게 요약 전달</td>
+<td>G14, G29</td>
+<td>일괄 동의서. 범위를 나눈 사례 [미확인]</td>
+<td>상시·심각</td>
+<td>상 (P-023과 연결, 입주 계약 때 함께 설계)</td>
+</tr>
+<tr>
+<td>P-054</td>
+<td>생성형 AI 사전 고지, 이용자 보호, 사람의 감독·기록 의무를 운영사가 입주자 눈높이로 이행할 방법이 없다</td>
+<td>운영사</td>
+<td>AI 기본법 시행 후 도입</td>
+<td>G4, G5, G6</td>
+<td>약관 표기. 고령자용 고지 방식 [미확인]. 과태료는 계도기간</td>
+<td>상시·중간</td>
+<td>상 (동의·고지·감사 로그를 PMS에 모을 수 있음)</td>
+</tr>
+<tr>
+<td>P-055</td>
+<td>AI 돌봄 서비스의 효과 수치가 회사 주장뿐이라 도입 판단 근거가 없다</td>
+<td>운영사, 지자체</td>
+<td>도입 검토</td>
+<td>G1, G2, G7, G26</td>
+<td>시범사업, 업체 자료. 독립 평가 없음</td>
+<td>상시·중간</td>
+<td>중 (효과를 주장하지 않고 측정 로그를 설계할 근거)</td>
+</tr>
+<tr>
+<td>P-056</td>
+<td>음성 기기·비서가 도입 후 쓰이지 않고 방치된다</td>
+<td>시니어, 운영사</td>
+<td>도입 몇 주~수개월 후</td>
+<td>G13, G25</td>
+<td>직원 재안내. 실제 지속률 자료 없음</td>
+<td>가끔·중간</td>
+<td>중 (입주자는 직원 접점이 있어 재안내가 쉽다)</td>
+</tr>
+</tbody></table></div>
+<h2 id="h-금융-자산관리-서비스-축-10">H. 금융 자산관리 서비스 (축 10)</h2>
+<p>비금융 운영사가 입주자의 증권 계좌에 연결하는 정식 경로는 확인되지 않았다(KIS 기준 제휴는 투자일임·자문업 금융회사만. K25). 개인 본인 계좌용 API는 NH·KIS·KB·토스가 제공한다(F26, K29, K30).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>문제</th>
+<th>겪는 사람</th>
+<th>상황</th>
+<th>근거</th>
+<th>현재 대안과 한계</th>
+<th>빈도·심각도</th>
+<th>하우징 연관성</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P-057</td>
+<td>설명만 하려던 AI가 &quot;이 종목 팔까?&quot; 같은 질문에 답하면서 투자자문 경계를 넘을 위험이 있고, 생성형 AI 종목 설명의 자문 해당 여부 해석이 없다</td>
+<td>서비스 제공자, 시니어</td>
+<td>LLM 금융 상담, 증권 정보 설명</td>
+<td>K12, K13, K22, K25, F17</td>
+<td>자문·일임 등록, 혁신금융서비스, 거절·인계 가드레일. 당국 해석 [미확인]</td>
+<td>서비스를 만들면 반드시 부딪힘·심각</td>
+<td>상 (AI 비서의 인계 규칙과 직결)</td>
+</tr>
+<tr>
+<td>P-058</td>
+<td>시니어 본인이 증권 앱의 화면·용어(평가손익, 수익률)를 이해하지 못해 자기 보유 현황을 설명하지 못한다</td>
+<td>70대 이상 시니어</td>
+<td>보유 종목·잔고 확인</td>
+<td>K3, F22</td>
+<td>증권사 앱, 자녀 설명, 창구 상담. 설명은 가능하고 판단은 금지</td>
+<td>중간 [추정]</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-059</td>
+<td>은행, 증권, 보험, 연금에 자산이 흩어져 있어 본인도 가족도 전체를 한눈에 보지 못한다</td>
+<td>시니어, 보호자</td>
+<td>노후 현금흐름 점검, 상속</td>
+<td>K18, F16, F20</td>
+<td>은행 통합 앱은 자사 계열 위주, 마이데이터는 허가 사업자만. 본인 입력이 현실적</td>
+<td>흔함·중간 [추정]</td>
+<td>중</td>
+</tr>
+<tr>
+<td>P-060</td>
+<td>고령 투자자가 구조를 이해하지 못한 채 고위험 상품에 가입해 손실 후 분쟁이 된다</td>
+<td>60~80대 시니어, 보호자</td>
+<td>창구 권유, 만기 손실</td>
+<td>K4, K5, K6, K9</td>
+<td>65세 기준 숙려·녹취, 분쟁조정. 사후 구제 중심. 홍콩 ELS 가입자 20% 이상이 65세 이상(2023 기사)</td>
+<td>사건성·매우 심각</td>
+<td>하 (운영사가 상품을 권유하면 이해상충)</td>
+</tr>
+<tr>
+<td>P-061</td>
+<td>개인이 본인 키로 LLM에 연결한 대화형 자동 주문에서 고령 사용자의 오주문, 과잉 매매, 사칭 지시를 걸러 줄 장치가 없다</td>
+<td>시니어 개인 투자자, 보호자</td>
+<td>본인 키를 LLM에 연결한 조회·주문</td>
+<td>K30, K8, K9, F27</td>
+<td>증권사 모의투자, 드라이런 샘플. 고령자 대상 알고리즘 매매 규정 [미확인]</td>
+<td>새로 열린 방식(2026-08)·잠재 심각 [추정]</td>
+<td>하 (입주자 서비스 밖. 개인 프로젝트의 가드레일 주제)</td>
+</tr>
+</tbody></table></div>
+<h2 id="분포">분포</h2>
+<ul>
+<li>이용자: 입주자·시니어 30건 이상, 보호자 20건 이상, 운영사·직원 14건 이상</li>
+<li>문제 61건. 하우징 연관성 상 34건, 중 22건, 하 5건</li>
+<li>01-research 완료 기준(출처 있는 문제 20개 이상, 이용자 유형 혼합) 충족. 페르소나와 JTBD는 아직 없다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-683" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-684" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-685" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-686" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-687" data-title="보증금"><p>수익이 아니라 맡긴 돈. 청구 원장과 나눈 별도 원장</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보증금 / 회원: 맡기신 보증금</dd><dt>영문·코드 이름</dt><dd><code>Deposit</code>, <code>DepositEntry</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-688" data-title="입주 계약"><p>호실과 입주자를 잇는 계약. 요금표 버전을 체결 때 고정한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원: 입주 계약</dd><dt>영문·코드 이름</dt><dd><code>Contract</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

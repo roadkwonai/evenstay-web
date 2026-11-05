@@ -1,0 +1,77 @@
+// 통합 데모 8, 9(ord 2~), 12, 28, 29(ord 4~), 30(ord 1). 알림 번호에 기대지 않고 화면의 글자를 눌러 간다.
+import { tx } from '../../lib/text.js';
+const D = '2026-11-12', E = '2026-12-02';
+const SEND = (kind, room, evt, at) => [{ fill: 'kind', value: kind }, { fill: 'room', value: room }, { fill: 'evt', value: evt }, { fill: 'at', value: at }, { click: tx('safety.SEND.click') }];
+const TAKE = (name) => [{ click: name }, { click: tx('safety.TAKE.click') }, { click: tx('safety.TAKE.click') }];
+const CARD_ONLY = (name) => [{ click: name }, { click: tx('safety.CARD_ONLY.click') }];
+
+export default [
+  { scene: 8, ord: 1, at: `${D}T02:30:00`, as: 'hq.jung', go: ['SAF-06'], say: tx('safety.shared.say.26'),
+    steps: [...SEND('CALL_BELL', 'R_YEONGSUN', 'bell-a401-0230', '02:30:00'), { see: tx('safety.shared.see.58') }, { see: tx('safety.shared.see.63') }] },
+  { scene: 8, ord: 2, at: `${D}T02:31:00`, as: 'st.kimhj', go: ['SAF-01'], say: tx('safety.shared.say.25'),
+    steps: [{ see: tx('safety.shared.see.30') }, ...TAKE(tx('safety.shared.TAKE')), { see: tx('safety.shared.see.62') }] },
+  { scene: 8, ord: 3, at: `${D}T02:35:00`, as: 'hq.jung', go: ['SAF-06'], say: tx('safety.shared.say.24'),
+    steps: [...SEND('ACCESS_LOG', 'R_OKJA', 'door-0235', '02:35:00'), { see: tx('safety.shared.see.61') }] },
+  { scene: 8, ord: 4, at: `${D}T02:36:00`, as: 'st.parksj', go: ['SAF-01'], say: tx('safety.shared.say.23'),
+    steps: [...TAKE(tx('safety.shared.CARD_ONLY')), { see: tx('safety.shared.see.60') }] },
+  { scene: 8, ord: 5, at: `${D}T02:40:03`, as: 'hq.jung', go: ['SAF-06'], say: tx('safety.shared.say.22'),
+    steps: [...SEND('BED_SENSOR', 'R_EUNSOOK', 'bed-a201-0210', '02:40:03'), { see: tx('safety.shared.see.59') }] },
+  { scene: 8, ord: 6, at: `${D}T02:40:08`, as: 'hq.jung', go: ['SAF-06'], say: tx('safety.shared.say.21'),
+    steps: [...SEND('BED_SENSOR', 'R_EUNSOOK', 'bed-a201-0210', '02:40:08'), { see: tx('safety.shared.see.58') }] },
+  { scene: 8, ord: 7, at: `${D}T02:41:00`, as: 'st.kimhj', go: ['SAF-01'], say: tx('safety.shared.say.20'),
+    steps: [{ click: tx('safety.shared.click.7') }, { see: tx('safety.shared.see.57') }, { see: tx('safety.shared.see.56') }, { see: tx('safety.shared.see.55') }] },
+  { scene: 8, ord: 8, at: `${D}T02:45:03`, as: 'st.kimhj', go: ['SAF-01'], say: tx('safety.shared.say.19'),
+    steps: [{ click: tx('safety.shared.click.7') }, { see: tx('safety.shared.see.54') }, { see: tx('safety.shared.see.53') }, { go: 'SAF-06' }, { see: tx('safety.shared.see.52') }, { see: tx('safety.shared.see.51') }] },
+  { scene: 8, ord: 9, at: `${D}T02:46:00`, as: 'st.parksj', go: ['SAF-01'], say: tx('safety.shared.say.18'),
+    steps: [...TAKE(tx('safety.shared.click.7')), { see: tx('safety.shared.see.50') }, { see: tx('safety.shared.see.49') }] },
+  { scene: 8, ord: 10, at: `${D}T02:46:30`, as: 'st.kimhj', go: ['SAF-01'], say: tx('safety.shared.say.17'),
+    steps: [{ click: tx('safety.shared.click.7') }, { see: tx('safety.shared.see.48') }] },
+  { scene: 8, ord: 11, at: `${D}T02:49:00`, as: 'st.parksj', go: ['SAF-01'], say: tx('safety.shared.say.16'),
+    steps: [...CARD_ONLY(tx('safety.shared.click.7')), { click: tx('safety.shared.click.6') }, { see: tx('safety.shared.see.47') }, { click: tx('safety.shared.click.15') }, { click: tx('safety.shared.click.21') },
+      { fill: 'memo', value: tx('safety.shared.value.3') }, { click: tx('safety.shared.click.8') },
+      { see: tx('safety.shared.see.11') }, { see: tx('safety.shared.see.46') }, { see: tx('safety.shared.see.45') },
+      { at: `${D}T02:58:00` }, { fill: 'second', value: tx('safety.shared.value.2') }, { click: tx('safety.shared.click.5') },
+      { see: tx('safety.shared.see.44') }, { see: tx('safety.shared.see.36') }] },
+  { scene: 8, ord: 12, at: `${D}T03:00:00`, as: 'st.kimhj', go: ['SAF-01'], say: tx('safety.shared.say.15'),
+    steps: [...CARD_ONLY(tx('safety.shared.TAKE')), { click: tx('safety.shared.click.6') }, { click: tx('safety.shared.click.15') }, { click: tx('safety.shared.click.11') }, { click: tx('safety.shared.click.8') },
+      { see: tx('safety.shared.see.43') }, { click: tx('safety.shared.click.12') }, { see: tx('safety.shared.see.42') }] },
+  { scene: 8, ord: 13, at: `${D}T03:05:00`, as: 'st.parksj', go: ['SAF-01'], say: tx('safety.shared.say.14'),
+    steps: [...CARD_ONLY(tx('safety.shared.CARD_ONLY')), { click: tx('safety.shared.click.6') }, { click: tx('safety.shared.click.15') }, { click: tx('safety.shared.click.21') }, { click: tx('safety.shared.click.8') }, { click: tx('safety.shared.click.12') }, { see: tx('safety.shared.see.42') }] },
+
+  { scene: 9, ord: 2, at: `${D}T07:30:00`, as: 'st.choiym', go: ['SAF-01'], say: tx('safety.shared.say.13'),
+    steps: [{ see: tx('safety.shared.see.41') }, { see: tx('safety.shared.see.40') }, { see: tx('safety.shared.see.39') },
+      { click: tx('safety.shared.click.20') }, { see: tx('safety.shared.see.38') }, { see: tx('safety.shared.see.37') }, { see: tx('safety.shared.see.36') }] },
+
+  { scene: 12, ord: 1, at: `${D}T10:00:00`, as: 'st.yoonsy', go: ['SAF-12'], say: tx('safety.shared.say.12'),
+    steps: [{ see: tx('safety.shared.see.35') }, { see: tx('safety.shared.see.34') }, { see: tx('safety.shared.see.33') }] },
+  { scene: 12, ord: 2, at: `${D}T10:30:00`, as: 'st.yoonsy', go: ['SAF-12'], say: tx('safety.shared.say.11'),
+    steps: [{ click: tx('safety.shared.click.22') }, { click: tx('safety.shared.click.19') }, { click: tx('safety.shared.click.18') }, { see: tx('safety.shared.see.32') }, { see: tx('safety.shared.see.31') }] },
+  { scene: 12, ord: 3, at: `${D}T18:00:00`, as: 'st.yoonsy', go: ['SAF-01'], say: tx('safety.shared.say.10'),
+    steps: [{ see: tx('safety.shared.see.30') }, { see: tx('safety.shared.see.29') }, { see: tx('safety.shared.see.28') }, { see: tx('safety.shared.see.27') }] },
+  { scene: 12, ord: 4, at: `${D}T18:05:00`, as: 'st.yoonsy', go: ['SAF-01'], say: tx('safety.shared.say.9'),
+    steps: [...TAKE(tx('safety.shared.TAKE')), { see: tx('safety.shared.see.26') }] },
+  { scene: 12, ord: 5, at: `${D}T18:08:00`, as: 'st.yoonsy', go: ['SAF-12'], say: tx('safety.shared.say.8'),
+    steps: [{ click: tx('safety.shared.click.23') }, { click: tx('safety.shared.click.19') }, { click: tx('safety.shared.click.18') }, { see: tx('safety.shared.see.25') }, { see: tx('safety.shared.see.24') }] },
+  { scene: 12, ord: 6, at: `${D}T18:10:00`, as: 'st.choiym', go: ['SAF-12'], say: tx('safety.shared.say.7'),
+    steps: [{ see: tx('safety.shared.see.23') }, { see: tx('safety.shared.see.22') }, { see: tx('safety.shared.see.21') }, { see: tx('safety.shared.see.20') }, { see: tx('safety.shared.see.7') },
+      { see: tx('safety.shared.see.19') }, { no: tx('safety.shared.no') }] },
+
+  { scene: 28, ord: 1, at: `${E}T10:20:00`, as: 'st.choims', go: ['SAF-01'], say: tx('safety.shared.say.6'),
+    steps: [{ click: tx('safety.shared.click.17') }, { fill: 'room', value: 'R_EUNSOOK' }, { click: tx('safety.shared.click.16') }, { see: tx('safety.shared.see.18') }, { see: tx('safety.shared.see.17') }, { see: tx('safety.shared.see.16') }] },
+  { scene: 28, ord: 2, at: `${E}T10:22:00`, as: 'st.yoonsy', go: ['SAF-01'], say: tx('safety.shared.say.5'),
+    steps: [...TAKE(tx('safety.shared.click.7')), { see: tx('safety.shared.see.15') }] },
+  { scene: 28, ord: 3, at: `${E}T10:35:00`, as: 'st.yoonsy', go: ['SAF-01'], say: tx('safety.shared.say.4'),
+    steps: [...CARD_ONLY(tx('safety.shared.click.7')), { click: tx('safety.shared.click.6') }, { click: tx('safety.shared.click.15') }, { at: `${E}T10:40:00` }, { click: tx('safety.shared.click.14') }, { see: tx('safety.shared.see.14') }, { click: tx('safety.shared.click.13') }, { click: tx('safety.shared.click.12') }, { see: tx('safety.shared.see.13') },
+      { click: tx('safety.shared.click.11') }, { click: tx('safety.shared.click.10') }, { click: tx('safety.shared.click.9') }, { fill: 'escort', value: 'st.yoonsy' }, { fill: 'depart', value: '10:50' }, { at: `${E}T10:50:00` }, { click: tx('safety.shared.click.8') },
+      { see: tx('safety.shared.see.11') }, { see: tx('safety.shared.see.12') }] },
+  { scene: 28, ord: 4, at: `${E}T10:55:00`, as: 'st.yoonsy', go: ['SAF-01'], say: tx('safety.shared.say.3'),
+    steps: [{ click: tx('safety.shared.click.7') }, { click: tx('safety.shared.click.6') }, { see: tx('safety.shared.see.11') }, { fill: 'second', value: tx('safety.shared.value') }, { click: tx('safety.shared.click.5') },
+      { see: tx('safety.shared.see.10') }] },
+
+  { scene: 29, ord: 4, at: `${E}T11:10:00`, as: 'st.yoonsy', go: ['SAF-01'], say: tx('safety.shared.say.2'),
+    steps: [{ see: tx('safety.shared.see.9') }, { see: tx('safety.shared.see.8') }, { click: tx('safety.shared.click.4'), within: '.abs-cell.hosp, .abs-m li:first-child' }, { see: tx('safety.shared.see.3') }, { see: tx('safety.shared.see.7') },
+      { click: tx('safety.shared.click.3') }, { see: tx('safety.shared.see.6') }, { see: tx('safety.shared.see.5') }, { see: tx('safety.shared.see.4') }] },
+
+  { scene: 30, ord: 1, at: `${'2026-12-07'}T16:30:00`, as: 'st.yoonsy', go: ['SAF-13'], say: tx('safety.shared.say'),
+    steps: [{ see: tx('safety.shared.see.3') }, { click: tx('safety.shared.click.2') }, { fill: 'rtime', value: '16:20' }, { click: tx('safety.shared.click') }, { see: tx('safety.shared.see.2') }, { see: tx('safety.shared.see') }] },
+];

@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>생활 요청 전략 | Evenstay 문서</title>
+<meta name="description" content="생활 요청 전략. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>생활 요청</span></p>
+  <h1>생활 요청 전략</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-strategy"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="생활 요청의 다른 문서"><ul><li><a href="requests-strategy.html" aria-current="page">전략</a></li><li><a href="requests-service-blueprint.html">서비스 설계도</a></li><li><a href="requests-prd.html">기획서(PRD)</a></li><li><a href="requests-user-stories.html">사용자 스토리</a></li><li><a href="requests-tech-design.html">기술 설계</a></li><li><a href="requests-roadmap.html">로드맵</a></li><li><a href="requests-handoff.html">개발 인계</a></li><li><a href="requests-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-비전">1. 비전</a></li><li class="lv2"><a href="#2-시장-세그먼트-문제-기준">2. 시장 세그먼트 (문제 기준)</a></li><li class="lv2"><a href="#3-상대-비용-위치">3. 상대 비용 위치</a></li><li class="lv2"><a href="#4-가치-제안">4. 가치 제안</a></li><li class="lv2"><a href="#5-트레이드오프-하지-않을-것">5. 트레이드오프 — 하지 않을 것</a></li><li class="lv2"><a href="#6-핵심-지표">6. 핵심 지표</a></li><li class="lv2"><a href="#7-성장">7. 성장</a></li><li class="lv2"><a href="#8-역량">8. 역량</a></li><li class="lv2"><a href="#9-모방이-어려운-이유">9. 모방이 어려운 이유</a></li><li class="lv2"><a href="#10-전략-정합성-점검">10. 전략 정합성 점검</a></li><li class="lv2"><a href="#11-반드시-참이어야-하는-것-가설과-가벼운-실험">11. 반드시 참이어야 하는 것 (가설)과 가벼운 실험</a></li><li class="lv2"><a href="#확인할-것">확인할 것</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-479" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-480" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-481" data-tip="정해진 날에 회차를 만드는 틀">정기 작업</button></li><li><button class="term" type="button" data-modal="g-482" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-483" data-tip="쓰기 전에 받는 확인 토큰.">입주자 확인</button></li><li><button class="term" type="button" data-modal="g-484" data-tip="알림에서 이어진 동행의 직원과 시각만.">병원 동행</button></li><li><button class="term" type="button" data-modal="g-485" data-tip="고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건.">생활 요청</button></li><li><button class="term" type="button" data-modal="g-486" data-tip="N1 설정이고 코어 직무와 다르다">담당 팀</button></li><li><button class="term" type="button" data-modal="g-487" data-tip="청구서의 한 줄.">청구 항목</button></li><li><button class="term" type="button" data-modal="g-488" data-tip="사업장 설정값.">처리 기한</button></li><li><button class="term" type="button" data-modal="g-489" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li><li><button class="term" type="button" data-modal="g-490" data-tip="requests T2-2의 source 목록에는 RECURRING이 없다 [문서 다름]">들어온 곳</button></li></ul></section></aside>
+  <article class="doc"><blockquote>
+<p><strong>표기 규칙</strong>: [사실] 출처가 있는 것, [추정] 출처를 바탕으로 한 해석, [가설] 검증 전의 설계 판단, [미정] 아직 정하지 않은 것. 표기 없는 문장은 이 문서의 설계안(초안)이다. 출처 ID(R10, P-052 등)는 <code>01-research/</code>의 출처 표와 문제 은행을 가리킨다.
+이 모듈은 포트폴리오용 MVP의 새 모듈(N1)이다. 고객, 실적, 인터뷰 원문은 없다 [사실]. 효과 수치와 처리 시간을 약속하지 않는다.
+이름: 직원·회원·보호자 화면 모두 <strong>생활 요청</strong>(카피 <code>names.md</code> 1절, 사용자 &quot;추천대로&quot; 2026-11-03). 개발 모듈 폴더는 <code>requests</code>, 스키마는 <code>requests</code>다 [사실: decisions 72행, <code>04-planning/CLAUDE.md</code> 인계 표].</p>
+</blockquote>
+<h2 id="1-비전">1. 비전</h2>
+<p><strong>한 문장</strong>: 입주자가 어떤 길로 말한 생활의 부탁이든 맡을 직원에게 닿고, 누가 맡아 언제 마쳤는지와 입주자의 확인이 기록으로 남게 한다.</p>
+<ul>
+<li>영감: &quot;화장실 전등이 안 켜져요&quot;라는 말이 프런트 메모에서 사라지지 않고, 회원님이 맡은 직원 이름을 보고 &quot;다 됐어요&quot;를 눌러야 끝난다.</li>
+<li>지향: 요청 하나의 수명(들어온 곳 → 배정 → 처리 → 확인)이 상태와 전이 기록으로 남는다. 누가 언제 무엇을 바꿨는지가 곧 변경 이력이다.</li>
+<li>지키는 가치<ol>
+<li><strong>입주자가 확인해야 끝난다</strong>: 직원의 &quot;완료&quot;는 확인을 기다리는 상태다. [아직이에요]를 누르면 다시 열린다.</li>
+<li><strong>시간을 약속하지 않는다</strong>: 처리 기한은 사업장이 정하는 직원용 값이고 회원·보호자 화면에 보이지 않는다(카피 <code>value-prop.md</code> 원칙).</li>
+<li><strong>급한 일은 생활 요청이 아니다</strong>: 몸이 불편하다는 요청은 직원이 [안심 알림으로 옮기기]로 넘긴다. 시스템이 요청 내용을 읽고 가르지 않는다(카피 공통 규칙 1).</li>
+<li><strong>앱 밖의 길을 그대로 둔다</strong>: 프런트 전화, 지나가는 직원, 홈 비서로 말해도 같은 요청이 된다. 확인도 직원이 대신 기록한다.</li>
+<li><strong>건강 정보를 받지 않는다</strong>: 병원 동행은 날짜, 시각, 가실 곳, 돌아오실 때 동행 여부만 받는다. 입력 칸 단계에서 막는다(카피 <code>names.md</code> 2절).</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-시장-세그먼트-문제-기준">2. 시장 세그먼트 (문제 기준)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>문제(JTBD)</th>
+<th>바라는 결과</th>
+<th>제약</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>S1. 입주자의 부탁을 받아 나눠 주는 프런트 직원</strong> (첫 세그먼트)</td>
+<td>전화나 말로 받은 부탁을 맞는 담당에게 넘기고, 끝났는지 다시 묻지 않고 알고 싶다</td>
+<td>받은 자리에서 대신 등록하면 담당 팀 목록에 올라가고 상태가 보인다</td>
+<td>프런트는 전화를 그대로 받는다. 앱을 쓰라고 할 수 없다</td>
+<td>P-052 [추정: 국내에서 직원이 전화로 받아 적는다, 신뢰도 근거 G12·G16]</td>
+</tr>
+<tr>
+<td>S2. 수리·청소·세탁·운전·생활 지원 담당 직원</td>
+<td>오늘 내가 할 요청이 무엇이고 어느 호실에 언제 가는지 한 목록에서 보고 싶다</td>
+<td>내 일, 배정 전, 기한 지남, 오늘 정기 작업이 한 화면</td>
+<td>직원이 일을 하나 더 는다고 느낄 수 있다 [추정]</td>
+<td>카피 <code>product-marketing.md</code> Personas [추정]</td>
+</tr>
+<tr>
+<td>S3. 사업장 책임자</td>
+<td>열린 요청이 쌓이지 않는지, 정기 청소·점검이 빠지지 않았는지 알고 싶다</td>
+<td>열린 요청 수, 기한 지남, 정기 작업 마침·쉼·못 함이 숫자로</td>
+<td>지금은 사람에게 물어서 안다 [추정]</td>
+<td>같음</td>
+</tr>
+<tr>
+<td>(정보 수혜) 회원 본인</td>
+<td>부탁한 일이 잊히지 않고 누가 맡았는지 알고 싶다</td>
+<td>맡은 직원 이름과 지금 상태</td>
+<td>디지털이 어려운 회원이 있다</td>
+<td>카피 <code>product-marketing.md</code> JTBD [추정]</td>
+</tr>
+<tr>
+<td>(정보 수혜) 보호자</td>
+<td>멀리서 부모님 방의 불편을 전하고 싶다</td>
+<td>회원이 허락한 범위에서 올리고 본다</td>
+<td>회원이 &quot;생활 요청&quot;을 허락해야 한다(기본 &quot;안 보여요&quot;)</td>
+<td>decisions 70행 [사실]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li><strong>왜 S1이 먼저인가</strong>: 요청이 들어오는 길 넷(Evenstay 홈, Evenstay 패밀리, 프런트 대신 등록, 홈 비서) 중 셋이 프런트를 거친다(대신 등록, 분류 전 홈 비서 요청 분류, 보호자 요청 확인) [가설: 데모 흐름 기준]. 프런트가 쓰지 않으면 요청이 한 목록에 모이지 않는다.</li>
+<li>생활 서비스 맥락: 국내 시니어 레지던스 중 주 2회 청소와 세탁 대행(삼성노블카운티), 병원 동행(평창카운티)을 제공하는 곳이 있다 [사실: A6 <a href="https://www.heraldk.com/article/2026062013480077891" rel="noopener noreferrer" target="_blank">https://www.heraldk.com/article/2026062013480077891</a> 2026-06-20, A12 <a href="https://www.sidae.com/article/2025032413431314629" rel="noopener noreferrer" target="_blank">https://www.sidae.com/article/2025032413431314629</a> 2025-03-25]. 해외 시니어 리빙 입주자 앱은 수리·서비스 요청을 직원에게 넘기는 기능을 기본으로 둔다 [사실: R10 Touchtown, R11 LifeLoop, R12 TELS, coverage review 4-1 N1 행]. 국내 현장에서 요청이 실제로 얼마나 빠지는지는 [미확인]이다.</li>
+<li>Evenstay 안의 빈 화살표: G &quot;직원에게 넘기기&quot;가 받을 곳, D 생활 소식의 &quot;요청&quot; 재료, 운영 현황 대시보드의 &quot;열린 생활 요청&quot; 카드가 이미 N1을 가리킨다 [사실: coverage review 4-1 N1 행, 코어 <code>tech-design.md</code> 10절 카드 표].</li>
+</ul>
+<h2 id="3-상대-비용-위치">3. 상대 비용 위치</h2>
+<ul>
+<li><strong>차별 가치 쪽</strong>이다. N1은 따로 팔지 않고 코어 PMS 위의 모듈이다. 비용 경쟁을 하지 않는다.</li>
+<li>비용을 줄이는 방법: 시설 관리 SW 전체(자산 대장, 법정 점검 서류, 협력 업체 계약)를 만들지 않는다 [사실: coverage review S56 &quot;외부 시설관리 SW 영역&quot;]. 요청 분류에 AI를 쓰지 않는다. 처리 기한·담당 팀·비용은 코드가 아니라 사업장 설정이다.</li>
+<li>비교: 해외 입주자 앱과 시설 관리 SW는 작업 지시가 있지만 한국어·국내 계약·청구 구조에 맞지 않는다 [추정, 카피 <code>product-marketing.md</code> Competitive Landscape]. 아파트 관리 앱의 민원 접수는 시니어 레지던스가 제공하는 생활 서비스와 청구 연결이 없다 [추정].</li>
+</ul>
+<h2 id="4-가치-제안">4. 가치 제안</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>세그먼트</th>
+<th>이전</th>
+<th>방법</th>
+<th>이후</th>
+<th>지금 쓰는 대안</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S1 프런트</td>
+<td>전화로 받은 부탁을 종이에 적어 전한다 [추정: P-052]</td>
+<td>[대신 등록] → 종류에 따라 담당 팀 목록, 들어온 곳과 받은 직원이 남음</td>
+<td>누가 받았고 누가 맡았는지 다시 묻지 않는다</td>
+<td>프런트 전화, 종이 메모, 단체 메신저 방</td>
+</tr>
+<tr>
+<td>S2 담당 직원</td>
+<td>오늘 할 일을 사람에게 듣는다 [추정]</td>
+<td>내 일·배정 전·기한 지남·오늘 정기 작업 나누기, [맡기] [시작] [완료]</td>
+<td>마친 일을 한 줄로 적으면 입주자 화면에 그대로 보인다</td>
+<td>구두 전달</td>
+</tr>
+<tr>
+<td>S3 책임자</td>
+<td>처리 현황을 물어서 안다 [추정]</td>
+<td>운영 현황 카드(열린 요청, 배정 전, 기한 지남, 오늘 정기 작업)</td>
+<td>숫자와 기준 시각을 보고 기한 지남 목록으로 바로 간다</td>
+<td>회의, 전화</td>
+</tr>
+<tr>
+<td>회원</td>
+<td>같은 부탁을 다시 해야 할 수 있다 [추정]</td>
+<td>종류 타일을 누르면 시작하는 첫 화면, 맡은 직원 이름, [다 됐어요] [아직이에요]</td>
+<td>부탁한 일의 상태를 앱·문자·프런트에서 본다</td>
+<td>프런트 전화</td>
+</tr>
+<tr>
+<td>보호자</td>
+<td>시설에 전화해 말로 전한다 [추정]</td>
+<td>Evenstay 패밀리에서 회원님 대신 요청하기(허락 범위 안)</td>
+<td>회원님 화면에 &quot;딸 김지민 님이 요청했어요&quot;로 보인다</td>
+<td>전화</td>
+</tr>
+</tbody></table></div>
+<h2 id="5-트레이드오프-하지-않을-것">5. 트레이드오프 — 하지 않을 것</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>하지 않을 것</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>요청 내용을 읽고 자동으로 종류·담당·급함을 가르기(AI·낱말 규칙)</td>
+<td>종류와 담당은 직원이 정한다. 안심 알림으로 옮기는 판단도 직원이 한다(카피 공통 규칙 1, <code>value-prop.md</code> &quot;쓰지 않기로 한 문장&quot;)</td>
+</tr>
+<tr>
+<td>회원·보호자에게 처리 시간 약속, 처리 기한 표시</td>
+<td>근거가 없다. 기한은 직원용 사업장 설정이다</td>
+</tr>
+<tr>
+<td>병원 동행의 진료 과목·증상·진료 내용 받기, 진료 예약</td>
+<td>진단·치료는 의료 행위라 기능으로 만들지 않는다 [사실: decisions 69행]</td>
+</tr>
+<tr>
+<td>안전 신호 대신하기(급한 일, 몸이 불편한 일)</td>
+<td>안심 알림(B)의 몫이다. 회원 화면마다 호출벨·프런트 전화를 고정한다</td>
+</tr>
+<tr>
+<td>시설 관리 전체(자산 대장, 법정 점검 서류, 협력 업체 계약·정산)</td>
+<td>외부 시설관리 SW 영역이다. 정기 작업은 청소와 점검 일정만 다룬다</td>
+</tr>
+<tr>
+<td>요금 계산, 청구 항목 직접 쓰기</td>
+<td>코어 청구 원장의 일이다(코어 ADR-4). N1은 &quot;마친 유료 요청&quot;을 코어 명령으로 넘기기만 한다</td>
+</tr>
+<tr>
+<td>보호자에게 직접 문자 보내기</td>
+<td>보호자에게 가는 길은 D다(evenstay <code>CLAUDE.md</code> 시니어 서비스 원칙)</td>
+</tr>
+<tr>
+<td>금전 부탁(통장, 돈 옮기기) 처리</td>
+<td>D 금전 부탁(I-31)의 몫이다. 비서의 금전 판단 넘김은 G 화면에 남는다</td>
+</tr>
+<tr>
+<td>만족도 점수, 직원 평가, 처리 시간 순위</td>
+<td>판단하지 않는 원칙. 사실(건수, 시각)만 보인다</td>
+</tr>
+<tr>
+<td>효과 수치 주장</td>
+<td>측정한 적이 없다</td>
+</tr>
+</tbody></table></div>
+<h2 id="6-핵심-지표">6. 핵심 지표</h2>
+<ul>
+<li><strong>북극성 지표 [가설]</strong>: 입주자 확인(입주자 확인 + 확인 없이 닫힘 중 입주자 확인)으로 끝난 요청의 비율. 요청이 &quot;입주자 확인까지 남는다&quot;는 약속을 재는 값이다. 포트폴리오에서는 측정 대상이 없어 데모 시드로 계산이 맞는지만 보인다.</li>
+<li><strong>OMTM(MVP) [가설]</strong>: 데모 시나리오에서 요청 하나를 들어온 곳부터 입주자 확인까지 끊김 없이 따라갈 수 있는가(KR1, <code>prd.md</code> 3절).</li>
+<li>보조 사실 값(목표선 없음): 열린 요청 수, 배정 전 수, 기한 지남 수, 다시 열림 수, 오늘 정기 작업 마침·쉼·못 함 수. 운영 현황 카드에 기준 시각과 함께 보인다(코어 <code>tech-design.md</code> 10절 원칙: 목표선과 좋음·나쁨 색 없음).</li>
+</ul>
+<h2 id="7-성장">7. 성장</h2>
+<ul>
+<li>포트폴리오에서는 판매가 없다. 성장은 &quot;모듈이 늘 때 같은 모델로 받는 길이 늘어나는가&quot;로 본다.</li>
+<li>들어오는 길: Evenstay 홈(P0), 프런트 대신 등록(P0), 홈 비서 넘김(P1, G), Evenstay 패밀리(P1, D), 정기 작업(P1). 길이 늘어도 요청 모델과 상태 기계는 하나다.</li>
+<li>나가는 길: 코어 청구 항목(P1), 안심 알림 옮기기(P1, B), 운영 현황 카드(P1), D 생활 소식 재료(Next).</li>
+</ul>
+<h2 id="8-역량">8. 역량</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>역량</th>
+<th>만들기·빌리기</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>요청 상태 기계와 전이 기록</td>
+<td>만든다</td>
+<td>핵심. 표 기반 테스트로 모든 (상태, 동작) 조합</td>
+</tr>
+<tr>
+<td>담당 팀과 배정</td>
+<td>만든다</td>
+<td>팀 구성은 N1 설정. 직원 목록은 코어 <code>StaffQuery</code></td>
+</tr>
+<tr>
+<td>정기 작업 회차 생성</td>
+<td>만든다</td>
+<td>멱등 생성(같은 날 두 번 돌려도 한 회차), 장기 부재는 코어 <code>AbsenceQuery</code>로 읽음</td>
+</tr>
+<tr>
+<td>권한, 감사, 시계, 문자 발송</td>
+<td>빌린다(코어·platform)</td>
+<td><code>authorize()</code>, <code>AuditWriter</code>, <code>Clock</code>, <code>Notifier</code></td>
+</tr>
+<tr>
+<td>청구 항목</td>
+<td>빌린다(코어, 새 명령 요청)</td>
+<td><code>tech-design.md</code> 10-1</td>
+</tr>
+<tr>
+<td>보호자 허락</td>
+<td>빌린다(D, 새 허락 항목 요청)</td>
+<td><code>tech-design.md</code> 10-2</td>
+</tr>
+<tr>
+<td>안심 알림 호출</td>
+<td>빌린다(B, 공개 명령 요청)</td>
+<td><code>tech-design.md</code> 10-4</td>
+</tr>
+</tbody></table></div>
+<h2 id="9-모방이-어려운-이유">9. 모방이 어려운 이유</h2>
+<ul>
+<li>기능 자체는 흔하다 [추정]. 어려운 것은 다른 모듈과의 경계다: 비서의 넘김, 보호자 허락, 안심 알림, 코어 청구가 각자 규칙을 지키면서 한 요청 모델로 이어진다.</li>
+<li>시니어 레지던스 규칙이 모델에 들어 있다: 입주자 확인으로 닫힘, 직원 대신 확인, 병원 동행의 입력 칸 제한, 장기 부재 중 정기 작업 쉼.</li>
+<li>포트폴리오 관점: 면접관이 상태 기계, 배정, 기한, 정기 작업 생성, 청구 연결을 데모로 따라갈 수 있다 [가설: 카피 <code>product-marketing.md</code> Goals].</li>
+</ul>
+<h2 id="10-전략-정합성-점검">10. 전략 정합성 점검</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>점검</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>비전(입주자 확인까지) ↔ 지표</td>
+<td>북극성이 입주자 확인 비율이라 맞다</td>
+</tr>
+<tr>
+<td>&quot;시간 약속 없음&quot; ↔ 기한 기능</td>
+<td>기한은 직원 화면에만 있다. 회원·보호자 API 응답에 due_at을 넣지 않는다(<code>tech-design.md</code> 7절)</td>
+</tr>
+<tr>
+<td>&quot;급한 일은 아님&quot; ↔ 자동 분류 없음</td>
+<td>옮기는 판단은 직원. 회원 화면마다 호출벨·프런트 고정 문구</td>
+</tr>
+<tr>
+<td>&quot;건강 정보 없음&quot; ↔ 병원 동행</td>
+<td>입력 칸 넷만. &quot;가실 곳&quot;은 생활 지원·운전 팀만 보고 기간이 지나면 지운다 [가설]</td>
+</tr>
+<tr>
+<td>모듈 경계 ↔ 연결 넷</td>
+<td>코어·B·D·G 모두 <code>api/</code> 호출 또는 이벤트로만. 사본 없음</td>
+</tr>
+<tr>
+<td>1인 2~4주 ↔ 범위</td>
+<td>P0은 회원·프런트·담당 직원의 한 흐름. 정기 작업·청구·보호자·비서는 P1</td>
+</tr>
+</tbody></table></div>
+<h2 id="11-반드시-참이어야-하는-것-가설과-가벼운-실험">11. 반드시 참이어야 하는 것 (가설)과 가벼운 실험</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>가설</th>
+<th>틀리면</th>
+<th>가벼운 실험</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H1. 프런트가 전화로 받은 부탁을 대신 등록하는 데 드는 수고를 받아들인다</td>
+<td>요청이 한 목록에 모이지 않는다</td>
+<td>현장 직원 1~2명에게 대신 등록 창(입력 칸 6개)을 보여 주고 전화 한 통 안에 끝나는지 묻는다 [NEED: 현장 직원 인터뷰]</td>
+</tr>
+<tr>
+<td>H2. 입주자가 직원이 마친 뒤 확인을 누른다(또는 말로 해 준다)</td>
+<td>대부분 확인 없이 닫혀 확인 기록이 의미를 잃는다</td>
+<td>데모에서 [다 됐어요] 단계를 보여 주고 회원 화면 문구를 이해하는지 본다. 실서비스라면 확인 없이 닫힘 비율을 본다</td>
+</tr>
+<tr>
+<td>H3. 종류별 담당 팀 기본값(카피 <code>names.md</code> 2절)이 현장 업무 나눔과 맞는다</td>
+<td>프런트가 계속 담당을 바꾼다</td>
+<td>담당 바꾸기 이유를 기록해 본다(데모 범위 밖)</td>
+</tr>
+<tr>
+<td>H4. 정기 청소는 회차마다 확인 없이 끝내도 된다</td>
+<td>빠진 청소를 늦게 안다</td>
+<td>[다시 봐 주세요]가 새 요청으로 이어지는지 데모로 보인다 [사실: decisions 70행 ④]</td>
+</tr>
+<tr>
+<td>H5. 유료 요청은 확인 때 청구 항목이 되는 것이 현장 관행과 맞다</td>
+<td>청구 분쟁</td>
+<td>[NEED: 사업장 요금표와 세탁 대행 청구 관행]</td>
+</tr>
+</tbody></table></div>
+<h2 id="확인할-것">확인할 것</h2>
+<ol>
+<li><strong>[미정] 종류별 처리 기한 값</strong>: 사업장 설정이다. 데모 시드에는 자리값을 넣는다(<code>prd.md</code> 9절, [가설]).</li>
+<li><strong>[가설] 데모 사업장이 세탁 대행·병원 동행·외출 차량을 제공한다</strong>: 카피 <code>names.md</code> 2절의 전제를 따른다.</li>
+<li><strong>[NEED] 입주자·현장 직원 인터뷰</strong>: 실제 요청 표현, 놓친 사례. 지금 근거는 해외 앱 기능과 추정(P-052)뿐이다.</li>
+</ol>
+<h2 id="변경-기록">변경 기록</h2>
+<ul>
+<li>2026-11-03 검토 에이전트(critic) 1회, 결과 &quot;수정 필요&quot; 25건 반영: 병원 동행 자유 글 칸 닫기, 보호자 행동 이름을 D 정책 이름으로 맞춤(보호자 취소 뺌), 청구 달 미리 보기와 안내 요금표 버전, 하지 않음·못 함 문구 <code>[NEED: 카피]</code>, 상태별 허용 동작 통일, 2인 호실 부재 규칙, 기한 지남 4건, C 상태 회차 시드, 홈 비서 넘긴 이유(도구 밖 질문), <code>openCount</code> CHECK, 사용자 재승인 2026-11-04 표시.</li>
+<li>2026-11-04 전체 리뷰 보완(허브 보완 지시서 &quot;생활 요청&quot; 1<del>3, 사용자 재승인 2026-11-04): 9절 데모를 [시드 초기화] 없이 통합 흐름 10단계 뒤 11/17 시계 옮기기 장면(L0</del>L10)으로, [안심 알림으로 옮기기](F10, US-12)를 P1로, 홈 비서 예문 &quot;은행&quot;을 &quot;시장&quot;으로(<code>[NEED: 카피]</code> 16번). 배경 요청 R-07은 빼고 부록 시연 입력으로. 화면표에 통합 데모 열. 4번(코어 직원 4명, D 허락 시작점, G FORWARDED)은 허브 확정값 대기.</li>
+<li>2026-11-04 보완 지시 4번 확정값 반영(허브 전달, 사용자 재승인 2026-11-04): 코어 청구 API(<code>sourceType</code>·<code>sourceLabel</code>, <code>pendingUsages</code>, <code>registerSystemPrincipal('requests')</code>)와 직원 4명 시드 반영됨 표시, 장기 부재 시드를 301호 김정희(11/8~11/19)로 바꿔 L0 쉼 호실 변경, C_AFTER_DISCHARGE의 이은숙 부재 [미정] 닫음(12/4 201호 쉼), D-N1-1(11/17 15:00 직접 허락)로 L6 정리, D 생활 소식 재료 조회 이름 <code>ServiceRequestQuery.doneIn</code> 확정, G FORWARDED·B 출처 라벨 확정 표시. 열린 결정 둘(L9 12월 청구서 2,920,000원, CORE-14 N1 월 요약)은 <code>prd.md</code> 확인할 것 13·14에 [미정]으로.</li>
+<li>2026-11-04 사용자 결정 &quot;모두 추천대로&quot; 반영(허브 전달, 사용자 재승인 2026-11-04): H1 유료 세탁 요청을 정옥자(A동 202호) 것으로 옮김(L1·L9, 확인은 직원 대신 기록, 정옥자 11월 청구서 [가설], 이은숙 12월 2,910,000원 그대로), H4 11/17 L7을 회원 앱 외출 차량 요청으로(비서 경로 안 씀), H5 소유주 월 요약 <code>ServiceRequestQuery.monthlySummary</code>·행동 <code>requests.summary.owner_read</code>(F22, US-25). <code>prd.md</code> 확인할 것 13·14 닫음.</li>
+<li>2026-11-04 첫 화면 구성과 사업장 책임자 이름 반영(허브 전달, 사용자 재승인 2026-11-04): 화면 정의서 결정 15와 카피 변경에 맞춤. 4절 회원 줄의 &quot;큰 버튼 하나&quot;를 종류 타일로.</li>
+<li>2026-11-04 쉬운 말·공용 문구 인용 맞춤(허브 전달, 사용자 재승인 2026-11-04): <code>03-copywriting/ideas/life-requests/plain-read-review-2026-11-04.md</code>와 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구에 맞춰 회원·보호자 화면 문구 인용 1줄을 고침. 기능, 범위, 정책, 수치는 바꾸지 않음.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-strategy" data-title="전략"><p>이 서비스가 왜 필요한지, 누구를 위해 무엇을 하고 무엇을 하지 않는지를 정리한 문서입니다.</p></template>
+<template id="g-479" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-480" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-481" data-title="정기 작업"><p>정해진 날에 회차를 만드는 틀</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 정기 작업 / 회원: 정기 청소, 정기 점검</dd><dt>영문·코드 이름</dt><dd><code>RecurringTask</code></dd><dt>출처</dt><dd>requests T2-2, requests M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-482" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-483" data-title="입주자 확인"><p>쓰기 전에 받는 확인 토큰. 기한 5분 <code>[가설]</code></p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 확인(assistant M은 &quot;회원 확인&quot;) <code>[문서 다름]</code> / 회원: 네, 전해 주세요</dd><dt>영문·코드 이름</dt><dd><code>Confirmation</code>, <code>ConfirmationToken</code></dd><dt>출처</dt><dd>assistant T2-1·2-2, assistant C</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-484" data-title="병원 동행(알림 뒤)"><p>알림에서 이어진 동행의 직원과 시각만. 생활 요청의 병원 동행과 다른 기록이다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 병원 동행, 병원에 가신 분</dd><dt>영문·코드 이름</dt><dd><code>HospitalEscort</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-485" data-title="생활 요청"><p>고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건. 안전 신호가 아니다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 생활 요청(줄여 요청) / 회원·보호자: 요청</dd><dt>영문·코드 이름</dt><dd><code>ServiceRequest</code></dd><dt>출처</dt><dd>requests T2-2, requests M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-486" data-title="담당 팀"><p>N1 설정이고 코어 직무와 다르다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 프런트, 시설, 청소·세탁, 운전, 생활 지원</dd><dt>영문·코드 이름</dt><dd><code>Team</code>: <code>FRONT</code>, <code>FACILITY</code>, <code>HOUSEKEEPING</code>, <code>DRIVER</code>, <code>LIFE_SUPPORT</code></dd><dt>출처</dt><dd>requests T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-487" data-title="청구 항목"><p>청구서의 한 줄. 발행 뒤에는 추가만 한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구 항목 / 회원: 내실 돈 항목</dd><dt>영문·코드 이름</dt><dd><code>Charge</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-488" data-title="처리 기한"><p>사업장 설정값. 회원, 보호자에게 보이지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 처리 기한</dd><dt>영문·코드 이름</dt><dd><code>DueAt</code></dd><dt>출처</dt><dd>requests M, requests N3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-489" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-490" data-title="들어온 곳"><p>requests T2-2의 source 목록에는 <code>RECURRING</code>이 없다 <code>[문서 다름]</code></p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: Evenstay 홈 / Evenstay 패밀리 · 보호자 이름 / 프런트 대신 등록 · 직원 이름 / 홈 비서 · 넘긴 이유 / 정기 작업</dd><dt>영문·코드 이름</dt><dd><code>RequestSource</code>: <code>RESIDENT_APP</code>, <code>GUARDIAN_PORTAL</code>, <code>STAFF_ENTRY</code>, <code>ASSISTANT_HANDOFF</code>, <code>RECURRING</code></dd><dt>출처</dt><dd>requests N4-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

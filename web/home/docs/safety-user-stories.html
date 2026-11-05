@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>안심 알림 사용자 스토리 | Evenstay 문서</title>
+<meta name="description" content="안심 알림 사용자 스토리. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>안심 알림</span></p>
+  <h1>안심 알림 사용자 스토리</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-stories"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="안심 알림의 다른 문서"><ul><li><a href="safety-strategy.html">전략</a></li><li><a href="safety-service-blueprint.html">서비스 설계도</a></li><li><a href="safety-prd.html">기획서(PRD)</a></li><li><a href="safety-user-stories.html" aria-current="page">사용자 스토리</a></li><li><a href="safety-tech-design.html">기술 설계</a></li><li><a href="safety-roadmap.html">로드맵</a></li><li><a href="safety-handoff.html">개발 인계</a></li><li><a href="safety-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#이용자">이용자</a></li><li class="lv3"><a href="#us-01-신호-받기와-원본-보관-p0-f1">US-01 신호 받기와 원본 보관 (P0, F1)</a></li><li class="lv3"><a href="#us-02-같은-신호는-한-번만-늦은-신호는-순서대로-p0-f2">US-02 같은 신호는 한 번만, 늦은 신호는 순서대로 (P0, F2)</a></li><li class="lv3"><a href="#us-03-규칙이-등급을-붙인다-p0-f3">US-03 규칙이 등급을 붙인다 (P0, F3)</a></li><li class="lv3"><a href="#us-04-오늘-밤-당번표-p0-f4">US-04 오늘 밤 당번표 (P0, F4)</a></li><li class="lv3"><a href="#us-05-당번-알림과-전달-실패-p0-f5">US-05 당번 알림과 전달 실패 (P0, F5)</a></li><li class="lv3"><a href="#us-06-아무도-맡지-않으면-다음-사람에게-p0-f5">US-06 아무도 맡지 않으면 다음 사람에게 (P0, F5)</a></li><li class="lv3"><a href="#us-07-확인하러-갑니다-p0-f6">US-07 확인하러 갑니다 (P0, F6)</a></li><li class="lv3"><a href="#us-08-조치-기록-p0-f6">US-08 조치 기록 (P0, F6)</a></li><li class="lv3"><a href="#us-09-보호자-알림-미리보기와-건강-소식-올리기-p0-f7">US-09 보호자 알림 미리보기와 건강 소식 올리기 (P0, F7)</a></li><li class="lv3"><a href="#us-10-정해진-경우에만-건강-소식에-올리지-않기-p0-f7">US-10 정해진 경우에만 건강 소식에 올리지 않기 (P0, F7)</a></li><li class="lv3"><a href="#us-11-비상-연락처-보기와-통화-기록-p0-f8">US-11 비상 연락처 보기와 통화 기록 (P0, F8)</a></li><li class="lv3"><a href="#us-12-알림-기록-p0-f9">US-12 알림 기록 (P0, F9)</a></li><li class="lv3"><a href="#us-13-기기-시뮬레이터와-직원-휴대폰-패널-p0-f10">US-13 기기 시뮬레이터와 직원 휴대폰 패널 (P0, F10)</a></li><li class="lv3"><a href="#us-14-같은-입주자-신호-묶음-p0-f11">US-14 같은 입주자 신호 묶음 (P0, F11)</a></li><li class="lv3"><a href="#us-15-신호-끊김-p1-f13">US-15 신호 끊김 (P1, F13)</a></li><li class="lv3"><a href="#us-16-회원-안심-알림-화면-p1-f14">US-16 회원 안심 알림 화면 (P1, F14)</a></li><li class="lv3"><a href="#us-17-안부-전화-미응답-p1-f15">US-17 안부 전화 미응답 (P1, F15)</a></li><li class="lv3"><a href="#us-18-기기-연결과-장치-동의-p1-f16">US-18 기기 연결과 장치 동의 (P1, F16)</a></li><li class="lv3"><a href="#us-19-전화로-받은-호출-p1-f17">US-19 전화로 받은 호출 (P1, F17)</a></li><li class="lv3"><a href="#us-20-비상-연락처가-닿지-않을-때-p1-f18">US-20 비상 연락처가 닿지 않을 때 (P1, F18)</a></li><li class="lv3"><a href="#us-21-규칙당번표-설정-p1-f19">US-21 규칙·당번표 설정 (P1, F19)</a></li><li class="lv3"><a href="#us-22-보호자가-건강-소식에서-결과를-본다-p0-f7f12-d-의존">US-22 보호자가 건강 소식에서 결과를 본다 (P0, F7·F12, D 의존)</a></li><li class="lv3"><a href="#us-23-확인만남까지-걸린-시간-보기-p0-f20">US-23 확인·만남까지 걸린 시간 보기 (P0, F20)</a></li><li class="lv3"><a href="#us-24-병원-동행-기록-p1-f21">US-24 병원 동행 기록 (P1, F21)</a></li><li class="lv3"><a href="#us-25-안부-방문-기록-p1-f22">US-25 안부 방문 기록 (P1, F22)</a></li><li class="lv3"><a href="#us-26-장기-부재-동안-규칙-멈추기-p1-f23">US-26 장기 부재 동안 규칙 멈추기 (P1, F23)</a></li><li class="lv3"><a href="#us-27-야간-당번-보기-한-줄-p0-f24">US-27 야간 당번 보기 한 줄 (P0, F24)</a></li><li class="lv3"><a href="#us-28-사업장-단위-조회-p1-f25">US-28 사업장 단위 조회 (P1, F25)</a></li><li class="lv3"><a href="#us-29-생활-요청에서-옮겨-온-호출-p1-f17">US-29 생활 요청에서 옮겨 온 호출 (P1, F17)</a></li><li class="lv3"><a href="#us-30-호실-현황판-p1-f26">US-30 호실 현황판 (P1, F26)</a></li><li class="lv3"><a href="#us-31-사고학대-보고-p1-f27">US-31 사고·학대 보고 (P1, F27)</a></li><li class="lv3"><a href="#us-32-비상-때-재실-명단-p1-f28">US-32 비상 때 재실 명단 (P1, F28)</a></li><li class="lv3"><a href="#us-33-첫-화면-p1-줄과-목록-p1-f29">US-33 첫 화면 P1 줄과 목록 (P1, F29)</a></li><li class="lv3"><a href="#us-34-소유주-월-요약-p1-f30">US-34 소유주 월 요약 (P1, F30)</a></li><li class="lv2"><a href="#확인할-것">확인할 것</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-172" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-173" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-174" data-tip="B, C가 올린 본문 스냅샷.">건강 소식</button></li><li><button class="term" type="button" data-modal="g-175" data-tip="응급 때 직원이 누구에게 어떤 순서로 전화하는가.">비상 연락처</button></li><li><button class="term" type="button" data-modal="g-176" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-177" data-tip="알림 타임라인.">알림 기록</button></li><li><button class="term" type="button" data-modal="g-178" data-tip="기기, 출입 카드, 안부 전화 가입을 입주자와 잇고 장치 동의를 담는다">기기 연결</button></li><li><button class="term" type="button" data-modal="g-179" data-tip="회원이 받기로 한 정기 순회.">안부 방문</button></li><li><button class="term" type="button" data-modal="g-180" data-tip="사업장 운영을 맡고 운영 현황 카드를 본다">사업장 책임자</button></li><li><button class="term" type="button" data-modal="g-181" data-tip="만남 여부와 한 일.">조치 기록</button></li><li><button class="term" type="button" data-modal="g-182" data-tip="근무 시간과 자리.">당번표</button></li><li><button class="term" type="button" data-modal="g-183" data-tip="사업장 자산을 가진 쪽">소유주</button></li></ul></section></aside>
+  <article class="doc"><blockquote>
+<p>디자인 파일은 아직 없다. &quot;디자인&quot; 줄은 화면 문구가 있는 B <code>copy.md</code> 절을 가리킨다. 이름·호실·시각은 <code>prd.md</code> 9절의 가상 시드 데이터다.
+우선순위는 PRD를 따른다. P0 = US-01<del>14, US-22. P1 = US-15</del>21.
+&quot;[가설]&quot;이 붙은 인수 조건은 <code>prd.md</code> 확인할 것 5~9에서 제안값으로 확정한 것이다(2026-11-03 사용자 결정). 현장 검토에서 달라지면 그 조건을 바꾼다.</p>
+</blockquote>
+<h2 id="이용자">이용자</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>역할</th>
+<th>스토리</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>야간 직원(당번·2차)</td>
+<td>US-05, US-06, US-07, US-08, US-09, US-10, US-11, US-14, US-15, US-20, US-24, US-27</td>
+</tr>
+<tr>
+<td>사업장 책임자</td>
+<td>US-04, US-12, US-21, US-23, US-30, US-31, US-32</td>
+</tr>
+<tr>
+<td>본사 관리자</td>
+<td>US-01(처리 실패 확인)</td>
+</tr>
+<tr>
+<td>프런트 직원</td>
+<td>US-18, US-19</td>
+</tr>
+<tr>
+<td>야간·낮 당번</td>
+<td>US-29, US-31, US-32, US-33</td>
+</tr>
+<tr>
+<td>생활지원 직원(낮·야간)</td>
+<td>US-25</td>
+</tr>
+<tr>
+<td>보호자</td>
+<td>US-22</td>
+</tr>
+<tr>
+<td>회원</td>
+<td>US-16</td>
+</tr>
+<tr>
+<td>시스템(이벤트 처리)</td>
+<td>US-01, US-02, US-03, US-17, US-26</td>
+</tr>
+<tr>
+<td>대시보드(<code>app/</code> D1)</td>
+<td>US-28</td>
+</tr>
+<tr>
+<td>소유주 담당자</td>
+<td>US-34</td>
+</tr>
+<tr>
+<td>생활 요청(N1, 모듈)</td>
+<td>US-29</td>
+</tr>
+<tr>
+<td>데모 진행자</td>
+<td>US-13</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h3 id="us-01-신호-받기와-원본-보관-p0-f1">US-01 신호 받기와 원본 보관 (P0, F1)</h3>
+<p><strong>설명</strong>: 운영사로서, 기기 업체마다 다른 형식의 신호를 받아 한 가지 신호 형식으로 바꾸고 싶다. 그래야 기기를 바꾸거나 늘려도 직원 화면과 기록이 그대로다.
+<strong>대화</strong>: 형식을 모르는 신호도 버리지 않는다. 원본을 먼저 보관하고, 처리 실패를 사람이 볼 수 있게 한다.
+<strong>디자인</strong>: <code>copy.md</code> 1절 &quot;무엇을 만들었나&quot; 1, 5절 &quot;형식을 알 수 없는 신호&quot;, 2-14 처리 실패 신호
+<strong>인수 조건</strong></p>
+<ol>
+<li>출처마다 웹훅 주소가 있고, 서명이 맞지 않으면 401로 거부하고 원본을 저장하지 않는다(거부 수만 센다).</li>
+<li>서명이 맞으면 형식과 상관없이 원본(본문, 받은 시각, 출처)을 먼저 저장하고 2xx를 돌려준다.</li>
+<li>어댑터 3종(침대 센서, 호출벨, 출입 기록)이 원본을 공통 신호(출처, 업체 이벤트 번호, 기기, 생긴 시각, 받은 시각, 신호 종류, 값)로 바꾼다.</li>
+<li>바꾸지 못한 원본은 처리 실패 상태가 되고, 본사 관리자 화면에 <code>copy.md</code> 5절 문구로 나온다(처리 실패 신호 화면은 <code>copy.md</code> 2-14).</li>
+<li>기기 연결이 없는 신호는 호실만 표시하고 입주자 칸에는 &quot;연결된 입주자 없음&quot;이 보인다(<code>copy.md</code> 2-12).</li>
+</ol>
+<h3 id="us-02-같은-신호는-한-번만-늦은-신호는-순서대로-p0-f2">US-02 같은 신호는 한 번만, 늦은 신호는 순서대로 (P0, F2)</h3>
+<p><strong>설명</strong>: 야간 직원으로서, 같은 신호가 다시 들어와도 알림을 한 번만 받고 싶다. 그래야 같은 일로 두 번 뛰어가지 않는다.
+<strong>대화</strong>: 업체는 웹훅을 다시 보낼 수 있다. 판단 기준은 출처와 업체 이벤트 번호의 조합이다.
+<strong>디자인</strong>: <code>copy.md</code> 2-6
+<strong>인수 조건</strong></p>
+<ol>
+<li>같은 (출처, 업체 이벤트 번호)를 두 번 보내면 신호는 1건, 알림은 1건, 직원 알림 전송도 1번이다.</li>
+<li>카드에 &quot;중복 수신 1건&quot; 배지가 붙고, 누르면 두 수신 시각과 이벤트 번호가 보인다.</li>
+<li>두 요청이 거의 동시에 와도 결과는 같다(DB 유일 제약으로 막는다).</li>
+<li>생긴 시각이 받은 시각보다 훨씬 이른 신호(예: 02:38 생김, 02:44 도착)도 알림을 보내고 <code>copy.md</code> 2-6 &quot;늦게 도착한 신호&quot; 문구를 붙인다. 목록은 생긴 시각 순서다.</li>
+<li>늦은 신호의 넘김 타이머는 받은 시각부터 센다.</li>
+</ol>
+<h3 id="us-03-규칙이-등급을-붙인다-p0-f3">US-03 규칙이 등급을 붙인다 (P0, F3)</h3>
+<p><strong>설명</strong>: 사업장 책임자로서, 사업장이 정한 규칙에 따라 신호마다 등급이 붙게 하고 싶다. 그래야 직원이 급한 것부터 본다.
+<strong>대화</strong>: 등급은 입주자 상태 판단이 아니라 &quot;얼마나 빨리 봐야 하는지&quot;다. 규칙은 5개 이내.
+<strong>디자인</strong>: <code>copy.md</code> 2-2, 2-3, <code>names.md</code> 1절
+<strong>인수 조건</strong></p>
+<ol>
+<li>시드 규칙 3개(밤 침대 떠남 30분, 호출벨, 밤 정문 출입)가 <code>prd.md</code> 6절대로 즉시 확인 / 확인 필요를 붙인다.</li>
+<li>맞는 규칙이 없는 신호는 기록만 등급이 되고 직원 알림을 보내지 않는다. 첫 화면의 &quot;기록만 n건 (알림 없음) 보기&quot;에서 볼 수 있다.</li>
+<li>밤 시간대는 생긴 시각으로 판단한다(05:58에 생기고 06:03에 온 신호도 밤 규칙에 맞는다).</li>
+<li>알림에는 적용된 규칙 이름과 규칙 버전이 남는다.</li>
+<li>한 사업장에 규칙을 6개째 만들려고 하면 거부한다.</li>
+<li>등급 이름을 누르면 <code>copy.md</code> 2-3 도움말이 나오고, 그 끝에 &quot;입주자의 상태를 판단한 결과가 아닙니다.&quot;가 있다.</li>
+</ol>
+<h3 id="us-04-오늘-밤-당번표-p0-f4">US-04 오늘 밤 당번표 (P0, F4)</h3>
+<p><strong>설명</strong>: 사업장 책임자로서, 근무 시간대마다 1차·2차·3차 담당자를 정해 두고 싶다. 그래야 알림이 누구에게 어떤 순서로 갈지 정해진다.
+<strong>대화</strong>: MVP는 시드로 넣고, 편집 화면은 US-21(P1).
+<strong>디자인</strong>: <code>copy.md</code> 2-1 당번 표시
+<strong>인수 조건</strong></p>
+<ol>
+<li>첫 화면에 기준 시각의 당번표가 &quot;당번 김○○ · 2차 박○○ · 3차 최○○(당직 책임자)&quot;로 보인다.</li>
+<li>기준 시각에 맞는 근무가 없거나 자리가 비면 그 자리를 건너뛴다.</li>
+<li>당번표가 통째로 비면 알림은 코어 <code>StaffQuery.listStaff(사업장, 지금)</code>의 직원 모두와 사업장 책임자에게 가고, 첫 화면 위에 경고가 뜬다(반영됨, <code>copy.md</code> 2-1).</li>
+<li>당번표 자리에 넣을 수 있는 사람은 <code>StaffQuery.listStaff</code>가 돌려주는 그 사업장 직원(SITE_STAFF, SITE_MANAGER)뿐이다.</li>
+</ol>
+<h3 id="us-05-당번-알림과-전달-실패-p0-f5">US-05 당번 알림과 전달 실패 (P0, F5)</h3>
+<p><strong>설명</strong>: 당번으로서, 즉시 확인·확인 필요 알림을 휴대폰과 화면에서 바로 받고 싶다. 그래야 어디에 있든 무엇을 보러 가야 하는지 안다.
+<strong>대화</strong>: 알림 카드 순서는 등급 → 호실·이름 → 관찰된 사실 → 시각·출처 → 규칙 → 버튼. 판단 단어를 쓰지 않는다.
+<strong>디자인</strong>: <code>copy.md</code> 2-2, 5절 &quot;직원 휴대폰에 알림이 안 감&quot;
+<strong>인수 조건</strong></p>
+<ol>
+<li>알림이 생기면 1차 담당자에게 직원 알림이 아웃박스를 거쳐 전송되고, 전송 결과(성공·실패, 시각)가 남는다.</li>
+<li>카드에 <code>copy.md</code> 2-2 형식의 문구가 나오고, 화면 아래에 &quot;입주자의 상태 판단과 119 신고는 직원이 합니다.&quot;가 고정되어 있다.</li>
+<li>전송이 실패하면 5분을 기다리지 않고 다음 자리로 넘기고 <code>copy.md</code> 5절 문구를 남긴다.</li>
+<li>기록만 등급에는 직원 알림을 보내지 않는다.</li>
+<li>카드에 &quot;n분 n초 뒤 2차 담당 ○○○ 님에게 넘어갑니다.&quot;가 남은 시간과 함께 보인다.</li>
+</ol>
+<h3 id="us-06-아무도-맡지-않으면-다음-사람에게-p0-f5">US-06 아무도 맡지 않으면 다음 사람에게 (P0, F5)</h3>
+<p><strong>설명</strong>: 사업장 책임자로서, 정해진 시간 안에 아무도 확인하지 않은 알림이 다음 담당자에게 자동으로 넘어가게 하고 싶다. 그래야 아무도 맡지 않은 알림이 남지 않는다.
+<strong>대화</strong>: 넘김 타이머는 알림마다 둔다. 누가 확인하면 멈춘다. 데모에서는 데모 시계로 시간을 앞당긴다.
+<strong>디자인</strong>: <code>copy.md</code> 2-5
+<strong>인수 조건</strong></p>
+<ol>
+<li>즉시 확인 알림이 5분 동안 접수 상태면 2차로 넘어가고 상태가 &quot;2차 호출&quot;이 된다. 기록 &quot;02:45 · 5분 동안 확인이 없어 박○○ 님에게 넘겼습니다.&quot;가 남는다.</li>
+<li>2차도 5분 동안 확인하지 않으면 3차(책임자)로 넘어가 &quot;3차 호출&quot;이 된다.</li>
+<li>3차도 5분 동안 확인하지 않으면 오늘 밤 당번표 모두에게 다시 알리고, 확인될 때까지 5분마다 다시 알린다[가설]. 시스템은 119에 신고하지 않는다.</li>
+<li>확인 필요 알림은 같은 단계를 15분 간격으로 밟는다[가설].</li>
+<li>넘김 처리가 두 번 실행돼도(작업자 재시작, 동시 실행) 단계는 한 번만 오른다.</li>
+<li>처음 당번의 화면에는 &quot;이 알림은 02:45에 박○○ 님에게 넘어갔습니다. 지금 갈 수 있으면 [확인하러 갑니다]를 누르세요.&quot;가 보이고, 넘어간 뒤에도 누를 수 있다.</li>
+</ol>
+<h3 id="us-07-확인하러-갑니다-p0-f6">US-07 확인하러 갑니다 (P0, F6)</h3>
+<p><strong>설명</strong>: 야간 직원으로서, 알림을 내가 맡았다는 것을 한 번에 알리고 싶다. 그래야 다른 직원이 같은 방으로 겹쳐 가지 않고 넘김이 멈춘다.
+<strong>대화</strong>: 누가 확인했는지는 이름과 시각으로 보인다. 응답하지 않은 직원을 탓하는 말은 쓰지 않는다.
+<strong>디자인</strong>: <code>copy.md</code> 2-4, 5절 &quot;이미 다른 직원이 맡음&quot;
+<strong>인수 조건</strong></p>
+<ol>
+<li>[확인하러 갑니다]를 누르면 상태가 &quot;확인 중 · 박○○ 님이 02:46에 맡았습니다.&quot;가 되고 넘김 타이머가 멈춘다.</li>
+<li>다른 직원 화면에는 &quot;박○○ 님이 확인 중입니다.&quot;가 보인다.</li>
+<li>두 직원이 동시에 누르면 먼저 처리된 한 명만 맡고, 다른 한 명에게 &quot;박○○ 님이 02:46에 먼저 맡았습니다. 함께 가야 하면 박○○ 님에게 전화하세요.&quot;가 나온다.</li>
+<li>맡은 뒤 카드에 <code>copy.md</code> 2-4의 안내가 보인다: 119 신고가 필요하면 직접 전화하세요. 신고한 뒤 조치 기록에서 &quot;119에 신고함&quot;을 골라 주세요.</li>
+<li>같은 요청이 두 번 와도(재전송) 맡은 사람과 시각은 바뀌지 않는다.</li>
+</ol>
+<h3 id="us-08-조치-기록-p0-f6">US-08 조치 기록 (P0, F6)</h3>
+<p><strong>설명</strong>: 야간 직원으로서, 입주자를 만났는지와 내가 한 일을 짧게 기록하고 싶다. 그래야 무슨 일이 있었는지 다음 근무자와 책임자가 안다.
+<strong>대화</strong>: 선택지는 직원이 한 일만이다. 진단명이나 상태 판단 칸은 없다. 메모는 본 것과 한 일.
+<strong>디자인</strong>: <code>copy.md</code> 2-4, <code>names.md</code> 5절
+<strong>인수 조건</strong></p>
+<ol>
+<li>만남(입주자를 만났습니다 / 아직 만나지 못했습니다)과 한 일(7개 중 여러 개)과 메모를 저장할 수 있다.</li>
+<li>&quot;아직 만나지 못했습니다&quot;를 고르면 알림은 확인 중으로 남고 &quot;찾는 중&quot;이 붙으며, 3차 자리(책임자)에게 바로 알린다([가설], <code>prd.md</code> 확인할 것 8).</li>
+<li>조치 완료는 &quot;입주자를 만났습니다&quot; + 한 일 1개 이상 + 보호자 알림 결정(US-09·10)이 있어야 된다. 하나라도 없으면 [조치 기록 저장] 뒤 미리보기로 넘어가지 않는다.</li>
+<li>저장에 실패하면 적은 내용이 기기에 남고 <code>copy.md</code> 5절 &quot;조치 기록 저장 실패&quot; 문구와 [다시 저장]이 나온다. 같은 요청 키로 두 번 저장되지 않는다.</li>
+<li>저장 뒤 &quot;조치를 기록했습니다. 02:46 확인 → 02:49 만남 → 02:58 조치 완료&quot; 요약이 나온다.</li>
+<li>메모는 암호화 대상 컬럼에 저장하고, 상세를 열 때마다 열람 기록이 남는다.</li>
+</ol>
+<h3 id="us-09-보호자-알림-미리보기와-건강-소식-올리기-p0-f7">US-09 보호자 알림 미리보기와 건강 소식 올리기 (P0, F7)</h3>
+<p><strong>설명</strong>: 야간 직원으로서, 조치를 마치기 전에 보호자에게 무엇이 올라가는지 보고 올리고 싶다. 그래야 회원이 허락한 보호자에게 사실 그대로 전해진다.
+<strong>대화</strong>: 누가 볼 수 있는지는 B가 정하지 않고 D에 묻는다. 내부 메모는 보호자 문장에 들어가지 않는다. AI를 쓰지 않는다.
+<strong>디자인</strong>: <code>copy.md</code> 2-8, 3-1, 3-2
+<strong>인수 조건</strong></p>
+<ol>
+<li>미리보기는 D <code>FamilyConsentQuery.viewersOf(회원, HEALTH_EVENT, 지금)</code>이 돌려준 보호자 수와 관계, 코어 <code>GuardianQuery.guardiansOf</code>의 이름으로 <code>copy.md</code> 2-8 문구(데모: &quot;딸 김○○ 님&quot;)를 채운다.</li>
+<li>첫 문장은 규칙의 문장 틀에서 자동으로 채워진다(&quot;11월 12일 새벽 2시 10분에 침대에서 일어나신 뒤 30분 동안 돌아오지 않으셔서, 직원이 방에 다녀왔어요.&quot;). 직원은 둘째 문장부터 해요체로 쓴다. 둘째 문장이 비어 있으면 [보내기]가 눌리지 않는다.</li>
+<li>보내는 시각 안내(&quot;새 소식 문자는 08:00에 보냅니다.&quot;)는 D <code>nextSendAt(사업장, 지금)</code>으로 채운다(2026-11-03 허브 결정).</li>
+<li>[보내기]를 누르면 보호자용 결과(요약 한 줄, 본문, 종류, 생긴 시각, 기록한 직원)가 B에 저장되고 같은 트랜잭션에서 조치 완료가 된다(02:58). 아웃박스 디스패처가 D <code>HealthFeedCommand.post</code>(출처 SAFETY, 출처 ID, 버전 1, <code>involvesEmergencyCall</code>)를 부르고, 성공하면 결과의 <code>noticeSendAt</code>으로 기록에 &quot;보호자 알림 예약(08:00)&quot;이 붙는다(<code>copy.md</code> 2-7의 02:59). <code>involvesEmergencyCall</code>은 한 일에 &quot;119에 신고함&quot; 또는 &quot;병원으로 가심&quot;이 있으면 참이다.</li>
+<li><code>post</code>를 두 번 불러도(재시도) D에는 한 건이다((출처, 출처 ID, 버전 번호) 멱등). D가 응답하지 않으면 아웃박스가 다시 시도하고, 계속 실패하면 책임자 화면에 &quot;A동 201호 이은숙 입주자의 02:58 조치 결과를 건강 소식에 아직 올리지 못했습니다. Evenstay 패밀리가 응답하지 않아 자동으로 다시 보내고 있습니다. 조치 기록은 저장되어 있습니다.&quot;(<code>copy.md</code> 2-8)가 뜬다.</li>
+<li>&quot;병원으로 가심&quot;이 있을 때만 종류가 병원에 가신 일(HOSPITAL_TRANSFER)이 된다. &quot;119에 신고함&quot;만 있으면 직원이 다녀간 일(SAFETY_SIGNAL)이다. 비상 연락처 통화 기록이 있으면 첫 줄이 &quot;박○○ 직원이 새벽 3시 5분에 비상 연락처에 적힌 분께 전화로 먼저 알렸어요.&quot;가 된다.</li>
+<li>볼 보호자가 0명이면 <code>copy.md</code> 2-8 &quot;동의 범위 밖일 때&quot; 문구가 나오고, [보내기]를 누르면 똑같이 <code>post</code>된다. D는 저장하되 문자를 보내지 않는다.</li>
+</ol>
+<h3 id="us-10-정해진-경우에만-건강-소식에-올리지-않기-p0-f7">US-10 정해진 경우에만 건강 소식에 올리지 않기 (P0, F7)</h3>
+<p><strong>설명</strong>: 야간 직원으로서, 회원이 &quot;이번 일은 알리지 말아 줘&quot;라고 하셨거나 건강 소식이 아닌 기록일 때만 올리지 않고 싶다. 그래야 회원의 뜻은 지키고, 직원 판단으로 소식이 빠지지 않는다.
+<strong>대화</strong>: 2026-11-03 허브·사용자 확정. 직원 재량 버튼은 없다. 이유 코드는 D와 같은 두 가지다. 확인은 운영 매니저가 D 주간 목록에서 매주 한다.
+<strong>디자인</strong>: <code>copy.md</code> 2-8(&quot;올리지 않기&quot; 두 가지, 재승인)
+<strong>인수 조건</strong></p>
+<ol>
+<li>미리보기 버튼은 &quot;보내기 · 올리지 않기&quot;이고 자유 기재 이유 칸이 없다. [올리지 않기]를 누르면 <code>copy.md</code> 2-8의 두 가지만 나온다: 이유 ① 회원 요청(MEMBER_REQUEST), 이유 ② 건강과 무관한 신호(NOT_A_HEALTH_EVENT). 아래에 &quot;올리지 않은 일은 운영 매니저가 매주 확인합니다.&quot;가 있다.</li>
+<li>회원 요청은 들은 직원(로그인한 직원으로 채움), 들은 시각, 말한 사람(회원 본인 / 대리인)이 있어야 저장된다. 비면 &quot;들은 직원과 시각을 적어야 저장됩니다.&quot;가 나온다. 저장하면 D <code>withhold</code>(reasonCode = MEMBER_REQUEST, residentId, kind, occurredAt, heardByUserId, heardAt, requestedByKind, involvesEmergencyCall. 인자는 <code>tech-design.md</code> 10-2절)를 부르고 <code>post</code>는 하지 않는다. 회원 화면 표시는 D 회원 화면(D <code>copy.md</code> 2-9 &quot;…회원님 말씀대로 건강 소식에서 뺐어요&quot;, 처리 직원)이 기준이고, B 안심 알림 기록(US-16, P1)에도 그 일의 줄에 같은 문장이 붙는다(2026-11-03 사용자 확정).</li>
+<li>이유 ②는 하위 이유(다른 입주자의 신호가 잘못 붙음 / 같은 일이 이미 올라감 / 기기 시험) 하나를 골라야 저장된다. D <code>withhold</code>(reasonCode = NOT_A_HEALTH_EVENT, residentId, kind, occurredAt, subReason, involvesEmergencyCall = false. 인자는 <code>tech-design.md</code> 10-2절)를 부른다.</li>
+<li>&quot;119에 신고함&quot; 또는 &quot;병원으로 가심&quot;이 기록된 알림에서는 이유 ②가 보이지 않고, API로 보내도 422로 거부된다.</li>
+<li>올리지 않은 알림은 B 기록에 이유 코드와 함께 남고, 알림 기록에서 건강 소식에 올리지 않은 알림만 거르는 필터에 나온다(필터 이름은 반영됨(<code>copy.md</code> 2-7)).</li>
+<li>낮에 프런트가 D 화면에서 회원 요청으로 뺀 일은 D <code>HealthEventWithheld</code>를 받아(이벤트 ID로 한 번만) 그 알림 기록에 회원 요청으로 건강 소식에서 뺐다는 표시가 붙는다(회원 안심 알림 기록의 문장은 <code>copy.md</code> 4-4).</li>
+</ol>
+<h3 id="us-11-비상-연락처-보기와-통화-기록-p0-f8">US-11 비상 연락처 보기와 통화 기록 (P0, F8)</h3>
+<p><strong>설명</strong>: 알림을 맡은 직원으로서, 119 신고나 병원 이송 때 비상 연락처를 순서대로 바로 보고 전화하고 싶다. 그래야 서류를 찾지 않고 먼저 알릴 수 있다.
+<strong>대화</strong>: 비상 연락처는 코어 입주 계약 항목이다. 건강 소식 동의와 상관없다. B는 전화번호를 저장하지 않는다.
+<strong>디자인</strong>: 비상 연락처 버튼과 목록 반영됨(<code>copy.md</code> 2-9). <code>copy.md</code> 2-4 &quot;비상 연락처에 전화함&quot;
+<strong>인수 조건</strong></p>
+<ol>
+<li>알림을 맡은 직원(확인 중인 담당자)에게만 [비상 연락처 보기]가 보인다.</li>
+<li>누르면 코어 <code>EmergencyContactQuery.emergencyContactsOf(입주자, 기준 시각, actor)</code>를 불러 순서대로 이름, 관계, 전화번호를 보이고, 번호를 누르면 전화가 걸린다.</li>
+<li>B는 조회한 직원을 <code>actor</code>로 넘긴다. 코어가 권한을 검사하고 SENSITIVE_READ(누가, 어느 입주자, 언제)를 남긴다(코어 v1.1). B의 로그와 이벤트에는 전화번호·이름이 남지 않는다.</li>
+<li>통화 결과(몇 순위, 시각, 통화함 / 닿지 않음)를 조치 기록에 남길 수 있다.</li>
+<li>등록된 비상 연락처가 없으면 &quot;이 입주자는 아직 비상 연락처가 없습니다. 입주 서류를 확인하고 당직 책임자 최영미 님에게 알려 주세요.&quot;(<code>copy.md</code> 2-9)가 나오고, 알림 기록에서 비상 연락처가 없던 알림만 거르는 필터에 나온다.</li>
+</ol>
+<h3 id="us-12-알림-기록-p0-f9">US-12 알림 기록 (P0, F9)</h3>
+<p><strong>설명</strong>: 사업장 책임자로서, 밤사이 알림마다 누가 받고 언제 확인하고 무엇을 했는지 한 줄로 보고 싶다. 그래야 아침에 검토하고, 일이 생기면 시간 순서로 설명한다.
+<strong>대화</strong>: 이 화면이 &quot;판단은 사람이, 기록은 시스템이&quot;의 증거다.
+<strong>디자인</strong>: <code>copy.md</code> 2-7
+<strong>인수 조건</strong></p>
+<ol>
+<li>알림마다 신호 수신 → 직원 알림(받은 사람) → 넘김 → 확인 → 만남 → 조치 완료 → 건강 소식 처리(올림 / 올리지 않음과 이유)가 시각과 함께 한 줄로 나온다(<code>copy.md</code> 2-7 예시와 같은 순서).</li>
+<li>넘김이 있었던 알림, 건강 소식에 올리지 않은 알림, 비상 연락처가 없던 알림을 거르는 필터가 있다(필터 이름은 반영됨(<code>copy.md</code> 2-7)).</li>
+<li>사업장 직원은 자기 사업장의 최근 7일 기록만 본다(<code>tech-design.md</code> 6-2 <code>log.view</code>, [가설]). 책임자는 자기 사업장 전체. 경리·소유주는 이 화면을 열 수 없다(403). 소유주는 그달 숫자만 본다(US-34).</li>
+<li>기록은 고칠 수 없다. 조치 기록 정정은 덧붙임으로만 한다(P1).</li>
+</ol>
+<h3 id="us-13-기기-시뮬레이터와-직원-휴대폰-패널-p0-f10">US-13 기기 시뮬레이터와 직원 휴대폰 패널 (P0, F10)</h3>
+<p><strong>설명</strong>: 데모 진행자로서, 실제 기기 없이 업체 형식의 신호를 보내고 직원 휴대폰에 무엇이 가는지 보여 주고 싶다. 그래야 면접관이 5분 안에 이벤트 수명을 따라간다.
+<strong>대화</strong>: 시뮬레이터는 실제 웹훅 주소로 서명된 요청을 보낸다. 내부 함수를 바로 부르지 않는다(경계를 그대로 보여 주기 위해).
+<strong>디자인</strong>: <code>copy.md</code> 1절 데모 안내 / 휴대폰 패널 반영됨(<code>copy.md</code> 2-10)
+<strong>인수 조건</strong></p>
+<ol>
+<li>신호 종류(침대 센서, 호출벨, 정문 출입), 호실, 이벤트 번호, 생긴 시각을 고르고 [보내기]를 누르면 서명된 웹훅이 간다.</li>
+<li>[같은 신호 다시 보내기]는 같은 이벤트 번호로 다시 보낸다. [늦게 보내기]는 생긴 시각을 몇 분 앞으로 둔다.</li>
+<li>직원 휴대폰 패널 3개(당번·2차·3차)에 각자 받은 알림이 시각과 함께 쌓인다.</li>
+<li>시나리오 시각표 버튼(02:30, 02:35, 02:40:03, +5분, 02:46, 02:49, 02:58, 08:00)과 [데모 초기화]가 있다. 신호를 보내기 전에는 데모 시계를 그 신호의 보낸 시각으로 맞춘다. 데모 시계는 멈춘 시계이고 초 단위다(<code>platform</code> <code>Clock.now()</code>, 코어 <code>/demo/clock</code>, 코어 v1.1). 시각표는 2026-11-12 새벽 기준이다.</li>
+<li>시뮬레이터와 휴대폰 패널은 데모 환경에서만 있다. 운영 빌드에는 경로가 없다.</li>
+</ol>
+<h3 id="us-14-같은-입주자-신호-묶음-p0-f11">US-14 같은 입주자 신호 묶음 (P0, F11)</h3>
+<p><strong>설명</strong>: 야간 직원으로서, 같은 입주자에게서 짧은 시간에 여러 신호가 오면 한 카드 아래에서 보고 싶다. 그래야 같은 분을 위해 두 번 따로 움직이지 않는다.
+<strong>대화</strong>: 묶음은 화면에서만이다. 알림과 넘김 타이머는 각자 그대로라서 뒤에 온 즉시 확인 신호가 묻히지 않는다[가설].
+<strong>디자인</strong>: <code>copy.md</code> 2-6 &quot;같은 입주자 신호 묶음&quot;
+<strong>인수 조건</strong></p>
+<ol>
+<li>같은 입주자의 처리 중 알림끼리 생긴 시각이 30분 안이면 &quot;○호 ○○○ 입주자 · 같은 입주자 신호 2건&quot;으로 묶여 보인다[가설].</li>
+<li>묶음 카드의 등급은 묶인 알림 중 가장 급한 등급으로 보인다.</li>
+<li>묶인 알림 하나를 맡아도 다른 알림의 넘김 타이머는 멈추지 않는다. 묶음 카드에서 묶인 알림을 한 번에 모두 맡을 수 있다(버튼 문구는 반영됨(<code>copy.md</code> 2-6)).</li>
+<li>기록만 신호는 묶음에 들어가지 않는다.</li>
+</ol>
+<h3 id="us-15-신호-끊김-p1-f13">US-15 신호 끊김 (P1, F13)</h3>
+<p><strong>설명</strong>: 야간 직원으로서, 오래 신호가 오지 않는 기기를 따로 보고 싶다. 그래야 신호가 없는 것을 &quot;이상 없음&quot;으로 착각하지 않는다.
+<strong>디자인</strong>: <code>copy.md</code> 2-1 기기 상태, 5절 &quot;기기 신호 끊김&quot;
+<strong>인수 조건</strong></p>
+<ol>
+<li>기기마다 마지막 신호 시각을 남기고, 정해진 시간(기본 2시간 [가설]) 동안 신호가 없으면 &quot;신호 끊김&quot;이 된다.</li>
+<li>첫 화면에 &quot;기기 n대 중 n대에서 신호가 오고 있습니다. [신호 끊김 n대 보기]&quot;가 나온다.</li>
+<li>신호 끊김 문구는 &quot;이 시간 동안 입주자가 침대를 떠나셨는지는 알 수 없습니다.&quot;를 포함한다.</li>
+<li>[기기 점검 요청]을 누르면 요청이 기록된다.</li>
+<li>그 기기에서 다시 신호가 오면 신호 끊김이 풀리고 기록이 남는다.</li>
+</ol>
+<h3 id="us-16-회원-안심-알림-화면-p1-f14">US-16 회원 안심 알림 화면 (P1, F14)</h3>
+<p><strong>설명</strong>: 회원으로서, 호출벨을 누른 뒤 직원에게 전해졌는지, 직원이 오고 있는지 보고 싶다. 그래야 기다리는 동안 덜 불안하다.
+<strong>대화</strong>: 등급, 규칙, 메모를 보이지 않는다. 지키지 못할 말을 먼저 하지 않는다.
+<strong>디자인</strong>: <code>copy.md</code> 4-1~4-4
+<strong>인수 조건</strong></p>
+<ol>
+<li>호출 중 상태가 &quot;직원에게 알렸어요.&quot; → (아무도 맡지 않아 넘어가면) &quot;다른 직원에게도 알렸어요.&quot; → (직원이 맡은 뒤에만) &quot;○○○ 직원이 가고 있어요.&quot; → &quot;직원이 다녀갔어요.&quot;로 바뀐다.</li>
+<li>회원 화면 어디에도 &quot;즉시 확인&quot;, &quot;에스컬레이션&quot;, 메모 내용이 나오지 않는다.</li>
+<li>첫 화면에 호출벨, 방 전화(프런트 내선 0번), 119 안내가 늘 있다.</li>
+<li>본문 18px 이상, 버튼 44×44 CSS px 이상, 200% 확대에서 가로 스크롤 없음.</li>
+<li>회원은 자기 기록만 본다. 다른 회원의 알림은 API에서 403이다.</li>
+<li>&quot;소식 함께 보기 열기&quot;는 D 화면으로 연결된다.</li>
+<li>회원 요청으로 건강 소식에서 뺀 일은 그 기록 줄에 D <code>copy.md</code> 2-9와 같은 문장이 붙는다(B는 D <code>HealthEventWithheld</code>·자기 기록으로 안다).</li>
+</ol>
+<h3 id="us-17-안부-전화-미응답-p1-f15">US-17 안부 전화 미응답 (P1, F15)</h3>
+<p><strong>설명</strong>: 야간·주간 직원으로서, 외부 안부 전화를 같은 날 두 번 받지 않으신 입주자를 알림으로 받고 싶다. 그래야 기관 연락을 따로 확인하지 않아도 된다.
+<strong>디자인</strong>: <code>copy.md</code> 2-2 안부 전화 카드
+<strong>인수 조건</strong></p>
+<ol>
+<li>안부 전화 어댑터가 미응답 신호를 공통 형식으로 바꾼다.</li>
+<li>같은 입주자, 같은 날(사업장 시간대 기준) 첫 번째 미응답은 기록만, 두 번째는 확인 필요 알림이 된다.</li>
+<li>같은 미응답 신호가 다시 와도 횟수가 늘지 않는다(US-02와 같은 중복 판단).</li>
+<li>카드에 두 미응답 시각이 모두 나온다.</li>
+</ol>
+<h3 id="us-18-기기-연결과-장치-동의-p1-f16">US-18 기기 연결과 장치 동의 (P1, F16)</h3>
+<p><strong>설명</strong>: 프런트 직원으로서, 입주한 회원의 기기를 연결하고 회원이 어떤 장치를 쓰기로 했는지 기록하고 싶다. 그래야 동의 없이 센서 신호를 모으지 않는다.
+<strong>디자인</strong>: <code>copy.md</code> 4-2 / 기기 연결 화면 반영됨(<code>copy.md</code> 2-12)
+<strong>인수 조건</strong></p>
+<ol>
+<li>코어 <code>ContractActivated</code> 이벤트를 받으면 활성 기기 연결이 없는 입주자에게만 기기 연결이 필요하다는 할 일이 생긴다(이벤트 ID로 한 번만).</li>
+<li>침대 센서, 밤 출입 알림, 안부 전화는 회원 동의(일시, 받은 직원, 경로: 직접·대리인)를 넣어야 연결된다. 호출벨은 동의 없이 연결된다.</li>
+<li>동의가 없는 장치에서 온 신호는 입주자와 연결하지 않고 기록만으로 남긴다.</li>
+<li>코어 <code>ContractTerminationRequested</code>(residentIds)의 퇴거일이 지나면 그 입주자의 기기 연결이 끝난다.</li>
+<li>코어 <code>ContractSucceeded</code>를 받으면 사별한 분(residentIds − remainingResidentId)의 기기 연결이 승계일로 끝나고, 그 뒤 그 침대 센서 신호는 입주자와 연결되지 않는다(데모: 김한결 님 침대, 2026-11-10).</li>
+</ol>
+<h3 id="us-19-전화로-받은-호출-p1-f17">US-19 전화로 받은 호출 (P1, F17)</h3>
+<p><strong>설명</strong>: 프런트 직원으로서, 회원이 전화로 도움을 청하면 같은 알림 큐에 넣고 싶다. 그래야 전화로 부른 회원도 호출벨을 누른 회원과 같은 넘김과 기록을 받는다.
+<strong>인수 조건</strong></p>
+<ol>
+<li>전화로 받은 호출을 등록할 때 호실·입주자를 고르면 출처가 프런트 전화(FRONT_CALL)이고 등급이 즉시 확인인 알림이 생긴다(버튼과 출처 라벨 문구는 반영됨(<code>copy.md</code> 2-11, <code>names.md</code> 4절)).</li>
+<li>등록한 직원과 시각이 남는다.</li>
+<li>이후 넘김·확인·조치는 US-05~US-10과 같다.</li>
+</ol>
+<h3 id="us-20-비상-연락처가-닿지-않을-때-p1-f18">US-20 비상 연락처가 닿지 않을 때 (P1, F18)</h3>
+<p><strong>설명</strong>: 알림을 맡은 직원으로서, 비상 연락처가 전화를 받지 않으면 내용 없는 문자를 남기고 다음 순위로 전화하고 싶다.
+<strong>디자인</strong>: <code>copy.md</code> 3-3
+<strong>인수 조건</strong></p>
+<ol>
+<li>통화 결과 &quot;닿지 않음&quot;을 고르면 [닿지 않음 문자 보내기]가 나온다.</li>
+<li>문자는 <code>copy.md</code> 3-3 그대로이고 건강 내용·링크가 없다. 머리말은 [Evenstay 패밀리].</li>
+<li>보낸 시각과 순위가 남고, 다시 전화할 일이 카드에 남는다.</li>
+<li>같은 순위에 같은 알림으로 두 번 보내지 않는다.</li>
+</ol>
+<h3 id="us-21-규칙당번표-설정-p1-f19">US-21 규칙·당번표 설정 (P1, F19)</h3>
+<p><strong>설명</strong>: 사업장 책임자로서, 규칙과 당번표를 직접 바꾸고 싶다.
+<strong>디자인</strong>: <code>copy.md</code> 2-13
+<strong>인수 조건</strong></p>
+<ol>
+<li>규칙(출처, 조건, 시간대, 등급, 넘김 간격, 보호자 문장 틀)을 5개 이내로 만들고 바꾼다. 바꾸면 새 버전이 생기고 이미 생긴 알림은 옛 버전을 유지한다.</li>
+<li>보호자 문장 틀에 금지어(<code>prd.md</code> KR3)가 있으면 저장을 거부한다.</li>
+<li>당번표는 근무 시간대마다 1·2·3차 자리를 정한다. 바꾼 사람과 시각이 남는다.</li>
+<li>사업장 책임자(SITE_MANAGER)와 본사 관리자·매니저만 바꿀 수 있다(<code>tech-design.md</code> 6-2 <code>config.edit</code>).</li>
+</ol>
+<h3 id="us-22-보호자가-건강-소식에서-결과를-본다-p0-f7f12-d-의존">US-22 보호자가 건강 소식에서 결과를 본다 (P0, F7·F12, D 의존)</h3>
+<p><strong>설명</strong>: 보호자로서, 부모님이 보여 주기로 한 건강 소식에서 무슨 일이 있었고 직원이 무엇을 했는지 보고 싶다.
+<strong>대화</strong>: 화면, 문자, 열람 권한은 D가 만든다(D <code>user-stories.md</code> US-11). B가 확인할 것은 B가 올린 내용이 D에서 그대로 보이는지다. D가 없으면 <code>family/api</code> 목업으로 데모한다.
+<strong>디자인</strong>: D <code>copy.md</code> 4-4, B <code>copy.md</code> 3-1·3-2·3-4
+<strong>인수 조건</strong></p>
+<ol>
+<li>B가 <code>post</code>한 결과가 D 건강 소식 한 줄(&quot;11월 12일 새벽 · 직원이 다녀간 일 · 다친 곳은 없다고 하셨어요&quot;)로 나온다. 요약 한 줄은 B가 보낸 <code>summaryLine</code> 그대로다.</li>
+<li>상세는 B가 보낸 본문 그대로 무슨 일 → 직원이 한 일 → 지금 상태 순서로 보이고, 직원 내부 메모는 나오지 않는다.</li>
+<li>새 소식 문자는 D 규칙대로(22~08시 소식은 08:00) &quot;[Evenstay 패밀리] 이○○ 회원님의 새 소식이 있어요. …&quot;로 간다. 문자에 내용, &quot;건강&quot;이라는 말, 링크가 없다.</li>
+<li>건강 소식을 허락받지 않은 사람(데모: 대리인 아들 김태호, 범위 청구서 확인·결제)은 D 화면과 API에서 볼 수 없다(D 정책). B에는 보호자가 부르는 API가 없다.</li>
+<li>금지 필드(진단명, 진료 결과, 처방)를 B가 보내지 않는다. D가 거부하면 B 테스트가 실패한다(계약 테스트).</li>
+</ol>
+<h3 id="us-23-확인만남까지-걸린-시간-보기-p0-f20">US-23 확인·만남까지 걸린 시간 보기 (P0, F20)</h3>
+<p><strong>설명</strong>: 사업장 책임자로서, 알림마다 맡기까지와 만나기까지 몇 분 걸렸는지 보고 싶다. 그래야 늦은 알림을 다음 날 찾아 원인을 묻는다.
+<strong>디자인</strong>: 알림 기록(SAF-05) 열 추가 반영됨(<code>copy.md</code> 2-7)
+<strong>인수 조건</strong></p>
+<ol>
+<li>알림 기록 한 줄마다 알림을 보낸 시각부터 맡은 시각까지, 만난 시각까지 걸린 분이 보인다.</li>
+<li>값은 이미 남은 시각(AlertEvent의 NOTIFIED, ACKNOWLEDGED, MET)으로 계산하고 새로 입력받지 않는다.</li>
+<li>아직 맡지 않은 알림, 만나지 못한 알림은 숫자 대신 그 상태가 보인다.</li>
+<li>직원별 순위, 사업장 평균 비교, &quot;빨라졌다&quot; 같은 효과 문장은 없다.</li>
+<li>데모 시계로 시간을 앞당겨도 같은 계산이 나온다(<code>platform</code> <code>Clock.now()</code>).</li>
+</ol>
+<h3 id="us-24-병원-동행-기록-p1-f21">US-24 병원 동행 기록 (P1, F21)</h3>
+<p><strong>설명</strong>: 야간 직원으로서, 병원에 모시고 간 일을 누가 언제 출발했고 언제 돌아오셨는지 남기고 싶다. 그래야 아침 근무자가 병원에 가신 분을 놓치지 않는다.
+<strong>디자인</strong>: 조치 기록(SAF-03), 첫 화면(SAF-01) 반영됨(<code>copy.md</code> 2-1, 2-4, 2-16)
+<strong>인수 조건</strong></p>
+<ol>
+<li>조치 기록에서 &quot;병원으로 가심&quot;을 고르면 동행 직원(직원 목록 또는 없음)과 출발 시각 칸이 열린다.</li>
+<li>돌아오신 시각은 나중에 덧붙여 기록한다. 처음 기록은 고치지 않는다(덧붙임 정정 원칙).</li>
+<li>돌아오심이 기록되기 전까지 첫 화면에 병원에 가신 분 수가 남고, 근무가 바뀌어도 보인다.</li>
+<li>병원 이름, 진료 내용, 진단명 칸은 없다.</li>
+<li>보호자 건강 소식에는 지금처럼 조치 완료 때 한 번 올라간다. 돌아오심을 덧붙여 다시 올릴지는 [미정].</li>
+</ol>
+<h3 id="us-25-안부-방문-기록-p1-f22">US-25 안부 방문 기록 (P1, F22)</h3>
+<p><strong>설명</strong>: 생활지원 직원으로서, 정해진 시간에 회원님 방에 들러 안부를 여쭌 일을 남기고 싶다. 그래야 아무 신호도 없는 분도 하루에 한 번은 사람이 챙긴다.
+<strong>대화</strong>: 신호가 와야 움직이는 구조의 빈 곳을 메운다. 놓친 방문은 새 신호 출처 &quot;안부 방문&quot;으로 들어가 기존 규칙·넘김을 그대로 쓴다. 방문은 회원이 받기로 한 경우만 한다.
+<strong>디자인</strong>: 안부 방문 기록(SAF-12 제안), 설정(SAF-11), 동의(SAF-10), 회원 화면 4-2 안내 한 줄 반영됨(<code>copy.md</code> 2-15, 설정 2-13, 동의 2-12, 회원 안내 4-2)
+<strong>인수 조건</strong></p>
+<ol>
+<li>사업장 책임자가 방문 주기와 시간대를 정한다(시드: 하루 1회, 10:00~18:00 [가설]).</li>
+<li>회원이 안부 방문 받기에 동의한 기록(날짜와 시각, 받은 직원, 본인·대리인)이 있는 회원만 목록에 나온다.</li>
+<li>직원은 호실마다 다녀왔습니다 / 방에 계시지 않았습니다 / 입주자가 방문을 원하지 않으셨습니다 중 하나를 고른다. 상태 판단·메모 필수 칸은 없다.</li>
+<li>시간대가 끝날 때까지 기록이 없으면 출처 &quot;안부 방문&quot;의 신호가 한 번만 생기고(계획 ID와 날짜로 멱등), 규칙 &quot;안부 방문 놓침&quot;(확인 필요 [가설])으로 알림과 넘김을 탄다.</li>
+<li>&quot;방에 계시지 않았습니다&quot;는 기록만 남긴다. 이것을 알림으로 올릴지는 [미정].</li>
+<li>부재 중(US-26)인 회원은 목록에서 &quot;부재 중&quot;으로 보이고 놓친 방문 신호가 생기지 않는다.</li>
+</ol>
+<h3 id="us-26-장기-부재-동안-규칙-멈추기-p1-f23">US-26 장기 부재 동안 규칙 멈추기 (P1, F23)</h3>
+<p><strong>설명</strong>: 운영사로서, 회원이 오래 집을 비운 동안 빈 방의 침대 센서나 안부 방문으로 알림이 울리지 않게 하고 싶다. 그래야 직원이 의미 없는 알림에 지치지 않는다.
+<strong>디자인</strong>: 첫 화면, 알림 카드, 안부 방문 목록의 &quot;부재 중&quot; 표시 반영됨(<code>copy.md</code> 2-1, 2-7, 2-15, 2-17). 표시는 코어 <code>AbsenceQuery.openAbsences(siteId, at, actor)</code>로 읽는다
+<strong>인수 조건</strong></p>
+<ol>
+<li>신호를 평가할 때 코어 <code>AbsenceQuery.absenceOf(residentId, at)</code>를 생긴 시각으로 불러 부재가 있으면 그 입주자의 침대 센서, 밤 정문 출입, 안부 방문 규칙을 적용하지 않는다. B는 부재를 저장하지 않고 코어 이벤트도 구독하지 않는다(<code>tech-design.md</code> ADR-S7).</li>
+<li>멈춘 동안 들어온 신호는 버리지 않고 기록만으로 남고, 기록 줄에 부재 중이었다는 표시가 붙는다.</li>
+<li>호출벨과 프런트 전화는 멈추지 않는다.</li>
+<li>코어에서 부재가 끝나면(복귀, 등록 취소, 승계·정산 때 자동 종료) 다음 평가부터 규칙이 다시 적용된다. 코어 조회가 실패하면 규칙을 멈추지 않는다. 부재 이유·종류는 원래 없다.</li>
+<li>예정 복귀일이 지나도 코어에서 열려 있으면 계속 멈춘다 [가설]. 시작일·복귀일 당일 경계는 코어 정의를 따르고, 안부 전화 규칙도 멈출지는 [미정](<code>tech-design.md</code> 확인할 것 18).</li>
+</ol>
+<h3 id="us-27-야간-당번-보기-한-줄-p0-f24">US-27 야간 당번 보기 한 줄 (P0, F24)</h3>
+<p><strong>설명</strong>: 야간 직원으로서, 첫 화면을 열자마자 맡지 않은 신호와 끊긴 기기, 오늘 당번을 한 줄로 보고 싶다. 그래야 근무를 시작할 때 무엇부터 할지 안다.
+<strong>디자인</strong>: 첫 화면(SAF-01) 맨 위 반영됨(<code>copy.md</code> 2-1)
+<strong>인수 조건</strong></p>
+<ol>
+<li>맡지 않은 신호 수(접수·넘김 상태), 끊긴 기기 수, 오늘 당번(1·2·3차 이름)이 한 줄로 보인다.</li>
+<li>값은 지금 데이터로 계산한다. 새 저장은 없다.</li>
+<li>끊긴 기기 칸은 F13(P1)이 들어오기 전에는 숨긴다.</li>
+<li>숫자가 0이어도 줄은 남는다(근무 시작 확인용).</li>
+</ol>
+<h3 id="us-28-사업장-단위-조회-p1-f25">US-28 사업장 단위 조회 (P1, F25)</h3>
+<p><strong>설명</strong>: 대시보드(<code>app/</code> D1)로서, 사업장 하나의 안심 알림 현황을 읽기만 하고 싶다. 그래야 안심 알림 테이블을 직접 읽지 않고 모듈 경계를 지킨다.
+<strong>인수 조건</strong></p>
+<ol>
+<li><code>SafetyBoardQuery.boardOf(siteId, at, actor)</code>가 열린 신호 수(접수·넘김·확인 중), 맡지 않은 수, 지난 24시간 확인까지 걸린 시간(건수, 중앙값, 가장 긴 것), 끊긴 기기 수(F13 전에는 없음), 오늘 당번(자리, 이름)을 돌려준다. 형태는 <code>tech-design.md</code> 8-2절.</li>
+<li>안에서 코어 <code>authorize()</code>로 <code>safety.log.view</code> 권한을 검사한다. 호출한 모듈을 믿고 건너뛰지 않는다.</li>
+<li>입주자 이름, 메모, 직원별 수치는 주지 않는다.</li>
+<li>읽기만 한다. <code>app/</code>은 쓰기 경로가 없다.</li>
+</ol>
+<h3 id="us-29-생활-요청에서-옮겨-온-호출-p1-f17">US-29 생활 요청에서 옮겨 온 호출 (P1, F17)</h3>
+<p><strong>설명</strong>: 야간·낮 당번으로서, 생활 요청에서 직원이 옮긴 일을 다른 호출과 같은 카드로 받고 싶다. 그래야 생활 요청 글에 몸 상태가 섞여 있어도 사람이 바로 들른다.
+<strong>대화</strong>: 판단은 생활 요청을 본 직원이 하고, B는 호실·입주자·출처만 받는다. 요청 글은 생활 요청에 남는다.
+<strong>디자인</strong>: 알림 카드(SAF-01) 출처 &quot;생활 요청에서 옮김&quot;과 카드 문장 반영됨(<code>copy.md</code> 2-11, <code>names.md</code> 4절)
+<strong>인수 조건</strong></p>
+<ol>
+<li>생활 요청(N1)이 <code>SafetyFrontCallCommand.registerFromRequest({siteId, unitId, residentId, actor, sourceModule: 'REQUESTS', sourceId})</code>를 부르면 즉시 확인 알림이 생기고 <code>{alertId}</code>를 돌려준다.</li>
+<li>같은 (sourceModule, sourceId)로 다시 불러도 알림은 하나다.</li>
+<li>권한은 <code>alert.handle</code>로 검사하고, 요청 글·종류·메모는 받지 않는다.</li>
+<li>이후 넘김·확인·조치는 US-05~US-10과 같다.</li>
+<li>명령이 실패하면 N1 요청은 그대로 남는다(N1이 상태를 바꾸지 않는다).</li>
+</ol>
+<h3 id="us-30-호실-현황판-p1-f26">US-30 호실 현황판 (P1, F26)</h3>
+<p><strong>설명</strong>: 사업장 책임자로서, 호실마다 오늘 안부 방문, 부재 중, 마지막 신호 시각, 처리 중 알림을 한 표로 보고 싶다. 그래야 오늘 아무도 챙기지 않은 분을 찾는다.
+<strong>디자인</strong>: 호실 현황판(SAF-15 제안) 반영됨(<code>copy.md</code> 2-18, 화면 이름 &quot;호실 현황&quot;)
+<strong>인수 조건</strong></p>
+<ol>
+<li>호실마다 입주자, 오늘 안부 방문 결과(또는 아직 없음·대상 아님), 부재 중 표시, 기기별 마지막 신호 시각, 처리 중 알림 수가 보인다.</li>
+<li>부재 중은 코어 <code>AbsenceQuery.openAbsences</code>로 매 요청 읽고 저장하지 않는다.</li>
+<li>위치, 영상, 활동량, 상태 판단 칸은 없다. 직원 화면에만 있다.</li>
+<li>권한은 <code>alert.view</code>다.</li>
+</ol>
+<h3 id="us-31-사고학대-보고-p1-f27">US-31 사고·학대 보고 (P1, F27)</h3>
+<p><strong>설명</strong>: 알림을 맡은 직원과 사업장 책임자로서, 한 알림에서 있었던 일과 보호자 통보, 신고 여부를 정해진 칸에 남기고 싶다. 그래야 나중에 누가 언제 무엇을 했는지 설명할 수 있다.
+<strong>대화</strong>: 시스템은 학대인지, 원인이 무엇인지 정하지 않는다. 사람이 한 일만 적는다.
+<strong>디자인</strong>: 사고·학대 보고(SAF-16 제안), 알림 상세(SAF-02) 더보기에서 연다 반영됨(<code>copy.md</code> 2-19)
+<strong>인수 조건</strong></p>
+<ol>
+<li>칸은 경위(본 것과 한 일), 보호자 통보(했음/안 함, 시각, 비상 연락처 순위), 신고(신고함/하지 않음, 신고 기관, 시각)뿐이다. 판정·원인·책임 칸은 없다.</li>
+<li>저장 뒤 고치지 않고 덧붙임으로 정정한다. 작성자와 시각이 남는다.</li>
+<li>사업장 책임자, 본사 관리자·매니저, 작성자만 본다. 열 때 SENSITIVE_READ가 남는다.</li>
+<li>보고는 보호자 건강 소식, D, G로 나가지 않는다.</li>
+<li>화면에 신고의무 근거가 [미확인]이면 그대로 보인다(<code>prd.md</code> 12절).</li>
+</ol>
+<h3 id="us-32-비상-때-재실-명단-p1-f28">US-32 비상 때 재실 명단 (P1, F28)</h3>
+<p><strong>설명</strong>: 직원으로서, 비상 때 동·층별 입주자 명단에서 도움이 필요한 분과 부재 중인 분을 보고, 대피를 확인한 분을 하나씩 표시하고 싶다. 그래야 확인할 분을 빠뜨리지 않는다.
+<strong>디자인</strong>: 비상 때 재실 명단(SAF-17 제안), 도움 필요 설정(직원 대행, 회원 화면 한 줄) 반영됨(<code>copy.md</code> 2-20, 2-12, 4-1)
+<strong>인수 조건</strong></p>
+<ol>
+<li>[비상 명단 열기]를 누르면 동·층별 입주자 명단이 나온다. 명단은 코어 입주자·호실과 코어 부재(<code>AbsenceQuery</code>)로 만들고, 출입 신호로 재실을 추정하지 않는다.</li>
+<li>부재 중인 분은 &quot;부재 중&quot;으로, 미리 &quot;도움 필요&quot;를 고른 분은 그 표시로 보인다.</li>
+<li>직원이 사람마다 [대피 확인함]을 누르면 직원과 시각이 남는다. 같은 명단에서 한 사람에게 정정되지 않은 확인은 하나뿐이다.</li>
+<li>&quot;도움 필요&quot;는 회원 본인(회원 화면) 또는 직원 대행(들은 사람: 본인·보호자·대리인, 들은 직원, 시각)으로만 정한다. 이유 칸은 없다.</li>
+<li>대피 관련 법적 의무는 [미확인]이다.</li>
+<li>[대피 확인함]을 잘못 눌렀으면 정정 기록을 더한다. 원 기록은 고치지 않고, 정정한 직원과 시각이 남는다. 정정된 분은 확인 전으로 보이고 다시 확인할 수 있다(문구 [NEED: 카피]).</li>
+</ol>
+<h3 id="us-33-첫-화면-p1-줄과-목록-p1-f29">US-33 첫 화면 P1 줄과 목록 (P1, F29)</h3>
+<p><strong>설명</strong>: 야간 직원과 아침 근무자로서, 첫 화면에서 병원에 가신 분, 부재 중인 입주자, 기기 연결이 필요한 입주자 수를 보고 [보기]로 목록을 열고 싶다. 그래야 교대 뒤에도 챙길 분을 놓치지 않는다.
+<strong>디자인</strong>: SAF-01 맨 위 한 줄 아래, SAF-13, SAF-14. 반영됨(<code>copy.md</code> 2-1, 2-12, 2-16, 2-17)
+<strong>인수 조건</strong></p>
+<ol>
+<li><code>GET /safety/sites/{id}/board</code> 응답의 <code>p1Lines</code>(hospitalOutCount, absentCount, linkNeededCount)로 세 줄을 그린다. 그 기능이 꺼져 있으면 필드가 없고 줄도 없다.</li>
+<li>[보기]는 병원에 가신 분 목록(<code>GET /safety/sites/{id}/hospital-escorts?open=true</code>), 부재 중인 입주자 목록(<code>GET /safety/sites/{id}/absences</code>, 코어 <code>openAbsences</code> 그대로), 기기 연결 할 일을 연다.</li>
+<li>병원에 가신 분 줄의 입주자에게 부재가 열려 있으면 &quot;부재 중&quot;도 함께 보인다.</li>
+<li>F13이 꺼져 있으면 <code>disconnectedDeviceCount</code>가 null이고 맨 위 한 줄은 끊김 칸 없는 문장으로 보인다 (반영됨(<code>copy.md</code> 2-1)).</li>
+<li>N1 생활 요청의 병원 동행 신청은 병원에 가신 분 수에 세지 않는다.</li>
+</ol>
+<h3 id="us-34-소유주-월-요약-p1-f30">US-34 소유주 월 요약 (P1, F30)</h3>
+<p><strong>설명</strong>: 소유주 담당자로서, 맡긴 사업장의 그달 안전 신호 처리 숫자를 월 리포트에서 보고 싶다. 그래야 운영사가 신호를 사람에게 넘기고 있는지 숫자로 안다.
+<strong>디자인</strong>: 코어 CORE-14 소유주 월 리포트의 안심 알림 묶음 반영됨(<code>copy.md</code> 2-21, 코어 CORE-14에 넣을 제안이라 코어 카피가 받아야 화면에 들어간다)
+<strong>인수 조건</strong></p>
+<ol>
+<li><code>SafetyBoardQuery.monthOf(siteId, period, actor)</code>가 period, asOf, complete, signalCount, alertCount, logOnlyCount, ackTimes{count, medianMinutes, longestMinutes}, escalatedCount, resolvedCount를 돌려준다.</li>
+<li>소유주는 자기 소유 사업장만 받는다. 권한은 <code>safety.owner_report.view</code>이고 다른 안심 알림 행동은 403이다.</li>
+<li>이름, 호실, 입주자 ID, 직원, 메모, 119·병원 이송·사고 보고 수는 없다.</li>
+<li>이번 달을 물으면 기준 시각까지 계산하고 complete = false다. 매 요청 계산하고 저장하지 않는다.</li>
+</ol>
+<h2 id="확인할-것">확인할 것</h2>
+<p><strong>결정됨 [가설]</strong> (2026-11-03 사용자 결정: 문서의 제안값으로 확정하고 [가설]로 표시)</p>
+<ol>
+<li><strong>묶음 카드의 모두 맡기 버튼</strong> [가설]: 둔다. 한 분을 위해 한 번 움직이는 현장 흐름에 맞는다 [추정]. 버린 대안: 알림마다 따로 맡기.</li>
+<li><strong>조치 기록 정정 방식</strong> [가설]: 저장 뒤 고치지 않고 덧붙임 메모로 정정한다(P1). 기록의 증거 가치를 지키기 위해서다. 버린 대안: 같은 근무 시간 안에서는 수정 허용 + 수정 이력.</li>
+<li><strong>[가설] 표시 인수 조건</strong>: <code>prd.md</code> 확인할 것 5~9의 [가설]과 <code>tech-design.md</code> 6-2(직원 기록 열람 7일)를 따른다. 현장 검토(<code>prd.md</code> 확인할 것 11)에서 달라지면 그 조건을 고친다.</li>
+</ol>
+<p><strong>남은 것</strong>
+4. <strong>카피 반영 대기</strong> (2026-11-03 <code>copy.md</code>와 대조)
+    - 반영됨: 당번표 빈 경우(<code>copy.md</code> 2-1), D 응답 없음(2-8), 건강 소식을 올리지 못함(2-8, US-09에 원문 반영), 비상 연락처 버튼·목록·없음(2-9, US-11에 원문 반영), 휴대폰 패널(2-10).
+    - 반영됨(2차 대조): 기기 연결 화면(US-18, <code>copy.md</code> 2-12), 처리 실패 표시(US-01, 2-14), 기기 연결 없음 표시(US-01, 2-12), 알림 기록 필터 이름(US-10, US-12, 2-7), 묶음 카드의 모두 맡기 버튼(US-14, 2-6), 전화로 받은 호출 등록 버튼과 출처 라벨(US-19, 2-11·<code>names.md</code> 4절), 규칙·당번표 설정(US-21, 2-13).
+    - 대기: 없음. 당번표를 바꿀 때 진행 중 알림이 어느 당번표를 따르는지는 [미정](<code>tech-design.md</code> 확인할 것 16).</p>
+<h2 id="변경-기록">변경 기록</h2>
+<ul>
+<li>2026-11-03 기획 문서 한국어 검수(허브 요청, 사용자 지정 korean-skills, 사용자 재승인 2026-11-03). 호출한 스킬: <code>grammar-checker</code>, <code>style-guide</code>, <code>humanizer</code>(Skill 도구). 코드·ID·태그·숫자·화면 문구 인용은 고치지 않았다.<ul>
+<li>고친 곳 8곳: 맞춤법 3, 문장 2, 용어 3. 맞춤법(구두점)은 독립 항목을 나열할 때 가운뎃점을 쉼표로 바꾼 것이다.</li>
+<li>[문장] 생긴 시각이 받은 시각보다 많이 이른 신호 → 생긴 시각이 받은 시각보다 훨씬 이른 신호</li>
+<li>[용어] 맞는 규칙이 없는 신호는 기록만이 되고 → 맞는 규칙이 없는 신호는 기록만 등급이 되고</li>
+<li>[문장] 출처 &quot;프런트 전화&quot;, 등급 즉시 확인의 알림이 생긴다 → 출처가 &quot;프런트 전화&quot;이고 등급이 즉시 확인인 알림이 생긴다</li>
+<li>[용어] 카피 2-7의 02:59 → <code>copy.md</code> 2-7의 02:59</li>
+<li>[용어] [올리지 않기]를 누르면 카피 2-8의 두 가지만 나온다 → [올리지 않기]를 누르면 <code>copy.md</code> 2-8의 두 가지만 나온다</li>
+<li>[맞춤법] US-11 <code>emergencyContactsOf(…, actor)</code> 뒤 조사 &quot;을&quot; → &quot;를&quot;(actor는 받침 없음). 같은 줄 &quot;이름·관계·전화번호를&quot; → &quot;이름, 관계, 전화번호를&quot;(구두점)</li>
+<li>[맞춤법(구두점)] 등급·규칙·메모를 보이지 않는다 → 등급, 규칙, 메모를 보이지 않는다</li>
+<li>[맞춤법(구두점)] 호출벨·프런트 전화(내선 0번)·119 안내가 늘 있다 → 호출벨, 프런트 전화(내선 0번), 119 안내가 늘 있다</li>
+</ul>
+</li>
+<li>2026-11-03 화면 문구 인용 맞춤(허브 요청, 사용자 &quot;인용 맞추기&quot;, 사용자 재승인 2026-11-03). 따옴표 인용은 <code>copy.md</code>와 글자까지 같게 했고, <code>copy.md</code>에 없는 문구는 따옴표를 빼고 설명하거나 요약이라고 밝혔다. 7곳:<ul>
+<li>US-01 인수 조건 4 [설명 문장(copy에 없음)]: 바꾸지 못한 원본은 &quot;처리 실패&quot;가 되고 → 바꾸지 못한 원본은 처리 실패 상태가 되고</li>
+<li>US-01 인수 조건 5 [설명 문장(copy에 없음)]: 입주자 칸은 &quot;연결 안 됨&quot;으로 둔다. → 입주자 칸에는 기기 연결이 없다고 표시한다(문구는 [카피 반영 대기]).</li>
+<li>US-10 인수 조건 6 [설명 문장(copy에 없음)]: 그 알림 기록에 &quot;건강 소식에서 뺌(회원 요청)&quot;이 붙는다. → 그 알림 기록에 회원 요청으로 건강 소식에서 뺐다는 표시가 붙는다(회원 안심 알림 기록의 문장은 <code>copy.md</code> 4-4).</li>
+<li>US-14 인수 조건 3 [설명 문장(copy에 없음)]: 묶음 카드에 [모두 맡기]가 있어 한 번에 맡을 수 있다. → 묶음 카드에서 묶인 알림을 한 번에 모두 맡을 수 있다(버튼 문구는 [카피 반영 대기]).</li>
+<li>US-18 인수 조건 1 [설명 문장(copy에 없음)]: &quot;기기 연결이 필요한 입주자&quot; 할 일이 생긴다 → 기기 연결이 필요하다는 할 일이 생긴다</li>
+<li>US-19 인수 조건 1 [설명 문장(copy에 없음)]: [전화로 받은 호출 등록]에서 호실·입주자를 고르면 출처가 &quot;프런트 전화&quot;이고 등급이 즉시 확인인 알림이 생긴다. → 전화로 받은 호출을 등록할 때 호실·입주자를 고르면 출처가 프런트 전화(FRONT_CALL)이고 등급이 즉시 확인인 알림이 생긴다(버튼과 출처 라벨 문구는 [카피 반영 대기]).</li>
+<li>확인할 것 1 [설명 문장(copy에 없음)]: <strong>묶음 카드의 [모두 맡기]</strong> [가설] → <strong>묶음 카드의 모두 맡기 버튼</strong> [가설]</li>
+<li>(같은 작업, 전수 대조로 더 찾은 7곳)</li>
+<li>US-03 인수 조건 1 [원문 일치(이름만 가림)]: &quot;당번 김○○ · 2차 박○○ · 3차 최○○(책임자)&quot; → &quot;당번 김○○ · 2차 박○○ · 3차 최○○(당직 책임자)&quot;</li>
+<li>US-09 인수 조건 5 [원문 일치]: 책임자 화면에 &quot;건강 소식을 올리지 못했습니다&quot; [카피 반영 대기]가 뜬다. → 책임자 화면에 &quot;A동 201호 이은숙 입주자의 02:58 조치 결과를 건강 소식에 아직 올리지 못했습니다. Evenstay 패밀리가 응답하지 않아 자동으로 다시 보내고 있습니다. 조치 기록은 저장되어 있습니다.&quot;(<code>copy.md</code> 2-8)가 뜬다.</li>
+<li>US-10 인수 조건 5 [설명 문장(copy에 없음)]: 알림 기록의 &quot;건강 소식에 올리지 않은 알림&quot; 필터에 나온다. → 알림 기록에서 건강 소식에 올리지 않은 알림만 거르는 필터에 나온다(필터 이름은 [카피 반영 대기]).</li>
+<li>US-11 인수 조건 5 [원문 일치(안내) + 설명 문장(필터 이름)]: 등록된 비상 연락처가 없으면 안내 문구 [카피 반영 대기]가 나오고, 알림 기록의 &quot;비상 연락처가 없던 알림&quot; 필터에 나온다. → 등록된 비상 연락처가 없으면 &quot;이 입주자는 아직 비상 연락처가 없습니다. 입주 서류를 확인하고 당직 책임자 최영미 님에게 알려 주세요.&quot;(<code>copy.md</code> 2-9)가 나오고, 알림 기록에서 비상 연락처가 없던 알림만 거르는 필터에 나온다.</li>
+<li>US-12 인수 조건 2 [설명 문장(copy에 없음)]: 2. &quot;넘김이 있었던 알림&quot;, &quot;건강 소식에 올리지 않은 알림&quot;, &quot;비상 연락처가 없던 알림&quot; 필터가 있다. → 2. 넘김이 있었던 알림, 건강 소식에 올리지 않은 알림, 비상 연락처가 없던 알림을 거르는 필터가 있다(필터 이름은 [카피 반영 대기]).</li>
+<li>US-16 인수 조건 1 [원문 일치(문구마다 따로 인용)]: 호출 중 상태가 &quot;직원에게 알렸어요 → (아무도 맡지 않아 넘어가면) 다른 직원에게도 알렸어요 → (직원이 맡은 뒤에만) ○○○ 직원이 가고 있어요 → 직원이 다녀갔어요&quot;로 바뀐다. → 호출 중 상태가 &quot;직원에게 알렸어요.&quot; → (아무도 맡지 않아 넘어가면) &quot;다른 직원에게도 알렸어요.&quot; → (직원이 맡은 뒤에만) &quot;○○○ 직원이 가고 있어요.&quot; → &quot;직원이 다녀갔어요.&quot;로 바뀐다.</li>
+<li>US-20 인수 조건 3 [설명 문장(copy에 없음)]: &quot;다시 전화할 일&quot;이 카드에 남는다. → 다시 전화할 일이 카드에 남는다.</li>
+<li>US-07 인수 조건 4 [원문 일치(바깥 따옴표를 빼고 안쪽 큰따옴표를 copy와 같게)]: 4. 맡은 뒤 카드에 &quot;119 신고가 필요하면 직접 전화하세요. 신고한 뒤 조치 기록에서 &#39;119에 신고함&#39;을 골라 주세요.&quot;가 보인다. → 4. 맡은 뒤 카드에 <code>copy.md</code> 2-4의 안내가 보인다: 119 신고가 필요하면 직접 전화하세요. 신고한 뒤 조치 기록에서 &quot;119에 신고함&quot;을 골라 주세요.</li>
+</ul>
+</li>
+<li>2026-11-03 카피 반영 대기 목록 정리(허브 요청, 사용자 &quot;정리해&quot;, 사용자 재승인 2026-11-03): <code>copy.md</code>에 이미 들어간 항목은 지우지 않고 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 표시했고, 들어가지 않은 항목만 대기로 남겼다.</li>
+<li>2026-11-03 카피 반영 대기 표시 정리 2(허브 요청, 사용자 &quot;맡겨&quot;, 사용자 재승인 2026-11-03): B 카피 세션이 <code>copy.md</code> 2-11~2-14 절과 2-6·2-7 표에 넣은 문구, <code>names.md</code> 4절 출처 &quot;프런트 전화&quot;와 대조해, 들어간 항목을 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨다. 아직 없는 것은 맡은 뒤 오래 머문 알림 안내(Next)뿐이다.</li>
+<li>2026-11-03 안전 서비스 보완(허브 요청, 사용자 선택 &quot;넓게(N1 포함)&quot;, 사용자 재승인 2026-11-04, 근거: 공유 노트 <code>safety-coverage-review.md</code>). 호출한 스킬: <code>product-strategy</code>, <code>service-blueprint</code>, <code>create-prd</code>, <code>user-stories</code>, <code>outcome-roadmap</code>(Skill 도구). 새 화면 문구는 <code>[NEED: 카피]</code>로 두고 B 카피 세션에 맡긴다. &quot;판 번호&quot;는 &quot;버전 번호&quot;로 바꿨다.<ul>
+<li>user-stories: US-23(P0, F20), US-24(P1, F21), US-25(P1, F22), US-26(P1, F23), US-27(P0, F24), US-28(P1, F25) 추가.</li>
+<li>이용자 표에 US-23~US-28을 넣었다.</li>
+</ul>
+</li>
+<li>2026-11-03 코어 장기 부재 확정 맞춤(허브 요청, 사용자 재승인 2026-11-04): 코어가 <code>ResidentAbsenceStarted</code>/<code>ResidentAbsenceEnded</code>(absenceId, residentId, unitId, startedOn/endedOn, expectedReturnOn)와 <code>AbsenceQuery</code>를 확정했다(코어 <code>tech-design.md</code> 2-2·3-4·8절). 모듈 경계 8번(다른 모듈 데이터를 복사해 두지 않고 매 요청 <code>api/</code>로 읽는다)에 따라 B는 부재를 저장하지 않고 신호를 평가할 때마다 <code>AbsenceQuery.absenceOf</code>로 읽는다(<code>tech-design.md</code> ADR-S7). 이벤트는 구독하지 않는다. <code>SafetyBoardQuery.boardOf</code> 반환 형태를 코어 운영 현황 카드에 맞췄다(가장 긴 시간, 당번 이름).</li>
+<li>2026-11-03 안전 서비스 보완 카피 반영(허브 요청, 사용자 재승인 2026-11-04): B 카피 세션이 <code>copy.md</code> 2-15 안부 방문, 2-16 병원 동행, 2-17 부재 중과 기존 표(2-1, 2-4, 2-7, 2-12, 2-13, 4-2)에 줄을 넣고 <code>names.md</code> 4절에 출처 &quot;안부 방문&quot;을 넣었다. 해당 [NEED: 카피]를 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨고, 안부 방문 결과 선택지는 카피대로 &quot;입주자가 방문을 원하지 않으셨습니다&quot;(직원 화면 호칭 규칙)로 맞췄다.</li>
+<li>2026-11-04 전체 리뷰 보완(허브 지시서 <code>00-hub/reviews/supplement-orders-2026-11-04.md</code> 안심 알림 1~4, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04). 목표는 모든 화면이 흐름대로 움직이는 클릭형 프로토타입(MVP 구현 없음).<ul>
+<li>user-stories: US-29(F17), US-30(F26), US-31(F27), US-32(F28), US-33(F29) 추가, 이용자 표. 호출한 스킬: <code>user-stories</code>.</li>
+</ul>
+</li>
+<li>2026-11-04 소유주 월 리포트 숫자 열기(허브 전달, 사용자 결정 H5 &quot;모두 추천대로&quot;, 사용자 재승인 2026-11-04): 코어 CORE-14에 안심 알림 그달 숫자를 연다. 조회 <code>SafetyBoardQuery.monthOf(siteId, period, actor)</code>, 행동 <code>safety.owner_report.view</code>(소유주는 자기 소유 사업장만). 이름·호실·입주자 ID·직원·메모와 119·병원 이송 수는 주지 않는다.</li>
+<li>2026-11-04 전체 리뷰 보완 카피 반영(허브 요청, 사용자 재승인 2026-11-04): B 카피 세션이 <code>copy.md</code> 2-18 호실 현황, 2-19 사고·학대 보고, 2-20 비상 때 재실 명단, 2-21 소유주 월 리포트의 안심 알림 묶음과 기존 표(2-1, 2-11, 2-12, 2-16, 4-1)에 줄을 넣고 <code>names.md</code> 4절에 출처 &quot;생활 요청에서 옮김&quot;을 넣었다. 해당 [NEED: 카피]를 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨다.</li>
+<li>2026-11-04 앱 호출 표현 정리(허브 요청, 사용자 결정 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 &quot;도움을 부르는 길은 호출벨·방 전화·119 셋, 앱은 부른 뒤 보는 곳&quot;, 사용자 재승인 2026-11-04): US-16 인수 조건 3을 <code>copy.md</code> 4-1의 방 전화 표기에 맞추고, US-19 설명을 고쳤다.</li>
+<li>2026-11-04 공용 문구 인용 맞춤(허브 요청, 사용자 &quot;추천대로&quot;, 근거 <code>03-copywriting/ideas/safety-signal-hub/plain-read-review-2026-11-04.md</code>와 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구 행, 사용자 재승인 2026-11-04): 인용만 바꿨고 기능·범위·정책·수치는 그대로다. US-09 인수 조건 6과 US-16 인수 조건 6의 인용을 고쳤다.</li>
+<li>2026-11-04 프로토타입 확인 보완(허브 지시, 사용자 &quot;추천대로&quot;, 근거 <code>evenstay/design/prototype/REPORT.md</code> 2·4·10번, 사용자 재승인 2026-11-04): US-32 인수 조건 3을 고치고 조건 6(대피 확인 정정)을 더했다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-stories" data-title="사용자 스토리"><p>누가 무엇을 해서 무엇을 얻는지를 이야기로 쓰고, 끝났다고 말할 조건을 붙인 문서입니다.</p></template>
+<template id="g-172" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-173" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-174" data-title="건강 소식"><p>B, C가 올린 본문 스냅샷. 건강 소식이 보호자에게 가는 길은 D 하나다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 건강 소식. 종류: 직원이 다녀간 일 / 병원에 가신 일 / 그 밖의 건강 기록 / 생활 지원 단계가 바뀐 일 / 다른 기관 돌봄이 시작된 일</dd><dt>영문·코드 이름</dt><dd><code>HealthEvent</code>: <code>SAFETY_SIGNAL</code>, <code>HOSPITAL_TRANSFER</code>, <code>CARE_NOTE</code>, <code>CARE_STAGE_CHANGE</code>, <code>EXTERNAL_CARE_START</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-175" data-title="비상 연락처"><p>응급 때 직원이 누구에게 어떤 순서로 전화하는가. 계약에 딸리고 동의 항목과 무관하다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 비상 연락처 / 회원: 급할 때 연락할 분 / 보호자: 비상 연락처에 적힌 분(119 신고, 병원 이송 기록에서만)</dd><dt>영문·코드 이름</dt><dd><code>EmergencyContact</code></dd><dt>출처</dt><dd>core T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-176" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-177" data-title="알림 기록"><p>알림 타임라인. 추가만 한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 알림 기록 한 줄</dd><dt>영문·코드 이름</dt><dd><code>AlertEvent</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-178" data-title="기기 연결"><p>기기, 출입 카드, 안부 전화 가입을 입주자와 잇고 장치 동의를 담는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 기기 연결 / 회원: 내 방 장치</dd><dt>영문·코드 이름</dt><dd><code>ResidentLink</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-179" data-title="안부 방문"><p>회원이 받기로 한 정기 순회. 놓치면 신호가 된다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 안부 방문 계획, 안부 방문 기록 / 회원: 안부 방문</dd><dt>영문·코드 이름</dt><dd><code>VisitPlan</code>, <code>VisitRecord</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-180" data-title="사업장 책임자"><p>사업장 운영을 맡고 운영 현황 카드를 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 책임자 / 회원 공지: 센터장</dd><dt>영문·코드 이름</dt><dd><code>SITE_MANAGER</code></dd><dt>출처</dt><dd>core T6-1, requests N</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-181" data-title="조치 기록"><p>만남 여부와 한 일. 진단, 투약 칸이 없다. 정정은 새 행</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 조치 기록 / 회원: 직원이 한 일</dd><dt>영문·코드 이름</dt><dd><code>ActionRecord</code></dd><dt>출처</dt><dd>safety T2-2, safety M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-182" data-title="당번표"><p>근무 시간과 자리. 근무 기간은 겹치지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 당번표, 근무, 당번 자리(1차·2차·3차)</dd><dt>영문·코드 이름</dt><dd><code>OnCallRoster</code>, 저장은 <code>OnCallShift</code>, <code>OnCallSlot</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-183" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

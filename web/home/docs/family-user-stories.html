@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>보호자 포털·동의 사용자 스토리 | Evenstay 문서</title>
+<meta name="description" content="보호자 포털·동의 사용자 스토리. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>보호자 포털·동의</span></p>
+  <h1>보호자 포털·동의 사용자 스토리</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-stories"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="보호자 포털·동의의 다른 문서"><ul><li><a href="family-strategy.html">전략</a></li><li><a href="family-service-blueprint.html">서비스 설계도</a></li><li><a href="family-prd.html">기획서(PRD)</a></li><li><a href="family-user-stories.html" aria-current="page">사용자 스토리</a></li><li><a href="family-tech-design.html">기술 설계</a></li><li><a href="family-roadmap.html">로드맵</a></li><li><a href="family-handoff.html">개발 인계</a></li><li><a href="family-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#이용자">이용자</a></li><li class="lv3"><a href="#us-01-함께-보실-분과-항목-상태-보기-p0-f1">US-01 함께 보실 분과 항목 상태 보기 (P0, F1)</a></li><li class="lv3"><a href="#us-02-보여-주기-p0-f2">US-02 보여 주기 (P0, F2)</a></li><li class="lv3"><a href="#us-03-직원이-대신-입력하기-p0-f3">US-03 직원이 대신 입력하기 (P0, F3)</a></li><li class="lv3"><a href="#us-04-건강-소식-따로-동의-p0-f4">US-04 건강 소식 따로 동의 (P0, F4)</a></li><li class="lv3"><a href="#us-05-매-요청-권한-검사와-범위-밖-차단-p0-f5f6">US-05 매 요청 권한 검사와 범위 밖 차단 (P0, F5·F6)</a></li><li class="lv3"><a href="#us-06-보호자-첫-화면과-새-소식-문자-p0-f6f12">US-06 보호자 첫 화면과 새 소식 문자 (P0, F6·F12)</a></li><li class="lv3"><a href="#us-07-그만-보여-주기-p0-f2">US-07 그만 보여 주기 (P0, F2)</a></li><li class="lv3"><a href="#us-08-직원이-적은-내용-확인-p0-f3">US-08 직원이 적은 내용 확인 (P0, F3)</a></li><li class="lv3"><a href="#us-09-열람-기록-p0-f7">US-09 열람 기록 (P0, F7)</a></li><li class="lv3"><a href="#us-10-내-소식을-본-기록-p0-f7">US-10 내 소식을 본 기록 (P0, F7)</a></li><li class="lv3"><a href="#us-11-건강-소식-받기와-올리지-않기-p0-f8">US-11 건강 소식 받기와 올리지 않기 (P0, F8)</a></li><li class="lv3"><a href="#us-12-주간-생활-리포트-초안과-검토-p0-f9">US-12 주간 생활 리포트 초안과 검토 (P0, F9)</a></li><li class="lv3"><a href="#us-13-생활-소식-보기-p0-f9">US-13 생활 소식 보기 (P0, F9)</a></li><li class="lv3"><a href="#us-14-ai-사용-고지-p0-f10">US-14 AI 사용 고지 (P0, F10)</a></li><li class="lv3"><a href="#us-15-금전-부탁-접수-p1-1순위-f13">US-15 금전 부탁 접수 (P1 1순위, F13)</a></li><li class="lv3"><a href="#us-16-대리인이-열람-범위-정하기-p1-f14">US-16 대리인이 열람 범위 정하기 (P1, F14)</a></li><li class="lv3"><a href="#us-17-함께-보실-분-초대와-수락-p1-f15">US-17 함께 보실 분 초대와 수락 (P1, F15)</a></li><li class="lv3"><a href="#us-18-ai-고지동의-현황-p1-f16">US-18 AI 고지·동의 현황 (P1, F16)</a></li><li class="lv3"><a href="#us-19-내용이-이상해요-p1-f17">US-19 내용이 이상해요 (P1, F17)</a></li><li class="lv3"><a href="#us-20-일정-보기-p0-f6">US-20 일정 보기 (P0, F6)</a></li><li class="lv3"><a href="#us-21-장기-부재-소식-보기-p1-f18">US-21 장기 부재 소식 보기 (P1, F18)</a></li><li class="lv3"><a href="#us-22-사업장-동의-현황-숫자-p1-f19">US-22 사업장 동의 현황 숫자 (P1, F19)</a></li><li class="lv3"><a href="#us-23-생활-요청-허락-p1-f20-n1과-함께">US-23 생활 요청 허락 (P1, F20, N1과 함께)</a></li><li class="lv2"><a href="#확인할-것">확인할 것</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-261" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-262" data-tip="B, C가 올린 본문 스냅샷.">건강 소식</button></li><li><button class="term" type="button" data-modal="g-263" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li><li><button class="term" type="button" data-modal="g-264" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-265" data-tip="고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건.">생활 요청</button></li><li><button class="term" type="button" data-modal="g-266" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-267" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-268" data-tip="사업장 운영을 맡고 운영 현황 카드를 본다">사업장 책임자</button></li><li><button class="term" type="button" data-modal="g-269" data-tip="계약과 달마다 하나.">청구서</button></li><li><button class="term" type="button" data-modal="g-270" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li><li><button class="term" type="button" data-modal="g-271" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-272" data-tip="조회용 기록.">열람 기록</button></li></ul></section></aside>
+  <article class="doc"><blockquote>
+<p>디자인 파일은 아직 없다. &quot;디자인&quot; 줄은 화면 문구가 있는 <code>copy.md</code> 절을 가리킨다. 이름·금액은 <code>prd.md</code> 9절의 가상 시드 데이터다. 권한 코드는 <code>tech-design.md</code> 6절.</p>
+</blockquote>
+<h2 id="이용자">이용자</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>역할</th>
+<th>스토리</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>회원</td>
+<td>US-01, US-02, US-04, US-07, US-08, US-10, US-14, US-17(초대), US-21(2-10 안내 확인), US-23</td>
+</tr>
+<tr>
+<td>보호자</td>
+<td>US-05, US-06, US-13, US-14, US-17(수락), US-19, US-20, US-21, US-23(N1 화면, 문자)</td>
+</tr>
+<tr>
+<td>프런트 직원</td>
+<td>US-03, US-15</td>
+</tr>
+<tr>
+<td>생활지원 직원</td>
+<td>US-12, US-19(응대)</td>
+</tr>
+<tr>
+<td>야간 직원(B 화면)</td>
+<td>US-11</td>
+</tr>
+<tr>
+<td>대리인</td>
+<td>US-16</td>
+</tr>
+<tr>
+<td>본사 운영 매니저</td>
+<td>US-09, US-15(주간 확인), US-18, US-22</td>
+</tr>
+<tr>
+<td>사업장 책임자</td>
+<td>US-22</td>
+</tr>
+<tr>
+<td>B·G·C·N1 모듈(시스템)</td>
+<td>US-11, US-23(N1 행동·상태 변경 이벤트), <code>tech-design.md</code> 8-2·8-3</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h3 id="us-01-함께-보실-분과-항목-상태-보기-p0-f1">US-01 함께 보실 분과 항목 상태 보기 (P0, F1)</h3>
+<p><strong>설명</strong>: 회원으로서, 내 소식을 함께 보실 분과 그분마다 무엇이 보이는지 한 화면에서 보고 싶다. 그래야 누구에게 무엇이 보이는지 헷갈리지 않는다.
+<strong>대화</strong>: 보호자 관계 자체는 코어(GuardianLink)에 있다. D는 상세 관계(딸, 며느리 등)와 항목 상태만 갖는다. 기본값은 &quot;안 보여요&quot;다.
+<strong>디자인</strong>: <code>copy.md</code> 2-1, 2-3 화면 아래 요약
+<strong>인수 조건</strong></p>
+<ol>
+<li>연결된 보호자마다 &quot;이름(관계)&quot;와 다섯 항목(생활 소식 → 일정 → 청구서 → 건강 소식 → 생활 요청 순서)의 상태가 &quot;보여요 / 안 보여요 / 회원님 확인을 기다려요&quot;로 나온다.</li>
+<li>처음 연결된 보호자의 다섯 항목은 모두 &quot;안 보여요&quot;다(D에 행이 없으면 안 보여요로 본다).</li>
+<li>그만 보여 준 항목은 &quot;안 보여요 (11월 23일부터 그만 보여 줌)&quot;와 [다시 보여 주기]가 나온다.</li>
+<li>연결된 분이 없으면 2-1 빈 상태 문구와 [함께 보실 분 초대하기]가 나온다.</li>
+<li>화면 맨 아래에 &quot;직접 하기 어려우시면 프런트에 말씀해 주세요&quot;와 전화번호가 항상 보인다.</li>
+<li>다른 회원의 목록은 API에서 거부된다(코어 권한 검사 1단계).</li>
+</ol>
+<h3 id="us-02-보여-주기-p0-f2">US-02 보여 주기 (P0, F2)</h3>
+<p><strong>설명</strong>: 회원으로서, 보호자 한 명에게 항목 하나를 골라 보여 주고 싶다. 그래야 가족마다 다른 범위를 정할 수 있다.
+<strong>대화</strong>: 회원 본인이 누른 넓힘은 바로 적용된다. 건강 소식은 US-04가 먼저 나온다. 한 화면에는 보호자 한 명만 다룬다.
+<strong>디자인</strong>: <code>copy.md</code> 2-3
+<strong>인수 조건</strong></p>
+<ol>
+<li>[보여 주기]를 누르면 상태가 &quot;보여요&quot;가 되고 &quot;이제 김지민 님이 생활 소식을 볼 수 있어요&quot;가 나온다.</li>
+<li>변경 이력에 &quot;누가(회원 본인), 언제, 어느 보호자, 어느 항목, 이전 → 이후, 경로(앱)&quot;가 1줄 남는다.</li>
+<li>같은 요청을 두 번 보내도(같은 <code>Idempotency-Key</code>) 이력은 1줄이다.</li>
+<li>저장에 실패하면 &quot;보여 주기가 아직 되지 않았어요. 지금은 보이지 않아요.&quot;가 나오고 상태는 바뀌지 않는다.</li>
+<li>보호자의 다음 요청부터 그 항목이 보인다(US-05).</li>
+<li>건강 소식의 [보여 주기]는 별도 동의 화면(US-04)으로 간다.</li>
+</ol>
+<h3 id="us-03-직원이-대신-입력하기-p0-f3">US-03 직원이 대신 입력하기 (P0, F3)</h3>
+<p><strong>설명</strong>: 프런트 직원으로서, 앱이 어려운 회원의 말을 듣고 보여 줄 범위를 대신 입력하고 싶다. 그래야 회원이 혼자 설정하지 못해도 원하는 대로 정할 수 있다.
+<strong>대화</strong>: 넓히는 입력은 회원이 확인해야 적용된다. 좁히는 입력은 바로 적용된다(전화로 급히 거두려는 회원). 직원은 확인을 대신 누르지 않는다.
+<strong>디자인</strong>: <code>copy.md</code> 5-1, 2-5 직원 안내
+<strong>인수 조건</strong></p>
+<ol>
+<li>직원 화면에 입주자의 보호자별 항목 상태와 건강정보 별도 동의 상태가 표로 나온다(5-1 표 머리).</li>
+<li>직원이 넓히는 항목을 입력하면 한 묶음의 &quot;입주자 확인 대기 (11/11 14:30 최민수 입력) · 보호자에게 보이지 않음&quot;이 되고, 보호자 요청은 계속 거부된다.</li>
+<li>직원이 좁히는 항목(그만 보여 주기)을 입력하면 즉시 적용되고, 회원 화면에 &quot;최민수 직원이 회원님 말씀대로 … 바꿨어요&quot;가 나온다.</li>
+<li>입력한 직원, 시각, 접수 경로(방문, 전화)가 이력에 남는다.</li>
+<li>다른 사업장 입주자는 &quot;이 입주자는 담당 사업장 입주자가 아니라 볼 수 없습니다&quot;로 거부된다.</li>
+<li>(F14 완료 시) 대리인이 MANAGE_GUARDIAN_ACCESS를 가진 입주자면 안내(5-1)와 [대리인에게 확인 요청]이 나온다.</li>
+</ol>
+<h3 id="us-04-건강-소식-따로-동의-p0-f4">US-04 건강 소식 따로 동의 (P0, F4)</h3>
+<p><strong>설명</strong>: 회원으로서, 건강 소식은 다른 소식과 따로 설명을 듣고 동의하고 싶다. 그래야 몸에 관한 기록을 누구에게 주는지 알고 정할 수 있다.
+<strong>대화</strong>: 별도 동의는 보호자마다 받는다. 쉬운 말 화면을 먼저 보이고 법적 문구는 [자세히 보기]로 펼친다. 법적 문구는 [법률 검토 전 초안]이다.
+<strong>디자인</strong>: <code>copy.md</code> 2-4
+<strong>인수 조건</strong></p>
+<ol>
+<li>건강 소식 [보여 주기](또는 직원 입력 확인 중 건강 소식)를 누르면 2-4 쉬운 말 화면이 먼저 나온다.</li>
+<li>[동의하고 보여 주기]를 누르면 별도 동의 1행(보호자, 법적 문구 버전, 일시, 누른 사람, 동석 직원 여부)이 생기고 건강 소식이 &quot;보여요&quot;가 된다.</li>
+<li>[동의하지 않기]를 누르면 거부 기록(NOT_AGREED, 일시, 누른 사람)이 남고, 건강 소식은 &quot;안 보여요&quot;로 남으며 다른 항목에는 영향이 없다.</li>
+<li>별도 동의가 없거나 철회된 상태에서 건강 소식을 허용하려는 모든 요청(직원 포함)은 &quot;건강 소식은 건강정보 별도 동의가 있어야 허용됩니다&quot;로 거부된다.</li>
+<li>건강 소식을 그만 보여 주면 별도 동의도 철회 상태가 되고, 다시 보여 주려면 새로 동의해야 한다.</li>
+<li>법적 문구가 새 버전이 되면 이후 동의는 새 버전으로 기록되고 이전 동의는 그대로 유효하다 [법률 검토: 재동의 필요 여부. 예: 제공 항목에 C 생활 지원 단계 소식이 더해질 때(카피 7절)].</li>
+</ol>
+<h3 id="us-05-매-요청-권한-검사와-범위-밖-차단-p0-f5f6">US-05 매 요청 권한 검사와 범위 밖 차단 (P0, F5·F6)</h3>
+<p><strong>설명</strong>: 보호자로서, 회원이 허락한 것만 보이고 나머지는 이유 없이 &quot;볼 수 없어요&quot;로 보이길 바란다. 운영사로서는 이것을 화면이 아니라 API에서 막고 싶다.
+<strong>대화</strong>: 코어 <code>authorize()</code> 순서를 따른다. D는 허용만 더한다. 권한을 캐시하지 않는다.
+<strong>디자인</strong>: <code>copy.md</code> 6절 &quot;허락되지 않은 항목을 열 때&quot;, &quot;철회 직후&quot;
+<strong>인수 조건</strong></p>
+<ol>
+<li>보호자가 허락되지 않은 항목의 API를 직접 부르면 403과 &quot;이 소식은 지금 볼 수 없어요. 볼 수 있는 범위는 이은숙 회원님이 정해요.&quot;가 돌아온다.</li>
+<li>미허용, 철회, 확인 대기, 별도 동의 없음 모두 같은 응답이다(응답 본문, 코드, 응답 시간 차이로 구분되지 않는다).</li>
+<li>보호자 관계가 끊긴 사람(코어 GuardianUnlinked)은 D 허락이 남아 있어도 코어 단계에서 거부된다.</li>
+<li>건강 소식 상세를 직원이 열 때 생활지원·간호 직무가 아니면 &quot;건강 소식은 간호·생활지원 담당만 볼 수 있습니다&quot;로 거부된다.</li>
+<li>보호자 API 응답에는 <code>Cache-Control: no-store</code>가 붙는다.</li>
+<li>권한 결정표의 모든 조합이 자동 테스트로 생성되어 통과한다(KR2).</li>
+</ol>
+<h3 id="us-06-보호자-첫-화면과-새-소식-문자-p0-f6f12">US-06 보호자 첫 화면과 새 소식 문자 (P0, F6·F12)</h3>
+<p><strong>설명</strong>: 보호자로서, 들어오자마자 무엇을 볼 수 있고 무엇은 볼 수 없는지 알고, 새 소식이 생기면 문자로 알고 싶다.
+<strong>대화</strong>: 문자에는 내용, &quot;건강&quot;이라는 말, 링크를 넣지 않는다. 보호자는 앱을 직접 열거나 프런트에 전화한다.
+<strong>디자인</strong>: <code>copy.md</code> 4-1(레지던스 공지 칸 포함), 4-3
+<strong>인수 조건</strong></p>
+<ol>
+<li>첫 화면 상단 &quot;이은숙 회원님이 허락하신 소식이에요.&quot;, &quot;볼 수 있는 것 / 볼 수 없는 것&quot; 목록, &quot;볼 수 있는 범위는 이은숙 회원님이 정해요.&quot;가 나온다. 이유는 나오지 않는다.</li>
+<li>새 청구서(코어 <code>InvoiceIssued</code>), 새 건강 소식, 새 생활 소식이 생기면 허락된 보호자에게만 새 소식 카드가 생긴다.</li>
+<li>새 소식 문자는 &quot;[Evenstay 패밀리] 이은숙 회원님의 새 소식이 있어요. Evenstay 패밀리에서 보시거나 프런트(…)로 전화 주세요.&quot; 한 가지다.</li>
+<li>밤 10시~아침 8시에 생긴 새 소식은 아침 8시에 한 통으로 묶어 보낸다 [가설]. 화면에는 바로 올라간다.</li>
+<li>문자 로그 전체를 검사해 금액, 건강 관련 낱말, URL이 0건이다(초대 문자 제외, KR3).</li>
+<li>(F14 완료 시) 대리인이 정한 경우 상단이 &quot;이은숙 회원님 대신 처리하실 분이 허락하신 소식이에요.&quot;(4-5)다.</li>
+<li>첫 화면에 레지던스 공지 칸이 있고, 직원이 &quot;보호자에게도 보이기&quot;를 고른 공지만 나온다(N2 <code>NoticeQuery.guardianNoticesFor</code>). 허락 항목과 상관없이 활성 보호자면 보이고, 회원 &quot;본 기록&quot;에는 남지 않는다 [가설, 2026-11-04 N2-D2].</li>
+</ol>
+<h3 id="us-07-그만-보여-주기-p0-f2">US-07 그만 보여 주기 (P0, F2)</h3>
+<p><strong>설명</strong>: 회원으로서, 보여 주던 것을 언제든 거두고 그 순간부터 막히길 바란다.
+<strong>대화</strong>: 이미 본 내용은 지울 수 없다고 미리 말한다. 누가 왜 바꿨는지는 보호자에게 알리지 않는다.
+<strong>디자인</strong>: <code>copy.md</code> 2-7
+<strong>인수 조건</strong></p>
+<ol>
+<li>[그만 보여 주기] → 확인 창(2-7) → 확인하면 &quot;2026년 11월 23일 오후 3시 10분에 바꾸셨어요&quot;가 나온다.</li>
+<li>철회 직후 그 보호자의 다음 요청(열려 있던 화면 새로 고침 포함)은 US-05와 같이 거부된다.</li>
+<li>이력에 &quot;허용 → 철회&quot; 1줄이 남는다.</li>
+<li>저장에 실패하면 &quot;그만 보여 주기가 아직 되지 않았어요. 지금은 전처럼 보이고 있어요.&quot;가 나오고, 직원 &quot;확인할 일&quot;에 &quot;철회 저장 실패&quot;가 올라간다.</li>
+<li>[함께 보실 분에서 빼기]를 하면 다섯 항목이 모두 철회되고 다시 보여 주려면 새로 초대해야 한다.</li>
+<li>좁히는 범위 변경은 보호자에게 문자를 보내지 않는다 [가설: 넓어질 때만 알림].</li>
+</ol>
+<h3 id="us-08-직원이-적은-내용-확인-p0-f3">US-08 직원이 적은 내용 확인 (P0, F3)</h3>
+<p><strong>설명</strong>: 회원으로서, 직원이 내 말을 듣고 적은 범위를 직접 읽고 맞을 때만 적용되길 바란다.
+<strong>대화</strong>: 확인 화면은 요약 한 장이다. 건강 소식이 들어 있으면 다음 화면에서 별도 동의를 받는다.
+<strong>디자인</strong>: <code>copy.md</code> 2-5
+<strong>인수 조건</strong></p>
+<ol>
+<li>회원 화면에 &quot;직원이 적은 내용이 맞는지 봐 주세요&quot;와 보호자별 요약, [맞아요]/[고칠게요]가 나온다.</li>
+<li>[맞아요]를 누르면 묶음 안의 넓힘이 한 번에 적용된다. 건강 소식은 US-04를 거친 뒤에만 적용된다.</li>
+<li>[고칠게요]를 누르면 묶음은 적용되지 않고 대기에서 빠지며 &quot;직원에게 다시 말씀해 주시거나, 이 화면에서 직접 바꾸셔도 돼요.&quot;가 나온다.</li>
+<li>확인은 회원 본인 계정 세션에서만 받는다. 직원 계정으로 확인 API를 부르면 거부된다.</li>
+<li>확인 기록에 확인 시각, 기기(직원 태블릿 / 회원 기기), 입력 직원이 남는다.</li>
+<li>대기 중에 회원이 같은 항목을 직접 바꾸면 그 항목의 대기는 취소된다.</li>
+</ol>
+<h3 id="us-09-열람-기록-p0-f7">US-09 열람 기록 (P0, F7)</h3>
+<p><strong>설명</strong>: 본사 운영 매니저로서, 입주자 소식을 누가 언제 무엇을 봤고 무엇이 막혔는지 보고 싶다. 그래야 분쟁이 생기면 기록으로 설명할 수 있다.
+<strong>대화</strong>: 원본 감사는 코어 AuditLog다(건강 소식 SENSITIVE_READ, 청구서·생활 소식·일정 READ, 거부 DENIED. 코어 v1.1 7절). 이 화면은 D의 조회용 기록을 쓴다.
+<strong>디자인</strong>: <code>copy.md</code> 5-4
+<strong>인수 조건</strong></p>
+<ol>
+<li>기간, 보는 사람(보호자, 대리인, 직원), 항목, 결과(허용, 거부)로 거를 수 있다.</li>
+<li>허용 한 줄에는 근거(예: &quot;입주자 허락 11/11&quot;), 거부 한 줄에는 근거(예: &quot;11/23 15:10 철회&quot;)가 나온다.</li>
+<li>허락 변경 기록도 같은 화면에 시간순으로 나온다.</li>
+<li>기록은 고치거나 지울 수 없다(수정·삭제 API가 없고, DB 권한으로도 막는다).</li>
+<li>[기간 기록 내려받기]를 하면 내려받은 사람과 시각이 기록된다.</li>
+<li>사업장 책임자(SITE_MANAGER)는 자기 사업장의 열람 기록을 볼 수 있다(내려받기는 본사만) [가설]. 사업장 직원(SITE_STAFF)과 경리는 볼 수 없다 [가설, <code>tech-design.md</code> 6-1·6-2].</li>
+</ol>
+<h3 id="us-10-내-소식을-본-기록-p0-f7">US-10 내 소식을 본 기록 (P0, F7)</h3>
+<p><strong>설명</strong>: 회원으로서, 내 소식을 누가 언제 봤는지 보고 싶다.
+<strong>대화</strong>: 거부 기록은 회원에게 보이지 않는다(가족이 보려다 막힌 사실이 부담이 될 수 있음 [가설]).
+<strong>디자인</strong>: <code>copy.md</code> 2-8
+<strong>인수 조건</strong></p>
+<ol>
+<li>&quot;11월 12일 오전 9시 14분 · 김지민 님(딸) · 청구서를 봤어요&quot; 형식으로 허용된 열람만 나온다.</li>
+<li>직원 열람도 &quot;김하진 직원 · 생활 소식을 확인했어요&quot;처럼 나온다.</li>
+<li>거부 기록은 나오지 않는다.</li>
+<li>기록이 없으면 &quot;아직 회원님 소식을 본 분이 없어요.&quot;</li>
+<li>(F14 완료 시) 대리인은 MANAGE_GUARDIAN_ACCESS가 있을 때만 이 화면을 본다.</li>
+<li>보호자가 N1 화면에서 생활 요청을 보면 이 화면에도 한 줄이 생긴다(2026-11-04 결정 H2, <code>app/</code>이 <code>GuardianViewLogCommand.record</code>를 부름). 문구 반영됨(copy 2-8).</li>
+</ol>
+<h3 id="us-11-건강-소식-받기와-올리지-않기-p0-f8">US-11 건강 소식 받기와 올리지 않기 (P0, F8)</h3>
+<p><strong>설명</strong>: 야간 직원(B 화면)으로서, 조치를 기록한 일이 회원이 건강 소식을 허락한 보호자에게만 올라가길 바란다. D로서는 B·C가 같은 방식으로 건강 소식을 올리게 하고 싶다.
+<strong>대화</strong>: B는 D 공개 API만 쓴다. 올리지 않기는 두 가지 이유만 받는다(prd 12절, 2026-11-03 확정). 119 신고나 병원 이송이 기록된 일은 회원 요청으로만 뺄 수 있다(B 제안에서 받음). B 화면에는 직원 재량 [보내지 않기] 버튼이 없다.
+<strong>디자인</strong>: B <code>copy.md</code> 2-8, D <code>copy.md</code> 4-4
+<strong>인수 조건</strong></p>
+<ol>
+<li><code>viewersOf(회원, HEALTH_EVENT, 지금)</code>은 건강 소식 허용 + 별도 동의가 유효한 보호자의 연결 ID와 관계만 돌려준다(B 미리보기 &quot;보호자 1명(딸 김지민 님)&quot;. 데모: 이은숙).</li>
+<li><code>HealthFeedCommand.post</code>는 (출처 모듈, 출처 ID, 버전 번호)로 멱등이다. 같은 값으로 두 번 와도 1건이다. 버전 번호가 오르면 새 버전이 옛 버전을 대신하고 옛 버전은 이력에 남는다.
+2a. <code>post</code> 결과의 <code>noticeSendAt</code>은 새 소식 문자 예정 시각이다(밤 10시~아침 8시면 다음 08:00, 받는 보호자가 0명이면 null). B 미리보기는 <code>FamilyNoticeQuery.nextSendAt(사업장, 지금)</code>으로 같은 시각을 미리 보인다.</li>
+<li>받는 보호자가 없어도 저장은 되고 아무에게도 보이지 않는다. 나중에 별도 동의가 생기면 동의한 날(한국 시간) 0시 이후 소식부터 보인다 [가설]. 데모의 11월 12일 새벽 소식(B 사건)은 전날(11월 11일) 동의 뒤라 딸에게 보인다.</li>
+<li><code>withhold</code>는 회원(residentId), 종류, 사건 시각(occurredAt)을 함께 받고(B가 <code>post</code> 없이 부르기 때문이다. B 확인할 것 D-3), 이유 코드 <code>MEMBER_REQUEST</code>(들은 직원과 들은 시각 heardAt 필수) 또는 <code>NOT_A_HEALTH_EVENT</code>(하위 코드: 다른 회원, 중복, 기기 시험)만 받는다. 자유 기재 사유는 메모로만 붙는다.
+4a. 119 신고나 병원 이송이 기록된 일(<code>post</code>의 <code>involvesEmergencyCall = true</code>, 또는 <code>withhold</code>에 같은 표시)을 <code>NOT_A_HEALTH_EVENT</code>로 빼려 하면 거부된다. <code>MEMBER_REQUEST</code>로는 뺄 수 있다.</li>
+<li><code>MEMBER_REQUEST</code>로 빼면 회원 화면에 <code>copy.md</code> 2-9 문구(예: &quot;11월 12일 새벽에 직원이 방에 다녀간 일을 회원님 말씀대로 건강 소식에서 뺐어요. 함께 보실 분께 보이지 않아요. (처리: 김하진 직원)&quot;)가 나온다.
+5a. 빼진(WITHHELD) 건강 소식이나 옛 버전(SUPERSEDED)을 보호자가 ID로 직접 열어도 US-05와 같은 &quot;볼 수 없어요&quot;가 돌아온다.</li>
+<li>빼진 건강 소식은 운영 매니저와 사업장 책임자의 주간 목록(이유, 들은 직원·시각, 119·이송 여부)에 나오고, 매주 확인한다. 본문은 6절 범위(진단명, 진료 결과, 처방 없음)만 받고, 금지 필드가 오면 거부한다.</li>
+<li>(다시 올리기 [가설]) <code>MEMBER_REQUEST</code>의 <code>withhold</code>는 본문(summaryLine, body)을 함께 받아 보호자에게 보이지 않는 WITHHELD 행으로 둔다. 회원·대리인이 다시 보여 달라고 하면 직원이 [다시 올리기]를 누르고, 확인 대기 묶음(REPOST)이 되어 회원이 태블릿에서 [맞아요]를 눌러야 POSTED가 된다. <code>NOT_A_HEALTH_EVENT</code>로 뺀 일은 D에서 다시 올리지 않고 B가 새 버전으로 <code>post</code>한다.</li>
+<li>(C) C도 같은 API와 같은 규칙(멱등, 금지 필드 거부)으로 &quot;생활 지원 단계가 바뀐 일&quot;(<code>CARE_STAGE_CHANGE</code>)과 &quot;다른 기관 돌봄이 시작된 일&quot;(<code>EXTERNAL_CARE_START</code>, C P1)을 올리고, 회원이 가족에게 알리지 말아 달라고 했으면 <code>withhold(MEMBER_REQUEST)</code>를 부른다. C는 119·이송 표시를 늘 거짓으로 보낸다. C 출처를 <code>NOT_A_HEALTH_EVENT</code>로 빼려 하면 거부되고, 잘못 올린 C 소식은 C가 같은 출처 ID의 새 버전으로 바로잡는다 [C 요청 중: C ADR-T6은 버전 번호를 1로 고정해 지금은 정정 경로가 없다]. 데모 12/10 C 소식은 김지민에게만 보이고 김태호에게는 보이지 않는다(건강 소식 허락 없음) [가설, C 결정 1].</li>
+</ol>
+<h3 id="us-12-주간-생활-리포트-초안과-검토-p0-f9">US-12 주간 생활 리포트 초안과 검토 (P0, F9)</h3>
+<p><strong>설명</strong>: 생활지원 직원으로서, AI가 쓴 초안을 근거와 함께 보고 고쳐서 보내고 싶다. 그래야 처음부터 쓰지 않고도 기록과 맞는 글을 보낼 수 있다.
+<strong>대화</strong>: 회원·주마다 1건. 건강 기록은 AI 입력에 넣지 않는다. 직원 확인 없이 나가지 않는다.
+<strong>디자인</strong>: <code>copy.md</code> 5-2
+<strong>인수 조건</strong></p>
+<ol>
+<li>[초안 만들기]를 누르면 AI 고지를 확인했고 AI 미사용을 고르지 않은 회원만 &quot;AI 초안&quot;이 생기고, 나머지는 빈 초안(&quot;직접 작성&quot;)이 생긴다.</li>
+<li>검토 화면에서 문장마다 근거(식사 기록 기간, 출석부, 요청 번호)가 나온다.</li>
+<li>본문에 건강 관련 낱말(&quot;병원&quot;, &quot;바닥에 앉아 계셨던 일&quot; 등 목록)이 있으면 경고가 나오고, 고치기 전에는 [확인하고 발송]이 막힌다.</li>
+<li>발송하면 상태가 &quot;발송 완료&quot;, 검토자·검토일이 고정되고 이후 본문은 바뀌지 않는다.</li>
+<li>받는 사람은 발송 순간 생활 소식이 허용된 보호자다. 철회로 빠진 보호자는 &quot;이번 발송에서 빠졌습니다&quot;로 표시된다.</li>
+<li>AI 초안 생성이 실패하면 &quot;AI 초안을 만들지 못했습니다&quot; + [직접 작성] [다시 만들기]가 나온다.</li>
+</ol>
+<h3 id="us-13-생활-소식-보기-p0-f9">US-13 생활 소식 보기 (P0, F9)</h3>
+<p><strong>설명</strong>: 보호자로서, 한 주 생활 소식을 누가 확인했는지와 함께 보고 싶다.
+<strong>디자인</strong>: <code>copy.md</code> 4-2, 3-4
+<strong>인수 조건</strong></p>
+<ol>
+<li>제목 바로 아래 &quot;이 글은 AI가 먼저 쓰고 생활지원 담당 김하진 직원이 확인했어요. (11월 23일)&quot;가 나온다. 직원이 직접 쓴 글에는 AI 문구가 없다.</li>
+<li>식사 수는 코어 식사 기록과 같은 숫자다(11월 16~22일 21끼 중 18끼. 코어 <code>MealQuery.mealsOf</code>, 단독 데모면 시드). 장기 부재 끼니(<code>absent</code>)는 결식으로 세지 않고 분모에서 뺀다(served − absent 중 taken). 한 주 내내 자리를 비우셨으면 식사 줄이 없다 [가설].</li>
+<li>&quot;회원님이 전하는 말&quot;은 회원이 원했을 때만 나온다.</li>
+<li>열 때마다 US-05 검사를 한다. 발송 뒤 철회되면 그 보호자는 이미 받은 리포트도 볼 수 없다.</li>
+<li>열람 기록이 남는다.</li>
+</ol>
+<h3 id="us-14-ai-사용-고지-p0-f10">US-14 AI 사용 고지 (P0, F10)</h3>
+<p><strong>설명</strong>: 회원·보호자로서, AI를 어디에 어떻게 쓰는지 처음에 쉬운 말로 듣고 싶다. 운영사로서는 누가 어느 버전 고지를 봤는지 남기고 싶다.
+<strong>대화</strong>: 회원 고지는 v2 하나에 생활 소식(D)과 비서(G) 두 덩어리가 있다(<code>copy.md</code> 3절, 2026-11-03 재승인). 보호자 고지는 v1(생활 소식만)이다. 버전마다 다루는 목적을 두고, 그 목적의 내용이 바뀐 버전을 확인했는지로 판단한다.
+<strong>디자인</strong>: <code>copy.md</code> 3-1, 3-2, 3-3
+<strong>인수 조건</strong></p>
+<ol>
+<li>회원과 보호자가 처음 들어올 때 각자의 고지가 한 번 나오고 [읽었어요]로 확인 기록(사람, 버전, 일시, 경로)이 남는다.</li>
+<li>[AI 사용 안내] 메뉴에서 언제든 다시 볼 수 있다.</li>
+<li>고지문 버전이 바뀌면 다음 접속 때 다시 보인다. v1을 읽은 회원에게는 v2가 보인다(<code>copy.md</code> 5-5).</li>
+<li>회원이 생활 소식을 직원이 처음부터 직접 쓰게 고를 수 있고(<code>copy.md</code> 3-1 &quot;생활 소식 3&quot;, 프런트에 말씀하면 직원이 대신 입력), 고른 회원은 AI 초안 대상에서 빠진다 [가설].</li>
+<li>G는 <code>AiNoticeQuery.acknowledged(사람, MEMBER, ASSISTANT)</code>로 묻는다. v2를 확인한 회원만 참이고, v1만 읽은 회원은 거짓이라 G가 비서를 열지 않는다.</li>
+<li>v2에서 생활 소식 내용은 바뀌지 않았으므로(v2의 바뀐 목적 = ASSISTANT) v1만 읽은 회원도 <code>acknowledged(…, LIFE_REPORT)</code>는 참이고, 생활 소식 AI 초안은 계속 만들어진다.</li>
+<li>대리인(P1)이 비서를 쓸 때는 회원 고지(MEMBER 버전)를 대리인 본인이 확인하고, 기록에는 대리인 본인 이름과 대리인으로 확인했다는 표시(<code>acting_as = REPRESENTATIVE</code>)가 남는다. G는 <code>acknowledged(대리인, MEMBER, ASSISTANT)</code>로 묻는다. 회원의 확인이나 대리인의 보호자 고지 확인으로는 열리지 않는다(데모: 김태호) [가설, <code>tech-design.md</code> 확인할 것 18].</li>
+</ol>
+<h3 id="us-15-금전-부탁-접수-p1-1순위-f13">US-15 금전 부탁 접수 (P1 1순위, F13)</h3>
+<p><strong>설명</strong>: 프런트 직원으로서, 회원이 통장, 현금, 이체를 부탁하면 할 수 있는 일과 넘길 곳을 보고 처리 내용을 남기고 싶다.
+<strong>대화</strong>: 법령이 아니라 운영사 기준 초안이다(F25). 직원은 돈을 다루지 않는다. 가족에게 넘기려면 회원 허락이 있어야 한다.
+<strong>디자인</strong>: <code>copy.md</code> 5-3
+<strong>인수 조건</strong></p>
+<ol>
+<li>부탁 유형(request_type) 7개 중 하나를 고르면 &quot;직원이 할 수 있는 일 / 하지 않고 넘길 일 / 넘길 곳&quot;이 나온다.</li>
+<li>넘길 곳은 대리인(코어 ACTIVE 대리인이 있을 때만 표시) → 회원이 고른 가족 → 본인이 금융기관에 → 운영 매니저 순서다.</li>
+<li>&quot;대리인&quot;이나 &quot;회원이 고른 가족&quot;을 고르면 [입주자가 허락함]을 눌러야 저장된다(<code>copy.md</code> 5-3). 운영 매니저 보고는 허락 없이도 된다.</li>
+<li>처리 기록(일시, 직원, 입주자, 유형, 넘긴 곳, 가족 연락 허락 여부)은 추가만 된다.</li>
+<li>같은 입주자의 금전 부탁이 7일 안에 3건 이상이면 매니저 목록에 표시된다 [가설]. 비서 접수와 그것을 이어 쓴 기록은 1건으로 센다.</li>
+<li>(다음 버전) G가 금전 의도를 넘기면 <code>MoneyRequestCommand.open</code>으로 경로 &quot;비서&quot;, 유형 &quot;그 밖의 부탁&quot;, 회원 말 원문이 담긴 접수가 직원 &quot;확인할 일&quot;에 생긴다. 비서는 유형을 고르지 않는다. 직원이 열어 유형을 고르면 1~4번 흐름으로 이어지고, 처리 내용은 그 접수에 이은 새 기록으로 남는다. 회원 말 원문의 숫자 4자리 이상은 저장 전에 가린다. 금액 단위(원, 만 원)나 날짜 단위(년, 월, 일)가 바로 붙은 숫자는 남는다(예: &quot;50만 원&quot;, &quot;2026년 1월 10일&quot;) [가설]. 대리인은 이 경로를 쓰지 않는다. 투자 질문도 이 경로로 온다.</li>
+</ol>
+<h3 id="us-16-대리인이-열람-범위-정하기-p1-f14">US-16 대리인이 열람 범위 정하기 (P1, F14)</h3>
+<p><strong>설명</strong>: 대리인(후견인)으로서, 판단이 어려운 회원 대신 보호자 열람 범위를 정하고 싶다.
+<strong>대화</strong>: 코어 권한 검사 4단계(ACTIVE, 유효기간, MANAGE_GUARDIAN_ACCESS)를 그대로 쓴다. 대리인의 건강 별도 동의는 [법률 검토].
+<strong>디자인</strong>: <code>copy.md</code> 2-6, 4-5, 6절 &quot;대리인 권한 밖 설정&quot;
+<strong>인수 조건</strong></p>
+<ol>
+<li>범위가 있는 대리인의 넓힘은 확인 대기 없이 적용되고, 회원 화면 상단에 &quot;대신 처리하실 분 최○○ 님이 보여 줄 것을 정했어요.&quot;가 나온다.</li>
+<li>범위가 없는 대리인(시드 김태호: 청구서 확인·결제만)은 <code>copy.md</code> 6절 문구(김태호 님은 &quot;청구서 확인&quot;, &quot;결제&quot; 권한만 있습니다. 보호자 열람 범위는 바꿀 수 없습니다.)로 거부된다.</li>
+<li>대리인이 만료·철회되면 다음 요청부터 거부되고, 그가 정한 허락은 유지된다(정한 사람이 기록에 남음).</li>
+<li>회원은 대리인이 있어도 직접 좁힐 수 있다 [가설].</li>
+<li>대리 사실은 코어 감사 로그에 남는다.</li>
+</ol>
+<h3 id="us-17-함께-보실-분-초대와-수락-p1-f15">US-17 함께 보실 분 초대와 수락 (P1, F15)</h3>
+<p><strong>설명</strong>: 회원으로서 가족을 초대하고, 보호자로서 초대를 받아 들어오고 싶다.
+<strong>디자인</strong>: <code>copy.md</code> 2-2, 6절 초대·본인 확인 오류
+<strong>인수 조건</strong></p>
+<ol>
+<li>초대 문자는 7일 동안 열리고 한 번만 쓸 수 있다 [가설]. 같은 번호에 새 초대를 보내면 이전 초대는 취소된다.</li>
+<li>수락할 때 초대한 번호로 본인 확인(MVP 목업)을 통과해야 한다. 실패하면 &quot;휴대전화 본인 확인이 되지 않았어요.&quot;</li>
+<li>기간이 지나면 &quot;초대 링크를 쓸 수 있는 날이 지났어요. 이은숙 회원님이나 시설 프런트에 새 초대를 부탁해 주세요.&quot;</li>
+<li>수락하면 코어 <code>GuardianCommand.link(source = INVITATION, actor = 초대한 사람)</code>(v1.1)로 보호자 관계가 생기고, 다섯 항목은 모두 &quot;안 보여요&quot;다.</li>
+<li>토큰은 해시로만 저장하고 전화번호는 화면에서 가린다.</li>
+</ol>
+<h3 id="us-18-ai-고지동의-현황-p1-f16">US-18 AI 고지·동의 현황 (P1, F16)</h3>
+<p><strong>설명</strong>: 본사 운영 매니저로서, 입주자별 AI 고지 확인, 건강 별도 동의, AI 미사용 요청을 한 화면에서 보고 싶다.
+<strong>디자인</strong>: <code>copy.md</code> 5-5
+<strong>인수 조건</strong></p>
+<ol>
+<li>요약 카드 3개와 입주자 한 줄(고지 확인일·버전, 별도 동의 건수, AI 미사용 요청)이 나온다.</li>
+<li>고지를 확인하지 않은 입주자 수와 &quot;이 입주자들의 주간 생활 리포트는 AI 초안 없이 직원이 작성합니다.&quot;가 나온다.</li>
+<li>고지문을 새 버전으로 올리면 다음 접속 때 회원·보호자에게 다시 보인다.</li>
+<li>건강 별도 동의 내용(누구에게)은 본사 화면에서도 보호자 이름까지만 보인다.</li>
+</ol>
+<h3 id="us-19-내용이-이상해요-p1-f17">US-19 내용이 이상해요 (P1, F17)</h3>
+<p><strong>설명</strong>: 보호자로서, 생활 소식이 사실과 다르면 알리고 답을 받고 싶다.
+<strong>디자인</strong>: <code>copy.md</code> 4-2
+<strong>인수 조건</strong></p>
+<ol>
+<li>[내용이 이상해요]를 누르면 &quot;알려 주셔서 고마워요. 쉬는 날을 빼고 이틀 안에 김하진 직원이 확인하고 연락드릴게요.&quot;가 나온다.</li>
+<li>검토한 직원의 &quot;확인할 일&quot;에 올라가고, 2영업일 안에 처리하지 않으면 매니저 목록에 표시된다 [가설].</li>
+<li>처리 결과(정정 여부)는 기록된다. 발송된 리포트 본문은 고치지 않고 다음 리포트에 정정을 싣는다.</li>
+</ol>
+<h3 id="us-20-일정-보기-p0-f6">US-20 일정 보기 (P0, F6)</h3>
+<p><strong>설명</strong>: 보호자로서, 회원이 일정을 보여 주기로 했다면 입주, 계약, 청구에 관한 주요 날짜와 회원이 신청한 프로그램 날짜를 보고 싶다. 그래야 계약 만료나 납부 기한을 미리 알고, 부모님이 어떤 모임에 가시는지 안다.
+<strong>대화</strong>: 일정은 코어 <code>ContractQuery.keyDates</code> 6개 날짜(2026-11-03 확정)와, 회원이 신청을 확정한 N2 프로그램 회차(2026-11-04 결정 N2-2, N2 조회 [가설])다. 병원 일정은 일정에 넣지 않고, 면회 예약은 다음 버전이다. 프로그램 줄과 안내 문구는 반영됨(copy 4-6, 2-11).
+<strong>디자인</strong>: <code>copy.md</code> 4-6(일정 화면)
+<strong>인수 조건</strong></p>
+<ol>
+<li>SCHEDULE이 허락된 보호자는 입주일, 계약 만료일, 최근 청구 발행일, 최근 청구 납부 기한, 다음 청구 예정일, 퇴거 예정일 가운데 값이 있는 것만 날짜순으로 본다.</li>
+<li>일정에는 날짜만 나온다. 금액, 납부 여부, 미납 같은 말은 나오지 않는다(청구서 항목과 섞이지 않게).</li>
+<li>SCHEDULE이 허락되지 않은 보호자는 US-05와 같이 거부된다.</li>
+<li>날짜는 기준일(<code>at</code>)에 따라 다시 계산된다(데모 시계를 바꾸면 &quot;다음 청구 예정일&quot;이 바뀐다).</li>
+<li>코어 없이 단독 데모할 때는 시드 날짜를 쓴다.</li>
+<li>회원이 신청을 확정한 프로그램 회차가 날짜, 시각, 이름, 장소로 함께 나온다(N2 <code>ProgramQuery.enrolledSessionsOf</code>, 2026-11-04 확정). 회차가 취소되면 &quot;11월 19일 목요일 수채화는 쉬어요.&quot; 줄로 바뀐다(copy 4-6). 대기 중인 신청, 취소한 신청, 공용시설 예약, 출석 여부는 나오지 않는다.</li>
+<li>프로그램이 더해지기 전에 일정을 허락한 회원이면, 회원(또는 대신 처리하실 분)이 안내를 확인하기 전까지 프로그램 회차가 보이지 않는다 [가설, <code>prd.md</code> 확인할 것 28].</li>
+<li>통합 데모: 2026-11-18 14:50 이은숙이 김지민에게 일정을 보여 주고, 15:00 김지민이 11월 19일 목요일 수채화를 본다(<code>prd.md</code> 9절 D-N2-1). 프로그램을 켠 뒤 허락했으므로 2-11 안내는 나오지 않는다.</li>
+</ol>
+<h3 id="us-21-장기-부재-소식-보기-p1-f18">US-21 장기 부재 소식 보기 (P1, F18)</h3>
+<p><strong>설명</strong>: 보호자로서, 회원님이 생활 소식을 보여 주기로 했다면 회원님이 오래 자리를 비우셨는지, 돌아오셨는지 알고 싶다. 그래야 연락이 닿지 않아도 당황하지 않는다.
+<strong>대화</strong>: 코어가 확정한 <code>ResidentAbsenceStarted</code>·<code>ResidentAbsenceEnded</code>를 받으면 D가 새 소식 문자를 보내고, 화면은 볼 때마다 코어 <code>AbsenceQuery</code>로 그린다(<code>tech-design.md</code> 3-6). D는 부재 기록을 사본으로 두지 않는다. 이유, 종류, 가신 곳, 병원은 받지도 보이지도 않는다. 입원처럼 건강과 이어진 사실은 건강 소식(US-11)으로만 간다. 문구는 <code>copy.md</code> 4-7에 반영됐다.
+<strong>디자인</strong>: <code>copy.md</code> 4-1 새 소식 카드, 4-7(반영됨), 이미 보여 주신 회원 안내 2-10(반영됨)
+<strong>인수 조건</strong></p>
+<ol>
+<li>생활 소식(LIFE_REPORT)을 허락받은 보호자는 생활 소식 화면에서 자리를 비우신 소식 카드(비우신 날, 예정 복귀일이 있으면 그 날짜)와 돌아오신 소식 카드(돌아오신 날)를 본다. 예정 복귀일이 바뀌면 다음에 볼 때 바뀐 날짜가 보인다. 이유, 종류, 장소, 병원 이름은 나오지 않는다.</li>
+<li>생활 소식을 허락받지 않은 보호자는 건강 소식을 허락받았더라도 부재 소식을 보지 못하고, 새 소식 문자도 받지 않는다.</li>
+<li>부재가 시작되거나 끝나면 그 시각에 허락받은 보호자에게 새 소식 문자가 간다. 문자 내용은 다른 새 소식 문자와 같고, 밤 10시~아침 8시면 아침 8시에 묶어 보낸다 [가설].</li>
+<li>보는 때마다 US-05 검사를 한다. 그만 보여 주기 뒤에는 지난 부재 소식도 보이지 않는다.</li>
+<li>같은 코어 이벤트가 두 번 와도 문자는 한 번이다. 잘못 등록해 취소된 부재는 화면에서 사라지고 돌아오신 소식이 없다. 사별 승계·정산 때 자동으로 끝난 부재에도 돌아오신 소식을 보내지 않는다 [가설].</li>
+<li>코어 없이 단독 데모할 때는 <code>AbsenceQuery</code> 목업과 데모 API로 이벤트를 넣는다.</li>
+<li>D <code>family</code> 스키마에 부재 날짜를 저장하지 않는다(문자 대기 행의 absenceId 참조만, 경계 검사).</li>
+<li>장기 부재 소식을 켜기 전에 생활 소식을 허락한 회원이면, 회원(또는 대신 처리하실 분)이 <code>copy.md</code> 2-10 안내를 확인하기 전까지 부재 카드와 문자가 없다. 켠 뒤 허락한 보호자에게는 확인 없이 보인다 [가설, <code>prd.md</code> 확인할 것 25].</li>
+</ol>
+<h3 id="us-22-사업장-동의-현황-숫자-p1-f19">US-22 사업장 동의 현황 숫자 (P1, F19)</h3>
+<p><strong>설명</strong>: 사업장 책임자로서, 운영 현황 대시보드에서 보호자 동의 현황을 숫자로 보고 싶다. 그래야 확인을 기다리는 일이나 열린 문의를 놓치지 않는다.
+<strong>대화</strong>: <code>app/</code> 대시보드(D1)가 <code>FamilyConsentSummaryQuery.siteSummary(siteId, at)</code>(코어도 이 이름을 따른다)를 매번 읽는다. actor 인자가 없어 <code>app/</code>이 먼저 코어 <code>authorize(actor, family.summary.read, …, mode = CHECK)</code>로 권한을 확인한다. D는 숫자만 주고 이름·ID는 주지 않는다. 대시보드는 숫자를 저장하지 않는다(<code>tech-design.md</code> 8-2).
+<strong>디자인</strong>: <code>copy.md</code> 5-6 보호자 동의 현황 카드(반영됨)
+<strong>인수 조건</strong></p>
+<ol>
+<li>사업장 책임자는 자기 사업장의 숫자 8개를 본다: 함께 보실 분이 있는 회원 수, 하나 이상 보여 주기로 한 회원 수, 건강 소식 별도 동의가 유효한 회원 수, 회원 확인 대기 묶음 수, 지난 7일 그만 보여 주기 수, 같은 기간 퇴거·연결 해제로 생긴 철회 수, 열린 [내용이 이상해요] 수, 그중 기한이 지난 수.</li>
+<li>응답에 회원·보호자 이름, 회원 ID, 보호자 ID가 없다.</li>
+<li>본사는 모든 사업장을 볼 수 있다. 사업장 책임자가 아닌 직원과 다른 사업장의 책임자는 거부된다.</li>
+<li>숫자는 시드 데이터로 직접 센 값과 같다.</li>
+<li>숫자 옆에 목표선이나 좋음·나쁨 색을 붙이지 않는다.</li>
+</ol>
+<h3 id="us-23-생활-요청-허락-p1-f20-n1과-함께">US-23 생활 요청 허락 (P1, F20, N1과 함께)</h3>
+<p><strong>설명</strong>: 회원으로서, 가족마다 생활 요청을 보여 줄지 정하고 싶다. 그래야 멀리 사는 딸이 고장 난 곳을 대신 전해 줄 수 있고, 원하지 않는 가족은 내 요청을 보지 않는다.
+<strong>대화</strong>: 생활 요청(<code>LIFE_REQUEST</code>)은 다섯째 허락 항목이다(2026-11-03 N1 카피 결정). 보기와 대신 올리기는 한 항목이다. 요청 데이터와 보호자 생활 요청 화면은 N1 것이고, D는 허락과 정책만 갖는다(<code>tech-design.md</code> 4절, 확인할 것 29). 넓히기·좁히기, 직원 대신 입력, 열람 기록은 다른 항목과 같다(US-02, US-03, US-07).
+<strong>디자인</strong>: <code>copy.md</code> 2-3 항목 5, 5-1 표 생활 요청 칸(반영됨). 보호자 화면은 N1 카피 3절
+<strong>인수 조건</strong></p>
+<ol>
+<li>회원 화면 &quot;보여 줄 것 정하기&quot;에 다섯째 항목 생활 요청이 건강 소식 다음에 나오고, 처음에는 &quot;안 보여요&quot;다.</li>
+<li>생활 요청을 허락받은 보호자는 N1 화면에서 회원의 고장·수리, 청소, 세탁, 외출 차량 요청을 보고 같은 종류를 회원 대신 올릴 수 있다. 허락이 없으면 N1이 부른 권한 검사가 거부된다.</li>
+<li>병원 동행 요청은 생활 요청과 건강 소식을 모두 허락받고 건강정보 별도 동의가 유효한 보호자에게만 보이고, 병원 이름은 보이지 않는다. 보호자는 병원 동행 요청을 올릴 수 없다.</li>
+<li>그만 보여 주기 직후 같은 보호자의 다음 요청부터 거부된다(US-07과 같음).</li>
+<li>직원 화면 5-1 표에 생활 요청 칸이 있고, 직원이 넓히면 회원 확인을 기다린다(US-03과 같음).</li>
+<li>D <code>family</code> 스키마에 요청 내용이 저장되지 않는다(경계 검사).</li>
+<li>김지민이 올린 요청을 직원이 맡았을 때와 마쳤을 때(N1 <code>ServiceRequestStatusChanged</code>의 ASSIGNED, DONE) 김지민에게만 D가 문자를 보낸다(N1 카피 8-2 틀, 내용 없음). 같은 이벤트가 두 번 와도 한 통이고, 보낼 때 생활 요청 허락이 없으면 보내지 않는다.</li>
+<li>보호자가 생활 요청을 보면 회원 &quot;본 기록&quot;(US-10)에 한 줄이 남는다(2026-11-04 결정 H2). 허락이 없거나 철회 뒤에는 기록되지 않는다.</li>
+<li>통합 데모: 2026-11-17 15:00 이은숙이 김지민에게 생활 요청을 보여 주고, 15:10 김지민이 대신 올린다(<code>prd.md</code> 9절 D-N1-1).</li>
+</ol>
+<h2 id="확인할-것">확인할 것</h2>
+<p><strong>결정됨 [가설] (2026-11-03 사용자 결정: 제안값으로 확정, 검증 전)</strong></p>
+<ol>
+<li><strong>US-11 3번 허락 전 건강 소식</strong>: 별도 동의한 날(한국 시간) 0시 이후 소식부터 보인다 [가설]. 회원이 동의 화면에서 알 수 있게 카피 2-4에 문장을 더한다(카피 반영됨, 사용자 재승인 2026-11-03, <code>prd.md</code> 확인할 것 14).</li>
+<li><strong>US-15 5번 반복 부탁 표시 기준</strong>: 같은 입주자의 금전 부탁이 7일 안에 3건 이상 [가설, 운영사 기준 초안].</li>
+</ol>
+<ul>
+<li>그 밖의 [가설] 값(초대 7일, 회신 2영업일, 넓어질 때만 알림, 조용한 시간, 다시 올리기, 대리인 있는 회원의 직접 좁히기)은 <code>prd.md</code> 확인할 것과 같다.</li>
+</ul>
+<p><strong>남은 것</strong>
+2. <strong>[법률 검토] US-04 6번 법적 문구 새 버전의 재동의</strong>: 법률 검토 전 제안은 &quot;중요 변경이면 재동의, 표현 수정이면 유지&quot;. 확정하지 않는다. C 두 종류는 v1 제공 항목에 처음부터 넣었다(카피 2-4 3항). 검토 결과 재동의가 필요하다고 나오면 정책에 종류별 최소 법적 문구 버전 검사를 더한다(<code>tech-design.md</code> 확인할 것 22).</p>
+<h2 id="변경-기록">변경 기록</h2>
+<ul>
+<li><strong>기획 문서 한국어 검수 (2026-11-03, 허브 요청, 사용자 지정 korean-skills, 사용자 재승인 2026-11-03)</strong>: <code>grammar-checker</code> → <code>style-guide</code> → <code>humanizer</code>. 고친 곳 10곳(맞춤법 0, 띄어쓰기 0, 용어 3, 문장 7). 대표: &quot;법적 문구가 새 버전이 되면&quot; → &quot;법적 문구가 새 판이 되면&quot;; &quot;전화번호는 화면에 가린다&quot; → &quot;전화번호는 화면에서 가린다&quot;; &quot;통장·현금·이체를&quot; → &quot;통장, 현금, 이체를&quot;. 남긴 후보: 화면 문구 인용 3곳이 <code>copy.md</code>와 다름(152줄, 210줄, 239줄). 카피 세션 몫.</li>
+<li><strong>카피 인용 맞춤 (2026-11-03, 허브 요청 &quot;인용 맞추기&quot;, 같은 검수 회차)</strong>: US-19 1번 &quot;2영업일 안에&quot; 넣음, US-16 1번 &quot;최○○ 님&quot;, US-11 5번 &quot;(처리: 김하진 직원)&quot;(원문 일치). US-14 4번은 따옴표를 빼고 <code>copy.md</code> 3-1 &quot;생활 소식 3&quot;을 가리키는 설명으로, US-14 7번 &quot;대리인으로 확인&quot;은 화면 문구가 아니라 따옴표를 빼고 <code>acting_as</code> 설명으로 바꿈. 전수 대조로 더 찾은 것: US-16 2번 대리인 거부 문구를 6절 원문(안쪽 큰따옴표)으로.</li>
+<li><strong>장기 부재 소식·동의 집계 추가 (2026-11-03, 허브 요청, 사용자 선택 &quot;넓게(N1 포함)&quot;, 사용자 재승인 2026-11-04)</strong>: US-21 장기 부재 소식 보기(F18), US-22 사업장 동의 현황 숫자(F19)를 더했다. 화면 문구는 <code>[NEED: 카피]</code>.</li>
+<li><strong>코어 장기 부재 확정 맞춤 (2026-11-03, 허브 요청, 사용자 재승인 2026-11-04)</strong>: US-13 2번에 부재 끼니 규칙, US-21 설명·대화·1·5·6번을 코어 확정에 맞추고 7번(사본 없음) 추가, US-22 대화에 <code>app/</code> CHECK 선확인.</li>
+<li><strong>생활 요청 허락 항목·카피 반영 (2026-11-03, 허브 요청, N1 카피 결정 &quot;추천대로&quot;, 사용자 재승인 2026-11-04)</strong>: US-01·US-07·US-17 &quot;다섯 항목&quot;, US-21 디자인·대화의 <code>[NEED: 카피]</code>를 반영됨(copy 4-1, 4-7, 2-10)으로 고치고 8번(2-10 확인 전 부재 소식 없음) 추가, US-22 디자인 반영됨(copy 5-6), US-23 생활 요청 허락 추가.</li>
+<li><strong>전체 리뷰 보완 (2026-11-04, 허브 보완 지시서 &quot;보호자 포털·동의&quot; 1~7, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04)</strong>: 이용자 표에 US-21<del>23과 사업장 책임자, US-01 다섯 항목 통일(P1 꼬리 삭제), US-23 7</del>9번(D가 보내는 상태 변경 문자, 본 기록 [미정], 11/17 장면), &quot;판&quot; → &quot;버전&quot;.</li>
+<li><strong>열린 결정 반영 (2026-11-04, 허브 전달, 사용자 &quot;모두 추천대로&quot;, 사용자 재승인 2026-11-04)</strong>: US-10 6번(생활 요청 열람 줄), US-23 8번 결정 반영(H2), US-20 설명·대화와 6·7번(일정에 신청한 프로그램, N2-2).</li>
+<li><strong>카피 보완분 반영 (2026-11-04, 허브 요청, 사용자 재승인 2026-11-04)</strong>: US-10 6번과 US-20 대화의 <code>[NEED: 카피]</code> 2곳을 반영됨(copy 2-8, 4-6, 2-11)으로 바꿈.</li>
+<li><strong>N2 요청 N2-D1~D5 반영 (2026-11-04, 허브 전달, N2 <code>tech-design.md</code> 10-2, 사용자 재승인 2026-11-04)</strong>: US-06 디자인과 7번(레지던스 공지 칸, N2-D2), US-20 6번(조회 확정, 쉬는 회차 줄)과 8번(장면 D-N2-1).</li>
+<li><strong>판단 낱말 정리 (2026-11-04, 허브 요청, 사용자 재승인 2026-11-04)</strong>: US-12 3번 경고 낱말 예시 &quot;넘어지신&quot;(낙상과 같은 뜻)을 관찰 사실 표현 &quot;바닥에 앉아 계셨던 일&quot;로 바꿈.</li>
+<li><strong>쉬운 말 재검수·공용 문구 인용 맞춤 (2026-11-04, 허브 요청, 사용자 &quot;추천대로&quot;, 사용자 재승인 2026-11-04)</strong>: 회원·보호자 화면 문구를 인용한 8줄을 바뀐 카피에 맞춤(US-01 4번 등 43, 88, 93, 104, 177, 213, 225, 242행). 기능·범위·정책·수치 변경 없음. 근거: <code>03-copywriting/ideas/family-consent-portal/plain-read-review-2026-11-04.md</code>, <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구 행.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-stories" data-title="사용자 스토리"><p>누가 무엇을 해서 무엇을 얻는지를 이야기로 쓰고, 끝났다고 말할 조건을 붙인 문서입니다.</p></template>
+<template id="g-261" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-262" data-title="건강 소식"><p>B, C가 올린 본문 스냅샷. 건강 소식이 보호자에게 가는 길은 D 하나다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 건강 소식. 종류: 직원이 다녀간 일 / 병원에 가신 일 / 그 밖의 건강 기록 / 생활 지원 단계가 바뀐 일 / 다른 기관 돌봄이 시작된 일</dd><dt>영문·코드 이름</dt><dd><code>HealthEvent</code>: <code>SAFETY_SIGNAL</code>, <code>HOSPITAL_TRANSFER</code>, <code>CARE_NOTE</code>, <code>CARE_STAGE_CHANGE</code>, <code>EXTERNAL_CARE_START</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-263" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-264" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-265" data-title="생활 요청"><p>고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건. 안전 신호가 아니다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 생활 요청(줄여 요청) / 회원·보호자: 요청</dd><dt>영문·코드 이름</dt><dd><code>ServiceRequest</code></dd><dt>출처</dt><dd>requests T2-2, requests M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-266" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-267" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-268" data-title="사업장 책임자"><p>사업장 운영을 맡고 운영 현황 카드를 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 책임자 / 회원 공지: 센터장</dd><dt>영문·코드 이름</dt><dd><code>SITE_MANAGER</code></dd><dt>출처</dt><dd>core T6-1, requests N</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-269" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-270" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-271" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-272" data-title="열람 기록"><p>조회용 기록. 원본은 코어 변경 이력이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 열람 기록 / 회원: 내 소식을 본 기록(family M은 &quot;본 기록&quot;) <code>[문서 다름]</code></dd><dt>영문·코드 이름</dt><dd><code>AccessLog</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

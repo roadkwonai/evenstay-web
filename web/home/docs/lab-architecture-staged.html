@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>단계별 아키텍처 제안 | Evenstay 문서</title>
+<meta name="description" content="단계별 아키텍처 제안. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>단계별 아키텍처 제안</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-결론">1. 결론</a></li><li class="lv2"><a href="#2-단계별-구성">2. 단계별 구성</a></li><li class="lv3"><a href="#1단계-구조">1단계 구조</a></li><li class="lv3"><a href="#2단계에-더해지는-것">2단계에 더해지는 것</a></li><li class="lv2"><a href="#3-넘어가는-신호">3. 넘어가는 신호</a></li><li class="lv2"><a href="#4-백엔드-후보-평가">4. 백엔드 후보 평가</a></li><li class="lv2"><a href="#5-지정-기술별-판단">5. 지정 기술별 판단</a></li><li class="lv2"><a href="#6-나중에-고치지-않으려고-처음부터-지킬-것">6. 나중에 고치지 않으려고 처음부터 지킬 것</a></li><li class="lv2"><a href="#7-레드팀">7. 레드팀</a></li><li class="lv2"><a href="#8-앞선-문서와의-관계">8. 앞선 문서와의 관계</a></li><li class="lv2"><a href="#9-출처">9. 출처</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-758" data-tip="요청과 별도로 실행되는 백그라운드 처리 단위.">작업자</button></li><li><button class="term" type="button" data-modal="g-759" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li></ul></section></aside>
+  <article class="doc"><h2 id="1-결론">1. 결론</h2>
+<p><strong>가볍게 시작하는 구성: Next.js + Spring Boot + PostgreSQL 하나 + AWS 서울.</strong> [판단]</p>
+<ul>
+<li>처음에는 컨테이너 3개(화면, API, 작업자)와 DB 하나만 둔다. 큐, 검색, 리포트를 PostgreSQL 안에서 해결한다.</li>
+<li>Python AI 서비스, Kubernetes, AI Gateway, RAG, GraphDB, 데이터 파이프라인은 <strong>넘어가는 신호가 나타날 때</strong> 더한다.</li>
+<li>1단계 AI는 Python 없이 된다. 비서의 뜻 고르기와 주간 리포트 초안 모두 어댑터 뒤에 있어 Spring에서 Bedrock을 부르면 된다 [판단]. 데모 기본은 지금 설계대로 녹화 응답이다(ADR-G6).</li>
+<li>클라우드는 AWS 하나로 간다 [판단]. 서울에서 Claude를 리전 안에서 처리할 수 있다. Bedrock Sonnet 5는 제안이고, LLM 제공자는 평가 세트로 비교한 뒤 정한다.</li>
+</ul>
+<p><strong>사용자 확인(2026-11-04)</strong>: MVP는 만들지 않는다. 이 문서는 구현 계획이 아니라 설계안이다. 7절 레드팀 1번은 이 답으로 닫혔다.</p>
+<h2 id="2-단계별-구성">2. 단계별 구성</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>층</th>
+<th>1단계 MVP</th>
+<th>2단계 운영</th>
+<th>3단계 확장</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>화면</td>
+<td>Next.js 16 컨테이너 1개</td>
+<td>2개 이상 + <code>cacheHandler</code>, 같은 암호화 키</td>
+<td>필요 시 분리</td>
+</tr>
+<tr>
+<td>업무 백엔드</td>
+<td>Spring Boot 4.1 + Modulith, 같은 이미지로 API와 작업자</td>
+<td>2개씩, 무중단 배포</td>
+<td>부하 패턴이 다른 모듈만 분리</td>
+</tr>
+<tr>
+<td>AI 서비스</td>
+<td>없음. API가 어댑터로 LLM 호출</td>
+<td>FastAPI + Pydantic v2 + PydanticAI, Taskiq</td>
+<td>LangGraph(긴 승인 흐름), LiteLLM</td>
+</tr>
+<tr>
+<td>작업</td>
+<td>코어 아웃박스 유지 [판단], JobRunr(PostgreSQL), Modulith 이벤트 기록. 시스템 작업의 RLS 범위는 미해결</td>
+<td>AI 작업만 Taskiq + Valkey</td>
+<td>외부 전달이 늘면 Namastack 또는 SQS</td>
+</tr>
+<tr>
+<td>DB</td>
+<td>RDS PostgreSQL 18, Single-AZ, 가상 데이터</td>
+<td>Multi-AZ, 실제 데이터 전 필수</td>
+<td>읽기 복제본, 필요 시 Aurora</td>
+</tr>
+<tr>
+<td>검색·RAG</td>
+<td>PostgreSQL 전문 검색 또는 없음</td>
+<td>pgvector + 전문 검색 + <code>pg_bigm</code></td>
+<td>OpenSearch Nori</td>
+</tr>
+<tr>
+<td>데이터</td>
+<td>월말 스냅샷</td>
+<td>Spring이 권한 검사 뒤 허용 칸만 넘기고 개인정보 제거</td>
+<td>dlt + Dagster</td>
+</tr>
+<tr>
+<td>실행 환경</td>
+<td>ECS Express Mode(화면·API), 작업자는 일반 ECS [추정]</td>
+<td>ECS 서비스 + OpenTofu, 계정 분리</td>
+<td>EKS Auto Mode</td>
+</tr>
+<tr>
+<td>관측</td>
+<td>구조화 로그, CloudWatch, 평가 JSON</td>
+<td>OpenTelemetry</td>
+<td>Langfuse 자체 호스팅(ClickHouse 등이 필요)</td>
+</tr>
+<tr>
+<td>월 고정비(계산)</td>
+<td>약 $207</td>
+<td>약 $439</td>
+<td>인원과 부하에 따라 [미정]</td>
+</tr>
+</tbody></table></div>
+<p><strong>비용 계산</strong> (AWS 서울 공식 가격, 730시간). 1단계: 화면 0.5vCPU·1GB $20.7, API·작업자 1vCPU·2GB 각 $41.5, ALB $22.3, RDS t4g.medium Single-AZ $74.5, 50GB $6.6. 2단계: 화면 2개, API·작업자 2개씩, AI 서비스 0.5vCPU·1GB 1개, ALB, RDS Multi-AZ $148.2와 50GB $13.1, Valkey small $27.4. NAT, 로그, 전송, 백업, Bedrock 호출료는 빠져 있다. 작업 크기는 추정이다 [가설]. 2단계 금액은 전부 넣은 값이고, 신호가 없으면 Python과 Valkey를 뺀다.</p>
+<h3 id="1단계-구조">1단계 구조</h3>
+<pre><code>브라우저 ─► Next.js ─► Spring Boot API ─┬─► PostgreSQL 18
+                                       │   (모듈별 스키마, RLS, 작업 큐, 이벤트 기록)
+업체 웹훅 ────────────────► API         ├─► Bedrock 서울(Sonnet 5, 뜻 고르기만)
+                          작업자 ───────┘
+                          (타이머, 월 청구, 알림 발송)</code></pre>
+<h3 id="2단계에-더해지는-것">2단계에 더해지는 것</h3>
+<pre><code>Spring Boot ─ HTTP 또는 큐 ─► FastAPI AI 서비스 ─► Bedrock
+                                  │
+                       Spring이 권한 검사 뒤 넘긴 칸과
+                       공개 문서 조각만 받는다. 업무 DB에 접근하지 않는다</code></pre>
+<h2 id="3-넘어가는-신호">3. 넘어가는 신호</h2>
+<p>신호가 없으면 넘어가지 않는다. 아래 수치는 판단이고 공식 기준이 아니다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>더할 것</th>
+<th>신호</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Multi-AZ, 2개 운영</td>
+<td>실제 입주자 데이터를 넣기 전</td>
+</tr>
+<tr>
+<td>Python AI 서비스</td>
+<td>문서 파싱·검색처럼 Python 라이브러리가 필요할 때</td>
+</tr>
+<tr>
+<td>Valkey</td>
+<td>Next.js를 2개 이상 띄우거나 Taskiq를 쓸 때</td>
+</tr>
+<tr>
+<td>RAG(pgvector)</td>
+<td>직원용 문서 검색이 필요할 때. 회원에게 문서로 답하려면 ADR-G1부터 다시 정한다</td>
+</tr>
+<tr>
+<td>LangGraph</td>
+<td>승인이 하루를 넘기는 AI 흐름이 생길 때</td>
+</tr>
+<tr>
+<td>AI Gateway</td>
+<td>LLM 공급자가 둘 이상이거나 앱별 예산 키가 필요할 때</td>
+</tr>
+<tr>
+<td>데이터 파이프라인</td>
+<td>원천 시스템이 3개를 넘을 때</td>
+</tr>
+<tr>
+<td>Kubernetes</td>
+<td>개발자가 10명을 넘거나, GPU 스케줄링·오퍼레이터가 필요할 때</td>
+</tr>
+<tr>
+<td>GraphDB</td>
+<td>여러 단계를 건너는 관계 질문이 평가 세트의 상당 부분을 차지할 때</td>
+</tr>
+</tbody></table></div>
+<h2 id="4-백엔드-후보-평가">4. 백엔드 후보 평가</h2>
+<p>점수는 1~5이고 <strong>허브의 판단</strong>이다. 측정값이 아니다. 경계 점수는 언어별로 같게 뒀다. Spring은 Modulith가 코드 의존만 보고 DB 권한은 보지 않아서 4다. 유지보수 안정은 관리자 수와 함께 사용 규모도 봤다. 팀·채용의 한국 시장 근거는 [미확인]이다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>기준</th>
+<th align="right">가중치</th>
+<th align="right">Spring Boot</th>
+<th align="right">Fastify</th>
+<th align="right">Hono</th>
+<th align="right">AdonisJS</th>
+<th align="right">FastAPI</th>
+<th align="right">Axum</th>
+<th align="right">Elysia</th>
+<th align="right">Litestar</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MVP 속도</td>
+<td align="right">25</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>확장·경계</td>
+<td align="right">20</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>트랜잭션·정확성</td>
+<td align="right">20</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>유지보수 안정</td>
+<td align="right">10</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>팀·채용</td>
+<td align="right">15</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>AI 연결</td>
+<td align="right">10</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td><strong>기본 합계</strong></td>
+<td align="right">100</td>
+<td align="right"><strong>3.90</strong></td>
+<td align="right">3.45</td>
+<td align="right">3.25</td>
+<td align="right">3.35</td>
+<td align="right">3.35</td>
+<td align="right">2.65</td>
+<td align="right">2.75</td>
+<td align="right">2.60</td>
+</tr>
+<tr>
+<td>속도 우선(45,15,15,10,5,10)</td>
+<td align="right"></td>
+<td align="right">3.60</td>
+<td align="right">3.65</td>
+<td align="right">3.45</td>
+<td align="right"><strong>3.85</strong></td>
+<td align="right">3.60</td>
+<td align="right">2.60</td>
+<td align="right">3.15</td>
+<td align="right">2.85</td>
+</tr>
+<tr>
+<td>채용 제외(30,25,20,10,0,15)</td>
+<td align="right"></td>
+<td align="right"><strong>3.65</strong></td>
+<td align="right">3.50</td>
+<td align="right">3.30</td>
+<td align="right">3.60</td>
+<td align="right">3.45</td>
+<td align="right">2.85</td>
+<td align="right">3.10</td>
+<td align="right">2.95</td>
+</tr>
+</tbody></table></div>
+<p><strong>읽는 법</strong></p>
+<ul>
+<li>기본은 Spring이고, 2026-11-04에 사용자가 고른 &quot;팀과 채용&quot; 기준과 맞다. 빠른 MVP를 앞세우면 1위가 아니다.</li>
+<li>속도만 보면 AdonisJS가 앞선다. 인증, ORM, 검증, 메일이 내장이기 때문이다. 다만 공식 큐가 0.7.0이고, <code>request.raw()</code>가 문자열이라 웹훅 서명 검증을 먼저 시험해야 한다.</li>
+<li>TypeScript로 간다면 Fastify 5가 가장 안전하다. OpenJS Foundation 소속이고 관리자가 여럿이다. 6.0은 alpha라서 이행을 지켜본다.</li>
+</ul>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>후보</th>
+<th>쓰임</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Boot</td>
+<td><strong>업무 코어</strong></td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td><strong>2단계 AI 서비스</strong></td>
+</tr>
+<tr>
+<td>Fastify</td>
+<td>TypeScript로 갈 때의 업무 코어</td>
+</tr>
+<tr>
+<td>AdonisJS</td>
+<td>속도가 가장 중요하고 웹훅 시험을 통과할 때</td>
+</tr>
+<tr>
+<td>Hono</td>
+<td>Next.js와 타입을 직접 공유하는 작은 API. 조립이 많아 코어로는 권하지 않는다</td>
+</tr>
+<tr>
+<td>Axum</td>
+<td>코어로 쓰지 않는다. 신호 수신이 병목이 되면 그 부분만 후보</td>
+</tr>
+<tr>
+<td>ElysiaJS</td>
+<td>제외. 2.0 rc가 진행 중이고 최근 커밋 대부분이 한 사람이다</td>
+</tr>
+<tr>
+<td>Litestar</td>
+<td>보류. 구조는 좋지만 사용 회사를 찾지 못했다</td>
+</tr>
+</tbody></table></div>
+<h2 id="5-지정-기술별-판단">5. 지정 기술별 판단</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>기술</th>
+<th>시기</th>
+<th>판단</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Next.js</td>
+<td>1단계</td>
+<td>확정. 인스턴스 하나면 전 기능이 동작한다. 개인화 화면은 캐시를 끈다</td>
+</tr>
+<tr>
+<td>AWS</td>
+<td>1단계</td>
+<td>주 클라우드</td>
+</tr>
+<tr>
+<td>Google Cloud</td>
+<td>안 씀</td>
+<td>Cloud Run은 좋지만 서울 AI 처리 보장이 약하다. 두 클라우드 병행은 1~5명에게 이득이 없다 [판단]</td>
+</tr>
+<tr>
+<td>Kubernetes</td>
+<td>3단계</td>
+<td>지금은 고정비와 업그레이드 부담만 는다. 이미지를 맞춰 두면 그대로 옮길 수 있다</td>
+</tr>
+<tr>
+<td>AI Gateway</td>
+<td>3단계</td>
+<td>공급자가 하나인 동안 필요 없다. LiteLLM은 2026-03 PyPI 공급망 사고가 있어 쓰면 패키지 버전과 해시, 이미지 digest를 고정한다</td>
+</tr>
+<tr>
+<td>RAG</td>
+<td>2단계</td>
+<td>기획 문서에 이 기능이 없다. 회원 답을 생성하면 ADR-G1과 충돌하므로 직원 검색과 문서 발췌부터 쓴다</td>
+</tr>
+<tr>
+<td>GraphDB</td>
+<td>보류</td>
+<td>권한과 관계는 PostgreSQL 테이블과 RLS로 충분하다 [판단]. Apache AGE의 RDS 지원은 [미확인]이다</td>
+</tr>
+<tr>
+<td>데이터 파이프라인</td>
+<td>3단계</td>
+<td>처음에는 허용 칸 뷰로 충분하다</td>
+</tr>
+<tr>
+<td>AI 서비스 환경</td>
+<td>2단계</td>
+<td>별도 ECS 서비스, GPU 없음 [판단]</td>
+</tr>
+<tr>
+<td>AI 데이터 적재</td>
+<td>2단계</td>
+<td>원본 해시, 임베딩 모델 버전, 청크 버전을 칸으로 둬서 다시 적재할 수 있게 한다</td>
+</tr>
+<tr>
+<td>LangGraph</td>
+<td>3단계</td>
+<td>지금 AI는 에이전트 반복이 거의 없다</td>
+</tr>
+<tr>
+<td>PydanticAI</td>
+<td>2단계</td>
+<td>구조화 출력과 도구 승인에 맞다</td>
+</tr>
+<tr>
+<td>Pydantic v2</td>
+<td>2단계</td>
+<td>FastAPI가 요구한다</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>2단계</td>
+<td>Python 서버로 선택</td>
+</tr>
+<tr>
+<td>msgspec</td>
+<td>안 씀</td>
+<td>FastAPI가 기본 지원하지 않고, 이 서비스의 병목은 직렬화가 아니다</td>
+</tr>
+<tr>
+<td>Litestar</td>
+<td>보류</td>
+<td>4절 참고</td>
+</tr>
+<tr>
+<td>Taskiq</td>
+<td>2단계</td>
+<td>Valkey가 있을 때 쓴다. 스케줄러는 하나만 돌려야 하고 아직 0.x다</td>
+</tr>
+<tr>
+<td>ARQ</td>
+<td>안 씀</td>
+<td>README가 유지보수 전용이라고 밝힌다</td>
+</tr>
+</tbody></table></div>
+<h2 id="6-나중에-고치지-않으려고-처음부터-지킬-것">6. 나중에 고치지 않으려고 처음부터 지킬 것</h2>
+<p>단계를 넘을 때 재작성을 막는 규칙이다. 비용이 거의 없다.</p>
+<ol>
+<li>서비스별 이미지 하나, 설정은 환경변수, 상태는 DB와 S3에 둔다(코어 11절의 &quot;이미지 하나&quot;는 고쳐야 한다). 헬스체크와 SIGTERM 종료를 지원한다. 이렇게 하면 ECS에서 EKS로 이미지를 그대로 옮긴다.</li>
+<li>큐, LLM, 검색, 알림은 인터페이스 뒤에 둔다. 지금 설계의 <code>IntentRouter</code>, <code>Notifier</code>가 이미 그렇다.</li>
+<li>모듈 경계는 첫날부터 CI로 검사한다. 나중에 떼어 낼 수 있는 이유가 이것이다.</li>
+<li>AI 서비스는 업무 DB에 접근하지 않는다. Spring이 <code>authorize()</code> 뒤 허용 칸만 넘긴다(ADR-2, ADR-G4).</li>
+<li>금액은 원 단위 정수, 발행 항목은 불변으로 시작한다. 이 둘은 나중에 고치기 가장 어렵다.</li>
+<li>IaC는 2단계에서 도입하되, 1단계 리소스 이름과 태그를 정리해 둔다.</li>
+</ol>
+<h2 id="7-레드팀">7. 레드팀</h2>
+<p><strong>1. 지금 MVP를 만든다</strong></p>
+<ul>
+<li>깨지는 조건: 2026-11-04 결정과 충돌한다. 프로토타입과 MVP를 같이 진행하면 범위가 다시 넓어진다.</li>
+<li>이번 주 근거: 사용자가 MVP 시기를 정한다.</li>
+<li>포기 기준: 구현 계획 없이는 이 문서를 설계안으로만 쓴다.</li>
+<li>가장 싼 확인: 사용자 답변 한 줄.</li>
+</ul>
+<p><strong>2. Spring으로도 빠르게 띄운다</strong></p>
+<ul>
+<li>깨지는 조건: 속도 우선 평가에서는 AdonisJS, Fastify가 앞선다. 사용자 주력 언어 기록이 없다.</li>
+<li>이번 주 근거: 로그인, 사업장 범위 조회, 청구 1건을 하루 안에 올려 본다.</li>
+<li>포기 기준: 첫 세로 조각이 사흘을 넘기면 Fastify로 바꾼다 [판단].</li>
+<li>가장 싼 확인: 코어 한 흐름 시험.</li>
+</ul>
+<p><strong>3. PostgreSQL 하나로 충분하다</strong></p>
+<ul>
+<li>깨지는 조건: 작업 큐, 안심 타이머, 월 청구가 같은 DB를 쓴다. DB가 멈추면 전부 멈춘다.</li>
+<li>근거: 규모는 작다 [추정]. 다만 안심 넘김은 안전 경로다.</li>
+<li>포기 기준: 월 청구가 넘김 지연을 일으키면 작업자를 나눈다.</li>
+<li>가장 싼 확인: 청구 생성 중 넘김 지연 측정.</li>
+</ul>
+<p><strong>4. 1단계에 RAG와 Python이 필요 없다</strong></p>
+<ul>
+<li>깨지는 조건: 사용자가 원하는 AI 범위가 지금 설계보다 넓다면 2단계를 앞당겨야 한다. 사용자 후보 목록에 RAG, GraphDB, 데이터 파이프라인이 있지만 기획 문서에는 이 기능이 없다.</li>
+<li>이번 주 근거: AI로 무엇을 하려는지 기능 목록을 정한다.</li>
+<li>포기 기준: 첫 데모에 문서 답변이 필요하면 ADR-G1을 먼저 다시 정하고 FastAPI를 1단계로 올린다.</li>
+<li>가장 싼 확인: 사용자 확인.</li>
+</ul>
+<p><strong>5. 1단계 구성으로 실제 데이터를 받는다</strong></p>
+<ul>
+<li>깨지는 조건: Single-AZ, 접속기록 미완성 상태로 실제 입주자 정보를 넣으면 안 된다.</li>
+<li>포기 기준: 실제 데이터가 들어오는 날짜 전에 2단계 요건을 끝낸다.</li>
+<li>가장 싼 확인: 1단계는 가상 데이터만 쓴다고 정한다.</li>
+</ul>
+<p><strong>잘 된 부분</strong>: 이미지와 인터페이스로 이식성을 지키면 Kubernetes를 미룰 수 있다는 판단은 AWS, Google 가이드 방향과 맞다. 서울 AI 처리 차이는 양쪽 공식 문서로 확인했다.</p>
+<p><strong>판단하지 못한 것</strong>: 사용자의 언어 숙련도, 실제 AI 기능 범위, [지원 회사] 계열 보안 기준, 호출벨 설비.</p>
+<h2 id="8-앞선-문서와의-관계">8. 앞선 문서와의 관계</h2>
+<ul>
+<li>Spring 기본, AWS 서울, PostgreSQL, 모듈형 모놀리스는 같다.</li>
+<li>건물 게이트웨이는 이 단계표 밖의 조건부 항목이고 <a href="lab-architecture-landscape.html">architecture-landscape</a>가 그대로 유효하다. 직원 승인 에이전트는 3단계 LangGraph 행과 이어진다.</li>
+<li>사용자가 지정한 후보에 없어서 DBOS를 뺐다. A안(JobRunr)으로 보는 것은 허브 해석이고 사용자 확인이 필요하다.</li>
+</ul>
+<h2 id="9-출처">9. 출처</h2>
+<p><strong>허브가 직접 대조</strong></p>
+<ul>
+<li><a href="https://aws.amazon.com/blogs/machine-learning/introducing-anthropic-models-on-amazon-bedrock-for-in-region-inference-in-seoul-and-singapore/" rel="noopener noreferrer" target="_blank">Bedrock 서울 리전 내 처리</a>: Claude Opus 5, Sonnet 5.</li>
+<li><a href="https://docs.aws.amazon.com/apprunner/latest/dg/apprunner-availability-change.html" rel="noopener noreferrer" target="_blank">App Runner 신규 고객 종료</a>, <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/express-service-overview.html" rel="noopener noreferrer" target="_blank">ECS Express Mode</a>: 추가 요금 없음, ALB 공유, 웹앱과 API 대상. 작업자처럼 HTTP가 없는 서비스에 쓸 수 있는지는 문서에서 확인하지 못해 일반 ECS 서비스로 둘 수 있다 [추정].</li>
+<li><a href="https://github.com/python-arq/arq" rel="noopener noreferrer" target="_blank">ARQ README</a>: &quot;In maintenance only mode&quot;.</li>
+<li><a href="https://docs.spring.io/spring-modulith/reference/events.html" rel="noopener noreferrer" target="_blank">Spring Modulith 이벤트</a>: 기본 외부 전달은 단순한 대신 아웃박스 구현의 핵심 기능이 빠져 있고, 2.1이 Namastack과 JobRunr 연동을 넣었다. 1단계는 외부 브로커가 없어 영향이 없다 [판단].</li>
+<li><a href="https://docs.cloud.google.com/vertex-ai/generative-ai/docs/learn/data-residency" rel="noopener noreferrer" target="_blank">Vertex AI 데이터 위치</a>: 한국 칸은 <code>gemini-2.5-flash</code>(128k)만. 다른 페이지의 폐기일과 어긋나 현재 사용 가능 여부는 [미확인]이다.</li>
+</ul>
+<p><strong>2차 자료뿐인 것</strong>: LiteLLM 사고. 공식 권고문을 직접 열지 못했다. <a href="https://letsdatascience.com/news/litellm-breach-exposes-ai-supply-chain-risk-69f3c6f7" rel="noopener noreferrer" target="_blank">요약 글</a>.</p>
+<p><strong>서브에이전트 조사</strong>(2026-11-04 조회): <a href="https://github.com/fastify/fastify" rel="noopener noreferrer" target="_blank">Fastify</a> 5.12.8, <a href="https://github.com/elysiajs/elysia" rel="noopener noreferrer" target="_blank">ElysiaJS</a> 1.4.30, <a href="https://github.com/adonisjs/queue" rel="noopener noreferrer" target="_blank">AdonisJS 큐</a> 0.7.0, <a href="https://github.com/adonisjs/bodyparser" rel="noopener noreferrer" target="_blank">AdonisJS 본문 처리</a>, <a href="https://github.com/litestar-org/litestar" rel="noopener noreferrer" target="_blank">Litestar</a> 2.25.0, <a href="https://taskiq-python.github.io/guide/scheduling-tasks.html" rel="noopener noreferrer" target="_blank">Taskiq 스케줄</a>, <a href="https://msgspec.dev/benchmarks.html" rel="noopener noreferrer" target="_blank">msgspec 벤치마크</a>, <a href="https://nextjs.org/docs/app/guides/self-hosting" rel="noopener noreferrer" target="_blank">Next.js 자체 호스팅</a>, <a href="https://kubernetes.io/releases/" rel="noopener noreferrer" target="_blank">Kubernetes 릴리스</a>, <a href="https://docs.aws.amazon.com/decision-guides/latest/decision-guides/choosing-aws-container-service.html" rel="noopener noreferrer" target="_blank">AWS 컨테이너 선택 가이드</a>, <a href="https://docs.cloud.google.com/architecture/select-managed-container-runtime-environment" rel="noopener noreferrer" target="_blank">Google 런타임 가이드</a>, <a href="https://www.anthropic.com/news/contextual-retrieval" rel="noopener noreferrer" target="_blank">Anthropic 문맥 검색 글(2024)</a>, <a href="https://github.com/apache/age" rel="noopener noreferrer" target="_blank">Apache AGE</a>, <a href="https://github.com/HKUDS/LightRAG" rel="noopener noreferrer" target="_blank">LightRAG</a>.</p>
+<p><strong>못 찾은 것</strong>: 언어별 한국 공고 수, Spring의 RLS 공식 가이드, Cloud SQL 서울 단가, Python 서비스 분리의 공식 기준, PydanticAI와 LangGraph 병용 운영 사례.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-758" data-title="작업자"><p>요청과 별도로 실행되는 백그라운드 처리 단위. 타이머, 월 청구, 알림 발송, 문서 처리를 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>Worker</dd><dt>출처</dt><dd>설계안 4</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-759" data-title="에이전트"><p>다음 단계를 스스로 고르며 도구를 호출하는 실행. Evenstay에서는 직원용 초안과 제안까지 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>agent</dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+{
+ "SITES": {
+  "S1": {
+   "id": "S1",
+   "name": "새봄 레지던스",
+   "ownerId": "O1",
+   "kind": "시니어 레지던스"
+  },
+  "S2": {
+   "id": "S2",
+   "name": "다온하우스",
+   "ownerId": "O2",
+   "kind": "임대주택"
+  }
+ },
+ "OWNERS": {
+  "O1": {
+   "id": "O1",
+   "name": "온누리 시니어펀드 1호",
+   "siteIds": [
+    "S1"
+   ]
+  },
+  "O2": {
+   "id": "O2",
+   "name": "다온 임대리츠",
+   "siteIds": [
+    "S2"
+   ]
+  }
+ },
+ "RESIDENTS": {
+  "R_EUNSOOK": {
+   "id": "R_EUNSOOK",
+   "name": "이은숙",
+   "room": "A동 201호",
+   "siteId": "S1"
+  },
+  "R_HANGYEOL": {
+   "id": "R_HANGYEOL",
+   "name": "김한결",
+   "room": "A동 201호",
+   "siteId": "S1"
+  },
+  "R_OKJA": {
+   "id": "R_OKJA",
+   "name": "정옥자",
+   "room": "A동 202호",
+   "siteId": "S1"
+  },
+  "R_JEONGHEE": {
+   "id": "R_JEONGHEE",
+   "name": "김정희",
+   "room": "A동 301호",
+   "siteId": "S1"
+  },
+  "R_YEONGSUN": {
+   "id": "R_YEONGSUN",
+   "name": "박영순",
+   "room": "A동 401호",
+   "siteId": "S1"
+  },
+  "R_MALSUN": {
+   "id": "R_MALSUN",
+   "name": "김말순",
+   "room": "B동 302호",
+   "siteId": "S1"
+  },
+  "R_KYUNGSOOK": {
+   "id": "R_KYUNGSOOK",
+   "name": "한경숙",
+   "room": "B동 201호",
+   "siteId": "S1"
+  },
+  "R_SOONDEOK": {
+   "id": "R_SOONDEOK",
+   "name": "최순덕",
+   "room": "B동 402호",
+   "siteId": "S1"
+  }
+ },
+ "PERSONAS": {
+  "hq.han": {
+   "id": "hq.han",
+   "name": "한지우",
+   "group": "운영사",
+   "role": "본사 관리자",
+   "org": "운영사 전체",
+   "key": "HQ_ADMIN",
+   "apps": [
+    "ops"
+   ]
+  },
+  "hq.jung": {
+   "id": "hq.jung",
+   "name": "정하늘",
+   "group": "운영사",
+   "role": "본사 운영 매니저",
+   "org": "운영사 전체",
+   "key": "HQ_OPS",
+   "apps": [
+    "ops"
+   ]
+  },
+  "st.choiym": {
+   "id": "st.choiym",
+   "name": "최영미",
+   "group": "사업장 직원",
+   "role": "사업장 책임자",
+   "org": "새봄 레지던스",
+   "key": "MANAGER",
+   "apps": [
+    "ops"
+   ],
+   "siteId": "S1"
+  },
+  "st.parksy": {
+   "id": "st.parksy",
+   "name": "박소연",
+   "group": "사업장 직원",
+   "role": "경리",
+   "org": "새봄 레지던스",
+   "key": "ACCOUNTING",
+   "apps": [
+    "ops"
+   ],
+   "siteId": "S1"
+  },
+  "st.choims": {
+   "id": "st.choims",
+   "name": "최민수",
+   "group": "사업장 직원",
+   "role": "프런트 직원",
+   "org": "새봄 레지던스",
+   "key": "FRONT",
+   "apps": [
+    "ops"
+   ],
+   "siteId": "S1"
+  },
+  "st.kimhj": {
+   "id": "st.kimhj",
+   "name": "김하진",
+   "group": "사업장 직원",
+   "role": "생활 지원 직원",
+   "org": "새봄 레지던스",
+   "key": "LIFE",
+   "apps": [
+    "ops"
+   ],
+   "siteId": "S1"
+  },
+  "st.parksj": {
+   "id": "st.parksj",
+   "name": "박서준",
+   "group": "사업장 직원",
+   "role": "간호 직원",
+   "org": "새봄 레지던스",
+   "key": "CARE",
+   "apps": [
+    "ops"
+   ],
+   "siteId": "S1"
+  },
+  "st.handy": {
+   "id": "st.handy",
+   "name": "한도윤",
+   "group": "사업장 직원",
+   "role": "사업장 직원",
+   "org": "새봄 레지던스",
+   "key": "STAFF",
+   "apps": [
+    "ops"
+   ],
+   "siteId": "S1",
+   "team": "시설"
+  },
+  "st.ohsj": {
+   "id": "st.ohsj",
+   "name": "오수진",
+   "group": "사업장 직원",
+   "role": "사업장 직원",
+   "org": "새봄 레지던스",
+   "key": "STAFF",
+   "apps": [
+    "ops"
+   ],
+   "siteId": "S1",
+   "team": "청소·세탁"
+  },
+  "st.jungty": {
+   "id": "st.jungty",
+   "name": "정태영",
+   "group": "사업장 직원",
+   "role": "사업장 직원",
+   "org": "새봄 레지던스",
+   "key": "STAFF",
+   "apps": [
+    "ops"
+   ],
+   "siteId": "S1",
+   "team": "운전"
+  },
+  "st.yoonsy": {
+   "id": "st.yoonsy",
+   "name": "윤서연",
+   "group": "사업장 직원",
+   "role": "생활 지원 직원",
+   "org": "새봄 레지던스",
+   "key": "LIFE",
+   "apps": [
+    "ops"
+   ],
+   "siteId": "S1"
+  },
+  "ow.onnuri": {
+   "id": "ow.onnuri",
+   "name": "온누리 담당자",
+   "group": "소유주",
+   "role": "소유주",
+   "org": "온누리 시니어펀드 1호",
+   "key": "OWNER",
+   "apps": [
+    "ops"
+   ],
+   "ownerId": "O1"
+  },
+  "ow.daon": {
+   "id": "ow.daon",
+   "name": "다온 담당자",
+   "group": "소유주",
+   "role": "소유주",
+   "org": "다온 임대리츠",
+   "key": "OWNER",
+   "apps": [
+    "ops"
+   ],
+   "ownerId": "O2"
+  },
+  "m.eunsook": {
+   "id": "m.eunsook",
+   "name": "이은숙",
+   "group": "입주자",
+   "role": "입주자",
+   "org": "새봄 레지던스 A동 201호",
+   "key": "MEMBER",
+   "apps": [
+    "home"
+   ],
+   "residentId": "R_EUNSOOK"
+  },
+  "m.malsun": {
+   "id": "m.malsun",
+   "name": "김말순",
+   "group": "입주자",
+   "role": "입주자",
+   "org": "새봄 레지던스 B동 302호",
+   "key": "MEMBER",
+   "apps": [
+    "home"
+   ],
+   "residentId": "R_MALSUN"
+  },
+  "m.jeonghee": {
+   "id": "m.jeonghee",
+   "name": "김정희",
+   "group": "입주자",
+   "role": "입주자",
+   "org": "새봄 레지던스 A동 301호",
+   "key": "MEMBER",
+   "apps": [
+    "home"
+   ],
+   "residentId": "R_JEONGHEE"
+  },
+  "g.jimin": {
+   "id": "g.jimin",
+   "name": "김지민",
+   "group": "보호자",
+   "role": "보호자",
+   "org": "이은숙 입주자의 딸",
+   "key": "GUARDIAN",
+   "apps": [
+    "family"
+   ],
+   "residentId": "R_EUNSOOK",
+   "relation": "딸"
+  },
+  "g.sujin": {
+   "id": "g.sujin",
+   "name": "김수진",
+   "group": "보호자",
+   "role": "보호자",
+   "org": "김말순 입주자의 장녀",
+   "key": "GUARDIAN",
+   "apps": [
+    "family"
+   ],
+   "residentId": "R_MALSUN",
+   "relation": "장녀"
+  },
+  "g.leesj": {
+   "id": "g.leesj",
+   "name": "이수진",
+   "group": "보호자",
+   "role": "보호자",
+   "org": "김정희 입주자의 딸",
+   "key": "GUARDIAN",
+   "apps": [
+    "family"
+   ],
+   "residentId": "R_JEONGHEE",
+   "relation": "딸"
+  },
+  "g.leemh": {
+   "id": "g.leemh",
+   "name": "이민호",
+   "group": "보호자",
+   "role": "보호자",
+   "org": "김정희 입주자의 아들",
+   "key": "GUARDIAN",
+   "apps": [
+    "family"
+   ],
+   "residentId": "R_JEONGHEE",
+   "relation": "아들"
+  },
+  "p.taeho": {
+   "id": "p.taeho",
+   "name": "김태호",
+   "group": "대리인",
+   "role": "대리인(위임장)",
+   "org": "이은숙 입주자의 아들",
+   "key": "PROXY",
+   "apps": [
+    "home",
+    "family"
+   ],
+   "residentId": "R_EUNSOOK",
+   "relation": "아들"
+  },
+  "p.dohyun": {
+   "id": "p.dohyun",
+   "name": "김도현",
+   "group": "대리인",
+   "role": "대리인(한정후견)",
+   "org": "김말순 입주자의 아들",
+   "key": "PROXY",
+   "apps": [
+    "home",
+    "family"
+   ],
+   "residentId": "R_MALSUN",
+   "relation": "아들"
+  }
+ },
+ "GROUP_ORDER": [
+  "운영사",
+  "사업장 직원",
+  "소유주",
+  "입주자",
+  "보호자",
+  "대리인"
+ ]
+}

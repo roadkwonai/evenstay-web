@@ -1,0 +1,156 @@
+[
+ {
+  "id": "hq.han",
+  "name": "한지우",
+  "role": "본사 관리자",
+  "org": "운영사 전체",
+  "go": "CORE-01"
+ },
+ {
+  "id": "hq.jung",
+  "name": "정하늘",
+  "role": "본사 운영 매니저",
+  "org": "운영사 전체",
+  "go": "CORE-01"
+ },
+ {
+  "id": "st.choiym",
+  "name": "최영미",
+  "role": "사업장 책임자",
+  "org": "새봄 레지던스",
+  "go": "CORE-01"
+ },
+ {
+  "id": "st.parksy",
+  "name": "박소연",
+  "role": "경리",
+  "org": "새봄 레지던스",
+  "go": "CORE-01"
+ },
+ {
+  "id": "st.choims",
+  "name": "최민수",
+  "role": "프런트 직원",
+  "org": "새봄 레지던스",
+  "go": "REQ-12"
+ },
+ {
+  "id": "st.kimhj",
+  "name": "김하진",
+  "role": "생활 지원 직원",
+  "org": "새봄 레지던스",
+  "go": "SAF-12"
+ },
+ {
+  "id": "st.parksj",
+  "name": "박서준",
+  "role": "간호 직원",
+  "org": "새봄 레지던스",
+  "go": "SAF-12"
+ },
+ {
+  "id": "st.handy",
+  "name": "한도윤",
+  "role": "사업장 직원",
+  "org": "새봄 레지던스",
+  "go": "REQ-12"
+ },
+ {
+  "id": "st.ohsj",
+  "name": "오수진",
+  "role": "사업장 직원",
+  "org": "새봄 레지던스",
+  "go": "REQ-12"
+ },
+ {
+  "id": "st.jungty",
+  "name": "정태영",
+  "role": "사업장 직원",
+  "org": "새봄 레지던스",
+  "go": "REQ-12"
+ },
+ {
+  "id": "st.yoonsy",
+  "name": "윤서연",
+  "role": "생활 지원 직원",
+  "org": "새봄 레지던스",
+  "go": "SAF-12"
+ },
+ {
+  "id": "ow.onnuri",
+  "name": "온누리 담당자",
+  "role": "소유주",
+  "org": "온누리 시니어펀드 1호",
+  "go": "CORE-09"
+ },
+ {
+  "id": "ow.daon",
+  "name": "다온 담당자",
+  "role": "소유주",
+  "org": "다온 임대리츠",
+  "go": "CORE-09"
+ },
+ {
+  "id": "m.eunsook",
+  "name": "이은숙",
+  "role": "입주자",
+  "org": "새봄 레지던스 A동 201호",
+  "go": "COM-07"
+ },
+ {
+  "id": "m.malsun",
+  "name": "김말순",
+  "role": "입주자",
+  "org": "새봄 레지던스 B동 302호",
+  "go": "COM-07"
+ },
+ {
+  "id": "m.jeonghee",
+  "name": "김정희",
+  "role": "입주자",
+  "org": "새봄 레지던스 A동 301호",
+  "go": "COM-07"
+ },
+ {
+  "id": "g.jimin",
+  "name": "김지민",
+  "role": "보호자",
+  "org": "이은숙 입주자의 딸",
+  "go": "FAM-06a"
+ },
+ {
+  "id": "g.sujin",
+  "name": "김수진",
+  "role": "보호자",
+  "org": "김말순 입주자의 장녀",
+  "go": "FAM-06a"
+ },
+ {
+  "id": "g.leesj",
+  "name": "이수진",
+  "role": "보호자",
+  "org": "김정희 입주자의 딸",
+  "go": "FAM-06a"
+ },
+ {
+  "id": "g.leemh",
+  "name": "이민호",
+  "role": "보호자",
+  "org": "김정희 입주자의 아들",
+  "go": "FAM-06a"
+ },
+ {
+  "id": "p.taeho",
+  "name": "김태호",
+  "role": "대리인(위임장)",
+  "org": "이은숙 입주자의 아들",
+  "go": "COM-07"
+ },
+ {
+  "id": "p.dohyun",
+  "name": "김도현",
+  "role": "대리인(한정후견)",
+  "org": "김말순 입주자의 아들",
+  "go": "COM-07"
+ }
+]

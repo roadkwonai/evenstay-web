@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js');</script>
+<title>오시는 길 | Evenstay</title>
+<meta name="description" content="오시기 전에 전화로 날짜를 먼저 잡아 주세요.">
+<link rel="icon" href="../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../css/proto.css">
+<link rel="stylesheet" href="../shared/topbar.css">
+<link rel="stylesheet" href="css/site.css">
+<noscript><style>.s-sheet, .s-scrim, .s-dlg, .p-gal-ctl, .hero-arrow, .hero-pause { display: none; }</style></noscript>
+</head>
+<body>
+<div id="topbar"></div>
+<div class="site" id="top"><div class="s-q">
+<a class="s-skip" href="#main">본문으로</a>
+<span class="s-sent" aria-hidden="true"></span>
+<header class="s-bar">
+  <div class="s-wrap s-bar-in">
+    <a class="s-logo" href="index.html"><img src="../assets/logo/evenstay-logo-light.svg" alt="Evenstay 메인으로"></a>
+    <nav class="s-nav" aria-label="주요 메뉴"><a href="rooms.html">숙소</a><a href="life.html">생활</a><a href="dining.html">식사</a><a href="location.html" aria-current="page">오시는 길</a></nav>
+    <button class="s-tel" type="button" data-click="openTel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><span class="s-long">전화 상담 02-000-0000 (가상 번호)</span><span class="s-short">전화</span></button>
+    <button class="s-tel" type="button" aria-haspopup="dialog" data-click="openMenu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg><span class="s-long">전체 메뉴</span><span class="s-short">메뉴</span></button>
+    <a class="btn btn-primary" href="consult.html">입주 상담 신청</a>
+  </div>
+</header><main id="main">
+<section class="p-head" aria-labelledby="ph">
+  <div class="s-wrap p-head-in">
+    <div class="p-head-t"><h1 id="ph">오시는 길</h1><p class="s-read">오시기 전에 전화로 날짜를 먼저 잡아 주세요.</p></div>
+    <figure><img class="s-photo r169" src="assets/img-fac-gate.webp" alt="유리로 된 1층 입구와 진입로가 보이는 건물 정면"><figcaption><p class="s-cap">유리로 된 1층 입구가 정문이에요.<span class="s-ai">AI로 만든 가상 사진</span></p></figcaption></figure>
+  </div>
+</section>
+<section class="s-sec " aria-label="주소와 교통">
+  <div class="s-wrap"><div class="p-75"><div class="p-map"><figure><div class="p-plan"><img class="s-photo r43" src="assets/map-1.webp" alt="가상 안뜰역 2번 출구로 나와 큰길을 따라 걸으면 왼쪽에 안뜰공원이 있고, 공원을 지나 오른쪽에 Evenstay 정문과 두 동 건물이 있다." loading="lazy"><div aria-hidden="true"><span class="p-pin on-c" style="--x: 28.4%; --y: 83%; --l: 0cqw;">가상선 안뜰역</span><span class="p-pin on-c" style="--x: 28.4%; --y: 89%; --l: 0cqw;">2번 출구</span><span class="p-pin on-c" style="--x: 36.5%; --y: 46%; --l: 0cqw;">안뜰공원</span><span class="p-pin on-c" style="--x: 58%; --y: 64%; --l: 0cqw;">Evenstay 정문</span><span class="p-pin on-c is-inv" style="--x: 64%; --y: 51.5%; --l: 0cqw;">A동</span><span class="p-pin on-c is-inv" style="--x: 83.3%; --y: 51.5%; --l: 0cqw;">B동</span></div></div><figcaption><ul class="sr-only"><li>가상선 안뜰역</li><li>2번 출구</li><li>안뜰공원</li><li>Evenstay 정문</li><li>A동</li><li>B동</li></ul><span class="s-ai">약도는 가상 그림이에요. 실제 지도가 아니에요.</span></figcaption></figure></div>
+    <div class="s-stack"><div class="s-stack-s"><p class="s-lead">가상시 안뜰구 머묾로 12 (가상 주소)</p><div><button class="btn btn-secondary btn-md" type="button" data-click="copyAddr"><s-if data-if="notCopied"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>주소 복사</s-if><s-if data-if="copied" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>주소를 복사했어요.</s-if></button></div></div>
+      <ul class="p-list"><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3.1V7a4 4 0 0 0 8 0V3.1"/><path d="m9 15-1-1"/><path d="m15 15 1-1"/><path d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z"/><path d="m8 19-2 3"/><path d="m16 19 2 3"/></svg><p>가상선 안뜰역 2번 출구로 나오세요.</p></li><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></svg><p>가상 버스 12번을 타고 안뜰공원 정류장에서 내리세요.</p></li><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><p>차로 오시면 주차할 곳을 방문 전에 전화로 물어봐 주세요.</p></li><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><p>오시기 전에 전화로 날짜를 먼저 잡아 주세요.</p></li></ul><div><button class="btn btn-secondary" type="button" data-click="openTel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>전화 상담 02-000-0000 (가상 번호)</button></div></div></div></div>
+</section>
+<section class="s-sec s-tint" aria-label="입주 상담">
+  <div class="s-wrap p-band-in">
+    <p>궁금하신 점이 있으면 상담을 신청해 주세요. 숙소와 비용은 상담 때 안내해 드려요.</p>
+    <div class="p-band-act"><a class="btn btn-primary" href="consult.html">입주 상담 신청</a><button class="btn btn-secondary" type="button" data-click="openTel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>전화 상담 02-000-0000 (가상 번호)</button></div>
+  </div>
+</section></main>
+<footer class="s-foot">
+  <div class="s-wrap s-foot-grid">
+    <div class="s-stack-s">
+      <img src="../assets/logo/evenstay-logo-light.svg" alt="Evenstay">
+      <p>Evenstay는 포트폴리오로 만든 가상 시니어 레지던스예요. 실제로 운영하는 곳이 아니에요.</p>
+      <p>사이트의 사진과 영상은 모두 AI로 만든 가상 장면이에요. 나오는 분들도 실제 인물이 아니에요.</p>
+      <p>전화 02-000-0000 (가상 번호) · 가상시 안뜰구 머묾로 12 (가상 주소)</p>
+      <p>상담 신청은 데모라서 어디에도 보내지 않아요.</p>
+      <p>시니어 레지던스 운영 시스템 기획과 프로토타입을 보여 드리려고 만든 사이트예요.</p>
+    </div>
+    <div class="s-stack-s">
+      <nav aria-label="페이지 링크"><ul><li><a href="about.html">소개</a></li><li><a href="facility.html">시설</a></li><li><a href="rooms.html">숙소</a></li><li><a href="life.html">생활</a></li><li><a href="dining.html">식사</a></li><li><a href="safety.html">안심·건강 지원</a></li><li><a href="location.html" aria-current="page">오시는 길</a></li><li><a href="consult.html">입주 상담</a></li><li><a href="privacy.html">개인정보 처리방침</a></li></ul></nav>
+      <a class="s-link" href="#top"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>맨 위로</a>
+    </div>
+  </div>
+</footer></div>
+<s-if data-if="menuOpen" hidden>
+  <div class="s-sheet" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+    <div class="s-wrap">
+      <div class="s-sheet-top">
+        <img src="../assets/logo/evenstay-logo-light.svg" alt="Evenstay" style="height: 28px; width: auto;">
+        <button class="btn btn-ghost" type="button" data-click="closeMenu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>닫기</button>
+      </div>
+      <ul><li><a href="about.html" data-click="closeMenu">소개</a></li><li><a href="facility.html" data-click="closeMenu">시설</a></li><li><a href="rooms.html" data-click="closeMenu">숙소</a></li><li><a href="life.html" data-click="closeMenu">생활</a></li><li><a href="dining.html" data-click="closeMenu">식사</a></li><li><a href="safety.html" data-click="closeMenu">안심·건강 지원</a></li><li><a href="location.html" aria-current="page" data-click="closeMenu">오시는 길</a></li><li><a href="consult.html" data-click="closeMenu">입주 상담</a></li></ul>
+    </div>
+  </div>
+</s-if>
+<s-if data-if="telOpen" hidden>
+  <div class="s-scrim"></div>
+  <div class="s-dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-h" style="top: 16px;">
+    <h2 class="s-sub" id="dlg-h">가상 번호예요</h2>
+    <p>이 사이트는 포트폴리오로 만든 데모예요. 02-000-0000은 가상 번호라 전화가 걸리지 않아요.</p>
+    <div class="s-dlg-act"><button class="btn btn-primary" type="button" data-click="closeTel">알겠어요</button><a class="btn btn-secondary" href="consult.html">입주 상담 신청하기</a></div>
+  </div>
+</s-if></div>
+<script type="module">import('../shared/topbar.js').then((m) => m.mountTopbar(document.getElementById('topbar'), { base: '../' }));</script>
+<script src="js/site.js" defer></script>
+</body>
+</html>

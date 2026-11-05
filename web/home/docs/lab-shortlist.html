@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>아이디어 후보 좁히기 | Evenstay 문서</title>
+<meta name="description" content="아이디어 후보 좁히기. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>아이디어 후보 좁히기</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#제안-구조-하나의-코어-모듈">제안 구조: 하나의 코어 + 모듈</a></li><li class="lv2"><a href="#후보">후보</a></li><li class="lv2"><a href="#a-계약청구-코어-pms-core-billing">A. 계약·청구 코어 pms-core-billing</a></li><li class="lv2"><a href="#b-이상-신호-통합-허브-safety-signal-hub">B. 이상 신호 통합 허브 safety-signal-hub</a></li><li class="lv2"><a href="#c-케어-단계-전환-관리-care-stage-transition">C. 케어 단계 전환 관리 care-stage-transition</a></li><li class="lv2"><a href="#d-동의-기반-보호자-포털-family-consent-portal">D. 동의 기반 보호자 포털 family-consent-portal</a></li><li class="lv2"><a href="#e-입주-상담-crm-ai-문의-에이전트-move-in-crm-agent-예비">E. 입주 상담 CRM + AI 문의 에이전트 move-in-crm-agent (예비)</a></li><li class="lv2"><a href="#확정된-것-2026-11-02">확정된 것 (2026-11-02)</a></li><li class="lv2"><a href="#축-8시니어-금융-반영-확정-2026-11-02-기존-모듈에-넣는-안-아래-통합안에-포함">축 8(시니어 금융) 반영 — 확정 (2026-11-02, 기존 모듈에 넣는 안. 아래 통합안에 포함)</a></li><li class="lv2"><a href="#ai-비서금융-자산관리-반영-확정-2026-11-02-통합안">AI 비서·금융 자산관리 반영 — 확정 (2026-11-02, 통합안)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-739" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-740" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-741" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-742" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li><li><button class="term" type="button" data-modal="g-743" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li></ul></section></aside>
+  <article class="doc"><p>근거: <code>scorecard.md</code>(점수), <code>../drafts/ost.md</code>(기회), <code>../drafts/value-propositions.md</code>(가치 제안), <code>../drafts/assumptions.md</code>(가정)</p>
+<h2 id="제안-구조-하나의-코어-모듈">제안 구조: 하나의 코어 + 모듈</h2>
+<p>평가표 상위 5개 중 계약(I-21), 청구 원장(I-07), 식사 정산(I-06), PMS 코어(I-24)는 같은 데이터(사이트, 호실, 입주자, 계약, 청구)를 다룬다. 따로 만들면 같은 것을 네 번 만들게 된다. 그래서 이 넷을 <strong>A. 코어</strong>로 묶고, 나머지를 그 위에 얹는 모듈로 제안한다.</p>
+<pre><code>          ┌───────────── D. 보호자 포털 (공통 출구: B·C의 결과를 동의 범위 안에서 보호자에게) ─────────────┐
+          │                                                                                             │
+   B. 이상 신호 허브          C. 케어 단계 전환            E. 입주 상담 CRM + AI 에이전트 (예비)
+          │                          │                              │
+          └──────────────── A. 계약·청구 코어 (사이트, 호실, 입주자, 계약, 청구, 권한) ─────────────────┘</code></pre>
+<ul>
+<li>면접에서는 &quot;[지원 회사] PMS를 이렇게 설계하겠다&quot;는 하나의 이야기가 된다. 각 모듈은 따로 데모할 수 있다.</li>
+<li>시드 데이터는 공유한다: 가상의 운영사 1곳, 소유주 2곳, 사이트 2곳(시니어하우징 1, 임대주택 1), 가상 입주자.</li>
+<li><strong>이 구조는 사용자 결정이 필요하다.</strong> 각 MVP를 완전히 독립된 앱으로 만들고 싶다면 A의 최소 부분을 각 프로젝트에 복제해야 한다.</li>
+</ul>
+<h2 id="후보">후보</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>순서</th>
+<th>slug</th>
+<th>MVP</th>
+<th>묶은 아이디어</th>
+<th>평가 점수</th>
+<th>주 이용자</th>
+<th>형태</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>pms-core-billing</code></td>
+<td>A. 계약·청구 코어</td>
+<td>I-24, I-21, I-07, I-06</td>
+<td>4.10 / 3.95 / 3.75 / 3.60</td>
+<td>운영 매니저, 경리</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>safety-signal-hub</code></td>
+<td>B. 이상 신호 통합 허브</td>
+<td>I-12</td>
+<td>4.35</td>
+<td>야간 직원, 보호자</td>
+<td>B2B (+보호자 알림)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>family-consent-portal</code></td>
+<td>D. 동의 기반 보호자 포털</td>
+<td>I-18, I-19</td>
+<td>4.05 / 3.40</td>
+<td>보호자, 입주자</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>care-stage-transition</code></td>
+<td>C. 케어 단계 전환 관리</td>
+<td>I-13, I-14</td>
+<td>4.30 / 3.80</td>
+<td>입주자, 보호자, 운영사</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>예비</td>
+<td><code>move-in-crm-agent</code></td>
+<td>E. 입주 상담 CRM + AI 문의 에이전트</td>
+<td>I-01, I-27</td>
+<td>3.50 / 3.50</td>
+<td>입주 고려자, 상담 직원</td>
+<td>B2B2C</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li><strong>순서 이유</strong>: B, C, D는 A의 데이터(입주자, 계약, 요금)를 쓴다. A를 먼저 만들면 뒤의 MVP가 빨라진다. D는 B·C의 결과를 보호자에게 보여주는 공통 출구라서 C보다 먼저 둔다. C는 계약·요금(A)과 보호자 통지(D)를 모두 쓴다.</li>
+<li><strong>점수만 보면 B와 C가 A보다 높다.</strong> 그런데도 A를 먼저 둔 것은 의존 관계 때문이다. A를 먼저 만드는 것이 어렵다면 B를 독립 MVP로 먼저 만들 수 있다. B는 입주자·직원 정보만 있으면 된다.</li>
+<li>E는 공고의 AI Agent 요구와 직접 연결되지만 점수가 낮고 흔한 CRM과 구분하기 어렵다. 일정에 여유가 있을 때 만든다.</li>
+<li>탈락·보류한 아이디어와 이유는 <code>scorecard.md</code>에 있다. I-14(외부 돌봄 연계)는 C에, I-19(주간 리포트)는 D에 흡수했다. I-25(소유주 리포트)는 A의 다음 버전 후보다.</li>
+</ul>
+<hr>
+<h2 id="a-계약청구-코어-pms-core-billing">A. 계약·청구 코어 <code>pms-core-billing</code></h2>
+<ul>
+<li><strong>문제</strong><ul>
+<li>P-017: 시니어하우징 전용 운영 SW가 국내에서 확인되지 않는다.</li>
+<li>P-018: 소유주별로 데이터를 나누고 정산해야 한다.</li>
+<li>P-006: 식사 기록이 곧 청구 근거다.</li>
+<li>P-014, P-015: 사별 승계, 중도 해지 정산이 필요하다.</li>
+</ul>
+</li>
+<li><strong>이용자</strong>: 운영 매니저(U5), 경리·현장 직원(U4). 입주자·보호자는 명세서만 본다.</li>
+<li><strong>가치 제안</strong>: 소유주가 다른 여러 시니어하우징·임대 사이트의 계약과 청구를 하나의 기준으로 처리하고, 바뀐 모든 것을 이력으로 남기는 운영 코어.</li>
+<li><strong>가장 위험한 가정</strong>: 시니어하우징 청구 규칙(의무식 감면, 보증금·월비 교환, 선납, 몰취)을 공개 자료로 모델링할 수 있다.</li>
+<li><strong>데모 시나리오 (5분)</strong><ol>
+<li>운영사 계정으로 소유주 2곳, 사이트 2곳(시니어 1, 임대 1)을 본다.</li>
+<li>시니어 사이트에서 부부 계약을 체결하고 입주 처리한다.</li>
+<li>한 달 식사 기록(결식 포함)을 넣고 월 청구를 생성해 감면이 반영된 명세서를 보인다.</li>
+<li>배우자 사별로 계약을 1인으로 승계하고 요금이 바뀌는 이력을 보인다.</li>
+<li>소유주 계정으로 바꿔 자기 사이트 데이터만 보이는 것을 확인한다.</li>
+</ol>
+</li>
+<li><strong>계속/중단 기준</strong><ul>
+<li>계속: 시설 2~3곳 요금표의 규칙을 같은 모델로 표현할 수 있다.</li>
+<li>축소: 규칙 예외가 너무 많으면 식비·생활비·감면 3개 규칙만 남긴다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="b-이상-신호-통합-허브-safety-signal-hub">B. 이상 신호 통합 허브 <code>safety-signal-hub</code></h2>
+<ul>
+<li><strong>문제</strong>: P-010(야간 응급 대응 공백), P-025(안부 신호 분절), P-028(낙상 발견 지연).</li>
+<li><strong>이용자</strong>: 야간 직원(U4). 보호자(U3)와 입주자(U1)는 결과 알림을 받는다.</li>
+<li><strong>가치 제안</strong>: 흩어진 안전 신호를 한곳에 모아 사람이 놓치지 않고 대응하게 하고, 그 과정을 기록으로 남기는 허브.</li>
+<li><strong>가장 위험한 가정</strong><ul>
+<li>현장에서 신호가 흩어져 놓치는 일이 실제로 있다(현장 근거 없음).</li>
+<li>시스템이 판단을 대신하지 않는다.</li>
+</ul>
+</li>
+<li><strong>데모 시나리오</strong><ol>
+<li>기기 시뮬레이터가 &quot;침대 이탈 30분 미복귀&quot;, &quot;호출벨&quot;, &quot;출입문 야간 개방&quot; 이벤트를 보낸다.</li>
+<li>같은 이벤트를 두 번 보내 한 번만 처리되는 것을 보인다(멱등성).</li>
+<li>규칙에 따라 담당 직원에게 알림이 가고, 5분간 응답이 없으면 다음 직원에게 넘어간다.</li>
+<li>직원이 확인하고 조치를 기록한다.</li>
+<li>동의한 보호자에게만 결과 요약이 간다.</li>
+</ol>
+</li>
+<li><strong>계속/중단 기준</strong><ul>
+<li>계속: 종사자 인터뷰 1~2명에서 경로가 여러 개라 놓친 사례가 나온다.</li>
+<li>전환: 사례가 없으면 &quot;기록과 인계&quot; 중심으로 범위를 바꾼다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="c-케어-단계-전환-관리-care-stage-transition">C. 케어 단계 전환 관리 <code>care-stage-transition</code></h2>
+<ul>
+<li><strong>문제</strong><ul>
+<li>P-003: 계속 살 수 있는지 불안하다.</li>
+<li>P-019: 외부 돌봄과 시설 서비스가 겹치거나 빠진다.</li>
+<li>P-031: 인지 저하가 늦게 발견된다.</li>
+<li>P-020: 퇴원 후 복귀할 때 케어 계획이 맞지 않는다.</li>
+</ul>
+</li>
+<li><strong>이용자</strong>: 입주자(U1), 보호자(U3), 운영사(U4, U5).</li>
+<li><strong>가치 제안</strong>: 건강이 바뀌어도 무엇이 바뀌고 무엇이 그대로인지 미리 보여주고, 그 결정을 근거와 함께 남기는 단계 관리.</li>
+<li><strong>가장 위험한 가정</strong><ul>
+<li>단계 판정이 낙인이나 퇴거 근거로 오용되지 않는다.</li>
+<li>2026-10 개정안이 원안대로 확정된다(입법예고 2026-11-23 종료).</li>
+</ul>
+</li>
+<li><strong>데모 시나리오</strong><ol>
+<li>사이트별 단계 정의(자립 → 생활 지원 → 외부 돌봄 병행 → 전원 검토)를 본다.</li>
+<li>입주자가 낙상 후 퇴원해 평가를 기록하고 단계를 바꾼다.</li>
+<li>바뀐 서비스와 요금이 A의 계약에 반영되고, 보호자에게 통지된다.</li>
+<li>외부 방문요양 일정이 입주자 타임라인에 붙고, 시설 서비스와 시간이 겹치면 경고한다.</li>
+<li>입주자·보호자 화면에서 현재 단계와 다음 단계의 조건을 보인다.</li>
+</ol>
+</li>
+<li><strong>계속/중단 기준</strong><ul>
+<li>계속: 시니어·보호자 인터뷰 3명 중 2명 이상이 전환 시점의 정보 부족을 말한다.</li>
+<li>수정: 개정안이 크게 바뀌면 단계 정의를 수정한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="d-동의-기반-보호자-포털-family-consent-portal">D. 동의 기반 보호자 포털 <code>family-consent-portal</code></h2>
+<ul>
+<li><strong>문제</strong>: P-023(보호자 정보 분절), P-024(진료 정보 흩어짐), P-041(가족 돌봄 소진).</li>
+<li><strong>이용자</strong>: 보호자(U3)와 입주자(U1).</li>
+<li><strong>가치 제안</strong>: 입주자가 허락한 만큼만, 보호자가 한곳에서 부모의 생활과 변화를 보게 하는 포털.</li>
+<li><strong>가장 위험한 가정</strong><ul>
+<li>보호자가 한곳에서 보기를 원한다(한국 정량 근거 없음).</li>
+<li>동의 철회가 즉시 반영된다.</li>
+</ul>
+</li>
+<li><strong>데모 시나리오</strong><ol>
+<li>입주자 1명에 보호자 2명(딸, 아들)이 연결되어 있다.</li>
+<li>입주자(또는 대리 설정하는 직원)가 딸에게는 청구·건강 이벤트를, 아들에게는 생활 리포트만 허용한다.</li>
+<li>두 보호자 화면이 다르게 보인다.</li>
+<li>주간 리포트가 자동 생성되고 직원이 검수 후 발송한다.</li>
+<li>동의를 철회하자 즉시 접근이 막히고, 그 기록이 감사 로그에 남는다.</li>
+</ol>
+</li>
+<li><strong>계속/중단 기준</strong><ul>
+<li>계속: 보호자 인터뷰 3~5명 중 과반이 여러 곳에서 따로 확인하는 불편을 말한다.</li>
+<li>축소: 그렇지 않으면 동의·권한 모델만 A에 남긴다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="e-입주-상담-crm-ai-문의-에이전트-move-in-crm-agent-예비">E. 입주 상담 CRM + AI 문의 에이전트 <code>move-in-crm-agent</code> (예비)</h2>
+<ul>
+<li><strong>문제</strong>: P-004(대기 2년), P-005(비용 비교 어려움), P-016(요양시설과 혼동).</li>
+<li><strong>이용자</strong>: 입주 고려자(U2), 보호자(U3), 상담 직원.</li>
+<li><strong>가치 제안</strong>: 반복 문의는 에이전트가 PMS 데이터로 답하고, 결정이 필요한 상담은 사람이 이어받는 입주 파이프라인.</li>
+<li><strong>가장 위험한 가정</strong>: 에이전트가 비용이나 자격을 두고 틀린 약속을 하지 않는다.</li>
+<li><strong>데모 시나리오</strong>: 보호자가 &quot;30평 2인 월 비용&quot;을 묻는다. 에이전트가 요금 API로 답하고 근거를 표시한다. &quot;어머니가 치매 초기인데 입주 가능한가요?&quot;에는 답하지 않고 상담 직원에게 넘긴다. 대기 등록이 CRM 파이프라인에 들어간다.</li>
+<li><strong>계속/중단 기준</strong><ul>
+<li>계속: 시설 FAQ와 상담 사례에서 반복 질문 유형이 5개 이상 나온다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="확정된-것-2026-11-02">확정된 것 (2026-11-02)</h2>
+<ol>
+<li>숏리스트 4개 + 예비 1개</li>
+<li>코어 + 모듈 구조</li>
+<li>순서: A → B → D → C, E는 여유가 있을 때 → <strong>통합안으로 A → B → D → G → C로 변경</strong> (아래 마지막 절)</li>
+</ol>
+<hr>
+<h2 id="축-8시니어-금융-반영-확정-2026-11-02-기존-모듈에-넣는-안-아래-통합안에-포함">축 8(시니어 금융) 반영 — 확정 (2026-11-02, 기존 모듈에 넣는 안. 아래 통합안에 포함)</h2>
+<p>사용자 요청으로 자산 관리, 투자, 지출 관리 아이디어(I-29~I-36)를 추가 평가했다(<code>scorecard.md</code> 축 8 절).</p>
+<p><strong>판정</strong></p>
+<ul>
+<li><strong>투자 추천(I-35)은 탈락</strong>이다. 투자 판단 자문은 등록이 필요한 전문 영역이고 평가 기준 통과 조건에 걸린다.</li>
+<li><strong>계좌 연동 자산 대시보드(I-36)는 범위 밖</strong>이다. 마이데이터 허가가 필요하다.</li>
+<li>상위 3개는 모두 돈을 둘러싼 <strong>권한·기록·설명</strong>이다. <strong>I-30 대리권·후견 상태 관리(4.45, 전체 1위)</strong>, I-29 청구 명세 설명·이의 제기(4.05), I-31 금전 업무 경계·감사(3.95)다.</li>
+</ul>
+<p><strong>제안: 새 MVP를 만들지 않고 기존 모듈에 넣는다</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>아이디어</th>
+<th>넣을 곳</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I-30 대리권·후견 상태 관리</td>
+<td><strong>A 코어</strong> (계약 당사자·대리인 모델)</td>
+<td>누가 서명·결제·열람할 수 있는지는 코어 권한 모델의 일부다. D(보호자 관계)와 C(인지 저하로 단계 전환)가 이 모델을 그대로 쓴다</td>
+</tr>
+<tr>
+<td>I-29 청구 명세 설명·이의 제기</td>
+<td><strong>A 코어</strong> (청구 원장)</td>
+<td>원장의 각 항목이 근거(식사 기록, 감면 규칙)를 가리키게 하면 된다</td>
+</tr>
+<tr>
+<td>I-31 금전 업무 경계·감사</td>
+<td><strong>D 보호자 포털</strong> (권한·감사)</td>
+<td>금지된 금전 업무를 보호자·대리인에게 넘기는 흐름은 D의 동의·감사 로그를 쓴다</td>
+</tr>
+<tr>
+<td>I-32 입주 자금 계획 (본인 입력)</td>
+<td>E 예비 (입주 상담)</td>
+<td>상담 과정의 계산기. 상품 추천은 넣지 않는다</td>
+</tr>
+<tr>
+<td>I-33, I-34</td>
+<td>보류</td>
+<td>회사 사업·직무 적합성이 낮다</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>대안은 I-30과 I-31을 묶어 별도 모듈 <strong>F. 재산 보호·대리권 관리</strong>로 만드는 것이다. 장점은 &quot;인지 저하 입주자의 돈과 계약을 지킨다&quot;는 이야기를 따로 보여줄 수 있다는 점이다. 단점은 A·D와 데이터가 크게 겹쳐 중복이 생긴다는 점이다.</li>
+</ul>
+<hr>
+<h2 id="ai-비서금융-자산관리-반영-확정-2026-11-02-통합안">AI 비서·금융 자산관리 반영 — 확정 (2026-11-02, 통합안)</h2>
+<p>사용자 요청(2026-11-02)으로 시니어 AI 비서와 금융 자산관리 서비스를 리서치한 뒤 다시 평가했다. 근거는 <code>scorecard.md</code> &quot;축 9·10 반영 재평가&quot;, 설계는 <code>../drafts/ai-assistant.md</code>.</p>
+<p><strong>제안 구조</strong> (위 &quot;축 8 반영 제안&quot;을 포함한 통합안)</p>
+<pre><code>                    G. AI 생활 비서 (새 모듈, 4.05) — 회원·보호자의 단일 창구
+                    ┌─────────────┬─────────────┬─────────────┐
+   B. 이상 신호 허브     D. 보호자 포털            C. 케어 단계 전환     E. 입주 상담 (예비)
+                        + I-31 금전 업무 경계       
+                        + I-42 AI 고지·동의·감사     
+                    └──────── A. 계약·청구 코어 + I-30 대리권·후견 + I-29 청구 설명 ────────┘</code></pre>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>넣을 곳</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I-37 시니어 AI 생활 비서 (4.05)</td>
+<td><strong>새 모듈 G</strong></td>
+<td>공고의 AI Agent 연동을 가장 직접 보여준다. 국내외에서 시설 요청 큐·청구와 연동한 비서를 찾지 못했다(G). 새 데이터를 만들지 않고 다른 모듈의 API를 도구로 호출한다</td>
+</tr>
+<tr>
+<td>I-42 AI 고지·동의·감사 콘솔 (3.95)</td>
+<td>D 보호자 포털</td>
+<td>동의·열람 권한은 D의 정책 모델이다. G를 도입하려면 반드시 필요하다(AI 기본법 사전 고지, 건강정보 별도 동의)</td>
+</tr>
+<tr>
+<td>I-30 대리권·후견, I-29 청구 설명, I-31 금전 경계</td>
+<td>A, A, D</td>
+<td>&quot;축 8 반영 제안&quot;과 같다</td>
+</tr>
+<tr>
+<td>I-41 이례 거래 보호자 알림 (3.35)</td>
+<td>로드맵 (만들지 않음)</td>
+<td>금융기관 제휴(B2B2C)가 전제다. 면접에서 &quot;다음 단계&quot;로 설명한다</td>
+</tr>
+<tr>
+<td>I-38 자산 이해 도우미 (3.05)</td>
+<td>G의 선택 시연만</td>
+<td>운영사가 입주자 계좌에 연결하는 정식 경로가 없다(K25). 모의투자 서버·가상 데이터로만 시연한다</td>
+</tr>
+<tr>
+<td>I-32 입주 자금 계획</td>
+<td>E 예비</td>
+<td>계산만 하고 추천은 하지 않는다</td>
+</tr>
+<tr>
+<td>I-39, I-40</td>
+<td>보류, 탈락</td>
+<td>자동매매는 사업자 제공 시 일임·자문 등록 요건(K25, K22)</td>
+</tr>
+<tr>
+<td>사용자가 구상한 AI 자산관리 비서</td>
+<td><strong>senior-lab 밖 별도 개인 프로젝트</strong></td>
+<td>본인 계좌와 본인 키로 LLM을 연결하는 방식은 증권사가 공식 지원한다(F26, K30). 차별점은 서버가 강제하는 목표·한도·확인 가드레일과 모의투자 검증 기록</td>
+</tr>
+</tbody></table></div>
+<p><strong>순서 제안</strong>: A → B → D → G → C, E는 여유가 있을 때.</p>
+<ul>
+<li>G는 마지막에 한 번에 만들지 않는다. A가 끝나면 최소 비서(일정 조회 + 청구 설명, 도구 2개)를 붙이고, 모듈이 하나 늘 때마다 도구를 추가한다.</li>
+<li>G가 실서비스처럼 보이려면 D의 동의·고지(I-42)가 먼저 있어야 해서 D 다음에 정식 모듈로 둔다.</li>
+</ul>
+<p><strong>확정한 것</strong> (사용자 확정, 2026-11-02)</p>
+<ol>
+<li>G. AI 생활 비서를 새 모듈로 추가한다.</li>
+<li>금융 기능은 기존 모듈에 넣는다: A에 I-30·I-29, D에 I-31·I-42. 별도 모듈 F는 만들지 않는다.</li>
+<li>사용자의 AI 자산관리 비서는 senior-lab 밖 개인 프로젝트로 분리한다.</li>
+<li>순서: A → B → D → G → C, E는 여유가 있을 때. G 최소판(일정 조회 + 청구 설명)은 A 직후에 붙인다.</li>
+</ol>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-739" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-740" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-741" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-742" data-title="에이전트"><p>다음 단계를 스스로 고르며 도구를 호출하는 실행. Evenstay에서는 직원용 초안과 제안까지 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>agent</dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-743" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

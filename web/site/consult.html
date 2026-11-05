@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js');</script>
+<title>입주 상담 | Evenstay</title>
+<meta name="description" content="상담 신청, 전화, 방문 가운데 편한 방법으로 시작하세요.">
+<link rel="icon" href="../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../css/proto.css">
+<link rel="stylesheet" href="../shared/topbar.css">
+<link rel="stylesheet" href="css/site.css">
+<noscript><style>.s-sheet, .s-scrim, .s-dlg, .p-gal-ctl, .hero-arrow, .hero-pause { display: none; }</style></noscript>
+</head>
+<body>
+<div id="topbar"></div>
+<div class="site" id="top"><div class="s-q">
+<a class="s-skip" href="#main">본문으로</a>
+<span class="s-sent" aria-hidden="true"></span>
+<header class="s-bar">
+  <div class="s-wrap s-bar-in">
+    <a class="s-logo" href="index.html"><img src="../assets/logo/evenstay-logo-light.svg" alt="Evenstay 메인으로"></a>
+    <nav class="s-nav" aria-label="주요 메뉴"><a href="rooms.html">숙소</a><a href="life.html">생활</a><a href="dining.html">식사</a><a href="location.html">오시는 길</a></nav>
+    <button class="s-tel" type="button" data-click="openTel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><span class="s-long">전화 상담 02-000-0000 (가상 번호)</span><span class="s-short">전화</span></button>
+    <button class="s-tel" type="button" aria-haspopup="dialog" data-click="openMenu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg><span class="s-long">전체 메뉴</span><span class="s-short">메뉴</span></button>
+    <a class="btn btn-primary" href="consult.html" aria-current="page">입주 상담 신청</a>
+  </div>
+</header><main id="main">
+<section class="p-head" aria-labelledby="ph">
+  <div class="s-wrap p-head-in">
+    <div class="p-head-t"><h1 id="ph">입주 상담</h1><p class="s-read">상담 신청, 전화, 방문 가운데 편한 방법으로 시작하세요.</p></div>
+    <figure><img class="s-photo r43" src="assets/img-t3.webp" alt="프런트 직원이 웃으며 전화를 받고 메모하고 있다"><figcaption><span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure>
+  </div>
+</section>
+<section class="s-sec" id="con-1" aria-labelledby="h10">
+  <div class="s-wrap s-form-grid">
+    <div class="s-form-col s-stack">
+      <h2 class="s-title" id="h10">입주 상담 신청</h2>
+      <p class="s-read">성함과 연락처를 남겨 주시면 상담 직원이 연락드려요. 숙소, 비용, 입주 절차를 상담 때 안내해 드려요.</p>
+      <p class="s-demo">이 사이트는 포트폴리오로 만든 데모예요. 신청 내용은 보내지 않고 저장하지도 않아요.</p>
+      <s-if data-if="done" hidden>
+        <div class="s-done">
+          <img class="s-mas r11" src="assets/mas-1.webp" alt="" loading="lazy">
+          <h3 class="s-sub" id="done-h" tabindex="-1">신청을 받았어요</h3>
+          <p>실제 서비스라면 고르신 시간대에 상담 직원이 연락드려요.</p>
+          <p class="s-demo">데모라서 이 신청은 보내지 않았고 저장하지도 않았어요.</p>
+          <div class="s-dlg-act"><a class="btn btn-secondary" href="index.html">처음 화면으로</a><button class="btn btn-secondary" type="button" data-click="reset">다시 써 보기</button></div>
+        </div>
+      </s-if>
+      <s-if data-if="notDone">
+        <form class="s-form" novalidate>
+          <s-if data-if="anyErr" hidden><p class="s-err" role="alert"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span>아직 채우지 않은 칸이 <span data-hole="errN"></span>개 있어요. 칸 아래 안내를 봐 주세요.</span></p></s-if>
+          <fieldset class="s-field"><legend>누가 신청하시나요?</legend><div class="s-opts"><label class="s-opt"><input type="radio" name="who" value="self">본인</label><label class="s-opt"><input type="radio" name="who" value="family">가족(대신 신청)</label></div><s-if data-if="eWho" hidden><p class="s-err" id="e-who"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span>본인과 가족(대신 신청) 가운데 하나를 골라 주세요.</span></p></s-if></fieldset>
+          <div class="s-field"><label class="lab" for="f-name">성함</label><input class="input" id="f-name" name="fname" type="text" autocomplete="name" aria-invalid="false" aria-describedby="e-name"><s-if data-if="eName" hidden><p class="s-err" id="e-name"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span>성함을 적어 주세요.</span></p></s-if></div>
+          <div class="s-field"><label class="lab" for="f-tel">연락처</label><input class="input" id="f-tel" name="ftel" type="tel" inputmode="tel" autocomplete="tel" aria-invalid="false" aria-describedby="h-tel e-tel"><p class="s-hint" id="h-tel">숫자만 적으셔도 돼요. 예: 010-0000-0000</p><s-if data-if="eTel" hidden><p class="s-err" id="e-tel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span><span data-hole="eTelMsg"></span></span></p></s-if></div>
+          <fieldset class="s-field"><legend>어떻게 상담하실까요?</legend><div class="s-opts"><label class="s-opt"><input type="radio" name="how" value="tel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>전화 상담</label><label class="s-opt"><input type="radio" name="how" value="visit"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></svg>방문 상담</label></div><s-if data-if="eHow" hidden><p class="s-err" id="e-how"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span>전화 상담과 방문 상담 가운데 하나를 골라 주세요.</span></p></s-if></fieldset>
+          <fieldset class="s-field"><legend>연락받기 편한 때 (고르지 않으셔도 돼요)</legend><div class="s-opts"><label class="s-opt"><input type="radio" name="when" value="am">오전</label><label class="s-opt"><input type="radio" name="when" value="pm">오후</label></div></fieldset>
+          <div class="s-field"><label class="lab" for="f-msg">남기실 말 (적지 않으셔도 돼요)</label><textarea class="input" id="f-msg" name="fmsg" rows="4" aria-describedby="h-msg"></textarea><p class="s-hint" id="h-msg">건강이나 병에 관한 내용은 적지 말아 주세요. 필요한 것은 상담 때 여쭤볼게요.</p></div>
+          <fieldset class="s-field"><legend>개인정보 수집 동의 (꼭 필요해요)</legend>
+            <p class="s-consent">[법률 검토 전 초안] 상담 연락을 위해 성함, 연락처, 신청하시는 분, 상담 방법, 편한 때, 남기실 말을 받아요. 상담 연락에만 쓰고, 상담이 끝나면 지워요. 보관 기간: [미정] 동의하지 않으셔도 전화로 상담하실 수 있어요.</p>
+            <label class="s-agree"><input type="checkbox" name="agree" aria-invalid="false" aria-describedby="e-agree">위 내용에 동의해요</label><s-if data-if="eAgree" hidden><p class="s-err" id="e-agree"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span>동의하셔야 신청이 돼요. 동의하지 않으시면 전화로 상담하실 수 있어요.</span></p></s-if>
+            <a class="s-link" href="privacy.html">개인정보 처리방침 보기</a>
+          </fieldset>
+          <button class="btn btn-primary btn-block" type="submit">
+            <s-if data-if="sending" hidden><svg class="i s-spin" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>보내는 중이에요</s-if>
+            <s-if data-if="idle">신청 보내기</s-if>
+          </button>
+        </form>
+      </s-if>
+    </div>
+    <div class="s-form-side">
+      <div class="s-tel-line s-form-tel">
+        <p>전화로 하시려면</p>
+        <button class="btn btn-secondary" type="button" data-click="openTel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>02-000-0000 (가상 번호)</button>
+      </div>
+      
+    </div>
+  </div>
+</section>
+<section class="s-sec " aria-label="전화·방문 안내">
+  <div class="s-wrap"><div class="s-split"><div><figure><img class="s-photo r43" src="assets/img-t3.webp" alt="프런트 직원이 웃으며 전화를 받고 메모하고 있다" loading="lazy"><figcaption class="s-cap">프런트 직원이 전화를 받으며 메모해요.<span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure></div>
+    <div class="s-stack"><p class="s-read">전화로 상담하시려면 02-000-0000으로 전화해 주세요. 숙소, 비용, 입주 절차를 안내해 드려요. <span class="s-ai">가상 번호</span></p><p class="s-read">직접 보고 싶으시면 오셔서 숙소와 식당, 공용 공간을 둘러보세요. 오시기 전에 전화로 날짜를 잡아 주세요.</p><div class="s-dlg-act"><button class="btn btn-secondary" type="button" data-click="openTel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>전화 상담 02-000-0000 (가상 번호)</button><a class="btn btn-secondary" href="location.html">오시는 길 보기</a></div></div></div></div>
+</section>
+<section class="s-sec " aria-label="입주 절차">
+  <div class="s-wrap"><ol class="p-grid5 p-steps5"><li><span class="p-step-no">1 단계</span><h3 class="s-sub">상담</h3><p>상담 신청이나 전화로 궁금하신 점을 물어보세요.</p></li><li><span class="p-step-no">2 단계</span><h3 class="s-sub">방문</h3><p>숙소와 식당, 공용 공간을 직접 둘러보세요.</p></li><li><span class="p-step-no">3 단계</span><h3 class="s-sub">계약</h3><p>입주 계약서를 함께 읽고 서명해요. 대신 처리하실 분이 계시면 함께하실 수 있어요.</p></li><li><span class="p-step-no">4 단계</span><h3 class="s-sub">입주 준비</h3><p>입주일이 정해지면 앱에 "아직 입주 전이에요"가 보여요. 앱 설정은 프런트 직원이 곁에서 도와 드려요. 급할 때 연락할 분과 가족에게 보여 줄 것도 이때 직원과 함께 정해요.</p></li><li><span class="p-step-no">5 단계</span><h3 class="s-sub">입주</h3><p>정하신 날에 입주하세요. 앱이나 방에서 궁금하신 점은 프런트 직원에게 말씀해 주세요.</p></li></ol></div>
+</section>
+<section class="s-sec " aria-label="자주 묻는 질문">
+  <div class="s-wrap"><ul class="p-faq"><li><button class="p-q" type="button" aria-expanded="false" aria-controls="qa-0" data-click="qt0">비용과 보증금은 얼마인가요?<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="qa-0"><s-if data-if="q0" hidden><p class="p-a">비용은 보증금, 월 생활비, 식비로 나뉘어요. 금액은 숙소 유형에 따라 달라요. 항목별 금액과 공과금을 따로 내시는지는 상담 때 안내해 드려요. 입주하신 뒤 받으시는 청구서에는 항목마다 이유가 적혀 있어요.</p></s-if></div></li><li><button class="p-q" type="button" aria-expanded="false" aria-controls="qa-1" data-click="qt1">식사를 거르는 날은 어떻게 되나요?<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="qa-1"><s-if data-if="q1" hidden><p class="p-a">거르실 끼니를 프런트에 미리 말씀하시면 그 값은 청구서에서 빼 드려요. 몇 끼에 얼마를 뺐는지도 청구서에 적혀 있어요.</p></s-if></div></li><li><button class="p-q" type="button" aria-expanded="false" aria-controls="qa-2" data-click="qt2">가족이 무엇을 볼 수 있나요?<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="qa-2"><s-if data-if="q2" hidden><p class="p-a">회원님이 허락하신 것만 봐요. 생활 소식, 일정, 청구서, 건강 소식, 생활 요청을 가족마다 따로 정하시고, 언제든 바꾸실 수 있어요.</p></s-if></div></li><li><button class="p-q" type="button" aria-expanded="false" aria-controls="qa-3" data-click="qt3">앱을 잘 못 써도 괜찮을까요?<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="qa-3"><s-if data-if="q3" hidden><p class="p-a">괜찮아요. 호출벨을 누르시거나, 프런트에 전화하시거나, 지나가는 직원에게 말씀하시면 도와 드려요. 앱 설정은 프런트 직원이 함께 해 드려요.</p></s-if></div></li><li><button class="p-q" type="button" aria-expanded="false" aria-controls="qa-4" data-click="qt4">도움이 더 필요해지면 어떻게 되나요?<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="qa-4"><s-if data-if="q4" hidden><p class="p-a">직원이 먼저 설명드리고 회원님 말씀을 들어요. 생활 지원 단계는 직원이 기록을 남긴 뒤 센터장이 정해요. 지금 계신 방, 입주 계약, 급할 때 연락할 분처럼 바뀌지 않는 것은 먼저 보여 드려요. 계속 지내실 수 있는지는 상황과 입주 계약에 따라 달라서 상담 때 함께 확인해요.</p></s-if></div></li><li><button class="p-q" type="button" aria-expanded="false" aria-controls="qa-5" data-click="qt5">AI 비서는 무엇을 하나요?<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="qa-5"><s-if data-if="q5" hidden><p class="p-a">계약 날짜와 청구서 내용을 알려 드려요. 건강, 돈, 계약을 정해야 하는 일은 회원님께 여쭌 뒤 직원에게 전해요.</p></s-if></div></li><li><button class="p-q" type="button" aria-expanded="false" aria-controls="qa-6" data-click="qt6">부드러운 음식이나 알레르기는 어떻게 알리나요?<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="qa-6"><s-if data-if="q6" hidden><p class="p-a">상담 때 말씀해 주세요.</p></s-if></div></li></ul></div>
+</section></main>
+<footer class="s-foot">
+  <div class="s-wrap s-foot-grid">
+    <div class="s-stack-s">
+      <img src="../assets/logo/evenstay-logo-light.svg" alt="Evenstay">
+      <p>Evenstay는 포트폴리오로 만든 가상 시니어 레지던스예요. 실제로 운영하는 곳이 아니에요.</p>
+      <p>사이트의 사진과 영상은 모두 AI로 만든 가상 장면이에요. 나오는 분들도 실제 인물이 아니에요.</p>
+      <p>전화 02-000-0000 (가상 번호) · 가상시 안뜰구 머묾로 12 (가상 주소)</p>
+      <p>상담 신청은 데모라서 어디에도 보내지 않아요.</p>
+      <p>시니어 레지던스 운영 시스템 기획과 프로토타입을 보여 드리려고 만든 사이트예요.</p>
+    </div>
+    <div class="s-stack-s">
+      <nav aria-label="페이지 링크"><ul><li><a href="about.html">소개</a></li><li><a href="facility.html">시설</a></li><li><a href="rooms.html">숙소</a></li><li><a href="life.html">생활</a></li><li><a href="dining.html">식사</a></li><li><a href="safety.html">안심·건강 지원</a></li><li><a href="location.html">오시는 길</a></li><li><a href="consult.html" aria-current="page">입주 상담</a></li><li><a href="privacy.html">개인정보 처리방침</a></li></ul></nav>
+      <a class="s-link" href="#top"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>맨 위로</a>
+    </div>
+  </div>
+</footer></div>
+<s-if data-if="menuOpen" hidden>
+  <div class="s-sheet" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+    <div class="s-wrap">
+      <div class="s-sheet-top">
+        <img src="../assets/logo/evenstay-logo-light.svg" alt="Evenstay" style="height: 28px; width: auto;">
+        <button class="btn btn-ghost" type="button" data-click="closeMenu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>닫기</button>
+      </div>
+      <ul><li><a href="about.html" data-click="closeMenu">소개</a></li><li><a href="facility.html" data-click="closeMenu">시설</a></li><li><a href="rooms.html" data-click="closeMenu">숙소</a></li><li><a href="life.html" data-click="closeMenu">생활</a></li><li><a href="dining.html" data-click="closeMenu">식사</a></li><li><a href="safety.html" data-click="closeMenu">안심·건강 지원</a></li><li><a href="location.html" data-click="closeMenu">오시는 길</a></li><li><a href="consult.html" aria-current="page" data-click="closeMenu">입주 상담</a></li></ul>
+    </div>
+  </div>
+</s-if>
+<s-if data-if="telOpen" hidden>
+  <div class="s-scrim"></div>
+  <div class="s-dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-h" style="top: 16px;">
+    <h2 class="s-sub" id="dlg-h">가상 번호예요</h2>
+    <p>이 사이트는 포트폴리오로 만든 데모예요. 02-000-0000은 가상 번호라 전화가 걸리지 않아요.</p>
+    <div class="s-dlg-act"><button class="btn btn-primary" type="button" data-click="closeTel">알겠어요</button><a class="btn btn-secondary" href="consult.html">입주 상담 신청하기</a></div>
+  </div>
+</s-if></div>
+<script type="module">import('../shared/topbar.js').then((m) => m.mountTopbar(document.getElementById('topbar'), { base: '../' }));</script>
+<script src="js/site.js" defer></script>
+</body>
+</html>

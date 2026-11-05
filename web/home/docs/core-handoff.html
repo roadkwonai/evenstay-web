@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>계약·청구 코어 개발 인계 | Evenstay 문서</title>
+<meta name="description" content="계약·청구 코어 개발 인계. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>계약·청구 코어</span></p>
+  <h1>계약·청구 코어 개발 인계</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-handoff"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="계약·청구 코어의 다른 문서"><ul><li><a href="core-strategy.html">전략</a></li><li><a href="core-service-blueprint.html">서비스 설계도</a></li><li><a href="core-prd.html">기획서(PRD)</a></li><li><a href="core-user-stories.html">사용자 스토리</a></li><li><a href="core-tech-design.html">기술 설계</a></li><li><a href="core-roadmap.html">로드맵</a></li><li><a href="core-handoff.html" aria-current="page">개발 인계</a></li><li><a href="core-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#한-줄-요약">한 줄 요약</a></li><li class="lv2"><a href="#대상">대상</a></li><li class="lv2"><a href="#핵심-흐름-mvp">핵심 흐름 (MVP)</a></li><li class="lv2"><a href="#화면-목록">화면 목록</a></li><li class="lv2"><a href="#데이터-모델-초안">데이터 모델 초안</a></li><li class="lv2"><a href="#인수-조건">인수 조건</a></li><li class="lv2"><a href="#하지-않을-것">하지 않을 것</a></li><li class="lv2"><a href="#복사할-파일-허브가-검수-후">복사할 파일 (허브가 검수 후)</a></li><li class="lv2"><a href="#확정된-것-2026-11-03-확정-사용자-확정">확정된 것 (2026-11-03 확정, 사용자 확정)</a></li><li class="lv2"><a href="#제안값으로-확정-가설-2026-11-03-사용자-각-문서-제안값으로-확정">제안값으로 확정 [가설] (2026-11-03 사용자: &quot;각 문서 제안값으로 확정&quot;)</a></li><li class="lv2"><a href="#재승인됨2026-11-03-가설-2026-11-03-g-요청">재승인됨(2026-11-03) [가설] (2026-11-03 G 요청)</a></li><li class="lv2"><a href="#아직-미정">아직 [미정]</a></li><li class="lv2"><a href="#사용자-재승인-2026-11-04-2026-11-03-장기-부재운영-현황-대시보드">사용자 재승인 2026-11-04 (2026-11-03 장기 부재·운영 현황 대시보드)</a></li><li class="lv2"><a href="#사용자-재승인-2026-11-04-2026-11-04-전체-리뷰-보완">사용자 재승인 2026-11-04 (2026-11-04 전체 리뷰 보완)</a></li><li class="lv2"><a href="#사용자-재승인-2026-11-04-2026-11-04-시니어-하우징-조사-반영">사용자 재승인 2026-11-04 (2026-11-04 시니어 하우징 조사 반영)</a></li><li class="lv2"><a href="#사용자-재승인-2026-11-05-2026-11-05-결제-화면-표시-포함">사용자 재승인 2026-11-05 (2026-11-05, 결제 화면 표시 포함)</a></li><li class="lv2"><a href="#상태판">상태판</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li><li class="lv3"><a href="#2026-11-03-한국어-검수-korean-skills-허브-요청-사용자-재승인-2026-11-03">2026-11-03 한국어 검수 (korean-skills, 허브 요청, 사용자 재승인 2026-11-03)</a></li><li class="lv3"><a href="#2026-11-03-장기-부재운영-현황-대시보드-추가-허브-요청-사용자-재승인-2026-11-04">2026-11-03 장기 부재·운영 현황 대시보드 추가 (허브 요청, 사용자 재승인 2026-11-04)</a></li><li class="lv3"><a href="#2026-11-04-전체-리뷰-보완-허브-지시서-사용자-재승인-2026-11-04">2026-11-04 전체 리뷰 보완 (허브 지시서, 사용자 재승인 2026-11-04)</a></li><li class="lv3"><a href="#2026-11-04-시니어-하우징-조사-반영-허브-00-hubreviewsresearch-reflection-2026-11-04md-r6r10-사용자-검토-후-반영-사용자-재승인-2026-11-04">2026-11-04 시니어 하우징 조사 반영 (허브 00-hub/reviews/research-reflection-2026-11-04.md R6~R10, 사용자 &quot;검토 후 반영&quot;, 사용자 재승인 2026-11-04)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-118" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li><li><button class="term" type="button" data-modal="g-119" data-tip="계약과 달마다 하나.">청구서</button></li><li><button class="term" type="button" data-modal="g-120" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-121" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li><li><button class="term" type="button" data-modal="g-122" data-tip="수익이 아니라 맡긴 돈.">보증금</button></li><li><button class="term" type="button" data-modal="g-123" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-124" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-125" data-tip="사업장 책임자, 본사용 숫자 칸.">운영 현황 카드</button></li><li><button class="term" type="button" data-modal="g-126" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-127" data-tip="응급 때 직원이 누구에게 어떤 순서로 전화하는가.">비상 연락처</button></li><li><button class="term" type="button" data-modal="g-128" data-tip="숫자만 보이고 저장하지 않는다">월 리포트</button></li><li><button class="term" type="button" data-modal="g-129" data-tip="사업장의 설치자와 위탁 운영자, 기간.">위탁 운영 계약</button></li></ul></section></aside>
+  <article class="doc"><h2 id="한-줄-요약">한 줄 요약</h2>
+<p>소유주가 다른 시니어 레지던스와 임대주택의 입주 계약과 월 청구를 한 기준으로 처리하고, 바뀐 모든 것을 이력으로 남기는 PMS 코어. 모든 모듈(safety, family, assistant, transitions, leasing)이 이 코어의 도메인 모델과 권한 검사를 쓴다.</p>
+<h2 id="대상">대상</h2>
+<ul>
+<li>주 이용자: 본사 운영 매니저, 사업장 경리</li>
+<li>함께 쓰는 사람: 사업장 직원(프런트), 소유주(읽기 전용)</li>
+<li>청구서를 보는 사람: 회원(입주자), 대리인(후견인·위임). 보호자 화면은 family 모듈이 연다</li>
+</ul>
+<h2 id="핵심-흐름-mvp">핵심 흐름 (MVP)</h2>
+<ol>
+<li><strong>계약</strong>: 작성(비상 연락처 포함) → 체결(입주 예정) → 입주(거주 중) → 사별 승계(옛 계약 승계됨 + 새 계약). 퇴거 접수 → 단순 정산은 P1</li>
+<li><strong>청구</strong>: 결식 기록(직원 대행·CSV) → 식사 마감 → 월 청구 생성(멱등) → 근거 확인 → 발행(불변) → 회원 청구서(쉬운 말, 인쇄)</li>
+</ol>
+<ul>
+<li>청구 규칙은 3개: 정기 요금, 식비, 결식 감면. 일할 없음: 입주 월 1개월분, 승계는 다음 달 1일부터, 퇴거는 그 달 말일까지. 요금표는 체결 때 버전으로 고정</li>
+<li>데모 5단계와 시드 데이터: <code>prd.md</code> 9절</li>
+</ul>
+<ol start="3">
+<li><strong>장기 부재(P1, 2026-11-03)</strong>: 부재 시작(이유·종류 없음) → 이벤트로 D, 신호 평가 때 조회로 B → 예정 복귀일 지남 확인할 일 → 복귀 기록. 부재 끼니 감면은 요금표 설정(기본 끔, [미정])</li>
+<li><strong>운영 현황 카드(P1, 2026-11-03)</strong>: 사업장 책임자용. <code>app/</code>이 코어와 모듈 <code>api/</code>를 매 요청 읽어 조립하고 저장하지 않는다</li>
+<li><strong>서비스 사용 기록(P1, 2026-11-04)</strong>: N1 확인 → <code>ServiceChargeCommand.record</code>(멱등) → 다음 청구서 SERVICE_FEE 항목</li>
+<li><strong>소유주 월 리포트, 보증금 보호 상태, 위탁 운영 계약 이력(P1, 2026-11-04)</strong></li>
+</ol>
+<ul>
+<li>통합 데모는 시드 초기화 없이 시계만 옮겨 이어 간다(2026-11-04). 코어 장면은 <code>prd.md</code> 9절 &quot;통합 데모에 넣는 코어 장면&quot;</li>
+</ul>
+<h2 id="화면-목록">화면 목록</h2>
+<p><code>prd.md</code> 8절. P0: 오늘의 운영, 사업장·호실, 요금 규칙 설정, 계약 목록·상세·작성·승계 확인, 결식 입력·CSV·마감, 청구 생성·목록·근거 패널, 회원 청구서, 소유주 현황. P1: 청구서 결제 (2026-11-05, 사용자 재승인 2026-11-05, 결제 화면), 대리인 등록·승인, 입주자가 문의한 청구, 퇴거 정산 미리보기, 장기 부재(CORE-13, 2026-11-03), 오늘의 운영 위 운영 현황 카드(2026-11-03), 소유주 월 리포트(CORE-14), 위탁 운영 계약 이력(CORE-15), 청구 화면의 사용 기록 탭, 계약·청구서의 보증금 보호 칸(2026-11-04). 새 화면 정의는 <code>prd.md</code> 8절, 문구는 <code>copy.md</code> 2-9·2-10(반영됨). 문구는 <code>copy/copy.md</code>.</p>
+<h2 id="데이터-모델-초안">데이터 모델 초안</h2>
+<p><code>tech-design.md</code> 2절(엔티티, ERD), 3절(상태 전이), 4절(청구 계산). 2026-11-03에 입주 계약에 딸린 **EmergencyContact(비상 연락처)**를 더했다. 보호자 관계(GuardianLink, D 동의 대상)와 따로이고, safety(B)가 <code>EmergencyContactQuery</code>로 읽어 119 신고·병원 이송 때 전화한다. 법적 근거는 [법률 검토]. <strong>v1.1 보강(2026-11-03)</strong>: 사업장 책임자 역할, 직원 직무, 보호자 범위·계정, <code>GuardianCommand</code>·<code>StaffQuery</code>·<code>MealQuery</code>, <code>platform</code>의 <code>Notifier</code>·<code>Clock.now()</code>(멈춘 데모 시계), 감사 범주 READ, 계약 이벤트 residentIds, 시드 보강(직원 3명, 보호자 관계, 호실 배치). 자세한 것은 <code>tech-design.md</code> 확인할 것 12. <strong>2026-11-03 추가</strong>: <code>ResidentAbsence</code>(장기 부재, 이유·종류 없음), 이벤트 <code>ResidentAbsenceStarted</code>·<code>ResidentAbsenceEnded</code>, <code>AbsenceQuery</code>, <code>OccupancyQuery</code>, <code>TodoQuery</code> ABSENCE_RETURN_OVERDUE, 운영 현황 카드 조립과 모듈별 새 조회 [가설](<code>tech-design.md</code> 10절, 확인할 것 21<del>25). <strong>2026-11-04 추가</strong>: <code>ServiceUsage</code>·<code>SERVICE_FEE</code>·<code>SERVICE_FEES</code>와 <code>ServiceChargeCommand</code>·<code>ServiceChargeQuery</code>·<code>ServiceFeeQuery</code>, <code>OwnerReportQuery</code>, 계약의 보증금 보호 칸과 <code>ContractQuery.depositProtection</code>, <code>ManagementContract</code>, 6-2 행동 코드(<code>core.*</code>), at 기준 장기 부재 조회, <code>/demo/reset</code> 순서에 requests(확인할 것 26</del>30). 핵심 결정은 ADR-1~5:</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ADR</th>
+<th>결정</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 테넌시</td>
+<td>공유 스키마 + operator_id·site_id. 소유주 범위는 SiteOwnership 기간으로 푼다. PostgreSQL RLS를 이중 방어로 켠다(확정)</td>
+</tr>
+<tr>
+<td>2 모듈 경계</td>
+<td>모듈별 DB 스키마, <code>core/api</code>·다른 모듈 <code>api/</code>와 이벤트로만 주고받음(<code>api/</code>끼리 의존·순환 금지, v1.1), 스키마 간 외래 키 없음, 권한 검사는 코어 <code>authorize()</code> 하나, 모듈은 자기 이름공간 정책만 등록</td>
+</tr>
+<tr>
+<td>3 저장소 구조</td>
+<td><code>evenstay/</code> 한 저장소, <code>platform/ core/ safety/ family/ assistant/ transitions/ leasing/ app/ ui/ seed/ docs/</code>, 한 번에 배포</td>
+</tr>
+<tr>
+<td>4 원장</td>
+<td>청구 항목·수납·보증금은 추가만. 발행이 확정 시점. 발행 항목 보호 트리거(확정). 정정은 조정 전표. 금액은 원 단위 정수</td>
+</tr>
+<tr>
+<td>5 승계</td>
+<td>사별 승계는 새 계약. 당사자가 같고 조건만 바뀌면 계약 변경(Next)</td>
+</tr>
+</tbody></table></div>
+<h2 id="인수-조건">인수 조건</h2>
+<p><code>user-stories.md</code> US-01<del>US-30(P0: US-01</del>14, US-17, US-22. P1: US-15, US-16, US-18<del>21, US-23</del>30. US-30은 2026-11-05, 사용자 재승인 2026-11-05, 결제 화면. US-23<del>25는 2026-11-03, US-26</del>29는 2026-11-04 추가). 완료 기준은 <code>prd.md</code> 3절 KR1~KR3과 <code>tech-design.md</code> 11절 테스트 표.</p>
+<h2 id="하지-않을-것">하지 않을 것</h2>
+<ul>
+<li>장기요양 급여 청구, 요양시설 업무, 회계 장부(분개는 ERP 내보내기 목업까지)</li>
+<li>법적 판단(행위능력, 후견 필요성, 사망 판정). 증빙 확인 사실과 범위만 기록</li>
+<li>입주자 자산 조회·이체 대행·금융상품 연결</li>
+<li>건강·돌봄 정보 저장, 응급 대응(safety 몫). 장기 부재의 이유·종류·병명·병원 이름도 받지 않는다(2026-11-03)</li>
+<li>운영 현황 카드의 목표선, 좋음·나쁨 색, 입주자 개인 활동량·위치, 대시보드용 데이터 복사본(2026-11-03)</li>
+<li>보증금 보호가 법 기준을 채웠는지 판단, 위탁운영자 신고 칸(개정안 확정 전), 생활 요청 금액 결정(N1이 아니라 코어 요금표)(2026-11-04)</li>
+<li>MVP에서 공과금·선납·몰취·보증금-월비 교환·일할 계산, 실제 결제·ERP 연동, 보호자 동의 정책(family 몫)</li>
+</ul>
+<h2 id="복사할-파일-허브가-검수-후">복사할 파일 (허브가 검수 후)</h2>
+<p><code>strategy.md</code>, <code>service-blueprint.md</code>, <code>prd.md</code>, <code>user-stories.md</code>, <code>roadmap.md</code>, <code>tech-design.md</code>, <code>handoff.md</code> → <code>evenstay/docs/core/</code></p>
+<ul>
+<li><code>evenstay/CLAUDE.md</code>(공통)에 옮길 것: <code>tech-design.md</code> 2-1절 용어, 6절 권한 원칙, ADR-2 경계 규칙, 대시보드 &quot;확인할 일&quot;은 <code>app/</code>이 코어 <code>TodoQuery</code>와 모듈 <code>api/</code>를 붙여 조립(10절, 2026-11-03 C 요청, 한 줄은 허브가 넣음), 운영 현황 카드도 같은 방식으로 매 요청 조립하고 저장하지 않으며 목표선·평가 색을 두지 않음(10절, 2026-11-03 추가 후보, 허브가 넣을지 정함)</li>
+<li><code>evenstay/core/CLAUDE.md</code>에 옮길 것: 위 &quot;하지 않을 것&quot;과 1절 범위</li>
+</ul>
+<h2 id="확정된-것-2026-11-03-확정-사용자-확정">확정된 것 (2026-11-03 확정, 사용자 확정)</h2>
+<ol>
+<li>기술 스택 방향: 프로토타입 HTML·JS, MVP Next.js, DB PostgreSQL. 나머지 스택 확정은 [미정](<code>tech-design.md</code> 12절)</li>
+<li>계약 상태 6개(입주 예정 추가)</li>
+<li>G 최소판 일정은 코어 <code>keyDates</code>만</li>
+<li>원장 보호: RLS + 발행 항목 보호 트리거</li>
+<li>일할 없음, 체결 때 요금표 고정, 시드 입주일 1일</li>
+<li>보호자 청구서 화면은 D, 코어는 청구서 API만. 대리 근거에 특정후견 추가</li>
+<li>빠진 카피(<code>copy.md</code> 2-5~2-7)와 용어집은 허브가 반영</li>
+<li>G 요청 반영(2026-11-03, 재승인됨(2026-11-03)): <code>paymentState</code>·발행 청구서만(회원·대리인), G 납부 갈래, &quot;주요 날짜 보기&quot; 권한과 <code>keyDates(actor?)</code>, 입주일 = 승계 사슬의 첫 계약, 문의 channel ASSISTANT와 확인 토큰 멱등, <code>plain</code> 필드 표, 배치 행위자 SYSTEM, G 이벤트 구독 없음, 시드(11·12월 청구서, 12월 결식, G 시작 상태)(<code>tech-design.md</code> 확인할 것 16)</li>
+<li>C 요청 반영(2026-11-03 C 요청, 사용자 재승인 2026-11-03): 10절 C 줄(첫 계약 입주일, 이벤트 구독 없음), C 행동 → SIGN_CONTRACT, <code>requestAmendment</code>(Next) 인자 규칙과 단계 요금 플랜 [가설], 아웃박스 <code>available_at</code>, <code>/demo/reset</code> 모듈 시드 연동과 <code>C_AFTER_DISCHARGE</code>, <code>representativesOf</code>, &quot;확인할 일&quot;은 <code>app/</code> 조립(<code>tech-design.md</code> 확인할 것 20)</li>
+</ol>
+<h2 id="제안값으로-확정-가설-2026-11-03-사용자-각-문서-제안값으로-확정">제안값으로 확정 [가설] (2026-11-03 사용자: &quot;각 문서 제안값으로 확정&quot;)</h2>
+<ul>
+<li>소유주 화면 이름 가림(<code>strategy.md</code>), 승계 되돌리지 않음(<code>service-blueprint.md</code>), P1 범위·체결 때 비상 연락처 1명 필수·청구 일정 매월 말일 발행+10일(<code>prd.md</code>), 문의 취소 10분(<code>user-stories.md</code>), 규칙 확장 Next·I-25 Later(<code>roadmap.md</code>), 확인 전용 호출 감사(<code>tech-design.md</code> 확인할 것 14)</li>
+</ul>
+<h2 id="재승인됨2026-11-03-가설-2026-11-03-g-요청">재승인됨(2026-11-03) [가설] (2026-11-03 G 요청)</h2>
+<ul>
+<li>승계 달 식비는 계약 인원 기준(정정은 조정 전표, F14가 빠지면 프런트 설명), 승계 계약은 옛 만료일을 이어받음, 시드 만료일 2028-09-30(<code>tech-design.md</code> 확인할 것 17·18, <code>prd.md</code> 9절)</li>
+</ul>
+<h2 id="아직-미정">아직 [미정]</h2>
+<ul>
+<li>단계 요금 플랜이 계약의 고정 요금표 버전에 없을 때(<code>tech-design.md</code> 확인할 것 19, Next)</li>
+<li>입원 기간 식비 처리, [NEED: 입주 계약서 식비 조항](<code>prd.md</code> 15절)</li>
+<li>North Star 정의(<code>strategy.md</code>)</li>
+<li>대리인 승인자와 SITE_MANAGER 승인 권한(<code>service-blueprint.md</code> 확인할 것 3, <code>tech-design.md</code> 확인할 것 13)</li>
+<li>스택 세부(<code>tech-design.md</code> 확인할 것 8)</li>
+<li>비상 연락처에 전화하는 법적 근거 [법률 검토](<code>tech-design.md</code> 확인할 것 9)</li>
+<li>장기 부재 끼니 규칙(켤지, 최소 일수. 종류를 받지 않아 입원·외박은 나누지 않음)(<code>tech-design.md</code> 확인할 것 21)</li>
+<li>이은숙의 12/2~12/7 입원을 장기 부재로 넣을지(C·B·D 장면과 함께, <code>tech-design.md</code> 확인할 것 25)</li>
+</ul>
+<h2 id="사용자-재승인-2026-11-04-2026-11-03-장기-부재운영-현황-대시보드">사용자 재승인 2026-11-04 (2026-11-03 장기 부재·운영 현황 대시보드)</h2>
+<ul>
+<li>F18 장기 부재, F19 운영 현황 카드, CORE-13, US-23<del>25, P1 순서 F13 → F18 → F19 → F14</del>F17 [가설], 부재 종류를 받지 않음 [가설], 이벤트 이름·payload는 허브가 B·D에 알린 그대로(<code>tech-design.md</code> 확인할 것 21~25, <code>prd.md</code> 확인할 것 11·12)</li>
+<li>위탁 운영 신고 칸과 설치자 = 소유주 가정(<code>tech-design.md</code> 확인할 것 29)</li>
+</ul>
+<h2 id="사용자-재승인-2026-11-04-2026-11-04-전체-리뷰-보완">사용자 재승인 2026-11-04 (2026-11-04 전체 리뷰 보완)</h2>
+<ul>
+<li>시드 직원 4명, 서비스 사용 기록·SERVICE_FEE, 장기 부재 시드 이동과 이은숙 12/2<del>12/7, 6-2 행동 코드, 카드 다시 불러오기, 소유주 월 리포트, 보증금 보호 상태, 위탁 운영 계약 이력, 통합 데모 코어 장면(<code>prd.md</code> 9절, 확인할 것 13</del>15, <code>tech-design.md</code> 확인할 것 25~30)</li>
+</ul>
+<h2 id="사용자-재승인-2026-11-04-2026-11-04-시니어-하우징-조사-반영">사용자 재승인 2026-11-04 (2026-11-04 시니어 하우징 조사 반영)</h2>
+<ul>
+<li>결제·ERP 실연동 설계: <code>tech-design.md</code> 2-2(자동이체 동의, 출금 의뢰 배치, 예상 수납, 원장 내보내기 배치), 3-1 승계·정산 줄, 3-5, 7절, 8-3, 9절. 화면과 시드는 없고 프로토타입에 넣지 않는다. 원장 불변과 시드 금액은 그대로다.</li>
+<li><code>Payment.provider_event_id</code>는 <code>provider_dedupe_key</code>로 바꿨다. 제공자별 키는 [가설]이다.</li>
+<li>아직 정하지 않은 것: CMS 실연동(확인할 것 32), 그룹 ERP(34), RLS 운영 빈칸(35), 동반 입주자 90일 규정 [미확인](36).</li>
+</ul>
+<h2 id="사용자-재승인-2026-11-05-2026-11-05-결제-화면-표시-포함">사용자 재승인 2026-11-05 (2026-11-05, 결제 화면 표시 포함)</h2>
+<ul>
+<li>배치 전송 시간 초과와 시스템 작업 범위: <code>tech-design.md</code> 2-2, 3-5, 9절, 확인할 것 32·35.</li>
+<li>회원·대리인 청구서 결제 목업 (2026-11-05, 사용자 재승인 2026-11-05, 결제 화면): <code>prd.md</code> F16·CORE-16·부록 장면·확인할 것 19<del>22, <code>user-stories.md</code> US-30, <code>service-blueprint.md</code> 흐름 2-8-1·8-2·X21</del>X23, <code>tech-design.md</code> 2-2 PaymentAttempt·3-6·8-1·확인할 것 37. 화면 문구는 <code>copy.md</code> 3-2, 2-17에 반영됐고 (2026-11-05, 사용자 재승인) <code>evenstay/docs/core/</code>에는 승인 뒤 복사한다.</li>
+<li>사용자 결정 (2026-11-05, 사용자 재승인): 전액만 내기, 직원이 카드 번호를 받지 않기, 앱 취소 없이 프런트 안내, 결제 장면은 부록. 아직 [미정]: 경리의 취소 처리 절차, 결과가 오지 않는 시도의 기한, 예외 목록을 볼 역할.</li>
+</ul>
+<h2 id="상태판">상태판</h2>
+<p><code>senior-lab/shared/idea-board.md</code>의 이 아이디어 단계는 허브가 바꾼다. 지금은 &quot;기획(초안)&quot;이 맞고, 사용자 승인과 허브 검수 후 &quot;인계&quot;로 바꾼다.</p>
+<h2 id="변경-기록">변경 기록</h2>
+<h3 id="2026-11-03-한국어-검수-korean-skills-허브-요청-사용자-재승인-2026-11-03">2026-11-03 한국어 검수 (korean-skills, 허브 요청, 사용자 재승인 2026-11-03)</h3>
+<p><code>grammar-checker</code>(맞춤법·띄어쓰기·조사·구두점) → <code>style-guide</code>(용어 일관성: 코어 Glossary, names.md v4, 직원 화면 모듈 이름, 브랜드) → <code>humanizer</code>(번역투·피동·명사 나열) 순서로 봤다(모두 Skill 도구로 호출). 걸리는 구절만 고쳤고 뜻, 숫자, 날짜, ID, 태그, 백틱 안 이름, 화면 문구 인용은 그대로 두었다.
+고친 곳: 용어 2, 문장 1</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>전 → 후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>용어</td>
+<td>P1: 대리인 등록·승인, 회원 문의 목록, → P1: 대리인 등록·승인, 입주자가 문의한 청구,</td>
+</tr>
+<tr>
+<td>문장</td>
+<td>- 비상 연락의 법적 근거 [법률 검토] → - 비상 연락처에 전화하는 법적 근거 [법률 검토]</td>
+</tr>
+<tr>
+<td>용어</td>
+<td>계약의 고정 요금표 판에 없을 때 → 계약의 고정 요금표 버전에 없을 때</td>
+</tr>
+</tbody></table></div>
+<h3 id="2026-11-03-장기-부재운영-현황-대시보드-추가-허브-요청-사용자-재승인-2026-11-04">2026-11-03 장기 부재·운영 현황 대시보드 추가 (허브 요청, 사용자 재승인 2026-11-04)</h3>
+<p>핵심 흐름 3·4, 화면 목록, 데이터 모델, 인수 조건 범위(US-25까지), 하지 않을 것 2줄, <code>evenstay/CLAUDE.md</code> 옮길 것 후보, 아직 [미정] 2줄, 사용자 재승인 2026-11-04 절을 더했다.</p>
+<ul>
+<li>B 부재 조회로 맞춤(같은 날, 허브 요청, B ADR-S7): B는 부재를 저장하지 않고 장기 부재 이벤트를 구독하지 않으며, 신호를 평가할 때마다 <code>AbsenceQuery.absenceOf</code>를 읽는다. 이 문서에서 B를 부재 이벤트 구독자로 적은 곳을 고쳤다. D는 그대로.</li>
+<li>카피 반영 표시(같은 날, 허브 요청): 화면 목록의 새 화면 문구를 <code>copy.md</code> 2-9·2-10 반영됨으로 바꿨다.</li>
+</ul>
+<h3 id="2026-11-04-전체-리뷰-보완-허브-지시서-사용자-재승인-2026-11-04">2026-11-04 전체 리뷰 보완 (허브 지시서, 사용자 재승인 2026-11-04)</h3>
+<p>핵심 흐름 5·6과 이어 가는 데모, 화면 목록, 데이터 모델, 인수 조건 범위(US-29까지, P0·P1 목록), 하지 않을 것 한 줄, 아직 [미정] 두 줄, 사용자 재승인 2026-11-04 절.</p>
+<ul>
+<li>결정 반영(같은 날, 사용자 &quot;모두 추천대로&quot;, 허브 전달): H1 11/17 유료 요청 대상은 정옥자(이은숙 12월 2,910,000원 유지), H5 소유주 월 리포트에 B·N1 월 숫자 표시(이름·호실 없음, 조회 이름은 B·N1 확정 대기), H6 보증금 보호 상태는 회원·대리인 화면에만(보호자 없음), H8 회원 앱 결식 알림은 Next 후보.</li>
+<li>카피·N2 반영(같은 날, 허브 요청): 코어 카피 2-2·2-3·2-10·2-12·2-13·2-14·3절 보완 문구에 맞춰 <code>[NEED: 카피]</code>를 &quot;반영됨&quot;으로, 카드 이름 &quot;AI 생활 비서 사용량&quot;(G 확인), N2 커뮤니티 요청 N2-C1~C4 반영(카드 후보 [가설], 호실 층, 선언 행동 두 개, 켜는 기능은 N2 설정).</li>
+</ul>
+<h3 id="2026-11-04-시니어-하우징-조사-반영-허브-00-hubreviewsresearch-reflection-2026-11-04md-r6r10-사용자-검토-후-반영-사용자-재승인-2026-11-04">2026-11-04 시니어 하우징 조사 반영 (허브 <a class="doc-ref" href="lab-research-reflection.html"><code>00-hub/reviews/research-reflection-2026-11-04.md</code></a> R6~R10, 사용자 &quot;검토 후 반영&quot;, 사용자 재승인 2026-11-04)</h3>
+<p>&quot;사용자 재승인&quot; 절을 더했다. 사용자 승인 뒤 허브가 <code>evenstay/docs/</code>로 복사했다.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-handoff" data-title="개발 인계"><p>기획을 개발로 넘길 때 필요한 것을 한곳에 모은 문서입니다.</p></template>
+<template id="g-118" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-119" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-120" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-121" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-122" data-title="보증금"><p>수익이 아니라 맡긴 돈. 청구 원장과 나눈 별도 원장</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보증금 / 회원: 맡기신 보증금</dd><dt>영문·코드 이름</dt><dd><code>Deposit</code>, <code>DepositEntry</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-123" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-124" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-125" data-title="운영 현황 카드"><p>사업장 책임자, 본사용 숫자 칸. 매 요청 읽고 저장하지 않는다. 목표선이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영 현황</dd><dt>영문·코드 이름</dt><dd><code>GET /sites/{id}/operations-board</code></dd><dt>출처</dt><dd>core T8-1·10</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-126" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-127" data-title="비상 연락처"><p>응급 때 직원이 누구에게 어떤 순서로 전화하는가. 계약에 딸리고 동의 항목과 무관하다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 비상 연락처 / 회원: 급할 때 연락할 분 / 보호자: 비상 연락처에 적힌 분(119 신고, 병원 이송 기록에서만)</dd><dt>영문·코드 이름</dt><dd><code>EmergencyContact</code></dd><dt>출처</dt><dd>core T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-128" data-title="월 리포트"><p>숫자만 보이고 저장하지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 월 리포트</dd><dt>영문·코드 이름</dt><dd>CORE-14, <code>OwnerReportQuery.monthOf</code></dd><dt>출처</dt><dd>core T8-2·10</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-129" data-title="위탁 운영 계약"><p>사업장의 설치자와 위탁 운영자, 기간. 바뀌면 새 행을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 위탁 운영 계약</dd><dt>영문·코드 이름</dt><dd><code>ManagementContract</code></dd><dt>출처</dt><dd>core T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

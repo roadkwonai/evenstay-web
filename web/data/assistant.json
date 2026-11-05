@@ -1,0 +1,341 @@
+{
+ "seq": 100,
+ "router": "REPLAY",
+ "llmDown": false,
+ "reads": [],
+ "convs": [
+  {
+   "id": 1,
+   "resident": "R_OKJA",
+   "actor": "m.okja",
+   "at": "2026-11-05T09:40:00",
+   "last": "2026-11-05T09:41:00",
+   "unclear": 0,
+   "turns": [
+    {
+     "id": 11,
+     "at": "2026-11-05T09:40:00",
+     "who": "MEMBER",
+     "mode": "BUTTON",
+     "text": "계약·청구서 날짜",
+     "masked": false,
+     "intent": "DATES_BILLING"
+    },
+    {
+     "id": 12,
+     "at": "2026-11-05T09:40:00",
+     "who": "ASSISTANT",
+     "intent": "DATES_BILLING",
+     "answer": {
+      "text": "청구서 날짜부터 알려 드릴게요.",
+      "src": ""
+     }
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "resident": "R_MALSUN",
+   "actor": "m.malsun",
+   "at": "2026-11-06T14:10:00",
+   "last": "2026-11-06T14:11:00",
+   "unclear": 0,
+   "turns": [
+    {
+     "id": 21,
+     "at": "2026-11-06T14:10:00",
+     "who": "MEMBER",
+     "mode": "BUTTON",
+     "text": "이번 달 청구서 설명",
+     "masked": false,
+     "intent": "EXPLAIN_INVOICE"
+    },
+    {
+     "id": 22,
+     "at": "2026-11-06T14:10:00",
+     "who": "ASSISTANT",
+     "intent": "EXPLAIN_INVOICE",
+     "answer": {
+      "text": "10월 청구서 설명",
+      "src": "확인한 곳: 10월 청구서"
+     }
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "resident": "R_JEONGHEE",
+   "actor": "m.jeonghee",
+   "at": "2026-11-07T10:25:00",
+   "last": "2026-11-07T10:26:00",
+   "unclear": 0,
+   "turns": [
+    {
+     "id": 31,
+     "at": "2026-11-07T10:25:00",
+     "who": "MEMBER",
+     "mode": "TEXT",
+     "text": "오늘 무슨 프로그램 있어요?",
+     "masked": false,
+     "intent": "PROGRAM"
+    },
+    {
+     "id": 32,
+     "at": "2026-11-07T10:25:00",
+     "who": "ASSISTANT",
+     "intent": "PROGRAM",
+     "answer": {
+      "text": "프로그램 일정은 제가 아직 몰라요. 프런트에 물어보시면 알려 드려요.",
+      "src": ""
+     }
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "resident": "R_MALSUN",
+   "actor": "m.malsun",
+   "at": "2026-11-08T11:05:00",
+   "last": "2026-11-08T11:06:00",
+   "unclear": 0,
+   "turns": [
+    {
+     "id": 41,
+     "at": "2026-11-08T11:05:00",
+     "who": "MEMBER",
+     "mode": "BUTTON",
+     "text": "계약 날짜 보기",
+     "masked": false,
+     "intent": "DATES_CONTRACT"
+    },
+    {
+     "id": 42,
+     "at": "2026-11-08T11:05:00",
+     "who": "ASSISTANT",
+     "intent": "DATES_CONTRACT",
+     "answer": {
+      "text": "회원님의 계약 날짜예요.",
+      "src": "확인한 곳: 입주 계약"
+     }
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "resident": "R_OKJA",
+   "actor": "m.okja",
+   "at": "2026-11-09T16:30:00",
+   "last": "2026-11-09T16:32:00",
+   "unclear": 0,
+   "turns": [
+    {
+     "id": 51,
+     "at": "2026-11-09T16:30:00",
+     "who": "MEMBER",
+     "mode": "TEXT",
+     "text": "은행이라는데 돈을 옮기래요",
+     "masked": false,
+     "intent": "MONEY"
+    },
+    {
+     "id": 52,
+     "at": "2026-11-09T16:30:00",
+     "who": "ASSISTANT",
+     "intent": "MONEY",
+     "answer": {
+      "text": "돈을 옮기는 일은 제가 도와드릴 수 없어요. 보내시기 전에 직원과 먼저 확인해 보세요.",
+      "src": ""
+     }
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "resident": "R_YEONGSUN",
+   "actor": "m.yeongsun",
+   "at": "2026-11-10T09:15:00",
+   "last": "2026-11-10T09:16:00",
+   "unclear": 0,
+   "turns": [
+    {
+     "id": 61,
+     "at": "2026-11-10T09:15:00",
+     "who": "MEMBER",
+     "mode": "BUTTON",
+     "text": "이번 달 청구서 설명",
+     "masked": false,
+     "intent": "EXPLAIN_INVOICE"
+    },
+    {
+     "id": 62,
+     "at": "2026-11-10T09:15:00",
+     "who": "ASSISTANT",
+     "intent": "EXPLAIN_INVOICE",
+     "answer": {
+      "text": "10월 청구서 설명",
+      "src": "확인한 곳: 10월 청구서"
+     }
+    }
+   ]
+  }
+ ],
+ "calls": [
+  {
+   "id": 1,
+   "at": "2026-11-05T09:40:00",
+   "conv": 1,
+   "turn": 11,
+   "resident": "R_OKJA",
+   "tool": "KEY_DATES",
+   "target": "청구서 날짜",
+   "reason": null,
+   "authz": "ALLOW",
+   "deny": null,
+   "result": "OK",
+   "demo": false
+  },
+  {
+   "id": 2,
+   "at": "2026-11-06T14:10:00",
+   "conv": 2,
+   "turn": 21,
+   "resident": "R_MALSUN",
+   "tool": "EXPLAIN_INVOICE",
+   "target": "10월 청구서",
+   "reason": null,
+   "authz": "ALLOW",
+   "deny": null,
+   "result": "OK",
+   "demo": false
+  },
+  {
+   "id": 3,
+   "at": "2026-11-07T10:26:00",
+   "conv": 3,
+   "turn": 31,
+   "resident": "R_JEONGHEE",
+   "tool": "HANDOFF",
+   "target": "",
+   "reason": "OUT_OF_SCOPE",
+   "authz": "ALLOW",
+   "deny": null,
+   "result": "OK",
+   "demo": false
+  },
+  {
+   "id": 4,
+   "at": "2026-11-08T11:05:00",
+   "conv": 4,
+   "turn": 41,
+   "resident": "R_MALSUN",
+   "tool": "KEY_DATES",
+   "target": "계약 날짜",
+   "reason": null,
+   "authz": "ALLOW",
+   "deny": null,
+   "result": "OK",
+   "demo": false
+  },
+  {
+   "id": 5,
+   "at": "2026-11-08T11:05:00",
+   "conv": 4,
+   "turn": 41,
+   "resident": "R_MALSUN",
+   "tool": "EXPLAIN_INVOICE",
+   "target": "10월 청구서",
+   "reason": null,
+   "authz": "ALLOW",
+   "deny": null,
+   "result": "OK",
+   "demo": false
+  },
+  {
+   "id": 6,
+   "at": "2026-11-09T16:31:00",
+   "conv": 5,
+   "turn": 51,
+   "resident": "R_OKJA",
+   "tool": "HANDOFF",
+   "target": "",
+   "reason": "MONEY",
+   "authz": "ALLOW",
+   "deny": null,
+   "result": "OK",
+   "demo": false
+  },
+  {
+   "id": 7,
+   "at": "2026-11-10T09:15:00",
+   "conv": 6,
+   "turn": 61,
+   "resident": "R_YEONGSUN",
+   "tool": "EXPLAIN_INVOICE",
+   "target": "10월 청구서",
+   "reason": null,
+   "authz": "ALLOW",
+   "deny": null,
+   "result": "OK",
+   "demo": false
+  },
+  {
+   "id": 8,
+   "at": "2026-11-10T09:16:00",
+   "conv": 6,
+   "turn": 61,
+   "resident": "R_YEONGSUN",
+   "tool": "EXPLAIN_INVOICE",
+   "target": "B동 302호 청구서",
+   "reason": null,
+   "authz": "DENY",
+   "deny": "OTHER_RESIDENT",
+   "result": "DENIED",
+   "demo": true
+  }
+ ],
+ "confirms": [],
+ "handoffs": [
+  {
+   "id": 1,
+   "conv": 3,
+   "turn": 31,
+   "resident": "R_JEONGHEE",
+   "at": "2026-11-07T10:26:00",
+   "reason": "OUT_OF_SCOPE",
+   "topic": "OTHER",
+   "message": "오늘 무슨 프로그램 있어요?",
+   "answer": "프로그램 일정은 제가 아직 몰라요. 프런트에 물어보시면 알려 드려요.",
+   "masked": false,
+   "invest": false,
+   "confirmedAt": "2026-11-07T10:26:00",
+   "status": "DONE",
+   "ref": null,
+   "startedBy": "최민수",
+   "startedAt": "2026-11-07T10:40:00",
+   "doneBy": "최민수",
+   "doneAt": "2026-11-07T10:50:00",
+   "note": "프로그램 일정을 전화로 알렸습니다."
+  },
+  {
+   "id": 2,
+   "conv": 5,
+   "turn": 51,
+   "resident": "R_OKJA",
+   "at": "2026-11-09T16:31:00",
+   "reason": "MONEY",
+   "topic": null,
+   "message": "은행이라는데 돈을 옮기래요",
+   "answer": "돈을 옮기는 일은 제가 도와드릴 수 없어요. 보내시기 전에 직원과 먼저 확인해 보세요.",
+   "masked": false,
+   "invest": false,
+   "confirmedAt": "2026-11-09T16:31:00",
+   "status": "DONE",
+   "ref": null,
+   "startedBy": "최민수",
+   "startedAt": "2026-11-09T16:40:00",
+   "doneBy": "최민수",
+   "doneAt": "2026-11-09T17:00:00",
+   "note": "입주자에게 전화해 직원과 먼저 확인하시도록 안내했습니다."
+  }
+ ]
+}

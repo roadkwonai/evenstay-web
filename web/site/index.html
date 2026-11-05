@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js');</script>
+<title>Evenstay</title>
+<meta name="description" content="아침에는 창가에서 책을 읽고, 저녁에는 정원을 거닐어요. 내 소식을 어느 가족에게 어디까지 알릴지도 직접 정하실 수 있어요.">
+<link rel="icon" href="../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../css/proto.css">
+<link rel="stylesheet" href="../shared/topbar.css">
+<link rel="stylesheet" href="css/site.css">
+<noscript><style>.s-sheet, .s-scrim, .s-dlg, .p-gal-ctl, .hero-arrow, .hero-pause { display: none; }</style></noscript>
+</head>
+<body>
+<div id="topbar"></div>
+<div class="site" id="top"><div class="s-q">
+<a class="s-skip" href="#main">본문으로</a>
+<span class="s-sent" aria-hidden="true"></span>
+<header class="s-bar">
+  <div class="s-wrap s-bar-in">
+    <a class="s-logo" href="#top"><img src="../assets/logo/evenstay-logo-light.svg" alt="Evenstay 메인으로"></a>
+    <nav class="s-nav" aria-label="주요 메뉴"><a href="rooms.html">숙소</a><a href="life.html">생활</a><a href="dining.html">식사</a><a href="location.html">오시는 길</a></nav>
+    <button class="s-tel" type="button" data-click="openTel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><span class="s-long">전화 상담 02-000-0000 (가상 번호)</span><span class="s-short">전화</span></button>
+    <button class="s-tel" type="button" aria-haspopup="dialog" data-click="openMenu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg><span class="s-long">전체 메뉴</span><span class="s-short">메뉴</span></button>
+    <a class="btn btn-primary" href="#lnd-10" data-click="goForm">입주 상담 신청</a>
+  </div>
+</header><main id="main">
+<section class="hero" aria-label="Evenstay의 공간과 하루">
+  <div class="hero-stage">
+    <div class="hero-media"><div class="hero-layer is-on" aria-hidden="false"><div class="hero-zoom"><img class=" " src="assets/key-bldg.webp" alt="안뜰 정원 쪽에서 본 4층 건물 두 동과 산책로"><video class="h-vid" data-i="0" data-src="assets/vid-bldg.mp4" muted playsinline preload="none" aria-hidden="true"></video></div></div><div class="hero-layer" aria-hidden="true"><div class="hero-zoom"><img class=" " src="assets/vid-room-poster.webp" alt="큰 창과 발코니 문이 있는 1인 숙소. 창밖으로 신록이 보이고 침대 옆 벽에 둥근 호출벨이 있다"><video class="h-vid" data-i="1" data-src="assets/vid-room.mp4" muted playsinline preload="none" aria-hidden="true"></video></div></div><div class="hero-layer" aria-hidden="true"><div class="hero-zoom"><img class=" " src="assets/img-h1.webp" alt="창가 안락의자에서 책을 읽는 시니어 여성, 창밖으로 신록이 보인다"><video class="h-vid" data-i="2" data-src="assets/vid-h1.mp4" muted playsinline preload="none" aria-hidden="true"></video></div></div><div class="hero-layer" aria-hidden="true"><div class="hero-zoom"><img class=" " src="assets/img-h2.webp" alt="정원이 내려다보이는 발코니에서 차를 따르는 시니어 남성"><video class="h-vid" data-i="3" data-src="assets/vid-h2.mp4" muted playsinline preload="none" aria-hidden="true"></video></div></div><div class="hero-layer" aria-hidden="true"><div class="hero-zoom"><img class=" " src="assets/img-h3.webp" alt="라운지 창가 테이블에서 함께 수채화를 그리며 웃는 시니어 두 분"><video class="h-vid" data-i="4" data-src="assets/vid-h3.mp4" muted playsinline preload="none" aria-hidden="true"></video></div></div><div class="hero-layer" aria-hidden="true"><div class="hero-zoom"><img class=" " src="assets/img-h4.webp" alt="노을 지는 정원 산책로를 나란히 걸으며 이야기하는 시니어 두 분"><video class="h-vid" data-i="5" data-src="assets/vid-h4.mp4" muted playsinline preload="none" aria-hidden="true"></video></div></div></div>
+    <button class="hero-arrow to-prev" type="button" aria-label="이전 영상" data-click="back"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+    <button class="hero-arrow to-next" type="button" aria-label="다음 영상" data-click="next"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+    <p class="hero-cap"><span class="hero-name is-on" aria-hidden="false"><span class="hero-no">1 / 6</span>안뜰 정원을 사이에 둔 두 동의 건물이에요.</span><span class="hero-name" aria-hidden="true"><span class="hero-no">2 / 6</span>큰 창으로 햇살이 드는 1인 숙소예요.</span><span class="hero-name" aria-hidden="true"><span class="hero-no">3 / 6</span>아침에는 창가에 앉아 책을 읽어요.</span><span class="hero-name" aria-hidden="true"><span class="hero-no">4 / 6</span>오전에는 발코니에서 차를 마셔요.</span><span class="hero-name" aria-hidden="true"><span class="hero-no">5 / 6</span>오후에는 이웃과 함께 수채화를 그려요.</span><span class="hero-name" aria-hidden="true"><span class="hero-no">6 / 6</span>해 질 녘에는 안뜰 정원을 천천히 걸어요.</span></p>
+    <s-if data-if="showStrip"><div class="hero-strip"><button class="hero-seg is-cur" type="button" aria-label="안뜰 정원을 사이에 둔 두 동의 건물이에요." aria-current="true" data-click="p0"><span class="hero-fill"></span></button><button class="hero-seg" type="button" aria-label="큰 창으로 햇살이 드는 1인 숙소예요." aria-current="false" data-click="p1"><span class="hero-fill"></span></button><button class="hero-seg" type="button" aria-label="아침에는 창가에 앉아 책을 읽어요." aria-current="false" data-click="p2"><span class="hero-fill"></span></button><button class="hero-seg" type="button" aria-label="오전에는 발코니에서 차를 마셔요." aria-current="false" data-click="p3"><span class="hero-fill"></span></button><button class="hero-seg" type="button" aria-label="오후에는 이웃과 함께 수채화를 그려요." aria-current="false" data-click="p4"><span class="hero-fill"></span></button><button class="hero-seg" type="button" aria-label="해 질 녘에는 안뜰 정원을 천천히 걸어요." aria-current="false" data-click="p5"><span class="hero-fill"></span></button></div></s-if>
+    <div class="hero-left">
+      <div class="hero-ctl">
+        <s-if data-if="showCtl">
+          <button class="hero-pause" type="button" data-click="toggle">
+            <s-if data-if="paused" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>다시 보기</s-if>
+            <s-if data-if="playing"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="14" y="3" width="5" height="18" rx="1"/><rect x="5" y="3" width="5" height="18" rx="1"/></svg>멈추기</s-if>
+          </button>
+        </s-if>
+        <span class="hero-note">영상은 AI로 만든 가상 장면이에요.</span>
+      </div>
+      <div class="hero-notch"><h1>편안한 하루를 내 뜻대로</h1></div>
+    </div>
+  </div>
+  <div class="s-wrap hero-foot">
+    <p class="hero-sub">아침에는 창가에서 책을 읽고, 저녁에는 정원을 거닐어요. 내 소식을 어느 가족에게 어디까지 알릴지도 직접 정하실 수 있어요.</p>
+    <div class="hero-act">
+      <a class="btn btn-primary" href="#lnd-10" data-click="goForm">입주 상담 신청</a>
+      <button class="btn btn-secondary" type="button" data-click="openTel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>전화 상담 02-000-0000 (가상 번호)</button>
+    </div>
+  </div>
+</section>
+<section class="s-sec" id="lnd-03" aria-labelledby="h03">
+  <div class="s-wrap">
+    <div class="s-head"><h2 class="s-title" id="h03">햇살 드는 내 방, 이웃을 만나는 1층</h2></div>
+    <div class="s-space">
+      <div class="s-stack">
+        <div data-rv=""><figure><div class="s-media"><img class="s-photo r43" src="assets/key-int-c.webp" alt="큰 창 앞에 소파와 원목 테이블이 놓인 1층 라운지. 창밖으로 안뜰 정원이 보인다" loading="lazy"><video class="vid-once" data-src="assets/vid-lounge.mp4" muted playsinline preload="none" aria-hidden="true"></video></div><figcaption class="s-cap">1층 라운지. 큰 창 너머로 안뜰 정원이 보여요.<span class="s-ai">AI로 만든 가상 장면</span></figcaption></figure></div>
+        <div class="s-space-small" data-rv=""><figure><img class="s-photo r43" src="assets/img-s3.webp" alt="낮은 책장과 1인 의자가 놓인 도서 공간, 창밖으로 나무가 보인다" loading="lazy"><figcaption class="s-cap">1층 도서 공간. 낮은 책장 옆 의자에서 조용히 책을 읽어요.<span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure></div>
+      </div>
+      <div class="s-stack s-space-r">
+        <div data-rv=""><figure><img class="s-photo r43" src="assets/key-int-r.webp" alt="큰 창과 발코니 문이 있는 1인 숙소. 창밖으로 신록이 보이고 침대 옆 벽에 둥근 호출벨이 있다" loading="lazy"><figcaption class="s-cap">1인 숙소. 큰 창 옆 문을 열면 발코니예요.<span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure></div>
+        <div data-rv=""><figure><img class="s-photo r43" src="assets/img-s2.webp" alt="창이 넓은 식당에서 몇 분이 점심을 드시고 있다" loading="lazy"><figcaption class="s-cap">1층 식당. 창이 넓어 낮에는 밝아요.<span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure></div>
+      </div>
+    </div>
+    <div class="s-links"><a class="s-link" href="facility.html">시설 자세히 보기<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><a class="s-link" href="rooms.html">숙소 자세히 보기<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+  </div>
+</section>
+<section class="s-sec" id="lnd-14" aria-labelledby="h14">
+  <div class="s-wrap">
+    <div class="s-head">
+      <h2 class="s-title" id="h14">이웃과 함께 드시는 하루 세 끼</h2>
+      <p class="s-read">아침, 점심, 저녁을 1층 식당에서 차려 드려요. 아래는 상차림 예시예요.</p>
+    </div>
+    <div data-rv=""><figure><img class="s-photo r169" src="assets/img-dine-together.webp" alt="식당 식탁에서 시니어 세 분이 함께 점심을 드시며 웃고 있다" loading="lazy"><figcaption class="s-cap">이웃과 함께 드시는 점심.<span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure></div>
+    <div class="s-meals">
+      <div data-rv=""><figure><img class="s-photo r43" src="assets/img-meal-breakfast.webp" alt="흰죽과 맑은 뭇국, 계란찜, 취나물, 물김치, 과일이 차려진 아침 상" loading="lazy"><figcaption class="s-cap">아침. 흰죽, 맑은 뭇국, 계란찜, 취나물, 물김치, 과일</figcaption></figure></div>
+      <div data-rv=""><figure><img class="s-photo r43" src="assets/key-meal.webp" alt="잡곡밥과 된장국, 코다리조림, 고사리나물, 무나물, 배추김치가 차려진 점심 상" loading="lazy"><figcaption class="s-cap">점심. 잡곡밥, 된장국, 코다리조림, 고사리나물, 무나물, 배추김치</figcaption></figure></div>
+      <div data-rv=""><figure><img class="s-photo r43" src="assets/img-meal-dinner.webp" alt="잡곡밥과 콩나물국, 고등어구이, 두부조림, 나물, 깍두기가 차려진 저녁 상" loading="lazy"><figcaption class="s-cap">저녁. 잡곡밥, 콩나물국, 고등어구이, 두부조림, 시금치나물, 깍두기</figcaption></figure></div>
+    </div>
+    <span class="s-ai">예시 상차림이에요. AI로 만든 가상 사진</span>
+    <div class="s-after">
+      <p class="s-read">식사를 거르실 날은 프런트에 미리 말씀해 주세요. 그 끼니 값은 청구서에서 빼고 왜 빠졌는지도 적어 드려요.</p>
+      <a class="s-link" href="dining.html">식사 자세히 보기<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+<section class="s-sec" id="lnd-15" aria-labelledby="h15">
+  <div class="s-wrap">
+    <div class="s-head">
+      <h2 class="s-title" id="h15">마음 가는 모임만 골라서 함께해요</h2>
+      <p class="s-read">레지던스에서 수채화, 가벼운 체조, 텃밭 가꾸기 같은 모임을 열어요. 가고 싶으신 것만 신청하시면 돼요.</p>
+    </div>
+    <ul class="s-cards">
+      <li data-rv=""><figure><img class="s-photo r43" src="assets/img-h3.webp" alt="라운지 창가 테이블에서 함께 수채화를 그리며 웃는 시니어 두 분" loading="lazy"><figcaption class="s-cap"><b>수채화.</b> 물감으로 꽃과 풍경을 그려요.<span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure></li>
+      <li data-rv=""><figure><img class="s-photo r43" src="assets/img-life-exer.webp" alt="라운지에서 의자에 앉아 함께 가벼운 체조를 하는 시니어 세 분과 직원" loading="lazy"><figcaption class="s-cap"><b>가벼운 체조.</b> 의자에 앉거나 서서 몸을 풀어요.<span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure></li>
+      <li data-rv=""><figure><img class="s-photo r43" src="assets/img-life-garden.webp" alt="허리 높이 텃밭에서 상추를 따며 이야기하는 시니어 두 분" loading="lazy"><figcaption class="s-cap"><b>텃밭 가꾸기.</b> 안뜰 텃밭에서 채소를 심고 돌봐요.<span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure></li>
+    </ul>
+    <div class="s-feature" style="margin-top: 48px;" data-rv="">
+      <div class="s-stack-s">
+        <p class="s-read">신청은 Evenstay 홈 앱에서 요일과 남은 자리를 보고 하시면 돼요. 프런트에 전화하셔도 똑같이 신청돼요.</p>
+        <a class="s-link" href="life.html">여가 프로그램 자세히 보기<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+      <figure><div class="s-panel"><img class=" " src="assets/cap-10.webp" alt="이번 주 프로그램 화면. 11월 19일 목요일 아래에 오전 10시 산책 모임은 &quot;신청 없이 오시면 돼요&quot;, 오후 2시 수채화는 &quot;자리가 다 찼어요&quot;가 보인다." loading="lazy"></div><figcaption><span class="s-ai">데모 화면, 가상 데이터</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+<section class="s-sec s-tint" id="lnd-02" aria-labelledby="h02">
+  <div class="s-wrap">
+    <div class="s-promise-head">
+      <h2 class="s-title" id="h02">Evenstay가 지키는 세 가지</h2>
+      <img class=" r11" src="assets/ill-1.webp" alt="" loading="lazy">
+    </div>
+    <ol class="s-cols">
+      <li data-rv=""><h3 class="s-sub">내 소식은 내가 정해요</h3><p>어떤 소식을 누구에게 보여 줄지 가족마다 따로 정하세요. 마음이 바뀌면 언제든 바꾸실 수 있어요.</p></li>
+      <li data-rv=""><h3 class="s-sub">가족은 허락하신 소식만 봐요</h3><p>허락하신 소식은 직원이 확인한 기록 그대로 보여요. 회원님이 보시는 내용과 똑같아요.</p></li>
+      <li data-rv=""><h3 class="s-sub">중요한 일은 사람이 정해요</h3><p>앱과 비서는 소식을 알리고 말을 전할 뿐이에요. 어떻게 할지는 직원이 회원님과 이야기해서 정해요.</p></li>
+    </ol>
+  </div>
+</section>
+<section class="s-sec" id="lnd-04" aria-labelledby="h04">
+  <div class="s-wrap">
+    <div class="s-head"><h2 class="s-title" id="h04">로비와 라운지에서 얼굴을 마주하는 직원</h2></div>
+    <div class="s-two">
+      <div data-rv=""><figure><div class="s-media"><img class="s-photo r169" src="assets/img-t1.webp" alt="로비에서 프런트 직원이 시니어 남성을 웃으며 맞이한다" loading="lazy"><video class="vid-once" data-src="assets/vid-t1.mp4" muted playsinline preload="none" aria-hidden="true"></video></div><figcaption class="s-cap">산책에서 돌아오신 회원님을 프런트 직원이 나와서 맞이해요.<span class="s-ai">AI로 만든 가상 장면</span></figcaption></figure></div>
+      <div data-rv=""><figure><div class="s-media"><img class="s-photo r169" src="assets/img-t2.webp" alt="라운지 소파에 나란히 앉아 시니어 여성이 태블릿을 가리키며 묻고 직원이 듣고 있다" loading="lazy"><video class="vid-once" data-src="assets/vid-t2.mp4" muted playsinline preload="none" aria-hidden="true"></video></div><figcaption class="s-cap">궁금한 점을 물어보시면 생활 지원 직원이 곁에 앉아 함께 살펴봐요.<span class="s-ai">AI로 만든 가상 장면</span></figcaption></figure></div>
+    </div>
+    <div class="s-links"><a class="s-link" href="about.html">직원 소개 보기<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+  </div>
+</section>
+<section class="s-sec" id="lnd-05" aria-labelledby="h05">
+  <div class="s-wrap">
+    <div class="s-head">
+      <h2 class="s-title" id="h05">회원님이 쓰시는 앱, Evenstay 홈</h2>
+      <p class="s-read">휴대폰이나 태블릿으로 쓰세요. 글자가 크고, 한 화면에 한 가지 일만 나와요.</p>
+    </div>
+    <div class="s-features">
+      <div class="s-feature" data-rv="">
+        <div class="s-stack-s"><div class="s-feature-t"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><h3 class="s-sub">왜 이 금액인지 적혀 있는 청구서</h3></div><p class="s-read">항목마다 왜 이 금액인지 적혀 있어요. 거르신 식사처럼 빼 드린 금액도 이유와 함께 보여요.</p></div>
+        <figure><div class="s-panel"><img class=" " src="assets/cap-1.webp" alt="이번 달 청구서 화면. 합계와 납부 기한 아래에 &quot;드시지 않은 식사 3끼, 27,000원을 빼 드렸어요.&quot;가 보인다." loading="lazy"></div><figcaption><span class="s-ai">데모 화면, 가상 데이터</span></figcaption></figure>
+      </div>
+      <div class="s-feature" data-rv="">
+        <div class="s-stack-s"><div class="s-feature-t"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><h3 class="s-sub">생활 요청</h3></div><p class="s-read">고장 난 곳이나 필요한 일을 알려 주시면 담당 직원에게 전해 드려요.</p></div>
+        <figure><div class="s-panel"><img class=" " src="assets/cap-9.webp" alt="생활 요청 첫 화면. &quot;어떤 일인가요?&quot; 아래에 고장·수리, 청소, 세탁 같은 일의 종류가 이어진다." loading="lazy"></div><figcaption><span class="s-ai">데모 화면, 가상 데이터</span></figcaption></figure>
+      </div>
+      <div class="s-feature" data-rv="">
+        <div class="s-stack-s"><div class="s-feature-t"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><h3 class="s-sub">홈 비서</h3></div><p class="s-read">계약 날짜와 청구서 내용을 물어보시면 답해요. 그 밖의 일은 직원에게 전해 드려요.</p></div>
+        <figure><div class="s-panel"><img class=" " src="assets/cap-3.webp" alt="홈 비서 첫 화면. 계약 날짜와 청구서를 묻는 큰 버튼이 있다." loading="lazy"></div><figcaption><span class="s-ai">데모 화면, 가상 데이터</span></figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="s-sec" id="lnd-06" aria-labelledby="h06">
+  <div class="s-wrap">
+    <div class="s-head">
+      <div class="s-stack"><h2 class="s-title" id="h06">가족이 쓰는 앱, Evenstay 패밀리</h2><div class="s-ill"><img class="s-photo r43" src="assets/ill-2.webp" alt="" loading="lazy"></div></div>
+      <div class="s-stack s-read">
+        <p>생활 소식, 일정, 청구서, 건강 소식, 생활 요청 가운데 회원님이 허락하신 것만 가족에게 보여요.</p>
+        <p>일정에는 계약과 청구서 날짜, 신청하신 프로그램이 나와요. 자리를 기다리시는 프로그램과 시설 예약은 나오지 않아요.</p>
+        <p>가족마다 항목을 따로 정하세요. 바꾸시면 바로 적용돼요. 누가 언제 무엇을 봤는지도 회원님 앱에 나와요.</p>
+        <p>생활 요청을 허락받은 가족은 고장 수리나 청소를 회원님 대신 요청하실 수도 있어요.</p>
+      </div>
+    </div>
+    <div class="s-two">
+      <figure data-rv=""><div class="s-panel"><img class=" " src="assets/cap-5.webp" alt="회원님이 가족마다 보여 줄 것을 고르는 화면. 딸 김지민 님은 다섯 가지 모두 안 보이고, 아들 김태호 님은 생활 소식이 보인다." loading="lazy"></div><figcaption><span class="s-ai">데모 화면, 가상 데이터</span></figcaption></figure>
+      <figure data-rv=""><div class="s-panel"><img class=" " src="assets/cap-4.webp" alt="가족이 보는 첫 화면. 위에 &quot;이은숙 회원님이 허락하신 소식이에요.&quot;가 있다." loading="lazy"></div><figcaption><span class="s-ai">데모 화면, 가상 데이터</span></figcaption></figure>
+    </div>
+    <p class="s-rel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>회원님이 정하신 항목만 가족 화면에 나와요.</p>
+  </div>
+</section>
+<section class="s-sec" id="lnd-07" aria-labelledby="h07">
+  <div class="s-wrap s-split">
+    <div class="s-stack" data-rv="">
+      <h2 class="s-title" id="h07">도움이 더 필요해지면, 무엇이 달라지는지 먼저 알려 드려요</h2>
+      <p class="s-read">직원이 먼저 회원님께 설명드리고 말씀을 들어요. 생활 지원 단계는 직원이 기록을 남긴 뒤 센터장이 정해요.</p>
+      <p class="s-read">앱을 열면 바뀌지 않는 것(지금 계신 방, 입주 계약, 급할 때 연락할 분)이 맨 위에 보이고, 새로 받으시는 도움이 그 아래에 보여요.</p>
+      <div class="s-ill"><img class="s-photo r43" src="assets/ill-3.webp" alt="" loading="lazy"></div>
+    </div>
+    <figure data-rv=""><div class="s-panel s-panel-fit"><img class=" " src="assets/cap-6.webp" alt="생활 지원 단계 화면. 지금 방, 입주 계약, 급할 때 연락할 분은 그대로이고, 목욕 도움이 새로 생겼다." loading="lazy"></div><figcaption class="s-cap">방과 입주 계약은 그대로예요. 목욕 도움이 새로 생겼어요. <span class="s-ai">데모 화면, 가상 데이터</span></figcaption></figure>
+  </div>
+</section>
+<section class="s-sec" id="lnd-13" aria-labelledby="h13">
+  <div class="s-wrap">
+    <div class="s-head"><h2 class="s-title" id="h13">도움이 필요하실 때</h2></div>
+    <div class="s-split">
+      <div data-rv=""><figure><div class="s-media"><img class="s-photo r169" src="assets/img-safe-visit.webp" alt="밤에 숙소를 찾은 직원이 침대 옆에 앉아 시니어 여성과 이야기하고 있다" loading="lazy"><video class="vid-once" data-src="assets/vid-safe-visit.mp4" muted playsinline preload="none" aria-hidden="true"></video></div><figcaption class="s-cap">밤에 부르신 회원님 곁에 직원이 앉아 이야기를 들어요.<span class="s-ai">AI로 만든 가상 장면</span></figcaption></figure></div>
+      <div class="s-stack">
+        <ol class="s-steps">
+          <li data-rv=""><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg><p><span class="s-lead">부르세요.</span> 호출벨을 누르시면 당번 직원에게 바로 알려요. 침대 센서가 알릴 때도 마찬가지예요.</p></li>
+          <li data-rv=""><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></svg><p><span class="s-lead">직원이 찾아가요.</span> 당번 직원이 바로 받지 못하면 다른 직원에게도 알려요.</p></li>
+          <li data-rv=""><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg><p><span class="s-lead">기록이 남아요.</span> 직원이 한 일을 기록해요. 건강 소식을 허락하신 가족은 Evenstay 패밀리에서 봐요.</p></li>
+        </ol>
+        <p class="s-note">급하시면 119에 바로 전화하셔도 돼요.</p>
+        <a class="s-link" href="safety.html">안심·건강 지원 자세히 보기<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <figure class="s-feature" style="margin-top: 48px;" data-rv=""><figcaption class="s-cap">호출벨을 누른 뒤 앱 화면. "김하진 직원이 가고 있어요." <span class="s-ai">데모 화면, 가상 데이터</span></figcaption><div class="s-panel s-panel-fit"><img class=" " src="assets/cap-2.webp" alt="호출벨을 누른 뒤 앱 화면. &quot;김하진 직원이 가고 있어요.&quot;" loading="lazy"></div></figure>
+  </div>
+</section>
+<section class="s-sec" id="lnd-08" aria-labelledby="h08">
+  <div class="s-wrap s-split">
+    <div data-rv=""><figure><img class="s-photo r43" src="assets/img-t3.webp" alt="프런트 직원이 웃으며 전화를 받고 메모하고 있다" loading="lazy"><figcaption class="s-cap">프런트 직원이 전화를 받으며 메모해요.<span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure></div>
+    <div class="s-stack" data-rv="">
+      <h2 class="s-title" id="h08">앱이 어려우시면 이렇게 하세요</h2>
+      <ul class="s-steps">
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg><p>방마다 호출벨이 있어요. 누르시면 당번 직원에게 알려요.</p></li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><p>방 전화로 프런트(내선 0번)에 걸어 주세요. 부탁하신 일은 직원이 대신 요청해 드려요.</p></li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><p>가까이 있는 직원에게 말씀하셔도 돼요. 앱 설정은 프런트 직원이 곁에서 도와 드려요.</p></li>
+      </ul>
+      <div class="s-with-mas">
+        <button class="btn btn-secondary" type="button" data-click="openTel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>전화 상담 02-000-0000 (가상 번호)</button>
+        <img class="s-mas r11" src="assets/mas-1.webp" alt="" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="s-sec s-tint" id="lnd-09" aria-labelledby="h09">
+  <div class="s-wrap">
+    <div class="s-head"><h2 class="s-title" id="h09">앱이 혼자 정하지 않아요</h2></div>
+    <ul class="s-cols">
+      <li><span class="s-feature-t"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><h3 class="s-sub">홈 비서</h3></span><p>홈 비서는 계약서와 청구서에 적힌 내용만 답해요. 건강, 돈, 계약처럼 결정이 필요한 일은 회원님께 여쭌 뒤 직원에게 전해요.</p></li>
+      <li><span class="s-feature-t"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg><h3 class="s-sub">안심 알림</h3></span><p>안심 알림은 호출벨과 센서 신호를 직원에게 전하고 기록을 남겨요. 가서 살피고 어떻게 할지는 직원이 정해요.</p></li>
+      <li><span class="s-feature-t"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><h3 class="s-sub">생활 지원 단계</h3></span><p>생활 지원 단계도 앱이 정하지 않아요. 직원이 회원님 말씀을 듣고 기록한 뒤 센터장이 정해요.</p></li>
+    </ul>
+  </div>
+</section>
+<section class="s-sec" id="lnd-10" aria-labelledby="h10">
+  <div class="s-wrap s-form-grid">
+    <div class="s-form-col s-stack">
+      <h2 class="s-title" id="h10">입주 상담 신청</h2>
+      <p class="s-read">성함과 연락처를 남겨 주시면 상담 직원이 연락드려요. 숙소, 비용, 입주 절차를 상담 때 안내해 드려요.</p>
+      <p class="s-demo">이 사이트는 포트폴리오로 만든 데모예요. 신청 내용은 보내지 않고 저장하지도 않아요.</p>
+      <s-if data-if="done" hidden>
+        <div class="s-done">
+          <img class="s-mas r11" src="assets/mas-1.webp" alt="" loading="lazy">
+          <h3 class="s-sub" id="done-h" tabindex="-1">신청을 받았어요</h3>
+          <p>실제 서비스라면 고르신 시간대에 상담 직원이 연락드려요.</p>
+          <p class="s-demo">데모라서 이 신청은 보내지 않았고 저장하지도 않았어요.</p>
+          <div class="s-dlg-act"><a class="btn btn-secondary" href="#top" data-click="reset">처음 화면으로</a><button class="btn btn-secondary" type="button" data-click="reset">다시 써 보기</button></div>
+        </div>
+      </s-if>
+      <s-if data-if="notDone">
+        <form class="s-form" novalidate>
+          <s-if data-if="anyErr" hidden><p class="s-err" role="alert"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span>아직 채우지 않은 칸이 <span data-hole="errN"></span>개 있어요. 칸 아래 안내를 봐 주세요.</span></p></s-if>
+          <fieldset class="s-field"><legend>누가 신청하시나요?</legend><div class="s-opts"><label class="s-opt"><input type="radio" name="who" value="self">본인</label><label class="s-opt"><input type="radio" name="who" value="family">가족(대신 신청)</label></div><s-if data-if="eWho" hidden><p class="s-err" id="e-who"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span>본인과 가족(대신 신청) 가운데 하나를 골라 주세요.</span></p></s-if></fieldset>
+          <div class="s-field"><label class="lab" for="f-name">성함</label><input class="input" id="f-name" name="fname" type="text" autocomplete="name" aria-invalid="false" aria-describedby="e-name"><s-if data-if="eName" hidden><p class="s-err" id="e-name"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span>성함을 적어 주세요.</span></p></s-if></div>
+          <div class="s-field"><label class="lab" for="f-tel">연락처</label><input class="input" id="f-tel" name="ftel" type="tel" inputmode="tel" autocomplete="tel" aria-invalid="false" aria-describedby="h-tel e-tel"><p class="s-hint" id="h-tel">숫자만 적으셔도 돼요. 예: 010-0000-0000</p><s-if data-if="eTel" hidden><p class="s-err" id="e-tel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span><span data-hole="eTelMsg"></span></span></p></s-if></div>
+          <fieldset class="s-field"><legend>어떻게 상담하실까요?</legend><div class="s-opts"><label class="s-opt"><input type="radio" name="how" value="tel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>전화 상담</label><label class="s-opt"><input type="radio" name="how" value="visit"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></svg>방문 상담</label></div><s-if data-if="eHow" hidden><p class="s-err" id="e-how"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span>전화 상담과 방문 상담 가운데 하나를 골라 주세요.</span></p></s-if></fieldset>
+          <fieldset class="s-field"><legend>연락받기 편한 때 (고르지 않으셔도 돼요)</legend><div class="s-opts"><label class="s-opt"><input type="radio" name="when" value="am">오전</label><label class="s-opt"><input type="radio" name="when" value="pm">오후</label></div></fieldset>
+          <div class="s-field"><label class="lab" for="f-msg">남기실 말 (적지 않으셔도 돼요)</label><textarea class="input" id="f-msg" name="fmsg" rows="4" aria-describedby="h-msg"></textarea><p class="s-hint" id="h-msg">건강이나 병에 관한 내용은 적지 말아 주세요. 필요한 것은 상담 때 여쭤볼게요.</p></div>
+          <fieldset class="s-field"><legend>개인정보 수집 동의 (꼭 필요해요)</legend>
+            <p class="s-consent">[법률 검토 전 초안] 상담 연락을 위해 성함, 연락처, 신청하시는 분, 상담 방법, 편한 때, 남기실 말을 받아요. 상담 연락에만 쓰고, 상담이 끝나면 지워요. 보관 기간: [미정] 동의하지 않으셔도 전화로 상담하실 수 있어요.</p>
+            <label class="s-agree"><input type="checkbox" name="agree" aria-invalid="false" aria-describedby="e-agree">위 내용에 동의해요</label><s-if data-if="eAgree" hidden><p class="s-err" id="e-agree"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg><span>동의하셔야 신청이 돼요. 동의하지 않으시면 전화로 상담하실 수 있어요.</span></p></s-if>
+            <a class="s-link" href="privacy.html">개인정보 처리방침 보기</a>
+          </fieldset>
+          <button class="btn btn-primary btn-block" type="submit">
+            <s-if data-if="sending" hidden><svg class="i s-spin" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>보내는 중이에요</s-if>
+            <s-if data-if="idle">신청 보내기</s-if>
+          </button>
+        </form>
+      </s-if>
+    </div>
+    <div class="s-form-side">
+      <div class="s-tel-line s-form-tel">
+        <p>전화로 하시려면</p>
+        <button class="btn btn-secondary" type="button" data-click="openTel"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>02-000-0000 (가상 번호)</button>
+      </div>
+      <div><figure><img class="s-photo r169" src="assets/key-tone.webp" alt="창가 나무 탁자 위의 펼친 책과 찻잔" loading="lazy"><figcaption class="s-cap"><span class="s-ai">AI로 만든 가상 사진</span></figcaption></figure></div>
+    </div>
+  </div>
+</section>
+<section class="s-sec s-dark" id="lnd-11" aria-labelledby="h11">
+  <div class="s-wrap">
+    <div class="s-head">
+      <h2 class="s-title" id="h11">포트폴리오를 보러 오신 분께</h2>
+      <p class="s-read">Evenstay는 실제로 운영하지 않는 가상의 시니어 레지던스입니다. 이 사이트와 앱 화면은 시니어 레지던스 운영 시스템을 기획하고 프로토타입으로 만든 결과입니다. 위에서 보신 회원 앱과 가족 앱, 직원 화면을 프로토타입의 화면 모음에서 이어서 보실 수 있습니다.</p>
+    </div>
+    <ul class="s-mods"><li><h3>코어</h3><p>여러 레지던스의 계약과 청구를 같은 기준으로 처리합니다.</p></li><li><h3>안심 알림</h3><p>호출벨과 센서 신호를 한곳에 모아 직원에게 전하고 대응 과정을 기록합니다.</p></li><li><h3>보호자 포털·동의</h3><p>입주자가 가족마다 보여 줄 항목을 정합니다. 누가 무엇을 봤는지는 모두 기록합니다.</p></li><li><h3>AI 생활 비서</h3><p>계약 날짜와 청구 내용만 답합니다. 판단이 필요한 일은 직원에게 넘깁니다.</p></li><li><h3>생활 지원 단계</h3><p>건강이 달라진 입주자의 지원 단계를 사람이 기록해 정합니다. 바뀌는 것과 바뀌지 않는 것을 입주자에게 먼저 보여 줍니다.</p></li><li><h3>생활 요청</h3><p>수리, 청소, 세탁, 외출 차량, 병원 동행, 의견을 한 목록으로 받아 담당을 정합니다. 입주자 확인까지 기록합니다.</p></li><li><h3>프로그램·시설·공지</h3><p>여가 프로그램 신청과 대기, 출석, 공용 시설 예약, 공지 확인을 한곳에서 관리합니다.</p></li></ul>
+    <p class="s-read" style="font-size: 1.0625rem;">소유주는 자기 사업장의 월 리포트와 위탁 운영 계약 이력을 볼 수 있습니다.</p>
+    <div class="s-split" style="margin-top: 48px;">
+      <figure><img class="s-shot " src="assets/cap-8.webp" alt="직원 화면: 안심 알림 목록" loading="lazy"><figcaption class="s-cap" style="color: var(--fg-on-inverse);">직원 화면: 안심 알림 목록 <span class="s-ai">데모 화면, 가상 데이터</span></figcaption></figure>
+      <div class="s-stack-s" style="align-items: flex-start;">
+        <a class="btn s-btn-inv" href="../app.html" target="_blank" rel="noopener">프로토타입 열기<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
+        <p class="s-hint">새 창에서 열립니다. 링크는 면접 때 공유합니다.</p>
+      </div>
+    </div>
+  </div>
+</section></main>
+<footer class="s-foot">
+  <div class="s-wrap s-foot-grid">
+    <div class="s-stack-s">
+      <img src="../assets/logo/evenstay-logo-light.svg" alt="Evenstay">
+      <p>Evenstay는 포트폴리오로 만든 가상 시니어 레지던스예요. 실제로 운영하는 곳이 아니에요.</p>
+      <p>사이트의 사진과 영상은 모두 AI로 만든 가상 장면이에요. 나오는 분들도 실제 인물이 아니에요.</p>
+      <p>전화 02-000-0000 (가상 번호) · 가상시 안뜰구 머묾로 12 (가상 주소)</p>
+      <p>상담 신청은 데모라서 어디에도 보내지 않아요.</p>
+      <p>시니어 레지던스 운영 시스템 기획과 프로토타입을 보여 드리려고 만든 사이트예요.</p>
+    </div>
+    <div class="s-stack-s">
+      <nav aria-label="페이지 링크"><ul><li><a href="about.html">소개</a></li><li><a href="facility.html">시설</a></li><li><a href="rooms.html">숙소</a></li><li><a href="life.html">생활</a></li><li><a href="dining.html">식사</a></li><li><a href="safety.html">안심·건강 지원</a></li><li><a href="location.html">오시는 길</a></li><li><a href="consult.html">입주 상담</a></li><li><a href="privacy.html">개인정보 처리방침</a></li></ul></nav>
+      <a class="s-link" href="#top"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>맨 위로</a>
+    </div>
+  </div>
+</footer></div>
+<s-if data-if="menuOpen" hidden>
+  <div class="s-sheet" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+    <div class="s-wrap">
+      <div class="s-sheet-top">
+        <img src="../assets/logo/evenstay-logo-light.svg" alt="Evenstay" style="height: 28px; width: auto;">
+        <button class="btn btn-ghost" type="button" data-click="closeMenu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>닫기</button>
+      </div>
+      <ul><li><a href="about.html" data-click="closeMenu">소개</a></li><li><a href="facility.html" data-click="closeMenu">시설</a></li><li><a href="rooms.html" data-click="closeMenu">숙소</a></li><li><a href="life.html" data-click="closeMenu">생활</a></li><li><a href="dining.html" data-click="closeMenu">식사</a></li><li><a href="safety.html" data-click="closeMenu">안심·건강 지원</a></li><li><a href="location.html" data-click="closeMenu">오시는 길</a></li><li><a href="consult.html" data-click="closeMenu">입주 상담</a></li></ul>
+    </div>
+  </div>
+</s-if>
+<s-if data-if="telOpen" hidden>
+  <div class="s-scrim"></div>
+  <div class="s-dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-h" style="top: 16px;">
+    <h2 class="s-sub" id="dlg-h">가상 번호예요</h2>
+    <p>이 사이트는 포트폴리오로 만든 데모예요. 02-000-0000은 가상 번호라 전화가 걸리지 않아요.</p>
+    <div class="s-dlg-act"><button class="btn btn-primary" type="button" data-click="closeTel">알겠어요</button><a class="btn btn-secondary" href="#lnd-10" data-click="telToForm">입주 상담 신청하기</a></div>
+  </div>
+</s-if></div>
+<script type="module">import('../shared/topbar.js').then((m) => m.mountTopbar(document.getElementById('topbar'), { base: '../' }));</script>
+<script src="js/site.js" defer></script>
+</body>
+</html>

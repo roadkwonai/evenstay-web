@@ -1,0 +1,136 @@
+# 프롬프트 기록: 메인 홈과 제작 히스토리
+
+[이력 개요](../README.md) · 전체 6건 (사용자 2, 허브 지시 1, 에이전트 지시 3)
+
+### p0808
+
+2026-11-04 21:49 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+프로토타입 페이지들을 한눈에 살펴보기 쉬운 메인 홈 페이지도 필요할 것 같아 
+메인 홈에서 권한별 서비스 및 소개 페이지 도 접근하게 쉽게 구성해주고 프로토타입 과 이 서비스에 대한 안내와 소개, 이 서비스를 어떤 스킬들과 기술들을 사용해서 구성했는지와 PRD, 화면정의서, 아트보드, 기획서 모두 포함하고 디테일한 내용들을 소개하는 페이지들과 모달팝업 툴팁등도 추가하고 관련 자료들도 잘 살펴볼 수 있게 프로토타입 홈 페이지를 구성해서 모두 잘 정리할 수 있게 프로토타입 메인 홈 페이지 구성을 기획 하고 디자인하고 설계 해서 제작해줘
+~~~~
+
+### p0809
+
+2026-11-04 21:51 · 허브 지시 · Evenstay 클릭형 프로토타입 제작
+
+~~~~text
+다음 작업: 프로토타입 메인 홈을 기획, 디자인, 설계해서 제작해 주세요. 지금 하는 이름 변경과 설명 기능을 먼저 끝내고 보고한 뒤 시작합니다.
+
+사용자 요청: "프로토타입 페이지들을 한눈에 살펴보기 쉬운 메인 홈 페이지도 필요할 것 같아. 메인 홈에서 권한별 서비스 및 소개 페이지도 접근하게 쉽게 구성해주고, 프로토타입과 이 서비스에 대한 안내와 소개, 이 서비스를 어떤 스킬들과 기술들을 사용해서 구성했는지와 PRD, 화면정의서, 아트보드, 기획서 모두 포함하고, 디테일한 내용들을 소개하는 페이지들과 모달팝업 툴팁 등도 추가하고, 관련 자료들도 잘 살펴볼 수 있게 구성해줘."
+
+## 순서
+1. 기획: `design/home/plan.md`에 정보 구조, 페이지 목록, 페이지별 내용, 입구 방식, 시험 계획을 먼저 씁니다. 사용자 승인을 기다리지 말고 이어서 만듭니다.
+2. 디자인과 제작: `DESIGN.md`와 `design/system`, 지금 앱과 소개 사이트의 말투와 틀을 따릅니다. 디자인 스킬은 Skill 도구로 불러서 쓰고, 부른 것만 보고합니다.
+3. 시험과 보고.
+
+## 구조
+- `/`를 홈으로 바꿉니다. 지금 앱 셸은 `app.html`로 옮깁니다. 영향 받는 곳을 모두 고칩니다: `test/*.mjs`의 주소, `visit-site.mjs`의 앱 진입 확인, `design/site/src/build_static.py`의 `../index.html`, 다시 만든 `site/`, README.
+- 앱 막대에 홈으로 가는 버튼을, 소개 사이트에 홈 또는 앱으로 가는 길을 둡니다.
+- 앱에 주소로 계정과 화면을 지정해 여는 입구를 더합니다. 이미 있는 `window.proto`와 시연 단계의 계정 이동을 다시 씁니다.
+
+## 홈에 넣을 것
+- 프로토타입과 서비스 안내: 무엇이고, 어디까지 만들었고, 어떻게 둘러보는지. "MVP는 만들지 않았다", "데이터는 모두 가상"을 첫 화면에서 알 수 있게 합니다.
+- 권한별 입구: 회원, 대리인, 보호자, 프런트, 생활 지원, 간호, 야간 당번, 사업장 책임자, 경리, 본사, 소유주를 묶어 보이고, 누르면 그 계정의 첫 화면으로 열립니다. 22개 계정 전체는 펼쳐서 봅니다. 각 입구에 이 사람이 무엇을 볼 수 있는지 설명을 붙입니다.
+- 소개 사이트 입구와 페이지별 바로가기.
+- 화면 찾아보기: 75개 페이지를 모듈과 이용자로 찾고, 눌러서 해당 계정으로 엽니다. 41개 시연 단계로 가는 길도 둡니다.
+- 문서 보기: 모듈 7개의 strategy, service-blueprint, prd, user-stories, tech-design, roadmap, handoff, copy, 그리고 `design/mvp-screens.md`, `docs/project.md`, `docs/glossary.md`. 새 탭에 원문 파일을 띄우지 말고 읽을 수 있는 페이지로 만듭니다. 표와 mermaid가 제대로 보여야 합니다.
+- 아트보드: 아래 "아트보드" 항목을 따릅니다.
+- 조사와 설계 근거: `senior-lab/01-research/outputs/`의 competitive-landscape, pms-landscape, personas, jtbd, problem-bank, service-coverage-review, senior-housing-architecture. `senior-lab/02-ideation/outputs/`의 shortlist, scorecard. `senior-lab/00-hub/reviews/`의 architecture-options, architecture-landscape, architecture-staged, PreMortem-evenstay-architecture, research-reflection. `senior-lab/shared/decisions.md`.
+- 기술과 스킬: 아래 "사실 규칙"을 따릅니다.
+- 남은 일과 못 한 것: 사람이 다 눌러 보지 않음, 실제 휴대폰과 Safari 미확인, 열린 용어 어긋남, `[미정]` 항목.
+
+## 문서를 넣는 방식
+- 소개 사이트처럼 원본에서 만드는 생성물로 합니다. 원본은 고치지 않고, 빌드 스크립트 하나가 위 문서를 읽어 `design/prototype/home/` 아래 HTML을 만듭니다. README에 다시 만드는 명령을 적습니다.
+- 문서 사이 링크는 홈 안의 페이지로 바꿉니다. 깨진 링크가 없어야 합니다.
+- 제목 아래의 `상태:`를 그대로 표시합니다. 초안을 승인처럼 보이게 하지 않습니다. 원본 경로도 표시합니다.
+- 렌더러나 mermaid를 쓰면 사본을 저장소에 두어 인터넷 없이 열리게 합니다. 이미 설치된 것이 있으면 그것을 씁니다.
+- 넣지 않을 것: `senior-lab/shared/target-companies.md`, `RedTeam-evenstay-portfolio-2026-11-03.md`, `decisions-pending`, `supplement-orders`, `reapproval-bundle*`, 세션 공유 노트. 면접 준비나 내부 진행 기록이라 보는 사람에게 필요하지 않습니다. `decisions.md`에 같은 성격의 줄이 있으면 빼지 말고 허브에 알려 주세요.
+
+## 사실 규칙
+- 숫자(화면 수, 시연 단계, 문구 키, 시험 결과)는 손으로 쓰지 말고 파일과 시험 결과에서 뽑습니다.
+- 기술은 두 칸으로 나눕니다. "프로토타입에 실제로 쓴 것"(HTML, CSS, JS, 빌드 없음, puppeteer 시험, python 생성기)과 "설계만 한 것"(Next.js, Spring Boot, Spring Modulith, PostgreSQL, AWS 서울, Bedrock 서울, 2단계 FastAPI 등). 설계만 한 것을 구현처럼 쓰지 않습니다. 코어 `tech-design.md` 12절과 ADR-3에는 Spring 결정이 아직 반영되지 않았으니 그 차이를 밝힙니다.
+- 스킬은 실제 호출 기록이 있는 것만 씁니다. 근거는 산출물의 `방법:` 줄, `REPORT.md`, `skills-lock.json`입니다. 어느 단계에서 무엇에 썼는지까지 적고, 기록이 없으면 넣지 않습니다.
+- 고객, 효과, 후기 수치를 만들지 않습니다. 지원 회사 이름을 홈 문구에 쓰지 않습니다. 문서 본문에 있는 경우는 원문 그대로 둡니다.
+
+## 아트보드
+캔버스는 Version 17이고 다시 게시하지 않습니다. 읽기만 합니다. 보드 이미지를 얻을 수 있으면 데스크톱과 모바일을 모듈별로 넣습니다. 얻을 수 없으면 `mvp-screens.md`의 보드 ID 목록과 프로토타입 실제 화면 캡처로 만들되, 캡처를 "아트보드"라고 부르지 말고 "프로토타입 화면"이라고 적습니다. 캔버스 링크는 비공개라 다른 사람이 못 열 수 있다는 점도 적습니다. 어떻게 처리했는지 보고에 씁니다.
+
+## 설명 기능
+툴팁과 모달은 이번에 만든 `js/lib/help.js` 방식을 다시 씁니다. 키보드로 열고 Esc로 닫히고, 포커스가 돌아오고, 터치에서도 볼 수 있어야 합니다. 화면 설명, 권한 설명, 문서 종류 설명, 기술 설명, 용어 풀이에 씁니다.
+
+## 문구
+문장은 `strings/home.json`에 둡니다. `check-strings.mjs` 범위에 넣습니다. 이모지 금지, "판" 대신 "버전", 금지어 규칙, 새 데모 막대 용어를 지킵니다.
+
+## 시험
+`test/visit-home.mjs`를 더합니다. 폭 1440과 390에서: 모든 링크, 권한별 입구가 맞는 계정과 화면으로 여는지, 75개 화면 입구, 문서 페이지 전체와 문서 안 링크, 모달과 툴팁, 가로 넘침, 콘솔 오류. 기존 시험도 앱 주소를 바꾼 뒤 모두 다시 돌립니다.
+
+## 하지 않을 것
+커밋, 유료 API 호출, 외부 게시, 캔버스 수정, `docs/`와 senior-lab 원본 수정. 원본이 틀렸으면 고치지 말고 보고합니다.
+
+## 보고
+페이지 목록, 입구 방식, 시험 수치, 부른 스킬, 아트보드 처리 결과, 못 한 것, 허브가 정할 것. 이름 변경과 설명 작업 보고와는 따로 보내 주세요.
+~~~~
+
+### p0810
+
+2026-11-04 21:53 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+랜딩페이지 상단영역이 너무 낮아져서 화면이 다 안보이는데 상단영역을 더 시원하게 높여줘
+~~~~
+
+### p0812
+
+2026-11-04 21:54 · 에이전트 지시 · Evenstay 클릭형 프로토타입 제작
+
+~~~~text
+Evenstay 프로토타입 메인 홈의 아트보드 페이지에 쓸 이미지를 만든다. 답과 기록은 한국어. 캔버스(https://claude.ai/artifact/6vVAtVPR8ryW5fbKadRpCQ)는 읽기만 하고 다시 게시하지 않는다. 커밋하지 않는다. 유료 API를 쓰지 않는다.
+
+재료: 캔버스 앱 보드 원본 사본이 `(임시 폴더)`에 있다(데스크톱 파일 ID.dc.html, 모바일 ID-m.dc.html은 dc-import 껍데기, canvas.json에 보드 이름과 페이지 묶음). 파일 크기는 캔버스 현재 버전과 같은지 표본 확인했다. CSS는 같은 폴더 위 `work/proto.css`(글꼴 주소 `/_blob/...`), 로고는 `work/*.svg`, 쓰는 도구 예시는 `.../scratchpad/tools/`(shoot.py, wrap.html, dcserve.py)와 `design/site/src/cap.mjs`. `.../scratchpad/preview15/`에 이미 정적 미리보기가 있을 수 있다.
+
+할 일:
+1. 스크립트 `~/ai/evenstay/design/home/shoot-artboards.mjs`를 쓴다(주석 외 한글 없음). 보드 본문(`</helmet>`~`</x-dc>`)을 꺼내 실제 CSS, 글꼴(`design/prototype/assets/fonts`), 로고로 그린 뒤 puppeteer-core로 찍는다. 입력 폴더는 인자로 받는다. puppeteer-core 위치: `PPTR=(임시 폴더)`, 크롬은 `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`.
+2. 보드마다 데스크톱(뷰포트 1280)과 모바일(뷰포트 390) 전체 높이를 webp로 찍어 `~/ai/evenstay/design/prototype/home/artboards/<보드 ID>.webp`, `<보드 ID>-m.webp`로 둔다. 데스크톱은 deviceScaleFactor 0.6, 모바일은 0.8, 품질 약 70. 전체 합이 30MB를 넘으면 품질을 낮춘다. 이름에 `Main`은 뺀다.
+3. `~/ai/evenstay/design/home/artboards.json`을 쓴다: 배열, 항목 `{id, page(페이지 ID), label(canvas.json 보드 이름), service(코어/안심 알림/보호자 포털·동의/AI 생활 비서/생활 지원 단계/생활 요청/프로그램·시설·공지/공통), kind("page" 또는 "cut"), desktop, mobile, w, h}`. ID 접두어 COM은 공통, CORE는 코어, SAF는 안심 알림, FAM은 보호자, AST는 비서, TRN은 단계, REQ는 요청, CMN은 프로그램이다.
+4. 깨진 이미지가 없는지 표본 20장을 Read로 보고, 모두 빈 화면이 아닌지 픽셀로 확인한다. `{{`나 `dc-import` 글자가 찍힌 보드가 없는지 본다.
+
+끝나면 공유 폴더 `~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19/prototype-click-2026-11-04/home-boards.md`에 보드 수, 총 용량, 실패 목록, 원본과 캔버스의 일치 확인 방법을 적는다. 마지막 답은 3줄 이내.
+~~~~
+
+### p0813
+
+2026-11-04 21:54 · 에이전트 지시 · Evenstay 클릭형 프로토타입 제작
+
+~~~~text
+Evenstay 프로토타입 메인 홈의 "기술과 스킬", "남은 일" 페이지에 쓸 사실 자료를 모은다. 답과 기록은 한국어. 원본은 고치지 않는다. 커밋하지 않는다. 산출물은 `~/ai/evenstay/design/home/facts.json` 하나다. 다른 세션이 `design/home/`의 다른 파일을 쓰고 있다.
+
+사실 규칙(허브 지시 그대로):
+- 기술은 두 칸으로 나눈다. "프로토타입에 실제로 쓴 것"(HTML, CSS, JS, 빌드 없음, puppeteer 시험, python 생성기 등. `design/prototype/`와 `design/site/src/`에서 실제로 확인한다)과 "설계만 한 것"(Next.js, Spring Boot, Spring Modulith, PostgreSQL, AWS 서울, Bedrock 서울, 2단계 FastAPI 등). 설계만 한 것을 구현처럼 쓰지 않는다. 코어 `docs/core/tech-design.md` 12절과 ADR-3에는 Spring 결정이 아직 반영되지 않았으니 그 차이를 밝힌다. 설계 근거는 `~/ai/senior-lab/00-hub/reviews/architecture-*.md`, `PreMortem-evenstay-architecture-2026-11-04.md`, `senior-lab/shared/decisions.md`.
+- 스킬은 실제 호출 기록이 있는 것만 쓴다. 근거는 산출물의 `방법:` 줄(senior-lab와 docs 문서 머리), `design/prototype/REPORT.md`, skills-lock.json(있으면. `find ~/ai/senior-lab ~/ai/evenstay -maxdepth 3 -name 'skills-lock.json'`), 공유 노트 폴더 `~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19/`의 인계 기록. 어느 단계에서 무엇에 썼는지까지 적고, 기록이 없으면 넣지 않는다. 항목마다 근거 파일 경로를 남긴다.
+- 고객, 효과, 후기 수치를 만들지 않는다. 지원 회사 이름을 쓰지 않는다.
+
+facts.json 모양:
+{
+ "builtWith": [{"name","what","where"}],
+ "designedOnly": [{"name","what","evidence","docGap"}],
+ "skills": [{"name","stage","usedFor","evidence"}],
+ "remaining": [{"title","detail","evidence"}],
+ "undecided": [{"where","text"}],
+ "mismatches": [{"title","detail","evidence"}],
+ "decisionsCheck": [{"line":"decisions.md에서 면접 준비·내부 진행 성격이라 보는 사람에게 필요 없어 보이는 줄의 줄 번호와 내용 요약"}]
+}
+- `remaining`: 사람이 다 눌러 보지 않음, 실제 휴대폰과 Safari 미확인 등. `design/prototype/REPORT.md`, `review-notes.md`에서 뽑는다.
+- `undecided`: `docs/*/`와 `design/`의 `[미정]` 항목을 모듈별 대표로 뽑는다(전부 나열하지 말고 grep 수와 대표 줄).
+- `mismatches`: 열린 용어 어긋남(`senior-lab/00-hub/reviews/glossary-mismatches-2026-11-04.md`, REPORT.md).
+문장은 쉬운 말, 합쇼체. 금지어(미납, 연체, 모니터링, 쓰러짐, 낙상, 응급, 위험, 배회, 노인, 입소자, 생활지원) 금지. 이모지 금지. `python3 -m json.tool`로 확인한다. 마지막 답은 3줄 이내.
+~~~~
+
+### p0814
+
+2026-11-04 21:56 · 에이전트 지시 · Evenstay 클릭형 프로토타입 제작
+
+~~~~text
+지시서 `~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19/prototype-click-2026-11-04/HOME-BRIEF.md`를 읽고 그대로 한다.
+~~~~

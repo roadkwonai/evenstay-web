@@ -1,0 +1,927 @@
+{
+ "seq": 0,
+ "people": [
+  {
+   "id": "R_EUNSOOK",
+   "code": "R-0101",
+   "name": "이은숙",
+   "siteId": "S1"
+  },
+  {
+   "id": "R_HANGYEOL",
+   "code": "R-0102",
+   "name": "김한결",
+   "siteId": "S1"
+  },
+  {
+   "id": "R_OKJA",
+   "code": "R-0103",
+   "name": "정옥자",
+   "siteId": "S1"
+  },
+  {
+   "id": "R_JEONGHEE",
+   "code": "R-0104",
+   "name": "김정희",
+   "siteId": "S1"
+  },
+  {
+   "id": "R_YEONGSUN",
+   "code": "R-0105",
+   "name": "박영순",
+   "siteId": "S1"
+  },
+  {
+   "id": "R_MALSUN",
+   "code": "R-0106",
+   "name": "김말순",
+   "siteId": "S1"
+  },
+  {
+   "id": "R_KYUNGSOOK",
+   "code": "R-0107",
+   "name": "한경숙",
+   "siteId": "S1"
+  },
+  {
+   "id": "R_SOONDEOK",
+   "code": "R-0108",
+   "name": "최순덕",
+   "siteId": "S1"
+  },
+  {
+   "id": "R_T1",
+   "code": "R-0201",
+   "name": "강하준",
+   "siteId": "S2"
+  },
+  {
+   "id": "R_T2",
+   "code": "R-0202",
+   "name": "오세아",
+   "siteId": "S2"
+  },
+  {
+   "id": "R_T3",
+   "code": "R-0203",
+   "name": "문보람",
+   "siteId": "S2"
+  },
+  {
+   "id": "R_T4",
+   "code": "R-0204",
+   "name": "신도진",
+   "siteId": "S2"
+  },
+  {
+   "id": "R_T5",
+   "code": "R-0205",
+   "name": "배서진",
+   "siteId": "S2"
+  }
+ ],
+ "units": [
+  {
+   "id": "A201",
+   "siteId": "S1",
+   "label": "A동 201호",
+   "order": 1
+  },
+  {
+   "id": "A202",
+   "siteId": "S1",
+   "label": "A동 202호",
+   "order": 2
+  },
+  {
+   "id": "A301",
+   "siteId": "S1",
+   "label": "A동 301호",
+   "order": 3
+  },
+  {
+   "id": "A302",
+   "siteId": "S1",
+   "label": "A동 302호",
+   "order": 4
+  },
+  {
+   "id": "A401",
+   "siteId": "S1",
+   "label": "A동 401호",
+   "order": 5
+  },
+  {
+   "id": "A402",
+   "siteId": "S1",
+   "label": "A동 402호",
+   "order": 6
+  },
+  {
+   "id": "B201",
+   "siteId": "S1",
+   "label": "B동 201호",
+   "order": 7
+  },
+  {
+   "id": "B202",
+   "siteId": "S1",
+   "label": "B동 202호",
+   "order": 8
+  },
+  {
+   "id": "B301",
+   "siteId": "S1",
+   "label": "B동 301호",
+   "order": 9
+  },
+  {
+   "id": "B302",
+   "siteId": "S1",
+   "label": "B동 302호",
+   "order": 10
+  },
+  {
+   "id": "B401",
+   "siteId": "S1",
+   "label": "B동 401호",
+   "order": 11
+  },
+  {
+   "id": "B402",
+   "siteId": "S1",
+   "label": "B동 402호",
+   "order": 12
+  },
+  {
+   "id": "D101",
+   "siteId": "S2",
+   "label": "101호",
+   "order": 21
+  },
+  {
+   "id": "D102",
+   "siteId": "S2",
+   "label": "102호",
+   "order": 22
+  },
+  {
+   "id": "D103",
+   "siteId": "S2",
+   "label": "103호",
+   "order": 23
+  },
+  {
+   "id": "D104",
+   "siteId": "S2",
+   "label": "104호",
+   "order": 24
+  },
+  {
+   "id": "D105",
+   "siteId": "S2",
+   "label": "105호",
+   "order": 25
+  },
+  {
+   "id": "D106",
+   "siteId": "S2",
+   "label": "106호",
+   "order": 26
+  },
+  {
+   "id": "D107",
+   "siteId": "S2",
+   "label": "107호",
+   "order": 27
+  },
+  {
+   "id": "D108",
+   "siteId": "S2",
+   "label": "108호",
+   "order": 28
+  }
+ ],
+ "unitHints": {
+  "S1": "A동·B동, 동마다 201·202·301·302·401·402호입니다. 입주자 이름을 누르면 입주 계약으로 갑니다.",
+  "S2": "1개 동, 101~108호입니다."
+ },
+ "contracts": [
+  {
+   "id": "CT-OKJA",
+   "chainId": "CT-OKJA",
+   "siteId": "S1",
+   "unitId": "A202",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 2100000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-06-01",
+   "endDate": "2028-05-31",
+   "billingStart": "2026-06-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-06-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_OKJA"
+   ],
+   "leadId": "R_OKJA",
+   "succeededFromId": null
+  },
+  {
+   "id": "CT-JEONGHEE",
+   "chainId": "CT-JEONGHEE",
+   "siteId": "S1",
+   "unitId": "A301",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 2100000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-04-01",
+   "endDate": "2028-03-31",
+   "billingStart": "2026-04-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-04-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_JEONGHEE"
+   ],
+   "leadId": "R_JEONGHEE",
+   "succeededFromId": null
+  },
+  {
+   "id": "CT-YEONGSUN",
+   "chainId": "CT-YEONGSUN",
+   "siteId": "S1",
+   "unitId": "A401",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 2100000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-07-01",
+   "endDate": "2028-06-30",
+   "billingStart": "2026-07-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-07-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_YEONGSUN"
+   ],
+   "leadId": "R_YEONGSUN",
+   "succeededFromId": null
+  },
+  {
+   "id": "CT-KYUNGSOOK",
+   "chainId": "CT-KYUNGSOOK",
+   "siteId": "S1",
+   "unitId": "B201",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 2100000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-08-01",
+   "endDate": "2028-07-31",
+   "billingStart": "2026-08-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-08-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_KYUNGSOOK"
+   ],
+   "leadId": "R_KYUNGSOOK",
+   "succeededFromId": null
+  },
+  {
+   "id": "CT-MALSUN",
+   "chainId": "CT-MALSUN",
+   "siteId": "S1",
+   "unitId": "B302",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 2100000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-05-01",
+   "endDate": "2028-04-30",
+   "billingStart": "2026-05-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-05-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_MALSUN"
+   ],
+   "leadId": "R_MALSUN",
+   "succeededFromId": null
+  },
+  {
+   "id": "CT-SOONDEOK",
+   "chainId": "CT-SOONDEOK",
+   "siteId": "S1",
+   "unitId": "B402",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 2100000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-09-01",
+   "endDate": "2028-08-31",
+   "billingStart": "2026-09-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-09-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_SOONDEOK"
+   ],
+   "leadId": "R_SOONDEOK",
+   "succeededFromId": null
+  },
+  {
+   "id": "CT-T1",
+   "chainId": "CT-T1",
+   "siteId": "S2",
+   "unitId": "D101",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 850000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-03-01",
+   "endDate": "2028-02-29",
+   "billingStart": "2026-03-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-03-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_T1"
+   ],
+   "leadId": "R_T1",
+   "succeededFromId": null
+  },
+  {
+   "id": "CT-T2",
+   "chainId": "CT-T2",
+   "siteId": "S2",
+   "unitId": "D102",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 850000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-04-01",
+   "endDate": "2028-03-31",
+   "billingStart": "2026-04-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-04-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_T2"
+   ],
+   "leadId": "R_T2",
+   "succeededFromId": null
+  },
+  {
+   "id": "CT-T3",
+   "chainId": "CT-T3",
+   "siteId": "S2",
+   "unitId": "D103",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 850000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-05-01",
+   "endDate": "2028-04-30",
+   "billingStart": "2026-05-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-05-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_T3"
+   ],
+   "leadId": "R_T3",
+   "succeededFromId": null
+  },
+  {
+   "id": "CT-T4",
+   "chainId": "CT-T4",
+   "siteId": "S2",
+   "unitId": "D104",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 850000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-06-01",
+   "endDate": "2028-05-31",
+   "billingStart": "2026-06-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-06-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_T4"
+   ],
+   "leadId": "R_T4",
+   "succeededFromId": null
+  },
+  {
+   "id": "CT-T5",
+   "chainId": "CT-T5",
+   "siteId": "S2",
+   "unitId": "D105",
+   "status": "ACTIVE",
+   "plan": "SINGLE",
+   "occupancy": 1,
+   "rate": 850000,
+   "deposit": null,
+   "insurance": "UNKNOWN",
+   "jeonseOn": null,
+   "startDate": "2026-07-01",
+   "endDate": "2028-06-30",
+   "billingStart": "2026-07-01",
+   "billingEnd": null,
+   "occupiedFrom": "2026-07-01",
+   "occupiedTo": null,
+   "residentIds": [
+    "R_T5"
+   ],
+   "leadId": "R_T5",
+   "succeededFromId": null
+  }
+ ],
+ "contacts": [
+  {
+   "id": "EC-S1",
+   "contractId": "CT-MALSUN",
+   "order": 1,
+   "name": "김도현",
+   "relation": "CHILD",
+   "phone": "010-0000-0000",
+   "consentAt": "2026-05-01T09:00:00",
+   "basis": "CONTRACT"
+  },
+  {
+   "id": "EC-S2",
+   "contractId": "CT-JEONGHEE",
+   "order": 1,
+   "name": "이수진",
+   "relation": "CHILD",
+   "phone": "010-0000-0000",
+   "consentAt": "2026-04-01T09:00:00",
+   "basis": "CONTRACT"
+  }
+ ],
+ "reps": [
+  {
+   "id": "RP-1",
+   "residentId": "R_EUNSOOK",
+   "name": "김태호",
+   "relation": "CHILD",
+   "basis": "POWER_OF_ATTORNEY",
+   "scopes": [
+    "VIEW_INVOICE",
+    "PAY"
+   ],
+   "validUntil": "2028-09-30",
+   "activeFrom": "2026-11-10"
+  },
+  {
+   "id": "RP-2",
+   "residentId": "R_MALSUN",
+   "name": "김도현",
+   "relation": "CHILD",
+   "basis": "LIMITED",
+   "scopes": [
+    "VIEW_INVOICE",
+    "PAY"
+   ],
+   "validUntil": "2028-04-30",
+   "activeFrom": "2026-05-01"
+  }
+ ],
+ "history": [],
+ "absences": [
+  {
+   "id": "AB-S1",
+   "residentId": "R_JEONGHEE",
+   "unitId": "A301",
+   "startedOn": "2026-11-08",
+   "expectedOn": "2026-11-20",
+   "returnedOn": "2026-11-19",
+   "status": "ENDED",
+   "route": "PHONE",
+   "cancelReason": null,
+   "changes": []
+  },
+  {
+   "id": "AB-S2",
+   "residentId": "R_SOONDEOK",
+   "unitId": "B402",
+   "startedOn": "2026-12-01",
+   "expectedOn": "2026-12-06",
+   "returnedOn": "2026-12-09",
+   "status": "ENDED",
+   "route": "PHONE",
+   "cancelReason": null,
+   "changes": []
+  }
+ ],
+ "mealSkips": [
+  {
+   "id": "MS-S1",
+   "residentId": "R_EUNSOOK",
+   "date": "2026-11-17",
+   "meal": "LUNCH",
+   "advance": true,
+   "appliedOn": "2026-11-10T00:00:00",
+   "source": "SEED"
+  },
+  {
+   "id": "MS-S2",
+   "residentId": "R_EUNSOOK",
+   "date": "2026-11-19",
+   "meal": "DINNER",
+   "advance": true,
+   "appliedOn": "2026-11-10T00:00:00",
+   "source": "SEED"
+  },
+  {
+   "id": "MS-S3",
+   "residentId": "R_EUNSOOK",
+   "date": "2026-11-21",
+   "meal": "LUNCH",
+   "advance": true,
+   "appliedOn": "2026-11-10T00:00:00",
+   "source": "SEED"
+  }
+ ],
+ "closings": {},
+ "demoCsv": {
+  "2026-10": "입주자 번호,날짜,끼니,사전 신청 여부\nR-0102,2026-10-12,점심,Y\nR-0102,2026-10-12,저녁,Y\nR-0101,2026-10-19,점심,Y",
+  "2026-12": "입주자 번호,날짜,끼니,사전 신청 여부\nR-0101,2026-12-24,아침,Y\nR-0101,2026-12-24,점심,Y\nR-0101,2026-12-24,저녁,Y"
+ },
+ "pricing": {
+  "S1": {
+   "recurring": [
+    {
+     "v": 1,
+     "from": "2026-03-01",
+     "SINGLE": 2100000,
+     "COUPLE": 3300000
+    }
+   ],
+   "meal": [
+    {
+     "v": 1,
+     "from": "2026-03-01",
+     "unitPrice": 9000,
+     "perDay": 3
+    }
+   ],
+   "skip": [
+    {
+     "v": 1,
+     "from": "2026-03-01",
+     "unitPrice": 9000,
+     "advanceOnly": true
+    }
+   ],
+   "schedule": [
+    {
+     "v": 1,
+     "from": "2026-03-01",
+     "issueDay": "LAST",
+     "dueDays": 10
+    }
+   ],
+   "absence": [
+    {
+     "v": 1,
+     "from": "2026-03-01",
+     "enabled": false,
+     "minDays": null
+    }
+   ],
+   "services": {
+    "LAUNDRY_BEDDING": 10000
+   }
+  },
+  "S2": {
+   "recurring": [
+    {
+     "v": 1,
+     "from": "2026-03-01",
+     "SINGLE": 850000,
+     "COUPLE": 850000
+    }
+   ],
+   "meal": [],
+   "skip": [],
+   "schedule": [
+    {
+     "v": 1,
+     "from": "2026-03-01",
+     "issueDay": "LAST",
+     "dueDays": 10
+    }
+   ],
+   "absence": [],
+   "services": {}
+  }
+ },
+ "management": [
+  {
+   "siteId": "S1",
+   "installerOwnerId": "O1",
+   "installerName": "온누리 시니어펀드 1호",
+   "operatorName": "새봄라이프운영",
+   "validFrom": "2026-01-01",
+   "validTo": null
+  },
+  {
+   "siteId": "S2",
+   "installerOwnerId": "O2",
+   "installerName": "다온 임대리츠",
+   "operatorName": "새봄라이프운영",
+   "validFrom": "2026-01-01",
+   "validTo": null
+  }
+ ],
+ "invoices": [
+  {
+   "id": "IV-CT-T1-2026-10",
+   "contractId": "CT-T1",
+   "siteId": "S2",
+   "residentIds": [
+    "R_T1"
+   ],
+   "leadId": "R_T1",
+   "period": "2026-10",
+   "status": "ISSUED",
+   "dated": true,
+   "lines": [
+    {
+     "code": "RECURRING",
+     "amount": 850000,
+     "plain": {
+      "plan": "SINGLE",
+      "amount": 850000
+     }
+    }
+   ],
+   "total": 850000,
+   "issuedOn": "2026-10-31",
+   "dueOn": "2026-11-10"
+  },
+  {
+   "id": "IV-CT-T2-2026-10",
+   "contractId": "CT-T2",
+   "siteId": "S2",
+   "residentIds": [
+    "R_T2"
+   ],
+   "leadId": "R_T2",
+   "period": "2026-10",
+   "status": "ISSUED",
+   "dated": true,
+   "lines": [
+    {
+     "code": "RECURRING",
+     "amount": 850000,
+     "plain": {
+      "plan": "SINGLE",
+      "amount": 850000
+     }
+    }
+   ],
+   "total": 850000,
+   "issuedOn": "2026-10-31",
+   "dueOn": "2026-11-10"
+  },
+  {
+   "id": "IV-CT-T3-2026-10",
+   "contractId": "CT-T3",
+   "siteId": "S2",
+   "residentIds": [
+    "R_T3"
+   ],
+   "leadId": "R_T3",
+   "period": "2026-10",
+   "status": "ISSUED",
+   "dated": true,
+   "lines": [
+    {
+     "code": "RECURRING",
+     "amount": 850000,
+     "plain": {
+      "plan": "SINGLE",
+      "amount": 850000
+     }
+    }
+   ],
+   "total": 850000,
+   "issuedOn": "2026-10-31",
+   "dueOn": "2026-11-10"
+  },
+  {
+   "id": "IV-CT-T4-2026-10",
+   "contractId": "CT-T4",
+   "siteId": "S2",
+   "residentIds": [
+    "R_T4"
+   ],
+   "leadId": "R_T4",
+   "period": "2026-10",
+   "status": "ISSUED",
+   "dated": true,
+   "lines": [
+    {
+     "code": "RECURRING",
+     "amount": 850000,
+     "plain": {
+      "plan": "SINGLE",
+      "amount": 850000
+     }
+    }
+   ],
+   "total": 850000,
+   "issuedOn": "2026-10-31",
+   "dueOn": "2026-11-10"
+  },
+  {
+   "id": "IV-CT-T5-2026-10",
+   "contractId": "CT-T5",
+   "siteId": "S2",
+   "residentIds": [
+    "R_T5"
+   ],
+   "leadId": "R_T5",
+   "period": "2026-10",
+   "status": "ISSUED",
+   "dated": true,
+   "lines": [
+    {
+     "code": "RECURRING",
+     "amount": 850000,
+     "plain": {
+      "plan": "SINGLE",
+      "amount": 850000
+     }
+    }
+   ],
+   "total": 850000,
+   "issuedOn": "2026-10-31",
+   "dueOn": "2026-11-10"
+  },
+  {
+   "id": "IV-CT-T1-2026-11",
+   "contractId": "CT-T1",
+   "siteId": "S2",
+   "residentIds": [
+    "R_T1"
+   ],
+   "leadId": "R_T1",
+   "period": "2026-11",
+   "status": "ISSUED",
+   "dated": true,
+   "lines": [
+    {
+     "code": "RECURRING",
+     "amount": 850000,
+     "plain": {
+      "plan": "SINGLE",
+      "amount": 850000
+     }
+    }
+   ],
+   "total": 850000,
+   "issuedOn": "2026-11-30",
+   "dueOn": "2026-12-10"
+  },
+  {
+   "id": "IV-CT-T2-2026-11",
+   "contractId": "CT-T2",
+   "siteId": "S2",
+   "residentIds": [
+    "R_T2"
+   ],
+   "leadId": "R_T2",
+   "period": "2026-11",
+   "status": "ISSUED",
+   "dated": true,
+   "lines": [
+    {
+     "code": "RECURRING",
+     "amount": 850000,
+     "plain": {
+      "plan": "SINGLE",
+      "amount": 850000
+     }
+    }
+   ],
+   "total": 850000,
+   "issuedOn": "2026-11-30",
+   "dueOn": "2026-12-10"
+  },
+  {
+   "id": "IV-CT-T3-2026-11",
+   "contractId": "CT-T3",
+   "siteId": "S2",
+   "residentIds": [
+    "R_T3"
+   ],
+   "leadId": "R_T3",
+   "period": "2026-11",
+   "status": "ISSUED",
+   "dated": true,
+   "lines": [
+    {
+     "code": "RECURRING",
+     "amount": 850000,
+     "plain": {
+      "plan": "SINGLE",
+      "amount": 850000
+     }
+    }
+   ],
+   "total": 850000,
+   "issuedOn": "2026-11-30",
+   "dueOn": "2026-12-10"
+  },
+  {
+   "id": "IV-CT-T4-2026-11",
+   "contractId": "CT-T4",
+   "siteId": "S2",
+   "residentIds": [
+    "R_T4"
+   ],
+   "leadId": "R_T4",
+   "period": "2026-11",
+   "status": "ISSUED",
+   "dated": true,
+   "lines": [
+    {
+     "code": "RECURRING",
+     "amount": 850000,
+     "plain": {
+      "plan": "SINGLE",
+      "amount": 850000
+     }
+    }
+   ],
+   "total": 850000,
+   "issuedOn": "2026-11-30",
+   "dueOn": "2026-12-10"
+  },
+  {
+   "id": "IV-CT-T5-2026-11",
+   "contractId": "CT-T5",
+   "siteId": "S2",
+   "residentIds": [
+    "R_T5"
+   ],
+   "leadId": "R_T5",
+   "period": "2026-11",
+   "status": "ISSUED",
+   "dated": true,
+   "lines": [
+    {
+     "code": "RECURRING",
+     "amount": 850000,
+     "plain": {
+      "plan": "SINGLE",
+      "amount": 850000
+     }
+    }
+   ],
+   "total": 850000,
+   "issuedOn": "2026-11-30",
+   "dueOn": "2026-12-10"
+  }
+ ],
+ "usages": [],
+ "inquiries": []
+}

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 생활 비서 로드맵 | Evenstay 문서</title>
+<meta name="description" content="AI 생활 비서 로드맵. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>AI 생활 비서</span></p>
+  <h1>AI 생활 비서 로드맵</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-roadmap"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="AI 생활 비서의 다른 문서"><ul><li><a href="assistant-strategy.html">전략</a></li><li><a href="assistant-service-blueprint.html">서비스 설계도</a></li><li><a href="assistant-prd.html">기획서(PRD)</a></li><li><a href="assistant-user-stories.html">사용자 스토리</a></li><li><a href="assistant-tech-design.html">기술 설계</a></li><li><a href="assistant-roadmap.html" aria-current="page">로드맵</a></li><li><a href="assistant-handoff.html">개발 인계</a></li><li><a href="assistant-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#전략-맥락">전략 맥락</a></li><li class="lv2"><a href="#now-최소-버전-코어-mvp-직후-24주">Now — 최소 버전 (코어 MVP 직후 2~4주)</a></li><li class="lv2"><a href="#next-모듈이-붙는-동안-각-1주-안팎-도구-하나씩-가설">Next — 모듈이 붙는 동안 (각 1주 안팎, 도구 하나씩) [가설]</a></li><li class="lv2"><a href="#later-실서비스에-가까워지기">Later — 실서비스에 가까워지기</a></li><li class="lv2"><a href="#순서와-의존">순서와 의존</a></li><li class="lv2"><a href="#확인할-것">확인할 것</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li><li class="lv3"><a href="#2026-11-03-기획-문서-한국어-검수-korean-skills-사용자-재승인-2026-11-03">2026-11-03 기획 문서 한국어 검수 (korean-skills, 사용자 재승인 2026-11-03)</a></li><li class="lv3"><a href="#2026-11-04-전체-리뷰-보완-사용자-재승인-2026-11-04">2026-11-04 전체 리뷰 보완 (사용자 재승인 2026-11-04)</a></li><li class="lv3"><a href="#2026-11-04-쉬운-말-재검수공용-문구-반영-사용자-재승인-2026-11-04">2026-11-04 쉬운 말 재검수·공용 문구 반영 (사용자 재승인 2026-11-04)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-368" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li><li><button class="term" type="button" data-modal="g-369" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-370" data-tip="청구 항목에 대한 문의.">청구 문의</button></li><li><button class="term" type="button" data-modal="g-371" data-tip="호출 기록.">도구 호출</button></li></ul></section></aside>
+  <article class="doc"><blockquote>
+<p>표기는 <code>strategy.md</code>와 같다. 기간은 상대 기간이다. 결과 지표의 목표치는 측정 전이라 [가설]이다. 다음 판의 도구 이름은 각 모듈 기획이 끝난 뒤 정한다(카피 <code>names.md</code> 3절).</p>
+</blockquote>
+<h2 id="전략-맥락">전략 맥락</h2>
+<ul>
+<li>비전: 기록으로만 답하고 판단은 사람에게 넘기는 비서(<code>strategy.md</code> 1절).</li>
+<li>이 로드맵의 원칙: <strong>도구가 늘어도 틀은 그대로다.</strong> 새 판마다 바뀌는 것은 도구 정의, 답 틀, 큰 버튼, 평가 문항이고, 대화·도구 호출·확인 토큰·넘김 구조는 바뀌지 않는다(<code>tech-design.md</code> ADR-G2).</li>
+<li>핵심 가정: 회원이 비서에게 실제로 묻는다(H1), 민감한 말을 빠짐없이 넘긴다(H3).</li>
+</ul>
+<h2 id="now-최소-버전-코어-mvp-직후-24주">Now — 최소 버전 (코어 MVP 직후 2~4주)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>출력 (기능)</th>
+<th>결과 문장</th>
+<th>지표</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>고지 게이트(F1), 첫 화면(F2)</td>
+<td>회원이 AI가 하는 일과 하지 않는 일을 먼저 듣고 비서를 쓰게 해서, 운영사가 AI 기본법 사전 고지를 기록으로 증명한다</td>
+<td>고지 미확인 상태의 도구 호출 0건</td>
+</tr>
+<tr>
+<td>일정 조회(F3), 청구 설명(F4), 답 틀(F10)</td>
+<td>회원이 큰 버튼 하나로 자기 청구서 날짜와 금액의 이유를 확인한 곳과 함께 듣게 해서, 비서의 답이 원장 밖으로 나가지 않는다</td>
+<td>출처 없는 사실 줄 0건(KR1 ③)</td>
+</tr>
+<tr>
+<td>말로 묻기·라우터(F5), 모를 때(F6), 평가 세트(F11)</td>
+<td>회원이 말로 물어도 판단이 필요한 말은 도구가 아니라 사람 쪽으로 가게 해서, 판단 대행 사고를 막는다</td>
+<td>민감 문항 도구 호출 0건(KR1 ①), 도구 선택 90% 이상 [가설](KR2)</td>
+</tr>
+<tr>
+<td>넘기기·확인 토큰(F7), 넘겨받은 요청(F8), 기록(F9)</td>
+<td>직원이 회원이 허락한 요청만, 무엇을 물었고 비서가 어디까지 답했는지와 함께 받게 해서, 처음부터 다시 묻지 않는다</td>
+<td>확인 없는 쓰기 0건(KR1 ④), 넘김 처리 완료까지 걸린 시간(기록만)</td>
+</tr>
+<tr>
+<td>P1: 청구 문의(F12), 납부 갈래(F14), 대리인(F13), 지난 대화(F15), 보관 정리(F16)</td>
+<td>회원과 대리인이 청구 이의를 경리에게 바로 보내고 낸 기록을 함께 듣게 해서, 청구 문의가 한 곳(코어)에 모인다</td>
+<td>비서 경로 문의 수, 범위 밖 대리 호출 거부 수</td>
+</tr>
+</tbody></table></div>
+<h2 id="next-모듈이-붙는-동안-각-1주-안팎-도구-하나씩-가설">Next — 모듈이 붙는 동안 (각 1주 안팎, 도구 하나씩) [가설]</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>출력 (도구 후보, 이름은 각 모듈 기획 후)</th>
+<th>결과 문장</th>
+<th>지표</th>
+<th>의존</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D: 금전 넘김을 D 금전 부탁으로 직접 열기(<code>MoneyRequestCommand</code>)</td>
+<td>금전 의심 연락을 말한 회원의 요청이 직원 손으로 옮겨 적히지 않고 D 금전 부탁 기록으로 바로 가게 해서, 금전 경계(I-31) 처리가 한 곳에 남는다</td>
+<td>손으로 옮긴 금전 넘김 0건</td>
+<td>D F13(P1), D <code>MoneyRequestCommand.open({residentId, sourceRef, note})</code>(종류는 직원이 고름, 회원 본인만. HUB-9 반영, 재승인 2026-11-03). 대리인이 넘긴 돈 이야기는 계속 G 넘김으로 남아 이 지표에서 뺀다</td>
+</tr>
+<tr>
+<td>D: &quot;누가 내 소식을 보나&quot; 조회(<code>FamilyConsentQuery.viewersOf</code>)</td>
+<td>회원이 자기 소식을 누가 보는지 비서로 듣게 해서, 동의 화면을 찾지 않아도 된다</td>
+<td>해당 질문의 도구 답 비율</td>
+<td>D API(초안)</td>
+</tr>
+<tr>
+<td>B: 내 호출 처리 상태 조회(읽기)</td>
+<td>회원이 호출벨을 누른 뒤 직원이 오는 중인지 비서로 듣게 해서, 불안해서 거는 전화가 줄어든다 [가설]</td>
+<td>해당 질문의 도구 답 비율</td>
+<td>B 공개 API(B 기획)</td>
+</tr>
+<tr>
+<td>C: 내 생활 지원 단계와 단계가 바뀌는 때 설명(읽기, <code>transitions/api</code> <code>CareStageQuery.memberView</code>)</td>
+<td>회원이 단계 변화의 이유를 쉬운 말로 듣게 해서, 단계 결정은 사람이 하되 설명은 비서가 돕는다</td>
+<td>단계 질문 넘김 비율</td>
+<td>C 기획 HUB-G2. 고영향 AI 해당 여부 다시 검토 [법률 검토](G5)</td>
+</tr>
+<tr>
+<td>N1: 내 요청 보기(읽기), 요청 올리기(쓰기, 확인 토큰) (N1-G4)</td>
+<td>회원이 생활 요청을 비서로 올리고 진행을 듣게 해서, 고장 신고와 질문을 한 창구에서 한다</td>
+<td>요청 올리기 중 회원 확인 비율 100%</td>
+<td>N1 기획(조회·명령 이름)</td>
+</tr>
+<tr>
+<td>N2: 프로그램 일정 읽기 (2026-11-04 허브 지시)</td>
+<td>회원이 &quot;오늘 일정&quot;을 비서로 듣게 해서, 원래 구상(ai-assistant.md 1절)에 가까워진다</td>
+<td>답에 확인한 곳이 붙은 비율 100%</td>
+<td>N2 기획(조회 이름)</td>
+</tr>
+<tr>
+<td>자연 문장 답 + 출처 검사기</td>
+<td>답이 덜 딱딱하게 들리되 숫자·날짜는 여전히 도구 결과에서만 나오게 해서, 자연스러움과 정확성을 같이 지킨다</td>
+<td>검사기 거부율, 출처 없는 숫자 0건</td>
+<td>평가 세트 확장</td>
+</tr>
+<tr>
+<td>회신 기한·새 요청 알림(직원)</td>
+<td>넘긴 요청이 늦게 처리되지 않게 해서, 회원이 기다리지 않는다</td>
+<td>기한 넘긴 요청 수</td>
+<td>[NEED: 운영사 회신 기한], 코어 <code>Notifier</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="later-실서비스에-가까워지기">Later — 실서비스에 가까워지기</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>출력</th>
+<th>결과 문장</th>
+<th>지표</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>전화 채널(같은 대화 API), 읽어 주기(TTS)</td>
+<td>앱이 어려운 회원도 전화나 듣기로 같은 비서를 쓰게 해서, 대안 경로가 기록 안으로 들어온다</td>
+<td>채널별 질문 수</td>
+</tr>
+<tr>
+<td>보호자용 비서(D 동의 범위 안)</td>
+<td>보호자가 회원이 허락한 범위 안에서만 묻고 듣게 해서, 동의 밖 정보가 새지 않는다</td>
+<td>동의 밖 답 0건</td>
+</tr>
+<tr>
+<td>법률 검토 반영(고지 문구, 보관 기간, 음성 인식 위탁)</td>
+<td>실서비스 전에 법적 문구와 보관 규칙을 확정해서, 운영사가 그대로 쓸 수 있다</td>
+<td>검토 완료 항목 수</td>
+</tr>
+<tr>
+<td>(별도 프로젝트) 자산 조회·설명 L1</td>
+<td>senior-lab 밖에서 다룬다. 모의투자 서버·가상 데이터 시연만, 추천·주문 없음 [초안 결정, ai-assistant.md 4절]</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<h2 id="순서와-의존">순서와 의존</h2>
+<ul>
+<li>코어 MVP(P0) → G 최소 버전 Now P0. G의 P1은 코어 P1에 묶인다: F12 ↔ 코어 F15, F13 ↔ 코어 F13, F14 ↔ 코어 F16(납부 상태 노출은 HUB-1로 코어에 반영됨).</li>
+<li>D 고지 v2(D F10, P0)가 G보다 먼저 있어야 한다. D가 늦으면 고지 목업으로 데모한다(<code>prd.md</code> 13절).</li>
+<li>Next의 도구는 각 모듈 기획이 끝나고 공개 API가 정해진 뒤 붙인다. 기획 순서상 C는 G 다음이다.</li>
+<li>자르는 선: <code>prd.md</code> 14절(확인 토큰 테스트가 2주 차에 통과하지 않으면 LLM 라우터를 미룬다).</li>
+</ul>
+<h2 id="확인할-것">확인할 것</h2>
+<blockquote>
+<p>2026-11-03 사용자 결정: <code>tech-design.md</code> 확인할 것 1<del>11과 <code>prd.md</code> 확인할 것 1</del>10은 제안값으로 확정하고 [가설]로 표시한다(검증 전 값). 법률 검토 항목, LLM 제공자, 사용자가 따로 정하지 않은 것은 남긴다. 번호는 다른 문서가 가리키므로 그대로 둔다.</p>
+</blockquote>
+<p><strong>결정됨 [가설] (2026-11-03 사용자 결정: 제안값으로 확정, 검증 전)</strong></p>
+<ul>
+<li>청구 문의 접수는 P1 세 번째 도구(<code>prd.md</code> 확인할 것 2). 대리인 사용은 P1(<code>prd.md</code> 확인할 것 4).</li>
+</ul>
+<p><strong>남은 것</strong> (이 문서에서만 나온 것이라 사용자가 따로 정하지 않았다)</p>
+<ol>
+<li><strong>[미정] Next 도구의 순서</strong>: 제안은 D 금전 넘김 → D 소식 보는 사람 → B → C(이미 정해진 API와 금전 안전 우선). 대안은 B 먼저(통합 데모 B 장면과 이어짐).</li>
+<li><strong>[미정] 자연 문장 답을 언제 넣을지</strong>: 제안은 Next(평가 세트가 안정된 뒤). 대안은 최소 버전부터(면접에서 &quot;딱딱하다&quot;는 인상 위험과 환각 위험의 교환).</li>
+</ol>
+<h2 id="변경-기록">변경 기록</h2>
+<h3 id="2026-11-03-기획-문서-한국어-검수-korean-skills-사용자-재승인-2026-11-03">2026-11-03 기획 문서 한국어 검수 (korean-skills, 사용자 재승인 2026-11-03)</h3>
+<p>호출한 스킬: <code>grammar-checker</code> → <code>style-guide</code> → <code>humanizer</code>. 코드·API·ID·숫자·태그·카피 원문은 그대로 두었다. 화면 문구 인용은 <code>copy.md</code>와 다른 곳만 맞췄다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>분류</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>문장</td>
+<td>민감 말을</td>
+<td>민감한 말을</td>
+</tr>
+<tr>
+<td>문장</td>
+<td>불안 전화가 준다</td>
+<td>불안해서 거는 전화가 줄어든다</td>
+</tr>
+</tbody></table></div>
+<h3 id="2026-11-04-전체-리뷰-보완-사용자-재승인-2026-11-04">2026-11-04 전체 리뷰 보완 (사용자 재승인 2026-11-04)</h3>
+<p>허브 지시서 <code>00-hub/reviews/supplement-orders-2026-11-04.md</code> &quot;AI 생활 비서&quot; 1<del>4(R3, R6·N1-G1</del>G4, R24, N2)를 반영했다.</p>
+<ul>
+<li>Next에 N1(N1-G4)·N2 도구</li>
+<li>Later의 시설 일정·시설 요청 행 삭제(Next로 옮김)</li>
+</ul>
+<h3 id="2026-11-04-쉬운-말-재검수공용-문구-반영-사용자-재승인-2026-11-04">2026-11-04 쉬운 말 재검수·공용 문구 반영 (사용자 재승인 2026-11-04)</h3>
+<p>근거: <code>03-copywriting/ideas/senior-ai-assistant/plain-read-review-2026-11-04.md</code>, <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구 행. 회원 화면 문구 인용을 새 카피에 맞추고, 버전 뜻의 &quot;최소판&quot;을 &quot;최소 버전&quot;으로 바꿨다. 기능, 범위, 정책, 수치, 답변 갈래는 바꾸지 않았다. 이전 변경 기록 안의 옛 문구는 기록이라 그대로 둔다.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-roadmap" data-title="로드맵"><p>기능을 결과 문장으로 바꾸고 먼저 할 것과 다음 버전으로 미룰 것을 나눈 문서입니다.</p></template>
+<template id="g-368" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-369" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-370" data-title="청구 문의"><p>청구 항목에 대한 문의. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자가 문의한 청구 / 회원: 이 금액이 이상해요</dd><dt>영문·코드 이름</dt><dd><code>Inquiry</code></dd><dt>출처</dt><dd>core T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-371" data-title="도구 호출"><p>호출 기록. 결과 본문은 저장하지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 도구 호출, 도구 호출 기록 / 회원: 확인한 곳(답 아래 한 줄, assistant T2-1은 표시 안 함) <code>[문서 다름]</code></dd><dt>영문·코드 이름</dt><dd><code>ToolCall</code></dd><dt>출처</dt><dd>assistant T2-1·2-2, assistant M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

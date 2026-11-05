@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>권한별 화면 | Evenstay 프로토타입</title>
+<meta name="description" content="입주자, 대리인, 보호자, 직원, 소유주별로 그 권한의 첫 화면을 바로 엽니다.">
+<link rel="icon" href="../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../css/proto.css">
+<link rel="stylesheet" href="../shared/topbar.css">
+<link rel="stylesheet" href="../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../index.html">홈</a></li><li><a href="../home/roles.html" aria-current="page">권한별 화면</a></li><li><a href="../home/screens.html">화면 찾아보기</a></li><li><a href="../home/docs.html">문서</a></li><li><a href="../home/research.html">조사와 결정</a></li><li><a href="../home/architecture.html">아키텍처</a></li><li><a href="../home/artboards.html">아트보드</a></li><li><a href="../home/tech.html">기술과 스킬</a></li><li><a href="../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap">
+
+<header class="hm-ph"><h1>권한별 화면</h1><p class="hm-lead">계정 22개를 열한 묶음으로 나눴습니다. 바로가기를 누르면 그 계정의 첫 화면이 열립니다.</p></header>
+<div class="callout"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><p>처음 열면 시연 41단계를 마친 상태에서 시작합니다. 이미 눌러 본 기록이 있으면 그 상태에서 계정만 바꿉니다. 막히면 프로토타입 위쪽 막대에서 처음 상태로 되돌립니다.</p></div>
+<section class="bundles" aria-label="권한별 바로가기"><h2 class="sr-only">권한별 바로가기</h2><article class="bundle" id="b-member" aria-labelledby="b-member-h">
+  <header><h3 id="b-member-h">입주자(회원)</h3><span class="term-wrap"><button class="term" type="button" data-modal="g-1" data-tip="호실 계약이 걸린 사람.">용어 풀이</button></span></header>
+  <p class="bd">Evenstay 홈을 씁니다. 큰 글씨와 큰 버튼으로 된 첫 화면에 칸 여섯 개가 있습니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>Evenstay 홈 첫 화면</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?as=m.eunsook&go=COM-07" data-as="m.eunsook" data-first="COM-07">이은숙</a><span>새봄 레지던스 A동 201호</span></li><li><a href="../app.html?as=m.malsun&go=COM-07" data-as="m.malsun" data-first="COM-07">김말순</a><span>새봄 레지던스 B동 302호</span></li><li><a href="../app.html?as=m.jeonghee&go=COM-07" data-as="m.jeonghee" data-first="COM-07">김정희</a><span>새봄 레지던스 A동 301호</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:member">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?as=m.eunsook&go=COM-07" data-entry="member" data-as="m.eunsook" data-first="COM-07">이은숙 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-member">자세히</button></div>
+</article>
+<article class="bundle" id="b-proxy" aria-labelledby="b-proxy-h">
+  <header><h3 id="b-proxy-h">대리인</h3><span class="term-wrap"><button class="term" type="button" data-modal="g-2" data-tip="법적 근거로 회원의 일을 맡은 사람.">용어 풀이</button></span></header>
+  <p class="bd">입주자를 대신해 일을 맡은 분입니다. 입주자 첫 화면의 다른 상태로, 맡은 범위의 칸만 보입니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>Evenstay 홈 첫 화면</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?as=p.taeho&go=COM-07" data-as="p.taeho" data-first="COM-07">김태호</a><span>이은숙 입주자의 아들</span></li><li><a href="../app.html?as=p.dohyun&go=COM-07" data-as="p.dohyun" data-first="COM-07">김도현</a><span>김말순 입주자의 아들</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:proxy">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?as=p.taeho&go=COM-07" data-entry="proxy" data-as="p.taeho" data-first="COM-07">김태호 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-proxy">자세히</button></div>
+</article>
+<article class="bundle" id="b-guardian" aria-labelledby="b-guardian-h">
+  <header><h3 id="b-guardian-h">보호자</h3><span class="term-wrap"><button class="term" type="button" data-modal="g-3" data-tip="활성 보호자 관계가 있는 사람.">용어 풀이</button></span></header>
+  <p class="bd">Evenstay 패밀리를 씁니다. 입주자가 허락한 소식만 첫 화면의 칸으로 보입니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>보호자 첫 화면</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?as=g.jimin&go=FAM-06a" data-as="g.jimin" data-first="FAM-06a">김지민</a><span>이은숙 입주자의 딸</span></li><li><a href="../app.html?as=g.sujin&go=FAM-06a" data-as="g.sujin" data-first="FAM-06a">김수진</a><span>김말순 입주자의 장녀</span></li><li><a href="../app.html?as=g.leesj&go=FAM-06a" data-as="g.leesj" data-first="FAM-06a">이수진</a><span>김정희 입주자의 딸</span></li><li><a href="../app.html?as=g.leemh&go=FAM-06a" data-as="g.leemh" data-first="FAM-06a">이민호</a><span>김정희 입주자의 아들</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:guardian">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?as=g.jimin&go=FAM-06a" data-entry="guardian" data-as="g.jimin" data-first="FAM-06a">김지민 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-guardian">자세히</button></div>
+</article>
+<article class="bundle" id="b-front" aria-labelledby="b-front-h">
+  <header><h3 id="b-front-h">프런트</h3></header>
+  <p class="bd">생활 요청을 받아 담당 팀에 넘기고, 보호자 연결을 입주자 말씀대로 대신 입력합니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>생활 요청 목록</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?as=st.choims&go=REQ-12" data-as="st.choims" data-first="REQ-12">최민수</a><span>새봄 레지던스</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:front">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?as=st.choims&go=REQ-12" data-entry="front" data-as="st.choims" data-first="REQ-12">최민수 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-front">자세히</button></div>
+</article>
+<article class="bundle" id="b-life" aria-labelledby="b-life-h">
+  <header><h3 id="b-life-h">생활 지원</h3></header>
+  <p class="bd">입주자의 생활을 돕는 직원입니다. 호실 현황과 안부 방문, 생활 지원 단계를 다룹니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>호실 현황</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?as=st.kimhj&go=SAF-12" data-as="st.kimhj" data-first="SAF-12">김하진</a><span>새봄 레지던스</span></li><li><a href="../app.html?as=st.yoonsy&go=SAF-12" data-as="st.yoonsy" data-first="SAF-12">윤서연</a><span>새봄 레지던스</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:life">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?as=st.kimhj&go=SAF-12" data-entry="life" data-as="st.kimhj" data-first="SAF-12">김하진 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-life">자세히</button></div>
+</article>
+<article class="bundle" id="b-care" aria-labelledby="b-care-h">
+  <header><h3 id="b-care-h">간호</h3></header>
+  <p class="bd">건강 상태와 돌봄을 살피는 직원입니다. 생활 지원 직원과 같은 메뉴를 쓰고, 평가 기록과 단계 변경 제안을 씁니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>호실 현황</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?as=st.parksj&go=SAF-12" data-as="st.parksj" data-first="SAF-12">박서준</a><span>새봄 레지던스</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:care">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?as=st.parksj&go=SAF-12" data-entry="care" data-as="st.parksj" data-first="SAF-12">박서준 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-care">자세히</button></div>
+</article>
+<article class="bundle" id="b-night" aria-labelledby="b-night-h">
+  <header><h3 id="b-night-h">야간 당번</h3></header>
+  <p class="bd">밤 시간에 당번표에 올라 있는 직원입니다. 안전 묶음만 보이고, 첫 화면은 지금 처리할 신호입니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>지금 처리할 신호</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?beat=14" data-as="st.kimhj" data-first="SAF-01" data-beat="14">김하진</a><span>새봄 레지던스</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:night">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?beat=14" data-entry="night" data-as="st.kimhj" data-first="SAF-01" data-beat="14">김하진 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-night">자세히</button></div>
+</article>
+<article class="bundle" id="b-manager" aria-labelledby="b-manager-h">
+  <header><h3 id="b-manager-h">사업장 책임자</h3><span class="term-wrap"><button class="term" type="button" data-modal="g-4" data-tip="사업장 운영을 맡고 운영 현황 카드를 본다">용어 풀이</button></span></header>
+  <p class="bd">사업장 운영을 맡습니다. 첫 화면 오늘의 운영에 운영 현황 카드가 있습니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>오늘의 운영</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?as=st.choiym&go=CORE-01" data-as="st.choiym" data-first="CORE-01">최영미</a><span>새봄 레지던스</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:manager">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?as=st.choiym&go=CORE-01" data-entry="manager" data-as="st.choiym" data-first="CORE-01">최영미 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-manager">자세히</button></div>
+</article>
+<article class="bundle" id="b-accounting" aria-labelledby="b-accounting-h">
+  <header><h3 id="b-accounting-h">경리</h3><span class="term-wrap"><button class="term" type="button" data-modal="g-5" data-tip="사업장의 계약, 청구, 수납을 맡는다">용어 풀이</button></span></header>
+  <p class="bd">계약과 청구, 수납을 맡습니다. 첫 화면은 오늘의 운영입니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>오늘의 운영</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?as=st.parksy&go=CORE-01" data-as="st.parksy" data-first="CORE-01">박소연</a><span>새봄 레지던스</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:accounting">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?as=st.parksy&go=CORE-01" data-entry="accounting" data-as="st.parksy" data-first="CORE-01">박소연 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-accounting">자세히</button></div>
+</article>
+<article class="bundle" id="b-hq" aria-labelledby="b-hq-h">
+  <header><h3 id="b-hq-h">본사</h3></header>
+  <p class="bd">운영사 전체를 봅니다. 사업장을 고르고, 소유주 두 곳과 사업장 두 곳을 한 화면에서 봅니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>오늘의 운영</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?as=hq.jung&go=CORE-01" data-as="hq.jung" data-first="CORE-01">정하늘</a><span>운영사 전체</span></li><li><a href="../app.html?as=hq.han&go=CORE-01" data-as="hq.han" data-first="CORE-01">한지우</a><span>운영사 전체</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:hq">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?as=hq.jung&go=CORE-01" data-entry="hq" data-as="hq.jung" data-first="CORE-01">정하늘 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-hq">자세히</button></div>
+</article>
+<article class="bundle" id="b-owner" aria-labelledby="b-owner-h">
+  <header><h3 id="b-owner-h">소유주</h3><span class="term-wrap"><button class="term" type="button" data-modal="g-6" data-tip="기준일에 소유한 사업장의 합계만 본다.">용어 풀이</button></span></header>
+  <p class="bd">자기 사업장의 합계만 봅니다. 입주자 이름은 가려지고, 왼쪽 메뉴가 없습니다.</p>
+  <p class="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg><span>첫 화면</span> <strong>소유주 현황</strong></p>
+  <ul class="hm-who"><li><a href="../app.html?as=ow.onnuri&go=CORE-09" data-as="ow.onnuri" data-first="CORE-09">온누리 담당자</a><span>온누리 시니어펀드 1호</span></li><li><a href="../app.html?as=ow.daon&go=CORE-09" data-as="ow.daon" data-first="CORE-09">다온 담당자</a><span>다온 임대리츠</span></li></ul>
+  <div class="bundle-act"><a class="btn btn-secondary btn-sm" href="../app.html?tour=role:owner">이 권한 안내 보기</a><a class="btn btn-primary btn-sm" href="../app.html?as=ow.onnuri&go=CORE-09" data-entry="owner" data-as="ow.onnuri" data-first="CORE-09">온누리 담당자 계정으로 열기</a><button class="btn btn-secondary btn-sm" type="button" data-modal="p-owner">자세히</button></div>
+</article></section>
+<details class="sec all" id="all-accounts">
+  <summary>계정 22개 전체 펼치기</summary>
+  <div class="tbl-wrap" tabindex="0" role="region" aria-label="계정 전체 표"><table class="plain-table"><thead><tr><th scope="col">이름</th><th scope="col">역할</th><th scope="col">소속</th><th scope="col">첫 화면</th><th scope="col"><span class="sr-only">열기</span></th></tr></thead><tbody><tr><th scope="row">한지우</th><td>본사 관리자</td><td class="cw">운영사 전체</td><td class="cw">오늘의 운영</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=hq.han&go=CORE-01" data-as="hq.han" data-first="CORE-01" aria-label="한지우 본사 관리자 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">정하늘</th><td>본사 운영 매니저</td><td class="cw">운영사 전체</td><td class="cw">오늘의 운영</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=hq.jung&go=CORE-01" data-as="hq.jung" data-first="CORE-01" aria-label="정하늘 본사 운영 매니저 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">최영미</th><td>사업장 책임자</td><td class="cw">새봄 레지던스</td><td class="cw">오늘의 운영</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=st.choiym&go=CORE-01" data-as="st.choiym" data-first="CORE-01" aria-label="최영미 사업장 책임자 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">박소연</th><td>경리</td><td class="cw">새봄 레지던스</td><td class="cw">오늘의 운영</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=st.parksy&go=CORE-01" data-as="st.parksy" data-first="CORE-01" aria-label="박소연 경리 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">최민수</th><td>프런트 직원</td><td class="cw">새봄 레지던스</td><td class="cw">생활 요청 목록</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=st.choims&go=REQ-12" data-as="st.choims" data-first="REQ-12" aria-label="최민수 프런트 직원 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">김하진</th><td>생활 지원 직원</td><td class="cw">새봄 레지던스</td><td class="cw">호실 현황</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=st.kimhj&go=SAF-12" data-as="st.kimhj" data-first="SAF-12" aria-label="김하진 생활 지원 직원 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">박서준</th><td>간호 직원</td><td class="cw">새봄 레지던스</td><td class="cw">호실 현황</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=st.parksj&go=SAF-12" data-as="st.parksj" data-first="SAF-12" aria-label="박서준 간호 직원 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">한도윤</th><td>사업장 직원</td><td class="cw">새봄 레지던스</td><td class="cw">생활 요청 목록</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=st.handy&go=REQ-12" data-as="st.handy" data-first="REQ-12" aria-label="한도윤 사업장 직원 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">오수진</th><td>사업장 직원</td><td class="cw">새봄 레지던스</td><td class="cw">생활 요청 목록</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=st.ohsj&go=REQ-12" data-as="st.ohsj" data-first="REQ-12" aria-label="오수진 사업장 직원 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">정태영</th><td>사업장 직원</td><td class="cw">새봄 레지던스</td><td class="cw">생활 요청 목록</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=st.jungty&go=REQ-12" data-as="st.jungty" data-first="REQ-12" aria-label="정태영 사업장 직원 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">윤서연</th><td>생활 지원 직원</td><td class="cw">새봄 레지던스</td><td class="cw">호실 현황</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=st.yoonsy&go=SAF-12" data-as="st.yoonsy" data-first="SAF-12" aria-label="윤서연 생활 지원 직원 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">온누리 담당자</th><td>소유주</td><td class="cw">온누리 시니어펀드 1호</td><td class="cw">소유주 현황</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=ow.onnuri&go=CORE-09" data-as="ow.onnuri" data-first="CORE-09" aria-label="온누리 담당자 소유주 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">다온 담당자</th><td>소유주</td><td class="cw">다온 임대리츠</td><td class="cw">소유주 현황</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=ow.daon&go=CORE-09" data-as="ow.daon" data-first="CORE-09" aria-label="다온 담당자 소유주 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">이은숙</th><td>입주자</td><td class="cw">새봄 레지던스 A동 201호</td><td class="cw">Evenstay 홈 첫 화면</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=m.eunsook&go=COM-07" data-as="m.eunsook" data-first="COM-07" aria-label="이은숙 입주자 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">김말순</th><td>입주자</td><td class="cw">새봄 레지던스 B동 302호</td><td class="cw">Evenstay 홈 첫 화면</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=m.malsun&go=COM-07" data-as="m.malsun" data-first="COM-07" aria-label="김말순 입주자 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">김정희</th><td>입주자</td><td class="cw">새봄 레지던스 A동 301호</td><td class="cw">Evenstay 홈 첫 화면</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=m.jeonghee&go=COM-07" data-as="m.jeonghee" data-first="COM-07" aria-label="김정희 입주자 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">김지민</th><td>보호자</td><td class="cw">이은숙 입주자의 딸</td><td class="cw">보호자 첫 화면</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=g.jimin&go=FAM-06a" data-as="g.jimin" data-first="FAM-06a" aria-label="김지민 보호자 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">김수진</th><td>보호자</td><td class="cw">김말순 입주자의 장녀</td><td class="cw">보호자 첫 화면</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=g.sujin&go=FAM-06a" data-as="g.sujin" data-first="FAM-06a" aria-label="김수진 보호자 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">이수진</th><td>보호자</td><td class="cw">김정희 입주자의 딸</td><td class="cw">보호자 첫 화면</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=g.leesj&go=FAM-06a" data-as="g.leesj" data-first="FAM-06a" aria-label="이수진 보호자 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">이민호</th><td>보호자</td><td class="cw">김정희 입주자의 아들</td><td class="cw">보호자 첫 화면</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=g.leemh&go=FAM-06a" data-as="g.leemh" data-first="FAM-06a" aria-label="이민호 보호자 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">김태호</th><td>대리인(위임장)</td><td class="cw">이은숙 입주자의 아들</td><td class="cw">Evenstay 홈 첫 화면</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=p.taeho&go=COM-07" data-as="p.taeho" data-first="COM-07" aria-label="김태호 대리인(위임장) 계정의 첫 화면 열기">열기</a></td></tr><tr><th scope="row">김도현</th><td>대리인(한정후견)</td><td class="cw">김말순 입주자의 아들</td><td class="cw">Evenstay 홈 첫 화면</td><td><a class="btn btn-secondary btn-sm" href="../app.html?as=p.dohyun&go=COM-07" data-as="p.dohyun" data-first="COM-07" aria-label="김도현 대리인(한정후견) 계정의 첫 화면 열기">열기</a></td></tr></tbody></table></div>
+</details>
+<section class="sec" aria-labelledby="h-site">
+  <h2 id="h-site">소개 사이트</h2>
+  <p>입주를 알아보는 분이 보는 사이트입니다. 페이지마다 바로 갈 수 있습니다.</p>
+  <ul class="chips-links"><li><a href="../site/about.html">Evenstay 소개</a></li><li><a href="../site/consult.html">입주 상담</a></li><li><a href="../site/dining.html">식사</a></li><li><a href="../site/facility.html">시설 소개</a></li><li><a href="../site/index.html">소개 사이트 첫 페이지</a></li><li><a href="../site/life.html">생활·서비스</a></li><li><a href="../site/location.html">오시는 길</a></li><li><a href="../site/privacy.html">개인정보 처리방침(데모)</a></li><li><a href="../site/rooms.html">숙소 안내</a></li><li><a href="../site/safety.html">안심·건강 지원</a></li></ul>
+</section>
+</main>
+<footer class="foot">
+  <div class="hm-wrap foot-in">
+    <ul>
+      <li><a href="../index.html">홈</a></li>
+      <li><a href="../site/index.html">소개 사이트</a></li>
+      <li><a href="../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="p-member" data-title="입주자(회원)"><p>프로그램과 예약, 생활 요청, 이번 달 청구서, 비서, 소식 함께 보기, 도움과 안심으로 들어갑니다. 모든 화면에 프런트로 전화하기가 있고, 하단 탭은 없습니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>이번 달 청구서와 금액의 이유, 생활 요청, 프로그램 신청과 시설 예약, 공지, 비서에게 묻기, 보호자에게 보여 줄 소식 정하기, 받고 계신 생활 지원 단계</dd><dt>볼 수 없는 것</dt><dd>다른 입주자의 기록, 직원과 소유주 화면</dd><dt>첫 화면</dt><dd>Evenstay 홈 첫 화면</dd></dl></template>
+<template id="g-1" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="docs/glossary.html">용어집 전체 보기</a></p></template>
+<template id="p-proxy" data-title="대리인"><p>계정은 둘입니다. 위임장을 받은 아들은 청구서 확인과 결제, 비서를 맡습니다. 한정후견 대리인은 다른 입주자의 일을 맡습니다. 첫 화면에 허락된 범위를 알리는 한 줄이 있습니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>허락된 범위의 칸. 청구서 확인과 결제, 비서</dd><dt>볼 수 없는 것</dt><dd>허락된 범위 밖의 칸, 직원과 소유주 화면</dd><dt>첫 화면</dt><dd>Evenstay 홈 첫 화면</dd></dl></template>
+<template id="g-2" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="docs/glossary.html">용어집 전체 보기</a></p></template>
+<template id="p-guardian" data-title="보호자"><p>허락할 수 있는 것은 생활 소식, 일정, 청구서, 건강 소식, 생활 요청입니다. 건강 소식은 따로 동의를 받아야 열립니다. 내가 볼 수 있는 것 화면에서 지금 보이는 범위를 확인합니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>입주자가 허락한 항목만. 허락이 없으면 보이지 않는다고 안내합니다</dd><dt>볼 수 없는 것</dt><dd>허락받지 않은 소식, 직원 화면, 다른 입주자의 기록</dd><dt>첫 화면</dt><dd>보호자 첫 화면</dd></dl></template>
+<template id="g-3" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="docs/glossary.html">용어집 전체 보기</a></p></template>
+<template id="p-front" data-title="프런트"><p>왼쪽 메뉴에 입주자, 돈, 안전, 요청·프로그램 묶음이 보입니다. 돈 묶음에서는 식사 기록만 보입니다. 오늘 묶음과 설정 묶음은 메뉴에 없습니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>생활 요청 받기와 배정, 식사 기록 올리기, 보호자 연결 대신 입력, 프로그램과 공지</dd><dt>볼 수 없는 것</dt><dd>청구서 만들기와 발행, 요금 규칙 같은 돈과 설정 화면</dd><dt>첫 화면</dt><dd>생활 요청 목록</dd></dl></template>
+<template id="p-life" data-title="생활 지원"><p>왼쪽 메뉴에 안전, 입주자, 요청·프로그램 묶음이 보입니다. 입주자 묶음에서는 생활 지원 단계와 보호자 연결만 보입니다. 같은 메뉴를 간호 직원도 씁니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>호실 현황과 안부 방문, 지금 처리할 신호, 생활 지원 단계, 보호자 연결, 생활 요청, 프로그램·시설·공지</dd><dt>볼 수 없는 것</dt><dd>청구와 계약, 요금 규칙 같은 돈과 설정 화면</dd><dt>첫 화면</dt><dd>호실 현황</dd></dl></template>
+<template id="p-care" data-title="간호"><p>생활 지원 단계의 평가 기록과 단계 변경 제안은 간호와 생활 지원 직원이 씁니다. 제안한 사람은 그 결정을 하지 못합니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>호실 현황, 지금 처리할 신호, 생활 지원 단계, 보호자 연결, 생활 요청, 프로그램·시설·공지</dd><dt>볼 수 없는 것</dt><dd>청구와 계약, 요금 규칙 같은 돈과 설정 화면</dd><dt>첫 화면</dt><dd>호실 현황</dd></dl></template>
+<template id="p-night" data-title="야간 당번"><p>당번표에서 1차와 2차로 정해진 직원이 밤 시간에 열면 이 모습입니다. 왼쪽 메뉴 대신 위쪽 탭으로 안전 묶음의 화면만 오갑니다. 한밤 시각에만 이 모습이라, 같은 직원이 낮에 열면 낮 직원의 화면입니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>지금 처리할 신호, 호실 현황, 기기 상태</dd><dt>볼 수 없는 것</dt><dd>안전 묶음 밖의 화면. 계약, 청구, 생활 요청</dd><dt>첫 화면</dt><dd>지금 처리할 신호</dd></dl><p>야간 시각이 필요한 화면이라 이 바로가기는 시연 순서를 한밤 장면 앞까지 자동으로 진행한 뒤 엽니다. 몇 초 걸리고, 그동안 안내가 뜹니다.</p></template>
+<template id="p-manager" data-title="사업장 책임자"><p>왼쪽 메뉴에 여섯 묶음이 모두 보입니다. 단계 결정 대기, 안심 규칙과 당번표, 요청 종류, 공용 시설 같은 설정을 다룹니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>오늘의 운영과 운영 현황 카드, 지금 처리할 신호, 결정 대기, 요청과 프로그램, 사업장 설정</dd><dt>볼 수 없는 것</dt><dd>요금 규칙 저장. 본사 관리자만 합니다</dd><dt>첫 화면</dt><dd>오늘의 운영</dd></dl></template>
+<template id="g-4" data-title="사업장 책임자"><p>사업장 운영을 맡고 운영 현황 카드를 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 책임자 / 회원 공지: 센터장</dd><dt>영문·코드 이름</dt><dd><code>SITE_MANAGER</code></dd><dt>출처</dt><dd>core T6-1, requests N</dd></dl><p class="hm-links"><a href="docs/glossary.html">용어집 전체 보기</a></p></template>
+<template id="p-accounting" data-title="경리"><p>왼쪽 메뉴에 오늘, 입주자, 돈 묶음이 보입니다. 입주자 묶음에서는 입주 계약만 보입니다. 계약 작성과 체결, 사별 승계, 식사 기록 마감, 청구서 만들기와 발행이 이 계정의 일입니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>입주 계약, 식사 기록, 청구서 만들기와 발행</dd><dt>볼 수 없는 것</dt><dd>안전과 생활 요청 화면, 사업장 설정</dd><dt>첫 화면</dt><dd>오늘의 운영</dd></dl></template>
+<template id="g-5" data-title="사업장 경리"><p>사업장의 계약, 청구, 수납을 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 경리</dd><dt>영문·코드 이름</dt><dd><code>SITE_ACCOUNTANT</code></dd><dt>출처</dt><dd>core T6-1</dd></dl><p class="hm-links"><a href="docs/glossary.html">용어집 전체 보기</a></p></template>
+<template id="p-hq" data-title="본사"><p>계정은 둘입니다. 본사 운영 매니저는 오늘의 운영에서 시작합니다. 본사 관리자는 요금 규칙을 정하고 청구 일정을 설정합니다. 여섯 묶음이 모두 보입니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>오늘의 운영, 사업장과 호실, 요금 규칙(본사 관리자), 월 리포트</dd><dt>볼 수 없는 것</dt><dd>입주자(회원)와 보호자 화면</dd><dt>첫 화면</dt><dd>오늘의 운영</dd></dl></template>
+<template id="p-owner" data-title="소유주"><p>첫 화면 소유주 현황에서 월 리포트로 갑니다. 계정은 둘이고, 서로 다른 소유주의 사업장을 보지 못합니다. 다온 담당자가 새봄 레지던스 주소로 들어가면 막힙니다.</p><dl class="hm-kv"><dt>볼 수 있는 것</dt><dd>소유한 사업장의 합계, 월 리포트, 위탁 운영 계약 카드</dd><dt>볼 수 없는 것</dt><dd>다른 소유주의 사업장, 입주자 이름과 개인 기록</dd><dt>첫 화면</dt><dd>소유주 현황</dd></dl></template>
+<template id="g-6" data-title="소유주 계정"><p>기준일에 소유한 사업장의 합계만 본다. 입주자 이름은 가린다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>OWNER_VIEWER</code></dd><dt>출처</dt><dd>core T6-1</dd></dl><p class="hm-links"><a href="docs/glossary.html">용어집 전체 보기</a></p></template>
+<script src="../home/assets/home.js" defer></script>
+</body>
+</html>

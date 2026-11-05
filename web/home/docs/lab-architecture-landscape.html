@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>아키텍처 다시 조사 | Evenstay 문서</title>
+<meta name="description" content="아키텍처 다시 조사. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>아키텍처 다시 조사</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#사용자-선택-2026-11-04">사용자 선택 (2026-11-04)</a></li><li class="lv2"><a href="#1-결론">1. 결론</a></li><li class="lv2"><a href="#2-무엇을-위한-구조인가">2. 무엇을 위한 구조인가</a></li><li class="lv2"><a href="#3-추천-구조">3. 추천 구조</a></li><li class="lv2"><a href="#4-코어-청사진-일곱-가지">4. 코어 청사진 일곱 가지</a></li><li class="lv3"><a href="#가중-평가">가중 평가</a></li><li class="lv2"><a href="#5-층별-제안">5. 층별 제안</a></li><li class="lv2"><a href="#6-건물-층은-조건부다">6. 건물 층은 조건부다</a></li><li class="lv2"><a href="#7-레드팀">7. 레드팀</a></li><li class="lv2"><a href="#8-이-문서로-바뀌는-것">8. 이 문서로 바뀌는 것</a></li><li class="lv2"><a href="#9-고르고-나서-할-일">9. 고르고 나서 할 일</a></li><li class="lv2"><a href="#10-출처-메모">10. 출처 메모</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-752" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li><li><button class="term" type="button" data-modal="g-753" data-tip="건물 안 호출 설비, 출입, 센서와 클라우드를 잇는 구성.">건물 층</button></li><li><button class="term" type="button" data-modal="g-754" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-755" data-tip="한 저장소, 한 번에 배포.">모듈형 모놀리스</button></li><li><button class="term" type="button" data-modal="g-756" data-tip="요청과 별도로 실행되는 백그라운드 처리 단위.">작업자</button></li><li><button class="term" type="button" data-modal="g-757" data-tip="상태 변경과 같은 트랜잭션에 쓰는 이벤트 행.">아웃박스</button></li></ul></section></aside>
+  <article class="doc"><p>앞선 문서: <a href="lab-architecture-options.html">architecture-options-2026-11-04.md</a>는 기존 방향 안에서만 비교했다. 이 문서는 기존 결정(Next.js, PostgreSQL, 모듈형 모놀리스)과 앞선 문서의 추천(Spring)을 전제로 두지 않고 다시 봤다.</p>
+<h2 id="사용자-선택-2026-11-04">사용자 선택 (2026-11-04)</h2>
+<p>사용자가 코어 기준을 &quot;팀과 채용&quot;으로 골랐다. 코어는 Spring 계열이고, A와 B는 비교 전까지 A를 기본으로 본다. 건물 층과 기획 문서 수정은 아직 정하지 않았다.</p>
+<h2 id="1-결론">1. 결론</h2>
+<p><strong>추천 구조: 건물과 클라우드 두 층으로 나눈 모듈형 모놀리스.</strong> [판단]</p>
+<ul>
+<li>넓혀 봐도 <strong>모듈형 모놀리스 + PostgreSQL + AWS 서울</strong>은 바뀌지 않았다. PostgreSQL을 대체할 후보 중 확인된 것들은 이 설계가 쓰는 기능을 못 쓰거나 서울 리전이 없었다.</li>
+<li><strong>새 후보는 셋이다.</strong> 건물 쪽 장애 대비, 범위를 제한한 내구 실행, 직원 업무용 사람 승인 에이전트다. 셋 다 7절의 확인이 남아 있다.</li>
+<li><strong>코어는 Spring이 기본이지만 차이가 작다.</strong> 기본 평가에서 Spring 계열(A·B)이 앞서고, 혼자 구현이면 Phoenix(C)가 0.1점 앞선다. 인력 기준의 한국 시장 근거는 [미확인]이다.</li>
+</ul>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>판단 기준</th>
+<th>코어</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>팀으로 키우고 채용까지 생각한다</td>
+<td><strong>Spring Boot + Modulith</strong> (안 A, DBOS를 더하면 안 B)</td>
+</tr>
+<tr>
+<td>혼자 끝까지 만들고 실시간 화면이 중요하다</td>
+<td><strong>Phoenix + Ash + Oban</strong> (안 C)</td>
+</tr>
+<tr>
+<td>주력이 TypeScript다</td>
+<td><strong>NestJS + DBOS TS</strong> (안 G)</td>
+</tr>
+</tbody></table></div>
+<h2 id="2-무엇을-위한-구조인가">2. 무엇을 위한 구조인가</h2>
+<p>조사 뒤 이 서비스의 어려운 점을 다섯으로 다시 추렸다. 트래픽은 어려운 점이 아니다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>어려운 점</th>
+<th>왜 어려운가</th>
+<th>맞는 도구의 방향</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>돈의 정확성</td>
+<td>발행 항목은 불변, 보정으로 고친다</td>
+<td>관계형 DB 트랜잭션과 추가만 하는 테이블</td>
+</tr>
+<tr>
+<td>시간에 걸친 업무</td>
+<td>분 단위 넘김, 월 청구, 몇 년 계약</td>
+<td>짧은 일은 내구 실행, 긴 일은 상태 테이블</td>
+</tr>
+<tr>
+<td>관계로 정해지는 권한</td>
+<td>동의, 대리권, 소유주 기간</td>
+<td>기간 칸과 이력이 있는 관계 테이블</td>
+</tr>
+<tr>
+<td>건물이라는 물리 세계</td>
+<td>인터넷이 끊겨도 사람은 호출한다</td>
+<td>건물 안 경로를 클라우드와 분리</td>
+</tr>
+<tr>
+<td>사람이 판단한다</td>
+<td>AI는 쓰기를 혼자 하지 않는다</td>
+<td>도구 계층과 승인 지점</td>
+</tr>
+</tbody></table></div>
+<h2 id="3-추천-구조">3. 추천 구조</h2>
+<pre><code>[건물 층]                                       [클라우드 층: AWS 서울]
+
+호출벨·침대 센서·출입통제                         모듈형 모놀리스 + 작업자
+(기존 설비는 건물 안에서 계속 동작)                core · safety · family · assistant
+        │                                        transitions · requests · community
+        ▼                                                │
+사업장 게이트웨이(조건부)  ──── 버퍼 후 재전송 ────►        ├─ PostgreSQL 18 (RLS, 트리거, 배제 제약)
+끊김 감지, 신호 임시 보관                                 ├─ KMS (사람별 데이터 키)
+                                                        ├─ 도구 계층(MCP) ─ 승인 ─ 직원 에이전트
+직원 휴대폰 ◄──── 끊기면 사업장 대체 절차 [미정]           └─ 어댑터: 결제, CMS, 알림톡, ERP, LLM·STT
+                                                                 ▲
+                              회원·보호자: 웹 → 필요할 때 Expo 앱 ┘</code></pre>
+<h2 id="4-코어-청사진-일곱-가지">4. 코어 청사진 일곱 가지</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>안</th>
+<th>생각</th>
+<th>구성</th>
+<th>잘하는 것</th>
+<th>대가</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A</strong> 단단한 코어</td>
+<td>경계를 코드로 강제한다</td>
+<td>Java 25, Spring Boot 4.1, Spring Modulith 2.1, JobRunr, 화면은 Next.js 16</td>
+<td>모듈 경계 검증과 이벤트 발행 기록이 내장</td>
+<td>언어가 둘이다</td>
+</tr>
+<tr>
+<td><strong>B</strong> 내구 실행 코어</td>
+<td>업무 흐름을 코드 워크플로로 쓴다</td>
+<td>A + DBOS Java 1.2</td>
+<td>Postgres만으로 지속 타이머와 재개</td>
+<td>DBOS Java는 2025-06 시작으로 어리다. 워크플로 결정론 제약</td>
+</tr>
+<tr>
+<td><strong>C</strong> 실시간 단일 스택</td>
+<td>한 런타임이 웹훅·타이머·화면을 다 한다</td>
+<td>Elixir 1.20, Phoenix 1.8, LiveView 1.2, Ash 3, Oban</td>
+<td>테넌트 없는 조회를 오류로 막고, 작업을 트랜잭션에 묶는다. 언어 하나</td>
+<td>한국 사례를 거의 못 찾았다. Oban 일부 기능은 유료</td>
+</tr>
+<tr>
+<td><strong>D</strong> 기록 중심 코어</td>
+<td>계약·청구·동의를 이벤트로 저장한다</td>
+<td>.NET 10 LTS, Marten 9(Postgres 위), DCB</td>
+<td>감사 이력이 구조에 녹아 있다</td>
+<td>일반 업무까지 이벤트로 쓰면 과하다. 투영 재구축 부담</td>
+</tr>
+<tr>
+<td><strong>E</strong> 최소 인원 코어</td>
+<td>적은 인원으로 빠르게</td>
+<td>Rails 8.1, Solid Queue, Kamal</td>
+<td>큐와 배포까지 한 앱에서 해결</td>
+<td>테넌시와 모듈 경계를 직접 설계</td>
+</tr>
+<tr>
+<td><strong>F</strong> AWS 서버리스</td>
+<td>서버를 두지 않는다</td>
+<td>Lambda durable functions, Step Functions, RDS</td>
+<td>서울 지원, 대기 중 컴퓨트 요금 없음</td>
+<td>AWS에 묶인다. RLS와 연결 풀 구성 [미확인]</td>
+</tr>
+<tr>
+<td><strong>G</strong> TypeScript 단일 언어</td>
+<td>웹과 앱까지 한 언어로 간다</td>
+<td>NestJS 12, DBOS TS, Drizzle 또는 Kysely, Next.js 16, Expo</td>
+<td>기존 ADR-3의 npm 워크스페이스 구조와 맞다</td>
+<td>경계 검증을 외부 도구로 맞춘다. 금액을 읽을 때 주의가 필요하다</td>
+</tr>
+</tbody></table></div>
+<h3 id="가중-평가">가중 평가</h3>
+<p>점수는 1~5이고 <strong>허브의 판단</strong>이다. 측정값이 아니다. 인력·생태계 칸의 한국 시장 근거는 [미확인]이다. 서울 배치는 어느 코어든 AWS 서울에 올릴 수 있어 점수에서 빼고 통과 조건으로 뒀다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>기준</th>
+<th align="right">가중치</th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">D</th>
+<th align="right">E</th>
+<th align="right">F</th>
+<th align="right">G</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>시간에 걸친 업무</td>
+<td align="right">15</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td>원장·감사 정확성</td>
+<td align="right">25</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>경계·격리 강제</td>
+<td align="right">15</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>실시간·연동</td>
+<td align="right">10</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>소규모 운영 부담</td>
+<td align="right">20</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>인력·생태계</td>
+<td align="right">15</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td><strong>합계(기본)</strong></td>
+<td align="right">100</td>
+<td align="right"><strong>4.15</strong></td>
+<td align="right"><strong>4.15</strong></td>
+<td align="right">3.80</td>
+<td align="right">3.60</td>
+<td align="right">3.35</td>
+<td align="right">3.50</td>
+<td align="right">3.60</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">D</th>
+<th align="right">E</th>
+<th align="right">F</th>
+<th align="right">G</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>기본</td>
+<td align="right"><strong>4.15</strong></td>
+<td align="right"><strong>4.15</strong></td>
+<td align="right">3.80</td>
+<td align="right">3.60</td>
+<td align="right">3.35</td>
+<td align="right">3.50</td>
+<td align="right">3.60</td>
+</tr>
+<tr>
+<td>인력 기준 제외(시간 20, 원장 30, 경계 15, 실시간 10, 운영 25)</td>
+<td align="right">4.00</td>
+<td align="right"><strong>4.20</strong></td>
+<td align="right">4.10</td>
+<td align="right">3.70</td>
+<td align="right">3.45</td>
+<td align="right">3.65</td>
+<td align="right">3.75</td>
+</tr>
+<tr>
+<td>혼자 구현(시간 15, 원장 20, 경계 10, 실시간 10, 운영 35, 인력 10. 언어가 둘이면 운영 칸 1점 감점: A 3, B 3, D 2)</td>
+<td align="right">3.75</td>
+<td align="right">3.80</td>
+<td align="right"><strong>3.90</strong></td>
+<td align="right">3.15</td>
+<td align="right">3.70</td>
+<td align="right">3.65</td>
+<td align="right">3.75</td>
+</tr>
+</tbody></table></div>
+<p><strong>읽는 법</strong></p>
+<ul>
+<li>A와 B는 기본에서 동점이다. 둘의 차이는 DBOS를 더하느냐이고, 레드팀 3번으로 정한다.</li>
+<li>인력 기준을 빼면 B, C, A 순이고 차이는 0.2점 안이다.</li>
+<li>혼자 구현이면 C가 0.1점 앞선다. 차이가 작아서 이 평가표만으로 언어를 정하면 안 된다.</li>
+<li>D의 원장 5점은 ADR-4(전체 이벤트 소싱을 쓰지 않음)를 뒤집는 대가로 얻는 점수다.</li>
+</ul>
+<h2 id="5-층별-제안">5. 층별 제안</h2>
+<p>대부분 코어와 무관하다. 시간 업무, 관리형 대안, 앱 줄은 코어별로 다르다. DBOS는 Python, TypeScript, Go, Java만 지원하고 Temporal 공식 SDK에는 Elixir가 없어서, 안 C는 Oban이 맡는다. Expo를 쓰면 안 C의 언어 하나도 깨진다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>층</th>
+<th>제안</th>
+<th>쓰지 않는 것과 이유</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>운영 DB</td>
+<td>PostgreSQL 18, 서울</td>
+<td>Aurora DSQL: 트리거와 PL/pgSQL 미지원, 트랜잭션당 3,000행. PG 19: 아직 RC</td>
+<td>[허브 대조] <a href="https://docs.aws.amazon.com/aurora-dsql/latest/userguide/working-with-postgresql-compatibility-migration-guide.html" rel="noopener noreferrer" target="_blank">DSQL 문서</a></td>
+</tr>
+<tr>
+<td>원장</td>
+<td>추가만 하는 테이블, ADJUSTMENT 항목과 음수 Payment, 트리거(ADR-4)</td>
+<td>TigerBeetle: 프로덕션 6 replica, ECC 메모리. 월 수천 건 [추정]에 과하다 [판단]</td>
+<td><a href="https://docs.tigerbeetle.com/operating/cluster/" rel="noopener noreferrer" target="_blank">운영 요건</a></td>
+</tr>
+<tr>
+<td>권한</td>
+<td>기간 칸·이력 테이블·<code>authorize()</code>·RLS. 모양은 관계 튜플처럼 둔다</td>
+<td>OpenFGA, SpiceDB 서버: 개념은 잘 맞지만 이력은 어차피 Postgres에 두므로 이중 기록이 된다. 여러 서비스가 권한을 공유할 때 다시 본다</td>
+<td><a href="https://authzed.com/docs/spicedb/concepts/expiring-relationships" rel="noopener noreferrer" target="_blank">SpiceDB 만료</a>, <a href="https://openfga.dev/docs/modeling/conditions" rel="noopener noreferrer" target="_blank">OpenFGA 조건</a></td>
+</tr>
+<tr>
+<td>시간 업무</td>
+<td>몇 분~몇 주 일만 워크플로 후보. 몇 년 계약은 상태 테이블</td>
+<td>수년짜리 단일 워크플로: 코드가 바뀌면 진행 중 실행과 어긋날 수 있다 [추정]</td>
+<td>[허브 대조] <a href="https://docs.dbos.dev/java/tutorials/workflow-tutorial" rel="noopener noreferrer" target="_blank">DBOS Java</a></td>
+</tr>
+<tr>
+<td>관리형 대안</td>
+<td>직접 운영하기 싫으면 Temporal Cloud 서울</td>
+<td>자체 호스팅 Temporal: 공식 글이 24/7 온콜 필요를 언급</td>
+<td>[허브 대조] <a href="https://docs.temporal.io/evaluate/cloud/regions" rel="noopener noreferrer" target="_blank">리전</a>, <a href="https://docs.temporal.io/blog/estimating-the-cost-of-temporal-cloud" rel="noopener noreferrer" target="_blank">온콜 글</a></td>
+</tr>
+<tr>
+<td>건물</td>
+<td>조건부 게이트웨이(6절)</td>
+<td>사업장마다 풀스택을 두는 셀 구조: 1~5명에 과하다 [판단]</td>
+<td><a href="https://docs.aws.amazon.com/wellarchitected/latest/reducing-scope-of-impact-with-cell-based-architecture/" rel="noopener noreferrer" target="_blank">AWS 셀 지침</a></td>
+</tr>
+<tr>
+<td>센서 연결</td>
+<td>기존 호출 설비는 유지, 센서는 보조 신호. MQTT 또는 업체 웹훅</td>
+<td>Home Assistant 업무 사용: 시설 SLA와 감사 근거 [미확인]</td>
+<td><a href="https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html" rel="noopener noreferrer" target="_blank">AWS IoT 프로토콜</a></td>
+</tr>
+<tr>
+<td>회원 AI</td>
+<td>ADR-G1 유지. LLM은 뜻만 고르고 답은 답 틀</td>
+<td>음성 입력에서 음성 답을 바로 만드는 모델: 문장을 검수하기 어렵다 [판단]</td>
+<td><code>docs/assistant/</code> ADR-G1</td>
+</tr>
+<tr>
+<td>직원 AI</td>
+<td>업무 API를 MCP 도구로. 읽기는 자동, 쓰기는 승인, 승인 기록은 자체 DB. 직원 에이전트가 LLM에 보낼 범위는 [미정]이다(회원 비서는 회원 정보와 도구 결과를 보내지 않는다)</td>
+<td>승인 없는 쓰기 에이전트. 승인이 정확히 한 번 실행을 보장하지 않으므로 멱등키가 필요하다</td>
+<td><a href="https://modelcontextprotocol.io/specification/2026-07-28/changelog" rel="noopener noreferrer" target="_blank">MCP 2026-07-28</a>, <a href="https://openai.github.io/openai-agents-python/human_in_the_loop/" rel="noopener noreferrer" target="_blank">OpenAI Agents SDK 승인</a></td>
+</tr>
+<tr>
+<td>음성</td>
+<td>지금 설계는 기기 음성 인식이고 TTS는 나중 버전이다. 서버로 옮기면 STT → 답 틀 → TTS 파이프라인, 국내 STT 후보 RTZR</td>
+<td>고령 화자 수치는 프리프린트뿐이므로 자체 녹음으로 잰다</td>
+<td>[허브 대조] <a href="https://arxiv.org/abs/2604.24770" rel="noopener noreferrer" target="_blank">arXiv 2604.24770</a></td>
+</tr>
+<tr>
+<td>앱</td>
+<td>1단계 웹 + 알림톡. 푸시·음성이 필요해지면 Expo 한 코드베이스. 직원은 웹</td>
+<td>생성형 UI: 업무 화면 생산 사례 [미확인]</td>
+<td>—</td>
+</tr>
+<tr>
+<td>직원 오프라인</td>
+<td>순찰·응대 메모가 끊겨도 써야 하면 PowerSync 후보</td>
+<td>Zero: 오프라인 쓰기 미지원</td>
+<td><a href="https://zero.rocicorp.dev/docs/offline" rel="noopener noreferrer" target="_blank">Zero 문서</a>, <a href="https://docs.powersync.com/intro/powersync-overview" rel="noopener noreferrer" target="_blank">PowerSync</a></td>
+</tr>
+<tr>
+<td>리포트</td>
+<td>SQL 뷰, 월말 스냅샷, 서버 생성 PDF</td>
+<td>ClickHouse, Iceberg: 이 규모에 운영비만 는다. 소유주 필터를 BI 도구에 맡기지 않는다 [판단]</td>
+<td>—</td>
+</tr>
+<tr>
+<td>개인정보</td>
+<td>원장에는 ID와 금액만. 민감 칸은 사람별 데이터 키 + KMS</td>
+<td>키 삭제가 법적 파기로 인정되는지는 [미확인]</td>
+<td><a href="https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html" rel="noopener noreferrer" target="_blank">KMS 키 삭제</a></td>
+</tr>
+<tr>
+<td>관측</td>
+<td>OpenTelemetry로 계측, 개인정보 제거 후 전송</td>
+<td>Datadog, Sentry SaaS, Grafana Cloud: 서울 사이트 없음</td>
+<td><a href="https://docs.datadoghq.com/getting_started/site/" rel="noopener noreferrer" target="_blank">Datadog</a>, <a href="https://docs.sentry.io/product/accounts/choose-your-data-center/" rel="noopener noreferrer" target="_blank">Sentry</a>, <a href="https://grafana.com/docs/grafana-cloud/account-management/regional-availability/" rel="noopener noreferrer" target="_blank">Grafana</a></td>
+</tr>
+<tr>
+<td>배포</td>
+<td>ECS Fargate 서울, OpenTofu</td>
+<td>Fly.io, Railway, Neon, Convex: 서울 리전 없음. Cloudflare Durable Objects, D1: 서울 위치 보장 안 됨</td>
+<td><a href="https://docs.fly.io/reference/regions" rel="noopener noreferrer" target="_blank">Fly</a>, <a href="https://docs.railway.com/reference/regions" rel="noopener noreferrer" target="_blank">Railway</a>, <a href="https://docs.convex.dev/production/regions" rel="noopener noreferrer" target="_blank">Convex</a>, <a href="https://developers.cloudflare.com/durable-objects/reference/data-location/" rel="noopener noreferrer" target="_blank">Durable Objects</a>, <a href="https://developers.cloudflare.com/d1/configuration/data-location/" rel="noopener noreferrer" target="_blank">D1</a></td>
+</tr>
+</tbody></table></div>
+<p><strong>사서 쓸 것과 만들 것</strong> [판단]: 결제, 회계, 알림톡, 본인 인증은 산다. 호출·안심 운영, 보호자 동의, 계약·월 청구 규칙은 만든다. Mews, Apaleo, Cloudbeds 같은 호텔 PMS의 API 우선 구조는 참고하되, 내부 구조를 설명한 공개 글은 찾지 못했다.</p>
+<h2 id="6-건물-층은-조건부다">6. 건물 층은 조건부다</h2>
+<p><strong>후속 조사(2026-11-04)</strong>: <a class="doc-ref" href="lab-senior-housing-architecture.html"><code>01-research/outputs/senior-housing-architecture.md</code></a>는 호출 설비 자립을 기본으로, 게이트웨이는 수집·기록용으로, Evenstay는 2차 알림까지로 본다. 근거가 해외 자료 위주라 벤더 문의 뒤 닫는다.</p>
+<p>조사에서 가장 새로운 내용이지만 근거는 <a href="https://mini.carehome.splicecom.com/medic-call-key-features/single-care-home-cloud-deployment" rel="noopener noreferrer" target="_blank">벤더 자료</a>뿐이다. 호출벨 설비가 어떻게 동작하는지에 따라 답이 달라진다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>상황</th>
+<th>건물 층 구성</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>호출벨이 건물 안에서 스스로 동작한다</td>
+<td>게이트웨이 없음. 끊김 감지와 직원 대체 절차만 둔다</td>
+</tr>
+<tr>
+<td>설비는 동작하지만 신호가 끊기면 유실된다</td>
+<td>작은 게이트웨이로 보관 후 재전송</td>
+</tr>
+<tr>
+<td>호출과 넘김을 Evenstay가 직접 맡는다</td>
+<td>게이트웨이가 로컬 타이머까지 갖는다. 사업장 수만큼 장비 운영 부담이 는다</td>
+</tr>
+</tbody></table></div>
+<p><strong>현재 설계의 빈칸</strong>: 안심 ADR-S2의 넘김 타이머는 클라우드 DB와 작업자에 있다. F13 신호 끊김은 기기별 기본 2시간[가설]이다. 작업자 중단 경고(ADR-S2)와 수신반 유무 확인(<code>prd.md</code> 확인할 것 11)은 있지만, 건물 인터넷 전체가 끊긴 경우를 다룬 내용은 찾지 못했다.</p>
+<h2 id="7-레드팀">7. 레드팀</h2>
+<p>영향이 크고 싸게 확인할 수 있는 순서다.</p>
+<p><strong>1. 건물 게이트웨이가 필요하다</strong></p>
+<ul>
+<li>깨지는 조건: 호출벨 설비가 인터넷 없이 이미 호출을 잇는다면 게이트웨이는 운영 부담만 늘린다.</li>
+<li>이번 주 근거: 호출벨 업체 한 곳의 동작 방식과 연동 문서.</li>
+<li>포기 기준: 설비가 스스로 이어 주면 끊김 감지만 남긴다.</li>
+<li>가장 싼 확인: 업체 문의 한 번.</li>
+</ul>
+<p><strong>2. 인력 기준이 언어를 정한다</strong></p>
+<ul>
+<li>깨지는 조건: 공고 통계가 없다. 이 기준을 빼면 A는 1위가 아니다.</li>
+<li>이번 주 근거: 원티드에서 Spring, Elixir, .NET, Rails 공고 수를 직접 센다. 사용자의 주력 언어도 필요하다.</li>
+<li>포기 기준: 사용자가 방어할 수 없는 언어는 점수와 무관하게 뺀다.</li>
+<li>가장 싼 확인: 사용자 답변 한 줄과 공고 검색 30분.</li>
+</ul>
+<p><strong>3. 내구 실행이 코드를 줄인다</strong></p>
+<ul>
+<li>깨지는 조건: ADR-S2와 아웃박스는 이미 단순한 SQL로 설계돼 있다. DBOS는 새 의존성과 결정론 제약을 더한다. DBOS Java는 2025-06에 시작했고 현재 1.2.0이다.</li>
+<li>이번 주 근거: 넘김 타이머 하나를 두 방식으로 쓴 코드 비교.</li>
+<li>포기 기준: 줄어드는 코드와 테스트가 뚜렷하지 않으면 쓰지 않는다.</li>
+<li>가장 싼 확인: 작은 비교 코드. MVP를 만들지 않기로 한 결정과 닿으므로 사용자 확인이 먼저다.</li>
+</ul>
+<p><strong>4. 승인 에이전트가 운영 부담을 줄인다</strong></p>
+<ul>
+<li>깨지는 조건: 승인 절차가 직원 일을 오히려 늘린다. <a href="https://www.realpage.com/news/realpage-unveils-next-generation-ai-workforce-at-realworld-2025/" rel="noopener noreferrer" target="_blank">공개 사례</a>는 승인 구조와 실패율을 밝히지 않았고, 수치는 회사 주장이다.</li>
+<li>포기 기준: 저위험 업무 하나에서 건당 시간이 줄지 않으면 넓히지 않는다.</li>
+<li>가장 싼 확인: 도입 시 정비 요청 분류 같은 한 업무로 잰다.</li>
+</ul>
+<p><strong>5. 고령 화자 음성을 쓸 만하다</strong></p>
+<ul>
+<li>깨지는 조건: 공개 수치는 프리프린트뿐이고, 방 안 소음이나 전화 음질 자료를 찾지 못했다.</li>
+<li>포기 기준: 자체 측정이 나쁘면 큰 버튼을 주 경로로 유지한다. 지금 설계도 그렇다.</li>
+<li>가장 싼 확인: 동의받은 소규모 녹음 측정.</li>
+</ul>
+<p><strong>잘 된 부분</strong>: 조사한 후보 안에서 PostgreSQL을 바꿀 이유는 찾지 못했다. 서울 리전이 없는 서비스를 뺀 것은 판단이고, 국외 이전의 법 해석은 [미확인]이다.</p>
+<p><strong>판단하지 못한 것</strong>: 실제 호출 설비, [지원 회사] 계열 보안 기준, 그룹 ERP, 한국 언어별 채용 수치, 법률 해석.</p>
+<h2 id="8-이-문서로-바뀌는-것">8. 이 문서로 바뀌는 것</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>앞선 문서</th>
+<th>이 문서</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>안 2(Spring)를 기본 추천</td>
+<td>Spring 기본을 유지하되 혼자면 Phoenix, 주력이 TS면 안 G. 인력 근거를 확인해야 굳어진다</td>
+</tr>
+<tr>
+<td>건물 장애를 다루지 않음</td>
+<td>건물 층을 조건부로 추가</td>
+</tr>
+<tr>
+<td>아웃박스와 작업자만</td>
+<td>범위를 제한한 내구 실행을 후보로 추가</td>
+</tr>
+<tr>
+<td>AI는 회원 라우터만</td>
+<td>직원 업무용 승인 에이전트 층 추가</td>
+</tr>
+<tr>
+<td>웹앱 하나</td>
+<td>웹으로 시작하고 필요할 때 Expo</td>
+</tr>
+<tr>
+<td>음성 언급 없음</td>
+<td>서버로 옮기면 STT·TTS 파이프라인. 기기 음성 인식과 TTS 나중이라는 지금 설계가 바뀌는 지점이다</td>
+</tr>
+</tbody></table></div>
+<p>나머지 공통 결정(RLS 방식, 아웃박스, 원장, 서울 LLM, 접속기록)과 법·제약 정리는 앞선 문서 5·7절이 그대로 유효하다.</p>
+<h2 id="9-고르고-나서-할-일">9. 고르고 나서 할 일</h2>
+<p>사용자가 고른 뒤에만 한다.</p>
+<ol>
+<li>코어 언어를 정하고 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a>에 남긴다.</li>
+<li>호출벨 업체 동작을 확인하고 6절 표에서 건물 층 구성을 고른다.</li>
+<li>코어와 안심 세션에 <code>tech-design.md</code> 수정을 맡긴다.</li>
+</ol>
+<h2 id="10-출처-메모">10. 출처 메모</h2>
+<ul>
+<li><strong>허브가 직접 대조</strong>: Temporal Cloud 서울, Lambda durable functions 서울(2026-04-22), DBOS 구조·언어·Java 버전(1.2.0, 2026-10-01), DBOS Java 지속 sleep과 결정론 제약, Ash 테넌트 오류, Aurora DSQL 제약, arXiv 초록.</li>
+<li><strong>조사에서 뺀 것</strong>: 클로바 케어콜이 생성 없이 답한다는 조사 내용은 원문을 찾지 못해 뺐다. <a href="https://guide.ncloud-docs.com/docs/en/clovacarecall-overview" rel="noopener noreferrer" target="_blank">현 안내</a>는 HyperCLOVA X 기반 대화라고 쓴다.</li>
+<li><strong>허브 대조에서 줄인 것</strong>: arXiv는 초록에서 &quot;Whisper 대비 WER 최대 58.2% 감소&quot;만 확인했다. 조사에 나온 절대 수치는 넣지 않았다. DSQL은 외래 키를 지원한다. RLS·EXCLUDE 미지원은 대조한 페이지에 없어서 표에서 뺐다.</li>
+<li><strong>버전</strong>(서브에이전트, 2026-11-04 조회): Elixir 1.20.5, Phoenix 1.8.16, LiveView 1.2.13, Ash 3.37.2, .NET 10.0.14 LTS(2028-11-14까지), Marten 9.x, Rails 8.1.4.1, Expo 58, htmx 4.0.1, OpenTofu 1.13.2.</li>
+<li><strong>못 찾은 것</strong>: 언어별 한국 공고 수, 호텔 PMS의 내부 구조 글, 시니어 리빙 AI 에이전트 운영 수치, 한국 호출 설비 연동 자료, 고령 화자 일상 발화 벤치마크.</li>
+<li>나머지 출처: <a href="https://oban.hexdocs.pm/Oban.html" rel="noopener noreferrer" target="_blank">Oban</a>, <a href="https://ash.hexdocs.pm/multitenancy.html" rel="noopener noreferrer" target="_blank">Ash 멀티테넌시</a>, <a href="https://martendb.io/events/dcb.html" rel="noopener noreferrer" target="_blank">Marten DCB</a>, <a href="https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core" rel="noopener noreferrer" target="_blank">.NET 지원 정책</a>, <a href="https://guides.rubyonrails.org/8_1_release_notes.html" rel="noopener noreferrer" target="_blank">Rails 8.1</a>, <a href="https://aws.amazon.com/about-aws/whats-new/2026/04/lambda-durable-functions-16-new-regions/" rel="noopener noreferrer" target="_blank">Lambda durable</a>, <a href="https://docs.dbos.dev/architecture" rel="noopener noreferrer" target="_blank">DBOS 구조</a>, <a href="https://docs.aws.amazon.com/greengrass/v2/developerguide/how-it-works.html" rel="noopener noreferrer" target="_blank">Greengrass</a>.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-752" data-title="에이전트"><p>다음 단계를 스스로 고르며 도구를 호출하는 실행. Evenstay에서는 직원용 초안과 제안까지 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>agent</dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-753" data-title="건물 층"><p>건물 안 호출 설비, 출입, 센서와 클라우드를 잇는 구성. 호출 설비 자립을 기본으로 둔다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>building layer</dd><dt>출처</dt><dd>조사 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-754" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-755" data-title="모듈형 모놀리스"><p>한 저장소, 한 번에 배포. 모듈마다 스키마와 <code>api/</code>를 둔다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>modular monolith</dd><dt>출처</dt><dd>루트, core T ADR-2·3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-756" data-title="작업자"><p>요청과 별도로 실행되는 백그라운드 처리 단위. 타이머, 월 청구, 알림 발송, 문서 처리를 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>Worker</dd><dt>출처</dt><dd>설계안 4</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-757" data-title="아웃박스"><p>상태 변경과 같은 트랜잭션에 쓰는 이벤트 행. 모듈마다 자기 스키마에 같은 열로 둔다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd><code>OutboxEvent</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

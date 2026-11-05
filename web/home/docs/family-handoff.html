@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>보호자 포털·동의 개발 인계 | Evenstay 문서</title>
+<meta name="description" content="보호자 포털·동의 개발 인계. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>보호자 포털·동의</span></p>
+  <h1>보호자 포털·동의 개발 인계</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-handoff"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="보호자 포털·동의의 다른 문서"><ul><li><a href="family-strategy.html">전략</a></li><li><a href="family-service-blueprint.html">서비스 설계도</a></li><li><a href="family-prd.html">기획서(PRD)</a></li><li><a href="family-user-stories.html">사용자 스토리</a></li><li><a href="family-tech-design.html">기술 설계</a></li><li><a href="family-roadmap.html">로드맵</a></li><li><a href="family-handoff.html" aria-current="page">개발 인계</a></li><li><a href="family-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#한-줄-요약">한 줄 요약</a></li><li class="lv2"><a href="#대상">대상</a></li><li class="lv2"><a href="#핵심-흐름-mvp">핵심 흐름 (MVP)</a></li><li class="lv2"><a href="#화면-목록">화면 목록</a></li><li class="lv2"><a href="#데이터-모델-초안">데이터 모델 초안</a></li><li class="lv2"><a href="#인수-조건">인수 조건</a></li><li class="lv2"><a href="#하지-않을-것">하지 않을 것</a></li><li class="lv2"><a href="#복사할-파일-허브가-검수-후">복사할 파일 (허브가 검수 후)</a></li><li class="lv2"><a href="#허브-처리-결과-2026-11-03">허브 처리 결과 (2026-11-03)</a></li><li class="lv2"><a href="#g-요청-반영-2026-11-03-재승인됨2026-11-03">G 요청 반영 (2026-11-03, 재승인됨(2026-11-03))</a></li><li class="lv2"><a href="#c-요청-반영-2026-11-03-사용자-재승인-2026-11-03">C 요청 반영 (2026-11-03, 사용자 재승인 2026-11-03)</a></li><li class="lv2"><a href="#허브에-요청할-것">허브에 요청할 것</a></li><li class="lv2"><a href="#확정된-것-2026-11-03-허브사용자-확정">확정된 것 (2026-11-03, 허브·사용자 확정)</a></li><li class="lv2"><a href="#결정됨-가설-2026-11-03-사용자-결정-제안값으로-확정-검증-전">결정됨 [가설] (2026-11-03 사용자 결정: 제안값으로 확정, 검증 전)</a></li><li class="lv2"><a href="#남은-것">남은 것</a></li><li class="lv2"><a href="#상태판">상태판</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-293" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-294" data-tip="B, C가 올린 본문 스냅샷.">건강 소식</button></li><li><button class="term" type="button" data-modal="g-295" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li><li><button class="term" type="button" data-modal="g-296" data-tip="고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건.">생활 요청</button></li><li><button class="term" type="button" data-modal="g-297" data-tip="계약과 달마다 하나.">청구서</button></li><li><button class="term" type="button" data-modal="g-298" data-tip="조회용 기록.">열람 기록</button></li><li><button class="term" type="button" data-modal="g-299" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li><li><button class="term" type="button" data-modal="g-300" data-tip="입주자의 돈 관련 부탁을 받은 기록.">금전 부탁</button></li><li><button class="term" type="button" data-modal="g-301" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-302" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-303" data-tip="정해진 두 이유로만 뺀 기록.">올리지 않기</button></li><li><button class="term" type="button" data-modal="g-304" data-tip="수익이 아니라 맡긴 돈.">보증금</button></li></ul></section></aside>
+  <article class="doc"><h2 id="한-줄-요약">한 줄 요약</h2>
+<p>시니어 레지던스 회원이 가족마다, 항목마다 보여 줄 범위를 정하고, 가족은 그 범위 안에서 생활 소식·일정·청구서·건강 소식을 한곳에서 보는 보호자 화면. 거두면 다음 요청부터 막히고 모든 열람이 기록된다. B·G·C가 이 동의 체계를 <code>family/api</code>로 쓴다.</p>
+<h2 id="대상">대상</h2>
+<ul>
+<li>정하는 사람: 회원(입주자). 판단이 어려우면 MANAGE_GUARDIAN_ACCESS 대리인</li>
+<li>보는 사람: 보호자(회원 화면 &quot;함께 보실 분&quot;)</li>
+<li>돕는 사람: 프런트 직원(대신 입력, 금전 부탁 접수), 생활지원 직원(생활 리포트 검토·발송)</li>
+<li>확인하는 사람: 본사 운영 매니저(열람 기록, 금전 부탁·건강 소식 올리지 않기 주간 확인, AI 고지 현황), 사업장 책임자(자기 사업장의 열람 기록과 주간 확인 [가설])</li>
+</ul>
+<h2 id="핵심-흐름-mvp">핵심 흐름 (MVP)</h2>
+<ol>
+<li><strong>동의</strong>: 함께 보실 분(시드 연결) → 항목별 보여 주기(회원 직접, 또는 직원 대신 입력 → 회원 확인) → 건강 소식 별도 동의 → 보호자 화면이 다르게 보임 → 그만 보여 주기 즉시 반영 → 열람 기록</li>
+<li><strong>생활 소식</strong>: AI 사용 고지 확인 → AI 초안(어댑터) → 직원 검토(근거, 건강 낱말 경고) → 발송 → 보호자 화면 확인 표시</li>
+</ol>
+<ul>
+<li>항목 5개: 생활 소식, 일정, 청구서, 건강 소식, 생활 요청(P1, 2026-11-03 N1 결정, 사용자 재승인 2026-11-04. 요청 데이터와 보호자 화면은 N1). B 결과 알림은 건강 소식 안에 들어간다</li>
+<li>넓힘은 회원(또는 대리인) 확인으로만, 좁힘은 누가 입력해도 즉시</li>
+<li>데모 5단계와 시드: <code>prd.md</code> 9절</li>
+<li>P1 추가(2026-11-03, 사용자 재승인 2026-11-04): 장기 부재 소식(F18, 코어 부재 이벤트를 받아 생활 소식 허락 보호자에게만 자리를 비우신 소식·돌아오신 소식, 이유·병원 없음), 사업장 동의 현황 숫자(F19, <code>app/</code> 대시보드 D1이 읽기만)</li>
+</ul>
+<h2 id="화면-목록">화면 목록</h2>
+<p><code>prd.md</code> 8절. P0: 소식 함께 보기·보여 줄 것 정하기·그만 보여 주기, 건강 소식 따로 동의, 직원 입력 확인, 내 소식을 본 기록, 건강 소식에서 뺀 일(2-9), AI 사용 안내, 건강 소식 올리지 않기 주간 목록, 보호자 첫 화면·생활 소식·청구서·건강 소식·일정, 보호자 연결·대신 입력, 주간 생활 리포트 검토, 열람 기록. P1: 금전 부탁, 대리인 화면, 초대·수락, AI 고지 현황, 내용이 이상해요. 문구는 <code>copy/copy.md</code>, 라벨은 <code>names.md</code>. P1 추가: 생활 소식 안 부재 소식 카드(copy 4-1, 4-7), 이미 보여 주신 회원 안내(copy 2-10), 보여 줄 것 정하기의 생활 요청 항목(copy 2-3 항목 5)과 직원 표 칸(5-1), <code>app/</code> 운영 현황 대시보드의 보호자 동의 카드(copy 5-6. D는 숫자 조회만). 보호자 생활 요청 화면은 N1. 2026-11-04부터 모든 화면을 클릭형 프로토타입으로 만들고, 통합 데모에 나오는지는 <code>prd.md</code> 7절 표시를 본다.</p>
+<h2 id="데이터-모델-초안">데이터 모델 초안</h2>
+<p><code>tech-design.md</code> 2절(엔티티, ERD), 3절(상태 전이), 4절(권한 정책). <code>family</code> 스키마에만 쓰고 코어 엔티티는 ID로만 참조한다. 핵심 결정:</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ADR</th>
+<th>결정</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>F1 허락 저장</td>
+<td>현재 행(Consent) + 추가만 하는 이력(ConsentChange), 같은 트랜잭션</td>
+</tr>
+<tr>
+<td>F2 권한</td>
+<td>코어 <code>authorize()</code>에 확장 정책 등록(허용만), 매 요청 재계산, 캐시 없음, 거부 응답은 하나</td>
+</tr>
+<tr>
+<td>F3 비대칭</td>
+<td>직원 넓힘은 확인 대기 묶음 → 회원 본인 세션 확인. 좁힘·시스템 철회는 즉시</td>
+</tr>
+<tr>
+<td>F4 건강 소식</td>
+<td>D가 <code>HealthFeedCommand</code>를 열고 B·C가 올림. (출처, ID, 버전) 멱등, 본문 스냅샷</td>
+</tr>
+<tr>
+<td>F5 열람 기록</td>
+<td>원본은 코어 AuditLog(<code>AuditWriter</code>), D는 조회용 기록을 같은 트랜잭션에</td>
+</tr>
+<tr>
+<td>F6 AI 초안</td>
+<td>어댑터 뒤, 건강 기록은 입력 제외, 발송 조건은 서버가 강제</td>
+</tr>
+</tbody></table></div>
+<p><strong>B·G·C와 <code>app/</code>에 공개하는 API</strong> (<code>tech-design.md</code> 8-2)</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>API</th>
+<th>쓰는 곳</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>FamilyConsentQuery.canView(residentId, viewerPersonId, item, at)</code> → ALLOW/DENY(이유 없음)</td>
+<td>B</td>
+</tr>
+<tr>
+<td><code>FamilyConsentQuery.viewersOf(residentId, item, at)</code> → 연결 ID·상세 관계(이름 없음)</td>
+<td>B 미리보기, C 결정 확인 창·결과(G는 Next 도구 후보)</td>
+</tr>
+<tr>
+<td><code>HealthFeedCommand.post(...)</code> → {healthEventId, visibleToCount, noticeSendAt}</td>
+<td>B, C</td>
+</tr>
+<tr>
+<td><code>HealthFeedCommand.withhold({sourceModule, sourceId, residentId, kind, occurredAt, reasonCode, heardByUserId?, heardAt?, involvesEmergencyCall, summaryLine?, body?, …})</code>(본문은 MEMBER_REQUEST일 때)</td>
+<td>B, C</td>
+</tr>
+<tr>
+<td><code>FamilyNoticeQuery.nextSendAt(siteId, at)</code></td>
+<td>B 미리보기</td>
+</tr>
+<tr>
+<td><code>AiNoticeQuery.current / acknowledged</code>, <code>AiNoticeCommand.acknowledge</code></td>
+<td>G(회원, 대리인도 MEMBER 버전 [가설])</td>
+</tr>
+<tr>
+<td><code>MoneyRequestCommand.open({residentId, sourceRef, note})</code> (Next) — 비서는 유형을 고르지 않음, OTHER + 회원 말 원문</td>
+<td>G 정식</td>
+</tr>
+<tr>
+<td>N1이 선언한 보호자 행동 <code>requests.request.view_as_guardian</code>·<code>create_as_guardian</code>의 D 허용 정책(이름 확정, N1 ADR-R6). N1은 <code>family/api</code>를 쓰지 않는다. D는 N1 <code>ServiceRequestStatusChanged</code>를 구독해 보호자 문자를 보내고, 생활 소식 요청 재료를 N1 <code>requests/api</code>에서 읽는다 (P1)</td>
+<td>N1(<code>life-requests</code>), <code>tech-design.md</code> 확인할 것 29</td>
+</tr>
+<tr>
+<td><code>GuardianViewLogCommand.record(residentId, viewerPersonId, item = LIFE_REQUEST, targetRef, at)</code> (P1, 2026-11-04 H2) — 보호자의 생활 요청 열람을 회원 본 기록에</td>
+<td><code>app/</code></td>
+</tr>
+<tr>
+<td><code>FamilyConsentSummaryQuery.siteSummary(siteId, at)</code> → 사업장 숫자 8개(이름·ID 없음) [가설] (P1). actor 없음: <code>app/</code>이 <code>authorize(…, family.summary.read, CHECK)</code>로 먼저 확인</td>
+<td><code>app/</code> 운영 현황 대시보드 D1</td>
+</tr>
+</tbody></table></div>
+<p>새 엔티티 없음: 부재는 사본으로 저장하지 않고 볼 때마다 코어 <code>AbsenceQuery</code>로 읽는다(모듈 경계 8번). NoticeQueue에 source_ref(absenceId)만 더했다. 새 구독: 코어 <code>ResidentAbsenceStarted</code>·<code>ResidentAbsenceEnded</code>(2026-11-03 코어 확정). 등록 취소·자동 종료에는 돌아오신 소식이 없다(<code>tech-design.md</code> 3-6).</p>
+<h2 id="인수-조건">인수 조건</h2>
+<p><code>user-stories.md</code> US-01<del>US-23(P0: US-01</del>14, US-20. US-15<del>19·21</del>23은 P1, US-21<del>23은 2026-11-03 추가). 완료 기준은 <code>prd.md</code> 3절 KR1</del>KR3과 <code>tech-design.md</code> 11절 테스트 표.</p>
+<h2 id="하지-않을-것">하지 않을 것</h2>
+<ul>
+<li>입소보증금 보호 상태를 보호자 화면에 두지 않는다(2026-11-04 H6, 대리인은 코어 경로).</li>
+<li>진단명·진료 결과·처방 공유, 병원·의료기관 연동</li>
+<li>보호자가 범위를 요청하는 기능, 다른 보호자의 범위 보기, 못 보는 이유 구분 표시</li>
+<li>센서·호출 신호의 실시간 보호자 보기(감시)</li>
+<li>직원 재량으로 건강 소식 빼기(이유 코드 2가지만, 119·병원 이송 기록은 회원 요청으로만. 2026-11-03 확정)</li>
+<li>일정의 병원 일정, MVP 면회 예약(일정은 코어 keyDates 6개만. 2026-11-03 확정)</li>
+<li>금전 대행, 자산 조회, 금융상품 권유, 보호자 대신 결제</li>
+<li>AI가 건강 소식을 쓰거나 판단하기, 직원 확인 없는 AI 글 발송</li>
+<li>C 평가 내용(장기요양등급, 인지 관찰, 외부 전문가 의견)과 결정 전 제안을 보호자에게 보내기(C는 결정된 단계 변경과 다른 기관 돌봄 시작만 올린다)</li>
+<li>비상 연락처 전화(B·코어 몫), 실제 문자·본인 확인 연동(MVP는 로그·목업)</li>
+</ul>
+<h2 id="복사할-파일-허브가-검수-후">복사할 파일 (허브가 검수 후)</h2>
+<p><code>strategy.md</code>, <code>service-blueprint.md</code>, <code>prd.md</code>, <code>user-stories.md</code>, <code>roadmap.md</code>, <code>tech-design.md</code>, <code>handoff.md</code> → <code>evenstay/docs/family/</code>. 카피(<code>copy.md</code>, <code>names.md</code>)는 <code>docs/family/copy/</code>에 함께(코어와 같은 방식).</p>
+<ul>
+<li><code>evenstay/family/CLAUDE.md</code>에 옮길 것: 위 &quot;하지 않을 것&quot;, <code>tech-design.md</code> 1절 범위, 4절 정책 원칙(허용만, 매 요청 재계산, 거부 응답 하나), 넓힘·좁힘 비대칭</li>
+<li><code>evenstay/CLAUDE.md</code>(공통)에 더할 것: <code>tech-design.md</code> 2-1 용어 중 D 항목, 모듈 → 다른 모듈 <code>api/</code> 의존 규칙(코어 ADR-2 2번 v1.1)</li>
+</ul>
+<h2 id="허브-처리-결과-2026-11-03">허브 처리 결과 (2026-11-03)</h2>
+<ul>
+<li><strong>코어</strong>: 반영됨(코어 사용자 재승인 2026-11-03). 김태호를 이은숙의 아들·대리인으로(위임장, 청구서 확인·결제, MANAGE_GUARDIAN_ACCESS 없음, 비상 연락처 2순위), 이은숙 → 김태호 보호자 관계(CHILD), 11월 16~22일 결식 3끼, 6-2 &quot;(D)&quot; 칸 주석, 10절 <code>safety/api</code> 삭제, <code>InvoiceIssued</code> residentIds, 확인 전용 <code>authorize(mode = CHECK)</code> [가설].</li>
+<li><strong>카피</strong>: 반영됨(카피 사용자 재승인 2026-11-03). <code>prd.md</code> 확인할 것 10·11·12·14, 직원 화면 라벨 &quot;건강 소식&quot;.</li>
+<li><strong>B와의 조정</strong>: 해결. D-1(문자 예정 시각), D-3(<code>withhold</code> 인자), D-2(뺀 일 표시는 D 회원 화면 2-9 기준 + B 기록에 같은 문장, 사용자 확정).</li>
+</ul>
+<h2 id="g-요청-반영-2026-11-03-재승인됨2026-11-03">G 요청 반영 (2026-11-03, 재승인됨(2026-11-03))</h2>
+<ul>
+<li>G HUB-7: G 최소판은 <code>FamilyConsentChanged</code>를 구독하지 않고 <code>canView</code>·<code>viewersOf</code>를 쓰지 않는다(보호자용 비서 없음). <code>viewersOf</code>는 G Next 도구 후보.</li>
+<li>G HUB-8: 대리인도 MEMBER 고지 버전을 확인한다 [가설](<code>acknowledge</code>에 기록용 actingAs). 같은 사람은 역할과 상관없이 한 번. 대안: REPRESENTATIVE 대상 추가(법률 검토에서 문구가 달라야 하면). <code>tech-design.md</code> 확인할 것 18.</li>
+<li>G HUB-9: <code>MoneyRequestCommand.open</code>에 requestType 없음. OTHER + note(회원 말 원문, D가 숫자열 가림), 유형은 직원이 고른다. 부르는 사람은 회원 본인만. 사슬 하나를 1건으로 센다. Next.</li>
+<li>G 결정 ⑪(투자 = 돈, [직원에게 전하기]): D 고지 v2 공통 1·2와 맞아 D 변경 없음.</li>
+</ul>
+<h2 id="c-요청-반영-2026-11-03-사용자-재승인-2026-11-03">C 요청 반영 (2026-11-03, 사용자 재승인 2026-11-03)</h2>
+<ul>
+<li>HUB-D1: 건강 소식 종류에 <code>CARE_STAGE_CHANGE</code>, <code>EXTERNAL_CARE_START</code>(P1) 추가, <code>EXTERNAL_CARE_END</code>는 Next. B와 같은 규칙(멱등, 금지 필드 거부). 올리지 않기는 C는 회원 요청만, 잘못 올린 일은 C가 새 버전으로. 라벨은 카피 <code>names.md</code> 1-1에 반영됨(카피 사용자 재승인 2026-11-03).</li>
+<li>HUB-D2: 확인함. 김지민 건강 별도 동의(11/11)는 12/10까지 유지, 11/23 철회는 김태호 생활 소식뿐. 시드 초기화 시작점(<code>AFTER_SUCCESSION</code>, <code>C_AFTER_DISCHARGE</code>, <code>G_START</code>)별 D 상태를 <code>prd.md</code> 9절에 정했다.</li>
+<li>HUB-D3: <code>viewersOf</code>·<code>withhold</code> 쓰는 모듈에 C, <code>HealthEventWithheld</code> 구독에 C(P1).</li>
+</ul>
+<h2 id="허브에-요청할-것">허브에 요청할 것</h2>
+<ul>
+<li><strong>코어에 (장기 부재)</strong>: 남은 요청 없음. <code>AbsenceQuery</code>의 상태 값과 <code>FamilyConsentSummaryQuery</code> 이름은 코어에 반영됐다(2026-11-04 확인). 통합 데모 11/12 07:30 운영 현황 장면에 D 동의 현황 카드를 넣을지는 코어가 정한다.</li>
+<li><strong>카피에 (장기 부재·동의 현황·생활 요청, 2026-11-03)</strong>: 반영됨(2026-11-03 D 카피, 사용자 재승인 2026-11-04): 부재 카드 copy 4-7, 첫 화면 새 소식 카드 4-1, 회원 설명 2-3 항목 1, 이미 보여 주신 회원 안내 2-10, 대시보드 카드 5-6, 생활 요청 항목 2-3 항목 5, 직원 표 5-1. 남은 <code>[NEED: 카피]</code> 없음. 2-10의 [미정: D 기획]은 <code>prd.md</code> 확인할 것 25로 정했고, [법률 검토]는 확인할 것 26으로 옮겼다.</li>
+<li><strong>N1에 (생활 요청, 2026-11-04 정리)</strong>: <code>tech-design.md</code> 확인할 것 29. 남은 것: 생활 소식 요청 재료 조회 이름(제안 <code>ServiceRequestQuery.doneIn</code> [가설]), 병원 이름 빼기는 N1 몫. 김지민의 생활 요청 허락은 D 시드가 넣는다(N1은 <code>family</code> 스키마에 쓰지 않음).</li>
+<li><strong>카피에 (2026-11-04 새 장면)</strong>: 반영됨(2026-11-04 D 카피, 사용자 재승인 2026-11-04): copy 4-1 생활 요청 자리와 상태 줄, 4-1·4-7 부재 예시 날짜 12월 2일·12월 7일. 남은 미정은 <code>prd.md</code> 확인할 것 29(레지던스 공지 자리)·30(돌아오실 예정일).</li>
+<li><strong>사용자 결정 반영됨(2026-11-04 &quot;모두 추천대로&quot;)</strong>: H2 생활 요청 열람을 본 기록에, H6 입소보증금 보호 상태는 보호자 화면에 없음, N2-2 일정에 신청한 프로그램.</li>
+<li><strong>N2와 나눈 것 (2026-11-04, N2-D1~D5)</strong>: 일정 조회 <code>ProgramQuery.enrolledSessionsOf</code> 확정(건강 표시 칸 없음), 레지던스 공지 칸은 D 첫 화면·데이터 N2 <code>NoticeQuery.guardianNoticesFor</code>(활성 보호자 관계만, 본 기록 아님 [가설]), 생활 소식 프로그램 재료 <code>AttendanceQuery.attendedIn</code>, 장면 D-N2-1(11/18)과 시작점 표 김지민 일정 허락. N2 신청 변경 보호자 문자는 보내지 않는다(2026-11-04 사용자 결정, <code>prd.md</code> 확인할 것 31). D 정책에 <code>community.enrollment.view_as_guardian</code>(SCHEDULE)·<code>community.notice.view_as_guardian</code>(보호자 관계)을 넣었다(<code>tech-design.md</code> 4절).</li>
+<li><strong>카피에 (2026-11-04 N2 요청)</strong>: 반영됨(2026-11-04 D 카피, 사용자 재승인 2026-11-04): copy 4-2 프로그램 줄 &quot;수요일 가벼운 체조, 목요일 수채화&quot;, copy 4-1 김지민 11/18 뒤 &quot;볼 수 있는 것&quot; 2줄과 레지던스 공지 칸. 남은 <code>[NEED: 카피]</code> 없음.</li>
+<li><strong>카피에 (2026-11-04 열린 결정)</strong>: 반영됨(2026-11-04 D 카피, 사용자 재승인 2026-11-04): copy 2-8 생활 요청 줄, 2-3 항목 2와 <code>names.md</code> SCHEDULE 설명, 4-6 프로그램 줄, 2-11 일정 범위 안내. 남은 <code>[NEED: 카피]</code> 없음.</li>
+<li><strong>B에</strong>: <code>withhold(MEMBER_REQUEST)</code>에 본문(summaryLine·body)을 함께 보내기(다시 올리기 [가설]용), <code>NOT_A_HEALTH_EVENT</code>로 잘못 뺀 일의 정정 <code>post</code> 경로, <code>HealthEventWithheld</code> payload의 <code>via</code> 맞추기(<code>tech-design.md</code> 확인할 것 17).</li>
+<li><strong>카피에</strong>: 2-9 아래 안내의 &quot;[미정: 뺀 소식을 다시 올리는 방법은 기획에서 확정]&quot;을 직원 입력 뒤 회원 확인 경로로 정하기. (3-1 대리인 한 줄은 카피에 반영됨, 카피 사용자 재승인 2026-11-03. 보류 1건: 대리인 대화가 회원 &quot;지난 대화&quot;에 남는다는 고지 여부, <code>tech-design.md</code> 확인할 것 18.)</li>
+<li><strong>G에</strong>: (가) <code>AiNoticeCommand.acknowledge</code>에 actingAs(기록용)를 넘긴다. (나) <code>MoneyRequestCommand.open</code>(Next)은 회원 본인만 부를 수 있다. 대리인의 금전 넘김은 G 넘김에 남기고 직원이 접수한다. (다) 비서가 넘기는 회원 말 원문은 D가 저장 전에 가린다(<code>tech-design.md</code> 2-2). G 넘김(<code>Handoff.member_message</code>)에 남는 원문의 계좌·비밀번호 숫자 처리와 보관은 G가 정해 달라.</li>
+<li><strong>코어에</strong>: 8-1 <code>/demo/reset</code> 예시 &quot;<code>C_AFTER_DISCHARGE</code>에서 D는 김지민의 건강 별도 동의를 그대로 둔다&quot;를 &quot;D는 D 데모 끝 상태를 자기 시작점으로 둔다&quot;로 고치기. D의 <code>AFTER_SUCCESSION</code>에는 동의가 없다(<code>tech-design.md</code> 확인할 것 23).</li>
+<li><strong>C에</strong>: (가) <code>post</code>의 sourceId는 정정 사슬의 첫 ID로 고정하고 revision만 올린다(외부 돌봄 일정은 고칠 때마다 새 행이라). (나) 잘못 올린 C 소식은 새 버전으로 바로잡는다(D는 TRANSITIONS 출처의 NOT_A_HEALTH_EVENT를 거부). 지금 C ADR-T6은 revision 1 고정이라 이 경로가 없다. (다) G_START에서 12/10 C 건강 소식은 C 시드(&quot;결정 후&quot;)가 <code>family/api</code> <code>post</code>로 올린다 [가설, D <code>prd.md</code> 9절].</li>
+</ul>
+<h2 id="확정된-것-2026-11-03-허브사용자-확정">확정된 것 (2026-11-03, 허브·사용자 확정)</h2>
+<ol>
+<li>건강 소식 올리지 않기: D 제안 채택(<code>MEMBER_REQUEST</code>·<code>NOT_A_HEALTH_EVENT</code>만, 매니저 매주 확인). 119·병원 이송 기록은 <code>MEMBER_REQUEST</code>로만</li>
+<li>일정 항목: 코어 <code>keyDates</code> 6개만. 병원 일정 제외, 면회 예약은 Next</li>
+<li>AI 고지: 회원 v2(생활 소식 + 비서), 보호자 v1. 목적별 확인(<code>tech-design.md</code> 2-2)</li>
+<li>코어 보강 HUB-1~11: 코어 v1.1로 처리(재승인 2026-11-03). D의 임시 <code>staff_duty</code>는 코어 <code>RoleAssignment.duties</code>로 바꿨다. 결과 표는 <code>tech-design.md</code> 확인할 것</li>
+<li>문장 보관: <code>post</code>에 본문 스냅샷(B ADR-S3 채택)</li>
+<li>문자 예정 시각: <code>post</code> 결과 <code>noticeSendAt</code>, <code>FamilyNoticeQuery.nextSendAt(siteId, at)</code></li>
+<li>데모 주인공: A동 201호 이은숙, 딸 김지민(청구서·건강 소식·생활 소식, 비상 연락처 1순위), 아들 김태호(생활 소식만, 대리인이기도 함). 장면은 사별 승계(11월 10일) 뒤 11월 11일(허락), 12일(B 사건 뒤 보호자 화면), 23일(생활 소식, 철회)</li>
+</ol>
+<h2 id="결정됨-가설-2026-11-03-사용자-결정-제안값으로-확정-검증-전">결정됨 [가설] (2026-11-03 사용자 결정: 제안값으로 확정, 검증 전)</h2>
+<p>초대 링크 7일·1회용, 문의 회신 2영업일, 범위가 넓어질 때만 문자, 조용한 시간 22~08시, AI 고지 확인 전·미사용 선택이면 직원 작성, 퇴거·사별 시 시스템 철회, 대리인 있는 회원도 직접 좁히기, 동의한 날부터의 건강 소식, 뺀 건강 소식 다시 올리기 = 직원 입력 뒤 회원 확인, 임대주택 제외, 직원 대신 누름 표본 확인, 반복 금전 부탁 7일 3건, B 먼저일 때 기록만, 금전 부탁 P1 1순위, SITE_MANAGER 권한, 조회용 열람 기록 유지. 근거는 각 문서 &quot;확인할 것&quot;.</p>
+<h2 id="남은-것">남은 것</h2>
+<ul>
+<li><strong>[법률 검토]</strong> 기록 보관 3년(<code>prd.md</code> 3), 부부 계약 청구서의 사별한 분 항목(<code>prd.md</code> 16), 건강 소식 본문 암호화 방식(<code>tech-design.md</code> 10), 법적 문구 새 버전의 재동의(<code>user-stories.md</code> 2), <code>prd.md</code> 12절 법률 검토 목록 전체</li>
+<li><strong>[미정]</strong> North Star 정의(<code>strategy.md</code> 1)</li>
+<li><strong>[미정, 제안 없음]</strong> 감사 쓰기와 <code>family</code> DB 역할(<code>tech-design.md</code> 12), 나머지 스택·AI 모델, 프로그램 출석·요청 기록의 주인(<code>tech-design.md</code>), 면회 예약의 주인(<code>roadmap.md</code>)</li>
+<li><strong>[NEED]</strong> 보호자 인터뷰 3~5명·회원 종이 시안(<code>strategy.md</code> 3), 현장 검토(<code>service-blueprint.md</code> 1), 프런트 전화번호·보호책임자 연락처, 경제적 착취 신고 절차, 버튼 vs 스위치</li>
+<li><strong>대기</strong>: 코어·카피 반영분의 사용자 재확인, B 요청(확인할 것 17), 카피 2-9 다시 올리기 문구, 카피 3-1 대리인 한 줄·<code>names.md</code> 1-1 C 두 종류 라벨(둘 다 반영됨, 카피 사용자 재승인 2026-11-03), G·C 요청(위), C 요청 반영분의 사용자 재승인</li>
+</ul>
+<h2 id="상태판">상태판</h2>
+<p><code>senior-lab/shared/idea-board.md</code>의 이 아이디어 단계는 허브가 바꾼다. G·C 요청과 직원 화면 이름을 반영한 버전은 2026-11-03에 다시 복사했다.</p>
+<h2 id="변경-기록">변경 기록</h2>
+<ul>
+<li><strong>기획 문서 한국어 검수 (2026-11-03, 허브 요청, 사용자 지정 korean-skills, 사용자 재승인 2026-11-03)</strong>: <code>grammar-checker</code> → <code>style-guide</code> → <code>humanizer</code>. 고친 곳 1곳(맞춤법 0, 띄어쓰기 0, 용어 0, 문장 1). 대표: &quot;금전 대행·자산 조회·금융상품 권유&quot; → &quot;금전 대행, 자산 조회, 금융상품 권유&quot;. 남긴 후보: 78줄 제목 &quot;사용자 재승인 2026-11-03&quot;가 5줄·3줄 상태 줄의 &quot;재승인됨&quot;과 어긋남(내용 판단은 허브 몫). 85줄의 카피 2-9 인용 &quot;다시 올리는 방법 [미정]&quot;은 <code>copy.md</code>에 이 글자 그대로는 없음(167줄은 &quot;뺀 소식을 다시 올리는 방법은 기획에서 확정&quot;).</li>
+<li><strong>카피 인용 맞춤 (2026-11-03, 허브 요청 &quot;인용 맞추기&quot;, 같은 검수 회차)</strong>: 카피 요청 2-9 문구를 현재 <code>copy.md</code> 원문으로, &quot;직원 입력 뒤 회원 확인&quot;은 화면 문구가 아니라 따옴표를 뺌.</li>
+<li><strong>장기 부재 소식·동의 집계 추가 (2026-11-03, 허브 요청, 사용자 선택 &quot;넓게(N1 포함)&quot;, 사용자 재승인 2026-11-04)</strong>: 핵심 흐름·화면 목록에 P1 두 가지, 공개 API 표에 <code>FamilyConsentSummaryQuery</code>, 새 엔티티·구독 한 줄, 인수 조건 US-21·22, 허브에 요청할 것(코어 이벤트 확정, 카피 6가지).</li>
+<li><strong>코어 장기 부재 확정 맞춤 (2026-11-03, 허브 요청, 사용자 재승인 2026-11-04)</strong>: 새 엔티티 줄(사본 없음), 공개 API 표 F19 행, 허브에 요청할 것(코어: absencesIn 상태 값·10절 이름 맞추기, 카피: 종류 없는 문구).</li>
+<li><strong>생활 요청 허락 항목·카피 반영 (2026-11-03, 허브 요청, N1 카피 결정 &quot;추천대로&quot;, 사용자 재승인 2026-11-04)</strong>: 핵심 흐름 항목 5개, 공개 API 표 N1 행, 허브에 요청할 것(카피 반영됨, N1에 넘길 것).</li>
+<li><strong>전체 리뷰 보완 (2026-11-04, 허브 보완 지시서 &quot;보호자 포털·동의&quot; 1~7, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04)</strong>: 화면 목록(빠진 2-10·생활 요청 항목·프로토타입 원칙), 공개 API 표 N1 행(사용처 정리, 상태 변경 문자, 요청 재료), 인수 조건 범위 US-01~23, 허브에 요청할 것(코어 요청 해결, N1 정리, 카피 새 장면, 사용자 결정 1건), &quot;판&quot; → &quot;버전&quot;.</li>
+<li><strong>열린 결정 반영 (2026-11-04, 허브 전달, 사용자 &quot;모두 추천대로&quot;, 사용자 재승인 2026-11-04)</strong>: 공개 API 표에 <code>GuardianViewLogCommand</code>, 사용자 결정 반영 줄, N2에 넘길 것, 카피 <code>[NEED]</code> 4가지, 하지 않을 것에 입소보증금 보호 상태.</li>
+<li><strong>카피 보완분 반영 (2026-11-04, 허브 요청, 사용자 재승인 2026-11-04)</strong>: 허브에 요청할 것의 카피 두 줄을 반영됨으로 바꾸고 남은 미정 두 가지를 가리킴.</li>
+<li><strong>N2 요청 N2-D1~D5 반영 (2026-11-04, 허브 전달, N2 <code>tech-design.md</code> 10-2, 사용자 재승인 2026-11-04)</strong>: N2와 나눈 것(N2-D1~D5)과 카피 <code>[NEED]</code> 2가지를 적었다.</li>
+<li><strong>확인할 것 31 결정 (2026-11-04, 사용자 &quot;보내지 않음&quot;, 사용자 재승인 2026-11-04)</strong>: N2와 나눈 것의 N2-D5를 결정으로 바꿈.</li>
+<li><strong>카피 4-1·4-2 반영 표시 (2026-11-04, 허브 요청, 사용자 재승인 2026-11-04)</strong>: 카피 요청 줄(N2 요청분)을 반영됨(copy 4-1, 4-2)으로.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-handoff" data-title="개발 인계"><p>기획을 개발로 넘길 때 필요한 것을 한곳에 모은 문서입니다.</p></template>
+<template id="g-293" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-294" data-title="건강 소식"><p>B, C가 올린 본문 스냅샷. 건강 소식이 보호자에게 가는 길은 D 하나다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 건강 소식. 종류: 직원이 다녀간 일 / 병원에 가신 일 / 그 밖의 건강 기록 / 생활 지원 단계가 바뀐 일 / 다른 기관 돌봄이 시작된 일</dd><dt>영문·코드 이름</dt><dd><code>HealthEvent</code>: <code>SAFETY_SIGNAL</code>, <code>HOSPITAL_TRANSFER</code>, <code>CARE_NOTE</code>, <code>CARE_STAGE_CHANGE</code>, <code>EXTERNAL_CARE_START</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-295" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-296" data-title="생활 요청"><p>고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건. 안전 신호가 아니다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 생활 요청(줄여 요청) / 회원·보호자: 요청</dd><dt>영문·코드 이름</dt><dd><code>ServiceRequest</code></dd><dt>출처</dt><dd>requests T2-2, requests M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-297" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-298" data-title="열람 기록"><p>조회용 기록. 원본은 코어 변경 이력이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 열람 기록 / 회원: 내 소식을 본 기록(family M은 &quot;본 기록&quot;) <code>[문서 다름]</code></dd><dt>영문·코드 이름</dt><dd><code>AccessLog</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-299" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-300" data-title="금전 부탁"><p>입주자의 돈 관련 부탁을 받은 기록. 직원은 대행하지 않고 넘길 곳을 정한다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 금전 부탁</dd><dt>영문·코드 이름</dt><dd><code>MoneyRequest</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-301" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-302" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-303" data-title="올리지 않기"><p>정해진 두 이유로만 뺀 기록. 119, 병원 이송 기록은 회원 요청으로만 뺀다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 건강 소식 올리지 않기</dd><dt>영문·코드 이름</dt><dd><code>HealthEventWithhold</code>: <code>MEMBER_REQUEST</code>, <code>NOT_A_HEALTH_EVENT</code></dd><dt>출처</dt><dd>family T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-304" data-title="보증금"><p>수익이 아니라 맡긴 돈. 청구 원장과 나눈 별도 원장</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보증금 / 회원: 맡기신 보증금</dd><dt>영문·코드 이름</dt><dd><code>Deposit</code>, <code>DepositEntry</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

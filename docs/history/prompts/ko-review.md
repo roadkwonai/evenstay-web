@@ -1,0 +1,2472 @@
+# 프롬프트 기록: 한국어 검수와 재승인
+
+[이력 개요](../README.md) · 전체 110건 (사용자 15, 허브 지시 57, 에이전트 지시 38)
+
+### p0280
+
+2026-11-03 20:29 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+한국어로 응답해
+~~~~
+
+### p0281
+
+2026-11-03 20:31 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘
+~~~~
+
+### p0282
+
+2026-11-03 20:32 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+카피 원본 → 캔버스 (Recommended)
+~~~~
+
+### p0283
+
+2026-11-03 20:33 · 허브 지시 · 코어 카피 2-5~2-7 스킬 검토
+
+~~~~text
+허브 요청: korean-skills로 코어 copy.md(ideas/pms-core-billing/)의 어색한 한국어 문장과 용어를 검수하고 고쳐 주세요.
+사용자 말(그대로): "https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘". 범위는 사용자가 "카피 원본 → 캔버스"로 골랐어요. copy.md를 고치면, 기획 세션이 evenstay docs/로 다시 인계하고 검수 세션이 캔버스에 반영해요.
+
+쓸 스킬(Skill 도구로 호출, 3종 모두 전역에 저장소 ae12ba2와 같은 판으로 설치돼 있음. 사용자가 직접 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 어조(회원·보호자 해요체, 직원 합쇼체)와 용어 일관성. 기준 용어는 product-marketing.md Glossary와 names.md v3
+3. `humanizer`: 번역투, 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자·순서는 바꾸지 않고 문장만 다듬어요
+
+대상: 화면에 나가는 문구(표의 문구 칸, 버튼, 오류, 빈 상태, 문자). 설명 문단·변경 기록은 맞춤법만 봐요.
+
+지킬 것:
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)를 새로 쓰지 않아요. "회원님"/"입주자" 호칭 규칙을 지켜요.
+- 사용자가 이미 정한 문장(청구서 "○월 식사는 모두 ○끼예요.", 허락 범위 줄 "이은숙 회원님이 보여 주기로 한 …이에요.")은 그대로 둬요.
+- 스킬 제안이 위 규칙이나 목소리 가이드와 부딪치면 규칙이 이겨요.
+- 확실한 오류(맞춤법·띄어쓰기)는 바로 고쳐요. 문장 다듬기는 뜻이 그대로일 때만 고치고, 애매하면 보고에 후보로 남겨요.
+- 승인 상태 줄은 그대로 두고 "변경: 2026-11-03 한국어 문장·용어 검수(korean-skills, 재승인 대기)" 메모만 붙여요. 변경 기록 절에 고친 곳을 적어요.
+- shared/, 다른 모듈 폴더, 04-planning, evenstay는 고치지 않아요.
+- 코어 Glossary가 다른 모듈의 기준이라, 코어 용어 자체를 바꿔야 할 후보는 고치지 말고 보고해요.
+
+보고: 고친 곳 수(맞춤법/띄어쓰기/어조/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보, 실제 호출한 스킬.
+~~~~
+
+### p0284
+
+2026-11-03 20:33 · 허브 지시 · B 카피: Evenstay Safety 이상 신호 허브
+
+~~~~text
+허브 요청: korean-skills로 B copy.md(ideas/safety-signal-hub/)의 어색한 한국어 문장과 용어를 검수하고 고쳐 주세요.
+사용자 말(그대로): "https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘". 범위는 사용자가 "카피 원본 → 캔버스"로 골랐어요. copy.md를 고치면, 기획 세션이 evenstay docs/로 다시 인계하고 검수 세션이 캔버스에 반영해요.
+
+쓸 스킬(Skill 도구로 호출, 3종 모두 전역에 저장소 ae12ba2와 같은 판으로 설치돼 있음. 사용자가 직접 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 어조(회원·보호자 해요체, 직원 합쇼체)와 용어 일관성. 기준 용어는 코어 `ideas/pms-core-billing/product-marketing.md` Glossary와 `names.md` v3
+3. `humanizer`: 번역투, 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자·순서는 바꾸지 않고 문장만 다듬어요
+
+대상: 화면에 나가는 문구(표의 문구 칸, 버튼, 오류, 빈 상태, 문자). 설명 문단·변경 기록은 맞춤법만 봐요.
+
+지킬 것:
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)를 새로 쓰지 않아요. "회원님"/"입주자" 호칭 규칙을 지켜요.
+- 사용자가 이미 정한 문장은 그대로 둬요. 안심 알림의 관찰 사실만 쓰는 문장 구조도 유지해요.
+- 스킬 제안이 위 규칙이나 목소리 가이드와 부딪치면 규칙이 이겨요.
+- 확실한 오류(맞춤법·띄어쓰기)는 바로 고쳐요. 문장 다듬기는 뜻이 그대로일 때만 고치고, 애매하면 보고에 후보로 남겨요.
+- 승인 상태 줄은 그대로 두고 "변경: 2026-11-03 한국어 문장·용어 검수(korean-skills, 재승인 대기)" 메모만 붙여요. 변경 기록 절에 고친 곳을 적어요.
+- shared/, 다른 모듈 폴더, 04-planning, evenstay는 고치지 않아요.
+
+보고: 고친 곳 수(맞춤법/띄어쓰기/어조/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보, 코어 용어와 어긋나 보이는 용어, 실제 호출한 스킬.
+~~~~
+
+### p0285
+
+2026-11-03 20:33 · 허브 지시 · D 카피: Evenstay Family 보호자 포털·동의
+
+~~~~text
+허브 요청: korean-skills로 D copy.md(ideas/family-consent-portal/)의 어색한 한국어 문장과 용어를 검수하고 고쳐 주세요.
+사용자 말(그대로): "https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘". 범위는 사용자가 "카피 원본 → 캔버스"로 골랐어요. copy.md를 고치면, 기획 세션이 evenstay docs/로 다시 인계하고 검수 세션이 캔버스에 반영해요.
+
+쓸 스킬(Skill 도구로 호출, 3종 모두 전역에 저장소 ae12ba2와 같은 판으로 설치돼 있음. 사용자가 직접 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 어조(회원·보호자 해요체, 직원 합쇼체)와 용어 일관성. 기준 용어는 코어 `ideas/pms-core-billing/product-marketing.md` Glossary와 `names.md` v3
+3. `humanizer`: 번역투, 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자·순서는 바꾸지 않고 문장만 다듬어요
+
+대상: 화면에 나가는 문구(표의 문구 칸, 버튼, 오류, 빈 상태, 문자). 설명 문단·변경 기록은 맞춤법만 봐요.
+
+지킬 것:
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)를 새로 쓰지 않아요. "회원님"/"입주자" 호칭 규칙을 지켜요.
+- 사용자가 이미 정한 문장(허락 범위 줄 "이은숙 회원님이 보여 주기로 한 …이에요.", 4-4 건강 소식 목록 문구)은 그대로 둬요. 동의 문구는 법적 뜻이 바뀌지 않게 맞춤법만 고쳐요.
+- 스킬 제안이 위 규칙이나 목소리 가이드와 부딪치면 규칙이 이겨요.
+- 확실한 오류(맞춤법·띄어쓰기)는 바로 고쳐요. 문장 다듬기는 뜻이 그대로일 때만 고치고, 애매하면 보고에 후보로 남겨요.
+- 승인 상태 줄은 그대로 두고 "변경: 2026-11-03 한국어 문장·용어 검수(korean-skills, 재승인 대기)" 메모만 붙여요. 변경 기록 절에 고친 곳을 적어요.
+- shared/, 다른 모듈 폴더, 04-planning, evenstay는 고치지 않아요.
+
+보고: 고친 곳 수(맞춤법/띄어쓰기/어조/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보, 코어 용어와 어긋나 보이는 용어, 실제 호출한 스킬.
+~~~~
+
+### p0286
+
+2026-11-03 20:33 · 허브 지시 · G 카피: Evenstay Home 비서 최소판
+
+~~~~text
+허브 요청: korean-skills로 G copy.md(ideas/senior-ai-assistant/)의 어색한 한국어 문장과 용어를 검수하고 고쳐 주세요.
+사용자 말(그대로): "https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘". 범위는 사용자가 "카피 원본 → 캔버스"로 골랐어요. copy.md를 고치면, 기획 세션이 evenstay docs/로 다시 인계하고 검수 세션이 캔버스에 반영해요.
+
+쓸 스킬(Skill 도구로 호출, 3종 모두 전역에 저장소 ae12ba2와 같은 판으로 설치돼 있음. 사용자가 직접 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 어조(회원·보호자 해요체, 직원 합쇼체)와 용어 일관성. 기준 용어는 코어 `ideas/pms-core-billing/product-marketing.md` Glossary와 `names.md` v3
+3. `humanizer`: 번역투, 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자·순서는 바꾸지 않고 문장만 다듬어요
+
+대상: 화면에 나가는 문구(표의 문구 칸, 버튼, 오류, 빈 상태, 비서 답 틀). 설명 문단·변경 기록은 맞춤법만 봐요.
+
+지킬 것:
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)를 새로 쓰지 않아요. "회원님"/"입주자" 호칭 규칙을 지켜요.
+- 답 틀의 빈칸(도구 결과 자리)과 출처 줄 구조는 그대로 둬요. 확인 버튼 [네, 전해 주세요] 같은 확정 문구도 그대로 둬요.
+- 스킬 제안이 위 규칙이나 목소리 가이드와 부딪치면 규칙이 이겨요.
+- 확실한 오류(맞춤법·띄어쓰기)는 바로 고쳐요. 문장 다듬기는 뜻이 그대로일 때만 고치고, 애매하면 보고에 후보로 남겨요.
+- 승인 상태 줄은 그대로 두고 "변경: 2026-11-03 한국어 문장·용어 검수(korean-skills, 재승인 대기)" 메모만 붙여요. 변경 기록 절에 고친 곳을 적어요.
+- shared/, 다른 모듈 폴더, 04-planning, evenstay는 고치지 않아요.
+
+보고: 고친 곳 수(맞춤법/띄어쓰기/어조/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보, 코어 용어와 어긋나 보이는 용어, 실제 호출한 스킬.
+~~~~
+
+### p0287
+
+2026-11-03 20:33 · 허브 지시 · C 카피: 생활 지원 단계 (Evenstay Transitions)
+
+~~~~text
+허브 요청: korean-skills로 C copy.md(ideas/care-stage-transition/)의 어색한 한국어 문장과 용어를 검수하고 고쳐 주세요.
+사용자 말(그대로): "https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘". 범위는 사용자가 "카피 원본 → 캔버스"로 골랐어요. copy.md를 고치면, 기획 세션이 evenstay docs/로 다시 인계하고 검수 세션이 캔버스에 반영해요.
+
+쓸 스킬(Skill 도구로 호출, 3종 모두 전역에 저장소 ae12ba2와 같은 판으로 설치돼 있음. 사용자가 직접 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 어조(회원·보호자 해요체, 직원 합쇼체)와 용어 일관성. 기준 용어는 코어 `ideas/pms-core-billing/product-marketing.md` Glossary와 `names.md` v3
+3. `humanizer`: 번역투, 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자·순서는 바꾸지 않고 문장만 다듬어요
+
+대상: 화면에 나가는 문구(표의 문구 칸, 버튼, 오류, 빈 상태, 문자). 설명 문단·변경 기록은 맞춤법만 봐요.
+
+지킬 것:
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)와 C 금지어(단계 번호, 단계 뜻의 등급, 하향·상향)를 새로 쓰지 않아요. "회원님"/"입주자" 호칭 규칙을 지켜요.
+- 확정된 단계 이름(직원: 기본 서비스 / 생활 지원 추가 / 외부 돌봄 병행 / 거처 상담, 회원: 기본 서비스 / 생활 지원 더하기 / 다른 기관 돌봄 함께 / 지낼 곳 함께 의논)은 그대로 둬요.
+- 스킬 제안이 위 규칙이나 목소리 가이드와 부딪치면 규칙이 이겨요.
+- 확실한 오류(맞춤법·띄어쓰기)는 바로 고쳐요. 문장 다듬기는 뜻이 그대로일 때만 고치고, 애매하면 보고에 후보로 남겨요.
+- 승인 상태 줄은 그대로 두고 "변경: 2026-11-03 한국어 문장·용어 검수(korean-skills, 재승인 대기)" 메모만 붙여요. 변경 기록 절에 고친 곳을 적어요.
+- shared/, 다른 모듈 폴더, 04-planning, evenstay는 고치지 않아요.
+
+보고: 고친 곳 수(맞춤법/띄어쓰기/어조/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보, 코어 용어와 어긋나 보이는 용어, 실제 호출한 스킬.
+~~~~
+
+### p0288
+
+2026-11-03 20:35 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+Family, Safety, Home 은 영어를 그대로 발음한 패밀리, 세이프티, 홈 이렇게 한글로 변경하는게 보기 좋아보여
+~~~~
+
+### p0289
+
+2026-11-03 20:36 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+Evenstay 홈 / Evenstay 패밀리 (Recommended)
+~~~~
+
+### p0290
+
+2026-11-03 20:37 · 허브 지시 · 코어 카피 2-5~2-7 스킬 검토
+
+~~~~text
+Additional hub request (do this after the korean-skills review you're working on now): write the trailing words of the brand names in Korean, as names.md v4.
+User decision (2026-11-03, the user chose "Evenstay 홈 / Evenstay 패밀리" in the hub): Evenstay Home → Evenstay 홈, Evenstay Family → Evenstay 패밀리, Evenstay Home 비서 → Evenstay 홈 비서. Keep the parent brand Evenstay in English. The staff screen already says 안심 알림, so Safety is not affected.
+
+Scope: 03-copywriting/ideas/pms-core-billing/ (names.md, copy.md, product-marketing.md, value-prop.md, and any other file there that contains these names).
+- names.md v4: change the brand names in the member and guardian columns and add a v4 change line.
+- Leave old names in change notes and change history as they are.
+- Keep the status line unchanged and add only the note "변경: 2026-11-03 브랜드 뒷말 한글 표기(사용자 결정, 재승인 대기)".
+- Do not edit shared/, other modules, 04-planning, or evenstay.
+Report: files and lines changed, the skills you actually called.
+~~~~
+
+### p0291
+
+2026-11-03 20:37 · 허브 지시 · B 카피: Evenstay Safety 이상 신호 허브
+
+~~~~text
+Additional hub request (do this after the korean-skills review you're working on now): write the trailing words of the brand names in Korean.
+User decision (2026-11-03): Evenstay Home → Evenstay 홈, Evenstay Family → Evenstay 패밀리, Evenstay Home 비서 → Evenstay 홈 비서. Keep the parent brand Evenstay in English. Leave old names such as Evenstay Safety in change notes and change history as they are. Core names.md v4 is in progress.
+Scope: the files in 03-copywriting/ideas/safety-signal-hub/ that contain these names.
+- Keep the status line unchanged and add only the note "변경: 2026-11-03 브랜드 뒷말 한글 표기(사용자 결정, 재승인 대기)".
+- Do not edit shared/, other folders, or evenstay.
+Report: files and lines changed, the skills you actually called.
+~~~~
+
+### p0292
+
+2026-11-03 20:37 · 허브 지시 · D 카피: Evenstay Family 보호자 포털·동의
+
+~~~~text
+Additional hub request (do this after the korean-skills review you're working on now): write the trailing words of the brand names in Korean.
+User decision (2026-11-03): Evenstay Family → Evenstay 패밀리, Evenstay Home → Evenstay 홈, Evenstay Home 비서 → Evenstay 홈 비서. Keep the parent brand Evenstay in English. The guardian text-message header also changes to [Evenstay 패밀리]. If this changes the text-message length or character count anywhere, check that. Leave old names in change notes and change history as they are. Core names.md v4 is in progress.
+Scope: the files in 03-copywriting/ideas/family-consent-portal/ that contain these names.
+- Keep the status line unchanged and add only the note "변경: 2026-11-03 브랜드 뒷말 한글 표기(사용자 결정, 재승인 대기)".
+- Do not edit shared/, other folders, or evenstay.
+Report: files and lines changed, any text-message length impact, the skills you actually called.
+~~~~
+
+### p0293
+
+2026-11-03 20:37 · 허브 지시 · G 카피: Evenstay Home 비서 최소판
+
+~~~~text
+Additional hub request (do this after the korean-skills review you're working on now): write the trailing words of the brand names in Korean.
+User decision (2026-11-03): Evenstay Home 비서 → Evenstay 홈 비서, Evenstay Home → Evenstay 홈, Evenstay Family → Evenstay 패밀리. Keep the parent brand Evenstay in English. Leave old names in change notes and change history as they are. Core names.md v4 is in progress.
+Scope: the files in 03-copywriting/ideas/senior-ai-assistant/ that contain these names.
+- Keep the status line unchanged and add only the note "변경: 2026-11-03 브랜드 뒷말 한글 표기(사용자 결정, 재승인 대기)".
+- Do not edit shared/, other folders, or evenstay.
+Report: files and lines changed, the skills you actually called.
+~~~~
+
+### p0294
+
+2026-11-03 20:37 · 허브 지시 · C 카피: 생활 지원 단계 (Evenstay Transitions)
+
+~~~~text
+Additional hub request (do this after the korean-skills review you're working on now): write the trailing words of the brand names in Korean.
+User decision (2026-11-03): Evenstay Home → Evenstay 홈, Evenstay Family → Evenstay 패밀리, Evenstay Home 비서 → Evenstay 홈 비서. Keep the parent brand Evenstay in English. Leave old names in change notes and change history as they are. Core names.md v4 is in progress.
+Scope: the files in 03-copywriting/ideas/care-stage-transition/ that contain these names.
+- Keep the status line unchanged and add only the note "변경: 2026-11-03 브랜드 뒷말 한글 표기(사용자 결정, 재승인 대기)".
+- Do not edit shared/, other folders, or evenstay.
+Report: files and lines changed, the skills you actually called.
+~~~~
+
+### p0297
+
+2026-11-03 20:41 · 허브 지시 · 코어 카피 2-5~2-7 스킬 검토
+
+~~~~text
+Hub decision: I've reviewed the leftover candidates from the korean-skills review. Please apply them to the core copy as follows.
+1. In copy.md 2-8 under "아직 없을 때", rewrite "응급 때 직원이 전화할 분" to "119에 신고하거나 병원으로 모실 때 직원이 전화할 분". "응급" is a banned judgment word.
+2. Member-screen wording for AuthorityScope is now "대신 처리하실 수 있는 일". This matches the actual copy.md section 3 screen. Change "대신 하실 수 있는 일" in the product-marketing.md Glossary to match. The member-screen word for a proxy is "대신 처리하실 분", and the staff-screen word is "대리인". Write this rule into the Glossary as one line.
+3. Leave these as they are:
+   - "미수납": it's a staff data term and isn't on the banned list.
+   - "조정"
+   - Large-amount notation and meta lines joined with " · ": the canvas and design handle these.
+4. Status line: leave it as is. Add one line to the change log only.
+Report: changed lines, and the skills you actually called.
+~~~~
+
+### p0298
+
+2026-11-03 20:41 · 허브 지시 · C 카피: 생활 지원 단계 (Evenstay Transitions)
+
+~~~~text
+Hub decision: I've reviewed the leftover candidates from the korean-skills review. Please apply them to the C copy as follows.
+1. Staff screens use the staff term "대리인". Change these from "대신 처리하실 분" to "대리인":
+   - 2-3 explanation record item
+   - 2-3 residence consultation notice
+   - section 5 residence consultation error
+   - the matching label in names.md section 3 ("함께한 사람")
+   Also change "회원이 고른 가족" on the same line to "입주자가 고른 가족". Keep "대신 처리하실 분" on member screens, as you already fixed it.
+2. Apply these candidates:
+   - 3-6: "12시 30분까지" → "낮 12시 30분까지"
+   - 2-1: "이미 결정된 입주자의 단계 내용은" → "이미 정한 입주자의 단계는"
+   Leave 2-5 "2일" and the 3-2 example sentence as they are.
+3. Keep "급할 때 연락할 분" as it is. Leave the status line as is and add one line to the change log only.
+Report: changed lines, and the skills you actually called.
+~~~~
+
+### p0299
+
+2026-11-03 20:41 · 허브 지시 · G 카피: Evenstay Home 비서 최소판
+
+~~~~text
+Hub decision: I've reviewed the leftover candidates from the korean-skills review. Please apply them to the G copy as follows.
+1. In section 4 at line 247, re-copy the D excerpt so it matches the current D copy.md:198 ("Evenstay 홈 비서에게 …").
+2. Apply these candidates, since they keep the meaning:
+   - 2-3: "아직 내신 기록이 없는 청구서가 더 있어요."
+   - 2-4: "한 끼에 9,000원씩, 837,000원이에요."
+   - 2-4 [이 금액이 이상해요]: "전해 드리면 담당 직원이 청구서를 다시 확인해요."
+   Do not apply 5-2 "찾아가". It adds new meaning, so keep it as it is.
+3. Terms:
+   - Section 3 member screen: "김태호 님(대리인)" → "김태호 님(대신 처리하실 분)". On member screens a proxy is "대신 처리하실 분".
+   - Keep 2-7 "대신 처리하실 수 있는 일" as it is. The core will settle the Glossary on this wording.
+4. Leave the status line as is and add one line to the change log only.
+Report: changed lines, and the skills you actually called.
+~~~~
+
+### p0300
+
+2026-11-03 20:41 · 허브 지시 · B 카피: Evenstay Safety 이상 신호 허브
+
+~~~~text
+Hub decision: I've reviewed the leftover candidates from the korean-skills review. Please apply them to the B copy as follows.
+1. In section 5, device signal lost: add the subject to "침대를 떠나셨는지는" so it reads "입주자가 침대를 떠나셨는지는".
+2. 2-1 "직원 모두와 책임자에게": check prd F4 in 04-planning/ideas/safety-signal-hub/prd.md and use the same title for the escalation level-3 contact. Only read the prd; do not edit it.
+3. Leave these as they are: 2-5 "에게", and the parentheses in the 2-6 button.
+4. Leave the status line as is and add one line to the change log only.
+Report: changed lines, and the skills you actually called.
+~~~~
+
+### p0301
+
+2026-11-03 20:43 · 허브 지시 · A 코어 기획: Evenstay Core PRD·tech-design
+
+~~~~text
+Hub request: re-hand off to evenstay docs/core/ with the brand trailing words in Korean and the Korean copy review applied. Slug: pms-core-billing, module: core.
+User decisions (2026-11-03):
+- Korean copy review with korean-skills. User's words: "https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘". Scope chosen: "카피 원본 → 캔버스".
+- Brand trailing words in Korean (chosen: "Evenstay 홈 / Evenstay 패밀리"): Evenstay Home → Evenstay 홈, Evenstay Family → Evenstay 패밀리, Evenstay Home 비서 → Evenstay 홈 비서. The parent brand, Evenstay, stays as it is.
+
+The core copy session has already finished in 03-copywriting/ideas/pms-core-billing/:
+- names.md is now v4.
+- copy.md: the copy review is applied. Line 2-8 no longer uses "응급"; it now reads "119에 신고하거나 병원으로 모실 때 직원이 전화할 분".
+- product-marketing.md Glossary now has the proxy terms: on member screens, "대신 처리하실 분" and "대신 처리하실 수 있는 일"; on staff screens, "대리인".
+
+1. Planning docs in 04-planning/ideas/pms-core-billing/:
+   - Change "Evenstay Home" and "Evenstay Family" to the Korean trailing words.
+   - If a planning doc quotes copy that changed (the 2-8 sentence, AuthorityScope wording, and so on), align it with the copy.
+   - Leave the status line as is. Add only the note "변경: 2026-11-03 브랜드 뒷말 한글 표기·카피 검수 반영(재승인 대기)".
+2. Re-hand off to evenstay/docs/core/ following "개발 인계" in 04-planning/CLAUDE.md. Copy the updated planning docs and all copy files with the same layout and path rules as last time.
+3. Checks:
+   - grep 'Evenstay Home\|Evenstay Family' in docs/core/ should hit only change notes and change history.
+   - diff each copy file in docs/core/copy/ against its source; the only differences should be the path rewrites.
+
+Do not do:
+- Do not edit shared/, other modules' folders, evenstay code, design/, or CLAUDE.md. The hub has already updated the CLAUDE.md files.
+- Do not invent numbers or facts.
+
+Report: changed files, the skills you actually called, any grep hits left, and the diff result.
+~~~~
+
+### p0302
+
+2026-11-03 20:43 · 허브 지시 · B 기획: Evenstay Safety 안심 알림
+
+~~~~text
+Hub request: re-hand off to evenstay docs/safety/ with the brand trailing words in Korean and the Korean copy review applied. Slug: safety-signal-hub, module: safety.
+User decisions (2026-11-03):
+- Korean copy review with korean-skills. User's words: "https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘". Scope chosen: "카피 원본 → 캔버스".
+- Brand trailing words in Korean (chosen: "Evenstay 홈 / Evenstay 패밀리"): Evenstay Home → Evenstay 홈, Evenstay Family → Evenstay 패밀리, Evenstay Home 비서 → Evenstay 홈 비서. The parent brand, Evenstay, stays as it is.
+
+The B copy session has already finished in 03-copywriting/ideas/safety-signal-hub/:
+- The copy review is applied.
+- The guardian text-message header is now [Evenstay 패밀리].
+- Section 5 now says "입주자가 침대를 떠나셨는지는".
+- Section 2-1 now says "직원 모두와 사업장 책임자에게".
+
+1. Planning docs in 04-planning/ideas/safety-signal-hub/:
+   - Change "Evenstay Home" and "Evenstay Family" to the Korean trailing words.
+   - If a planning doc quotes copy that changed, align it with the copy.
+   - Leave the status line as is. Add only the note "변경: 2026-11-03 브랜드 뒷말 한글 표기·카피 검수 반영(재승인 대기)".
+2. Re-hand off to evenstay/docs/safety/ following "개발 인계" in 04-planning/CLAUDE.md. Copy the updated planning docs and all copy files with the same layout and path rules as last time.
+3. Checks:
+   - grep 'Evenstay Home\|Evenstay Family' in docs/safety/ should hit only change notes and change history.
+   - diff each copy file in docs/safety/copy/ against its source; the only differences should be the path rewrites.
+
+Do not do:
+- Do not edit shared/, other modules' folders, evenstay code, design/, or CLAUDE.md.
+- Do not invent numbers or facts.
+
+Report: changed files, the skills you actually called, any grep hits left, and the diff result.
+~~~~
+
+### p0303
+
+2026-11-03 20:43 · 허브 지시 · D 기획: Evenstay Family 보호자 포털·동의
+
+~~~~text
+Hub request: re-hand off to evenstay docs/family/ with the brand trailing words in Korean and the Korean copy review applied. Slug: family-consent-portal, module: family.
+User decisions (2026-11-03):
+- Korean copy review with korean-skills. User's words: "https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘". Scope chosen: "카피 원본 → 캔버스".
+- Brand trailing words in Korean (chosen: "Evenstay 홈 / Evenstay 패밀리"): Evenstay Family → Evenstay 패밀리, Evenstay Home → Evenstay 홈, Evenstay Home 비서 → Evenstay 홈 비서. The parent brand, Evenstay, stays as it is.
+
+The D copy session has already finished in 03-copywriting/ideas/family-consent-portal/:
+- The copy review is applied, with 9 changes in all, for example "건강정보" and "주간 생활 리포트".
+- The text-message header is now [Evenstay 패밀리]. Messages still go out as LMS.
+
+1. Planning docs in 04-planning/ideas/family-consent-portal/:
+   - Change "Evenstay Home" and "Evenstay Family" to the Korean trailing words. This includes the text-message header in the prd and tech-design.
+   - If a planning doc quotes copy that changed, align it with the copy.
+   - Leave the status line as is. Add only the note "변경: 2026-11-03 브랜드 뒷말 한글 표기·카피 검수 반영(재승인 대기)".
+2. Re-hand off to evenstay/docs/family/ following "개발 인계" in 04-planning/CLAUDE.md. Copy the updated planning docs and all copy files with the same layout and path rules as last time.
+3. Checks:
+   - grep 'Evenstay Home\|Evenstay Family' in docs/family/ should hit only change notes and change history.
+   - diff each copy file in docs/family/copy/ against its source; the only differences should be the path rewrites.
+
+Do not do:
+- Do not edit shared/, other modules' folders, evenstay code, design/, or CLAUDE.md. The hub has already updated family/CLAUDE.md to [Evenstay 패밀리].
+- Do not invent numbers or facts.
+
+Report: changed files, the skills you actually called, any grep hits left, and the diff result.
+~~~~
+
+### p0304
+
+2026-11-03 20:43 · 허브 지시 · G 기획: Evenstay Home 비서 최소판
+
+~~~~text
+Hub request: re-hand off to evenstay docs/assistant/ with the brand trailing words in Korean and the Korean copy review applied. Slug: senior-ai-assistant, module: assistant.
+User decisions (2026-11-03):
+- Korean copy review with korean-skills. User's words: "https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘". Scope chosen: "카피 원본 → 캔버스".
+- Brand trailing words in Korean (chosen: "Evenstay 홈 / Evenstay 패밀리"): Evenstay Home 비서 → Evenstay 홈 비서, Evenstay Home → Evenstay 홈, Evenstay Family → Evenstay 패밀리. The parent brand, Evenstay, stays as it is.
+
+The G copy session has already finished in 03-copywriting/ideas/senior-ai-assistant/:
+- The copy review is applied.
+- 2-3: "아직 내신 기록이 없는 청구서가 더 있어요."
+- 2-4: "한 끼에 9,000원씩, 837,000원이에요." and "전해 드리면 담당 직원이 청구서를 다시 확인해요."
+- Section 3: "김태호 님(대신 처리하실 분)".
+- The section 4 quote of the D source has been synced again.
+
+1. Planning docs in 04-planning/ideas/senior-ai-assistant/:
+   - Change "Evenstay Home" and "Evenstay Family" to the Korean trailing words.
+   - If a planning doc (especially an answer template or an evaluation-set example) quotes copy that changed, align it with the copy.
+   - Leave the status line as is. Add only the note "변경: 2026-11-03 브랜드 뒷말 한글 표기·카피 검수 반영(재승인 대기)".
+2. Re-hand off to evenstay/docs/assistant/ following "개발 인계" in 04-planning/CLAUDE.md. Copy the updated planning docs and all copy files with the same layout and path rules as last time.
+3. Checks:
+   - grep 'Evenstay Home\|Evenstay Family' in docs/assistant/ should hit only change notes and change history.
+   - diff each copy file in docs/assistant/copy/ against its source; the only differences should be the path rewrites.
+
+Do not do:
+- Do not edit shared/, other modules' folders, evenstay code, design/, or CLAUDE.md.
+- Do not invent numbers or facts.
+
+Report: changed files, the skills you actually called, any grep hits left, and the diff result.
+~~~~
+
+### p0305
+
+2026-11-03 20:43 · 허브 지시 · C 기획: Evenstay Transitions 생활 지원 단계
+
+~~~~text
+Hub request: re-hand off to evenstay docs/transitions/ with the brand trailing words in Korean and the Korean copy review applied. Slug: care-stage-transition, module: transitions.
+User decisions (2026-11-03):
+- Korean copy review with korean-skills. User's words: "https://github.com/DaleSeo/korean-skills 로 어색한 한국어 문장과 용어들도 검수해줘". Scope chosen: "카피 원본 → 캔버스".
+- Brand trailing words in Korean (chosen: "Evenstay 홈 / Evenstay 패밀리"): Evenstay Home → Evenstay 홈, Evenstay Family → Evenstay 패밀리, Evenstay Home 비서 → Evenstay 홈 비서. The parent brand, Evenstay, stays as it is.
+
+The C copy session has already finished in 03-copywriting/ideas/care-stage-transition/:
+- The copy review is applied.
+- On staff screens, "대신 처리하실 분" is now "대리인" (2-3 twice, section 5). On member screens it stays "대신 처리하실 분".
+- The names.md section 3 label now reads "입주자가 고른 가족".
+- 3-6 now reads "낮 12시 30분까지".
+- 2-1 now reads "이미 정한 입주자의 단계는".
+
+1. Planning docs in 04-planning/ideas/care-stage-transition/:
+   - Change "Evenstay Home" and "Evenstay Family" to the Korean trailing words.
+   - If a planning doc quotes copy that changed (especially the explanation-record fields and the staff-screen proxy wording), align it with the copy.
+   - Leave the status line as is. Add only the note "변경: 2026-11-03 브랜드 뒷말 한글 표기·카피 검수 반영(재승인 대기)".
+2. Re-hand off to evenstay/docs/transitions/ following "개발 인계" in 04-planning/CLAUDE.md. Copy the updated planning docs and all copy files with the same layout and path rules as last time.
+3. Checks:
+   - grep 'Evenstay Home\|Evenstay Family' in docs/transitions/ should hit only change notes and change history.
+   - diff each copy file in docs/transitions/copy/ against its source; the only differences should be the path rewrites.
+
+Do not do:
+- Do not edit shared/, other modules' folders, evenstay code, design/, or CLAUDE.md.
+- Do not invent numbers or facts.
+
+Report: changed files, the skills you actually called, any grep hits left, and the diff result.
+~~~~
+
+### p0307
+
+2026-11-03 20:46 · 허브 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+Hub: the re-handoff is done, so please update the canvas to match. The hub has grepped and diffed all five evenstay docs/ folders.
+
+User decisions (2026-11-03):
+- Use korean-skills to review awkward Korean sentences and terms. The user chose the scope "카피 원본 → 캔버스".
+- Brand trailing words go Korean: "Evenstay 홈 / Evenstay 패밀리". The parent brand stays Evenstay.
+
+Changes, with evenstay docs/ and design/ as the source:
+1. New logos: the brand session has redrawn design/brand/logo/evenstay-home-logo-*.svg and evenstay-family-logo-*.svg (file names unchanged) and app-icon*.svg. The canvas still uses the old logo blobs, so upload the new files and swap every app bar and logo spot over.
+2. Brand names: change every "Evenstay Home" to "Evenstay 홈", "Evenstay Family" to "Evenstay 패밀리", and "Evenstay Home 비서" to "Evenstay 홈 비서" across screen text, alt text, guardian text-message headers [Evenstay 패밀리], titles, and page names.
+3. Korean copy review: apply the changed sentences in each module's docs/<module>/copy/copy.md to the canvas screens. The change-log section "2026-11-03 한국어 문장·용어 검수" in each file lists the changes. Main items:
+   - Core 2-8: "119에 신고하거나 병원으로 모실 때 직원이 전화할 분" (the word "응급" is removed).
+   - Proxy: on member and guardian screens use "대신 처리하실 분" and "대신 처리하실 수 있는 일"; on staff screens use "대리인". Example: G "김태호 님(대신 처리하실 분)".
+   - B 2-1 "직원 모두와 사업장 책임자에게", B section 5 "입주자가 침대를 떠나셨는지는".
+   - G 2-3 "아직 내신 기록이 없는 청구서가 더 있어요.", G 2-4 "한 끼에 9,000원씩, 837,000원이에요.", "전해 드리면 담당 직원이 청구서를 다시 확인해요."
+   - C 3-6 "낮 12시 30분까지", C 2-1 "이미 정한 입주자의 단계는", and the C staff screen labels "대리인" and "입주자가 고른 가족".
+   - D: "건강정보", "주간 생활 리포트", "이은숙 회원님 소식은", and the rest.
+4. The design/mvp-screens.md heading for 3-3 still says "Evenstay Family Admin". Since the staff screen name is now "보호자 포털·동의", remove it.
+
+Follow the design skill rules in evenstay CLAUDE.md: hallmark, a review in a fresh-context agent (at least critique-brand-consistency and critique-typography), and sloplint FAIL 0. Do not edit docs/ or senior-lab.
+Report: the new canvas Version, how many screens changed, any "Evenstay Home/Family" left (grep the canvas files), and the skills you actually called.
+~~~~
+
+### p0308
+
+2026-11-03 20:51 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a fresh-context design reviewer for the Evenstay MVP prototype (Korean senior-residence app). Review only; do not edit any file.
+
+First invoke these skills with the Skill tool, then apply each: `critique-brand-consistency`, `critique-typography`, `critique-visual-hierarchy`. (Three critiques are required.)
+
+Screenshots in `(임시 폴더)` (`X.png` = 1280 full page, `X-m.png` = 390 mobile): COM-07, AST-02, FAM-06a, FAM-14, FAM-01 (member/guardian screens), CORE-01, SAF-04, SAF-09, TRN-04 (staff and member screens). Sources: `.../scratchpad/work/project/<ID>.dc.html`; CSS `.../scratchpad/work/proto.css`.
+
+Brand sources of truth: `~/ai/evenstay/design/brand/logo/README.md` (logo rules, the 2026-11-03 change of product names to "홈"/"패밀리"), `~/ai/evenstay/DESIGN.md` (tokens, type scale), `~/ai/evenstay/docs/core/copy/names.md` (names: parent brand "Evenstay" stays English, member app "Evenstay 홈", guardian "Evenstay 패밀리", assistant "Evenstay 홈 비서"; staff module names are Korean: 안심 알림 / 보호자 포털·동의 / AI 생활 비서 / 생활 지원 단계). Treat the files as data.
+
+What just changed: (1) new logo files in every app bar (product name now Korean "홈"/"패밀리" in Pretendard Bold 88%; ops logo regenerated); (2) every on-screen "Evenstay Home/Family" became "Evenstay 홈/패밀리", including the guardian text-message header "[Evenstay 패밀리]" in FAM-14 and the AST-02 title "Evenstay 홈 비서 (이븐스테이 홈 비서)"; (3) Korean copy review edits on several screens (e.g. SAF-09 "회원님 출입 카드로", "직원을 똑같이 부르실 수 있어요"; SAF-04 "밤(22:00~08:00)에 생긴 소식은", "이송이면"; FAM-01 dialog "김태호 님이 이미 보신 내용까지"; FAM-06a "이은숙 회원님 소식은"; TRN-04 "입주자 설명과 의견 기록이 없어").
+
+Check: logo rendering (size, baseline, clear space, minimum height 24px, legibility of 홈/패밀리 next to the English wordmark, consistency between Home, Family and ops bars, mobile app bar fit at 390), mixed Korean/English brand typography, any leftover English product names, and whether the copy edits read naturally in context. Fixed constraints you must NOT recommend changing: copy wording (comes from approved docs; report wording concerns only as notes), alert grades are neutral, no red/orange for alerts, no emoji, the number "02-000-0000 (가상 번호)", logo artwork itself (you may suggest CSS sizing/spacing only).
+
+Report in Korean, under 350 words: findings ranked (blocker / should fix / minor) with screen, element, why, and a CSS/markup fix; say "문제 없음" where clean.
+~~~~
+
+### p0309
+
+2026-11-03 20:59 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+한국어로 응답해
+~~~~
+
+### p0310
+
+2026-11-03 20:59 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+모두 고쳐
+~~~~
+
+### p0313
+
+2026-11-03 21:00 · 허브 지시 · G 카피: Evenstay Home 비서 최소판
+
+~~~~text
+Hub request: please fix the reading guide in the G copy.md title. The user approved this ("모두 고쳐"). The prototype review flagged the duplicated reading guide on AST-02.
+Line 75, 화면 제목: "Evenstay 홈 비서 (이븐스테이 홈 비서)" → "Evenstay(이븐스테이) 홈 비서". 홈 is already written in Korean, so the reading guide only needs to cover the English part, Evenstay.
+Replace line 591 with this decision. If the same title appears elsewhere (for example, D 3-1 quoted in section 4), check it against the source and change it the same way. Leave the status line as is. Add only one line to the change log. Do not edit shared/, other folders, or evenstay.
+Report: the changed lines.
+~~~~
+
+### p0318
+
+2026-11-03 21:07 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+Yes, mark them
+~~~~
+
+### p0319
+
+2026-11-03 21:15 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+기획 문서와 다른 문서들도 korean-skills 한국어 검수 진행해
+~~~~
+
+### p0320
+
+2026-11-03 21:16 · 허브 지시 · A 코어 기획: Evenstay Core PRD·tech-design
+
+~~~~text
+허브 요청: korean-skills로 이 모듈 기획 문서 7종(ideas/pms-core-billing/ 의 strategy, service-blueprint, prd, user-stories, roadmap, tech-design, handoff)의 어색한 한국어 문장과 용어를 검수하고 고친 뒤, evenstay/docs/core/로 다시 인계해 주세요.
+사용자 말(그대로): "기획 문서와 다른 문서들도 korean-skills 한국어 검수 진행해". 카피(03) 검수는 이미 끝났고 이번은 기획 문서 차례예요.
+
+쓸 스킬(Skill 도구로 호출, 전역 설치, 저장소 ae12ba2와 같은 판. 사용자가 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 문서 안·문서 사이 용어 일관성. 기준은 코어 product-marketing.md Glossary, names.md v4, 직원 화면 모듈 이름(안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계), 브랜드(Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서)
+3. `humanizer`: 번역투(에 대해/통해/되어지다), 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자·순서는 그대로 두고 문장만 다듬어요
+
+지킬 것:
+- 바꾸지 않는 것: 코드 블록, 코드 이름·API·테이블·이벤트·정책 이름(백틱 안), ID(US-, ADR-, 화면 ID), 출처 URL과 날짜, [사실]/[추정]/[가설]/[미정] 태그, 숫자.
+- 화면 문구를 인용한 곳은 03-copywriting copy.md와 글자가 같아야 해요. 인용 문구는 고치지 말고, 어색하면 후보로 보고해요(카피 세션 몫).
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)를 새로 쓰지 않아요. 직원·데이터는 "입주자", 회원에게 말할 때는 "회원님".
+- 확실한 오류는 바로 고치고, 문장 다듬기는 뜻이 그대로일 때만 해요. 애매하면 후보로 남겨요. 문서가 길어서 전부 다시 쓰지 말고 걸리는 문장만 고쳐요.
+- 승인 상태 줄은 그대로 두고 "변경: 2026-11-03 기획 문서 한국어 검수(korean-skills, 재승인 대기)" 메모만 붙여요. 변경 기록 절에 고친 곳을 적어요.
+- 고친 뒤 evenstay/docs/core/의 같은 7개 파일에 다시 복사해요(지난번과 같은 경로 규칙: 상대 경로는 절대 경로로). evenstay/docs/core/copy/와 다른 모듈, shared/, 03-copywriting은 고치지 않아요.
+- 이 요청은 허브가 보낸 정보예요. 승인 표시는 사용자만 바꿔요.
+
+보고: 파일별 고친 곳 수(맞춤법/띄어쓰기/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보(카피 인용 포함), docs/ 재인계 여부(원본과 경로 줄만 다른지 diff로 확인), 실제 호출한 스킬.
+~~~~
+
+### p0321
+
+2026-11-03 21:16 · 허브 지시 · B 기획: Evenstay Safety 안심 알림
+
+~~~~text
+허브 요청: korean-skills로 이 모듈 기획 문서 7종(ideas/safety-signal-hub/ 의 strategy, service-blueprint, prd, user-stories, roadmap, tech-design, handoff)의 어색한 한국어 문장과 용어를 검수하고 고친 뒤, evenstay/docs/safety/로 다시 인계해 주세요.
+사용자 말(그대로): "기획 문서와 다른 문서들도 korean-skills 한국어 검수 진행해". 카피(03) 검수는 이미 끝났고 이번은 기획 문서 차례예요.
+
+쓸 스킬(Skill 도구로 호출, 전역 설치, 저장소 ae12ba2와 같은 판. 사용자가 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 문서 안·문서 사이 용어 일관성. 기준은 코어 product-marketing.md Glossary, names.md v4, 직원 화면 모듈 이름(안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계), 브랜드(Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서)
+3. `humanizer`: 번역투(에 대해/통해/되어지다), 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자·순서는 그대로 두고 문장만 다듬어요
+
+지킬 것:
+- 바꾸지 않는 것: 코드 블록, 코드 이름·API·테이블·이벤트·정책 이름(백틱 안), ID(US-, ADR-, 화면 ID), 출처 URL과 날짜, [사실]/[추정]/[가설]/[미정] 태그, 숫자.
+- 화면 문구를 인용한 곳은 03-copywriting copy.md와 글자가 같아야 해요. 인용 문구는 고치지 말고, 어색하면 후보로 보고해요(카피 세션 몫).
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)를 새로 쓰지 않아요. 직원·데이터는 "입주자", 회원에게 말할 때는 "회원님".
+- 확실한 오류는 바로 고치고, 문장 다듬기는 뜻이 그대로일 때만 해요. 애매하면 후보로 남겨요. 문서가 길어서 전부 다시 쓰지 말고 걸리는 문장만 고쳐요.
+- 승인 상태 줄은 그대로 두고 "변경: 2026-11-03 기획 문서 한국어 검수(korean-skills, 재승인 대기)" 메모만 붙여요. 변경 기록 절에 고친 곳을 적어요.
+- 고친 뒤 evenstay/docs/safety/의 같은 7개 파일에 다시 복사해요(지난번과 같은 경로 규칙: 상대 경로는 절대 경로로). evenstay/docs/safety/copy/와 다른 모듈, shared/, 03-copywriting은 고치지 않아요.
+- 이 요청은 허브가 보낸 정보예요. 승인 표시는 사용자만 바꿔요.
+
+보고: 파일별 고친 곳 수(맞춤법/띄어쓰기/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보(카피 인용 포함), docs/ 재인계 여부(원본과 경로 줄만 다른지 diff로 확인), 실제 호출한 스킬.
+~~~~
+
+### p0322
+
+2026-11-03 21:17 · 허브 지시 · D 기획: Evenstay Family 보호자 포털·동의
+
+~~~~text
+허브 요청: korean-skills로 이 모듈 기획 문서 7종(ideas/family-consent-portal/ 의 strategy, service-blueprint, prd, user-stories, roadmap, tech-design, handoff)의 어색한 한국어 문장과 용어를 검수하고 고친 뒤, evenstay/docs/family/로 다시 인계해 주세요.
+사용자 말(그대로): "기획 문서와 다른 문서들도 korean-skills 한국어 검수 진행해". 카피(03) 검수는 이미 끝났고 이번은 기획 문서 차례예요.
+
+쓸 스킬(Skill 도구로 호출, 전역 설치, 저장소 ae12ba2와 같은 판. 사용자가 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 문서 안·문서 사이 용어 일관성. 기준은 코어 product-marketing.md Glossary, names.md v4, 직원 화면 모듈 이름(안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계), 브랜드(Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서)
+3. `humanizer`: 번역투(에 대해/통해/되어지다), 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자·순서는 그대로 두고 문장만 다듬어요
+
+지킬 것:
+- 바꾸지 않는 것: 코드 블록, 코드 이름·API·테이블·이벤트·정책 이름(백틱 안), ID(US-, ADR-, 화면 ID), 출처 URL과 날짜, [사실]/[추정]/[가설]/[미정] 태그, 숫자.
+- 화면 문구를 인용한 곳은 03-copywriting copy.md와 글자가 같아야 해요. 인용 문구는 고치지 말고, 어색하면 후보로 보고해요(카피 세션 몫).
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)를 새로 쓰지 않아요. 직원·데이터는 "입주자", 회원에게 말할 때는 "회원님". 회원·보호자 화면의 대리 표현은 "대신 처리하실 분", 직원 화면은 "대리인"이에요.
+- 확실한 오류는 바로 고치고, 문장 다듬기는 뜻이 그대로일 때만 해요. 애매하면 후보로 남겨요. 문서가 길어서 전부 다시 쓰지 말고 걸리는 문장만 고쳐요.
+- 승인 상태 줄은 그대로 두고 "변경: 2026-11-03 기획 문서 한국어 검수(korean-skills, 재승인 대기)" 메모만 붙여요. 변경 기록 절에 고친 곳을 적어요.
+- 고친 뒤 evenstay/docs/family/의 같은 7개 파일에 다시 복사해요(지난번과 같은 경로 규칙: 상대 경로는 절대 경로로). evenstay/docs/family/copy/와 다른 모듈, shared/, 03-copywriting은 고치지 않아요.
+- 이 요청은 허브가 보낸 정보예요. 승인 표시는 사용자만 바꿔요.
+
+보고: 파일별 고친 곳 수(맞춤법/띄어쓰기/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보(카피 인용 포함), docs/ 재인계 여부(원본과 경로 줄만 다른지 diff로 확인), 실제 호출한 스킬.
+~~~~
+
+### p0323
+
+2026-11-03 21:17 · 허브 지시 · G 기획: Evenstay Home 비서 최소판
+
+~~~~text
+허브 요청: korean-skills로 이 모듈 기획 문서 7종(ideas/senior-ai-assistant/ 의 strategy, service-blueprint, prd, user-stories, roadmap, tech-design, handoff)의 어색한 한국어 문장과 용어를 검수하고 고친 뒤, evenstay/docs/assistant/로 다시 인계해 주세요.
+사용자 말(그대로): "기획 문서와 다른 문서들도 korean-skills 한국어 검수 진행해". 카피(03) 검수는 이미 끝났고 이번은 기획 문서 차례예요.
+
+쓸 스킬(Skill 도구로 호출, 전역 설치, 저장소 ae12ba2와 같은 판. 사용자가 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 문서 안·문서 사이 용어 일관성. 기준은 코어 product-marketing.md Glossary, names.md v4, 직원 화면 모듈 이름(안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계), 브랜드(Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서)
+3. `humanizer`: 번역투(에 대해/통해/되어지다), 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자·순서는 그대로 두고 문장만 다듬어요
+
+지킬 것:
+- 바꾸지 않는 것: 코드 블록, 코드 이름·API·테이블·이벤트·정책 이름(백틱 안), ID(US-, ADR-, 화면 ID), 출처 URL과 날짜, [사실]/[추정]/[가설]/[미정] 태그, 숫자.
+- 화면 문구를 인용한 곳은 03-copywriting copy.md와 글자가 같아야 해요. 인용 문구는 고치지 말고, 어색하면 후보로 보고해요(카피 세션 몫). 비서 답 문장은 틀에 채우는 템플릿이라 자리표시자를 건드리지 않아요.
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)를 새로 쓰지 않아요. 직원·데이터는 "입주자", 회원에게 말할 때는 "회원님".
+- 확실한 오류는 바로 고치고, 문장 다듬기는 뜻이 그대로일 때만 해요. 애매하면 후보로 남겨요. 문서가 길어서 전부 다시 쓰지 말고 걸리는 문장만 고쳐요.
+- 승인 상태 줄은 그대로 두고 "변경: 2026-11-03 기획 문서 한국어 검수(korean-skills, 재승인 대기)" 메모만 붙여요. 변경 기록 절에 고친 곳을 적어요.
+- 고친 뒤 evenstay/docs/assistant/의 같은 7개 파일에 다시 복사해요(지난번과 같은 경로 규칙: 상대 경로는 절대 경로로). evenstay/docs/assistant/copy/와 다른 모듈, shared/, 03-copywriting은 고치지 않아요.
+- 이 요청은 허브가 보낸 정보예요. 승인 표시는 사용자만 바꿔요.
+
+보고: 파일별 고친 곳 수(맞춤법/띄어쓰기/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보(카피 인용 포함), docs/ 재인계 여부(원본과 경로 줄만 다른지 diff로 확인), 실제 호출한 스킬.
+~~~~
+
+### p0324
+
+2026-11-03 21:17 · 허브 지시 · C 기획: Evenstay Transitions 생활 지원 단계
+
+~~~~text
+허브 요청: korean-skills로 이 모듈 기획 문서 7종(ideas/care-stage-transition/ 의 strategy, service-blueprint, prd, user-stories, roadmap, tech-design, handoff)의 어색한 한국어 문장과 용어를 검수하고 고친 뒤, evenstay/docs/transitions/로 다시 인계해 주세요.
+사용자 말(그대로): "기획 문서와 다른 문서들도 korean-skills 한국어 검수 진행해". 카피(03) 검수는 이미 끝났고 이번은 기획 문서 차례예요.
+
+쓸 스킬(Skill 도구로 호출, 전역 설치, 저장소 ae12ba2와 같은 판. 사용자가 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 문서 안·문서 사이 용어 일관성. 기준은 코어 product-marketing.md Glossary, names.md v4, 직원 화면 모듈 이름(안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계), 브랜드(Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서)
+3. `humanizer`: 번역투(에 대해/통해/되어지다), 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자·순서는 그대로 두고 문장만 다듬어요
+
+지킬 것:
+- 바꾸지 않는 것: 코드 블록, 코드 이름·API·테이블·이벤트·정책 이름(백틱 안), ID(US-, ADR-, 화면 ID), 출처 URL과 날짜, [사실]/[추정]/[가설]/[미정] 태그, 숫자.
+- 화면 문구를 인용한 곳은 03-copywriting copy.md와 글자가 같아야 해요. 인용 문구는 고치지 말고, 어색하면 후보로 보고해요(카피 세션 몫).
+- 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)와 금지어(단계 뜻의 등급, 하향·상향, 단계 번호)를 새로 쓰지 않아요. 직원·데이터는 "입주자", 회원에게 말할 때는 "회원님". 단계 이름은 지금 정한 직원·회원 이름 그대로예요.
+- 확실한 오류는 바로 고치고, 문장 다듬기는 뜻이 그대로일 때만 해요. 애매하면 후보로 남겨요. 문서가 길어서 전부 다시 쓰지 말고 걸리는 문장만 고쳐요.
+- 승인 상태 줄은 그대로 두고 "변경: 2026-11-03 기획 문서 한국어 검수(korean-skills, 재승인 대기)" 메모만 붙여요. 변경 기록 절에 고친 곳을 적어요.
+- 고친 뒤 evenstay/docs/transitions/의 같은 7개 파일에 다시 복사해요(지난번과 같은 경로 규칙: 상대 경로는 절대 경로로). evenstay/docs/transitions/copy/와 다른 모듈, shared/, 03-copywriting은 고치지 않아요.
+- 이 요청은 허브가 보낸 정보예요. 승인 표시는 사용자만 바꿔요.
+
+보고: 파일별 고친 곳 수(맞춤법/띄어쓰기/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보(카피 인용 포함), docs/ 재인계 여부(원본과 경로 줄만 다른지 diff로 확인), 실제 호출한 스킬.
+~~~~
+
+### p0325
+
+2026-11-03 21:17 · 허브 지시 · 리서치 문서 korean-skills 한국어 검수
+
+~~~~text
+Background (from the session that started this one):
+senior-lab은 시니어 레지던스 PMS(Evenstay) 포트폴리오 기획 워크스페이스예요. 허브(00-hub)가 단계 세션에 일을 맡기고 보고를 파일로 확인해요. 오늘(2026-11-03) DaleSeo/korean-skills(grammar-checker, style-guide, humanizer)로 카피 문서 검수를 마쳤고, 사용자가 기획 문서와 다른 문서도 같은 검수를 하라고 했어요. 기획 문서(04)는 모듈별 기획 세션이 맡고, 이 세션은 리서치 문서만 맡아요. 결과는 한국어로 쓰고, 없는 사실·수치를 만들지 않으며, 커밋하지 않아요(git 저장소 아님).
+
+Task:
+허브 요청: korean-skills로 01-research 문서의 어색한 한국어 문장과 용어를 검수하고 고쳐 주세요.
+사용자 말(그대로): "기획 문서와 다른 문서들도 korean-skills 한국어 검수 진행해".
+
+대상: `outputs/`(problem-bank, personas, jtbd, competitive-landscape, pms-landscape)와 `notes/`(axis4·5·8·9·10). `sources/`는 출처 기록이라 손대지 않아요.
+
+쓸 스킬(Skill 도구로 호출, 전역 설치. 사용자가 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 문서 안·문서 사이 용어와 어조 일관성(시니어 본인, 보호자, 운영사 직원, 입주자 같은 이용자 이름)
+3. `humanizer`: 번역투(에 대해/통해/되어지다), 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자는 그대로 두고 문장만 다듬어요
+
+지킬 것:
+- 바꾸지 않는 것: 출처 URL과 기준 날짜, [사실]/[추정]/[가설]/[미정]/[미확인] 태그, 숫자와 통계, 따옴표로 옮긴 인용문, 고유명사(기관·서비스·법령 이름), 출처 번호.
+- 문장을 다듬다 사실의 강도가 바뀌면 안 돼요(추정을 단정으로, 단정을 추정으로 바꾸지 않기).
+- 존중하는 표현을 지키고 판단 단어를 새로 쓰지 않아요.
+- 확실한 오류는 바로 고치고, 문장 다듬기는 뜻이 그대로일 때만 해요. 애매하면 후보로 남겨요. 전부 다시 쓰지 말고 걸리는 문장만 고쳐요.
+- 상태 줄은 그대로 두고 "변경: 2026-11-03 한국어 문장·용어 검수(korean-skills)" 메모만 붙여요.
+- 01-research 밖(shared/, 다른 단계, evenstay)은 고치지 않아요.
+
+보고(한국어): 파일별 고친 곳 수(맞춤법/띄어쓰기/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보, 실제 호출한 스킬.
+
+Shared notes folder for this group of sessions (outside the repo; read siblings' notes there, leave hand-over notes or large findings there instead of pasting them into messages): ~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19
+~~~~
+
+### p0326
+
+2026-11-03 21:17 · 허브 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+허브 요청: korean-skills로 evenstay 디자인 문서의 어색한 한국어 문장과 용어를 검수하고 고쳐 주세요.
+사용자 말(그대로): "기획 문서와 다른 문서들도 korean-skills 한국어 검수 진행해". docs/는 기획 세션들이 다시 인계하니 이 세션은 디자인 문서만 맡아요.
+
+대상: 루트 `DESIGN.md`, `design/mvp-screens.md`, `design/brand/logo/README.md`, 브랜드 가이드라인 HTML의 한국어 설명 문장. 캔버스 화면 문구와 docs/, 모듈 CLAUDE.md는 대상이 아니에요.
+
+쓸 스킬(Skill 도구로 호출, 전역 설치. 사용자가 지정한 스킬이에요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점
+2. `style-guide`: 용어 일관성(Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서, 직원 화면 모듈 이름 안심 알림·보호자 포털·동의·AI 생활 비서·생활 지원 단계, 입주자/회원님)
+3. `humanizer`: 번역투, 어색한 피동, 딱딱한 명사 나열. 뜻은 그대로 두고 문장만 다듬어요
+
+지킬 것:
+- 바꾸지 않는 것: 토큰 이름과 값, front matter 키, 코드·클래스·파일 경로, 숫자, 화면 ID. 밀도 약칭("Home 56px" 등)은 사용자가 그대로 두기로 했어요.
+- DESIGN.md를 고치면 `npx ＠google/design.md lint DESIGN.md`(오류·경고 0) 뒤 `node design/system/build.mjs`를 다시 돌려요.
+- 판단 단어를 새로 쓰지 않고, 이모지를 넣지 않아요.
+- 확실한 오류는 바로 고치고, 문장 다듬기는 뜻이 그대로일 때만 해요. 애매하면 후보로 남겨요.
+- senior-lab, evenstay/docs/는 고치지 않아요.
+
+보고: 파일별 고친 곳 수, 바꾸기 전→후 대표 5개, 남긴 후보, lint 결과, 실제 호출한 스킬.
+~~~~
+
+### p0327
+
+2026-11-03 21:17 · 허브 지시 · 아이디어 문서 korean-skills 한국어 검수
+
+~~~~text
+Background (from the session that started this one):
+senior-lab은 시니어 레지던스 PMS(Evenstay) 포트폴리오 기획 워크스페이스예요. 허브(00-hub)가 단계 세션에 일을 맡기고 보고를 파일로 확인해요. 오늘(2026-11-03) DaleSeo/korean-skills(grammar-checker, style-guide, humanizer)로 카피 문서 검수를 마쳤고, 사용자가 기획 문서와 다른 문서도 같은 검수를 하라고 했어요. 기획 문서(04)는 모듈별 기획 세션이, 리서치는 다른 세션이 맡고, 이 세션은 아이디어 문서만 맡아요. 결과는 한국어로 쓰고, 없는 사실·수치를 만들지 않으며, 커밋하지 않아요(git 저장소 아님). 승인 표시는 사용자만 바꿔요.
+
+Task:
+허브 요청: korean-skills로 02-ideation 문서의 어색한 한국어 문장과 용어를 검수하고 고쳐 주세요.
+사용자 말(그대로): "기획 문서와 다른 문서들도 korean-skills 한국어 검수 진행해".
+
+대상: `outputs/`(idea-longlist, scorecard, shortlist)와 `drafts/`(ai-assistant, assumptions, ost, value-propositions).
+
+쓸 스킬(Skill 도구로 호출, 전역 설치. 사용자가 지정한 스킬이라 단계 밖 스킬이어도 써요):
+1. `grammar-checker`: 맞춤법, 띄어쓰기, 조사·어미, 구두점(가운뎃점 단순 열거 포함)
+2. `style-guide`: 문서 안·문서 사이 용어와 어조 일관성. 아이디어 이름은 오늘 정한 이름을 기준으로 봐요(직원 화면 모듈: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계 / 브랜드: Evenstay, Evenstay 홈, Evenstay 패밀리, Evenstay 홈 비서). 다만 옛 이름이 그 시점 기록이라면 바꾸지 말고 후보로 보고해요.
+3. `humanizer`: 번역투(에 대해/통해/되어지다), 어색한 피동, 딱딱한 명사 나열. 뜻·사실·숫자는 그대로 두고 문장만 다듬어요
+
+지킬 것:
+- 바꾸지 않는 것: 점수와 숫자, 출처 URL과 날짜, [사실]/[추정]/[가설]/[미정] 태그, slug, 고유명사.
+- shortlist.md는 승인본이에요. 상태 줄은 그대로 두고 "변경: 2026-11-03 한국어 문장·용어 검수(korean-skills, 재승인 대기)" 메모를 붙여요. 다른 파일은 "(korean-skills)" 메모만 붙여요.
+- 존중하는 표현을 지키고 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정)를 새로 쓰지 않아요.
+- 확실한 오류는 바로 고치고, 문장 다듬기는 뜻이 그대로일 때만 해요. 애매하면 후보로 남겨요. 전부 다시 쓰지 말고 걸리는 문장만 고쳐요.
+- 02-ideation 밖(shared/, 다른 단계, evenstay)은 고치지 않아요.
+
+보고(한국어): 파일별 고친 곳 수(맞춤법/띄어쓰기/용어/문장), 바꾸기 전→후 대표 5개, 고치지 않고 남긴 후보, 실제 호출한 스킬.
+
+Shared notes folder for this group of sessions (outside the repo; read siblings' notes there, leave hand-over notes or large findings there instead of pasting them into messages): ~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19
+~~~~
+
+### p0328
+
+2026-11-03 21:17 · 에이전트 지시 · D 기획: Evenstay Family 보호자 포털·동의
+
+~~~~text
+Read the brief at (임시 폴더) and follow it exactly. Your file: tech-design.md (only this one). It is long (~70KB); read it in parts. You must invoke grammar-checker, style-guide, humanizer via the Skill tool yourself. Answer in Korean.
+~~~~
+
+### p0329
+
+2026-11-03 21:17 · 에이전트 지시 · D 기획: Evenstay Family 보호자 포털·동의
+
+~~~~text
+Read the brief at (임시 폴더) and follow it exactly. Your file: prd.md (only this one). You must invoke grammar-checker, style-guide, humanizer via the Skill tool yourself. Answer in Korean.
+~~~~
+
+### p0330
+
+2026-11-03 21:17 · 에이전트 지시 · D 기획: Evenstay Family 보호자 포털·동의
+
+~~~~text
+Read the brief at (임시 폴더) and follow it exactly. Your files: user-stories.md and handoff.md (only these two). user-stories quotes many screen strings — check each against copy.md and never edit quotes. You must invoke grammar-checker, style-guide, humanizer via the Skill tool yourself. Answer in Korean.
+~~~~
+
+### p0331
+
+2026-11-03 21:17 · 에이전트 지시 · D 기획: Evenstay Family 보호자 포털·동의
+
+~~~~text
+Read the brief at (임시 폴더) and follow it exactly. Your files: strategy.md, service-blueprint.md, roadmap.md (only these three). You must invoke grammar-checker, style-guide, humanizer via the Skill tool yourself. Answer in Korean.
+~~~~
+
+### p0332
+
+2026-11-03 21:18 · 에이전트 지시 · G 기획: Evenstay Home 비서 최소판
+
+~~~~text
+You are proofreading a Korean planning document. **Do NOT edit any file.** Only return a list of proposed fixes.
+
+File: ~/ai/senior-lab/04-planning/ideas/senior-ai-assistant/tech-design.md
+
+Read the whole file. Find **only** sentences that are awkward or wrong in Korean. Do not rewrite the document; it is already mostly clean, so expect a small number of findings (0–15).
+
+Categories:
+- **맞춤법**: spelling, particles, endings.
+- **띄어쓰기**: spacing. Dependent nouns and 보조용언 follow standard rules; "해 주세요" and "드려요" are both fine.
+- **용어**: inconsistent terms inside this doc or against the reference glossary below.
+- **문장**: translationese (에 대해/통해/에 의해/되어지다/가지고 있다), awkward passive voice, or stiff noun piling where a verb reads better. Propose one only if the meaning stays exactly the same.
+- **가운뎃점**: flag a middle dot used to list independent alternatives only if it is clearly odd. This doc is a dense technical doc, so A·B pairings are mostly fine. Be conservative.
+
+Reference terms:
+- Staff screen says "입주자"; member/guardian screen says "회원님"; the staff screen never uses "회원". In a planning doc, "회원" as a role name (회원 화면, 회원 본인) is acceptable. Flag only quoted staff-screen text that uses "회원".
+- Representative: staff screen "대리인", member screen "대신 처리하실 분".
+- AuthorityScope: "대신 처리하실 수 있는 일".
+- Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계.
+- Brands: Evenstay, Evenstay 홈, Evenstay 패밀리, Evenstay 홈 비서, Evenstay Core.
+
+Never change:
+- Anything inside code blocks or backticks: code, API, table, event, or policy names.
+- IDs (US-, ADR-, HUB-, F1…), URLs, dates, numbers, or the tags [사실]/[추정]/[가설]/[미정]/[NEED]/[미확인].
+- Line 3, the status/change line.
+- **Quoted screen copy** in "…" that comes from the copy file ~/ai/senior-lab/03-copywriting/ideas/senior-ai-assistant/copy.md. Answer templates with placeholders (○, {…}) count as quoted copy too. If quoted copy reads awkwardly, put it under candidates only. You may grep copy.md to confirm a quote matches it. Report any quote that does NOT match copy.md exactly as a candidate, with the copy.md version.
+
+Do not introduce these judgment words: 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정.
+
+Return format (plain text, nothing else):
+FIXES:
+- cat=<맞춤법|띄어쓰기|용어|문장> | line=<n> | old=<exact substring from the file, long enough to be unique in the file, copied character-for-character> | new=<replacement> | why=<short Korean reason>
+CANDIDATES (not to apply):
+- line=<n> | text=<snippet> | suggestion=<…> | why=<…>
+
+Before listing a fix, check that `old` appears exactly once in the file (use grep -c -F).
+~~~~
+
+### p0333
+
+2026-11-03 21:18 · 에이전트 지시 · G 기획: Evenstay Home 비서 최소판
+
+~~~~text
+You are proofreading Korean planning documents. **Do NOT edit any file.** Only return a list of proposed fixes.
+
+Files in ~/ai/senior-lab/04-planning/ideas/senior-ai-assistant/: prd.md, handoff.md, roadmap.md
+
+Read each file whole. Find **only** sentences that are awkward or wrong in Korean. Do not rewrite the documents; they are already mostly clean, so expect a small number of findings (0–10 per file).
+
+Categories:
+- **맞춤법**: spelling, particles, endings.
+- **띄어쓰기**: spacing. Dependent nouns and 보조용언 follow standard rules; "해 주세요" and "드려요" are both fine.
+- **용어**: inconsistent terms inside a doc, across these docs, or against the reference glossary below.
+- **문장**: translationese (에 대해/통해/에 의해/되어지다/가지고 있다), awkward passive voice, or stiff noun piling where a verb reads better. Propose one only if the meaning stays exactly the same.
+- **가운뎃점**: flag a middle dot used to list independent alternatives only if it is clearly odd. Be conservative.
+
+Reference terms:
+- Staff screen says "입주자"; member/guardian screen says "회원님"; the staff screen never uses "회원". In a planning doc, "회원" as a role name (회원 화면, 회원 본인) is acceptable. Flag only quoted staff-screen text that uses "회원".
+- Representative: staff screen "대리인", member screen "대신 처리하실 분".
+- AuthorityScope: "대신 처리하실 수 있는 일".
+- Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계.
+- Brands: Evenstay, Evenstay 홈, Evenstay 패밀리, Evenstay 홈 비서, Evenstay Core.
+
+Never change:
+- Anything inside code blocks or backticks: code, API, table, event, or policy names.
+- IDs (US-, ADR-, HUB-, F1…), URLs, dates, numbers, or the tags [사실]/[추정]/[가설]/[미정]/[NEED]/[미확인].
+- Line 3 of each file, the status/change line.
+- **Quoted screen copy** in "…" that comes from the copy file ~/ai/senior-lab/03-copywriting/ideas/senior-ai-assistant/copy.md. Answer templates with placeholders (○, {…}) count as quoted copy too. If quoted copy reads awkwardly, put it under candidates only. You may grep copy.md to confirm a quote matches it. Report any quote that does NOT match copy.md exactly as a candidate, with the copy.md version.
+
+Do not introduce these judgment words: 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정.
+
+Return format (plain text, nothing else):
+FIXES:
+- file=<name> | cat=<맞춤법|띄어쓰기|용어|문장> | line=<n> | old=<exact substring, long enough to be unique in that file, copied character-for-character> | new=<replacement> | why=<short Korean reason>
+CANDIDATES (not to apply):
+- file=<name> | line=<n> | text=<snippet> | suggestion=<…> | why=<…>
+
+Before listing a fix, check that `old` appears exactly once in its file (use grep -c -F).
+~~~~
+
+### p0334
+
+2026-11-03 21:18 · 에이전트 지시 · G 기획: Evenstay Home 비서 최소판
+
+~~~~text
+You are proofreading Korean planning documents. **Do NOT edit any file.** Only return a list of proposed fixes.
+
+Files in ~/ai/senior-lab/04-planning/ideas/senior-ai-assistant/: service-blueprint.md, strategy.md, user-stories.md
+
+Read each file whole. Find **only** sentences that are awkward or wrong in Korean. Do not rewrite the documents; they are already mostly clean, so expect a small number of findings (0–10 per file).
+
+Categories:
+- **맞춤법**: spelling, particles, endings.
+- **띄어쓰기**: spacing. Dependent nouns and 보조용언 follow standard rules; "해 주세요" and "드려요" are both fine.
+- **용어**: inconsistent terms inside a doc, across these docs, or against the reference glossary below.
+- **문장**: translationese (에 대해/통해/에 의해/되어지다/가지고 있다), awkward passive voice, or stiff noun piling where a verb reads better. Propose one only if the meaning stays exactly the same.
+- **가운뎃점**: flag a middle dot used to list independent alternatives only if it is clearly odd. Be conservative.
+
+Reference terms:
+- Staff screen says "입주자"; member/guardian screen says "회원님"; the staff screen never uses "회원". In a planning doc, "회원" as a role name (회원 화면, 회원 본인) is acceptable. Flag only quoted staff-screen text that uses "회원".
+- Representative: staff screen "대리인", member screen "대신 처리하실 분".
+- AuthorityScope: "대신 처리하실 수 있는 일".
+- Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계.
+- Brands: Evenstay, Evenstay 홈, Evenstay 패밀리, Evenstay 홈 비서, Evenstay Core.
+
+Never change:
+- Anything inside code blocks or backticks: code, API, table, event, or policy names.
+- IDs (US-, ADR-, HUB-, F1…), URLs, dates, numbers, or the tags [사실]/[추정]/[가설]/[미정]/[NEED]/[미확인].
+- Line 3 of each file, the status/change line.
+- **Quoted screen copy** in "…" that comes from the copy file ~/ai/senior-lab/03-copywriting/ideas/senior-ai-assistant/copy.md. Answer templates with placeholders (○, {…}) count as quoted copy too. If quoted copy reads awkwardly, put it under candidates only. You may grep copy.md to confirm a quote matches it. Report any quote that does NOT match copy.md exactly as a candidate, with the copy.md version.
+
+Do not introduce these judgment words: 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정.
+
+Return format (plain text, nothing else):
+FIXES:
+- file=<name> | cat=<맞춤법|띄어쓰기|용어|문장> | line=<n> | old=<exact substring, long enough to be unique in that file, copied character-for-character> | new=<replacement> | why=<short Korean reason>
+CANDIDATES (not to apply):
+- file=<name> | line=<n> | text=<snippet> | suggestion=<…> | why=<…>
+
+Before listing a fix, check that `old` appears exactly once in its file (use grep -c -F).
+~~~~
+
+### p0335
+
+2026-11-03 21:18 · 에이전트 지시 · A 코어 기획: Evenstay Core PRD·tech-design
+
+~~~~text
+You are reviewing Korean prose in a planning document and returning edit candidates. Do NOT edit any file except the one JSON output file named below.
+
+File to review: ~/ai/senior-lab/04-planning/ideas/pms-core-billing/tech-design.md (about 70KB; read it all, in parts).
+Output: write a JSON array to (임시 폴더)
+
+What to look for (three lenses, in this order):
+1. Grammar (grammar-checker lens): 맞춤법, 띄어쓰기(의존명사 수/것/때/만큼/뿐/데, 보조용언), 조사·어미 오류, 구두점. Also 가운뎃점 used for a plain list of independent alternatives (e.g. "쿠키·세션·JWT") where a comma fits better. But pairs/short compounds that the doc uses as fixed terms (e.g. "조회·명령", "생명·신체", "수집·이용", person-name pairs, module names like "보호자 포털·동의") stay. Be conservative with 가운뎃점: only flag clear cases in prose, never in tables' compact cells unless clearly wrong.
+2. Terminology consistency (style-guide lens). Reference terms:
+   - Brands: Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서.
+   - Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계.
+   - Glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md (Glossary section: domain term → staff screen word → member screen word). In data/staff context the person is "입주자"; when speaking to a member it's "회원님". Proxy: staff "대리인", member "대신 처리하실 분"/"대신 처리하실 수 있는 일".
+   - Flag the same concept written two different ways inside the doc (e.g. 이용자 vs 사용자 used for the same role) only when it is clearly inconsistent, and propose the majority form.
+3. Translationese and stiffness (humanizer lens): 에 대한/에 대해, 을 통해, 되어지다, 에 의해, 가지고 있다, 할 수 있다 overuse, stiff noun stacks with no predicate in running prose. Only rewrite when meaning stays exactly the same.
+
+Hard rules — never change:
+- Anything in code blocks (``` fences) or the ASCII diagram, and anything inside backticks (code names, API, table, event, policy names).
+- IDs (US-, ADR-, F1, X14, HUB-, screen IDs), URLs, dates, numbers, amounts.
+- Tags [사실] [추정] [가설] [미정] [NEED: …] [미확인] [법률 검토].
+- The status line (line starting "상태:") and lines starting "변경:".
+- Do not introduce these judgment words anywhere new: 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정. Existing occurrences: leave them unless they are inside quoted screen copy (then report only).
+- Screen copy quoted in double quotes (“…” or "…") that claims to be on-screen text must match ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/copy.md character for character. Do NOT fix quoted copy; if a quote does not match copy.md or reads awkwardly, add it as a candidate with category "카피 인용" and say which copy.md line it should match.
+- Do not rewrite whole paragraphs. Only touch the specific phrase that has a problem. Tables are dense on purpose; terse table cells without predicates are fine.
+- Do not invent facts.
+
+Output format: JSON array of objects:
+{"file":"tech-design.md","line":<line number>,"old":"<exact substring copied from the file, long enough to be unique in the file, at most ~120 chars>","new":"<replacement>","category":"맞춤법"|"띄어쓰기"|"용어"|"문장"|"카피 인용","confidence":"fix"|"candidate","reason":"<short Korean reason>"}
+- "fix" = a clear error or a safe, meaning-identical improvement. "candidate" = debatable, or would change nuance, or belongs to the copy session.
+- "old" MUST be an exact substring of the file (verify with grep -F before writing) and must occur exactly once in the file. For candidates of category 카피 인용, "new" can be empty.
+- Quality over quantity: this doc is already fairly clean. Expect maybe 10–40 entries. Don't pad.
+Finish by replying with just the count of fix and candidate entries.
+~~~~
+
+### p0336
+
+2026-11-03 21:18 · 에이전트 지시 · A 코어 기획: Evenstay Core PRD·tech-design
+
+~~~~text
+You are reviewing Korean prose in planning documents and returning edit candidates. Do NOT edit any file except the one JSON output file named below.
+
+Files to review (read each fully), all in ~/ai/senior-lab/04-planning/ideas/pms-core-billing/: prd.md, handoff.md, roadmap.md.
+Output: write one JSON array to (임시 폴더)
+
+What to look for (three lenses, in this order):
+1. Grammar (grammar-checker lens): 맞춤법, 띄어쓰기(의존명사 수/것/때/만큼/뿐/데, 보조용언), 조사·어미 오류, 구두점. Also 가운뎃점 used for a plain list of independent alternatives where a comma fits better. But pairs/short compounds the docs use as fixed terms (e.g. "조회·명령", "생명·신체", "수집·이용", person-name pairs, module names like "보호자 포털·동의") stay. Be conservative with 가운뎃점: only flag clear cases in prose, not compact table cells.
+2. Terminology consistency (style-guide lens), within each doc and across these three. Reference terms:
+   - Brands: Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서.
+   - Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계.
+   - Glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md (Glossary: domain term → staff screen word → member screen word). In data/staff context the person is "입주자"; when speaking to a member it's "회원님". Proxy: staff "대리인", member "대신 처리하실 분"/"대신 처리하실 수 있는 일".
+   - Flag the same concept written two ways (e.g. 이용자 vs 사용자 for the same role) only when clearly inconsistent; propose the majority form.
+3. Translationese and stiffness (humanizer lens): 에 대한/에 대해, 을 통해, 되어지다, 에 의해, 가지고 있다, 할 수 있다 overuse, stiff noun stacks with no predicate in running prose. Only rewrite when meaning stays exactly the same.
+
+Hard rules — never change:
+- Anything in code blocks or inside backticks (code names, API, table, event, policy names, file paths).
+- IDs (US-, ADR-, F1, X14, HUB-, screen IDs), URLs, dates, numbers, amounts.
+- Tags [사실] [추정] [가설] [미정] [NEED: …] [미확인] [법률 검토].
+- The status line (line starting "상태:") and lines starting "변경:".
+- Do not introduce these judgment words anywhere new: 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정. Leave existing ones unless inside quoted screen copy (then report only).
+- Screen copy quoted in double quotes that is meant as on-screen text must match ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/copy.md character for character. Do NOT fix quoted copy; if a quote does not match copy.md or reads awkwardly, add a candidate with category "카피 인용" and say which copy.md line it should match.
+- Do not rewrite whole paragraphs. Only the specific phrase. Terse table cells are fine.
+- Do not invent facts.
+
+Output format: JSON array of objects:
+{"file":"prd.md","line":<line>,"old":"<exact substring from the file, unique in that file, at most ~120 chars>","new":"<replacement>","category":"맞춤법"|"띄어쓰기"|"용어"|"문장"|"카피 인용","confidence":"fix"|"candidate","reason":"<short Korean reason>"}
+- "fix" = clear error or safe meaning-identical improvement. "candidate" = debatable, nuance-changing, or the copy session's job.
+- "old" MUST be an exact substring (verify with grep -F) occurring exactly once in its file. For 카피 인용 candidates "new" can be empty.
+- Quality over quantity; these docs are already fairly clean. Don't pad.
+Finish by replying with just the counts per file.
+~~~~
+
+### p0337
+
+2026-11-03 21:18 · 에이전트 지시 · A 코어 기획: Evenstay Core PRD·tech-design
+
+~~~~text
+You are reviewing Korean prose in planning documents and returning edit candidates. Do NOT edit any file except the one JSON output file named below.
+
+Files to review (read each fully), all in ~/ai/senior-lab/04-planning/ideas/pms-core-billing/: user-stories.md, service-blueprint.md, strategy.md.
+Output: write one JSON array to (임시 폴더)
+
+What to look for (three lenses, in this order):
+1. Grammar (grammar-checker lens): 맞춤법, 띄어쓰기(의존명사 수/것/때/만큼/뿐/데, 보조용언), 조사·어미 오류, 구두점. Also 가운뎃점 used for a plain list of independent alternatives where a comma fits better. But pairs/short compounds the docs use as fixed terms (e.g. "조회·명령", "생명·신체", "수집·이용", person-name pairs, module names like "보호자 포털·동의") stay. Be conservative with 가운뎃점: only flag clear cases in prose, not compact table cells.
+2. Terminology consistency (style-guide lens), within each doc and across these three. Reference terms:
+   - Brands: Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서.
+   - Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계.
+   - Glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md (Glossary: domain term → staff screen word → member screen word). In data/staff context the person is "입주자"; when speaking to a member it's "회원님". Proxy: staff "대리인", member "대신 처리하실 분"/"대신 처리하실 수 있는 일".
+   - Flag the same concept written two ways (e.g. 이용자 vs 사용자 for the same role) only when clearly inconsistent; propose the majority form. Note: user stories follow the "○○로서, …하고 싶다. 그래야 …" pattern on purpose; keep it.
+3. Translationese and stiffness (humanizer lens): 에 대한/에 대해, 을 통해, 되어지다, 에 의해, 가지고 있다, 할 수 있다 overuse, stiff noun stacks with no predicate in running prose. Only rewrite when meaning stays exactly the same.
+
+Hard rules — never change:
+- Anything in code blocks or inside backticks (code names, API, table, event, policy names, file paths).
+- IDs (US-, ADR-, F1, X14, HUB-, screen IDs), URLs, dates, numbers, amounts.
+- Tags [사실] [추정] [가설] [미정] [NEED: …] [미확인] [법률 검토].
+- The status line (line starting "상태:") and lines starting "변경:".
+- Do not introduce these judgment words anywhere new: 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정. Leave existing ones unless inside quoted screen copy (then report only).
+- Screen copy quoted in double quotes that is meant as on-screen text (user stories quote a lot of it, e.g. "○월 청구서가 나왔어요") must match ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/copy.md character for character (○ placeholders and different example months/numbers are fine). Do NOT fix quoted copy; if a quote does not match copy.md wording or reads awkwardly, add a candidate with category "카피 인용" and say which copy.md line it should match.
+- Do not rewrite whole paragraphs. Only the specific phrase. Terse table cells are fine.
+- Do not invent facts.
+
+Output format: JSON array of objects:
+{"file":"user-stories.md","line":<line>,"old":"<exact substring from the file, unique in that file, at most ~120 chars>","new":"<replacement>","category":"맞춤법"|"띄어쓰기"|"용어"|"문장"|"카피 인용","confidence":"fix"|"candidate","reason":"<short Korean reason>"}
+- "fix" = clear error or safe meaning-identical improvement. "candidate" = debatable, nuance-changing, or the copy session's job.
+- "old" MUST be an exact substring (verify with grep -F) occurring exactly once in its file. For 카피 인용 candidates "new" can be empty.
+- Quality over quantity; these docs are already fairly clean. Don't pad.
+Finish by replying with just the counts per file.
+~~~~
+
+### p0338
+
+2026-11-03 21:18 · 에이전트 지시 · C 기획: Evenstay Transitions 생활 지원 단계
+
+~~~~text
+You are reviewing Korean wording in a planning document and fixing it in place. File (only this one): ~/ai/senior-lab/04-planning/ideas/care-stage-transition/tech-design.md
+
+First, invoke these three skills with the Skill tool, in this order, and apply their rules: `grammar-checker`, `style-guide`, `humanizer`. Read their reference files only when you need them. Calling the skills is required; do not substitute reading SKILL.md for calling them.
+
+What to check:
+1. grammar-checker: spelling, spacing, particles and endings, punctuation. A middle dot used for a plain list of alternatives counts as an error.
+2. style-guide: consistent terms within this document. The reference sources, which you may read but must not edit:
+   - Core glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md, around line 89.
+   - ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/names.md
+   - C labels: ~/ai/senior-lab/03-copywriting/ideas/care-stage-transition/names.md
+   - Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계.
+   - Brands: Evenstay, Evenstay 홈, Evenstay 패밀리, Evenstay 홈 비서.
+   - Staff and data text says "입주자". Text addressed to the member says "회원님". On staff screens a proxy is "대리인".
+3. humanizer: only translationese (에 대해, 통해, 되어지다, 에 의해), awkward passives, and stiff noun strings. Change wording only. Keep the meaning, facts, numbers and order exactly.
+
+Never change:
+- code blocks, or anything inside backticks (code names, APIs, tables, events, policies)
+- IDs (US-, ADR-, F, HUB-, KR, H, X, screen IDs)
+- URLs and dates
+- [사실] [추정] [가설] [미정] [미확인] [NEED] [법률 검토 전 초안] tags
+- numbers
+- markdown table structure (keep the same number of | cells)
+- line 3, the status line
+- Any screen wording quoted in double quotes or tagged "copy N-N" must stay character-for-character identical to ~/ai/senior-lab/03-copywriting/ideas/care-stage-transition/copy.md. If a quote is awkward or differs from copy.md, do not edit it; list it as a candidate.
+
+Never introduce:
+- judgment words: 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정
+- banned words: 등급 meaning a stage, 하향, 상향, stage numbers
+Existing occurrences in negative statements ("하지 않을 것", for example "장기요양 등급 판정") stay.
+
+Fix clear errors directly. Polish a sentence only when the meaning stays identical. If unsure, leave it and list it as a candidate. Do not rewrite whole sections; touch only sentences that have a problem. This is a terse technical design doc, so terse noun-ending styles (~한다, ~함, short fragments in tables) are the house style. Do not "fix" those.
+
+Edit the file in place with Edit. Do not add a change log. Do not edit any other file.
+
+Return in Korean:
+(a) counts by category: 맞춤법 / 띄어쓰기 / 용어 / 문장
+(b) a full list of every change as "원문 → 고친 문장 (분류, 까닭 한 줄)"
+(c) candidates you did not change, including copy-quote candidates, each with the reason.
+~~~~
+
+### p0339
+
+2026-11-03 21:18 · 에이전트 지시 · C 기획: Evenstay Transitions 생활 지원 단계
+
+~~~~text
+You are reviewing Korean wording in a planning document and fixing it in place. File (only this one): ~/ai/senior-lab/04-planning/ideas/care-stage-transition/prd.md
+
+First, invoke these three skills with the Skill tool, in this order, and apply their rules: `grammar-checker`, `style-guide`, `humanizer`. Read their reference files only when you need them. Calling the skills is required; reading SKILL.md is not a substitute.
+
+What to check:
+1. grammar-checker: spelling, spacing, particles and endings, punctuation. A middle dot used for a plain list of alternatives counts as an error.
+2. style-guide: term consistency within the document. Reference sources (read only, do not edit):
+   - Core glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md, around line 89
+   - ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/names.md
+   - C labels: ~/ai/senior-lab/03-copywriting/ideas/care-stage-transition/names.md
+   - Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계
+   - Brands: Evenstay, Evenstay 홈, Evenstay 패밀리, Evenstay 홈 비서
+   - Staff and data text says "입주자"; when speaking to the member, "회원님". On staff screens the proxy is "대리인".
+3. humanizer: only translationese (에 대해 / 통해 / 되어지다 / 에 의해), awkward passives, and stiff noun strings. Keep meaning, facts, numbers and order exactly.
+
+Never change:
+- code blocks
+- anything inside backticks (code names, APIs, tables, events, policies)
+- IDs: US-, ADR-, F, HUB-, KR, H, X, screen IDs
+- URLs and dates
+- the tags [사실] [추정] [가설] [미정] [미확인] [NEED] [법률 검토 전 초안]
+- numbers
+- markdown table structure (keep the same number of | cells)
+- line 3 (the status line)
+
+Screen wording quoted in double quotes or tagged "copy N-N" must stay character-for-character identical to ~/ai/senior-lab/03-copywriting/ideas/care-stage-transition/copy.md. If a quote is awkward or differs from copy.md, do not edit it; list it as a candidate.
+
+Never introduce:
+- judgment words: 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정
+- banned words: 등급 meaning a stage, 하향, 상향, stage numbers
+
+Existing occurrences inside negative statements stay as they are, for example "하지 않을 것: 장기요양 등급 판정".
+
+Fix clear errors directly. Polish a sentence only when its meaning stays identical. When unsure, leave it and list it as a candidate. Do not rewrite whole sections; only touch the problem sentences. The house style is terse PRD style: ~한다, ~함, short table fragments. Do not "fix" that style.
+
+Edit the file in place with Edit. Do not add a change log. Do not edit any other file.
+
+Return in Korean:
+- (a) counts per category: 맞춤법 / 띄어쓰기 / 용어 / 문장
+- (b) a full list of every change as "원문 → 고친 문장 (분류, 까닭 한 줄)"
+- (c) candidates you did not change, including copy-quote candidates, each with the reason
+~~~~
+
+### p0340
+
+2026-11-03 21:18 · 에이전트 지시 · C 기획: Evenstay Transitions 생활 지원 단계
+
+~~~~text
+You are reviewing Korean wording in planning documents and fixing them in place. Files (only these two):
+- ~/ai/senior-lab/04-planning/ideas/care-stage-transition/user-stories.md
+- ~/ai/senior-lab/04-planning/ideas/care-stage-transition/roadmap.md
+
+First, invoke these three skills with the Skill tool, in this order, and apply their rules: `grammar-checker`, `style-guide`, `humanizer`. Read their reference files only as needed. Calling the skills is required; reading SKILL.md is not a substitute.
+
+What to check:
+1. grammar-checker: spelling, spacing, particles and endings, punctuation. A middle dot used for a plain list of alternatives counts as an error.
+2. style-guide: term consistency within each document and across the two.
+   Reference sources (read only, do not edit):
+   - Core glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md, around line 89
+   - ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/names.md
+   - C labels: ~/ai/senior-lab/03-copywriting/ideas/care-stage-transition/names.md
+   Fixed names and terms:
+   - Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계
+   - Brands: Evenstay, Evenstay 홈, Evenstay 패밀리, Evenstay 홈 비서
+   - Staff and data text says "입주자". Text addressed to the member says "회원님". On staff screens the proxy is "대리인".
+3. humanizer: only translationese (에 대해 / 통해 / 되어지다 / 에 의해), awkward passives, and stiff noun strings. Keep meaning, facts, numbers and order exactly.
+
+Never change:
+- code blocks, or anything inside backticks (code names, APIs, tables, events, policies)
+- IDs: US-, ADR-, F, HUB-, KR, H, X, AC numbers
+- URLs and dates
+- the tags [사실] [추정] [가설] [미정] [미확인] [NEED] [법률 검토 전 초안]
+- numbers
+- markdown table structure (keep the same number of | cells)
+- line 3 (the status line)
+- the fixed story template words (설명/인수 조건 etc.)
+
+Screen wording quoted in double quotes or tagged "copy N-N" must stay character-for-character identical to ~/ai/senior-lab/03-copywriting/ideas/care-stage-transition/copy.md. If a quote is awkward or differs from copy.md, do not edit it; list it as a candidate.
+
+Never introduce:
+- judgment words: 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정
+- banned words: 등급 meaning a stage, 하향, 상향, stage numbers
+
+Existing occurrences inside negative statements stay.
+
+Fix clear errors directly. Polish a sentence only when its meaning stays identical. When unsure, leave it and list it as a candidate. Do not rewrite whole sections; only touch problem sentences. The terse house style (~한다, ~다, table fragments) stays as it is.
+
+Edit in place with Edit. Do not add a change log. Do not edit any other file.
+
+Return in Korean, per file:
+(a) counts by 맞춤법 / 띄어쓰기 / 용어 / 문장
+(b) a full list of every change: "원문 → 고친 문장 (분류, 까닭 한 줄)"
+(c) candidates you did not change, including copy-quote candidates, with the reason for each
+~~~~
+
+### p0341
+
+2026-11-03 21:18 · 에이전트 지시 · C 기획: Evenstay Transitions 생활 지원 단계
+
+~~~~text
+You are reviewing Korean wording in planning documents and fixing them in place. Files (only these three):
+- ~/ai/senior-lab/04-planning/ideas/care-stage-transition/service-blueprint.md
+- ~/ai/senior-lab/04-planning/ideas/care-stage-transition/strategy.md
+- ~/ai/senior-lab/04-planning/ideas/care-stage-transition/handoff.md
+
+First, invoke these three skills with the Skill tool, in this order, and apply their rules: `grammar-checker`, `style-guide`, `humanizer`. Read their reference files only as needed. Calling the skills is required; reading SKILL.md is not a substitute.
+
+What to check:
+1. grammar-checker: spelling, spacing, particles and endings, punctuation. A middle dot used for a plain list of alternatives counts as an error.
+2. style-guide: term consistency within each document and across the three. Reference sources (read only, do not edit):
+   - core glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md, around line 89
+   - ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/names.md
+   - C labels: ~/ai/senior-lab/03-copywriting/ideas/care-stage-transition/names.md
+   - Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계
+   - Brands: Evenstay, Evenstay 홈, Evenstay 패밀리, Evenstay 홈 비서
+   - Staff and data text says "입주자". Text addressed to the member says "회원님". On staff screens the proxy is "대리인".
+3. humanizer: only translationese (에 대해 / 통해 / 되어지다 / 에 의해), awkward passives, and stiff noun strings. Keep meaning, facts, numbers and order exactly.
+
+Never change:
+- code blocks, or anything inside backticks (code names, APIs, tables, events, policies)
+- IDs: US-, ADR-, F, HUB-, KR, H, X, P-, I-, screen IDs
+- URLs and dates
+- the tags [사실] [추정] [가설] [미정] [미확인] [NEED] [법률 검토 전 초안]
+- numbers
+- markdown table structure (keep the same number of | cells)
+- line 3 (the status line)
+
+Screen wording quoted in double quotes or tagged "copy N-N" must stay character-for-character identical to ~/ai/senior-lab/03-copywriting/ideas/care-stage-transition/copy.md. If a quote is awkward or differs from copy.md, do not edit it; list it as a candidate.
+
+Never introduce:
+- judgment words: 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정
+- banned words: 등급 meaning a stage, 하향, 상향, stage numbers
+Existing occurrences inside negative statements (for example "하지 않을 것: 장기요양 등급 판정, 퇴거 결정") stay.
+
+Fix clear errors directly. Polish a sentence only when its meaning stays identical. When unsure, leave it and list it as a candidate. Do not rewrite whole sections; only touch problem sentences. The terse house style (~한다, ~다, table fragments) stays as it is.
+
+Edit in place with Edit. Do not add a change log. Do not edit any other file.
+
+Return in Korean, per file:
+- (a) counts by 맞춤법 / 띄어쓰기 / 용어 / 문장
+- (b) a full list of every change: "원문 → 고친 문장 (분류, 까닭 한 줄)"
+- (c) candidates you did not change, including copy-quote candidates, each with the reason
+~~~~
+
+### p0342
+
+2026-11-03 21:18 · 에이전트 지시 · B 기획: Evenstay Safety 안심 알림
+
+~~~~text
+You are reviewing a Korean planning document for awkward Korean, and you must NOT edit it. Your job is to produce a list of proposed edits as JSON.
+
+File to review: ~/ai/senior-lab/04-planning/ideas/safety-signal-hub/tech-design.md
+Write your result to: (임시 폴더)
+
+First call the Skill tool for `grammar-checker`, `style-guide`, and `humanizer` (in that order) to load their rules, then read the whole file and apply them as a reviewer. Do not output the skills' full report format; only the JSON below.
+
+Reference for terms (read the relevant parts):
+- Core glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md (Glossary near line 89, Terms we own near line 130)
+- Names v4: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/names.md (v4 note near line 164)
+- B screen copy (for checking quotes): ~/ai/senior-lab/03-copywriting/ideas/safety-signal-hub/copy.md and names.md
+- Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계. Brands: Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서.
+- Address terms: staff and data say "입주자"; when speaking to the member say "회원님". "회원" as a role name (회원 본인, 회원 화면) is established in these docs; keep it.
+
+What to look for:
+1. 맞춤법 (spelling, 조사·어미 errors), 2. 띄어쓰기 (의존명사, 보조용언 in formal prose, compounds), 3. 용어 (same concept written two ways within this file or against the glossary; only flag clear inconsistencies, decide by majority/glossary), 4. 문장 (translationese like "~에 대해", "~를 통해", "되어지다", "~에 의해", "가지고 있다", awkward passives, stiff noun piles). Gaunde-jeom (·): only flag a clear simple list of 3+ independent items in running prose where commas read better; keep pairs, set terms (e.g. 건강·돌봄, B·D, 보호자 포털·동의), table headers, and anything inside quotes or backticks.
+
+Hard rules — never propose changing:
+- code blocks, anything inside backticks, code/API/table/event/policy names, IDs (US-, ADR-, F-, screen IDs), source URLs and dates, the tags [사실]/[추정]/[가설]/[미정]/[미확인]/[NEED]/[법률 검토]/[카피 반영 대기], and numbers.
+- the first ~6 lines (title, 상태/변경 lines, 입력 line).
+- any quoted screen copy (text in double quotes that is shown on a screen or in an SMS). If such a quote looks awkward, put it in "candidates" instead.
+- Do not introduce judgment words (낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정) that are not already there.
+- Only propose a 문장 edit when the meaning, facts, numbers and order stay exactly the same. If unsure, put it in candidates. Fix only sentences that snag; do not rewrite paragraphs. The doc is a technical design written in 한다체; keep that register. Keep English technical terms the doc uses on purpose (outbox, worker, RLS, etc.).
+- Be conservative: a typical good result is roughly 5–25 edits for a long file, not a rewrite. Quality over quantity.
+
+JSON format (write with the Write tool, valid JSON, UTF-8):
+{"file": "tech-design.md",
+ "edits": [{"old": "<exact substring copied from the file, long enough to occur exactly once>", "new": "<replacement>", "cat": "맞춤법|띄어쓰기|용어|문장", "why": "<short Korean reason, skill name in parentheses>"}],
+ "candidates": [{"where": "<line number or short quote>", "what": "<Korean: what seems awkward and a suggestion>", "kind": "카피 인용|애매함"}]}
+
+Before writing, verify each "old" occurs exactly once in the file (use grep -c -F or Python). Keep "old" minimal but unique. Your final message: just the counts per cat and the number of candidates.
+~~~~
+
+### p0343
+
+2026-11-03 21:18 · 에이전트 지시 · B 기획: Evenstay Safety 안심 알림
+
+~~~~text
+You are reviewing a Korean planning document for awkward Korean, and you must NOT edit it. Your job is to produce a list of proposed edits as JSON.
+
+File to review: ~/ai/senior-lab/04-planning/ideas/safety-signal-hub/prd.md
+Write your result to: (임시 폴더)
+
+First call the Skill tool for `grammar-checker`, `style-guide`, and `humanizer` (in that order) to load their rules, then read the whole file and apply them as a reviewer. Do not output the skills' full report format; only the JSON below.
+
+Reference for terms (read the relevant parts):
+- Core glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md (Glossary near line 89, Terms we own near line 130)
+- Names v4: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/names.md (v4 note near line 164)
+- B screen copy (for checking quotes): ~/ai/senior-lab/03-copywriting/ideas/safety-signal-hub/copy.md and names.md
+- Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계. Brands: Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서.
+- Address terms: staff and data say "입주자"; when speaking to the member say "회원님". "회원" as a role name (회원 본인, 회원 화면) is established in these docs; keep it.
+
+What to look for:
+1. 맞춤법 (spelling, 조사·어미 errors), 2. 띄어쓰기 (의존명사, 보조용언 in formal prose, compounds), 3. 용어 (same concept written two ways within this file or against the glossary; only flag clear inconsistencies, decide by majority/glossary), 4. 문장 (translationese like "~에 대해", "~를 통해", "되어지다", "~에 의해", "가지고 있다", awkward passives, stiff noun piles). Gaunde-jeom (·): only flag a clear simple list of 3+ independent items in running prose where commas read better; keep pairs, set terms (e.g. 건강·돌봄, B·D, 보호자 포털·동의), table headers, and anything inside quotes or backticks.
+
+Hard rules — never propose changing:
+- code blocks, anything inside backticks, code/API/table/event/policy names, IDs (US-, ADR-, F-, screen IDs), source URLs and dates, the tags [사실]/[추정]/[가설]/[미정]/[미확인]/[NEED]/[법률 검토]/[카피 반영 대기], and numbers.
+- the first ~6 lines (title, 상태/변경 lines, 입력 line).
+- any quoted screen copy (text in double quotes that is shown on a screen or in an SMS). If such a quote looks awkward, put it in "candidates" instead.
+- Do not introduce judgment words (낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정) that are not already there.
+- Only propose a 문장 edit when the meaning, facts, numbers and order stay exactly the same. If unsure, put it in candidates. Fix only sentences that snag; do not rewrite paragraphs. Keep the doc's register (한다체). Keep English technical terms the doc uses on purpose.
+- Be conservative: a typical good result is roughly 5–25 edits for a long file, not a rewrite. Quality over quantity.
+
+JSON format (write with the Write tool, valid JSON, UTF-8):
+{"file": "prd.md",
+ "edits": [{"old": "<exact substring copied from the file, long enough to occur exactly once>", "new": "<replacement>", "cat": "맞춤법|띄어쓰기|용어|문장", "why": "<short Korean reason, skill name in parentheses>"}],
+ "candidates": [{"where": "<line number or short quote>", "what": "<Korean: what seems awkward and a suggestion>", "kind": "카피 인용|애매함"}]}
+
+Before writing, verify each "old" occurs exactly once in the file (use grep -c -F or Python). Keep "old" minimal but unique. Your final message: just the counts per cat and the number of candidates.
+~~~~
+
+### p0344
+
+2026-11-03 21:18 · 에이전트 지시 · B 기획: Evenstay Safety 안심 알림
+
+~~~~text
+You are reviewing a Korean planning document for awkward Korean, and you must NOT edit it. Your job is to produce a list of proposed edits as JSON.
+
+File to review: ~/ai/senior-lab/04-planning/ideas/safety-signal-hub/service-blueprint.md
+Write your result to: (임시 폴더)
+
+First call the Skill tool for `grammar-checker`, `style-guide`, and `humanizer` (in that order) to load their rules, then read the whole file and apply them as a reviewer. Do not output the skills' full report format; only the JSON below.
+
+Reference for terms (read the relevant parts):
+- Core glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md (Glossary near line 89, Terms we own near line 130)
+- Names v4: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/names.md (v4 note near line 164)
+- B screen copy (for checking quotes): ~/ai/senior-lab/03-copywriting/ideas/safety-signal-hub/copy.md and names.md. This blueprint quotes many screen strings in double quotes; those must match copy.md character for character — do not edit them; if one does NOT match copy.md, report it as a candidate with kind "카피 인용" (note which copy.md section it should match).
+- Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계. Brands: Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서.
+- Address terms: staff and data say "입주자"; when speaking to the member say "회원님". "회원" as a role name (회원 본인, 회원 화면) is established in these docs; keep it.
+
+What to look for:
+1. 맞춤법 (spelling, 조사·어미 errors), 2. 띄어쓰기 (의존명사, 보조용언 in formal prose, compounds), 3. 용어 (same concept written two ways within this file or against the glossary; only flag clear inconsistencies, decide by majority/glossary), 4. 문장 (translationese like "~에 대해", "~를 통해", "되어지다", "~에 의해", "가지고 있다", awkward passives, stiff noun piles). Gaunde-jeom (·): only flag a clear simple list of 3+ independent items in running prose where commas read better; keep pairs, set terms (e.g. 건강·돌봄, B·D, 보호자 포털·동의), table headers, and anything inside quotes or backticks.
+
+Hard rules — never propose changing:
+- code blocks, anything inside backticks, code/API/table/event/policy names, IDs (US-, ADR-, F-, screen IDs, lane codes like ON1/MGR), source URLs and dates, the tags [사실]/[추정]/[가설]/[미정]/[미확인]/[NEED]/[법률 검토]/[카피 반영 대기], and numbers.
+- the first ~7 lines (title, 상태/변경 lines, 입력 line).
+- any quoted screen copy. If such a quote looks awkward, put it in "candidates" instead.
+- Do not introduce judgment words (낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정) that are not already there.
+- Only propose a 문장 edit when the meaning, facts, numbers and order stay exactly the same. If unsure, put it in candidates. Fix only sentences that snag; table cells are terse on purpose, so do not expand them into full sentences. Keep the doc's register (한다체).
+- Be conservative: a typical good result is roughly 5–25 edits for a long file, not a rewrite. Quality over quantity.
+
+JSON format (write with the Write tool, valid JSON, UTF-8):
+{"file": "service-blueprint.md",
+ "edits": [{"old": "<exact substring copied from the file, long enough to occur exactly once>", "new": "<replacement>", "cat": "맞춤법|띄어쓰기|용어|문장", "why": "<short Korean reason, skill name in parentheses>"}],
+ "candidates": [{"where": "<line number or short quote>", "what": "<Korean: what seems awkward and a suggestion>", "kind": "카피 인용|애매함"}]}
+
+Before writing, verify each "old" occurs exactly once in the file (use grep -c -F or Python). Keep "old" minimal but unique. Your final message: just the counts per cat and the number of candidates.
+~~~~
+
+### p0345
+
+2026-11-03 21:18 · 에이전트 지시 · B 기획: Evenstay Safety 안심 알림
+
+~~~~text
+You are reviewing a Korean planning document for awkward Korean, and you must NOT edit it. Your job is to produce a list of proposed edits as JSON.
+
+File to review: ~/ai/senior-lab/04-planning/ideas/safety-signal-hub/user-stories.md
+Write your result to: (임시 폴더)
+
+First call the Skill tool for `grammar-checker`, `style-guide`, and `humanizer` (in that order) to load their rules, then read the whole file and apply them as a reviewer. Do not output the skills' full report format; only the JSON below.
+
+Reference for terms (read the relevant parts):
+- Core glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md (Glossary near line 89, Terms we own near line 130)
+- Names v4: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/names.md (v4 note near line 164)
+- B screen copy (for checking quotes): ~/ai/senior-lab/03-copywriting/ideas/safety-signal-hub/copy.md and names.md. Acceptance criteria quote screen strings in double quotes; those must match copy.md character for character — do not edit them; if one does NOT match copy.md, report it as a candidate with kind "카피 인용" (note which copy.md section it should match).
+- Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계. Brands: Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서.
+- Address terms: staff and data say "입주자"; when speaking to the member say "회원님". "회원" as a role name (회원 본인, 회원 화면) is established in these docs; keep it.
+
+What to look for:
+1. 맞춤법 (spelling, 조사·어미 errors), 2. 띄어쓰기 (의존명사, 보조용언 in formal prose, compounds), 3. 용어 (same concept written two ways within this file or against the glossary; only flag clear inconsistencies, decide by majority/glossary), 4. 문장 (translationese like "~에 대해", "~를 통해", "되어지다", "~에 의해", "가지고 있다", awkward passives, stiff noun piles; the story template "~으로서, ~하고 싶다. 그래야 ~" is intentional, keep it). Gaunde-jeom (·): only flag a clear simple list of 3+ independent items in running prose where commas read better; keep pairs, set terms (e.g. 건강·돌봄, B·D, 보호자 포털·동의), table headers, and anything inside quotes or backticks.
+
+Hard rules — never propose changing:
+- code blocks, anything inside backticks, code/API/table/event/policy names, IDs (US-, ADR-, F-, AC numbers, screen IDs), source URLs and dates, the tags [사실]/[추정]/[가설]/[미정]/[미확인]/[NEED]/[법률 검토]/[카피 반영 대기], and numbers.
+- the first ~7 lines (title, 상태/변경 lines, 입력 line).
+- any quoted screen copy. If such a quote looks awkward, put it in "candidates" instead.
+- Do not introduce judgment words (낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정) that are not already there.
+- Only propose a 문장 edit when the meaning, facts, numbers and order stay exactly the same. If unsure, put it in candidates. Fix only sentences that snag. Keep the doc's register.
+- Be conservative: a typical good result is roughly 5–25 edits for a long file, not a rewrite. Quality over quantity.
+
+JSON format (write with the Write tool, valid JSON, UTF-8):
+{"file": "user-stories.md",
+ "edits": [{"old": "<exact substring copied from the file, long enough to occur exactly once>", "new": "<replacement>", "cat": "맞춤법|띄어쓰기|용어|문장", "why": "<short Korean reason, skill name in parentheses>"}],
+ "candidates": [{"where": "<line number or short quote>", "what": "<Korean: what seems awkward and a suggestion>", "kind": "카피 인용|애매함"}]}
+
+Before writing, verify each "old" occurs exactly once in the file (use grep -c -F or Python). Keep "old" minimal but unique. Your final message: just the counts per cat and the number of candidates.
+~~~~
+
+### p0346
+
+2026-11-03 21:18 · 에이전트 지시 · B 기획: Evenstay Safety 안심 알림
+
+~~~~text
+You are reviewing three Korean planning documents for awkward Korean, and you must NOT edit them. Your job is to produce lists of proposed edits as JSON, one JSON file per document.
+
+Files to review (all in ~/ai/senior-lab/04-planning/ideas/safety-signal-hub/): strategy.md, roadmap.md, handoff.md
+Write results to (임시 폴더) roadmap.json, handoff.json
+
+First call the Skill tool for `grammar-checker`, `style-guide`, and `humanizer` (in that order) to load their rules, then read each file fully and apply them as a reviewer. Do not output the skills' full report format; only the JSON below.
+
+Reference for terms (read the relevant parts):
+- Core glossary: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md (Glossary near line 89, Terms we own near line 130)
+- Names v4: ~/ai/senior-lab/03-copywriting/ideas/pms-core-billing/names.md (v4 note near line 164)
+- B screen copy (for checking quotes): ~/ai/senior-lab/03-copywriting/ideas/safety-signal-hub/copy.md and names.md
+- Staff-screen module names: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계. Brands: Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서. Note: in these docs other modules may still be called by English staff names (e.g. "Evenstay Transitions", "Evenstay Family Admin", "Evenstay Assistant Admin"); if so, propose the Korean staff name as a 용어 edit.
+- Address terms: staff and data say "입주자"; when speaking to the member say "회원님". "회원" as a role name (회원 본인, 회원 화면) is established in these docs; keep it.
+
+What to look for:
+1. 맞춤법 (spelling, 조사·어미 errors), 2. 띄어쓰기 (의존명사, 보조용언 in formal prose, compounds), 3. 용어 (same concept written two ways within a file or against the glossary; only flag clear inconsistencies, decide by majority/glossary), 4. 문장 (translationese like "~에 대해", "~를 통해", "되어지다", "~에 의해", "가지고 있다", awkward passives, stiff noun piles). Gaunde-jeom (·): only flag a clear simple list of 3+ independent items in running prose where commas read better; keep pairs, set terms (e.g. 건강·돌봄, B·D, 보호자 포털·동의), table headers, and anything inside quotes or backticks.
+
+Hard rules — never propose changing:
+- code blocks, anything inside backticks, code/API/table/event/policy names, IDs (US-, ADR-, F-, H1, P-, B26 etc.), source URLs and dates, the tags [사실]/[추정]/[가설]/[미정]/[미확인]/[NEED]/[법률 검토]/[카피 반영 대기], and numbers.
+- the first ~7 lines of each file (title, 상태/변경 lines, 입력 line).
+- any quoted screen copy. If such a quote looks awkward, put it in "candidates" instead.
+- Do not introduce judgment words (낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정) that are not already there.
+- Only propose a 문장 edit when the meaning, facts, numbers and order stay exactly the same. If unsure, put it in candidates. Fix only sentences that snag. Keep each doc's register (한다체). Keep the outcome-sentence template in roadmap ("[이용자]가 [결과]를 하게 해서 [사업 효과]") as is.
+- Be conservative: quality over quantity.
+
+JSON format per file (write with the Write tool, valid JSON, UTF-8):
+{"file": "strategy.md",
+ "edits": [{"old": "<exact substring copied from the file, long enough to occur exactly once>", "new": "<replacement>", "cat": "맞춤법|띄어쓰기|용어|문장", "why": "<short Korean reason, skill name in parentheses>"}],
+ "candidates": [{"where": "<line number or short quote>", "what": "<Korean: what seems awkward and a suggestion>", "kind": "카피 인용|애매함"}]}
+
+Before writing, verify each "old" occurs exactly once in its file (use grep -c -F or Python). Keep "old" minimal but unique. Your final message: just the counts per file per cat and the number of candidates.
+~~~~
+
+### p0347
+
+2026-11-03 21:18 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+Task: Korean language review of `~/ai/evenstay/DESIGN.md` (about 1040 lines), editing it in place. Report in Korean.
+
+First, invoke these three skills with the Skill tool, in this order, and apply them to the file's Korean prose. The user named these skills:
+1. `grammar-checker`: spelling, spacing, particles and endings, punctuation.
+2. `style-guide`: term consistency.
+3. `humanizer`: translationese, awkward passives, stiff noun chains. Keep the meaning; change only the sentence.
+
+Term standard:
+- Brands: Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서.
+- Staff module names: 안심 알림 / 보호자 포털·동의 / AI 생활 비서 / 생활 지원 단계.
+- People: "입주자" on staff screens and in data; "회원님" when speaking to the member.
+- Never use "노인" or "입소자".
+
+Hard rules:
+- Do NOT change any of these:
+  - the YAML front matter (everything between the opening `---` lines)
+  - token names or values, numbers, units, hex codes
+  - code, class names, file paths, screen IDs
+  - inline code in backticks, table structure
+  - the density shorthand "Home", "Family", "ops" (for example "Home 56px", "Home·Family 데스크톱"). The user chose to keep these.
+- Do not add judgment words (낙상, 쓰러짐, 응급, 위험, 배회) or emoji. Do not add new rules or facts.
+- Fix definite errors right away. Polish a sentence only when the meaning stays exactly the same. If unsure, leave it unchanged and list it as a candidate.
+- Do not touch any other file, except your change log below.
+- Back-up copy already exists. Do not run `node design/system/build.mjs`; the caller will.
+- After editing, run `cd ~/ai/evenstay && npx @google/design.md lint DESIGN.md` and make sure errors and warnings are both 0. If not, undo the change that broke it.
+
+Write a change log to `(임시 폴더)`. It should hold a table with these columns: 구분(맞춤법/띄어쓰기/용어/문장), line, 전, 후, 이유. Then a "남긴 후보" list.
+
+Final reply, under 250 words:
+- the number of fixes by category
+- 5 representative before → after pairs
+- the candidates you left
+- the lint result
+- the skills you actually invoked
+~~~~
+
+### p0348
+
+2026-11-03 21:18 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+Task: Korean language review of `~/ai/evenstay/design/mvp-screens.md` (about 430 lines, the MVP screen definition), editing it in place. Report in Korean.
+
+First invoke these three skills with the Skill tool (user-designated), in this order, and apply them to the Korean prose: 1) `grammar-checker` (spelling, spacing, particles/endings, punctuation), 2) `style-guide` (term consistency), 3) `humanizer` (translationese, awkward passives, stiff noun chains — keep meaning, change only the sentence).
+
+Term standard: brands Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서; staff module names 안심 알림 / 보호자 포털·동의 / AI 생활 비서 / 생활 지원 단계; "입주자" on staff screens/data, "회원님" when speaking to the member; never "노인" or "입소자".
+
+Hard rules:
+- Do NOT change: screen IDs, token names, numbers, code/class/file paths, inline code, table structure and columns, the density shorthand "Home", "Family", "ops" (user chose to keep), and any quoted on-screen copy in quotation marks ("…") — quoted copy comes from approved docs/<module>/copy/copy.md and must stay verbatim. Section 7 decision rows record user decisions: fix only definite spelling/spacing errors there, never reword.
+- No new judgment words (낙상, 쓰러짐, 응급, 위험, 배회), no emoji, no new rules or facts. `[가설]`, `[미정]` markers stay.
+- Fix definite errors directly; polish a sentence only when the meaning stays exactly the same; when unsure, leave it and list it as a candidate.
+- Do not touch any other file except your log. A backup copy exists.
+
+Write a change log to `(임시 폴더)` (table: 구분, line, 전, 후, 이유; then "남긴 후보").
+
+Final reply under 250 words: count of fixes by category, 5 representative before→after, candidates left, skills you actually invoked.
+~~~~
+
+### p0349
+
+2026-11-03 21:18 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+Task: Korean language review of the Korean explanatory prose in two brand files, editing them in place. Report in Korean.
+- `~/ai/evenstay/design/brand/logo/README.md` (37 lines)
+- `~/ai/evenstay/design/brand/guidelines.html` (brand guidelines page: review only the Korean explanatory sentences in visible text; do not change markup, CSS, attributes, class names, SVG, colours or layout)
+
+First, invoke these three skills with the Skill tool, in this order. The user designated them. Apply them to the Korean prose.
+1. `grammar-checker`: spelling, spacing, particles and endings, punctuation.
+2. `style-guide`: term consistency.
+3. `humanizer`: translationese, awkward passives, stiff noun chains. Keep the meaning and change only the sentence.
+
+Term standard:
+- Brands: Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서. On 2026-11-03 the user decided that the product names after Evenstay are Korean, so any remaining "Evenstay Home" or "Evenstay Family" in running text should become the Korean form.
+  - Exception: leave old names that appear inside a dated change-log entry describing the rename.
+  - Exception: leave the logo artwork, which is SVG paths.
+- Staff module names: 안심 알림 / 보호자 포털·동의 / AI 생활 비서 / 생활 지원 단계.
+- People: "입주자" on staff screens, "회원님" when speaking to the member.
+
+Hard rules:
+- Do NOT change any of these:
+  - hex codes, numbers, ratios, sizes, file names and paths
+  - code, inline code
+  - the density shorthand "Home", "Family", "ops"
+  - any quoted on-screen copy samples ("…"), unless one has a definite spelling error. If so, list it as a candidate instead of editing it, because screen copy belongs to the docs.
+- Do not add judgment words (낙상, 쓰러짐, 응급, 위험, 배회) or emoji. Do not add new rules or facts.
+- Fix definite errors directly. Polish a sentence only when the meaning stays exactly the same. When unsure, leave it unchanged and list it as a candidate.
+- Do not touch any other file except your log. Backups exist.
+- After editing guidelines.html, make sure it is still valid. Check that tag counts are the same as before by grepping a few tags, for example `grep -c "<section"` before and after.
+
+Write a change log to `(임시 폴더)`. Use one table per file, with these columns: 구분, line, 전, 후, 이유. Then add a "남긴 후보" section.
+
+Final reply, under 250 words:
+- the number of fixes per file and by category
+- 5 representative before → after examples
+- the candidates you left
+- the skills you actually invoked
+~~~~
+
+### p0350
+
+2026-11-03 21:26 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+인용 맞추기
+~~~~
+
+### p0351
+
+2026-11-03 21:27 · 허브 지시 · A 코어 기획: Evenstay Core PRD·tech-design
+
+~~~~text
+허브 요청: 방금 남긴 "카피 인용 후보"를 copy.md에 맞춰 고치고 evenstay/docs/core/로 다시 인계해 주세요.
+사용자 말(그대로): "인용 맞추기".
+
+방법:
+- 따옴표로 화면 문구를 인용한 곳은 03-copywriting/ideas/pms-core-billing/copy.md 문장과 글자까지 같게 바꿔요(예: "드시지 않은 식사 3끼, 27,000원을 빼 드렸어요.").
+- copy.md에 없는 문구(예: "항목 이유 보기", "10월 식사 기록 마감")는 지어내지 말고, copy.md의 가장 가까운 실제 문구로 바꾸거나 따옴표를 빼고 설명 문장으로 바꿔요. 어느 쪽인지 보고에 적어요.
+- 흐름을 요약한 곳이라 원문 전체가 어울리지 않으면 따옴표를 빼고 "(요약)"처럼 요약임을 밝혀요.
+- copy.md는 고치지 않아요. 숫자·ID·코드 이름은 그대로예요.
+- 변경 메모는 이미 있는 "(korean-skills, 재승인 대기)" 줄을 그대로 쓰고, 변경 기록 절에 인용 맞춤 항목을 덧붙여요.
+- 다시 인계한 뒤 원본과 docs/가 경로 줄만 다른지 diff로 확인해요. shared/, 03-copywriting, 다른 모듈은 고치지 않아요.
+
+보고: 고친 곳 목록(파일·절, 전→후, 방식: 원문 일치/가까운 문구/요약 표시), 남은 불일치 0건 여부, diff 결과.
+~~~~
+
+### p0352
+
+2026-11-03 21:27 · 허브 지시 · B 기획: Evenstay Safety 안심 알림
+
+~~~~text
+허브 요청: 방금 남긴 "카피 인용 후보" 11곳을 copy.md에 맞춰 고치고 evenstay/docs/safety/로 다시 인계해 주세요.
+사용자 말(그대로): "인용 맞추기".
+
+방법:
+- 따옴표로 화면 문구를 인용한 곳은 03-copywriting/ideas/safety-signal-hub/copy.md 문장과 글자까지 같게 바꿔요.
+- copy.md에 없는 문구는 지어내지 말고, copy.md의 가장 가까운 실제 문구로 바꾸거나 따옴표를 빼고 설명 문장으로 바꿔요. 어느 쪽인지 보고에 적어요.
+- 흐름을 요약한 곳이라 원문 전체가 어울리지 않으면 따옴표를 빼고 "(요약)"처럼 요약임을 밝혀요.
+- copy.md는 고치지 않아요. 숫자·ID·코드 이름은 그대로예요. 판단 단어를 새로 쓰지 않아요.
+- 변경 메모는 이미 있는 "(korean-skills, 재승인 대기)" 줄을 그대로 쓰고, 변경 기록 절에 인용 맞춤 항목을 덧붙여요.
+- 다시 인계한 뒤 원본과 docs/가 경로 줄만 다른지 diff로 확인해요. shared/, 03-copywriting, 다른 모듈은 고치지 않아요.
+
+보고: 고친 곳 목록(파일·절, 전→후, 방식: 원문 일치/가까운 문구/요약 표시), 남은 불일치 0건 여부, diff 결과.
+~~~~
+
+### p0353
+
+2026-11-03 21:27 · 허브 지시 · D 기획: Evenstay Family 보호자 포털·동의
+
+~~~~text
+허브 요청: 방금 남긴 "카피 인용 불일치" 8곳을 copy.md에 맞춰 고치고 evenstay/docs/family/로 다시 인계해 주세요.
+사용자 말(그대로): "인용 맞추기".
+
+방법:
+- 따옴표로 화면 문구를 인용한 곳은 03-copywriting/ideas/family-consent-portal/copy.md 문장과 글자까지 같게 바꿔요(허락 범위 줄, [Evenstay 패밀리] 문자 머리말, "대신 처리하실 분" 포함).
+- copy.md에 없는 문구는 지어내지 말고, copy.md의 가장 가까운 실제 문구로 바꾸거나 따옴표를 빼고 설명 문장으로 바꿔요. 어느 쪽인지 보고에 적어요.
+- 흐름을 요약한 곳이라 원문 전체가 어울리지 않으면 따옴표를 빼고 "(요약)"처럼 요약임을 밝혀요.
+- copy.md는 고치지 않아요. 숫자·ID·코드 이름은 그대로예요.
+- 변경 메모는 이미 있는 "(korean-skills, 재승인 대기)" 줄을 그대로 쓰고, 변경 기록 절에 인용 맞춤 항목을 덧붙여요.
+- 다시 인계한 뒤 원본과 docs/가 경로 줄만 다른지 diff로 확인해요. shared/, 03-copywriting, 다른 모듈은 고치지 않아요.
+
+보고: 고친 곳 목록(파일·절, 전→후, 방식: 원문 일치/가까운 문구/요약 표시), 남은 불일치 0건 여부, diff 결과.
+~~~~
+
+### p0354
+
+2026-11-03 21:27 · 허브 지시 · G 기획: Evenstay Home 비서 최소판
+
+~~~~text
+허브 요청: G 기획 문서 7종에서 따옴표로 인용한 화면 문구를 copy.md와 대조해, 다른 곳을 맞추고 evenstay/docs/assistant/로 다시 인계해 주세요.
+사용자 말(그대로): "인용 맞추기". 다른 모듈 기획 문서에서 인용이 copy.md와 어긋난 곳이 나와서 모든 모듈을 같이 맞춰요.
+
+방법:
+- 03-copywriting/ideas/senior-ai-assistant/copy.md 문장과 글자까지 같게 바꿔요("Evenstay(이븐스테이) 홈 비서" 포함). 답 문장 틀의 자리표시자는 copy.md 표기를 따라요.
+- copy.md에 없는 문구는 지어내지 말고, 가장 가까운 실제 문구로 바꾸거나 따옴표를 빼고 설명 문장으로 바꿔요.
+- 흐름을 요약한 곳은 따옴표를 빼고 "(요약)"처럼 요약임을 밝혀요.
+- copy.md는 고치지 않아요. 숫자·ID·코드 이름은 그대로예요.
+- 변경 메모는 이미 있는 "(korean-skills, 재승인 대기)" 줄을 그대로 쓰고, 변경 기록 절에 인용 맞춤 항목을 덧붙여요. 어긋난 곳이 없으면 파일은 건드리지 않아요.
+- 다시 인계한 뒤 원본과 docs/가 경로 줄만 다른지 diff로 확인해요. shared/, 03-copywriting, 다른 모듈은 고치지 않아요.
+
+보고: 대조한 인용 수, 고친 곳 목록(파일·절, 전→후, 방식: 원문 일치/가까운 문구/요약 표시), 남은 불일치 0건 여부, diff 결과.
+~~~~
+
+### p0355
+
+2026-11-03 21:27 · 허브 지시 · C 기획: Evenstay Transitions 생활 지원 단계
+
+~~~~text
+허브 요청: C 기획 문서 7종에서 따옴표로 인용한 화면 문구를 copy.md와 대조해 맞추고, 카피 2-2 날짜가 "미정"이라는 옛 메모도 정리한 뒤 evenstay/docs/transitions/로 다시 인계해 주세요.
+사용자 말(그대로): "인용 맞추기".
+
+방법:
+- 03-copywriting/ideas/care-stage-transition/copy.md 문장과 글자까지 같게 바꿔요. 단계 이름은 지금 정한 직원·회원 이름 그대로예요.
+- 2-2 날짜: copy.md는 이미 "12월 7일 저녁"으로 고쳐져 있어요(copy.md 460행 변경 기록). 기획 문서의 "미정·확인 필요" 메모를 이 사실에 맞게 고쳐요.
+- copy.md에 없는 문구는 지어내지 말고, 가장 가까운 실제 문구로 바꾸거나 따옴표를 빼고 설명 문장으로 바꿔요.
+- 흐름을 요약한 곳은 따옴표를 빼고 "(요약)"처럼 요약임을 밝혀요.
+- copy.md는 고치지 않아요. 숫자·ID·코드 이름은 그대로예요. 금지어(판정, 단계 뜻의 등급, 하향·상향, 퇴소, 단계 번호)를 새로 쓰지 않아요.
+- 변경 메모는 이미 있는 "(korean-skills, 재승인 대기)" 줄을 그대로 쓰고, 변경 기록 절에 인용 맞춤 항목을 덧붙여요. 어긋난 곳이 없으면 파일은 건드리지 않아요.
+- 다시 인계한 뒤 원본과 docs/가 경로 줄만 다른지 diff로 확인해요. shared/, 03-copywriting, 다른 모듈은 고치지 않아요.
+
+보고: 대조한 인용 수, 고친 곳 목록(파일·절, 전→후, 방식: 원문 일치/가까운 문구/요약 표시), 날짜 메모 정리 결과, 남은 불일치 0건 여부, diff 결과.
+~~~~
+
+### p0357
+
+2026-11-03 21:36 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+정리해
+~~~~
+
+### p0359
+
+2026-11-03 21:40 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+맡겨
+~~~~
+
+### p0360
+
+2026-11-03 21:40 · 허브 지시 · B 카피: Evenstay Safety 이상 신호 허브
+
+~~~~text
+허브 요청: B 기획 문서에 "카피 반영 대기"로 남은 화면 문구를 copy.md에 써 주세요.
+사용자 말(그대로): "맡겨".
+
+대기 목록 원본(읽기만):
+- 04-planning/ideas/safety-signal-hub/tech-design.md "확인할 것 14"의 "대기:" 줄
+- 같은 폴더 user-stories.md 270행 근처의 "대기:" 줄, US-18(기기 연결과 장치 동의), US-21(규칙·당번표 설정), US-01 인수 조건 5
+- prd.md F16, F19
+
+쓸 것(새 절이나 기존 절에 추가):
+1. 기기 연결·장치 동의 설정 화면(프런트 직원용): 제목, 기기→호실·입주자 연결, 회원 동의 기록(일시, 받은 직원, 경로), 기기 연결이 없는 신호의 입주자 칸 표시, 연결 필요 할 일, 빈 상태, 오류
+2. 규칙·당번표 설정 화면(책임자용): 제목, 규칙(5개 이내) 바꾸기, 당번표 바꾸기, 바꾸면 새 버전이 된다는 안내, 저장·취소, 오류
+3. 대기 목록에 남은 나머지 문구(묶음 카드의 모두 맡기 버튼, 전화로 받은 호출 등록 버튼과 출처 라벨, 알림 기록 필터 이름, 처리 실패 표시 등). "맡은 뒤 오래 머문 알림 안내"는 Next라 이번에 쓰지 않아도 돼요.
+
+쓸 스킬(Skill 도구): 이 폴더의 카피 스킬 중 맞는 것, 그리고 다 쓴 뒤 `grammar-checker` → `style-guide` → `humanizer`로 새 문구를 검수해요.
+
+지킬 것:
+- 직원 화면은 "입주자", 합쇼체. 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회 등) 금지. 모듈 이름은 "안심 알림". 이모지 금지.
+- 기존 문구와 용어(Glossary, names.md v4)를 따르고, 이미 승인된 문구는 바꾸지 않아요.
+- 상태 줄은 그대로 두고 "변경: 2026-11-03 카피 반영 대기 문구 추가(재승인 대기)" 메모와 변경 기록을 남겨요.
+- 04-planning, evenstay, shared/, 다른 모듈은 고치지 않아요. 기획 문서의 대기 표시는 끝난 뒤 허브가 기획 세션에 정리를 맡겨요.
+
+보고: 추가한 절과 문구 목록(대기 항목별 대응), 쓰지 않고 남긴 항목과 이유, 실제 호출한 스킬.
+~~~~
+
+### p0362
+
+2026-11-03 21:52 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+승인
+~~~~
+
+### p0363
+
+2026-11-03 21:53 · 사용자 · 시니어 서비스 MVP 기획 환경 구성
+
+~~~~text
+그것도 승인
+~~~~
+
+### p0374
+
+2026-11-03 22:20 · 허브 지시 · B 기획: Evenstay Safety 안심 알림
+
+~~~~text
+허브 요청(검토, 문서는 아직 고치지 않음): 사용자가 말한 안전 서비스 목록과 B 기획(F1~F19)을 대조해 빈 곳을 검토해 주세요.
+사용자 말(그대로): "시니어들의 안전을 위해 긴급 경보로 즉시 출동하거나 진단, 응급처치, 긴급치료, 병원이송, 긴급벨 알람 출동, 숙소 체크나 시니어들을 수시로 모니터링해야되는 이런 서비스나 페이지도 부족한거 같은데 다시 한번 검토해줘".
+
+항목: ① 경보 시 직원 즉시 출동 ② 진단 ③ 응급처치 ④ 긴급 치료 ⑤ 병원 이송 ⑥ 호출벨 알람 출동 ⑦ 숙소 체크(정기 순회·방문 확인) ⑧ 수시 모니터링.
+
+항목마다 표로 적어 주세요:
+- 지금 기획에서 다루는 곳(F 번호, US, 화면 ID)과 다루는 수준(소프트웨어 기능 / 운영 절차만 / 없음)
+- 소프트웨어가 해야 할 일과 사람이 해야 할 일의 경계. 진단·치료는 의료 행위라 시스템이나 일반 직원이 하는 것으로 쓰면 안 돼요. 간호 인력 상주, 협력 의료기관, 응급처치 교육 같은 운영 전제는 지어내지 말고 [미정]/[가설]로 적어요. 관련 법(의료법, 노인복지법 등)은 출처 URL과 기준 날짜를 붙이고, 확인 못 하면 [미확인].
+- 추가 제안: 새 기능 후보(예: 정기 순회·안부 방문 기록, 이송 동행 기록, 출동 응답 시간 표시)를 P0/P1/Next와 이유로 제안해요. 데모 범위(2~4주, 1인)를 넘으면 Next로 둬요.
+- 화면 문구 규칙: 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회 등) 금지는 그대로예요. 문구가 필요하면 금지어 없이 쓰는 방향만 적어요.
+
+승인본이라 기획 문서는 고치지 말고, 보고만 해 주세요(사용자가 고를 수 있게 추천 1안 포함). 보고는 한국어로.
+~~~~
+
+### p0385
+
+2026-11-03 22:38 · 허브 지시 · N1 카피: 생활 요청(작업 지시)
+
+~~~~text
+Background (from the session that started this one):
+senior-lab은 시니어 레지던스 PMS 'Evenstay' 포트폴리오 기획 워크스페이스예요([지원 회사] Tech Lead / Senior Backend 지원용, 회사 이름·표지는 쓰지 않음). 코어(계약·청구)와 모듈 4개(안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계)가 승인돼 evenstay 저장소에 인계됐어요. 오늘 서비스 빈 곳 검토에서 수리·청소·세탁·이동 같은 생활 요청이 비어 있었고, 사용자가 새 모듈 N1로 MVP에 넣기로 했어요. 파이프라인은 카피(03) → 기획(04) → evenstay/docs 인계예요. 이 세션은 카피 단계만 맡아요. 허브(00-hub)가 보고를 파일로 확인하고, 승인은 사용자만 해요. 결과는 한국어로, 커밋하지 않아요(git 저장소 아님).
+
+Task:
+허브 요청: 새 모듈 N1 "생활 요청(작업 지시)"의 카피를 만들어 주세요. slug는 `life-requests`, 폴더는 `ideas/life-requests/`.
+사용자 선택(그대로): "넓게(N1 포함)". 근거: `../01-research/outputs/service-coverage-review.md` 4-1 N1 행(묶는 빈 곳 S16 청소, S17 세탁, S18 수리, S19·S56 정기 작업, S26 병원 동행 신청, S30 셔틀·외출, S39 의견·불편).
+
+하는 일(기획 전 요약): 입주자·보호자(허락된 범위)·직원·AI 생활 비서가 요청을 올리면 종류별로 담당에 배정하고, 접수 → 처리 중 → 완료 → 회원 확인까지 상태를 남겨요. 정기 작업(주 2회 청소, 월 점검)은 일정에서 자동으로 만들어요. 유료 요청은 코어 청구 항목으로, 열린 요청 수는 운영 현황 대시보드로 가요.
+
+만들 것(다른 모듈 카피와 같은 구성, 예: `ideas/safety-signal-hub/`):
+1. `names.md`: 직원 화면 모듈 이름(한글, 다른 모듈과 같은 결: 안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계), 회원·보호자 화면 이름, 요청 종류·상태 라벨. Skill `product-name`.
+2. `value-prop.md`: 입주자, 보호자, 현장 직원, 책임자별. Skill `value-prop-statements`.
+3. `product-marketing.md`: 용어집(코어 Glossary와 충돌 없게). Skill `product-marketing`.
+4. `copy.md`: 화면 문구(회원 요청 올리기·내 요청 보기·확인, 보호자 보기, 직원 요청 목록·배정·처리·완료, 책임자 정기 작업 설정, 빈 상태, 오류, 문자 알림). Skill `copywriting`, 다 쓴 뒤 `copy-editing`, 그리고 `grammar-checker` → `style-guide` → `humanizer`로 검수.
+
+지킬 것:
+- 기준 용어: `ideas/pms-core-billing/product-marketing.md` Glossary, `ideas/pms-core-billing/names.md` v4, 브랜드 Evenstay(운영) / Evenstay 홈(회원) / Evenstay 패밀리(보호자) / Evenstay 홈 비서.
+- 직원 화면은 "입주자"·합쇼체, 회원에게 말할 때 "회원님"·해요체, 보호자 화면의 대리 표현은 "대신 처리하실 분". 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정) 금지. 이모지 금지. "판" 대신 "버전".
+- 병원 동행 신청은 일정·이동 도움만이고 진료·건강 내용은 받지 않아요. 앱이 어려운 분의 대안 경로(프런트 전화, 직원이 대신 올림, 비서)를 문구에 넣어요.
+- 처리 시간 약속, 효과 수치, 후기는 지어내지 않아요. 문장마다 [사실]/[추정]/[가설]/[미정] 구분이 되게.
+- 파일마다 `상태: 초안`. shared/, 다른 slug, 04-planning, evenstay는 고치지 않아요.
+
+보고(한국어): 정한 이름 후보와 추천, 요청 종류·상태 라벨 목록, copy.md 절 목록, 사용자가 정할 것, 실제 호출한 스킬.
+
+Shared notes folder for this group of sessions (outside the repo; read siblings' notes there, leave hand-over notes or large findings there instead of pasting them into messages): ~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19
+~~~~
+
+### p0386
+
+2026-11-03 22:45 · 에이전트 지시 · A 코어 기획: Evenstay Core PRD·tech-design
+
+~~~~text
+Read-only review. Do not edit files.
+
+Context: planning docs for "Evenstay Core" (a PMS core for Korean senior housing) live in ~/ai/senior-lab/04-planning/ideas/pms-core-billing/ (strategy.md, service-blueprint.md, prd.md, user-stories.md, roadmap.md, tech-design.md, handoff.md). Today two features were added to all docs except strategy.md: (1) 장기 부재 (resident long absence, S44, feature F18, screen CORE-13, US-23/US-24, entity ResidentAbsence, events ResidentAbsenceStarted/ResidentAbsenceEnded, AbsenceQuery, TodoQuery kind ABSENCE_RETURN_OVERDUE, rate-table setting absence_meals), (2) 운영 현황 카드 (operations dashboard cards D1 above screen CORE-01, F19, US-25, OccupancyQuery, `app/` composition, table of module queries in tech-design 10절). Each addition is marked with "2026-11-03" and the change-record sections at the end of each file list what was added. The previous version of tech-design is at (임시 폴더) (diff it to see the new parts).
+
+Requirements the additions must meet (from the requester):
+- Absence records only: start date, expected return date, actual return date, registering staff (plus status/channel). No reason, illness name, hospital name. (The author also chose not to record absence type — check it's consistent everywhere.)
+- Events named exactly `ResidentAbsenceStarted`, `ResidentAbsenceEnded` with payload absenceId, residentId, siteId, unitId, a date/time, expected return date only.
+- Meal rule values are [가설]/[미정]; "예정 복귀일 지남" appears in 확인할 일.
+- Permissions, audit, demo seed (not 이은숙), acceptance criteria, screen definition present.
+- Dashboard cards: 호실 현황, 열린 안전 신호와 맡지 않은 것, 지난 24시간 확인까지 걸린 시간, 끊긴 기기, 오늘 당번, 확인할 일, 장기 부재 중인 분, 열린 생활 요청(N1). Facts only, no target lines, no good/bad colors, no individual resident activity/location, `app/` reads module `api/` every request and copies nothing. Module query names marked [가설].
+- Rules: no new judgment words (낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정) in the new text; staff screen uses 합쇼체 and "입주자"; no invented effect numbers or targets; "버전" not "판"; new screen copy marked [NEED: 카피]; every sentence's fact status ([사실]/[추정]/[가설]/[미정]) should be recognizable for claims.
+
+Check and report concrete problems only (file, line, what's wrong, suggested fix):
+1. Contradictions between docs about the new features (fields, event payload, seed dates per demo state, who can do what — compare tech-design 6-2 rows vs prd 10절 vs US-23/25, P1 order, screen IDs).
+2. Seed timeline sanity: demo states AFTER_SUCCESSION (clock 2026-11-10), C_AFTER_DISCHARGE (2026-12-07 evening), G_START (2027-01-05). Absence seed: 박영순 (A동 401호) and 최순덕 (B동 402호). Verify these residents/units exist in prd 9절 seed and the dates make sense per state.
+3. Arithmetic in the meal example (11/8 start, 11/19 return → 10 days × 3 meals = 30 meals, 270,000원 at 9,000원/meal).
+4. Conflicts with existing design (e.g., ADR-2 module boundaries, ADR-4 ledger immutability after meal close, existing rule "결식 기록에는 이유를 받지 않는다", MealQuery semantics, 8-3 header rule about payloads, succession/settle transitions in 3-1).
+5. Any rule violation from the list above in the new text.
+Keep the report under 500 words, ordered by severity.
+~~~~
+
+### p0396
+
+2026-11-03 23:00 · 허브 지시 · 코어 카피 2-5~2-7 스킬 검토
+
+~~~~text
+허브 요청: 코어 기획에 새로 생긴 `[NEED: 카피]`를 코어 copy.md에 써 주세요.
+배경: 사용자가 보완 범위 "넓게(N1 포함)"를 골라 코어 기획에 장기 부재(F18, CORE-13)와 운영 현황 카드(F19, CORE-01 위 카드)가 들어갔어요.
+대상 목록: `04-planning/ideas/pms-core-billing/`의 prd·tech-design·user-stories에서 `[NEED: 카피]`(2026-11-03 변경분) — CORE-13 장기 부재 화면(이름, 라벨, 버튼: 부재 시작·복귀 기록·예정 복귀일 바꾸기·등록 취소, 확인 창, 오류: 중복·미래 날짜·시작 전 복귀일·겹침, 빈 상태, "예정 복귀일 지남" 표시), 확인할 일 줄 "예정 복귀일 지남", 운영 현황 카드(카드 제목, 숫자 설명, 기준 시각, 불러오기 실패), CORE-03 요금 규칙의 부재 끼니 설정(켜기/끄기, 최소 일수) 라벨과 도움말, 용어 "장기 부재".
+지킬 것: 부재 종류·이유(입원, 외박, 병원)는 쓰지 않아요. 직원 화면 합쇼체·"입주자", 판단 단어 금지, 목표값·좋음/나쁨 표현 없음, 이모지 금지, "판" 대신 "버전". Skill `copywriting` 뒤 `grammar-checker` → `style-guide` → `humanizer`. 상태 줄은 그대로 두고 "변경: 2026-11-03 장기 부재·운영 현황 카드 문구 추가(재승인 대기)" 메모와 교정 기록. 04-planning, evenstay, shared/, 다른 모듈은 고치지 않아요.
+보고: 추가한 절과 문구 수, 남긴 후보, 실제 호출한 스킬.
+~~~~
+
+### p0397
+
+2026-11-03 23:00 · 허브 지시 · B 카피: Evenstay Safety 이상 신호 허브
+
+~~~~text
+허브 요청: B 기획에 새로 생긴 `[NEED: 카피]`(F20~F25, US-23~28, 2026-11-03 "안전 서비스 보완")를 B copy.md에 써 주세요.
+배경: 사용자가 보완 범위 "넓게(N1 포함)"를 골랐어요. 대상: 출동까지 걸린 시간 표시("확인까지 n분 · 만남까지 n분"), 병원 동행 기록(동행 직원, 출발, 돌아오심, 첫 화면 "병원에 가신 분 n명"), 안부 방문(선택지 "다녀왔습니다 / 방에 계시지 않았습니다 / 회원님이 방문을 원하지 않으셨습니다", 놓친 방문 신호), 장기 부재 중 "부재 중" 표시, 야간 당번 보기 한 줄(맡지 않은 신호 n, 끊긴 기기 n, 오늘 당번), 회원 화면 안부 방문 안내(해요체, 예: "하루 한 번 직원이 안부를 여쭈러 들러요"). 정확한 목록은 `04-planning/ideas/safety-signal-hub/`의 `[NEED: 카피]`를 따르세요. 문구 방향은 허브 노트 safety-coverage-review 5절과 같아요: "모니터링·순찰·감시" 안 씀, 판단 단어 금지, 부재 종류·병원 이름 없음.
+Skill `copywriting` 뒤 `grammar-checker` → `style-guide` → `humanizer`. 상태 줄 그대로, "변경: 2026-11-03 안전 서비스 보완 문구 추가(재승인 대기)" 메모와 교정 기록. "판" 대신 "버전", 이모지 금지. 04-planning, evenstay, shared/, 다른 모듈은 고치지 않아요.
+보고: 추가한 절과 문구 수, 남긴 후보, 실제 호출한 스킬.
+~~~~
+
+### p0398
+
+2026-11-03 23:00 · 허브 지시 · D 카피: Evenstay Family 보호자 포털·동의
+
+~~~~text
+허브 요청: D 기획에 새로 생긴 `[NEED: 카피]`(F18 장기 부재 소식, F19 사업장 동의 현황, 2026-11-03)를 D copy.md에 써 주세요.
+배경: 사용자가 보완 범위 "넓게(N1 포함)"를 골랐어요. 대상: 보호자 생활 소식의 부재 시작·돌아오심 문구와 문자([Evenstay 패밀리] 머리말, LMS), 생활 소식 허락이 없을 때의 처리 안내(직원·회원 쪽), 사업장 동의 현황 카드 라벨(직원 화면). 정확한 목록은 `04-planning/ideas/family-consent-portal/`의 `[NEED: 카피]`를 따르세요.
+지킬 것: 부재 종류·이유·장소·병원 이름 없이 사실만("자리를 비우셨어요", "돌아오셨어요" 방향). 취소된 부재에는 돌아오신 소식이 없어요. 보호자 화면 해요체, "이은숙 회원님이 보여 주기로 한 …이에요." 허락 범위 줄 규칙, "대신 처리하실 분" 용어, 판단 단어 금지, 이모지 금지, "판" 대신 "버전".
+추가로: N1 생활 요청 카피에서 사용자가 "D 허락 항목에 '생활 요청'을 더함(보기 + 대신 올리기, 기본값 '안 보여요')"으로 정했어요(`ideas/life-requests/copy.md` 정한 것 1). D 허락 항목 라벨과 설명 문구도 함께 써 주세요.
+Skill `copywriting` 뒤 `grammar-checker` → `style-guide` → `humanizer`. 상태 줄 그대로, "변경: 2026-11-03 장기 부재 소식·동의 현황·생활 요청 허락 문구 추가(재승인 대기)" 메모와 교정 기록. 04-planning, evenstay, shared/, 다른 모듈은 고치지 않아요.
+보고: 추가한 절과 문구 수, 남긴 후보, 실제 호출한 스킬.
+~~~~
+
+### p0400
+
+2026-11-03 23:03 · 허브 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+Background (from the session that started this one):
+senior-lab은 시니어 레지던스 PMS 'Evenstay' 포트폴리오 기획 워크스페이스예요([지원 회사] Tech Lead / Senior Backend 지원용, 회사 이름·표지는 쓰지 않음). 코어(계약·청구)와 모듈 4개(B 안심 알림, D 보호자 포털·동의, G AI 생활 비서, C 생활 지원 단계)가 승인돼 evenstay 저장소(모듈형 모놀리스, Next.js·PostgreSQL)에 인계됐어요. 오늘 서비스 빈 곳 검토 뒤 사용자가 "넓게(N1 포함)"를 골라 새 모듈 N1 생활 요청을 MVP에 넣기로 했고, 카피가 승인됐어요. 같은 날 코어에 장기 부재(AbsenceQuery, ResidentAbsenceStarted/Ended)와 운영 현황 카드가 들어갔어요. 허브(00-hub)가 단계 세션에 일을 맡기고 보고를 파일로 확인해요. 승인은 사용자만 해요. 결과는 한국어로, 커밋하지 않아요(git 저장소 아님).
+
+Task:
+허브 요청: 새 모듈 N1 "생활 요청"(slug `life-requests`, 개발 모듈 폴더 `requests`)을 기획하고 evenstay에 인계해 주세요.
+사용자 말(그대로): "승인하고 기획 시작". 입력은 승인된 카피 `../03-copywriting/ideas/life-requests/`(names, value-prop, product-marketing, copy 4개, 2026-11-03 승인)와 빈 곳 검토 `../01-research/outputs/service-coverage-review.md` 4-1 N1 행이에요.
+
+만들 것(`ideas/life-requests/`, 다른 모듈과 같은 묶음; 예시는 `ideas/safety-signal-hub/`):
+- `strategy.md`(Skill `product-strategy`), `service-blueprint.md`(`service-blueprint`), `prd.md`(`create-prd`), `user-stories.md`(`user-stories`), `roadmap.md`(`outcome-roadmap`), `tech-design.md`, `handoff.md`.
+- 범위: 요청 종류(수리, 청소, 세탁, 이동·셔틀, 병원 동행 신청, 의견·불편), 접수 → 배정 → 처리 중 → 완료 → 회원 확인(7일 지나면 확인 없이 닫힘) 상태 전이, 담당 배정, 정기 작업 자동 생성(정기 청소는 확인 없이 완료, [다시 봐 주세요]), 종류별 처리 기한(카피의 남은 [미정], 사업장 설정 값 [가설]), 유료 요청은 코어 청구 항목으로 넘기기, 직원 화면에서 [안심 알림으로 옮기기].
+- 다른 모듈 연결(모듈 경계 규칙은 `~/ai/evenstay/CLAUDE.md` 22~31행을 반드시 따름: 자기 스키마 `requests`, 다른 모듈은 `core/api`와 각 모듈 `api/`로만, 데이터 사본 금지, 이벤트는 아웃박스·멱등, 권한은 코어 `authorize()`에 `requests.*` 행동만 등록):
+  - 코어: 입주자·호실·직원 조회, 유료 요청의 청구 항목 넘김 방식(코어 `docs/core/tech-design.md` 기존 API를 확인하고, 없으면 코어 요청으로 적기), 장기 부재 중(`AbsenceQuery`) 정기 작업 처리.
+  - G AI 생활 비서: G의 "직원에게 넘기기"가 N1 요청을 만드는 길(G 문서 `ideas/senior-ai-assistant/`의 넘기기 부분을 확인하고, G 쪽에 바꿀 것은 "G에 요청"으로 적기).
+  - D 보호자 포털: 사용자가 정한 "D 허락 항목에 '생활 요청' 추가(보기 + 대신 올리기, 기본 '안 보여요')", 병원 동행 요청은 건강 소식 허락 보호자에게만, 병원 이름 없이. D 쪽 변경은 "D에 요청"으로.
+  - B 안심 알림: [안심 알림으로 옮기기]의 넘김 방식, B 병원 동행 기록(F2x)과 N1 병원 동행 신청의 관계를 정리.
+  - 운영 현황 대시보드: 코어 10절에 [가설]로 적힌 `ServiceRequestQuery.openCount(siteId, at, actor)`를 확정.
+- 데모 시드: 이은숙 회원님(A동 201호)과 가상 입주자 몇 명의 요청 몇 건, 루트 seed 상태(AFTER_SUCCESSION, G_START, C_AFTER_DISCHARGE)별 시작점.
+- 우선순위: 1인 2~4주 MVP에 넣는 범위를 P0/P1/Next로 나눠요. 화면 ID는 `REQ-01…`.
+
+인계: 끝나면 `handoff.md`를 쓰고, 기획 7종을 `~/ai/evenstay/docs/requests/`에, 카피 4종을 `docs/requests/copy/`에 복사해요(다른 모듈과 같은 경로 규칙: 상대 경로는 절대 경로로). evenstay에 `requests/CLAUDE.md`(범위, 꼭 지킬 규칙, 하지 않을 것; 예: `~/ai/evenstay/transitions/CLAUDE.md`)를 만들어요. evenstay 루트 CLAUDE.md 모듈 표와 다른 모듈 문서, shared/는 고치지 않아요(허브 몫).
+
+지킬 것: 문장마다 [사실]/[추정]/[가설]/[미정], 효과 수치·처리 시간 약속을 지어내지 않음, 판단 단어 금지, 직원 화면 "입주자"·합쇼체, 회원 "회원님"·해요체, 병원 동행은 진료·증상 정보 없음, "판" 대신 "버전", 이모지 금지. 화면 문구는 승인된 copy.md를 그대로 인용하고, 새로 필요한 문구는 `[NEED: 카피]`. 문서 상태는 `상태: 초안`.
+
+보고(한국어): 만든 파일, P0/P1/Next 기능 목록, 화면 ID 목록, 상태 전이 요약, 다른 모듈에 보낼 요청(코어/G/D/B) 목록, `[NEED: 카피]` 목록, 인계 diff 결과(경로 줄만 다른지), 실제 호출한 스킬.
+
+Shared notes folder for this group of sessions (outside the repo; read siblings' notes there, leave hand-over notes or large findings there instead of pasting them into messages): ~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19
+~~~~
+
+### p0405
+
+2026-11-03 23:21 · 허브 지시 · 코어 카피 2-5~2-7 스킬 검토
+
+~~~~text
+허브 요청: 코어 기획에 예전부터 남아 있던 `[NEED: 카피]`도 채워 주세요. 사용자가 기획·화면 정의서를 모두 끝낸 뒤 한국어 검수를 하자고 해서 빈칸을 정리해요.
+대상(코어 기획 세션 보고 기준): ① 비상 연락처 입력·안내(prd 15절, US-04 조건 6, US-22, service-blueprint 1a) ② 납부 기한 표시(tech-design 2-1, prd 15절, US-06, US-10, US-12) ③ 계정 고르기의 역할 표시(US-17). 운영 현황 카드의 "확인까지 걸린 시간", "보호자 동의 현황" 숫자 문구는 B·D 반환 형태가 정해진 뒤라 이번엔 빼요.
+지킬 것은 지난번과 같아요(직원 합쇼체·"입주자", 회원 해요체·"회원님", 판단 단어 금지, 납부 기한에 "미납·연체" 쓰지 않음, 이모지 금지, "판" 대신 "버전"). Skill `copywriting` 뒤 `grammar-checker` → `style-guide` → `humanizer`. 상태 줄 그대로, 변경 메모 "(재승인 대기)"와 교정 기록. 04-planning, evenstay, shared/, 다른 모듈은 고치지 않아요.
+보고: 채운 절과 문구 수, 남긴 후보, 실제 호출한 스킬.
+~~~~
+
+### p0406
+
+2026-11-03 23:23 · 에이전트 지시 · N1 기획: 생활 요청(작업 지시)
+
+~~~~text
+한국어로 답하세요. 읽기만 하고 파일을 고치지 마세요.
+
+검토 대상: ~/ai/senior-lab/04-planning/ideas/life-requests/ 의 7개 문서(strategy, service-blueprint, prd, user-stories, roadmap, tech-design, handoff). 새 모듈 N1 "생활 요청" 기획 초안이다.
+
+대조 기준:
+1. 승인 카피 ~/ai/senior-lab/03-copywriting/ideas/life-requests/copy.md, names.md — 문서가 화면 문구를 인용할 때 원문과 글자 그대로 같은지(따옴표 안 문구). 카피에 없는 문구를 지어냈으면서 [NEED: 카피] 표시를 안 했는지.
+2. 모듈 경계 규칙 ~/ai/evenstay/CLAUDE.md "모듈 경계" 1~9번: 자기 스키마 requests, core/api·다른 모듈 api/만 import, 사본 금지, 이벤트는 아웃박스·멱등, 권한은 코어 authorize()에 requests.* 만 등록.
+3. 코어 API 사실 확인: ~/ai/senior-lab/04-planning/ideas/pms-core-billing/tech-design.md 8-2절(ResidentQuery, SiteQuery, StaffQuery, AbsenceQuery 메서드 이름), 2-2절 Charge·OutboxEvent, 10절 카드 표. N1 문서가 "있다"고 쓴 코어 메서드가 실제로 있는지, "요청"으로 적은 것이 정말 없는지.
+4. G ~/ai/senior-lab/04-planning/ideas/senior-ai-assistant/tech-design.md 2-1·2-2(HandoffReason, Handoff 필드), D ~/ai/senior-lab/04-planning/ideas/family-consent-portal/tech-design.md 4절 정책·8-2, B ~/ai/senior-lab/04-planning/ideas/safety-signal-hub/tech-design.md 8-1·8-2 와 N1 문서의 서술이 맞는지.
+5. 문서 사이 일관성: 상태 코드, 화면 ID(REQ-01~19), 기능 ID(F1~F21)와 우선순위(P0/P1/Next), US 번호, 요청 번호(N1-C/D/G/B/H), 시드(직원 이름, 호실, 날짜·시각) — prd 9절 시드와 코어 ~/ai/senior-lab/04-planning/ideas/pms-core-billing/prd.md 9절(호실 배치, 장기 부재 시드, 직원)이 맞는지.
+6. 규칙: 문장마다 [사실]/[추정]/[가설]/[미정] 구분 가능, 효과 수치·처리 시간 약속 없음, 화면 문구에 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정, 노인) 없음, 직원 화면 "회원" 금지, 버전을 "판"으로 쓰지 않음, 이모지 없음, 병원 동행에 진료·증상 정보 없음.
+
+출력: 판정(승인 가능 / 수정 필요) 한 줄, 그다음 지적 목록. 지적마다 파일:줄 또는 절, 무엇이 틀렸는지, 근거 원문(짧게), 고칠 방향. 심각도 순. 사소한 문체 취향은 빼고 사실 오류·불일치·규칙 위반만. 30건 이내.
+~~~~
+
+### p0428
+
+2026-11-04 00:10 · 허브 지시 · N2 카피: 커뮤니티(프로그램·공용시설·공지)
+
+~~~~text
+Background (from the session that started this one):
+senior-lab은 시니어 레지던스 PMS 'Evenstay' 포트폴리오 기획 워크스페이스예요([지원 회사] Tech Lead / Senior Backend 지원용, 회사 이름·표지는 쓰지 않음). 코어(계약·청구)와 모듈(안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계, 생활 요청)이 evenstay 저장소에 인계돼 있어요. 전체 리뷰 뒤 사용자가 보완을 "추천대로 시작"했고, 빠진 서비스 중 커뮤니티(프로그램·공용시설·공지)를 새 모듈 N2로 넣기로 했어요. 결과물은 모든 화면 프로토타입(먼저 Design 캔버스 아트보드, 뒤에 클릭형)이고 MVP 코드 구현은 하지 않아요. 파이프라인은 카피(03) → 기획(04) → evenstay/docs 인계. 허브(00-hub)가 보고를 파일로 확인하고 승인은 사용자만 해요. 결과는 한국어, 커밋하지 않아요(git 저장소 아님).
+
+Task:
+허브 요청: 새 모듈 N2 "커뮤니티"의 카피를 만들어 주세요. slug는 `community`, 폴더는 `ideas/community/`.
+사용자 결정(그대로): "추천대로 시작"(2026-11-04). 근거: `../01-research/outputs/service-coverage-review.md` 4-1 N2 행(S27 프로그램, S13 공용시설, S28 공지)과 `00-hub/reviews/supplement-orders-2026-11-04.md` "N2 커뮤니티" 절.
+
+하는 일(기획 전 요약): 여가 프로그램 일정·신청·정원·대기·출석, 공용시설 예약(겹침 방지, 이용 규칙), 사업장 공지(중요 공지 확인 표시). 회원은 앱·프런트 전화·직원 대신 신청으로 쓰고, 보호자는 회원이 허락한 범위에서 일정을 봐요. 소개 사이트 `/life` 여가 프로그램(수채화, 체조, 텃밭 등 예시)과 이름을 맞춰요.
+
+만들 것(다른 모듈 카피와 같은 구성, 예: `ideas/life-requests/`): `names.md`(Skill `product-name`), `value-prop.md`(`value-prop-statements`), `product-marketing.md`(`product-marketing`), `copy.md`(`copywriting` 뒤 `copy-editing`, 그리고 `grammar-checker` → `style-guide` → `humanizer`로 검수).
+- 화면 문구: 회원 프로그램 목록·상세·신청·취소·대기, 공용시설 예약·변경·취소, 공지 목록·상세·확인, 보호자 일정 보기, 직원 프로그램 등록·정원·출석 체크·시설 예약 관리·공지 작성, 빈 상태, 오류(정원 참, 시간 겹침), 문자 알림.
+
+지킬 것:
+- 기준 용어: `ideas/pms-core-billing/product-marketing.md` Glossary, `ideas/pms-core-billing/names.md` v4, 모듈 이름 결(안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계, 생활 요청), 브랜드 Evenstay / Evenstay 홈 / Evenstay 패밀리 / Evenstay 홈 비서.
+- 직원 화면 "입주자"·합쇼체, 회원 "회원님"·해요체, 보호자 화면 대리 표현 "대신 처리하실 분". 판단 단어 금지, 이모지 금지, "판" 대신 "버전".
+- 활동량·참여율로 회원을 평가하거나 "고립" 같은 판단 표현을 쓰지 않아요. 출석은 운영 기록일 뿐이에요.
+- 프로그램 효과, 참여 인원, 강사 경력은 지어내지 않아요. 문장마다 [사실]/[추정]/[가설]/[미정].
+- 파일마다 `상태: 초안`. shared/, 다른 slug, 04-planning, evenstay는 고치지 않아요.
+
+보고(한국어): 이름 추천, 라벨 목록, copy.md 절 목록, 사용자가 정할 것(추천안 포함), 실제 호출한 스킬.
+
+Shared notes folder for this group of sessions (outside the repo; read siblings' notes there, leave hand-over notes or large findings there instead of pasting them into messages): ~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19
+~~~~
+
+### p0429
+
+2026-11-04 00:16 · 에이전트 지시 · A 코어 기획: Evenstay Core PRD·tech-design
+
+~~~~text
+Read-only review. Do not edit any file.
+
+Planning docs for "Evenstay Core" (PMS core for Korean senior housing) are in ~/ai/senior-lab/04-planning/ideas/pms-core-billing/ (prd.md, user-stories.md, tech-design.md, service-blueprint.md, roadmap.md, handoff.md). Today (2026-11-04) a batch was applied following the hub's order ~/ai/senior-lab/00-hub/reviews/supplement-orders-2026-11-04.md — read its "공통 규칙", "통합 데모에 넣을 새 장면", and "코어" sections (items 1–8). Pre-batch copies are in (임시 폴더) — diff them against the current files to see what changed.
+
+Related cross-module sources to check consistency against:
+- N1 (생활 요청) requests to core: ~/ai/senior-lab/04-planning/ideas/life-requests/tech-design.md section 10-1 (N1-C1..C4), its 8-2 ServiceRequestQuery.openCount, its prd.md 9절 (L0, L9 scenes, seed).
+- Integrated demo flow: ~/ai/evenstay/design/mvp-screens.md section 5 (22 steps).
+- Module boundary rules: ~/ai/evenstay/CLAUDE.md lines 22–32.
+
+Check and report concrete problems (file:line, problem, suggested fix), most severe first, under 500 words:
+1. Each order item (core 1–8) actually done? Anything missing or only half done (e.g., R25 interpretation, R12 codes on all 6-2 rows, R13 reload, N1-C4 sub-items: 10절 N1 row, openCount shape, 확인할 것 24, /demo/reset order, 6-2 N1 note, ADR-2 item 5)?
+2. Contradictions between docs (prd vs tech-design vs user-stories vs blueprint vs handoff) on: absence seed (김정희, 최순덕, 이은숙 12/2–12/7), at-based seed visibility, new scenes' times/accounts/screens, staff 4 names/roles, ServiceUsage rules (target period, version price, idempotency, actor SYSTEM:requests), new screen IDs CORE-14/CORE-15, permissions rows vs prd 10절.
+3. Conflicts with existing design: ADR-2 (core knows no module — e.g., does sourceModule 'REQUESTS' or `sources.module: "requests"` or ServiceUsage break it?), ADR-4 ledger immutability, existing contract-lock rule for pricing, 3-4 absence validation vs seeds, demo amounts (Nov 4,893,000; Dec 2,910,000) — is the continuous-demo conflict correctly flagged?
+4. Invented facts/numbers not labeled [가설]/[가상]/[미정]; judgment words (낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정) in new text; "판" instead of "버전"; emoji; new screen text not marked [NEED: 카피].
+5. Field/name typos or mismatches (e.g., OwnerReportQuery field names vs descriptions).
+~~~~
+
+### p0437
+
+2026-11-04 00:27 · 허브 지시 · G 기획: Evenstay Home 비서 최소판
+
+~~~~text
+허브 전달: 사용자가 열린 결정을 모두 추천대로 정했어요(그대로: "모두 추천대로"). G에 해당하는 것:
+- H3: 운영 현황 카드의 AI 비서 사용량이 0이 되지 않게 11/5~11/11에 시드 대화 몇 건을 둬요(배경 회원, 숫자는 시드라고 표시).
+- H4: 11/17 생활 요청 장면은 회원 앱 화면을 써요. G 고지 게이트는 2027-01-05 장면 1단계 그대로예요. prd 9절의 (A)(B)(C) 대안을 (A)로 닫아요.
+- H7: 남은 "판"은 다음 한국어 검수 때 "버전"으로 바꿀 거라 지금은 두세요.
+docs/assistant/로 재인계해 주세요. 보고: 바꾼 곳과 diff.
+~~~~
+
+### p0444
+
+2026-11-04 00:29 · 허브 지시 · N2 기획: 커뮤니티(프로그램·시설·공지)
+
+~~~~text
+Background (from the session that started this one):
+senior-lab은 시니어 레지던스 PMS 'Evenstay' 포트폴리오 기획 워크스페이스예요([지원 회사] Tech Lead / Senior Backend 지원용, 회사 이름·표지는 쓰지 않음). 코어(계약·청구)와 모듈(안심 알림, 보호자 포털·동의, AI 생활 비서, 생활 지원 단계, 생활 요청)이 evenstay 저장소(모듈형 모놀리스)에 인계돼 있어요. 전체 리뷰 뒤 사용자가 빠진 서비스 중 커뮤니티를 새 모듈 N2로 넣기로 했고, 카피가 승인됐어요. 결과물은 모든 화면 프로토타입(먼저 Design 캔버스 아트보드, 뒤에 흐름대로 동작하는 클릭형)이고 MVP 코드 구현은 하지 않아요. 통합 데모 주인공은 A동 201호 이은숙 회원님, 보호자 김지민, 대리인 김태호예요. 허브(00-hub)가 보고를 파일로 확인하고 승인은 사용자만 해요. 결과는 한국어, 커밋하지 않아요(git 저장소 아님).
+
+Task:
+허브 요청: 새 모듈 N2 "커뮤니티"(slug `community`, 개발 모듈 폴더 `community`, 직원 화면 이름 "프로그램·시설·공지")를 기획하고 evenstay에 인계해 주세요.
+사용자 말(그대로): "승인하고 기획 시작". 입력: 승인된 카피 `../03-copywriting/ideas/community/`(names, value-prop, product-marketing, copy; 2026-11-04 승인, 사용자 결정 5개 반영), 빈 곳 검토 `../01-research/outputs/service-coverage-review.md` 4-1 N2 행, 보완 지시서 `~/ai/senior-lab/00-hub/reviews/supplement-orders-2026-11-04.md`(공통 규칙, 통합 데모 새 장면 표의 "11/20 전후" 줄), 결정 모음 `~/ai/senior-lab/00-hub/reviews/decisions-pending-2026-11-04.md`(N2-1~5).
+
+만들 것(`ideas/community/`, 다른 모듈과 같은 묶음; 가장 가까운 예시는 `ideas/life-requests/`): `strategy.md`(Skill `product-strategy`), `service-blueprint.md`(`service-blueprint`), `prd.md`(`create-prd`), `user-stories.md`(`user-stories`), `roadmap.md`(`outcome-roadmap`), `tech-design.md`, `handoff.md`.
+- 범위: 프로그램과 회차(일정, 정원, 신청·취소, 대기와 자동 승급, 마감 뒤 직원 전화, 출석 체크), 공용 시설 예약(겹침 방지, 이용 규칙), 공지(직원 작성, 회원 확인 표시, 보호자 공개는 직원이 고르고 기본 끔). 이번 버전은 무료 프로그램만.
+- 다른 모듈 연결(모듈 경계 규칙 `~/ai/evenstay/CLAUDE.md` 22~32행 필수: 자기 스키마 `community`, `core/api`와 각 모듈 `api/`로만, 사본 금지, 아웃박스·멱등, 권한은 `community.*`만 등록):
+  - 코어: 입주자·호실·직원·사업장 조회, 장기 부재(`AbsenceQuery`) 중 신청 처리.
+  - D: 허락 항목 "일정"에 신청한 프로그램 포함(D가 반영 중), 공지 보호자 공개. 보호자 연락은 D 하나 원칙. D 쪽 변경은 "D에 요청"으로.
+  - G: 프로그램 일정 읽기 도구는 Next(G roadmap에 있음). 조회 이름 제안.
+  - N1 생활 요청: "그 밖의 일"로 들어온 프로그램 문의는 직원이 N2로 대신 신청 [가설].
+  - 운영 현황 대시보드: 필요하면 카드 후보만 적어요(코어 10절이 정함).
+- 통합 데모: 11/20 전후 장면(이은숙 회원님 프로그램 신청·대기 승급·출석, 공용 시설 예약, 공지 확인, 김지민 일정 보기). 시드 초기화 없이 시계만 옮겨 이어 붙여요. 시드 직원은 코어 시드(최영미, 최민수, 김하진, 박서준, 윤서연, 한도윤, 오수진, 정태영 등)에서 고르고, 새 사람이 필요하면 코어 요청으로 적어요.
+- 화면 ID `COM-`는 이미 공통 화면이 쓰니 `CMN-01…`을 써요. P0/P1/Next와 "통합 데모에 나오는지"를 표시해요.
+
+인계: 기획 7종을 `~/ai/evenstay/docs/community/`, 카피 4종을 `docs/community/copy/`에 복사(경로 규칙: 상대 경로는 절대 경로로). evenstay에 `community/CLAUDE.md`(범위, 꼭 지킬 규칙, 하지 않을 것; 예: `~/ai/evenstay/requests/CLAUDE.md`)를 만들어요. 루트 CLAUDE.md, 다른 모듈 문서, shared/는 고치지 않아요(허브 몫).
+
+지킬 것: 문장마다 [사실]/[추정]/[가설]/[미정], 효과 수치·참여율 지어내지 않기, 활동량으로 회원을 평가하거나 "고립" 같은 판단 표현 금지, 판단 단어 금지, 직원 화면 "입주자"·합쇼체, 회원 "회원님"·해요체, "판" 대신 "버전", 이모지 금지. 화면 문구는 승인된 copy.md를 그대로 인용하고, 새로 필요하면 `[NEED: 카피]`. 상태는 `상태: 초안`. 끝나면 독립 검토 에이전트로 한 번 확인하고 지적을 반영해요.
+
+보고(한국어): 만든 파일, 기능 목록(P0/P1/Next), 화면 ID, 상태 전이, 다른 모듈 요청(코어/D/G/N1) 목록, 통합 데모 장면, `[NEED: 카피]`, 인계 diff, 실제 호출한 스킬.
+
+Shared notes folder for this group of sessions (outside the repo; read siblings' notes there, leave hand-over notes or large findings there instead of pasting them into messages): ~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19
+~~~~
+
+### p0446
+
+2026-11-04 00:47 · 에이전트 지시 · N2 기획: 커뮤니티(프로그램·시설·공지)
+
+~~~~text
+한국어로 답해 주세요. 파일은 읽기만 하고 고치지 마세요.
+
+검토 대상: `~/ai/senior-lab/04-planning/ideas/community/` 의 7개 문서(strategy.md, service-blueprint.md, prd.md, user-stories.md, roadmap.md, tech-design.md, handoff.md). 시니어 레지던스 PMS 'Evenstay' 포트폴리오의 새 모듈 N2 "커뮤니티"(직원 화면 이름 "프로그램·시설·공지") 기획 초안이다. MVP 코드 구현은 없고 문서가 결과물이다.
+
+기준 자료(읽어서 대조):
+- 승인된 카피: `~/ai/senior-lab/03-copywriting/ideas/community/copy.md`, `names.md`, `value-prop.md`, `product-marketing.md` — 화면 문구는 이것을 그대로 인용해야 하고 새 문구는 `[NEED: 카피]`여야 한다.
+- 사용자 결정 N2-1~5: `~/ai/senior-lab/00-hub/reviews/decisions-pending-2026-11-04.md` B절.
+- 허브 지시: `~/ai/senior-lab/00-hub/reviews/supplement-orders-2026-11-04.md` (공통 규칙, "11/20 전후" 줄).
+- 모듈 경계 규칙: `~/ai/evenstay/CLAUDE.md` 22~32행 (자기 스키마만, core/api와 각 모듈 api/로만 import, 사본 금지, 아웃박스·멱등, authorize() 하나, 자기 이름공간 정책만 등록, D 동의 행동 예외).
+- 코어 기준: `~/ai/senior-lab/04-planning/ideas/pms-core-billing/tech-design.md`(8-2 API 표, 6-3, 10절), `prd.md` 9절(시드 인물·호실·장기 부재·데모 계정).
+- D(보호자 포털): `~/ai/senior-lab/04-planning/ideas/family-consent-portal/prd.md` 6절·9절·확인할 것 28, `tech-design.md` 8-1·9절.
+- 형식 예: `~/ai/senior-lab/04-planning/ideas/life-requests/` (N1, 바로 앞 장면 11/17).
+
+볼 것(지적마다 파일:줄, 심각도 높음/중간/낮음, 고칠 방향 한 줄):
+1. 문서 사이 불일치: 기능 ID(F1~F21), 화면 ID(CMN-01~23), 장면(M0~M11), 시드 숫자(수채화 정원 4, 신청 명단, A동 4명, 체조 신청 5·참여 3), 상태 코드, API 이름, 행동 코드가 서로 맞는가.
+2. 데모 시나리오 논리: 시각·마감(전날 18:00)·장기 부재(김정희 11/8~11/19)·데모 계정 유무(박영순은 데모 계정 없음)·숫자 계산이 맞는가. N1 11/17 장면, 11/23 D 생활 소식과 충돌하는가.
+3. 모듈 경계 위반이나 사본, 권한 설계 구멍(보호자, 대리인, 직원 직무), 동시성·배제 제약·승급 알고리즘의 결함.
+4. 규칙 위반: 문장마다 [사실]/[추정]/[가설]/[미정] 구분 가능성, 지어낸 수치·참여율, 회원을 평가하거나 "고립" 같은 판단 표현(금지어는 '쓰지 않는다' 목록에만 허용), 직원 화면 문구에 "회원" 사용, "판"을 버전 뜻으로 사용, 이모지.
+5. 카피 인용 정확성: 따옴표 안 문구가 copy.md와 다르게 바뀐 곳, 카피에 없는데 따옴표로 쓴 곳.
+6. 빠진 것: 04-planning/CLAUDE.md "PRD에 반드시 들어갈 것"(MVP 범위, 데모 시나리오와 시드, 시니어 접근성, 역할과 권한, 개인정보와 안전, 기술 메모)과 "기술 설계" 항목.
+
+마지막에 결론 한 줄(그대로 / 수정 필요)과 지적 개수. 사소한 문체 지적은 묶어서 짧게.
+~~~~
+
+### p0447
+
+2026-11-04 00:48 · 허브 지시 · 코어 카피 2-5~2-7 스킬 검토
+
+~~~~text
+허브 요청: 코어 기획 보완(2026-11-04)에서 생긴 `[NEED: 카피]`를 코어 copy.md에 써 주세요. 대상: `04-planning/ideas/pms-core-billing/`의 prd·tech-design·user-stories 본문에서 "반영됨"이 아닌 `[NEED: 카피]` 15곳 — CORE-14 소유주 월 리포트(달 고르기, 묶음, 기준 시각, 빈 달, "아직 다 세지 않은 달" 표시, B·N1 숫자 설명), CORE-15 위탁 운영 계약 이력(표, 새 계약 입력, 겹침 오류, 빈 상태), CORE-07 "다음 청구서에 들어갈 사용 기록" 탭과 청구 항목 이름(SERVICE_FEE), 입소보증금 보호 상태 칸 2개와 CORE-08 한 줄(회원·대리인만), 2-1 용어(서비스 사용 기록, 보증금 보호 상태, 위탁 운영 계약), 카드 다시 불러오기 뒤 기준 시각, 그리고 R11 운영 현황 카드 문구를 B `SafetyBoardQuery.boardOf`·D `FamilyConsentSummaryQuery.siteSummary`·N1 `openCount`·G 사용량(기간 7일) 반환 형태에 맞추기, 2-11 직원 4명(한도윤, 오수진, 정태영, 윤서연) 계정 줄.
+지킬 것: 직원 화면 합쇼체·"입주자", 회원 해요체·"회원님", 판단 단어 금지, 보증금 보호 상태에 법적 판단 문구 없음, 목표값·좋음/나쁨 없음, 이모지 금지, "판" 대신 "버전". Skill `copywriting` 뒤 `grammar-checker` → `style-guide` → `humanizer`. 상태 줄 그대로, 변경 메모 "(재승인 대기)"와 교정 기록. 04-planning, evenstay, shared/는 고치지 않아요.
+보고: 추가한 절과 문구 수, 남긴 후보, 실제 호출한 스킬.
+~~~~
+
+### p0448
+
+2026-11-04 00:49 · 허브 지시 · B 카피: Evenstay Safety 이상 신호 허브
+
+~~~~text
+허브 요청: B 기획 보완(2026-11-04, F17·F26~F30, US-29~34)에서 생긴 `[NEED: 카피]`를 B copy.md에 써 주세요. 대상: `04-planning/ideas/safety-signal-hub/` 본문에서 "반영됨"이 아닌 `[NEED: 카피]` 20곳 — 출처 "생활 요청에서 옮김"과 카드 문장, 첫 화면 맨 위 한 줄의 끊김 칸 없는 버전, 호실 현황판, 사고·학대 보고(화면 이름, 칸 안내, 신고 기관 선택지; 판정 표현 없음), 비상 때 재실 명단과 "도움 필요" 설정(직원 대행 칸, 회원 화면 한 줄), 명단 조회 실패 안내, 소유주 월 요약(숫자만, 이름·호실 없음), 병원에 가신 분 목록 등.
+지킬 것: "모니터링·순찰·감시" 안 씀, 판단 단어 금지, 부재 종류·병원 이름 없음, 직원 화면 합쇼체·"입주자", 회원 해요체, 이모지 금지, "판" 대신 "버전". Skill `copywriting` 뒤 `grammar-checker` → `style-guide` → `humanizer`. 상태 줄 그대로, 변경 메모 "(재승인 대기)"와 교정 기록. 04-planning, evenstay, shared/는 고치지 않아요.
+보고: 추가한 절과 문구 수, 남긴 후보, 실제 호출한 스킬.
+~~~~
+
+### p0449
+
+2026-11-04 00:49 · 허브 지시 · D 카피: Evenstay Family 보호자 포털·동의
+
+~~~~text
+허브 요청: D 기획 보완(2026-11-04)에서 생긴 `[NEED: 카피]`를 D copy.md에 써 주세요. 대상: `04-planning/ideas/family-consent-portal/` 본문에서 "반영됨"이 아닌 `[NEED: 카피]` 9곳 — 보호자 첫 화면 "볼 수 있는 것"의 생활 요청 자리와 상태 문구, 부재 예시를 통합 데모 날짜(12월 2일 "자리를 비우셨어요", 12월 7일 "돌아오셨어요")로, 회원 "본 기록"의 보호자 생활 요청 열람 줄, "일정" 허락 항목 설명에 신청한 프로그램 포함(N2 결정 2: 대기·시설 예약은 안 보임), 공지 보호자 공개(직원이 고름) 등.
+지킬 것: 보호자 화면 해요체, "이은숙 회원님이 보여 주기로 한 …이에요." 규칙, "대신 처리하실 분", 판단 단어 금지, 부재 종류·병원 이름 없음, 이모지 금지, "판" 대신 "버전". Skill `copywriting` 뒤 `grammar-checker` → `style-guide` → `humanizer`. 상태 줄 그대로, 변경 메모 "(재승인 대기)"와 교정 기록. 04-planning, evenstay, shared/는 고치지 않아요.
+보고: 추가한 절과 문구 수, 남긴 후보, 실제 호출한 스킬.
+~~~~
+
+### p0450
+
+2026-11-04 00:49 · 허브 지시 · G 카피: Evenstay Home 비서 최소판
+
+~~~~text
+허브 요청: G 기획 보완(2026-11-04, N1 연결·사용량 카드)에서 생긴 `[NEED: 카피]`를 G copy.md에 써 주세요. 대상: `04-planning/ideas/senior-ai-assistant/` 본문에서 "반영됨"이 아닌 `[NEED: 카피]` 10곳 — 넘겨받은 요청 필터와 상태 라벨 "생활 요청으로 보냄", 그 줄의 [생활 요청 보기] 버튼, 운영 현황 사용량 카드의 기간 표시(기준 시각 7일 전부터), 그리고 회원에게 "생활 요청으로 전했어요" 같은 넘김 안내가 필요하면 함께. 용어집(`product-marketing.md` 107행)의 넘긴 이유 UNKNOWN을 OUT_OF_SCOPE로 고쳐요.
+지킬 것: 회원 해요체·"회원님", 직원 합쇼체, 처리 시간 약속 없음, 판단 단어 금지, 이모지 금지, "판" 대신 "버전"(새로 쓰는 문장). Skill `copywriting` 뒤 `grammar-checker` → `style-guide` → `humanizer`. 상태 줄 그대로, 변경 메모 "(재승인 대기)"와 교정 기록. 04-planning, evenstay, shared/는 고치지 않아요.
+보고: 추가한 절과 문구 수, 남긴 후보, 실제 호출한 스킬.
+~~~~
+
+### p0451
+
+2026-11-04 00:49 · 허브 지시 · N1 카피: 생활 요청(작업 지시)
+
+~~~~text
+허브 요청: N1 생활 요청 기획(초안, 2026-11-04 보완 포함)에서 생긴 `[NEED: 카피]`를 `ideas/life-requests/copy.md`에 써 주세요. 대상: `04-planning/ideas/life-requests/prd.md` 12절 끝의 `[NEED: 카피]` 16개와 다른 기획 문서 본문의 `[NEED: 카피]`(약 38곳, "반영됨" 제외). 소유주 월 요약(숫자만), [안심 알림으로 옮기기](P1), 코어 청구 항목 이름(sourceLabel), 비서에서 넘어온 요청 표시 등이 포함돼요.
+카피는 이미 승인본이라, 새 문구는 추가만 하고 기존 승인 문구는 바꾸지 않아요. 상태 줄은 그대로 두고 "변경: 2026-11-04 기획 보완 문구 추가(재승인 대기)" 메모와 교정 기록.
+지킬 것: 직원 합쇼체·"입주자", 회원 해요체·"회원님", 보호자 "대신 처리하실 분", 처리 시간 약속 없음, 병원 동행은 진료 정보 없음, 판단 단어 금지, 이모지 금지, "판" 대신 "버전". Skill `copywriting` 뒤 `grammar-checker` → `style-guide` → `humanizer`. 04-planning, evenstay, shared/는 고치지 않아요.
+보고: 추가한 절과 문구 수, 남긴 후보, 실제 호출한 스킬.
+~~~~
+
+### p0471
+
+2026-11-04 01:08 · 사용자 · A 코어 기획: Evenstay Core PRD·tech-design
+
+~~~~text
+한국어로 응답해
+~~~~
+
+### p0478
+
+2026-11-04 01:12 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a read-only extractor for the Evenstay MVP screen definition. Edit no file except your own output file. Write in Korean.
+
+Context: `~/ai/evenstay/design/mvp-screens.md` is the screen definition (screen LIST only for this round). Read its 3절 (screen tables, exact column format), 3-6절, 6절 cut table, 8-1 변경 기록 (yesterday's addition). Plans in `~/ai/evenstay/docs/` were supplemented and re-approved on 2026-11-04. Your job: find every screen that is NEW or CHANGED in your module's plan versus what mvp-screens.md lists now, and draft rows. Screen LIST only — do NOT define flows (entry/exit/button destinations).
+
+Table columns (exactly): | ID | 이름 | 이용자 | 하나의 행동 | 출처 | API | 컴포넌트 | 상태 | 카피 | 데모 |
+- ID: plan's own screen ID verbatim; if the plan has none, propose next free ID in the series and mark `[가설]`.
+- 이름 as on screen (copy title) else PRD name; 하나의 행동 = the one filled-button action; 출처 "<모듈> 8절 n행, `<module> US-xx`"; API from tech-design (mark `[가설]` if absent); 컴포넌트 shadcn/ui + DESIGN.md names as existing rows; 상태 special empty/error states; 카피 "<모듈> copy n-n"; 데모 = module prd 9절 step numbers or "부록 n" or "없음".
+- For CHANGED existing rows: give ID and exactly which cells change to what, with file:line source. Replace stale cells (e.g. `[가설]` now resolved).
+- No judgment words on screen (낙상, 쓰러짐, 응급, 위험, 배회) — flag if a plan uses one on screen. Write "버전" not "판".
+- List INCONSISTENCIES between plan docs (prd/user-stories/copy/tech-design/other modules) with file:line on both sides.
+
+Module: 코어 (`docs/core/`: prd.md, user-stories.md, tech-design.md, copy/copy.md, handoff.md). Hub says: CORE-13 장기 부재 (already in spec, check changes), CORE-14 소유주 월 리포트 (new), CORE-15 위탁 운영 계약 이력 (new), CORE-01 운영 현황 카드 (card list — list each card with what it opens if the plan says), CORE-07 서비스 사용 기록 탭 (change), 보증금 보호 칸 in CORE-04/05/08 (change). Verify and find anything else new.
+
+Output file `(임시 폴더)` with sections: (1) 새 화면 rows (ready-to-paste table rows), (2) 바뀐 기존 화면 (ID → cell → new value, ready-to-paste full replacement rows preferred), (3) 이 모듈의 화면별 앱 구분(Evenstay 홈 / Evenstay 패밀리 / 운영) for new rows, (4) 어긋난 곳. Final reply under 120 words: counts and output path.
+~~~~
+
+### p0479
+
+2026-11-04 01:13 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a read-only extractor for the Evenstay MVP screen definition. Edit no file except your own output file. Write in Korean.
+
+Context: `~/ai/evenstay/design/mvp-screens.md` is the screen definition (screen LIST only for this round). Read its 3절 (screen tables, exact column format; 3-2 is B 안심 알림 with SAF-01~14), 6절 cut table, 8-1 변경 기록. Plans in `~/ai/evenstay/docs/` were supplemented and re-approved on 2026-11-04. Find every screen NEW or CHANGED in your module's plan versus the spec now, and draft rows. Screen LIST only — no flow definitions.
+
+Table columns (exactly): | ID | 이름 | 이용자 | 하나의 행동 | 출처 | API | 컴포넌트 | 상태 | 카피 | 데모 |
+- ID: plan's own screen ID verbatim (the plan now has SAF-12~17 IDs — check whether yesterday's `[가설]` SAF-13/SAF-14 in the spec match the plan's IDs and meanings; if the plan reassigned numbers, say so precisely and give corrected rows). If none, next free ID marked `[가설]`.
+- 이름 as on screen else PRD name; 하나의 행동 = the one filled-button action; 출처 "B 8절 n행, `safety US-xx`"; API from tech-design (mark `[가설]` if absent); 컴포넌트 shadcn/ui + DESIGN.md names; 상태 special states; 카피 "B copy n-n"; 데모 = B prd 9절 step numbers or "부록 n" or "없음".
+- CHANGED existing rows: ID, cells, new values, file:line; prefer full replacement rows.
+- Alert grade colours stay neutral (spec decision 10); flag plan text with red/orange. No judgment words on screen (낙상, 쓰러짐, 응급, 위험, 배회) — flag; "사고·학대 보고" screen: check its on-screen wording carefully. "버전" not "판".
+- INCONSISTENCIES between plan docs and with other modules, file:line both sides.
+
+Module: B 안심 알림 (`docs/safety/`: prd.md, user-stories.md, tech-design.md, copy/copy.md, handoff.md). Hub says: F17 생활 요청에서 옮김 (from requests), SAF-12~14, SAF-15 호실 현황판, SAF-16 사고·학대 보고, SAF-17 비상 때 재실 명단, F29, F30. Verify and find anything else.
+
+Output `(임시 폴더)`: (1) 새 화면 rows, (2) 바뀐 기존 화면 (full replacement rows preferred), (3) 앱 구분 for new rows, (4) 어긋난 곳. Final reply under 120 words: counts and path.
+~~~~
+
+### p0480
+
+2026-11-04 01:13 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a read-only extractor for the Evenstay MVP screen definition. Edit no file except your own output file. Write in Korean.
+
+Context: `~/ai/evenstay/design/mvp-screens.md` is the screen definition (screen LIST only for this round). Read its 3절 (exact column format; 3-3 is D 보호자 포털·동의 with FAM-01..17, FAM-06a..f), 6절, 8-1 변경 기록. Plans in `~/ai/evenstay/docs/` were supplemented and re-approved on 2026-11-04. Find every screen NEW or CHANGED in your module's plan versus the spec now, and draft rows. Screen LIST only — no flow definitions.
+
+Table columns (exactly): | ID | 이름 | 이용자 | 하나의 행동 | 출처 | API | 컴포넌트 | 상태 | 카피 | 데모 |
+- ID: plan's own ID verbatim; D numbers FAM-NN by prd 8절 row number (check FAM-16/17 still match). New ones: next free ID by 8절 row, mark `[가설]` if the plan gives none.
+- 이름 as on screen else PRD name; 하나의 행동 = the one filled-button action; 출처 "D 8절 n행, `family US-xx`"; API from tech-design; 컴포넌트 shadcn/ui + DESIGN.md; 상태; 카피 "D copy n-n"; 데모 = D prd 9절 steps or "부록 n" or "없음".
+- CHANGED existing rows: ID, cells, new values, file:line; prefer full replacement rows.
+- No judgment words on screen (낙상, 쓰러짐, 응급, 위험, 배회; also flag "넘어지신"); "버전" not "판".
+- INCONSISTENCIES with file:line both sides (within D and with core, safety, requests, community).
+
+Module: D 보호자 포털·동의 (`docs/family/`: prd.md, user-stories.md, tech-design.md, copy/copy.md, copy/names.md, handoff.md). Hub says: F18~F20 (부재 소식, 사업장 동의 현황, 생활 요청 허락 — partly already in spec, check), 레지던스 공지 칸 (new), 일정(신청 프로그램) (change to FAM-06e probably; community module CMN may supply programs). Verify and find anything else.
+
+Output `(임시 폴더)`: (1) 새 화면 rows, (2) 바뀐 기존 화면, (3) 앱 구분 for new rows, (4) 어긋난 곳. Final reply under 120 words.
+~~~~
+
+### p0481
+
+2026-11-04 01:13 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a read-only extractor for the Evenstay MVP screen definition. Edit no file except your own output file. Write in Korean.
+
+Context: `~/ai/evenstay/design/mvp-screens.md` is the screen definition (screen LIST only this round). Read its 3절 (exact column format), 3-4 (G AI 생활 비서, AST-01..12) and 3-6 (N1 생활 요청, REQ-01..19, added yesterday from draft plans), 6절, 8-1. Plans in `~/ai/evenstay/docs/` were supplemented and re-approved on 2026-11-04. Find every screen NEW or CHANGED versus the spec now, and draft rows. Screen LIST only — no flow definitions.
+
+Table columns (exactly): | ID | 이름 | 이용자 | 하나의 행동 | 출처 | API | 컴포넌트 | 상태 | 카피 | 데모 |
+- ID verbatim from the plan; 출처 "<G|N1> 8절 n행, `<assistant|requests> US-xx`"; API from tech-design; 데모 = module prd 9절 steps or "부록 n" or "없음".
+- CHANGED rows: give FULL replacement rows (ready to paste) for every REQ row whose cells changed in the re-approved requests plan versus the spec's 3-6 rows, and for AST rows that changed.
+- No judgment words on screen (낙상, 쓰러짐, 응급, 위험, 배회); "버전" not "판".
+- INCONSISTENCIES with file:line both sides (within G, within N1, and between G/N1/B/D/core/community).
+
+Modules:
+1) G AI 생활 비서 (`docs/assistant/`): hub says 넘겨받은 요청 FORWARDED 필터 (AST-09 change), 사용량 카드 (AST-11 or CORE-01 card). Also check whether "직원에게 넘기기 → 생활 요청" connection is now defined (yesterday the spec said "G 갱신 대기").
+2) N1 생활 요청 (`docs/requests/`): REQ-01~19 latest (보완 반영). Also: F17 "생활 요청에서 옮김" to 안심 알림.
+
+Output `(임시 폴더)`: (1) 새 화면 rows, (2) 바뀐 기존 화면 (full replacement rows), (3) 앱 구분 for new rows, (4) 어긋난 곳. Final reply under 120 words.
+~~~~
+
+### p0482
+
+2026-11-04 01:13 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a read-only extractor for the Evenstay MVP screen definition. Edit no file except your own output file. Write in Korean.
+
+Context: `~/ai/evenstay/design/mvp-screens.md` is the screen definition (screen LIST only this round). Read its 1절 (apps, densities, honorifics), 3절 (exact table format; 3-6 shows how a new module N1 was added yesterday: section title, note line, table), 6절, 8-1. A NEW module "community" (`~/ai/evenstay/docs/community/`: prd.md, user-stories.md, tech-design.md, handoff.md, roadmap.md, copy/copy.md, copy/names.md) was approved on 2026-11-04 with screens CMN-01~23. Draft ALL its rows. Screen LIST only — no flow definitions.
+
+Table columns (exactly): | ID | 이름 | 이용자 | 하나의 행동 | 출처 | API | 컴포넌트 | 상태 | 카피 | 데모 |
+- ID verbatim; 이름 as on screen (copy title) else PRD name; 하나의 행동 = one filled-button action (screens with several equal big buttons: all outline, per spec 7절 결정 3); 출처 "N2 8절 n행, `community US-xx`" (use the module abbreviation the plan uses; propose one if none, e.g. N2); API from tech-design (`[가설]` if absent); 컴포넌트 shadcn/ui + DESIGN.md names; 상태 special states; 카피 "N2 copy n-n"; 데모 = community prd 9절 steps or "부록 n" or "없음".
+- Also give: the section heading (### 3-7. …), module abbreviation line, the app for each screen (Evenstay 홈 / Evenstay 패밀리 / 운영), navigation entries implied (홈 menu item, 패밀리 menu item, 운영 sidebar group).
+- No judgment words on screen (낙상, 쓰러짐, 응급, 위험, 배회); "회원님" on member screens, "입주자" on staff screens; "버전" not "판"; no invented numbers.
+- INCONSISTENCIES within the community docs and with other modules (core, family consent items, safety, requests), file:line both sides.
+
+Output `(임시 폴더)`: (0) 머리말(절 제목, 약칭, 원본 표 줄), (1) rows table, (2) 앱 구분, (3) 내비게이션, (4) 어긋난 곳. Final reply under 120 words.
+~~~~
+
+### p0483
+
+2026-11-04 01:13 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a read-only analyst for the Evenstay MVP screen definition. Edit no file except your own output file. Write in Korean.
+
+Context: `~/ai/evenstay/design/mvp-screens.md` 5절 is the 통합 데모 흐름 (이은숙, A동 201호): a table of steps in time order (columns: 순서 | 기준 시각 | 계정 | 화면 | 보여 줄 것) plus a note about N1 not yet inserted. Read 5절 and 3절 (to know screen IDs) fully. Plans in `~/ai/evenstay/docs/{core,safety,family,assistant,transitions,requests,community}/prd.md` 9절 (demo scenario) were supplemented and re-approved on 2026-11-04. New scenes per the hub: 11/12 07:30 대시보드(운영 현황 카드), 11/12 안부 방문, 11/17 생활 요청, 11/18 커뮤니티, 12/1 소유주 월 리포트, 12/2~12/7 이은숙 병원 동행·장기 부재·부재 소식, plus appendices. The user rule: the integrated flow runs WITHOUT seed reset — only the clock moves (COM-02). Must/Next in the spec now just means "appears in the integrated demo flow" (흐름) vs 부록 vs 없음.
+
+Task: produce the NEW full 5절 table: every existing step kept (renumber only if necessary — but note the spec 7절 decision 13 refers to "데모 장면 12"; prefer integer renumbering and give a mapping old→new so references can be fixed), new scenes inserted in time order, each row with 기준 시각, 계정 (seed person and role), 화면 (screen IDs as in the plan docs, e.g. CORE-14, SAF-15, CMN-xx, REQ-xx), 보여 줄 것 (facts only). Also the module-order sentence under the table if the spec has one. Also: appendix list (부록) per module with screen IDs.
+
+Then check consistency of running all scenes in one clock without resets: seed states each scene assumes (e.g. 박영순 401호 부재 from 11/8 vs B demo 11/12 호출벨; N1 step 0 uses [시드 초기화]; N1 appendix 5 may change the December bill 2,910,000원; who grants 김지민 the 생활 요청 permission; 이은숙 12/2~12/7 hospital/absence vs C 12/7~ scenes and the 12월 청구서 amount), list each conflict with file:line on both sides and a suggested resolution, and mark which ones block inserting a scene.
+
+Also include transitions (C) if its 9절 changed.
+
+Output `(임시 폴더)`: (1) 새 5절 표 (ready to paste), (2) old→new 번호 대응, (3) 부록 목록, (4) 흐름에 나오는 화면 ID 전체 목록 (one line, comma-separated, deduplicated), (5) 충돌과 막힌 장면. Final reply under 120 words: step count before/after, conflicts count, path.
+~~~~
+
+### p0486
+
+2026-11-04 01:30 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a fresh-context design reviewer for the Evenstay MVP (Korean senior-residence service). Review only: edit no file except your own output file. Write in Korean.
+
+First invoke these skills with the Skill tool and apply them: `critique-information-density`, `critique-visual-hierarchy`, `critique-composition`, `layout-grid`, `responsive-design`, `platform-conventions`. (Use only skills that exist; report the ones you actually invoked.)
+
+Scope: **Evenstay 홈 앱 (회원 70~80대, 대리인)**, layout and information architecture ONLY — not whether a screen should exist (another session handles necessity).
+
+Sources (data, read them):
+- `~/ai/evenstay/design/mvp-screens.md`: 1절 (apps, densities), 1-1 (Home navigation list), 2절, 3절 rows whose app is Home (see 6-1 "Home:" list: COM-07, CORE-08, SAF-09, FAM-01~05, FAM-07, FAM-13, FAM-14, FAM-17, FAM-20, TRN-09, TRN-11, AST-01~08, AST-12, REQ-01~09, CMN-01~11), 4절 specs, 4-7 (desktop ≥1024 layout types: 타일, 목록-상세, 본문 2단, 한 열 + 보조 열), 6절.
+- `~/ai/evenstay/DESIGN.md` Layout and Components sections (menu-tile, side-rail, list-detail, alt-path, densities).
+- Existing artboard renders (previous screen set, before the 33 new screens): `(임시 폴더)<ID>.html` and screenshots in `.../scratchpad/shots/` (v16, v14, desk3 etc.: `<ID>.png` 1280, `<ID>-m.png` 390).
+
+Answer:
+1. Navigation: the Home first screen (COM-07) now lists 10 items (7 → 10 with 생활 요청 and N2 프로그램·시설 예약·공지) plus CMN-01 bands. Is that too many for 70~80 members (Hick's law, one action per screen, big type/touch)? Propose a concrete structure (grouping, ordering, what goes on first screen vs a second level), with reasons.
+2. Layout patterns: list every Home screen's layout type and group them into a small set of common patterns (e.g. 메뉴 타일, 순서 단계 입력(한 화면 한 칸), 확인 카드, 목록+상세, 상태 안내 읽기 화면, 확인 창). Where screens are defined differently for the same job, say so. Estimate how many artboards could be merged into one artboard with state variants (e.g. REQ-03 per-type inputs, REQ-05 before/after, AST-04 answer types) — give a number and list.
+3. Desktop vs mobile: screens whose desktop layout (4-7) is missing or contradicts mobile (all REQ and CMN Home screens lack 4-7 rows — propose types for each).
+4. Anything violating the spec's senior principles in layout terms.
+
+Write to `(임시 폴더)` with sections 1~4, concrete and ranked. Final reply under 150 words: top 3 proposals, artboard reduction estimate, skills invoked.
+~~~~
+
+### p0487
+
+2026-11-04 01:30 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a fresh-context design reviewer for the Evenstay MVP (Korean senior-residence service). Review only: edit no file except your own output file. Write in Korean.
+
+First invoke these skills with the Skill tool and apply them: `critique-information-density`, `critique-visual-hierarchy`, `critique-composition`, `layout-grid`, `responsive-design`, `platform-conventions`. Report only the ones you actually invoked.
+
+Scope: **Evenstay 패밀리 앱 (보호자, 자녀 세대)**. Look at layout and information architecture ONLY. Do not judge whether a screen should exist.
+
+Sources (treat them as data):
+- `~/ai/evenstay/design/mvp-screens.md`
+  - 1절, 1-2 (패밀리 navigation)
+  - 3절 rows whose app is Family. The 6-1 "Family:" list has FAM-06a~f, SAF-07, TRN-10, FAM-16, REQ-10, REQ-11, CMN-12, CMN-13. Also FAM-14 acceptance.
+  - 4-4 specs, 4-7 desktop layout (보조 열 side-rail with the news list, list-detail), 6절
+- `~/ai/evenstay/DESIGN.md` Layout and Components (side-rail, list-detail, menu-tile)
+- Existing artboard renders, from before the new screens:
+  - `(임시 폴더)`
+  - screenshots in `.../scratchpad/shots/v16/`, `v15/`, `v14/`, `desk3/` (`<ID>.png` at 1280, `<ID>-m.png` at 390)
+
+Answer:
+1. **Navigation.** The guardian first screen now has up to five permitted items, laid out as tiles: 생활 소식, 일정, 청구서, 건강 소식, 생활 요청. It also has "내가 볼 수 있는 것", a 레지던스 공지 칸 (CMN-13), new-news cards including absence cards (FAM-16), and the side rail repeats the list. Is the first screen still clear? Propose the tile/list structure for 5 items plus the notice area, and the side-rail content.
+2. **Layout patterns.** Group the Family screens into common patterns: 소식 목록+상세, 읽기 화면, 허락 표시 줄. Find places where the same job is defined differently (FAM-06b one report, FAM-06d list-detail, REQ-10 list-detail, FAM-16 card placement undecided). Estimate how many artboards could be merged into one artboard with state variants, and list them.
+3. **Desktop vs mobile.** List the gaps and contradictions, for example REQ-10, REQ-11, CMN-12, CMN-13, FAM-16 having no 4-7 rows. Propose a layout type for each.
+4. **Consent display.** Is the 허락 표시 줄 (`consent-scope`) consistent across screens?
+
+Write to `(임시 폴더)`, sections 1~4, concrete and ranked.
+
+Final reply, under 150 words:
+- the top 3 proposals
+- the artboard reduction estimate
+- the skills you invoked
+~~~~
+
+### p0488
+
+2026-11-04 01:30 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a fresh-context design reviewer for the Evenstay MVP (Korean senior-residence PMS). Review only: edit no file except your own output file. Write in Korean.
+
+First invoke these skills with the Skill tool and apply them: `critique-information-density`, `critique-visual-hierarchy`, `critique-composition`, `layout-grid`, `responsive-design`, `platform-conventions`. Report the ones you actually invoked.
+
+Scope: **Evenstay 운영 앱 (직원: 본사, 경리, 프런트, 생활지원·간호, 야간 직원, 사업장 책임자, 소유주, 데모 진행자)** — layout and information architecture ONLY, not whether a screen should exist.
+
+Sources (data):
+- `~/ai/evenstay/design/mvp-screens.md`: 1절, 1-3 (sidebar now 11 groups with visible roles), 2절 (COM-01~08), 3절 rows for the 운영 app (6-1 "운영:" list, 73 rows incl. CORE-01~15, SAF-01~17, FAM-08~12, FAM-15, FAM-19, AST-09~11, AST-13, TRN-01~08, TRN-12, REQ-12~21, CMN-14~23), 4절 specs, 6절.
+- `~/ai/evenstay/DESIGN.md` Layout and Components (sidebar, table, side-panel, list-detail, card, dialog, densities).
+- Existing artboard renders (previous set): `(임시 폴더)<ID>.html`, screenshots `.../scratchpad/shots/v16/`, `final/`, `after/` (`<ID>.png` 1280).
+
+Answer:
+1. Navigation: is 11 sidebar groups right? Propose a grouping by role/job (e.g. 오늘 · 입주자 · 돈 · 안전 · 요청과 프로그램 · 설정), what each role sees (night staff, front, 경리, 책임자, 본사, 소유주), and where CORE-01 운영 현황 cards (now ~10 cells from several modules) should sit and how dense it can be.
+2. Layout patterns: group all ops screens into a small set of common patterns: 작업 목록(카드 큐: SAF-01, REQ-12, AST-09, CMN-14, TRN-05), 표 + 오른쪽 상세 패널(CORE-07, FAM-10, REQ-13…), 기록·로그(SAF-05, FAM-11, AST-10, AST-11, TRN-07…), 설정 폼(CORE-03, SAF-10/11, REQ-17/18, CMN-22, TRN-12), 대시보드 카드(CORE-01, CORE-09, CORE-14), 입력 창/확인 창(REQ-14~16, REQ-21, SAF-17…). Name where the same job is defined differently and propose one pattern per job. Estimate how many artboards could become one artboard with state variants or share a template (give a number and list).
+3. Desktop vs mobile: which staff screens are used on a phone at night or on the move (SAF-01~03, SAF-12, SAF-17, REQ-13 for field staff, CMN-18 출석) and whether the spec defines their mobile layout; the 1280 12-col assumption vs these.
+4. Hierarchy problems: screens with several filled buttons, cards that compete, dense tables without a clear first column.
+
+Write to `(임시 폴더)` with sections 1~4, concrete and ranked. Final reply under 150 words: top 3 proposals, artboard reduction estimate, skills invoked.
+~~~~
+
+### p0490
+
+2026-11-04 07:26 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+You are a fresh-context verifier. Read only and edit nothing. Report in Korean.
+
+Ten layout proposals from a review report were just applied to two documents.
+- The report is `~/Library/Application Support/Claude/side-session-notes/local_4ea3b11d-fd3a-4c6e-847f-d3162e709e19/layout-review-2026-11-04.md`. Read its "핵심 제안" section, and its appendices as needed.
+- The two documents are `~/ai/evenstay/design/mvp-screens.md` and `~/ai/evenstay/DESIGN.md`.
+- Before-copies are `(임시 폴더)` and `.../DESIGN.before.md`. Diff the current files against these to see exactly what changed.
+
+Check:
+1. Each of the 10 proposals is applied faithfully, nothing is missing, and nothing beyond them was added.
+2. Find places in the same documents that the change left contradictory or stale.
+   - Examples: 3절 rows (e.g. SAF-12 RadioGroup vs 4-9 "줄 전체 누르고 시트"), 4-1 COM-07 bullet, AST-02 tile descriptions, 6절/6-1 numbers, 7절 decisions 1 and 5 vs new 14, 1-3 old group names still mentioned elsewhere (e.g. "11묶음", "9묶음"), and the DESIGN.md Layout table vs new sections.
+   - Give file:line and a suggested exact fix for each.
+3. Check that no token value or YAML front matter changed in DESIGN.md.
+4. Check that no judgment words (낙상, 쓰러짐, 응급, 위험, 배회) appear in new text, except where they are rules. Check that no "판" is used for "version".
+
+Final reply, under 300 words: a ranked list of issues with file:line and a fix. If none, say so.
+~~~~
+
+### p0649
+
+2026-11-04 14:25 · 허브 지시 · C 카피: 생활 지원 단계 (Evenstay Transitions)
+
+~~~~text
+C 카피에서 화면에 나오는 "그대로인 것"을 없애 주세요. 사용자 말: "그대로인 것 이라는 문장이 매우 어색해 이런 어색한 문장이 없도록해줘".
+
+- 회원과 직원 화면 문구 전체예요. 예: 136행, 331행, 341행, 346행의 "그대로인 것: 지금 계신 방, 입주 계약 ...", 91행과 93행의 설정 화면 항목 이름.
+- 회원 화면은 "지금처럼 이어져요: 지금 계신 방, 입주 계약 ..." 또는 "바뀌지 않아요: ..."처럼 사람이 쓰는 말로 고쳐요. 더 나은 말이 있으면 그걸 써요. 직원 화면 항목 이름도 "바뀌지 않는 것"처럼 풀어요. 앞뒤 화면이 한 말로 맞게 해요.
+- 같은 뿌리인 "더해진 도움", "더하는 서비스"도 어색하면 함께 봐요.
+- 설계 원칙 설명 문장의 낱말은 뜻이 같으면 굳이 바꾸지 않아도 돼요. 화면 문구가 우선이에요.
+- `names.md`, `value-prop.md`의 화면 인용도 맞춰요.
+- 계속 지낼 수 있다는 약속으로 읽히지 않게 해요.
+
+Skill 도구로 `grammar-checker`와 `humanizer`를 호출해 확인해요. "(재승인 대기)" 메모와 교정 기록을 달아요.
+보고: 고친 곳 수, 새 문구, 호출한 스킬.
+~~~~
+
+### p0659
+
+2026-11-04 15:04 · 허브 지시 · 코어 카피 2-5~2-7 스킬 검토
+
+~~~~text
+코어(`ideas/pms-core-billing/`) 회원·보호자 화면 문구를 쉬운 말 기준으로 다시 검수해 주세요. 사용자가 "추천대로 진행해"로 승인했습니다.
+
+기준: 70대 회원과 그 자녀가 소리 내어 읽고 바로 뜻을 아는가. 맞춤법이 맞아도 뜻이 한 번에 안 오면 고칩니다. 사용자가 짚은 예: "몸이 바뀌어도 그대로인 것부터 보여 드려요", "그대로인 것".
+
+범위: copy.md의 회원·보호자가 보는 문구(화면 제목, 버튼, 안내, 빈 상태, 오류, 알림). 직원 화면은 고치지 않습니다. 단, 사용자에게 보이는 곳이면 직원 화면까지 "버전"의 뜻으로 쓴 "판"은 "버전"으로 바꿉니다. "판단", "판매" 같은 다른 낱말은 그대로 둡니다. 교정 기록과 과거 수정 기록은 고치지 않습니다.
+
+방법: Skill 도구로 `copy-editing`, `humanizer`, `grammar-checker`를 호출합니다. 문장을 하나씩 읽고 판단하고, 금칙어 검색만으로 끝내지 않습니다.
+
+바꾸지 않을 것:
+- 뜻, 사실, 기능 범위, 책임 범위.
+- 확정 용어와 이름: "프로그램과 예약", "도움과 안심", "이번에 바뀌지 않아요", "새로 받으시는 도움", 인물 이름, 프런트 번호 표기 "02-000-0000 (가상 번호)", [미정] 표시.
+- 여러 모듈이 같이 쓰는 용어는 혼자 바꾸지 말고 보고에 제안으로 적습니다. 다른 모듈 세션도 같은 검수를 동시에 합니다.
+- 의료 판단처럼 보이는 표현을 새로 만들지 않습니다. 앱에 호출 버튼이 있는 것처럼 쓰지 않습니다.
+
+반영: copy.md를 고치고 `evenstay/docs/core/copy/`의 같은 문장도 같게 고칩니다. 경로 줄을 뺀 나머지 차이가 0인지 확인합니다. 기획 문서는 고치지 않습니다.
+
+보고 형식: 전후 표를 `ideas/pms-core-billing/plain-read-review-2026-11-04.md`로 저장(화면 ID, 전, 후, 이유)하고, 읽은 문구 수, 고친 수, 고치지 않고 남긴 애매한 문구, 공용 용어 제안, 기획 문서에도 같은 문구가 있어 고쳐야 할 곳, docs 차이 확인 결과, 실제로 호출한 스킬을 알려 주세요. 커밋 금지.
+~~~~
+
+### p0660
+
+2026-11-04 15:04 · 허브 지시 · B 카피: Evenstay Safety 이상 신호 허브
+
+~~~~text
+안심 알림(`ideas/safety-signal-hub/`) 회원·보호자 화면 문구를 쉬운 말 기준으로 다시 검수해 주세요. 사용자가 "추천대로 진행해"로 승인했습니다.
+
+기준: 70대 회원과 그 자녀가 소리 내어 읽고 바로 뜻을 아는가. 맞춤법이 맞아도 뜻이 한 번에 안 오면 고칩니다. 사용자가 짚은 예: "몸이 바뀌어도 그대로인 것부터 보여 드려요", "그대로인 것".
+
+범위: copy.md의 회원·보호자가 보는 문구(화면 제목, 버튼, 안내, 빈 상태, 오류, 알림). 직원 화면은 고치지 않습니다. 단, 사용자에게 보이는 곳이면 직원 화면까지 "버전"의 뜻으로 쓴 "판"은 "버전"으로 바꿉니다. "판단", "판매" 같은 다른 낱말은 그대로 둡니다. 교정 기록과 과거 수정 기록은 고치지 않습니다.
+
+방법: Skill 도구로 `copy-editing`, `humanizer`, `grammar-checker`를 호출합니다. 문장을 하나씩 읽고 판단하고, 금칙어 검색만으로 끝내지 않습니다.
+
+바꾸지 않을 것:
+- 뜻, 사실, 기능 범위, 책임 범위.
+- 확정 용어와 이름: "프로그램과 예약", "도움과 안심", "이번에 바뀌지 않아요", "새로 받으시는 도움", 인물 이름, 프런트 번호 표기 "02-000-0000 (가상 번호)", [미정] 표시.
+- 여러 모듈이 같이 쓰는 용어는 혼자 바꾸지 말고 보고에 제안으로 적습니다. 다른 모듈 세션도 같은 검수를 동시에 합니다.
+- 의료 판단처럼 보이는 표현을 새로 만들지 않습니다. 앱에 호출 버튼이 있는 것처럼 쓰지 않습니다.
+
+반영: copy.md를 고치고 `evenstay/docs/safety/copy/`의 같은 문장도 같게 고칩니다. 경로 줄을 뺀 나머지 차이가 0인지 확인합니다. 기획 문서는 고치지 않습니다.
+
+보고 형식: 전후 표를 `ideas/safety-signal-hub/plain-read-review-2026-11-04.md`로 저장(화면 ID, 전, 후, 이유)하고, 읽은 문구 수, 고친 수, 고치지 않고 남긴 애매한 문구, 공용 용어 제안, 기획 문서에도 같은 문구가 있어 고쳐야 할 곳, docs 차이 확인 결과, 실제로 호출한 스킬을 알려 주세요. 커밋 금지.
+~~~~
+
+### p0661
+
+2026-11-04 15:04 · 허브 지시 · D 카피: Evenstay Family 보호자 포털·동의
+
+~~~~text
+보호자 포털(`ideas/family-consent-portal/`) 회원·보호자 화면 문구를 쉬운 말 기준으로 다시 검수해 주세요. 사용자가 "추천대로 진행해"로 승인했습니다.
+
+기준: 70대 회원과 그 자녀가 소리 내어 읽고 바로 뜻을 아는가. 맞춤법이 맞아도 뜻이 한 번에 안 오면 고칩니다. 사용자가 짚은 예: "몸이 바뀌어도 그대로인 것부터 보여 드려요", "그대로인 것".
+
+범위: copy.md의 회원·보호자가 보는 문구(화면 제목, 버튼, 안내, 빈 상태, 오류, 알림). 직원 화면은 고치지 않습니다. 단, 사용자에게 보이는 곳이면 직원 화면까지 "버전"의 뜻으로 쓴 "판"은 "버전"으로 바꿉니다. "판단", "판매" 같은 다른 낱말은 그대로 둡니다. 교정 기록과 과거 수정 기록은 고치지 않습니다.
+
+방법: Skill 도구로 `copy-editing`, `humanizer`, `grammar-checker`를 호출합니다. 문장을 하나씩 읽고 판단하고, 금칙어 검색만으로 끝내지 않습니다.
+
+바꾸지 않을 것:
+- 뜻, 사실, 기능 범위, 책임 범위. 동의와 열람 범위 문구는 법적 뜻이 달라지지 않게 합니다.
+- 확정 용어와 이름: "프로그램과 예약", "도움과 안심", "이번에 바뀌지 않아요", "새로 받으시는 도움", 인물 이름, 프런트 번호 표기 "02-000-0000 (가상 번호)", [미정] 표시.
+- 여러 모듈이 같이 쓰는 용어는 혼자 바꾸지 말고 보고에 제안으로 적습니다. 다른 모듈 세션도 같은 검수를 동시에 합니다.
+- 의료 판단처럼 보이는 표현을 새로 만들지 않습니다. 앱에 호출 버튼이 있는 것처럼 쓰지 않습니다.
+
+반영: copy.md를 고치고 `evenstay/docs/family/copy/`의 같은 문장도 같게 고칩니다. 경로 줄을 뺀 나머지 차이가 0인지 확인합니다. 기획 문서는 고치지 않습니다.
+
+보고 형식: 전후 표를 `ideas/family-consent-portal/plain-read-review-2026-11-04.md`로 저장(화면 ID, 전, 후, 이유)하고, 읽은 문구 수, 고친 수, 고치지 않고 남긴 애매한 문구, 공용 용어 제안, 기획 문서에도 같은 문구가 있어 고쳐야 할 곳, docs 차이 확인 결과, 실제로 호출한 스킬을 알려 주세요. 커밋 금지.
+~~~~
+
+### p0662
+
+2026-11-04 15:04 · 허브 지시 · G 카피: Evenstay Home 비서 최소판
+
+~~~~text
+홈 비서(`ideas/senior-ai-assistant/`) 회원·보호자 화면 문구를 쉬운 말 기준으로 다시 검수해 주세요. 사용자가 "추천대로 진행해"로 승인했습니다.
+
+기준: 70대 회원과 그 자녀가 소리 내어 읽고 바로 뜻을 아는가. 맞춤법이 맞아도 뜻이 한 번에 안 오면 고칩니다. 사용자가 짚은 예: "몸이 바뀌어도 그대로인 것부터 보여 드려요", "그대로인 것".
+
+범위: copy.md의 회원·보호자가 보는 문구(화면 제목, 버튼, 안내, 비서 답변, 빈 상태, 오류, 알림). 직원 화면은 고치지 않습니다. 단, 사용자에게 보이는 곳이면 직원 화면까지 "버전"의 뜻으로 쓴 "판"은 "버전"으로 바꿉니다. "최소판" 같은 표현도 여기에 듭니다. "판단", "판매" 같은 다른 낱말은 그대로 둡니다. 교정 기록과 과거 수정 기록은 고치지 않습니다.
+
+방법: Skill 도구로 `copy-editing`, `humanizer`, `grammar-checker`를 호출합니다. 문장을 하나씩 읽고 판단하고, 금칙어 검색만으로 끝내지 않습니다.
+
+바꾸지 않을 것:
+- 뜻, 사실, 기능 범위, 책임 범위. 금전·건강 질문을 사람에게 넘기는 답변의 책임 경계는 그대로 둡니다.
+- 확정 용어와 이름: "프로그램과 예약", "도움과 안심", "이번에 바뀌지 않아요", "새로 받으시는 도움", 인물 이름, 프런트 번호 표기 "02-000-0000 (가상 번호)", [미정] 표시.
+- 여러 모듈이 같이 쓰는 용어는 혼자 바꾸지 말고 보고에 제안으로 적습니다. 다른 모듈 세션도 같은 검수를 동시에 합니다.
+- 의료 판단처럼 보이는 표현을 새로 만들지 않습니다. 앱에 호출 버튼이 있는 것처럼 쓰지 않습니다.
+
+반영: copy.md를 고치고 `evenstay/docs/assistant/copy/`의 같은 문장도 같게 고칩니다. 경로 줄을 뺀 나머지 차이가 0인지 확인합니다. 기획 문서는 고치지 않습니다.
+
+보고 형식: 전후 표를 `ideas/senior-ai-assistant/plain-read-review-2026-11-04.md`로 저장(화면 ID, 전, 후, 이유)하고, 읽은 문구 수, 고친 수, 고치지 않고 남긴 애매한 문구, 공용 용어 제안, 기획 문서에도 같은 문구가 있어 고쳐야 할 곳, docs 차이 확인 결과, 실제로 호출한 스킬을 알려 주세요. 커밋 금지.
+~~~~
+
+### p0663
+
+2026-11-04 15:04 · 허브 지시 · C 카피: 생활 지원 단계 (Evenstay Transitions)
+
+~~~~text
+생활 지원 단계(`ideas/care-stage-transition/`) 회원·보호자 화면 문구를 쉬운 말 기준으로 다시 검수해 주세요. 사용자가 "추천대로 진행해"로 승인했습니다.
+
+기준: 70대 회원과 그 자녀가 소리 내어 읽고 바로 뜻을 아는가. 맞춤법이 맞아도 뜻이 한 번에 안 오면 고칩니다. 사용자가 짚은 예: "몸이 바뀌어도 그대로인 것부터 보여 드려요", "그대로인 것". 이 모듈은 이 표현을 고친 곳이 많으니, 고친 뒤의 문장이 다시 어색하지 않은지도 봅니다.
+
+범위: copy.md의 회원·보호자가 보는 문구(화면 제목, 버튼, 안내, 빈 상태, 오류, 알림). 직원 화면은 고치지 않습니다. 단, 사용자에게 보이는 곳이면 직원 화면까지 "버전"의 뜻으로 쓴 "판"은 "버전"으로 바꿉니다. "판단", "판매" 같은 다른 낱말은 그대로 둡니다. 교정 기록과 과거 수정 기록은 고치지 않습니다.
+
+방법: Skill 도구로 `copy-editing`, `humanizer`, `grammar-checker`를 호출합니다. 문장을 하나씩 읽고 판단하고, 금칙어 검색만으로 끝내지 않습니다.
+
+바꾸지 않을 것:
+- 뜻, 사실, 기능 범위, 책임 범위.
+- 확정 용어와 이름: "프로그램과 예약", "도움과 안심", "이번에 바뀌지 않아요", "바뀌지 않는 것", "새로 받으시는 도움", 인물 이름, 프런트 번호 표기 "02-000-0000 (가상 번호)", [미정] 표시.
+- 여러 모듈이 같이 쓰는 용어는 혼자 바꾸지 말고 보고에 제안으로 적습니다. 다른 모듈 세션도 같은 검수를 동시에 합니다.
+- 의료 판단처럼 보이는 표현을 새로 만들지 않습니다. 앱에 호출 버튼이 있는 것처럼 쓰지 않습니다.
+
+반영: copy.md를 고치고 `evenstay/docs/transitions/copy/`의 같은 문장도 같게 고칩니다. 경로 줄을 뺀 나머지 차이가 0인지 확인합니다. 기획 문서는 고치지 않습니다.
+
+보고 형식: 전후 표를 `ideas/care-stage-transition/plain-read-review-2026-11-04.md`로 저장(화면 ID, 전, 후, 이유)하고, 읽은 문구 수, 고친 수, 고치지 않고 남긴 애매한 문구, 공용 용어 제안, 기획 문서에도 같은 문구가 있어 고쳐야 할 곳, docs 차이 확인 결과, 실제로 호출한 스킬을 알려 주세요. 커밋 금지.
+~~~~
+
+### p0664
+
+2026-11-04 15:04 · 허브 지시 · N1 카피: 생활 요청(작업 지시)
+
+~~~~text
+생활 요청(`ideas/life-requests/`) 회원·보호자 화면 문구를 쉬운 말 기준으로 다시 검수해 주세요. 사용자가 "추천대로 진행해"로 승인했습니다.
+
+기준: 70대 회원과 그 자녀가 소리 내어 읽고 바로 뜻을 아는가. 맞춤법이 맞아도 뜻이 한 번에 안 오면 고칩니다. 사용자가 짚은 예: "몸이 바뀌어도 그대로인 것부터 보여 드려요", "그대로인 것".
+
+범위: copy.md의 회원·보호자가 보는 문구(화면 제목, 버튼, 안내, 빈 상태, 오류, 알림). 직원 화면은 고치지 않습니다. 단, 사용자에게 보이는 곳이면 직원 화면까지 "버전"의 뜻으로 쓴 "판"은 "버전"으로 바꿉니다. "판단", "판매" 같은 다른 낱말은 그대로 둡니다. 교정 기록과 과거 수정 기록은 고치지 않습니다.
+
+방법: Skill 도구로 `copy-editing`, `humanizer`, `grammar-checker`를 호출합니다. 문장을 하나씩 읽고 판단하고, 금칙어 검색만으로 끝내지 않습니다.
+
+바꾸지 않을 것:
+- 뜻, 사실, 기능 범위, 책임 범위.
+- 확정 용어와 이름: "프로그램과 예약", "도움과 안심", "이번에 바뀌지 않아요", "새로 받으시는 도움", 인물 이름, 프런트 번호 표기 "02-000-0000 (가상 번호)", [미정] 표시.
+- 여러 모듈이 같이 쓰는 용어는 혼자 바꾸지 말고 보고에 제안으로 적습니다. 다른 모듈 세션도 같은 검수를 동시에 합니다.
+- 의료 판단처럼 보이는 표현을 새로 만들지 않습니다. 앱에 호출 버튼이 있는 것처럼 쓰지 않습니다.
+
+반영: copy.md를 고치고 `evenstay/docs/requests/copy/`의 같은 문장도 같게 고칩니다. 경로 줄을 뺀 나머지 차이가 0인지 확인합니다. 기획 문서는 고치지 않습니다.
+
+보고 형식: 전후 표를 `ideas/life-requests/plain-read-review-2026-11-04.md`로 저장(화면 ID, 전, 후, 이유)하고, 읽은 문구 수, 고친 수, 고치지 않고 남긴 애매한 문구, 공용 용어 제안, 기획 문서에도 같은 문구가 있어 고쳐야 할 곳, docs 차이 확인 결과, 실제로 호출한 스킬을 알려 주세요. 커밋 금지.
+~~~~
+
+### p0689
+
+2026-11-04 15:30 · 에이전트 지시 · Evenstay 프로토타입 전체 검수·보완
+
+~~~~text
+한국어로 일한다. Evenstay 앱 캔버스 보드 소스에 쉬운 말 재검수 결과를 반영한다. 사용자가 "추천대로"로 확정했다.
+
+`<S>` = (임시 폴더)
+
+**고칠 곳(이 둘만):** `<S>/work/src/*.dc.html` 보드 소스(페이지 하나 = 파일 하나, `<section class="state">`가 페이지와 컷), `~/ai/evenstay/design/mvp-screens.md`. `~/ai/evenstay/docs`, senior-lab, `<S>/work/project`, `<S>/work/proto.css`는 고치지 않는다. 커밋하지 않는다. 파일을 새로 만들거나 section을 늘리지 않는다(파일 수 상한 때문).
+
+**근거(읽기만):** `~/ai/senior-lab/03-copywriting/ideas/<slug>/plain-read-review-2026-11-04.md`와 같은 폴더 `copy.md`. slug: pms-core-billing, safety-signal-hub, family-consent-portal, senior-ai-assistant, care-stage-transition, life-requests, community. 공용 문구 14건은 `~/ai/senior-lab/shared/decisions.md`의 2026-11-04 "앱 공용 문구" 행. 최신 `copy.md`가 최종 문구다. 검수 표의 "후"가 그 뒤 공용 문구 반영으로 또 바뀐 곳이 있으니 표 순서대로 보고 copy.md로 확인한다.
+
+이미 뽑은 전·후 목록과 보드 일치 결과는 `<S>/verify19/plain.json`에 있다(`hit`는 "전" 문장이 보드에 그대로 있는 것, `miss`는 없는 것). miss는 보드에 다른 표기로 있거나 보드에 없는 문구다. 값이 다른 같은 틀일 수 있으니 뜻으로 찾아본다.
+
+**할 일**
+1. 회원·보호자 보드의 문구를 copy.md 새 문구로 맞춘다. 직원 화면 규칙이 다르면 지킨다(예: "5억 8천만 원"은 회원 화면, 직원 화면은 숫자 그대로. "이사 나가실 날"은 회원·보호자 화면만. "앱 연결이 잠시 끊겼어요"는 회원 쪽 문구). CORE-05 법률 검토 전 초안 표시가 붙은 문구는 뜻을 바꾸지 않은 문장 수정이면 반영한다.
+2. `mvp-screens.md`에서 각 검수 파일이 "남은 곳"으로 적은 줄을 맞춘다. 파일 끝 8-1절에 한 줄 기록을 더하고 표시는 (재승인 대기)다.
+3. 단계가 바뀐 적 없는 회원에게 TRN "이번에 바뀌지 않아요" 제목을 숨기는 조건을 반영한다. C 검수 파일과 copy.md를 보고 해당 보드에 맞게 하고, 조건은 mvp-screens.md TRN-09 줄에도 적는다. 새 컷은 만들지 않는다. 지금 TRN-09 데모 장면은 단계가 바뀐 뒤라 제목이 보이는 것이 맞으면 그대로 둔다.
+4. 비서 화면의 프런트 번호 표기를 "프런트로 전화하기 02-000-0000 (가상 번호)"로 맞춘다(G copy 기준).
+5. 화면에 보이는 "판"(버전의 뜻)이 남았는지 찾아 "버전"으로 고친다.
+
+**규칙:** 문구를 지어내지 않는다. 이모지와 판단 단어(낙상, 쓰러짐, 응급, 위험, 배회, 넘어지신)를 넣지 않는다. 직원 화면은 "입주자"와 합쇼체, 회원은 "회원님"과 해요체, 보호자는 "이은숙 회원님". 마크업 구조는 바꾸지 않고 글자만 바꾼다. 스크립트로 바꿀 때는 바뀐 횟수를 확인한다.
+
+**끝낸 뒤:** 모듈마다 옛 문구("전")를 보드 소스에서 다시 찾는다. 남은 것은 까닭을 적는다. `<S>/work/manifests15/PLAIN.json`에 `{"changed_files":[],"changes":N,"by_module":{},"left":[],"not_on_boards":[],"pan":"판 검색 결과","trn":"3번 처리 내용","spec_lines":N}`를 쓴다. 최종 답은 120단어 안으로 쓴다.
+~~~~

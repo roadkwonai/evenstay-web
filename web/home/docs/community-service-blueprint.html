@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>프로그램·시설·공지 서비스 설계도 | Evenstay 문서</title>
+<meta name="description" content="프로그램·시설·공지 서비스 설계도. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html" aria-current="page">문서</a></li><li><a href="../../home/research.html">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../docs.html">문서</a><span>프로그램·시설·공지</span></p>
+  <h1>프로그램·시설·공지 서비스 설계도</h1>
+  <p class="meta"><button class="btn btn-ghost btn-sm" type="button" data-modal="k-blueprint"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>이 문서는 무엇인가요</button></p>
+  <nav class="sib" aria-label="프로그램·시설·공지의 다른 문서"><ul><li><a href="community-strategy.html">전략</a></li><li><a href="community-service-blueprint.html" aria-current="page">서비스 설계도</a></li><li><a href="community-prd.html">기획서(PRD)</a></li><li><a href="community-user-stories.html">사용자 스토리</a></li><li><a href="community-tech-design.html">기술 설계</a></li><li><a href="community-roadmap.html">로드맵</a></li><li><a href="community-handoff.html">개발 인계</a></li><li><a href="community-copy.html">화면 문구</a></li></ul></nav>
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#등장인물">등장인물</a></li><li class="lv2"><a href="#현재-상태-as-is-요약-추정">현재 상태 (as-is) 요약 [추정]</a></li><li class="lv2"><a href="#흐름-1-자리가-다-찬-수채화-대기-다른-입주자-취소-자동-승급-데모-핵심-p0-통합-데모-1118-m4m6">흐름 1. 자리가 다 찬 수채화 → 대기 → 다른 입주자 취소 → 자동 승급 (데모 핵심, P0. 통합 데모 11/18 M4·M6)</a></li><li class="lv2"><a href="#흐름-2-마감-뒤에-난-자리-직원이-대기-순서대로-전화-p0-사용자-결정-n2-3-데모-부록">흐름 2. 마감 뒤에 난 자리 → 직원이 대기 순서대로 전화 (P0, 사용자 결정 N2-3. 데모 부록)</a></li><li class="lv2"><a href="#흐름-3-프런트-전화-대신-예약-프로그램과-겹침-비어-있는-시간-p0-통합-데모-m5">흐름 3. 프런트 전화 → 대신 예약 → 프로그램과 겹침 → 비어 있는 시간 (P0. 통합 데모 M5)</a></li><li class="lv2"><a href="#흐름-4-중요-공지-읽었어요-확인-현황-직접-전함-p0-통합-데모-m1m2m9">흐름 4. 중요 공지 → 읽었어요 → 확인 현황 → 직접 전함 (P0. 통합 데모 M1·M2·M9)</a></li><li class="lv2"><a href="#흐름-5-출석-체크-p0-통합-데모-m3m11">흐름 5. 출석 체크 (P0. 통합 데모 M3·M11)</a></li><li class="lv2"><a href="#흐름-6-보호자-일정과-레지던스-공지-p1-d-통합-데모-m7m8">흐름 6. 보호자 일정과 레지던스 공지 (P1, D. 통합 데모 M7·M8)</a></li><li class="lv2"><a href="#흐름-7-회차-쉬기와-사업장-예약-취소-p1">흐름 7. 회차 쉬기와 사업장 예약 취소 (P1)</a></li><li class="lv2"><a href="#실패-지점과-대응">실패 지점과 대응</a></li><li class="lv2"><a href="#대안-경로-디지털이-어려운-회원">대안 경로 (디지털이 어려운 회원)</a></li><li class="lv2"><a href="#읽어-낸-것">읽어 낸 것</a></li><li class="lv2"><a href="#확인할-것">확인할 것</a></li><li class="lv2"><a href="#변경-기록">변경 기록</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-573" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-574" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-575" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-576" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li><li><button class="term" type="button" data-modal="g-577" data-tip="상태 변경과 같은 트랜잭션에 쓰는 이벤트 행.">아웃박스</button></li><li><button class="term" type="button" data-modal="g-578" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-579" data-tip="직원 휴대폰 알림 발송과 전달 결과">직원 알림</button></li><li><button class="term" type="button" data-modal="g-580" data-tip="규칙이 바뀌면 다음 예약 때 다시 보인다">이용 규칙</button></li><li><button class="term" type="button" data-modal="g-581" data-tip="확인을 받는 공지.">중요 공지</button></li><li><button class="term" type="button" data-modal="g-582" data-tip="기간이나 시간 겹침을 DB가 거부한다">배제 제약</button></li></ul></section></aside>
+  <article class="doc"><blockquote>
+<p>표기 규칙은 <code>strategy.md</code>와 같다. 화면 문구는 승인된 <code>copy.md</code>를 절 번호와 함께 그대로 인용한다. 새로 필요한 문구는 <code>[NEED: 카피]</code>다.
+사람과 사업장은 모두 가상이다. 시각은 카피 데모 기준 시각표(2026-11-18 수요일)를 따른다. 카피의 숫자(정원 8, 대상 18 등)는 예시이고, 시드는 새봄 레지던스 거주 입주자 7명에 맞춘 값이다(<code>prd.md</code> 9절).
+읽는 법: 각 흐름 표의 열은 블루프린트의 다섯 줄이다. &quot;앞단&quot;은 이용자에게 보이는 직원·시스템의 일(상호작용선 아래, 가시선 위), &quot;뒷단&quot;은 보이지 않는 일, &quot;지원&quot;은 그 일을 받치는 시스템이다.</p>
+</blockquote>
+<h2 id="등장인물">등장인물</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>사람(시드)</th>
+<th>화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>회원</td>
+<td>A동 201호 이은숙(주인공). 배경 입주자 정옥자(A동 202호), 김정희(A동 301호, 11/8~11/19 장기 부재), 박영순(A동 401호), 김말순(B동 302호), 최순덕(B동 402호), 한경숙(B동 201호) [사실: 코어 <code>prd.md</code> 9절]</td>
+<td>Evenstay 홈 · 프로그램, 시설 예약, 공지</td>
+</tr>
+<tr>
+<td>보호자</td>
+<td>딸 김지민(회원이 &quot;일정&quot;을 허락한 경우)</td>
+<td>Evenstay 패밀리 · 일정, 첫 화면 레지던스 공지</td>
+</tr>
+<tr>
+<td>생활 지원 담당</td>
+<td>윤서연(SITE_STAFF, LIFE_SUPPORT) [사실: 코어 시드 2026-11-04]</td>
+<td>프로그램·시설·공지(직원)</td>
+</tr>
+<tr>
+<td>프런트</td>
+<td>최민수(SITE_STAFF, FRONT) [사실: 코어 시드]</td>
+<td>같음</td>
+</tr>
+<tr>
+<td>사업장 책임자</td>
+<td>최영미(SITE_MANAGER) [사실: 코어 시드].</td>
+<td>공지 쓰기, 확인 현황, 공용 시설 설정, 운영 현황 카드</td>
+</tr>
+<tr>
+<td>시스템</td>
+<td>회차 생성, 신청 마감, 공지 게시 예약, 직원 알림(SYSTEM 행위자)</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<h2 id="현재-상태-as-is-요약-추정">현재 상태 (as-is) 요약 [추정]</h2>
+<ul>
+<li>프로그램 일정은 1층 게시판 종이로 알리고, 신청은 명단 종이나 프런트 전화로 받는다. 정원과 대기 순서는 담당이 손으로 맞춘다(카피 <code>product-marketing.md</code> Personas [추정]).</li>
+<li>모임방 같은 공용 방은 프런트 장부로 받는다. 프로그램이 있는 시간에 예약이 들어가도 장부를 볼 때까지 모른다 [추정].</li>
+<li>공지는 게시판과 엘리베이터 종이, 방송으로 한다. 누가 봤는지 남지 않는다 [추정]. 현장 확인은 [NEED: 현장 직원 인터뷰].</li>
+</ul>
+<h2 id="흐름-1-자리가-다-찬-수채화-대기-다른-입주자-취소-자동-승급-데모-핵심-p0-통합-데모-1118-m4m6">흐름 1. 자리가 다 찬 수채화 → 대기 → 다른 입주자 취소 → 자동 승급 (데모 핵심, P0. 통합 데모 11/18 M4·M6)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계(시각)</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>앞단</th>
+<th>뒷단</th>
+<th>지원 시스템</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>일정 보기(11:00)</td>
+<td>CMN-01 묶음 타일 &quot;프로그램과 예약 <code>[가칭]</code>&quot;, COM-09 버튼 &quot;프로그램&quot;, CMN-02 &quot;이번 주 프로그램이에요. 가고 싶으신 것을 누르세요.&quot; 목록 &quot;목요일 오후 2시 · 수채화&quot; / &quot;1층 모임방 · 자리가 다 찼어요&quot; (copy 2-1·2-2)</td>
+<td>이은숙: 묶음 타일 → [프로그램] → 수채화</td>
+<td>CMN-03 &quot;자리가 다 찼어요.&quot; 버튼 [기다리기] (copy 2-3, names 2-2)</td>
+<td>회차 상태를 시계·정원·신청 수로 계산(FULL). 저장값 아님</td>
+<td><code>community</code> 스키마, <code>Clock.now()</code>, <code>authorize(community.program.view)</code></td>
+</tr>
+<tr>
+<td>기다리기(11:00)</td>
+<td>CMN-05 &quot;자리가 다 찼어요. 기다리시겠어요?&quot; / &quot;지금 기다리시면 첫 번째예요. 취소하는 분이 생기면 기다리신 순서대로 자동으로 신청돼요.&quot; [네, 기다릴게요] (copy 2-5)</td>
+<td>이은숙: [네, 기다릴게요]</td>
+<td>&quot;첫 번째로 기다리고 계세요. 자리가 나면 자동으로 신청되고 문자로 알려 드려요.&quot; (copy 2-5)</td>
+<td>회차 행 잠금 → 정원 다시 확인 → WAITLISTED, 대기 순서 = 받은 시각 순</td>
+<td>PostgreSQL 행 잠금(ADR-M2), <code>AuditWriter</code> WRITE</td>
+</tr>
+<tr>
+<td>다른 입주자 취소(14:00)</td>
+<td>직원 CMN-17 명단 &quot;A동 401호 박영순 · 신청&quot; → [대신 취소] &quot;들은 방법(전화, 직접)&quot; (copy 4-4)</td>
+<td>박영순이 프런트에 전화</td>
+<td>최민수 [대신 취소] → 명단에서 박영순 &quot;취소 · 입주자&quot;(names 3-1 직원 라벨)</td>
+<td>같은 트랜잭션에서 회차 잠금 → 박영순 CANCELLED → 마감 전이므로 대기 첫 번째 중 장기 부재가 아닌 분을 ENROLLED로(promoted_at) → 회원 문자 아웃박스</td>
+<td><code>AbsenceQuery.absenceOf</code>(F20, P1), 아웃박스, <code>Notifier</code></td>
+</tr>
+<tr>
+<td>승급 알림(14:00)</td>
+<td>문자 로그 &quot;[Evenstay 홈] 자리가 나서 11월 19일(목) 오후 2시 수채화에 신청됐어요. 못 가시면 앱에서 취소하시거나 프런트 02-000-0000 (가상 번호)로 전화 주세요.&quot; (copy 8-1)</td>
+<td>이은숙: 문자를 보고 앱을 연다</td>
+<td>CMN-03 &quot;자리가 나서 신청됐어요. 11월 19일 목요일 오후 2시, 1층 모임방으로 오세요.&quot; / &quot;못 가시면 [신청 취소]를 눌러 주세요. 다음 분께 자리가 가요.&quot; (copy 2-5)</td>
+<td>명단 &quot;A동 201호 이은숙 · 신청 · 대기에서 올라감 14:00&quot;(copy 4-4)</td>
+<td><code>Notifier</code> 화면 로그</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>대안 경로: 이은숙이 앱을 열지 않아도 승급은 이미 됐다. 못 가시면 프런트에 말하면 직원이 [대신 취소]한다(copy 2-6 &quot;못 가시게 되면 [신청 취소]를 누르시거나 프런트에 말씀해 주세요.&quot;).</li>
+<li>동시에 두 길로 마지막 자리를 신청하면 회차 잠금 순서로 한 사람만 신청이 되고, 늦은 회원은 신청 행 없이 copy 7절 &quot;방금 다른 분이 마지막 자리를 신청하셨어요. 기다리시면 첫 번째예요. [기다릴게요] [그만둘게요]&quot;를 보고 고른다. 늦은 직원 대신 신청은 &quot;방금 다른 신청이 먼저 들어와 정원이 찼습니다. 대기 1번으로 넣었습니다.&quot;가 된다. 대기가 있는 회차의 빈자리는 새 신청이 아니라 승급으로만 채워진다(마감 뒤 대신 신청이 대기 순서를 앞지르지 않게).</li>
+</ul>
+<h2 id="흐름-2-마감-뒤에-난-자리-직원이-대기-순서대로-전화-p0-사용자-결정-n2-3-데모-부록">흐름 2. 마감 뒤에 난 자리 → 직원이 대기 순서대로 전화 (P0, 사용자 결정 N2-3. 데모 부록)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>앞단</th>
+<th>뒷단</th>
+<th>지원 시스템</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>마감(전날 18:00)</td>
+<td>회원 CMN-03 &quot;신청 마감이 지났어요. 가고 싶으시면 프런트에 물어봐 주세요.&quot; (copy 7절)</td>
+<td>—</td>
+<td>회원 앱의 신청·취소가 막힘(copy 2-6 마감 뒤 줄)</td>
+<td>마감 시각은 계산값(회차 날 전날 18:00 [가설]). SYSTEM 작업은 상태를 저장하지 않는다</td>
+<td><code>Clock</code></td>
+</tr>
+<tr>
+<td>마감 뒤 취소</td>
+<td>직원 CMN-17 [대신 취소]</td>
+<td>입주자가 프런트에 &quot;못 가요&quot;</td>
+<td>—</td>
+<td>회차 잠금 → CANCELLED. <strong>자동 승급하지 않는다</strong>. 진행 직원 알림 아웃박스</td>
+<td><code>Notifier</code></td>
+</tr>
+<tr>
+<td>직원 알림</td>
+<td>직원 휴대폰 &quot;마감 뒤 자리 1 · 11/19 수채화 · 대기 1번에게 전화&quot; (copy 8-3), 명단 위 &quot;마감 뒤 자리 1개가 났습니다. 대기 1번 …에게 전화로 여쭤보고 신청을 넣어 주세요.&quot; (copy 4-4)</td>
+<td>—</td>
+<td>윤서연이 대기 1번에게 전화</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>신청 넣기</td>
+<td>CMN-17 대기 첫 줄의 [신청으로 올리기](copy 4-4)</td>
+<td>대기 1번 &quot;갈게요&quot;</td>
+<td>윤서연 [신청으로 올리기]</td>
+<td>대기 맨 앞(장기 부재 건너뜀 반영)인 행만 허용, 아니면 409. &quot;못 가요&quot;면 그 대기를 [대신 취소]하고 다음 분에게 전화</td>
+<td><code>authorize(community.enrollment.promote_after_deadline)</code></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>마감 뒤까지 자리가 나지 않은 대기는 회차가 시작되면 회원 화면에 &quot;이번 수채화는 자리가 나지 않았어요. 다음 주 목요일 수채화도 기다리실 수 있어요.&quot;(copy 2-5)로 보인다. 저장된 상태를 바꾸지 않고 시각으로 계산한다.</li>
+</ul>
+<h2 id="흐름-3-프런트-전화-대신-예약-프로그램과-겹침-비어-있는-시간-p0-통합-데모-m5">흐름 3. 프런트 전화 → 대신 예약 → 프로그램과 겹침 → 비어 있는 시간 (P0. 통합 데모 M5)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계(시각)</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>앞단</th>
+<th>뒷단</th>
+<th>지원 시스템</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>전화(11:20)</td>
+<td>—</td>
+<td>이은숙: &quot;목요일 2시에 모임방 쓰고 싶어요(딸 가족이 와요)&quot;</td>
+<td>최민수 CMN-19 일정표 &quot;14:00~15:30 수채화(프로그램)&quot; (copy 4-6)</td>
+<td>—</td>
+<td>코어 <code>ResidentQuery</code>(호실·입주자 고르기)</td>
+</tr>
+<tr>
+<td>대신 예약(겹침)</td>
+<td>[대신 예약] 창 &quot;시설 · 날짜 · 시작 시각 · 끝 시각 · 호실 · 입주자 · 인원 · 들은 방법&quot; (copy 4-6)</td>
+<td>—</td>
+<td>&quot;이 시간에는 프로그램이 있습니다(14:00~15:30 수채화). 비어 있는 시간: 16:00, 17:00&quot; (copy 7절)</td>
+<td>자원 예약 테이블의 겹침 배제 제약이 거부 → 409 + 같은 방 그날 빈 칸 계산</td>
+<td>PostgreSQL 배제 제약(ADR-M1)</td>
+</tr>
+<tr>
+<td>다른 시간</td>
+<td>&quot;예약했습니다. 11/19(목) 16:00~17:00 1층 모임방, A동 201호 이은숙.&quot; (copy 4-6)</td>
+<td>이은숙: &quot;4시로 할게요&quot;</td>
+<td>최민수가 말로 안내</td>
+<td>PlaceBooking ACTIVE(예약), 들어온 곳 FRONT_PROXY, 받은 직원·들은 방법. 이용 규칙은 직원이 말로 전한 것(rules_ack_kind = STAFF_TOLD)으로 기록 [가설], 확인 줄 문구는 반영됨(copy 4-6)</td>
+<td><code>AuditWriter</code> WRITE</td>
+</tr>
+<tr>
+<td>회원 화면</td>
+<td>CMN-09 &quot;최민수 직원이 회원님 전화를 받고 대신 예약했어요. 내용이 다르면 프런트에 말씀해 주세요.&quot; (copy 2-12), CMN-01 다음 날 묶음 타일 부제 &quot;오늘 오후 4시 모임방을 예약하셨어요.&quot; (copy 2-1)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>회원이 앱에서 직접 예약하면(CMN-08) 비어 있는 시간만 보인다(copy 2-8 &quot;비어 있는 시간만 보여 드려요.&quot;). 그래도 동시에 같은 칸을 고르면 배제 제약이 늦은 쪽을 막고 copy 7절 &quot;방금 다른 분이 그 시간을 예약하셨어요.&quot;를 보인다.</li>
+</ul>
+<h2 id="흐름-4-중요-공지-읽었어요-확인-현황-직접-전함-p0-통합-데모-m1m2m9">흐름 4. 중요 공지 → 읽었어요 → 확인 현황 → 직접 전함 (P0. 통합 데모 M1·M2·M9)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계(시각)</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>앞단</th>
+<th>뒷단</th>
+<th>지원 시스템</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>쓰기(09:00)</td>
+<td>CMN-20 &quot;공지 쓰기&quot; 칸 &quot;제목 · 본문 · 대상(전체, A동, B동, 층) · 중요 공지(확인 받기) · 보호자에게도 보이기 · 문자로도 보내기 · 게시 시각&quot; (copy 4-7)</td>
+<td>최영미: 제목 &quot;11월 21일 토요일 오전, A동 물이 나오지 않아요&quot;, 대상 A동, 확인 받기, 문자 켬, 보호자 끔</td>
+<td>게시 확인 &quot;A동 입주자 18명에게 중요 공지를 게시하고 문자를 보냅니까?&quot;(카피 예시, 시드에서는 4명)</td>
+<td>PUBLISHED. 게시 때 대상 입주자 ID 목록을 정해 둔다(NoticeRecipient, ADR-M5). 문자 아웃박스 4건</td>
+<td>코어 <code>ResidentQuery.listResidents</code>·<code>SiteQuery.listUnits</code>(동), <code>Notifier</code></td>
+</tr>
+<tr>
+<td>읽었어요(09:30)</td>
+<td>CMN-01 띠 &quot;꼭 보실 공지가 있어요: 11월 21일 토요일 오전, A동 물이 나오지 않아요. [보기]&quot; → CMN-11 &quot;꼭 보실 공지예요. 읽으신 뒤 [읽었어요]를 눌러 주세요.&quot; (copy 2-1·2-11)</td>
+<td>이은숙: [읽었어요]</td>
+<td>&quot;읽으셨어요. 11월 18일 오전 9시 30분&quot; (copy 2-11). 띠가 사라진다</td>
+<td>NoticeAck(ACKED) 추가. 같은 대상의 두 번째 누름은 같은 결과(멱등)</td>
+<td><code>AuditWriter</code> WRITE</td>
+</tr>
+<tr>
+<td>확인 현황(16:00)</td>
+<td>CMN-21 &quot;대상 18 · 확인함 11 · 직접 전함 1 · 확인 전 6&quot;(카피 예시) → 시드 &quot;대상 4 · 확인함 1 · 직접 전함 0 · 확인 전 3&quot;</td>
+<td>최영미가 확인 전 호실을 본다</td>
+<td>확인 전 줄 &quot;A동 203호 ○○○ · 확인 전 · [직접 전함]&quot;(카피 예시 꼴). 김정희 줄에는 &quot;장기 부재 중(예정 복귀일 11/19)&quot;(copy 4-8, F20, P1)</td>
+<td>확인 상태는 NoticeRecipient와 NoticeAck로 계산. 장기 부재는 코어에서 그때 읽음</td>
+<td><code>AbsenceQuery.absenceOf</code></td>
+</tr>
+<tr>
+<td>직접 전함(16:05)</td>
+<td>&quot;직접 전함 창 누가, 어떻게 전했는지 남깁니다. 방법: 전화 · 방문 · 프런트에서 직접&quot; → &quot;직접 전함으로 남겼습니다(16:05, 최민수, 전화).&quot; (copy 4-8)</td>
+<td>박영순에게 전화</td>
+<td>박영순 회원 화면 &quot;최민수 직원이 전화로 전해 드렸어요.&quot; (copy 2-11)</td>
+<td>NoticeAck(DELIVERED_IN_PERSON, 전한 직원, 방법)</td>
+<td><code>AuditWriter</code> WRITE</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>문자 보내기가 일부 실패하면 공지는 게시된 채로 &quot;문자 3건을 보내지 못했습니다(…). 공지는 게시됐습니다. 확인 현황에서 직접 전해 주세요.&quot;(copy 7절)가 쓴 직원에게 보인다.</li>
+<li>공지 날 하루 전에 확인 전이 남으면 책임자에게 &quot;확인 전 2개 호실 · 11/21 A동 물 공지&quot;(copy 8-3, P1). 공지 날 칸 라벨은 &quot;공지 날 (선택)&quot;이다(copy 4-7).</li>
+</ul>
+<h2 id="흐름-5-출석-체크-p0-통합-데모-m3m11">흐름 5. 출석 체크 (P0. 통합 데모 M3·M11)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>앞단</th>
+<th>뒷단</th>
+<th>지원 시스템</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>체크(10:45)</td>
+<td>CMN-18 &quot;출석 체크 · 11/18(수) 10:00 가벼운 체조&quot; / &quot;온 분만 누르면 됩니다. 누르지 않은 신청자는 &quot;오지 않음&quot;으로 남습니다.&quot; (copy 4-5)</td>
+<td>윤서연: 온 분 [참여], [신청 없이 온 분 더하기]</td>
+<td>&quot;출석을 저장했습니다. 신청 14 · 참여 12 · 신청 없이 옴 1.&quot;(카피 예시, 시드 &quot;신청 5 · 참여 3 · 신청 없이 옴 1&quot;)</td>
+<td>온 분만 Attendance 행(ATTENDED, WALK_IN). 오지 않음은 행을 만들지 않는다(ADR-M4)</td>
+<td><code>AuditWriter</code> WRITE</td>
+</tr>
+<tr>
+<td>쓰임</td>
+<td>&quot;참여 기록은 보호자 생활 소식의 재료로 쓰입니다. 오지 않음은 입주자와 보호자에게 보이지 않습니다.&quot; (copy 4-5)</td>
+<td>—</td>
+<td>회원 CMN-07 지난 프로그램 &quot;11월 12일 목요일 · 수채화에 다녀오셨어요&quot;(copy 2-7 꼴)</td>
+<td>D가 생활 소식을 만들 때 <code>AttendanceQuery.attendedIn</code>으로 읽음(P1, D 요청)</td>
+<td><code>community/api</code></td>
+</tr>
+<tr>
+<td>체크하지 않음</td>
+<td>직원 휴대폰 &quot;출석 체크 전 · 11/18 가벼운 체조&quot; (copy 8-3, 끝난 지 1시간 [가설])</td>
+<td>—</td>
+<td>—</td>
+<td>아웃박스 sendAfter = 회차 끝 + 1시간</td>
+<td><code>Notifier</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="흐름-6-보호자-일정과-레지던스-공지-p1-d-통합-데모-m7m8">흐름 6. 보호자 일정과 레지던스 공지 (P1, D. 통합 데모 M7·M8)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계(시각)</th>
+<th>물리적 증거</th>
+<th>이용자 행동</th>
+<th>앞단</th>
+<th>뒷단</th>
+<th>지원 시스템</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>허락(14:50)</td>
+<td>D FAM-01 일정 허락(D 화면, D 장면 D-N2-1 [D 요청])</td>
+<td>이은숙: 김지민에게 &quot;일정&quot; 보여 주기</td>
+<td>—</td>
+<td>D ConsentGrant(SCHEDULE). N2는 저장하지 않는다</td>
+<td>D</td>
+</tr>
+<tr>
+<td>일정(15:00)</td>
+<td>CMN-12(D 일정 안) &quot;이은숙 회원님이 허락하신 일정이에요.&quot; / &quot;11월 19일 목요일 오후 2시&quot; / &quot;수채화 · 1층 모임방&quot; / &quot;이은숙 회원님이 자리를 기다리시는 프로그램과 시설 예약은 보이지 않아요.&quot; (copy 3-1)</td>
+<td>김지민: 일정을 연다</td>
+<td>—</td>
+<td>D가 <code>ProgramQuery.enrolledSessionsOf</code>(actor = 보호자)를 부르고, N2는 D 동의 행동 <code>community.enrollment.view_as_guardian</code>으로 검사. 확정 신청만 돌려줌</td>
+<td>D 정책(SCHEDULE), <code>community/api</code></td>
+</tr>
+<tr>
+<td>레지던스 공지</td>
+<td>CMN-13 &quot;레지던스 공지&quot; / &quot;레지던스가 보호자께도 알리는 공지예요.&quot; / &quot;12월 면회 시간이 바뀌어요&quot; (copy 3-2)</td>
+<td>김지민: 첫 화면</td>
+<td>A동 단수 공지는 보이지 않는다(보이기 끔)</td>
+<td><code>NoticeQuery.guardianNoticesFor</code>(보호자에게도 보이기 켠 것만). D 정책이 보호자 관계만으로 연다(허락 항목과 무관)</td>
+<td><code>community/api</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="흐름-7-회차-쉬기와-사업장-예약-취소-p1">흐름 7. 회차 쉬기와 사업장 예약 취소 (P1)</h2>
+<ul>
+<li>회차 쉬기: CMN-16 &quot;11/19(목) 수채화를 쉽니까? 신청 8명, 대기 1명에게 알립니다.&quot;(copy 4-3) → 회차 CANCELLED, 모든 신청·대기 CANCELLED(이유 SESSION_CANCELLED), 방 시간 풀림, 회원 문자 copy 8-1 &quot;…수채화는 쉬어요. 신청도 함께 취소됐어요.&quot;, 보호자 일정 &quot;11월 19일 목요일 수채화는 쉬어요.&quot;(copy 3-1).</li>
+<li>시간 막기와 사업장 취소: CMN-19 &quot;이 시간에 예약 1건이 있습니다(A동 201호 이은숙). 막으면 예약이 취소되고 입주자에게 이유와 함께 알립니다.&quot;(copy 4-6) → 한 트랜잭션에서 예약 CANCELLED(SITE) + BLOCK 추가, 문자 copy 8-1.</li>
+</ul>
+<h2 id="실패-지점과-대응">실패 지점과 대응</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>실패 지점</th>
+<th>어디서 끊기나</th>
+<th>대응</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>마지막 자리 동시 신청</td>
+<td>앞단은 &quot;자리 1개&quot;를 보였는데 뒷단은 이미 찼다</td>
+<td>회차 행 잠금, 늦은 쪽은 대기로 넣고 copy 7절 문구(ADR-M2)</td>
+</tr>
+<tr>
+<td>같은 방 같은 시간 동시 예약</td>
+<td>회원 화면은 비어 있다고 보였다</td>
+<td>배제 제약이 늦은 쪽 거부 → 빈 시간 다시 보여 줌(copy 7절)</td>
+</tr>
+<tr>
+<td>프로그램 등록이 기존 예약과 겹침</td>
+<td>담당이 모르고 회차를 만든다</td>
+<td>등록 저장 때 4주 회차 전부를 검사해 겹치는 날과 예약을 보인다(copy 7절). 회차 생성 작업이 겹침을 만나면 그 회차를 만들지 않고 담당에게 알림(copy 4-3·8-3)</td>
+</tr>
+<tr>
+<td>승급 문자를 못 봄</td>
+<td>회원이 신청된 줄 모르고 오지 않는다</td>
+<td>상세 화면과 첫 화면 묶음 타일 부제 &quot;오늘 오후 2시 수채화를 신청하셨어요.&quot;(copy 2-1)에 보인다. 오지 않은 일은 기록·알림하지 않는다</td>
+</tr>
+<tr>
+<td>장기 부재 중인 대기자가 승급</td>
+<td>자리가 빈 채로 남는다</td>
+<td>승급 때 <code>AbsenceQuery.absenceOf</code>가 OPEN이고 예정 복귀일이 회차 날 뒤이거나 모르면 건너뛴다(F20, P1). 건너뜀은 명단에 보인다(copy 4-4)</td>
+</tr>
+<tr>
+<td>장기 부재가 시작돼도 신청이 남음</td>
+<td>자리를 차지한 채 오지 않는다</td>
+<td>자동으로 취소하지 않는다(부재 이벤트를 구독하지 않음). 명단에 부재 표시, 직원이 회원·가족과 이야기한 뒤 [대신 취소] [가설]</td>
+</tr>
+<tr>
+<td>공지 문자 실패</td>
+<td>앱을 쓰지 않는 회원에게 닿지 않는다</td>
+<td>실패 호실을 쓴 직원에게 보이고 확인 현황에서 직접 전함</td>
+</tr>
+<tr>
+<td>앱을 쓰지 않는 회원</td>
+<td>[읽었어요]가 없다</td>
+<td>직접 전함이 같은 확인으로 친다</td>
+</tr>
+<tr>
+<td>출석을 체크하지 않음</td>
+<td>생활 소식 재료가 빈다</td>
+<td>끝난 지 1시간 뒤 진행 직원 알림, 다음 날 첫 화면 &quot;출석 체크 전&quot;(copy 4-5)</td>
+</tr>
+<tr>
+<td>D·코어가 없을 때</td>
+<td>보호자 화면, 장기 부재 표시가 빈다</td>
+<td><code>tech-design.md</code> 10-6 단독 데모 대체</td>
+</tr>
+</tbody></table></div>
+<h2 id="대안-경로-디지털이-어려운-회원">대안 경로 (디지털이 어려운 회원)</h2>
+<ul>
+<li>모든 회원 화면 아래 &quot;앱이 어려우시면 프런트 02-000-0000 (가상 번호)로 전화하시거나 직원에게 말씀해 주세요. 방 전화로 거실 때는 내선 0번이에요. 직원이 대신 신청해 드려요.&quot;(copy 2-0).</li>
+<li>신청·취소·예약은 프런트와 직원이 대신 넣고, 회원 화면에 누가 넣었는지 보인다(copy 2-12).</li>
+<li>중요 공지는 문자(제목만, 링크 없음, copy 8-1)와 직원의 직접 전함.</li>
+<li>대신 처리하실 분(대리인)과 보호자는 신청하지 않는다. 프런트에 말하면 직원이 대신 신청한다 [가설]. copy 3-1 아래 안내는 &quot;…대신 처리하실 분은 프런트에 말씀해 주세요.&quot;로 고쳐졌다(반영됨, <code>prd.md</code> 12절 12번).</li>
+<li>생활 요청 &quot;그 밖의 일&quot;로 들어온 프로그램 문의는 프런트가 이 모듈 [대신 신청]으로 넣고 생활 요청을 마친다 [가설: 코드 연결 없음].</li>
+</ul>
+<h2 id="읽어-낸-것">읽어 낸 것</h2>
+<ul>
+<li>뒷단이 가장 촘촘한 곳은 취소 한 번에 일어나는 일(잠금, 취소, 승급, 부재 확인, 문자)이다. 한 트랜잭션과 한 아웃박스 행으로 묶는다.</li>
+<li>회원이 기다리는 긴 구간(대기 → 승급)은 문자 하나와 상세 화면 문장으로만 알린다. 마감 뒤에는 사람(전화)으로 넘긴다.</li>
+<li>공지의 앞단 약속(&quot;닿았는지 남는다&quot;)은 직원의 직접 전함 기록에 기대므로, 확인 전 목록을 직원이 쉽게 처리하게 하는 것이 핵심이다.</li>
+</ul>
+<h2 id="확인할-것">확인할 것</h2>
+<ol>
+<li><strong>[가설] 장기 부재 대기자 건너뛰기 조건</strong>: 예정 복귀일이 회차 날 뒤이거나 모름. 다른 안은 건너뛰지 않고 직원에게 맡기기.</li>
+<li><strong>[가설] 대신 예약 때 이용 규칙 확인</strong>: 직원이 말로 전한 것으로 기록한다. 회원이 다음에 앱으로 예약할 때 규칙을 한 번 보인다(copy 5-1 이용 규칙 안내).</li>
+<li><strong>카피 반영됨(2026-11-04)</strong>: 마감 뒤 [신청으로 올리기](copy 4-4), 장기 부재 표시(copy 4-4·4-5·4-8), 회차를 만들지 못함 알림(copy 4-3·8-3), 공지 날 칸(copy 4-7).</li>
+</ol>
+<h2 id="변경-기록">변경 기록</h2>
+<ul>
+<li>2026-11-04 처음 작성(허브 요청, 사용자 &quot;승인하고 기획 시작&quot;).</li>
+<li>2026-11-04 검토 에이전트(critic) 1회 반영: 동시 신청 때 회원은 기다릴지 고름, 대기가 있으면 빈자리는 승급으로만, 예약 상태 코드(ACTIVE)와 이용 규칙 확인 저장, 보호자 공지는 D 정책, 대리인 경로 카피 어긋남.</li>
+<li>2026-11-04 카피 보완 반영 표시(허브 전달, 사용자 재승인 2026-11-04): N2 카피 세션이 <code>prd.md</code> 12절 <code>[NEED: 카피]</code> 14개를 copy.md에 넣어 본문의 <code>[NEED: 카피]</code>를 &quot;반영됨(copy 절 번호)&quot;으로 바꿨다.</li>
+<li>2026-11-04 카피 고침 반영(허브 전달, 사용자 재승인 2026-11-04): 첫 화면 흐름을 묶음 타일·COM-09로, 오늘 신청·예약 문장 위치를 묶음 타일 부제로, 프런트 번호 인용을 copy 2-0·8-1로 맞춤. 문해진 문장 삭제.</li>
+<li>2026-11-04 쉬운 말 재검수·공용 문구 인용 반영(허브 전달, 사용자 &quot;추천대로&quot;, 사용자 재승인 2026-11-04): 회원·보호자 화면 인용만 <code>03-copywriting/ideas/community/plain-read-review-2026-11-04.md</code>의 새 문구로 맞춤. 기능·범위·정책·수치는 그대로다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="k-blueprint" data-title="서비스 설계도"><p>이용자가 보는 화면 뒤에서 직원과 시스템이 무엇을 하는지 단계별로 그린 문서입니다.</p></template>
+<template id="g-573" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-574" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-575" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-576" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-577" data-title="아웃박스"><p>상태 변경과 같은 트랜잭션에 쓰는 이벤트 행. 모듈마다 자기 스키마에 같은 열로 둔다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd><code>OutboxEvent</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-578" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-579" data-title="직원 알림"><p>직원 휴대폰 알림 발송과 전달 결과</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 직원 알림</dd><dt>영문·코드 이름</dt><dd><code>StaffNotification</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-580" data-title="이용 규칙"><p>규칙이 바뀌면 다음 예약 때 다시 보인다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원: 이용 규칙</dd><dt>영문·코드 이름</dt><dd><code>FacilityRule</code>, <code>Place.rules_text</code></dd><dt>출처</dt><dd>community M, community T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-581" data-title="중요 공지"><p>확인을 받는 공지. 회원 버튼은 읽었어요 하나</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 중요 공지 · 확인 받기 / 회원: 꼭 보실 공지</dd><dt>영문·코드 이름</dt><dd><code>Notice.requiresAck</code></dd><dt>출처</dt><dd>community M, community N</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-582" data-title="배제 제약"><p>기간이나 시간 겹침을 DB가 거부한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd><code>EXCLUDE</code></dd><dt>출처</dt><dd>core T12, community ADR-M1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+{
+ "seq": 100,
+ "genFrom": "2026-11-10",
+ "genTo": "2026-12-08",
+ "genDone": null,
+ "failed": [],
+ "places": [
+  {
+   "id": "LOUNGE",
+   "name": "1층 라운지",
+   "short": "라운지",
+   "reservable": false
+  },
+  {
+   "id": "GARDEN",
+   "name": "안뜰 정원",
+   "short": "정원",
+   "reservable": false
+  },
+  {
+   "id": "FARM",
+   "name": "안뜰 텃밭",
+   "short": "텃밭",
+   "reservable": false
+  },
+  {
+   "id": "MEET",
+   "name": "1층 모임방",
+   "short": "모임방",
+   "reservable": true,
+   "desc": "가족 모임이나 작은 모임에 쓰는 방이에요.",
+   "maxPeople": 8,
+   "slot": 60,
+   "dailyMax": 120,
+   "openFrom": "09:00",
+   "openTo": "21:00",
+   "windowDays": 14,
+   "rulesVersion": 1,
+   "rulesText": "쓰신 뒤 의자를 제자리에, 음식은 뚜껑 있는 것만, 밤 9시까지"
+  },
+  {
+   "id": "KARAOKE",
+   "name": "1층 노래방",
+   "short": "노래방",
+   "reservable": true,
+   "desc": "함께 노래를 부를 수 있는 방이에요.",
+   "maxPeople": 4,
+   "slot": 60,
+   "dailyMax": 60,
+   "openFrom": "09:00",
+   "openTo": "20:00",
+   "windowDays": 14,
+   "rulesVersion": 1,
+   "rulesText": "[미정: 사업장 이용 규칙]"
+  }
+ ],
+ "features": {
+  "notices": true,
+  "programs": true,
+  "places": true
+ },
+ "placeLog": [],
+ "programs": [
+  {
+   "id": "EXERCISE",
+   "name": "가벼운 체조",
+   "desc": "의자에 앉거나 서서 몸을 풀어요.",
+   "weekdays": [
+    1,
+    3,
+    5
+   ],
+   "time": "10:00",
+   "minutes": 40,
+   "placeId": "LOUNGE",
+   "capacity": 20,
+   "lead": "st.yoonsy",
+   "startsOn": "2026-11-02",
+   "endsOn": null,
+   "active": true
+  },
+  {
+   "id": "SING",
+   "name": "노래 교실",
+   "desc": "함께 아는 노래를 불러요.",
+   "weekdays": [
+    2
+   ],
+   "time": "14:00",
+   "minutes": 60,
+   "placeId": "LOUNGE",
+   "capacity": 20,
+   "lead": "st.yoonsy",
+   "startsOn": "2026-11-02",
+   "endsOn": null,
+   "active": true
+  },
+  {
+   "id": "WALK",
+   "name": "산책 모임",
+   "desc": "안뜰 정원 산책로를 함께 걸어요.",
+   "weekdays": [
+    4
+   ],
+   "time": "10:00",
+   "minutes": 40,
+   "placeId": "GARDEN",
+   "capacity": null,
+   "lead": "st.yoonsy",
+   "startsOn": "2026-11-02",
+   "endsOn": null,
+   "active": true
+  },
+  {
+   "id": "PAINT",
+   "name": "수채화",
+   "desc": "물감으로 꽃과 풍경을 그려요.",
+   "weekdays": [
+    4
+   ],
+   "time": "14:00",
+   "minutes": 90,
+   "placeId": "MEET",
+   "capacity": 4,
+   "lead": "st.yoonsy",
+   "startsOn": "2026-11-02",
+   "endsOn": null,
+   "active": true
+  },
+  {
+   "id": "FARM",
+   "name": "텃밭 가꾸기",
+   "desc": "안뜰 텃밭에서 채소를 심고 돌봐요.",
+   "weekdays": [
+    6
+   ],
+   "time": "10:00",
+   "minutes": 60,
+   "placeId": "FARM",
+   "capacity": 10,
+   "lead": "st.yoonsy",
+   "startsOn": "2026-11-02",
+   "endsOn": null,
+   "active": true
+  }
+ ],
+ "sessions": [],
+ "bookings": [
+  {
+   "id": "BK-1",
+   "placeId": "KARAOKE",
+   "kind": "RESERVATION",
+   "start": "2026-11-18T15:00:00",
+   "end": "2026-11-18T16:00:00",
+   "residentId": "R_KYUNGSOOK",
+   "people": 2,
+   "source": "RESIDENT_APP",
+   "takenBy": null,
+   "heardVia": null,
+   "rulesAck": "MEMBER",
+   "status": "ACTIVE",
+   "createdAt": "2026-11-09T15:00:00"
+  },
+  {
+   "id": "BK-2",
+   "placeId": "MEET",
+   "kind": "RESERVATION",
+   "start": "2026-11-19T18:00:00",
+   "end": "2026-11-19T19:00:00",
+   "residentId": "R_MALSUN",
+   "people": 3,
+   "source": "RESIDENT_APP",
+   "takenBy": null,
+   "heardVia": null,
+   "rulesAck": "MEMBER",
+   "status": "ACTIVE",
+   "createdAt": "2026-11-10T09:50:00"
+  },
+  {
+   "id": "BK-3",
+   "placeId": "MEET",
+   "kind": "BLOCK",
+   "start": "2026-11-19T09:00:00",
+   "end": "2026-11-19T10:00:00",
+   "blockReason": "CLEANING",
+   "status": "ACTIVE",
+   "createdAt": "2026-11-09T09:00:00"
+  }
+ ],
+ "rulesAcked": {
+  "R_KYUNGSOOK": 1,
+  "R_MALSUN": 1
+ },
+ "enrollments": [
+  {
+   "id": "E-1",
+   "seq": 1,
+   "sessionId": "S-PAINT-20261119",
+   "residentId": "R_OKJA",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-09T10:12:00",
+   "source": "RESIDENT_APP",
+   "takenBy": null,
+   "heardVia": null
+  },
+  {
+   "id": "E-2",
+   "seq": 2,
+   "sessionId": "S-PAINT-20261119",
+   "residentId": "R_YEONGSUN",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-09T11:30:00",
+   "source": "FRONT_PROXY",
+   "takenBy": "st.choims",
+   "heardVia": "PHONE"
+  },
+  {
+   "id": "E-3",
+   "seq": 3,
+   "sessionId": "S-PAINT-20261119",
+   "residentId": "R_MALSUN",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-10T09:40:00",
+   "source": "RESIDENT_APP",
+   "takenBy": null,
+   "heardVia": null
+  },
+  {
+   "id": "E-4",
+   "seq": 4,
+   "sessionId": "S-PAINT-20261119",
+   "residentId": "R_KYUNGSOOK",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-10T10:05:00",
+   "source": "RESIDENT_APP",
+   "takenBy": null,
+   "heardVia": null
+  },
+  {
+   "id": "E-5",
+   "seq": 5,
+   "sessionId": "S-EXERCISE-20261118",
+   "residentId": "R_EUNSOOK",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-10T12:00:00",
+   "source": "FRONT_PROXY",
+   "takenBy": "st.choims",
+   "heardVia": "PHONE"
+  },
+  {
+   "id": "E-6",
+   "seq": 6,
+   "sessionId": "S-EXERCISE-20261118",
+   "residentId": "R_OKJA",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-09T10:20:00",
+   "source": "RESIDENT_APP",
+   "takenBy": null,
+   "heardVia": null
+  },
+  {
+   "id": "E-7",
+   "seq": 7,
+   "sessionId": "S-EXERCISE-20261118",
+   "residentId": "R_YEONGSUN",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-09T11:31:00",
+   "source": "FRONT_PROXY",
+   "takenBy": "st.choims",
+   "heardVia": "PHONE"
+  },
+  {
+   "id": "E-8",
+   "seq": 8,
+   "sessionId": "S-EXERCISE-20261118",
+   "residentId": "R_KYUNGSOOK",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-10T10:06:00",
+   "source": "RESIDENT_APP",
+   "takenBy": null,
+   "heardVia": null
+  },
+  {
+   "id": "E-9",
+   "seq": 9,
+   "sessionId": "S-EXERCISE-20261118",
+   "residentId": "R_JEONGHEE",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-07T14:00:00",
+   "source": "FRONT_PROXY",
+   "takenBy": "st.choims",
+   "heardVia": "PHONE"
+  },
+  {
+   "id": "E-10",
+   "seq": 10,
+   "sessionId": "S-SING-20261117",
+   "residentId": "R_OKJA",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-09T10:30:00",
+   "source": "RESIDENT_APP",
+   "takenBy": null,
+   "heardVia": null
+  },
+  {
+   "id": "E-11",
+   "seq": 11,
+   "sessionId": "S-PAINT-20261126",
+   "residentId": "R_OKJA",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-09T10:13:00",
+   "source": "RESIDENT_APP",
+   "takenBy": null,
+   "heardVia": null
+  },
+  {
+   "id": "E-12",
+   "seq": 12,
+   "sessionId": "S-PAINT-20261126",
+   "residentId": "R_YEONGSUN",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-09T11:32:00",
+   "source": "FRONT_PROXY",
+   "takenBy": "st.choims",
+   "heardVia": "PHONE"
+  },
+  {
+   "id": "E-13",
+   "seq": 13,
+   "sessionId": "S-PAINT-20261126",
+   "residentId": "R_KYUNGSOOK",
+   "status": "ENROLLED",
+   "queuedAt": "2026-11-10T10:07:00",
+   "source": "RESIDENT_APP",
+   "takenBy": null,
+   "heardVia": null
+  }
+ ],
+ "attendance": [],
+ "notices": [
+  {
+   "id": "N-01",
+   "title": "12월 프로그램 일정이 나왔어요",
+   "body": "12월 프로그램 일정이 나왔어요. 가벼운 체조, 노래 교실, 산책 모임, 수채화, 텃밭 가꾸기는 12월에도 같은 요일, 같은 시간에 열려요. Evenstay 홈의 [프로그램]에서 일정과 남은 자리를 보고 신청하세요. 앱이 어려우시면 프런트로 전화해 주세요.",
+   "audience": "ALL",
+   "requiresAck": false,
+   "guardianVisible": false,
+   "sendSms": false,
+   "status": "SCHEDULED",
+   "publishAt": "2026-11-18T08:00:00",
+   "publishedAt": null,
+   "authorId": "st.yoonsy",
+   "authorName": "윤서연",
+   "authorTitle": "생활 지원"
+  },
+  {
+   "id": "N-02",
+   "title": "12월 면회 시간이 바뀌어요",
+   "body": "12월 1일 화요일부터 면회 시간이 오전 ○시부터 오후 ○시까지로 바뀌어요. 오시기 전에 프런트로 전화해 주세요.",
+   "audience": "ALL",
+   "requiresAck": false,
+   "guardianVisible": true,
+   "sendSms": false,
+   "status": "SCHEDULED",
+   "publishAt": "2026-11-16T10:00:00",
+   "publishedAt": null,
+   "authorId": "st.choiym",
+   "authorName": "최영미",
+   "authorTitle": "센터장"
+  }
+ ],
+ "recipients": [],
+ "acks": [],
+ "notes": []
+}
