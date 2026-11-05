@@ -97,23 +97,21 @@
 
 ```mermaid
 flowchart TB
-  subgraph 쓰는 사람
-    H[Evenstay 홈: 입주자, 대리인]
-    F[Evenstay 패밀리: 보호자]
-    S[Evenstay: 본사, 직원, 소유주]
+  subgraph U["쓰는 사람"]
+    H["Evenstay 홈 (입주자, 대리인)"]
+    F["Evenstay 패밀리 (보호자)"]
+    S["Evenstay (본사, 직원, 소유주)"]
   end
-  H --> M
-  F --> M
-  S --> M
-  subgraph M[모듈]
-    A[안심]
-    B[보호자]
-    C[비서]
-    D[생활 지원 단계]
-    E[생활 요청]
-    G[커뮤니티]
+  subgraph M["모듈"]
+    A["안심"]
+    B["보호자"]
+    C["비서"]
+    D["생활 지원 단계"]
+    E["생활 요청"]
+    G["커뮤니티"]
   end
-  M --> K[코어: 계약, 청구]
+  U --> M
+  M --> K["코어 (계약, 청구)"]
 ```
 
 | 모듈 | PRD | 기술 설계 | 사용자 스토리 |
