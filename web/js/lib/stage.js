@@ -203,7 +203,7 @@ export function paint() {
 // 좁은 폭에서는 막대 버튼이 시연 도구 안으로 들어가므로 보이는 쪽으로 포커스를 돌린다
 const shownOpener = (sel) => () => [...document.querySelectorAll(sel)].find((e) => e.offsetParent) || document.querySelector('[data-pop="tools"]');
 async function onClick(e) {
-  const t = e.target.closest('button'); if (!t) return;
+  const t = e.target.closest('button'); if (!t || t.classList.contains('tb-theme')) return;
   const d = t.dataset;
   if (d.pop) { ui.pop = ui.pop === d.pop ? '' : d.pop; }
   else if (d.chip) { const [a, b] = d.chip.split('T'); document.getElementById('ck-d').value = a; document.getElementById('ck-t').value = b; return; }

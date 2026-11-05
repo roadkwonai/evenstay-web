@@ -107,7 +107,8 @@ body { display: flex; flex-direction: column; background: var(--bg-muted); }
   .tools-narrow { display: block; }
   #bar .devbar { padding: 4px 8px; }
   .bar-demo, .bar-tools > [data-do] { display: none; }
-  .bar-tools { justify-content: space-between; }
+  .bar-tools { flex: 0 1 auto; justify-content: flex-end; }
+  .bar-clock { display: none; }
 }
 /* 이동 버튼이 먼저 보이도록 시연 도구는 테두리만 낮춘다 */
 #bar .bar-tools .btn-sm { border-color: color-mix(in srgb, var(--fg-on-inverse) 30%, transparent); font-weight: 500; }

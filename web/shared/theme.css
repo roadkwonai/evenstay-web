@@ -1,0 +1,5 @@
+/* 색상은 DESIGN.md에서 생성한 토큰을 그대로 쓴다. */
+@import url('../design/system/tokens.css');
+html.dark { --shadow-2: 0 0 0 1px var(--border-default); --shadow-3: 0 0 0 1px var(--border-default); }
+html.dark .tb-mark { filter: brightness(0); }
+html.dark .appbar img { filter: brightness(0) invert(1); }

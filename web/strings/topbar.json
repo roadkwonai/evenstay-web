@@ -9,5 +9,9 @@
  "help": "도움말",
  "nav": "이동",
  "homeShort": "홈",
- "siteShort": "사이트"
+ "siteShort": "사이트",
+ "themeAction": "화면 모드: {current}. {next} 모드로 변경",
+ "themeSystem": "시스템",
+ "themeLight": "라이트",
+ "themeDark": "다크"
 }

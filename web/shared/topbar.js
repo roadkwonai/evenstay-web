@@ -26,6 +26,27 @@ const I = {
 const label = (long, short) => `<span class="tb-long">${esc(long)}</span><span class="tb-short">${esc(short)}</span>`;
 /** 오른쪽 끝의 저장소 링크. 좁은 폭에서는 아이콘만 남는다. */
 export const githubLink = `<a class="tb-link tb-gh" href="https://github.com/roadkwonai/evenstay-web" target="_blank" rel="noopener noreferrer" aria-label="GitHub">${I.github}<span>GitHub</span></a>`;
+const THEME_ICONS = {
+  system: ic('<rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/>'),
+  light: ic('<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>'),
+  dark: ic('<path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"/>'),
+};
+function themeButton() {
+  const mode = window.evenstayTheme.mode, modes = ['system', 'light', 'dark'];
+  const next = modes[(modes.indexOf(mode) + 1) % modes.length];
+  const names = { system: T.themeSystem, light: T.themeLight, dark: T.themeDark };
+  const title = T.themeAction.replace('{current}', names[mode]).replace('{next}', names[next]);
+  return `<button class="tb-link tb-theme" type="button" aria-label="${esc(title)}" title="${esc(title)}">${THEME_ICONS[mode]}<span>${esc(names[mode])}</span></button>`;
+}
+function updateThemeButton() {
+  document.querySelectorAll('.tb-theme').forEach((button) => {
+    const template = document.createElement('template'); template.innerHTML = themeButton();
+    const next = template.content.firstElementChild;
+    button.innerHTML = next.innerHTML;
+    button.setAttribute('aria-label', next.getAttribute('aria-label'));
+    button.title = next.title;
+  });
+}
 /** 지금 있는 곳. 앱에서는 눌린 표시를 두지 않는다. */
 function here() {
   const p = location.pathname;
@@ -43,7 +64,7 @@ export function topbarHtml(helpAttr) {
     <a class="tb-link" href="${cfg.base}site/index.html"${cur('site')}>${I.site}${label(T.site, T.siteShort)}</a>
     ${help}
     <button class="tb-role" type="button" aria-haspopup="dialog" aria-expanded="${open}" data-tip="tip.acct"><span class="tb-long">${esc(c.long)}</span><span class="tb-short">${esc(c.short)}</span>${CARET}</button>
-  </nav>`;
+  </nav>${themeButton()}`;
 }
 function popHtml() {
   const link = (url, id, go, inner, cls = '') => `<a class="tb-item${cls}" href="${cfg.base}${url}" data-as="${id}" data-go="${go}">${inner}</a>`;
@@ -69,6 +90,7 @@ function onKey(e) {
   if (e.shiftKey && a === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && a === last) { e.preventDefault(); first.focus(); }
 }
 function onClick(e) {
+  if (e.target.closest?.('.tb-theme')) { window.evenstayTheme.cycle(); return; }
   if (e.target.closest?.('.tb-role')) { setOpen(!open); return; }
   const a = e.target.closest?.('.tb-pop [data-as]');
   if (a && cfg.onPick) { e.preventDefault(); open = false; pop.innerHTML = ''; cfg.onPick(a.dataset.as, a.dataset.go); return; } // 앱 안에서는 시연 기록을 지우지 않고 바꾼다
@@ -83,6 +105,7 @@ export async function initTopbar(options = {}) {
   }
   [T, ROLES, ACCOUNTS] = await Promise.all([get('strings/topbar.json'), get('data/roles.json'), get('data/accounts.json')]);
   pop = document.createElement('div'); pop.id = 'tb-pop-root'; document.body.append(pop);
+  window.addEventListener('evenstay-themechange', updateThemeButton);
   document.addEventListener('click', onClick);
   document.addEventListener('keydown', onKey);
 }
