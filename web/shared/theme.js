@@ -10,7 +10,8 @@
     root.classList.toggle('dark', theme === 'dark');
     root.classList.toggle('light', theme === 'light');
     root.dataset.theme = theme;
-    root.style.colorScheme = theme;
+    // 브라우저가 선택한 색상을 자동 다크 모드로 다시 변환하지 않게 한다.
+    root.style.colorScheme = 'only ' + theme;
     document.querySelectorAll('iframe').forEach((frame) => {
       try { frame.contentWindow.evenstayTheme?.set(mode); } catch { /* 외부 프레임은 자체 테마를 쓴다. */ }
     });
