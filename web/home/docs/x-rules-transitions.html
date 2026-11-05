@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>transitions — 생활 지원 단계 (Evenstay Transitions) | Evenstay 문서</title>
+<meta name="description" content="transitions — 생활 지원 단계 (Evenstay Transitions). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>transitions — 생활 지원 단계 (Evenstay Transitions)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#꼭-지킬-규칙">꼭 지킬 규칙</a></li><li class="lv2"><a href="#하지-않을-것">하지 않을 것</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1161" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li></ul></section></aside>
+  <article class="doc"><h2 id="꼭-지킬-규칙">꼭 지킬 규칙</h2>
+<ul>
+<li>단계는 사람이 정한다. 시스템은 판정·추천하지 않는다. 평가·제안·설명·결정은 따로 기록한다(ADR-T1).</li>
+<li>제안자와 결정자는 다른 사람이다. 정책, 애플리케이션, DB(복합 FK + CHECK) 세 겹으로 막는다. 결정자는 SITE_MANAGER 또는 HQ_MANAGER [가설](ADR-T2).</li>
+<li>거처 상담은 입주자 의견 없이 결정하지 못한다. 단계는 양쪽으로 바뀐다(위아래 없음).</li>
+<li>단계가 바뀌어도 코어 계약·청구는 그대로다. 요금 묶음이 다르면 C 안에 계약 변경 요청을 남기고, 경리 &quot;확인할 일&quot;은 <code>app/</code>이 <code>TransitionsInboxQuery</code>를 붙여 보여 준다(ADR-T3).</li>
+<li>단계 정의는 판으로 두고 결정은 그 판을 기록한다. 단계 코드는 고정, 라벨은 바꿀 수 있다(ADR-T4).</li>
+<li>보호자에게는 결정된 변경만 D <code>HealthFeedCommand.post</code>로 간다(CARE_STAGE_CHANGE, EXTERNAL_CARE_START). 평가 내용·회원 의견·결정 전 제안은 보내지 않는다(ADR-T6).</li>
+<li>화면 이름은 번호 없이 쓴다. 직원: 기본 서비스 / 생활 지원 추가 / 외부 돌봄 병행 / 거처 상담. 회원: 기본 서비스 / 생활 지원 더하기 / 다른 기관 돌봄 함께 / 지낼 곳 함께 의논. 금지어(판정, 단계 뜻의 등급, 하향·상향, 퇴소, 단계 번호)는 CI에서 검사한다.</li>
+<li>다른 모듈은 <code>core/api</code>, <code>family/api</code>로만 쓴다. 스키마는 <code>transitions</code>만 쓰고, 정책은 <code>transitions.*</code>만 등록한다.</li>
+</ul>
+<h2 id="하지-않을-것">하지 않을 것</h2>
+<ul>
+<li>장기요양 등급 판정(공단 결과를 옮겨 적는 칸만), 요양 급여 청구, 의료 판단(진단명·진료 결과·처방 입력 칸 없음), 퇴거 결정·퇴거 요청</li>
+<li>단계 판정·추천(점수, 규칙 엔진, AI), 화면의 단계 번호</li>
+<li>요금 계산·자동 반영, 코어 계약·청구 직접 변경</li>
+<li>보호자 화면·문자·동의 저장(모두 D), 보호자에게 평가 내용·기억·판단 기록·회원 의견·결정 전 제안 보내기</li>
+<li>외부 돌봄 기관·통합돌봄 시스템 연동, 외부 전문가 의견 원문·퇴원 서류 저장</li>
+<li>효과 수치 주장</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1161" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>아키텍처 설계안 논리 검토 (2026-11-05) | Evenstay 문서</title>
+<meta name="description" content="아키텍처 설계안 논리 검토 (2026-11-05). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>아키텍처 설계안 논리 검토 (2026-11-05)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#요약">요약</a></li><li class="lv2"><a href="#찾은-내용">찾은 내용</a></li><li class="lv3"><a href="#높음">높음</a></li><li class="lv3"><a href="#중간">중간</a></li><li class="lv3"><a href="#낮음">낮음</a></li><li class="lv2"><a href="#대조에서-맞은-항목">대조에서 맞은 항목</a></li><li class="lv2"><a href="#근본-원인">근본 원인</a></li><li class="lv2"><a href="#권장-순서">권장 순서</a></li><li class="lv2"><a href="#트레이드오프">트레이드오프</a></li><li class="lv2"><a href="#참조">참조</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1040" data-tip="상태 변경과 같은 트랜잭션에 쓰는 이벤트 행.">아웃박스</button></li><li><button class="term" type="button" data-modal="g-1041" data-tip="외부 연동 경계.">어댑터</button></li><li><button class="term" type="button" data-modal="g-1042" data-tip="마일스톤을 마쳤다고 볼 기준.">완료 기준</button></li><li><button class="term" type="button" data-modal="g-1043" data-tip="요청과 별도로 실행되는 백그라운드 처리 단위.">작업자</button></li><li><button class="term" type="button" data-modal="g-1044" data-tip="M0은 1단계 준비이고 M1부터 단계마다 하나씩 두는 묶음.">마일스톤</button></li><li><button class="term" type="button" data-modal="g-1045" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-1046" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li><li><button class="term" type="button" data-modal="g-1047" data-tip="마일스톤을 시작하기 전에 채울 조건">시작 조건</button></li><li><button class="term" type="button" data-modal="g-1048" data-tip="에이전트 실행의 상태, 범위, 버전, 승인 대상, 비용을 남기는 표">실행 기록</button></li><li><button class="term" type="button" data-modal="g-1049" data-tip="실행을 어디까지 했는지 저장한 지점.">체크포인트</button></li><li><button class="term" type="button" data-modal="g-1050" data-tip="작업자와 현장 어댑터가 주기적으로 보내는 살아 있다는 신호.">하트비트</button></li></ul></section></aside>
+  <article class="doc"><p>별도 에이전트가 설계안, 웹 문장, 도식 원본을 처음 읽고 지적한 내용이다. 웹 조사는 하지 않았다. 지적은 설계안 재검토에 반영했고, 줄 번호는 재검토 전 문서 기준이다.</p>
+<h2 id="요약">요약</h2>
+<p>찾은 결함은 25건이고 높음 10, 중간 13, 낮음 2다. 단계 번호, 마일스톤 이름, 비용 합계는 대체로 맞는다. 큰 문제는 3·4단계 구성요소의 소유 모듈, 실행 주체, 트랜잭션 경계가 정해져 있지 않다는 점이다.</p>
+<p>먼저 고칠 곳은 네 가지다.</p>
+<ul>
+<li>승인 재검증 위치</li>
+<li>시스템 작업의 RLS</li>
+<li>세 가지 비동기 기록의 역할</li>
+<li>안심 경로의 감시 방향</li>
+</ul>
+<p>표기: 설계안은 <code>senior-housing-architecture-design.md</code>, 웹은 <code>architecture.json</code>이고, 숫자는 설계안 줄 번호다.</p>
+<h2 id="찾은-내용">찾은 내용</h2>
+<h3 id="높음">높음</h3>
+<p><strong>1. 승인 재검증이 실행과 분리되어 있다</strong></p>
+<ul>
+<li>위치: 설계안 6.3 승인(237), 4.2 4단계(144), <code>arch-agent</code>의 <code>m-recheck</code> → <code>m-exec</code>, 웹 <code>flows.items[arch-agent].rules[1]</code></li>
+<li>문제: 재검증은 승인 시점에 하고, 실행은 그 뒤 직원의 별도 업무 명령이다. 그런데 &quot;승인 소비와 내부 상태 변경은 한 트랜잭션&quot;이라고 적었다.</li>
+<li>왜 문제인가: 승인과 실행 사이에 계약 버전이나 권한이 바뀌어도 통과한다. 지금 흐름으로는 한 트랜잭션이 성립하지 않는다. 업무 명령이 승인에 묶이는 방법도 없어 승인 없이 같은 명령을 낼 수 있다.</li>
+<li>고칠 내용: 업무 명령이 승인 ID를 필수로 받게 한다. 재검증과 승인 소비는 그 명령의 트랜잭션 안에서 <code>target_version</code> 조건부 갱신으로 처리한다. 도식의 재검증도 <code>m-cmd</code> 뒤로 옮긴다.</li>
+</ul>
+<p><strong>2. 3·4단계 구성요소에 소유 모듈이 없다</strong></p>
+<ul>
+<li>위치: 4.2 3단계(137), 5절 규칙 4(170), 6.4(249), 10.3(385), <code>stack-a2</code>의 pgvector 선(<code>M819 460 H921</code>), <code>arch-agent</code>의 <code>m-recheck</code>·<code>m-log</code></li>
+<li>문제: 문서, 청크, 벡터, 실행 기록, 승인 표, 체크포인트가 어느 스키마와 모듈에 속하는지 없다. AI 서비스는 업무 DB에 접근하지 않는데, 도식의 pgvector는 업무 RDS의 확장이다. 누가 임베딩을 쓰고 누가 검색하는지 정의되지 않았다.</li>
+<li>왜 문제인가: <code>arch-agent</code>는 코어가 실행 기록을 직접 읽고 쓰는 그림이다. ADR-2(&quot;코어는 어떤 모듈도 모른다&quot;)와 ADR-G3(&quot;코어가 G의 토큰을 검사할 수는 없다&quot;)에 어긋난다. 2.2의 &quot;확인 토큰을 직원 승인으로 넓힌다&quot;도 같은 충돌을 물려받는다.</li>
+<li>고칠 내용: 문서 모듈과 에이전트 모듈의 자리를 정한다. 예를 들어 <code>documents</code> 스키마와 <code>assistant</code> 확장을 두고, Python은 청크와 벡터를 코어 API로 돌려주며 체크포인트 저장소를 명시한다. 코어는 승인 내용을 모르게 하고, 소유 모듈이 검사한 뒤 코어 명령을 부르는 모양으로 도식을 고친다.</li>
+</ul>
+<p><strong>3. 비동기 에이전트 실행의 권한 주체가 없다</strong></p>
+<ul>
+<li>위치: 5절 규칙 4·7(170, 173), 4.2 3단계 ③(138), 6.3 실행 기록 표(228), <code>arch-agent</code>의 <code>m-read</code></li>
+<li>문제: 규칙 7은 범위를 &quot;서버가 세션과 대조&quot;한다고 한다. 하지만 하루를 넘기는 실행에는 세션이 없다. 규칙 4는 코어가 허용 필드만 넘기는 방식인데, 3단계 ③과 <code>m-read</code>는 AI 쪽이 업무 API를 부르는 방식이다.</li>
+<li>왜 문제인가: 작업자가 어떤 주체로 <code>authorize()</code>를 통과하는지 정해지지 않았다. <code>SYSTEM:&lt;모듈키&gt;</code>로 부르면 요청자 권한을 넘어 조회하게 된다. 재검증도 승인 시점에만 있어 도중 조회는 비어 있다. 서비스 간 인증도 없다.</li>
+<li>고칠 내용: 사람 대신 조회할 때 쓰는 위임 주체를 정의한다. 요청자, 범위, 만료를 서버가 저장하고 호출마다 현재 권한을 다시 평가한다. 코어가 넘기는 방식과 AI가 부르는 방식 중 3단계 기준을 하나로 정한다.</li>
+</ul>
+<p><strong>4. 시스템 작업의 RLS가 M1의 결정 사항에 없다</strong></p>
+<ul>
+<li>위치: 9절 8번(346), 10.1 M1 결정 사항(361), 코어 <code>tech-design.md</code> 확인할 것 35의 (나)(다)</li>
+<li>문제: 1단계 작업자의 일(월 청구, 타이머, 디스패처)은 전부 사람 없는 작업이다. 이 작업의 범위가 [미정]인데 M1의 결정 사항은 &quot;작업 실행, ORM, 인증&quot;뿐이다. 모듈별 DB 역할 방식도 9절에 없다.</li>
+<li>왜 문제인가: 작업자는 변수가 없어 0행을 보거나, BYPASSRLS 같은 넓은 권한으로 돌아 RLS의 뜻이 사라진다. 그래서 &quot;다른 사업장 ID가 막힌다&quot;는 완료 기준이 API 경로만 증명한다.</li>
+<li>고칠 내용: M1 결정 사항에 시스템 작업 범위와 모듈별 DB 역할을 넣는다. 조사 문서 5절의 <code>runAs</code>와 &quot;아웃박스에 <code>site_id</code>·<code>actor_id</code> 저장&quot;을 설계로 옮긴다. 완료 기준에 작업자 경로의 사업장 격리 시험을 더한다.</li>
+</ul>
+<p><strong>5. 아웃박스, Modulith 이벤트 기록, JobRunr의 역할 경계가 없다</strong></p>
+<ul>
+<li>위치: 4.2 1단계(125), 2.1 비동기 행(31), 6.3 재시도 한도(241), 코어 <code>tech-design.md</code>의 OutboxEvent 행</li>
+<li>문제: 세 가지가 모두 &quot;저장, 전달, 재시도&quot;를 하는데 구분이 없다. 모듈 간 이벤트가 어느 쪽을 타는지, 아웃박스가 JobRunr를 부르는지 알 수 없다. 재시도 한도는 AI 경로만 다룬다.</li>
+<li>왜 문제인가: 코어 아웃박스의 <code>attempts</code>(C는 5회)에 JobRunr 재시도와 어댑터 재시도를 곱하면 설계안이 경고한 곱셈이 업무 경로에서 그대로 난다. 소비자 멱등을 저장할 인박스도 없다. JobRunr 등록이 업무 트랜잭션에 묶이는지도 확인되지 않았다.</li>
+<li>고칠 내용: 표 하나로 역할을 정한다. 예를 들어 모듈 이벤트는 아웃박스만, 지연·반복 작업은 JobRunr만 쓰고 Modulith 기록은 쓰지 않거나 대체한다. 재시도 권한을 쓰는 층을 지정하고 처리 완료 표를 넣는다.</li>
+</ul>
+<p><strong>6. &quot;안을 바꿔도 다시 작성하는 부분은 여기에 그친다&quot;가 과장이다</strong></p>
+<ul>
+<li>위치: 1절 2번(17), 3절 안을 옮기는 방법(99), 웹 <code>plans.p</code></li>
+<li>문제: &quot;프레임워크&quot;라고 적었지만 Java와 TypeScript 사이 이동은 코어와 모듈 코드 전부와 시험의 재작성이다.<ul>
+<li>C안에는 코어 API가 없을 수 있어 OpenAPI 계약이 &quot;유지&quot;되지 않는다.</li>
+<li>Next.js 서버 코드에 업무 로직이 있으면 화면의 데이터 계층도 바뀐다.</li>
+<li>JobRunr와 Modulith 표는 A안 전용이다.</li>
+<li>RLS 정책 본문도 Supabase 인증과 세션 변수 방식에서 달라질 수 있다.</li>
+</ul>
+</li>
+<li>왜 문제인가: C안에서 A안으로 가는 비용을 작게 보이게 해 안 선택을 왜곡한다. C안을 고르면 M1을 사실상 두 번 만드는데 그 이전 작업은 어느 마일스톤에도 없다. C안의 &quot;Next.js 서버 코드&quot;는 루트 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a>의 &quot;Next.js는 <code>app/</code>·<code>ui/</code>에만&quot;과도 충돌할 수 있다.</li>
+<li>고칠 내용: 이동 경로별로 표를 나눈다(C→B, C→A, A↔B). 각 경로에 유지, 변환, 재작성을 적는다. C안 코어는 프레임워크 없는 TS 패키지로 둔다고 명시하고, M2 시작 조건에 &quot;C안이면 이전 완료&quot;를 넣는다.</li>
+</ul>
+<p><strong>7. 외부 상태 점검이 안심 경로의 실패를 잡지 못한다</strong></p>
+<ul>
+<li>위치: 6.1(187), 4.2 2단계 완료 기준(133), <code>arch-signal</code>의 <code>f-silent</code>(어댑터 → 점검), <code>stack-a2</code>의 점검 선(<code>M144 89 H340 V196</code>)</li>
+<li>문제:<ul>
+<li>도식은 멈춘 어댑터가 자기 멈춤을 알리는 방향이다.</li>
+<li>인프라 도식의 점검은 ALB로만 간다. URL 점검으로는 API가 살아 있는 상태의 작업자 정지를 못 본다.</li>
+<li>설계안에 하트비트가 없다.</li>
+<li>L3 이상이 멈추면 &quot;직원 화면&quot;도 같이 멈출 수 있다.</li>
+</ul>
+</li>
+<li>왜 문제인가: &quot;작업자가 멈추면 앱 밖 경로로 알림이 간다&quot;를 판정할 구성이 없다. 안심 확인할 것 27의 주기, 도구, 받는 사람이 [미정]인데 9절에도 없다. 조사 8절의 하트비트 메트릭, 누락 경보, 두 갈래 수신도 빠졌다.</li>
+<li>고칠 내용: 어댑터와 작업자의 하트비트를 서버 또는 외부 감시가 시간으로 세게 한다. 도식 화살표 방향을 뒤집는다. 점검의 위치, 받는 사람, 제공자를 정한다. 건물 인터넷 단절 시 현장에서 어떻게 아는지를 적는다.</li>
+</ul>
+<p><strong>8. 안심 넘김을 청구 부하에서 지키는 규칙이 없다</strong></p>
+<ul>
+<li>위치: 4.2 2단계(132), 단계별 제안 7절 레드팀 3번</li>
+<li>문제: 설계안은 큐 분리 이유로 &quot;결제 웹훅이 문서 작업 뒤에서 기다리지 않게&quot;만 든다. 그런데 문서 작업은 3단계이고 단계별 제안은 AI 작업을 Taskiq로 뺀다. 안전 경로인 넘김 타이머는 언급이 없다. 레드팀의 &quot;청구 생성 중 넘김 지연 측정&quot;도 옮겨 오지 않았다.</li>
+<li>왜 문제인가: 같은 이미지, 같은 작업자, 같은 DB에서 월 청구가 넘김을 늦출 수 있고 이를 측정할 기준이 없다. 업무별 큐가 JobRunr 공개판에서 되는지 근거도 조사 자료에 없다. 내 기억으로는 유료 기능일 가능성이 있으나 웹 확인은 하지 않았다.</li>
+<li>고칠 내용: 2단계 이유를 안심 넘김 격리로 바꾼다. 넘김 타이머 전용 작업자 또는 연결 풀을 둔다. 완료 기준에 &quot;월 청구 중 넘김 지연 N초 이하&quot;를 넣고, JobRunr 판별 조건을 8절에 적는다.</li>
+</ul>
+<p><strong>9. 모듈 도입 순서가 마일스톤과 연결되지 않아 의존이 뒤집힌다</strong></p>
+<ul>
+<li>위치: 10.1 M2 ⑤(362), 10.2 건물 층(378), 10.3(385~392), 6.3 도구 접근(207)</li>
+<li>문제: 10.3은 M1 뒤 모듈을 하나씩 도입한다고만 하고 어느 마일스톤인지 없다. M2 ⑤의 현장 어댑터는 <code>safety</code>가 있어야 받을 곳이 있다. 6.3은 내부 도구 등록부(ADR-G2)가 1단계라는데, 그것은 <code>assistant</code>의 일이고 10.3에서 마지막이다. M1 작업 순서에도 없다.</li>
+<li>왜 문제인가: <code>safety</code>가 언제 들어오는지 없어 M2가 시작될 수 없다. 실제 입주자 데이터를 받는 시점에 <code>family</code> 동의가 필요한지도 정해지지 않는다.</li>
+<li>고칠 내용: 모듈을 마일스톤에 배치한다. 예를 들어 M1 뒤의 별도 줄 또는 M2 시작 조건으로 둔다. 도구 등록부의 단계를 하나로 고친다.</li>
+</ul>
+<p><strong>10. &quot;2단계 조건&quot;이 정의되지 않고, M2·M3 병행의 실체가 불분명하다</strong></p>
+<ul>
+<li>위치: 3절 표(76), 4.1(114), 4.2 2단계 완료 기준(133), 10.1 M3(363), 9절 9·10번</li>
+<li>문제: 실제 입주자 데이터의 문턱이 &quot;2단계 조건&quot;인데 완료 기준 3개에 암호화, 접속기록 점검, 계정 분리, 법률 검토, 처리 지역이 없다. RPO·RTO 값도 [미정]이라 &quot;확인&quot;을 측정할 수 없다. M0의 &quot;복구 요구 합의&quot;와 M2의 &quot;복구 목표 결정&quot;도 겹친다. M3는 계약서 추출을 다루는데, 실문서 없이 완료하는지가 없다.</li>
+<li>왜 문제인가: 이 문턱은 설계안에서 가장 무거운 약속인데 판정 기준이 없다. M3가 가상 문서로 끝난다면 &quot;성공 1건당 비용&quot;은 실제 값이 아니다.</li>
+<li>고칠 내용: 2단계 완료 기준에 위 항목을 넣고 RPO·RTO 값을 M0 또는 M1에서 정한다. M3 완료 기준에 가상 문서로 판정한다고 적거나, M3 완료를 M2 완료 뒤로 둔다.</li>
+</ul>
+<h3 id="중간">중간</h3>
+<p><strong>11. 어댑터 버퍼 재전송과 멱등 키 규칙이 없다</strong></p>
+<ul>
+<li>위치: 6.1(186), 6.5 파티션(272), 조사 문서 6.4(148), 안심 확인할 것 27</li>
+<li>문제: 단절 뒤 쌓인 신호가 한꺼번에 오면 이미 끝난 호출로 넘김 타이머가 도는지 정하지 않았다. 접점 출구는 이벤트 번호가 없을 수 있다. 그런데 설계안은 <code>(출처, 업체 이벤트 번호)</code>만 쓰고 조사 문서의 대체 키를 옮기지 않았다.</li>
+<li>왜 문제인가: 복구 순간에 2차 알림이 몰려 직원의 경보 피로를 만든다. 어댑터가 재시작 뒤 다른 번호를 내면 멱등이 깨진다.</li>
+<li>고칠 내용: 늦은 신호는 기록만 하고 알림은 내지 않는 기준 시간을 설정값으로 둔다. 번호 발급 주체와 재시작 시 보존, 대체 키를 6.1에 적는다.</li>
+</ul>
+<p><strong>12. 기준안 근거와 평가표가 A안 쪽으로 기운다</strong></p>
+<ul>
+<li>위치: 1절 1번(16), 3절 평가표(78~89), 3절 약점(75), 6.6(283), 7절</li>
+<li>문제:<ul>
+<li>GPT 14.5와 1.2는 &quot;JVM 경험이 깊으면&quot;, &quot;AWS 기반이 있으면&quot;이라는 조건부인데 그 조건은 미확인이다. 12행은 회사 현황을 모른다고 적었고, <code>decisions.md</code>에는 사용자 주력 언어 기록이 없다고 적혀 있다.</li>
+<li>&quot;공고 직무 연결 A 강함&quot;은 기술 스택 항목이 빈 공고와 맞지 않는다. 조사 문서도 Spring을 업계 표준이라 주장할 수 없다고 했다.</li>
+<li>&quot;업무 정확성·복구 A 강함, B 보통&quot;은 세 안이 같은 스키마와 아웃박스를 쓴다는 1절 2번과 충돌한다. B안 약점인 &quot;팀 규칙으로 경계를 지킨다&quot;도 5절 규칙 3(&quot;안이 달라도 같다&quot;)과 코어 12절의 CI 도구와 맞지 않는다.</li>
+<li>A안 약점 &quot;언어가 둘이다&quot;는 3단계부터 Python이 들어와 셋이 되는 것을 숨긴다.</li>
+<li>&quot;서울 안 처리 A 강함&quot;은 Sonnet 5·Opus 5일 때만 맞고, B안(AWS)도 같다.</li>
+<li>C안 약점인 고정 송신 IP는 A안 비용에서도 NAT가 빠져 있어 같은 문제다.</li>
+<li>78행은 &quot;안전 경로와 데이터 위치를 더했다&quot;고 쓰지만 &quot;공고 직무 연결&quot;도 더했고 GPT의 &quot;실제 성능&quot;은 뺐다.</li>
+</ul>
+</li>
+<li>왜 문제인가: 결론을 지지하는 판정이 근거 없이 쌓인 모양이다.</li>
+<li>고칠 내용: &quot;포트폴리오 적합&quot;은 제품 기준에서 분리한다. 조건을 표에 붙이고, 같은 구조의 항목은 같음으로 고친다. A안 약점에 언어 수와 큐 수를 단계별로 적는다.</li>
+</ul>
+<p><strong>13. 선택 기준 순서상 C안에 도달할 수 없다</strong></p>
+<ul>
+<li>위치: 3절 선택 기준(93~97), <code>dd-choose</code> STEPS</li>
+<li>문제: 위에서 처음 맞는 곳에서 멈추므로 JVM이나 TypeScript 담당자는 2·3번에서 끝난다. C안은 둘 다 아닐 때만 나오는데 C안 코어가 TypeScript다. 5번은 둘 다 아닌 사람에게 Java 코어를 준다.</li>
+<li>왜 문제인가: 판단 흐름이 적합한 경우 표와 어긋난다.</li>
+<li>고칠 내용: &quot;실제 데이터 없이 화면 검증이 먼저인가&quot;를 2번으로 올린다. 5번의 기본값에는 이유를 붙인다.</li>
+</ul>
+<p><strong>14. 구성요소의 도입 기준이 단계의 진행 기준처럼 적혀 있다</strong></p>
+<ul>
+<li>위치: 1절 3번(18), 8절 머리(313), 웹 <code>timing.p</code>, 용어집 &quot;도입 기준&quot;</li>
+<li>문제: 설계안은 &quot;신호가 확인되지 않으면 다음 단계로 진행하지 않는다&quot;고 쓰고, 웹과 용어집은 &quot;더하지 않는다&quot;고 쓴다.</li>
+<li>왜 문제인가: 설계안대로 읽으면 SQS 신호가 없을 때 3단계로 못 간다. Multi-AZ 신호는 관찰이 아니라 필수 조건이다.</li>
+<li>고칠 내용: 8절을 &quot;그 구성요소를 더하지 않는다&quot;로 고친다. 필수 조건과 선택 신호를 나눈다.</li>
+</ul>
+<p><strong>15. 결제 상태 설명이 승인된 코어 상태기계와 다르다</strong></p>
+<ul>
+<li>위치: 6.2(194), <code>arch-payment</code>, 코어 <code>tech-design.md</code> 3-5</li>
+<li>문제:<ul>
+<li>코어에서 <code>PENDING_BANK_RESULT</code>는 <code>ExpectedPayment</code>의 상태이고 배치가 따로 있다. 설계안 사슬은 동의, 상태, 매칭을 한 줄로 이었고 배치가 빠졌다. 동의가 매달 흐름의 시작처럼 그려졌다.</li>
+<li>&quot;알 수 없음&quot;은 코어 상태에 없다.</li>
+<li>도식의 <code>lookup</code>은 성공으로만 가는데, 코어는 조회 뒤 사람이 닫는다.</li>
+<li>REVERSED, EXPIRED, CANCELLED, 배치 거절, 대사 불일치도 없다.</li>
+</ul>
+</li>
+<li>왜 문제인가: 시간 초과 때 재전송 금지 같은 핵심 판단이 어느 객체에서 일어나는지 알 수 없다. 응답 없음에 대한 규칙이 있어도 이중 출금을 막는 경로가 도식에 없다.</li>
+<li>고칠 내용: 객체별로 사슬을 나누고 코어 3-5를 그대로 그린다. 배치 전송 시간 초과가 어떤 상태인지 코어에 추가한다.</li>
+</ul>
+<p><strong>16. M1 작업 순서와 영역표에서 뒤로 밀린 것이 있다</strong></p>
+<ul>
+<li>위치: 10.1 M1(361), 10.2 업무 코어 M2 &quot;없음&quot;(375), 4.2 2단계(131)</li>
+<li>문제:<ul>
+<li><code>authorize()</code>의 ENFORCE 감사 기록은 ①에 필요하고 ③ 청구·수납은 아웃박스를 쓰는데, 변경 이력과 아웃박스가 ④다.</li>
+<li><code>ExpectedPayment</code>, 3자 대사, <code>LedgerExportBatch</code>는 코어 일인데 M1 ③에 없고 M2 코어 칸은 &quot;없음&quot;이다.</li>
+<li>봉투 암호화와 블라인드 인덱스가 M2에 있어 칸 형태와 검색 쿼리를 바꾸는데, 5절 규칙에 없다.</li>
+</ul>
+</li>
+<li>왜 문제인가: M1을 끝낸 뒤 코어 모델을 다시 쓰게 되어 5절의 재작성 방지 목표가 깨진다.</li>
+<li>고칠 내용: 변경 이력과 아웃박스를 ① 뒤로 올린다. M1 ③에 비동기 수납 모델을 넣는다. 5절에 &quot;민감 칸은 처음부터 암복호 포트 뒤&quot;를 더한다.</li>
+</ul>
+<p><strong>17. 4단계의 필요 근거가 약하고 범위 전제가 어긋난다</strong></p>
+<ul>
+<li>위치: 4.2 4단계(143~145), 4.3(160), 8절(323, 324), 9절 4번, <code>stack-a5</code>, <code>dd-timing</code>, 코어 범위 밖(project.md 12절)</li>
+<li>문제:<ul>
+<li>에이전트는 조회와 제안까지만 하므로 재개 뒤 할 외부 효과가 없다. 그런데 완료 기준은 &quot;같은 효과가 두 번 나지 않는다&quot;이다.</li>
+<li>대상 예인 계약 변경은 코어의 &quot;다음 버전&quot; 범위이고, &quot;영향 계산&quot;의 주체가 없다. 비서는 금액 계산을 하지 않는다.</li>
+<li>실행기는 [미정]인데 4.3, <code>stack-a5</code>, <code>dd-timing</code>은 LangGraph로 고정했다.</li>
+<li>Spring AI는 조사 노트상 승인 UI와 영속화를 주지 않는다.</li>
+<li>M4 ③은 실행기 도입을 필수로 쓰지만 8절은 코드가 복잡해질 때다.</li>
+</ul>
+</li>
+<li>왜 문제인가: 조사 노트의 &quot;DB 상태 머신으로 충분&quot; 판단과 맞서면서 근거 없이 프레임워크를 넣게 된다.</li>
+<li>고칠 내용: 4단계 기본을 DB 상태기계로 두고 실행기는 조건부로 표시한다. 영향 계산은 코어 코드로 적고 계약 변경 명령의 전제를 M4 시작 조건에 넣는다. 표와 도식에서 &quot;실행기 미정&quot;으로 맞춘다.</li>
+</ul>
+<p><strong>18. 회원 비서와 1단계 Bedrock의 단계가 어긋난다</strong></p>
+<ul>
+<li>위치: 4.2 1단계(123, 126), 3단계(138), 6.3 질문 경로(220), <code>stack-a1</code>(Bedrock 실선 &quot;의도 분류만&quot;), 웹 <code>figs.stack-a1</code>, project.md 7절, 단계별 제안 1절(13행)</li>
+<li>문제: 설계안은 1단계 외부 연동이 목업이고 AI가 녹화 응답이라는데, 도식은 Bedrock 실호출이다. 회원 의도 분류가 어느 단계에서 실호출되는지 없다. 단계별 제안은 주간 리포트 초안을 1단계 어댑터에서 가능하다고 봤는데 설계안은 3단계로 옮겼다. <code>family</code>는 10.3에서 첫 모듈이다.</li>
+<li>왜 문제인가: 회원 발화가 언제 모델로 가는지가 실제 데이터 문턱과 처리 지역 판단의 핵심이다.</li>
+<li>고칠 내용: 회원 의도 분류와 리포트 초안을 표에 단계로 적는다. <code>stack-a1</code>의 Bedrock은 점선과 &quot;녹화 응답 기본&quot;으로 고친다.</li>
+</ul>
+<p><strong>19. 구성요소의 단계가 표끼리 어긋난다</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>구성요소</th>
+<th>한쪽</th>
+<th>다른 쪽</th>
+<th>맞출 값</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AI 게이트웨이 제품</td>
+<td>10.2 AI M5(380), <code>dd-delivery</code> M5</td>
+<td>4.2 4단계(143), 8절(325), <code>stack-a5</code>, <code>dd-timing</code>, 웹 <code>map.stages[4]</code></td>
+<td>4단계</td>
+</tr>
+<tr>
+<td>SQS</td>
+<td>10.2 &quot;M5 SQS 확대&quot;(377), <code>dd-delivery</code></td>
+<td>8절 2단계(319), <code>dd-timing</code> 2단계, <code>stack-a2</code>. 4.2 2단계에는 없다. 단계별 제안은 3단계</td>
+<td>2단계 조건부로 통일하고 10.2 M2에 넣는다</td>
+</tr>
+<tr>
+<td>공유 캐시</td>
+<td>4.2 5단계(149), 웹 <code>map.stages[5]</code></td>
+<td>4.2 2단계, 7절, 8절의 Valkey</td>
+<td>5단계에서 뺀다</td>
+</tr>
+<tr>
+<td>파티션</td>
+<td>10.2 M5(379)</td>
+<td>4.2 5단계와 8절에 없다</td>
+<td>8절에 신호를 넣는다</td>
+</tr>
+<tr>
+<td>0단계와 M0</td>
+<td>10.1 &quot;단계마다 마일스톤 하나&quot;</td>
+<td>0단계 프로토타입(완료)과 M0 범위 확정(미완료)은 다른 일이다. 4.1은 GPT &quot;0 범위·환경 확정&quot;을 프로토타입에 대응시켰다</td>
+<td>M0을 1단계 준비로 적는다</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>왜 문제인가: 같은 질문(&quot;언제 들어오나&quot;)에 표마다 답이 다르다.</li>
+<li>고칠 내용: 표의 &quot;맞출 값&quot;대로 바꾼 뒤 <code>dd-*</code>, <code>stack</code>, 웹을 다시 만든다.</li>
+</ul>
+<p><strong>20. 고정비가 실제보다 낮게 읽히고 적용 범위가 불명확하다</strong></p>
+<ul>
+<li>위치: 7절(299~306), 웹 <code>page.note</code></li>
+<li>문제: 산식은 맞다(207.1, 418.4, 439.1). 하지만 2단계의 계정 분리는 스테이지 환경 없이 운영 한 벌만 센 값이다. 조사 문서가 지적한 NAT $43.07과 외부 점검 약 $16.42도 빠졌다. 3단계는 Taskiq와 문서 처리까지 0.5vCPU·1GB 서비스 한 개로 계산했다. 표는 A안 기준이라고 적지 않았다. 웹 주석은 &quot;백업&quot;을 빠뜨렸다.</li>
+<li>왜 문제인가: 빠진 항목이 고정비라 &quot;고정비 약 $418&quot;이 하한으로도 맞지 않는다.</li>
+<li>고칠 내용: &quot;운영 환경 1벌, 네트워크 제외, A안 기준&quot;을 표 제목에 쓴다. NAT와 점검을 더한 값을 함께 쓰고, 웹 주석을 맞춘다.</li>
+</ul>
+<p><strong>21. 금액을 임베딩하지 않는다는 규칙이 계약서 검색과 충돌한다</strong></p>
+<ul>
+<li>위치: 6.4(256), 6.3 질문 경로(217, 219), <code>arch-doc</code> 카드</li>
+<li>문제: 계약서에는 보증금과 월 이용료가 있는데 계약서 청크를 검색에 넣는다.</li>
+<li>왜 문제인가: 규칙을 지키면 계약서 검색이 깨지고, 어기면 규칙이 거짓이 된다. 입주자 이름 같은 개인정보 청크 처리도 비어 있다.</li>
+<li>고칠 내용: 규칙을 &quot;원장 값과 수납 기록은 넣지 않는다&quot;로 좁히고, 계약서 안의 금액과 개인정보 처리 방식을 적는다.</li>
+</ul>
+<p><strong>22. 복구 뒤 삭제와 허락 철회가 되살아난다</strong></p>
+<ul>
+<li>위치: 6.5 복구(274), 6.4 삭제 전파(253), 6.5 복제본 표(269)</li>
+<li>문제: 복원 뒤 절차는 결제와 ERP 대사뿐이다.</li>
+<li>왜 문제인가: 시점 복구로 돌아가면 &quot;그만 보여 주기&quot;가 철회 전 상태로 돌아가 보호자에게 다시 보일 수 있다. 삭제한 청크도 살아난다. 삭제 전파 대상에 아웃박스 본문, 작업 인자, 이벤트 기록도 없다.</li>
+<li>고칠 내용: 복원 절차에 철회·삭제 이벤트 재적용과 그 시험을 넣는다. 전파 대상에 비동기 기록을 더한다.</li>
+</ul>
+<p><strong>23. 근거 표시가 내용과 맞지 않는 문장이 있다</strong></p>
+<ul>
+<li>위치와 고칠 내용:<ul>
+<li>1절 4번(19) [사실]: 판단이므로 12행 규칙대로 [가설]로 쓴다.</li>
+<li>1절 5번(20) [추정]: 같은 이유로 [가설]로 쓴다.</li>
+<li>4.2 0단계(118, 120) [사실]: &quot;모듈 경계를 검증했다&quot;는 ADR-2의 DB 규칙을 서버 없는 프로토타입이 검증할 수 없다. <code>test/</code>에도 경계 시험으로 보이는 파일명이 없다. &quot;화면과 흐름&quot;으로 줄인다.</li>
+<li>6.3 체크포인트 문단(239) [사실]과 6.5 파티션(272) [사실]: 설계 지시가 섞였다. 뒤 문장을 [가설]로 분리한다.</li>
+<li>6.5 풀러 문장(262) [추정]: 실측 제안이므로 [가설]로 쓴다.</li>
+<li>웹 <code>system.p</code>, 용어집 &quot;호출 경로&quot;, 도식 부제: 단정문이다. 설계안 6.1은 [추정], 9절 6번은 [가설]이고 조사 문서는 국내 구조를 미확인이라 했다. &quot;권고 구조&quot; 또는 &quot;확인 전&quot;을 붙인다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="낮음">낮음</h3>
+<p><strong>24. RLS 풀러 문구와 연결 한도 공식이 현재 구성과 맞지 않는다</strong></p>
+<ul>
+<li>위치: 6.5(262)</li>
+<li>문제: 어떤 단계에도 RDS Proxy나 PgBouncer가 없어 &quot;풀러 고정 실측&quot;의 대상이 없다. 공식에는 무중단 배포 중 새 태스크와 옛 태스크가 겹치는 수, 모듈별 DB 역할을 연결별로 나눌 때의 곱이 없다.</li>
+<li>왜 문제인가: 실측할 것을 잘못 알게 되고 배포 때 연결이 초과될 수 있다.</li>
+<li>고칠 내용: &quot;앱 풀만 쓰고, 풀러를 도입할 때 실측한다&quot;로 바꾼다. 공식에 배포 겹침과 역할 항목을 더한다.</li>
+</ul>
+<p><strong>25. 웹과 도식 요약이 뜻을 바꾼 곳이 있다</strong></p>
+<ul>
+<li>읽기 복제본: 설계안 8절의 &quot;읽기 부하가 우세하고&quot;가 웹 <code>timing.rows</code>에서 빠져 조건이 약해졌다.</li>
+<li>실제 어댑터 목록이 표마다 다르다.</li>
+</ul>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>목록</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>설계안 4.2 2단계(132)</td>
+<td>CMS, PG, ERP, 알림톡, 출입</td>
+</tr>
+<tr>
+<td>설계안 10.2(377)</td>
+<td>CMS, ERP, 알림톡</td>
+</tr>
+<tr>
+<td>웹 <code>map.stages[2]</code></td>
+<td>CMS, ERP, 알림톡</td>
+</tr>
+<tr>
+<td><code>dd-roadmap</code></td>
+<td>CMS, PG, ERP, 알림톡</td>
+</tr>
+<tr>
+<td>M2 작업(362)</td>
+<td>알림톡과 출입이 없다</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>완료 기준이 일부 빠졌다: 웹 1단계에 &quot;원장은 추가만 된다&quot;, 3단계에 &quot;성공 1건당 비용&quot;이 없다. 그런데 M1·M3는 &quot;완료 기준을 채웠습니다&quot;로 연결된다.</li>
+<li><code>stack-a2</code>·<code>a5</code>에는 2단계에서 필요한 결제 웹훅 유입 선이 없다.</li>
+<li>사본 출구가 <code>arch-system</code>은 수신반, <code>arch-signal</code>은 제어기다.</li>
+<li><code>arch-system</code>은 아웃박스에서 LLM으로 선을 그렸는데 호출은 동기 어댑터다. 출입 서버의 부제는 &quot;입주자 방&quot;이다.</li>
+<li><code>dd-timing</code> 머리말의 점선 정의(8절 신호)와 달리 Multi-AZ, 실제 어댑터, Valkey는 실선이고 Taskiq는 8절에 없는데 점선이다.</li>
+<li>고칠 내용: 웹과 도식 문장을 설계안 표에서 생성하거나, 표 단위 대조를 <code>check-terms.mjs</code> 같은 검사로 돌린다.</li>
+</ul>
+<h2 id="대조에서-맞은-항목">대조에서 맞은 항목</h2>
+<ul>
+<li>비용 합계 세 줄</li>
+<li>도식 16장과 <code>figs</code> 키</li>
+<li>0~5단계 이름</li>
+<li>M0~M5 이름과 작업 순서(웹과 설계안)</li>
+<li>10.3 모듈 순서(웹과 설계안)</li>
+<li>Multi-AZ, pgvector, 읽기 복제본, OpenTelemetry, 외부 상태 점검의 도입 단계</li>
+</ul>
+<h2 id="근본-원인">근본 원인</h2>
+<ol>
+<li>단계가 구성요소 목록으로 쓰였다. 소유 모듈, 실행 주체, 트랜잭션 경계가 표에 없어 3·4단계에서 구멍이 된다.</li>
+<li>코어, 안심, 비서 문서의 제약과 미결정(확인할 것 35, 27, ADR-G3, 3-5)이 설계안으로 옮겨지며 빠졌다.</li>
+<li>설계안, 웹, 도식이 표마다 손으로 요약되어 단일 원본이 없다.</li>
+</ol>
+<h2 id="권장-순서">권장 순서</h2>
+<ol>
+<li>승인과 권한(1, 2, 3): 중간 작업량, 4단계의 안전 논리를 바로잡는다.</li>
+<li>M1 전제(4, 5, 16): 중간 작업량, 재작성 위험을 가장 줄인다.</li>
+<li>안심 경로(7, 8, 11): 중간 작업량, 안전 약속의 판정 가능성을 만든다.</li>
+<li>로드맵과 문턱(9, 10, 14, 19): 작은 작업량, 실행 순서를 맞춘다.</li>
+<li>안 비교(6, 12, 13): 작은 작업량, 결론의 신뢰를 지킨다.</li>
+<li>나머지와 웹·도식 재생성.</li>
+</ol>
+<h2 id="트레이드오프">트레이드오프</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>선택</th>
+<th>얻는 것</th>
+<th>잃는 것</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>재검증을 실행 명령 안으로 이동</td>
+<td>승인 뒤 변경까지 막는다</td>
+<td>실행 때 거절이 늘고 코어 명령 인자가 늘어난다</td>
+</tr>
+<tr>
+<td>아웃박스만 모듈 이벤트에 사용</td>
+<td>재시도 권한이 하나가 된다</td>
+<td>Modulith 내장 기능을 덜 쓴다</td>
+</tr>
+<tr>
+<td>4단계 기본을 DB 상태기계로</td>
+<td>언어와 프레임워크가 줄어든다</td>
+<td>분기가 많아지면 직접 구현 코드가 늘고 LangGraph 경험을 보여 주기 어렵다</td>
+</tr>
+<tr>
+<td>안심 전용 작업자 분리</td>
+<td>청구 부하에서 격리된다</td>
+<td>2단계 비용과 배포 단위가 늘어난다</td>
+</tr>
+</tbody></table></div>
+<h2 id="참조">참조</h2>
+<ul>
+<li><a class="doc-ref" href="lab-senior-housing-architecture-design.html"><code>senior-lab/01-research/outputs/senior-housing-architecture-design.md</code></a></li>
+<li><code>evenstay/design/prototype/strings/architecture.json</code></li>
+<li><code>evenstay/design/home/architecture/stack/make.py</code></li>
+<li><code>evenstay/design/home/architecture/archify/arch-agent/candidate.json</code> (같은 폴더 구조로 <code>arch-signal</code>, <code>arch-payment</code>, <code>arch-doc</code>, <code>arch-system</code>)</li>
+<li><code>evenstay/design/home/architecture/dd/dd-delivery/diagram.py</code> (같은 구조로 <code>dd-roadmap</code>, <code>dd-timing</code>, <code>dd-choose</code>)</li>
+<li><a class="doc-ref" href="core-tech-design.html"><code>evenstay/docs/core/tech-design.md</code></a> (OutboxEvent 행, 3-5, ADR-2, 확인할 것 35)</li>
+<li><a class="doc-ref" href="safety-tech-design.html"><code>evenstay/docs/safety/tech-design.md</code></a> (ADR-S1, ADR-S2, 11절, 확인할 것 8·27)</li>
+<li><a class="doc-ref" href="assistant-tech-design.html"><code>evenstay/docs/assistant/tech-design.md</code></a> (ADR-G3)</li>
+<li><a class="doc-ref" href="project.html"><code>evenstay/docs/project.md</code></a>, <a class="doc-ref" href="glossary.html"><code>evenstay/docs/glossary.md</code></a></li>
+<li><a class="doc-ref" href="lab-architecture-staged.html"><code>senior-lab/00-hub/reviews/architecture-staged-2026-11-04.md</code></a></li>
+<li><a class="doc-ref" href="lab-senior-housing-architecture.html"><code>senior-lab/01-research/outputs/senior-housing-architecture.md</code></a></li>
+<li><a class="doc-ref" href="x-sources-arch-ai-agent.html"><code>senior-lab/01-research/sources/arch-ai-agent.md</code></a></li>
+</ul>
+<p>확인하지 않은 것: <code>project.md</code> 15절 보정표, 빌드된 HTML과 <code>evidence</code> 폴더는 보지 않았고, GPT 문서는 일부 절만 읽었다.
+위험: 8번의 JobRunr 공개판 기능과 5번의 트랜잭션 등록은 웹 조사 없이 기억과 조사 자료 부재로 판단했으므로 공식 문서 확인이 필요하다.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1040" data-title="아웃박스"><p>상태 변경과 같은 트랜잭션에 쓰는 이벤트 행. 모듈마다 자기 스키마에 같은 열로 둔다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd><code>OutboxEvent</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1041" data-title="어댑터"><p>외부 연동 경계. MVP는 목업이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>결제, ERP, 알림, 파일 저장, LLM</dd><dt>출처</dt><dd>core T1·9</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1042" data-title="완료 기준"><p>마일스톤을 마쳤다고 볼 기준. 채우지 못하면 다음 단계로 진행하지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>exit criteria</dd><dt>출처</dt><dd>설계안 10.1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1043" data-title="작업자"><p>요청과 별도로 실행되는 백그라운드 처리 단위. 타이머, 월 청구, 알림 발송, 문서 처리를 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>Worker</dd><dt>출처</dt><dd>설계안 4</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1044" data-title="마일스톤"><p>M0은 1단계 준비이고 M1부터 단계마다 하나씩 두는 묶음. 시작 조건, 작업 순서, 완료 기준, 되돌리기 조건, 결정 사항을 적는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>M0~M5</dd><dt>출처</dt><dd>설계안 10.1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1045" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1046" data-title="에이전트"><p>다음 단계를 스스로 고르며 도구를 호출하는 실행. Evenstay에서는 직원용 초안과 제안까지 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>agent</dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1047" data-title="시작 조건"><p>마일스톤을 시작하기 전에 채울 조건</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>entry criteria</dd><dt>출처</dt><dd>설계안 10.1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1048" data-title="실행 기록"><p>에이전트 실행의 상태, 범위, 버전, 승인 대상, 비용을 남기는 표</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd><code>AgentRun</code> <code>[가설]</code></dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1049" data-title="체크포인트"><p>실행을 어디까지 했는지 저장한 지점. 외부 효과의 중복은 막아 주지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>checkpoint</dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1050" data-title="하트비트"><p>작업자와 현장 어댑터가 주기적으로 보내는 살아 있다는 신호. 끊기면 앱 밖 점검이 경보를 낸다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>heartbeat</dd><dt>출처</dt><dd>설계안 6.1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

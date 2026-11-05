@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product Marketing Context — senior-ai-assistant (G. AI 생활 비서, 최소판) | Evenstay 문서</title>
+<meta name="description" content="Product Marketing Context — senior-ai-assistant (G. AI 생활 비서, 최소판). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>Product Marketing Context — senior-ai-assistant (G. AI 생활 비서, 최소판)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#product-overview">Product Overview</a></li><li class="lv2"><a href="#target-audience">Target Audience</a></li><li class="lv2"><a href="#personas">Personas</a></li><li class="lv2"><a href="#problems-pain-points">Problems &amp; Pain Points</a></li><li class="lv2"><a href="#competitive-landscape">Competitive Landscape</a></li><li class="lv2"><a href="#differentiation">Differentiation</a></li><li class="lv2"><a href="#objections">Objections</a></li><li class="lv2"><a href="#switching-dynamics">Switching Dynamics</a></li><li class="lv2"><a href="#customer-language">Customer Language</a></li><li class="lv2"><a href="#brand-voice">Brand Voice</a></li><li class="lv2"><a href="#proof-points">Proof Points</a></li><li class="lv2"><a href="#goals">Goals</a></li><li class="lv2"><a href="#learnings">Learnings</a></li><li class="lv2"><a href="#changelog">Changelog</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-871" data-tip="계약과 달마다 하나.">청구서</button></li><li><button class="term" type="button" data-modal="g-872" data-tip="청구 항목에 대한 문의.">청구 문의</button></li><li><button class="term" type="button" data-modal="g-873" data-tip="호출 기록.">도구 호출</button></li><li><button class="term" type="button" data-modal="g-874" data-tip="발행 때 정하고 바꾸지 않는다">납부 기한</button></li><li><button class="term" type="button" data-modal="g-875" data-tip="왜 사람에게 넘겼는가.">넘긴 이유</button></li><li><button class="term" type="button" data-modal="g-876" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-877" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-878" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-879" data-tip="도구 호출이 권한 검사에서 막힌 결과">권한 거부</button></li></ul></section></aside>
+  <article class="doc"><p><strong>Document version:</strong> v3.4 · <strong>Last updated:</strong> 2026-11-04
+근거: (0·3·5·7절), <code>../../../02-ideation/outputs/shortlist.md</code>(G, &quot;확정한 것&quot;), 코어 <code>../pms-core-billing/product-marketing.md</code> v1.1, 코어 기획 <code>../../../04-planning/ideas/pms-core-billing/tech-design.md</code>(4절 근거, 8-2 내부 API, 10절), D <code>../family-consent-portal/copy.md</code> 3절.</p>
+<blockquote>
+<p>포트폴리오용 MVP다. 실제 고객, 실적, 후기, 이용 데이터는 없다. <strong>이 문서는 코어 문서의 목소리와 용어집을 그대로 물려받고, 비서에만 필요한 것만 더한다.</strong> 코어와 겹치는 내용(조직 구조, 청구 규칙, 대리인)은 다시 쓰지 않는다.</p>
+</blockquote>
+<h2 id="product-overview">Product Overview</h2>
+<p><strong>One-liner:</strong> 회원님이 큰 버튼이나 말로 계약 날짜와 이번 달 청구서를 묻고, 비서가 답하지 못하거나 판단이 필요한 일은 직원에게 넘기는 AI 비서.
+<strong>What it does (최소판):</strong> [사실] 코어(A) 바로 다음에 붙이는 판이다. 도구는 코어 도구 세 개(조회 두 개, 청구 문의 하나)와 비서 자체 넘기기 하나다(G 기획 확정, 2026-11-03).</p>
+<ul>
+<li><strong>일정 조회</strong>: 코어 <code>ContractQuery.keyDates</code>가 주는 입주일, 계약 만료일, 최근 청구 발행일, 최근 청구 납부 기한, 다음 청구 예정일, 퇴거 예정일만 읽어 준다(tech-design 4절 청구 일정, 8-2, 10절).</li>
+<li><strong>청구 설명</strong>: 코어 <code>BillingQuery.explainInvoice</code>가 주는 항목별 <code>plain</code> 재료와 근거(원장, 요금 규칙)만으로 청구서를 쉬운 말로 설명한다(tech-design 4절).</li>
+<li><strong>청구 문의 접수</strong>: 회원이 &quot;이 금액이 이상해요&quot;라고 하면 회원 확인 뒤 코어 <code>InquiryCommand</code>로 청구 문의를 남긴다. 답은 코어 경리 화면에서 한다(P1).</li>
+<li>조회 도구 밖의 질문(시설 프로그램, 행사, 늦게 냈을 때의 처리, 건강, 돈 옮기기, 투자, 계약 변경)에는 모른다거나 하지 않는다고 답하고, 프런트 전화와 &quot;직원에게 전하기&quot;를 보여 준다.</li>
+<li>비서는 새 데이터를 만들지 않는다. 비서가 갖는 것은 대화 기록, 도구 호출 기록, 직원에게 넘긴 요청뿐이다(tech-design 10절).
+<strong>확장 틀:</strong> [가설] B(안심 알림), D(보호자 포털), C(생활 지원 단계) 모듈이 생기면 도구가 하나씩 붙는다. 문구는 &quot;도구 하나 = 회원 화면 큰 버튼 하나 + 답 틀 하나 + 직원 화면 기록 한 줄&quot;로 쓰고, 모든 답에 &quot;확인한 곳&quot;을 붙인다. 그래서 도구가 늘어도 틀은 그대로다.
+<strong>Product category:</strong> 시니어 레지던스 회원 앱 안의 업무형 AI 비서. &quot;말벗&quot;, &quot;AI 안부전화&quot;, &quot;범용 챗봇&quot;과 다른 칸이다.
+<strong>Product type:</strong> 코어 PMS 위의 모듈. 회원 화면은 Evenstay 홈 안의 &quot;비서&quot;, 직원 화면은 AI 생활 비서(코어 <code>names.md</code> v3, 2026-11-03 한글로 바꿈).
+<strong>Business model:</strong> 해당 없음(포트폴리오).</li>
+</ul>
+<h2 id="target-audience">Target Audience</h2>
+<p><strong>Target companies:</strong> 코어와 같다(시니어 레지던스 위탁 운영사).
+<strong>Decision-makers:</strong> 운영 책임자. 기술 판단은 Tech Lead. AI 규제 책임은 운영사 대표.
+<strong>Primary use case:</strong> 회원님이 &quot;계약은 언제 끝나요?&quot;, &quot;이번 달 왜 이 금액이에요?&quot;를 직원을 찾지 않고 물어보고, 답이 안 되면 바로 직원에게 넘긴다.
+<strong>Jobs to be done:</strong></p>
+<ul>
+<li>회원: 내 계약과 청구에 관한 날짜와 금액을 내 속도로 확인한다.</li>
+<li>직원: 같은 질문 반복 대신 무엇을 물었고 비서가 무엇을 답했는지 정리된 요청을 받는다.</li>
+<li>운영사·면접관: AI가 정해진 도구와 권한 안에서만 움직이고 모든 호출이 남는다는 것을 확인한다.
+<strong>Use cases (최소판 데모):</strong></li>
+<li>&quot;계약은 언제 끝나요?&quot; → 일정 조회 → 날짜와 확인한 곳</li>
+<li>&quot;다음 청구서 언제 나와요?&quot;, &quot;언제까지 내요?&quot; → 일정 조회 → 다음 청구 예정일, 납부 기한</li>
+<li>&quot;이번 달 왜 이렇게 나왔어요?&quot; → 청구 설명 → 생활비, 식비, 드시지 않은 식사 빼 드림</li>
+<li>&quot;오늘 무슨 프로그램 있어요?&quot; → 모른다고 답하고 프런트 안내</li>
+<li>&quot;은행이라는데 돈을 옮기래요&quot; → 판단하지 않고 직원에게 넘김</li>
+</ul>
+<h2 id="personas">Personas</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Cares about</th>
+<th>Challenge</th>
+<th>Value we promise</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>회원(U1, 70~80대 입주 회원)</td>
+<td>내 날짜와 돈이 맞는지</td>
+<td>디지털 적응이 어렵다는 응답 67.2%(P-037. D3, D5). 55세 이상 AI 서비스 경험 30.2%(G3)</td>
+<td>큰 버튼 하나로 묻고, 모르면 사람에게 이어진다</td>
+</tr>
+<tr>
+<td>보호자(U3)</td>
+<td>부모의 청구가 맞는지</td>
+<td>여러 곳에서 따로 확인한다(P-023)</td>
+<td>최소판에서 보호자는 비서를 쓰지 않는다. 비서는 동의 범위 밖 정보를 보호자에게 주지 않는다(D가 정한다)</td>
+</tr>
+<tr>
+<td>프런트·생활지원 직원(U4)</td>
+<td>반복 문의, 놓친 요청</td>
+<td>전화로 같은 질문을 받는다 [추정]</td>
+<td>넘겨받은 요청에 대화 요약과 비서가 확인한 곳이 붙어 온다</td>
+</tr>
+<tr>
+<td>운영사</td>
+<td>AI 규제, 사고 책임</td>
+<td>AI 기본법 사전 고지(G4), 판단 대행 위험(G5, G15, G21)</td>
+<td>고지 확인 전에는 비서를 열지 않고, 건강·금전·계약 판단은 하지 않으며 모든 대화를 남긴다</td>
+</tr>
+<tr>
+<td>면접관(Tech Lead 채용)</td>
+<td>AI Agent 연동을 어떻게 설계하나(S2, S3)</td>
+<td>데모가 챗봇 시연으로 끝나는 경우</td>
+<td>도구 목록, 권한 검사, 쓰기 전 확인, 넘김 이유, 호출 기록을 화면으로 본다</td>
+</tr>
+</tbody></table></div>
+<h2 id="problems-pain-points">Problems &amp; Pain Points</h2>
+<p><strong>Core problem:</strong> 회원님의 날짜(입주, 계약 만료, 청구)와 돈(청구서)은 코어에 있지만, 회원님이 묻는 길은 프런트 전화와 앱 메뉴뿐이다. 앱 메뉴는 찾기 어렵고 전화는 직원 시간을 쓴다 [추정].
+<strong>Why alternatives fall short:</strong></p>
+<ul>
+<li>범용 AI 비서: 시설 데이터와 권한이 없어 내 청구서를 모른다(ai-assistant.md 2절).</li>
+<li>AI 안부전화·돌봄 스피커: 안부 확인에 머물고 시설 업무와 이어지지 않는다(E7, E15). 공공 서비스는 담당자 알림·방문으로 이어지는 중이다(G9, G10).</li>
+<li>프런트 직원: 정확하지만 시간과 운영 시간이 정해져 있다 [NEED: 프런트 운영 시간].
+<strong>What it costs them:</strong> [NEED: 직원 반복 문의 시간·빈도. 효과 수치는 주장하지 않는다(G1, G2, G26 수치가 거의 회사 주장)]
+<strong>Emotional tension:</strong> 회원님은 &quot;AI가 내 돈을 마음대로 하나&quot;를 걱정할 수 있다 [가설]. 그래서 비서가 하지 않는 일을 먼저 말한다.</li>
+</ul>
+<h2 id="competitive-landscape">Competitive Landscape</h2>
+<p><strong>Direct:</strong> 시설 업무와 연동한 시니어 AI 비서 — 국내외에서 찾지 못했다(shortlist G, ai-assistant.md 0절).
+<strong>Secondary:</strong> AI 안부전화·돌봄 스피커 — 시설 요청 큐·청구와 연동하지 않는다.
+<strong>Indirect:</strong> 프런트 직원, 자녀에게 묻기, 종이 달력, 그냥 참고 넘김(비소비).</p>
+<h2 id="differentiation">Differentiation</h2>
+<p><strong>Key differentiators:</strong></p>
+<ul>
+<li>도구만 호출한다. 최소판 조회 도구는 일정 조회와 청구 설명 두 개이고, 쓰기 도구(청구 문의 접수, 직원에게 넘기기)는 회원 확인 뒤에만 실행된다. 큰 버튼은 AI를 부르지 않는다.</li>
+<li>답마다 확인한 곳(어느 청구서, 어느 계약)을 붙인다. 코어의 &quot;근거를 보인다&quot;를 대화로 옮긴 것이다.</li>
+<li>모르는 것은 모른다고 하고, 판단이 필요한 일은 넘긴다. 넘긴 이유를 남긴다.</li>
+<li>상태를 바꾸는 일(직원에게 전하기)은 회원 확인을 받은 뒤에만 한다(ai-assistant.md 5절 원칙 2).
+<strong>How we do it differently:</strong> 도구, 권한, 기록을 먼저 설계하고 대화는 그 위에 얹는다.
+<strong>Why that&#39;s better:</strong> 도구가 늘어도 같은 구조로 붙고, 문제가 생기면 무엇을 왜 답했는지 기록으로 설명할 수 있다.
+<strong>Why customers choose us:</strong> [NEED: 실제 도입 근거 없음. 포트폴리오에서는 설계 근거로 대신한다]</li>
+</ul>
+<h2 id="objections">Objections</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Objection</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>80대가 AI와 대화하겠나</td>
+<td>말하기는 보조다. 큰 버튼을 먼저 두고, 입주 때 직원이 한 번 보여 드린다(ai-assistant.md 0절). 프런트 전화는 늘 화면에 있다</td>
+</tr>
+<tr>
+<td>AI가 틀린 금액을 말하면</td>
+<td>비서는 금액을 계산하지 않는다. 코어 원장의 항목과 근거를 읽어 줄 뿐이고, 답마다 확인한 청구서를 보인다</td>
+</tr>
+<tr>
+<td>돈·건강 문제를 AI가 다루면 위험하다</td>
+<td>건강, 금전, 계약 판단은 하지 않고 직원에게 넘긴다. 투자 추천, 주문, 자산 조회는 하지 않는다</td>
+</tr>
+<tr>
+<td>정서적 의존</td>
+<td>말벗 기능을 넣지 않는다. 업무형 비서로 한정한다(G8, G20)</td>
+</tr>
+<tr>
+<td><strong>Anti-persona:</strong> 말벗·정서 지원을 바라는 이용자, 자산 관리·투자 조언을 바라는 이용자(사용자의 개인 AI 자산관리 아이디어는 senior-lab 밖으로 분리했다).</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h2 id="switching-dynamics">Switching Dynamics</h2>
+<p><strong>Push:</strong> 메뉴를 찾기 어렵다, 프런트가 바쁘다, 자녀에게 묻기 미안하다 [추정].
+<strong>Pull:</strong> 큰 버튼 하나로 날짜와 금액을 듣는다.
+<strong>Habit:</strong> 프런트 전화, 종이 청구서.
+<strong>Anxiety:</strong> AI가 돈을 건드리나, 내 말을 누가 보나, 틀리게 말하면 어쩌나.</p>
+<h2 id="customer-language">Customer Language</h2>
+<p><strong>How they describe the problem:</strong> [NEED: 회원 인터뷰 원문]. ai-assistant.md 7절 데모 시나리오의 말(가상):</p>
+<ul>
+<li>&quot;오늘 뭐 있어?&quot;, &quot;이번 달 왜 이렇게 많이 나왔어?&quot;, &quot;은행이라는데 돈을 옮기래&quot;
+<strong>How they describe us:</strong> [NEED: 데모 피드백]
+<strong>Words to use (비서 추가분):</strong></li>
+<li>회원 화면: 비서, 물어보기, 말로 묻기, 계약·청구서 날짜, 이번 달 청구서, 확인한 곳, 직원에게 전하기, 전해 드릴까요, 프런트로 전화하기, 아직 모르는 일, 직원이 할 일</li>
+<li>직원 화면: 대화 기록, 넘겨받은 요청, 넘긴 이유, 도구 호출 기록, 회원 확인, 권한 거부
+<strong>Words to avoid (코어 목록에 더함):</strong></li>
+<li>회원 화면: &quot;AI 에이전트&quot;, &quot;도구&quot;, &quot;챗봇&quot;, &quot;프롬프트&quot;, &quot;의도&quot;(전부 내부 말), &quot;무엇이든 물어보세요&quot;, &quot;언제든&quot;, &quot;24시간&quot;(지킬 수 없는 약속), &quot;말벗&quot;, &quot;친구&quot;(과의존), &quot;추천&quot;, &quot;투자&quot;, &quot;자산&quot;, &quot;알아서 처리&quot;</li>
+<li>모든 화면: &quot;노인&quot;, &quot;AI가 판단&quot;, &quot;정확한 답&quot;, &quot;틀리지 않아요&quot;
+<strong>Glossary (비서 추가분. 코어 용어집에 이어서 쓴다)</strong><div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>도메인(코드)</th>
+<th>직원 화면</th>
+<th>회원 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Assistant</td>
+<td>AI 생활 비서</td>
+<td>비서 (첫 화면만 &quot;Evenstay 홈 비서&quot;)</td>
+</tr>
+<tr>
+<td>Conversation</td>
+<td>대화 기록</td>
+<td>지난 대화</td>
+</tr>
+<tr>
+<td>Tool</td>
+<td>도구</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>ToolCall</td>
+<td>도구 호출 기록</td>
+<td>확인한 곳 (답 아래 한 줄)</td>
+</tr>
+<tr>
+<td>Tool: <code>ContractQuery.keyDates</code></td>
+<td>일정 조회</td>
+<td>계약·청구서 날짜</td>
+</tr>
+<tr>
+<td>Tool: <code>BillingQuery.explainInvoice</code></td>
+<td>청구 설명</td>
+<td>이번 달 청구서 설명</td>
+</tr>
+<tr>
+<td>Tool: <code>InquiryCommand.createInquiry</code></td>
+<td>청구 문의 접수</td>
+<td>이 금액이 이상해요 / 문의를 받았어요 (코어 copy 3절과 같은 말)</td>
+</tr>
+<tr>
+<td>Handoff</td>
+<td>넘겨받은 요청</td>
+<td>직원에게 전하기 / 직원에게 전했어요</td>
+</tr>
+<tr>
+<td>HandoffReason: HEALTH / MONEY / CONTRACT / OUT_OF_SCOPE / MEMBER_ASKED</td>
+<td>건강 판단 / 금전 판단 / 계약 판단 / 도구 밖 질문 / 직접 요청 (투자 질문은 금전 판단)</td>
+<td>(이유를 따로 이름 붙이지 않고 문장으로 말한다)</td>
+</tr>
+<tr>
+<td>HandoffStatus: NEW / IN_PROGRESS / DONE / FORWARDED</td>
+<td>새 요청 / 처리 중 / 처리 완료 / 생활 요청으로 보냄</td>
+<td>(따로 보이지 않는다. 회원 화면은 &quot;직원에게 전했어요&quot; 그대로)</td>
+</tr>
+<tr>
+<td>ConfirmationToken</td>
+<td>회원 확인</td>
+<td>&quot;전해 드릴까요?&quot; [네, 전해 주세요] [아니요]</td>
+</tr>
+<tr>
+<td>PolicyDeny</td>
+<td>권한 거부</td>
+<td>(해당 없음. 회원 화면은 &quot;그 내용은 제가 볼 수 없어요&quot;)</td>
+</tr>
+<tr>
+<td>AiNotice (D 소유)</td>
+<td>AI 사용 고지</td>
+<td>AI 사용 안내</td>
+</tr>
+<tr>
+<td>keyDates: moveInDate / contractEndDate / lastInvoiceIssuedOn / moveOutDate</td>
+<td>입주일 / 계약 만료일 / 최근 청구 발행일 / 퇴거 예정일</td>
+<td>입주하신 날 / 계약이 끝나는 날 / ○월 청구서가 나온 날 / 이사 나가실 날</td>
+</tr>
+<tr>
+<td>keyDates: lastInvoiceDueDate / nextInvoiceScheduledOn</td>
+<td>최근 청구 납부 기한 / 다음 청구 예정일</td>
+<td>○월 ○일까지 내시면 돼요 / 다음 청구서가 나올 날</td>
+</tr>
+</tbody></table></div>
+</li>
+</ul>
+<h2 id="brand-voice">Brand Voice</h2>
+<p>코어 목소리(차분하다, 존중한다, 근거를 보인다, 기록이 남는다)를 그대로 쓴다. 비서에만 두 가지를 더한다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Means</th>
+<th>Doesn&#39;t mean</th>
+<th>Example line</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>모르면 모른다고 한다</td>
+<td>도구 밖 질문에는 짐작하지 않고 어디서 알 수 있는지 말한다</td>
+<td>무엇이든 답하려 하기, 사과를 길게 늘이기</td>
+<td>&quot;프로그램 일정은 제가 아직 몰라요. 프런트에 물어보시면 알려 드려요.&quot;</td>
+</tr>
+<tr>
+<td>사람에게 잇는다</td>
+<td>판단이 필요한 일은 넘기고, 넘기기 전에 회원님께 묻는다</td>
+<td>대신 결정하기, 말없이 넘기기</td>
+<td>&quot;이 일은 직원이 직접 봐야 해요. 직원에게 전해 드릴까요?&quot;</td>
+</tr>
+</tbody></table></div>
+<p><strong>Tone by context:</strong></p>
+<ul>
+<li>회원 화면: 해요체, &quot;회원님&quot;, 한 답에 사실 두세 개, 답 끝에 확인한 곳 한 줄.</li>
+<li>판단을 넘길 때: 이유는 짧게, 다음에 할 일은 분명하게. 겁주지 않는다.</li>
+<li>직원 화면: 합쇼체·명사형 라벨, &quot;입주자&quot;, 시각과 이유를 함께.</li>
+<li>오류: 무엇이 안 됐는지 → 왜 → 무엇을 하면 되는지. 회원 탓을 하지 않는다. 늘 프런트 전화를 함께 보인다.</li>
+<li>포트폴리오: 문제 → 설계 판단 → 데모. 효과를 주장하지 않는다.
+<strong>Terms we own:</strong> Evenstay 홈 비서(회원), AI 생활 비서(직원).
+<strong>Never use (and why):</strong></li>
+<li>&quot;AI가 알아서&quot; — 판단 대행 오해, AI 기본법 고지 원칙과 충돌(코어와 같음)</li>
+<li>&quot;말벗&quot;, &quot;대화 친구&quot; — 정서적 과의존 위험(G8, G20)</li>
+<li>&quot;무엇이든&quot;, &quot;언제든&quot;, &quot;24시간&quot; — 최소판 조회 도구는 두 개고 직원 응대 시간이 정해져 있다</li>
+<li>&quot;투자&quot;, &quot;자산&quot;, &quot;추천&quot; — 최소판에 없고, 넣더라도 모의투자·가상 데이터 시연만(shortlist I-38)</li>
+</ul>
+<h2 id="proof-points">Proof Points</h2>
+<p><strong>Metrics:</strong> 없음. 효과 수치를 주장하지 않는다. 대신 측정할 수 있는 로그를 보여 준다(넘긴 비율, 도구 호출 수, 권한 거부 수. ai-assistant.md 5절 원칙 6).
+<strong>Customers / Testimonials:</strong> 없음.
+<strong>Value themes:</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Proof (데모)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>도구만 호출한다</td>
+<td>직원 화면 도구 호출 기록: 도구 이름, 대상, 권한 검사 결과</td>
+</tr>
+<tr>
+<td>근거 있는 답</td>
+<td>회원 답의 &quot;확인한 곳&quot; → 코어 청구서 근거 패널과 같은 항목</td>
+</tr>
+<tr>
+<td>모르면 넘긴다</td>
+<td>&quot;오늘 무슨 프로그램 있어요?&quot; → 모름 + 프런트 안내</td>
+</tr>
+<tr>
+<td>판단은 사람이</td>
+<td>&quot;은행이라는데 돈을 옮기래요&quot; → 회원 확인 → 넘겨받은 요청(넘긴 이유: 금전 판단)</td>
+</tr>
+</tbody></table></div>
+<h2 id="goals">Goals</h2>
+<p><strong>Business goal (포트폴리오):</strong> 면접관이 &quot;AI Agent를 PMS에 이렇게 붙이겠다&quot;를 3분 안에 이해한다.
+<strong>Conversion action:</strong> 데모에서 질문 네 개를 차례로 눌러 보고 직원 화면 기록을 연다.
+<strong>Current metrics:</strong> 없음.</p>
+<h2 id="learnings">Learnings</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Learning</th>
+<th>Evidence</th>
+<th>Applies to</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2026-11-03</td>
+<td>큰 버튼은 AI 없이 답 틀로 답하고, 청구 이의는 코어 청구 문의로 보낸다. 투자 질문도 &quot;돈&quot;으로 묶어 직원에게 넘길 수 있게 한다</td>
+<td>G 기획 확정(G prd 확인할 것 2, 8, 10)</td>
+<td>copy.md 2-4, 2-5, 5-3, 6절</td>
+<td>active</td>
+</tr>
+<tr>
+<td>2026-11-03</td>
+<td>최소판 일정은 코어 <code>keyDates</code> 여섯 가지뿐이다(납부 기한, 다음 청구 예정일 포함). 시설 프로그램·행사는 비서가 모른다고 답한다</td>
+<td>tech-design 4절 청구 일정, 8-2, 10절(2026-11-03 나눔)</td>
+<td>copy.md 회원 화면</td>
+<td>active</td>
+</tr>
+<tr>
+<td>2026-11-02</td>
+<td>큰 버튼과 직원 대행을 먼저, 음성은 보조</td>
+<td>55세 이상 AI 서비스 경험 30.2%(G3)</td>
+<td>첫 화면</td>
+<td>active</td>
+</tr>
+</tbody></table></div>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li>v3.4 (2026-11-04) — 용어집 회원 화면 말: 퇴거하실 날을 이사 나가실 날로 고침(공용 문구 확정안, 사용자 결정).</li>
+<li>v3.3 (2026-11-04) — 용어집: 넘긴 이유 코드 UNKNOWN을 OUT_OF_SCOPE로 고침(G 기획과 맞춤), 넘김 상태 행을 더함(FORWARDED = 생활 요청으로 보냄). G 기획 보완(N1 연결·사용량 카드) 반영.</li>
+<li>v3.2 (2026-11-03) — 브랜드 뒷말을 한글로 적음: Evenstay Home 비서 → Evenstay 홈 비서, Evenstay Home → Evenstay 홈(사용자 결정 2026-11-03, 코어 names.md v4 진행 중). Product type, 용어집, Terms we own을 고침.</li>
+<li>v3.1 (2026-11-03) — 직원 화면 이름 Evenstay Assistant Admin을 AI 생활 비서로 바꿈(코어 names.md v3 변경, 사용자 결정 2026-11-03). Product type, 용어집, Terms we own을 고침.</li>
+<li>v3 (2026-11-03) — G 기획 확정 반영: 도구를 코어 세 개(조회 두 개 + 청구 문의) + 비서 넘기기로, 넘긴 이유 &quot;회원 요청&quot;을 &quot;직접 요청&quot;으로(names.md와 맞춤), 투자 질문은 금전 판단으로 넘김. What it does, Differentiation, 용어집, Never use, Learnings를 고침.</li>
+<li>v2 (2026-11-03) — 코어 keyDates가 여섯 개로 나뉘어(납부 기한, 다음 청구 예정일 추가) What it does, 사용 사례, 용어집, Learnings를 고침. 허브 요청 처리 반영.</li>
+<li>v1 (2026-11-03) — 첫 초안. 코어 v1.1 목소리·용어집을 물려받고 비서 용어(대화 기록, 넘겨받은 요청, 도구 호출 기록, 확인한 곳)와 목소리 두 가지(모르면 모른다고 한다, 사람에게 잇는다)를 더함.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-871" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-872" data-title="청구 문의"><p>청구 항목에 대한 문의. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자가 문의한 청구 / 회원: 이 금액이 이상해요</dd><dt>영문·코드 이름</dt><dd><code>Inquiry</code></dd><dt>출처</dt><dd>core T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-873" data-title="도구 호출"><p>호출 기록. 결과 본문은 저장하지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 도구 호출, 도구 호출 기록 / 회원: 확인한 곳(답 아래 한 줄, assistant T2-1은 표시 안 함) <code>[문서 다름]</code></dd><dt>영문·코드 이름</dt><dd><code>ToolCall</code></dd><dt>출처</dt><dd>assistant T2-1·2-2, assistant M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-874" data-title="납부 기한"><p>발행 때 정하고 바꾸지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 납부 기한 / 회원: ○월 ○일까지 내시면 돼요</dd><dt>영문·코드 이름</dt><dd><code>Invoice.due_date</code></dd><dt>출처</dt><dd>core T2-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-875" data-title="넘긴 이유"><p>왜 사람에게 넘겼는가. 투자 질문은 금전 판단이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 건강 판단 / 금전 판단 / 계약 판단 / 도구 밖 질문 / 직접 요청</dd><dt>영문·코드 이름</dt><dd><code>HandoffReason</code>: <code>HEALTH</code>, <code>MONEY</code>, <code>CONTRACT</code>, <code>OUT_OF_SCOPE</code>, <code>MEMBER_ASKED</code></dd><dt>출처</dt><dd>assistant T2-1, assistant M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-876" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-877" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-878" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-879" data-title="권한 거부"><p>도구 호출이 권한 검사에서 막힌 결과</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 권한 거부 / 회원: 그 내용은 제가 볼 수 없어요</dd><dt>영문·코드 이름</dt><dd><code>PolicyDeny</code></dd><dt>출처</dt><dd>assistant M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

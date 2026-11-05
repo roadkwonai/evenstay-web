@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evenstay 화면 필요성·이용자별 검토 | Evenstay 문서</title>
+<meta name="description" content="Evenstay 화면 필요성·이용자별 검토. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>Evenstay 화면 필요성·이용자별 검토</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#0-먼저-알아-둘-것">0. 먼저 알아 둘 것</a></li><li class="lv2"><a href="#1-요약-숫자">1. 요약 숫자</a></li><li class="lv2"><a href="#2-합치기-후보">2. 합치기 후보</a></li><li class="lv2"><a href="#3-따로-두는-화면과-이유">3. 따로 두는 화면과 이유</a></li><li class="lv2"><a href="#4-빼기wont-후보">4. 빼기(Won't) 후보</a></li><li class="lv2"><a href="#5-kano-moscow-행마다">5. Kano + MoSCoW (행마다)</a></li><li class="lv2"><a href="#6-이용자별-표-stakeholder-map">6. 이용자별 표 (stakeholder-map)</a></li><li class="lv3"><a href="#6-1-권력-관심-간단">6-1. 권력 × 관심 (간단)</a></li><li class="lv3"><a href="#6-2-이용자별">6-2. 이용자별</a></li><li class="lv2"><a href="#7-앱별-내비게이션-부담">7. 앱별 내비게이션 부담</a></li><li class="lv2"><a href="#8-확인하지-못한-것-위험">8. 확인하지 못한 것 / 위험</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1084" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-1085" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-1086" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-1087" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li><li><button class="term" type="button" data-modal="g-1088" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-1089" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-1090" data-tip="저장은 자원 예약(RESERVATION)">시설 예약</button></li><li><button class="term" type="button" data-modal="g-1091" data-tip="데모에서 계정, 시계, 시드를 바꾸는 사람">데모 진행자</button></li><li><button class="term" type="button" data-modal="g-1092" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li><li><button class="term" type="button" data-modal="g-1093" data-tip="회원이 받기로 한 정기 순회.">안부 방문</button></li><li><button class="term" type="button" data-modal="g-1094" data-tip="고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건.">생활 요청</button></li><li><button class="term" type="button" data-modal="g-1095" data-tip="운영 앱 첫 화면.">오늘의 운영</button></li></ul></section></aside>
+  <article class="doc"><p>날짜: 2026-11-04
+대상: <a class="doc-ref" href="mvp-screens.html"><code>evenstay/design/mvp-screens.md</code></a> 1~3절 목록, 5절 통합 흐름(41단계), 6절 흐름 표시, 6-1절 화면 수</p>
+<p>기준: (1) 5절 흐름에 나옴 (2) 사용자가 오늘 직접 요청 (3) 백엔드 설계가 보임(상태 전이, 모듈 경계, 이벤트, 권한, 감사) (4) 이용자 핵심 일. 사용자 요청 기능은 지우지 않고 가벼운 형태(탭, 패널, 상태, 카드, 서랍)로 줄이는 안만 냈다.</p>
+<h2 id="0-먼저-알아-둘-것">0. 먼저 알아 둘 것</h2>
+<ul>
+<li><strong>숫자 세는 단위.</strong> 아래 &quot;제안&quot;은 <strong>페이지 단위 화면</strong>이다. 탭, 서랍(Sheet), 대화창(Dialog), 상태는 0으로 세지만 아트보드 컷은 여전히 필요하다. 그래서 작업량은 숫자만큼 줄지 않는다 [추정: 컷 20~30장 남음].</li>
+<li><strong>현재 118은 하한이다.</strong> 한 행이 여러 화면을 숨긴다: TRN-09(하위 화면 5개, 3-5절), REQ-03(종류별 입력, 한 화면 한 칸), FAM-14(초대·수락 2화면), CORE-05(작성·승계 창), CORE-07(탭 3개). 합치면 실제 아트보드는 118보다 많다 [추정].</li>
+<li><strong>정의서끼리 어긋난 곳.</strong> 7절 결정 4는 SAF-05, AST-10, TRN-07을 &quot;Must(누가 언제 무엇을 했는지)&quot;로 정했는데 6절은 AST-10, TRN-07을 &quot;없음&quot;으로 표시했다. 탭으로 합치면 기능은 유지되고 이 충돌도 풀린다.</li>
+<li><strong>화면 행이 없는 목록 항목.</strong> 1-1절 COM-07 목록 5번 &quot;급할 때 연락할 분&quot;은 3절에 행이 없다(CORE-08 옆 칸으로만 나옴, 4-7절 CORE-08 행). 만들지, 칸으로 둘지 정해야 한다.</li>
+</ul>
+<h2 id="1-요약-숫자">1. 요약 숫자</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>현재</th>
+<th>A 상태·변형</th>
+<th>A+B 탭·마스터-디테일</th>
+<th>A+B+C 설정 허브 포함</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>행(2·3절)</td>
+<td>133</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>따로 만들 페이지</td>
+<td>118 (6-1절)</td>
+<td>95 (-23)</td>
+<td>74 (-21)</td>
+<td><strong>69 (-5)</strong></td>
+</tr>
+<tr>
+<td>앱별: 홈(회원·대리인)</td>
+<td>42</td>
+<td>-</td>
+<td>-</td>
+<td>26</td>
+</tr>
+<tr>
+<td>앱별: 패밀리(보호자)</td>
+<td>9</td>
+<td>-</td>
+<td>-</td>
+<td>8</td>
+</tr>
+<tr>
+<td>앱별: 운영</td>
+<td>67</td>
+<td>-</td>
+<td>-</td>
+<td>35</td>
+</tr>
+<tr>
+<td>5절 흐름 단계</td>
+<td>41</td>
+<td>41</td>
+<td>41</td>
+<td>41 (줄지 않고 화면 열의 ID가 &quot;화면 + 탭/상태&quot;로 바뀜)</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>A = 문서가 이미 대화창·서랍·상태·같은 틀이라고 쓴 것(예: REQ-13 Sheet, CMN-04~06 확인 창, AST-08 &quot;AST-02와 같음&quot;). 위험 낮음.</li>
+<li>B = 같은 이용자·같은 자료를 탭이나 목록-상세로 묶는 것. 판단이 필요하다.</li>
+<li>C = 모듈별 설정 5행(CORE-03, SAF-11, REQ-17, REQ-18, CMN-22)을 &quot;설정&quot; 한 화면의 탭으로(1-3절이 이미 한 묶음 &quot;설정&quot;으로 둠, -4). 여기에 TRN-12를 TRN-01의 편집 모드로 넣은 것(-1)까지 합쳐 -5.</li>
+<li>권장: A+B+C 전부 하되 B 중 &quot;판단 필요&quot; 표시(아래 2절)는 사용자가 고른다.</li>
+<li>6-1절 &quot;흐름 93 / 부록 13 / 없음 27&quot;은 합쳐도 유지된다. 합친 뒤 없음 화면은 대부분 탭 하나가 되어 따로 만들 부담이 사라진다.</li>
+</ul>
+<h2 id="2-합치기-후보">2. 합치기 후보</h2>
+<p>형태: 탭 / 패널(목록-상세) / 상태 / 카드 / 서랍. 등급은 위 1절의 A, B, C.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>합칠 화면</th>
+<th>들어갈 곳과 형태</th>
+<th>등급</th>
+<th>이유(근거)</th>
+<th>데모 흐름 영향</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>COM-01, 02, 03</td>
+<td>진행자 막대 한 화면, 팝오버 3개</td>
+<td>A</td>
+<td>2절이 이미 &quot;한 줄 막대&quot;라고 정함. 셋 다 같은 이용자(데모 진행자)</td>
+<td>5절 13, 19, 23단계의 COM-02는 &quot;막대&quot;</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SAF-02, 03, 04</td>
+<td>SAF-02 &quot;알림 처리&quot; 한 화면, 3단계 패널(상세 → 조치 → 보호자 알림 미리보기). SAF-01은 왼쪽 목록</td>
+<td>B</td>
+<td>같은 직원이 같은 알림 한 건을 연달아 처리(5절 8, 28단계). 상태 전이(확인 → 조치 → 보냄)를 단계 표시 하나로 더 잘 보여 줌 [추정]</td>
+<td>8, 28단계 &quot;SAF-02 1/3, 2/3, 3/3&quot;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SAF-05</td>
+<td>SAF-01의 &quot;지난 알림&quot; 탭(책임자만 보임)</td>
+<td>B</td>
+<td>같은 사이드바 항목. &quot;걸린 시간&quot;(확인 시각, 사용자 요청)은 탭 열로 남음. 권한 차이는 탭 노출로 보여 줌</td>
+<td>9단계 SAF-01 → SAF-05는 탭 전환</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SAF-13, 14</td>
+<td>&quot;자리 비운 분&quot; 한 화면, 탭 2개(병원 동행, 장기 부재)</td>
+<td>B</td>
+<td>5절 29단계가 둘 다 SAF-01 카드 두 개에서 열린다고 적음. 둘 다 읽기 목록 + 한 가지 기록</td>
+<td>29, 30단계</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SAF-12, 15</td>
+<td>&quot;호실 현황&quot; 한 화면: 직원은 줄마다 안부 방문 결과를 고르고(쓰기), 책임자는 같은 표를 읽는다</td>
+<td>B, 판단 필요</td>
+<td>같은 표(호실 × 오늘 안부 방문)의 쓰기·읽기. 단 이용자가 달라 하나의 화면이 두 일을 하게 됨</td>
+<td>12단계 SAF-12 → SAF-15는 &quot;같은 화면, 모드 전환&quot;</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SAF-10</td>
+<td>SAF-08 &quot;기기&quot; 화면의 &quot;연결·동의&quot; 탭</td>
+<td>B</td>
+<td>둘 다 기기. SAF-10은 6절 없음, 7절 결정 6 Next</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>7</td>
+<td>CORE-10, CORE-12</td>
+<td>CORE-04 계약 상세의 &quot;대리인&quot; 탭, &quot;퇴거 정산&quot; 탭</td>
+<td>B</td>
+<td>둘 다 계약에 매단 일이고 6절 없음. CORE-04가 이미 Tabs 컴포넌트를 씀(3-1절 CORE-04 컴포넌트)</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>8</td>
+<td>CORE-11</td>
+<td>CORE-07의 &quot;문의&quot; 탭</td>
+<td>B</td>
+<td>CORE-07이 이미 &quot;사용 기록&quot; 탭을 가짐. 같은 경리의 같은 청구 흐름</td>
+<td>부록</td>
+</tr>
+<tr>
+<td>9</td>
+<td>CORE-15 (위탁 계약 이력, 요청 기능)</td>
+<td>CORE-02 사업장 상세의 &quot;위탁 계약&quot; 탭</td>
+<td>B, 판단 필요</td>
+<td>사업장에 매단 이력. 소유주가 자기 사업장 한 줄만 읽는 권한 격리도 탭에서 보임. 다만 1-3절은 &quot;소유주는 CORE-09만 본다&quot;고 해서 소유주 경로는 CORE-09 안 카드로 따로 열어야 함 [추정]</td>
+<td>부록</td>
+</tr>
+<tr>
+<td>10</td>
+<td>CORE-03, SAF-11, REQ-17, REQ-18, CMN-22</td>
+<td>&quot;설정&quot; 한 화면, 모듈별 탭 5개</td>
+<td>C</td>
+<td>1-3절이 이미 &quot;설정&quot; 묶음. 전부 6절 없음(시드). 규칙·당번표(SAF-11)를 가장 풍부한 탭으로 그리고 나머지는 같은 틀</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>11</td>
+<td>TRN-12</td>
+<td>TRN-01의 &quot;편집&quot; 모드(본사 관리자, 책임자)</td>
+<td>C</td>
+<td>같은 자료의 읽기·편집</td>
+<td>31단계 TRN-01</td>
+</tr>
+<tr>
+<td>12</td>
+<td>TRN-06, TRN-07</td>
+<td>TRN-02 입주자 단계 요약의 &quot;외부 돌봄&quot;, &quot;이력&quot; 탭</td>
+<td>B</td>
+<td>둘 다 같은 입주자 한 명 기준(제목에 입주자 이름). TRN-07은 이력 기록이라 7절 결정 4의 뜻(누가 언제 무엇)을 탭 표로 지킴</td>
+<td>41단계 TRN-06</td>
+</tr>
+<tr>
+<td>13</td>
+<td>TRN-11</td>
+<td>TRN-09의 &quot;다시 봐 주세요&quot; 확인 상태</td>
+<td>A</td>
+<td>확인 한 단계</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>14</td>
+<td>FAM-07</td>
+<td>FAM-04 &quot;내 소식 기록&quot;의 &quot;올리지 않은 일&quot; 탭</td>
+<td>B</td>
+<td>같은 이용자(회원)의 &quot;내 소식에 일어난 일&quot;</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>15</td>
+<td>FAM-08, FAM-15</td>
+<td>FAM-11의 &quot;올리지 않은 일 주간&quot;, &quot;AI 고지·동의&quot; 탭</td>
+<td>B</td>
+<td>셋 다 본사 매니저의 읽기 감사 표. 열람·동의·제외 기록이 한곳이 됨</td>
+<td>25단계 FAM-11</td>
+</tr>
+<tr>
+<td>16</td>
+<td>FAM-16</td>
+<td>FAM-06a의 카드 + 상세 서랍</td>
+<td>A</td>
+<td>3-3절 FAM-16 이름이 이미 &quot;생활 소식 화면 안 카드&quot;. 장기 부재 소식 기능은 그대로</td>
+<td>29, 30단계</td>
+</tr>
+<tr>
+<td>17</td>
+<td>FAM-17, FAM-20</td>
+<td>FAM-01의 안내 대화창 상태</td>
+<td>A</td>
+<td>둘 다 &quot;새로 들어가는 것이 있어요 / 알겠어요&quot; 같은 틀. 범위 넓힘 직후 같은 화면 위에 뜸</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>18</td>
+<td>AST-06</td>
+<td>AST-05의 &quot;청구 문의&quot; 변형</td>
+<td>A</td>
+<td>같은 버튼 &quot;네, 전해 주세요&quot;</td>
+<td>부록</td>
+</tr>
+<tr>
+<td>19</td>
+<td>AST-08</td>
+<td>AST-02의 대리인 역할 변형</td>
+<td>A</td>
+<td>3-4절이 &quot;AST-02와 같음&quot;이라고 적음</td>
+<td>부록</td>
+</tr>
+<tr>
+<td>20</td>
+<td>AST-12</td>
+<td>AST-04의 연결 끊김 상태</td>
+<td>A</td>
+<td>2절이 COM-05를 상태로 정한 방식과 같음. 40단계의 핵심은 &quot;큰 버튼은 답함&quot;이므로 상태 컷에서 그대로 보임</td>
+<td>40단계</td>
+</tr>
+<tr>
+<td>21</td>
+<td>AST-07</td>
+<td>AST-02의 &quot;지난 대화&quot; 구역</td>
+<td>B</td>
+<td>6절 없음. 보관 기간(1년)은 운영 쪽 표에서 보임</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>22</td>
+<td>AST-10</td>
+<td>AST-11의 &quot;대화 / 도구 호출&quot; 탭</td>
+<td>B</td>
+<td>둘 다 직원용 기록 표. 7절 결정 4(AST-10 Must)의 뜻은 탭이 지킴</td>
+<td>39단계 AST-11</td>
+</tr>
+<tr>
+<td>23</td>
+<td>REQ-02</td>
+<td>REQ-01 첫 화면에 종류 6개 타일을 바로</td>
+<td>B, 판단 필요</td>
+<td>CMN-01이 같은 방식(큰 버튼 셋). 한 번 덜 누름 [추정]. 단 REQ-01의 &quot;요청하기&quot; 한 버튼 구성이 바뀜</td>
+<td>14, 16, 17단계 REQ-01 → REQ-03</td>
+</tr>
+<tr>
+<td>24</td>
+<td>REQ-06</td>
+<td>REQ-01 아래 &quot;내 요청&quot; 구역</td>
+<td>B</td>
+<td>REQ-01에 이미 &quot;내 요청 보기&quot; 버튼. 6절 없음</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>25</td>
+<td>REQ-04</td>
+<td>REQ-05의 &quot;비용 있음&quot; 상태</td>
+<td>A</td>
+<td>비용 안내는 전하기 직전 확인에 붙는 한 카드</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>26</td>
+<td>REQ-08</td>
+<td>REQ-07의 &quot;확인 대기&quot; 상태</td>
+<td>A</td>
+<td>같은 요청 한 건의 상태. 15단계가 REQ-08 ↔ REQ-07을 오감</td>
+<td>14, 15단계</td>
+</tr>
+<tr>
+<td>27</td>
+<td>REQ-13, 14, 15, 16, 21</td>
+<td>REQ-12의 서랍·대화창</td>
+<td>A</td>
+<td>3절 컴포넌트 열이 이미 Sheet 또는 Dialog. 3-6절도 &quot;행 하나로 센다&quot;고 적음</td>
+<td>13~18단계. 컷은 남음</td>
+</tr>
+<tr>
+<td>28</td>
+<td>CMN-04, 05, 06</td>
+<td>CMN-03 프로그램 상세의 확인 상태 3개(신청, 대기, 취소)</td>
+<td>A</td>
+<td>3절 CMN-04 컴포넌트에 &quot;확인을 창으로 할지 화면으로&quot;가 열려 있음</td>
+<td>20, 21단계</td>
+</tr>
+<tr>
+<td>29</td>
+<td>CMN-09</td>
+<td>CMN-07 &quot;내 신청&quot;의 &quot;내 예약&quot; 구역</td>
+<td>B</td>
+<td>같은 회원의 앞으로 일정</td>
+<td>20단계</td>
+</tr>
+<tr>
+<td>30</td>
+<td>CMN-15, 16, 19, 21</td>
+<td>CMN-14의 탭(프로그램 → 회차, 시설 예약)과 공지 탭 안 상세 패널</td>
+<td>A</td>
+<td>CMN-14 컴포넌트가 이미 Tabs(오늘·프로그램·시설 예약·공지). 3-7절도 &quot;CMN-14에서 여는 화면&quot;</td>
+<td>19~22단계</td>
+</tr>
+<tr>
+<td>31</td>
+<td>CMN-18</td>
+<td>CMN-17의 &quot;출석&quot; 탭</td>
+<td>B</td>
+<td>같은 회차 명단. 신청 → 출석이 같은 줄</td>
+<td>20, 23단계</td>
+</tr>
+</tbody></table></div>
+<h2 id="3-따로-두는-화면과-이유">3. 따로 두는 화면과 이유</h2>
+<ul>
+<li><strong>데모 흐름의 뼈대(상태 전이·권한이 보임):</strong> CORE-01(운영 현황, 요청), CORE-02(소유주 격리), CORE-04·05(계약·승계), CORE-06·07(식사 마감 → 청구), CORE-13(장기 부재, 요청), CORE-14(월 리포트, 요청), SAF-01·02(알림 목록, 처리), SAF-06(기기 신호 입력), FAM-01(허락), FAM-02·03(건강 소식은 법적으로 따로 동의라 합치지 않음), FAM-06a<del>f, FAM-09</del>11, TRN-02~05(제안자 ≠ 결정자 규칙은 TRN-05가 별도 이용자(책임자)의 받은편지함이라 분리), REQ-01·03·05·07·12, CMN-03·11·14·17·20.</li>
+<li><strong>입주자 앱 확인 단계:</strong> 시니어 앱은 &quot;한 화면 한 칸&quot;(DESIGN.md) 규칙이라 REQ-03, REQ-05, CMN-08은 각각 따로 둔다. 위 합치기는 확인 단계를 &quot;같은 화면의 상태 컷&quot;으로 옮기는 것이지 한 번에 여러 입력을 받는 것이 아니다.</li>
+<li><strong>서로 다른 이용자의 같은 자료:</strong> CMN-08(회원) / CMN-19(직원)은 앱이 달라 분리 유지. 시설 예약은 직원 일정표(겹침 검사)와 회원 예약 흐름이 다르다(3-7절 설명).</li>
+<li><strong>감사 보기:</strong> FAM-04(회원이 본 열람 기록), FAM-11(본사 열람 기록)은 이용자와 권한이 다르다. AST-11은 거부 줄이 모듈 경계 설계를 보여 주는 화면이라 유지.</li>
+<li><strong>요청 기능이 화면 하나인 것:</strong> SAF-16(사고·학대 보고: 저장 후 덧붙이기만 되는 기록, 감사 설계), SAF-17(재실 명단: 사람마다 확인), CORE-09, CORE-15(탭이나 카드로 합치기 전에는 단독).</li>
+<li>회원 안심 알림 SAF-09(B의 유일한 회원 화면), 대리인 화면 FAM-13도 단독 유지(해당 이용자의 유일한 화면).</li>
+</ul>
+<h2 id="4-빼기wont-후보">4. 빼기(Won&#39;t) 후보</h2>
+<p>사용자 요청도 아니고 5절 흐름에도 없는 화면만. 기능이 모듈 설계에 있으면 &quot;문서에만 남김&quot;.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>화면</th>
+<th>이유</th>
+<th>대안</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FAM-14 초대·수락</td>
+<td>6절 없음, P1. 보호자 연결은 5절 7단계 FAM-09(프런트 대신 입력)가 이미 보여 줌</td>
+<td>문서에만 남김</td>
+</tr>
+<tr>
+<td>AST-07 지난 대화</td>
+<td>6절 없음, P1. 시니어가 다시 열어 보는 일이 드뭅니다 [추정]. 보관 정책은 AST-10/11 탭에 보임</td>
+<td>합치기 21 대신 이것도 빼도 됨</td>
+</tr>
+<tr>
+<td>CORE-12 퇴거 정산</td>
+<td>6절 없음, P1. 보증금 보호(요청)는 CORE-04 부록에서 이미 다룸</td>
+<td>합치기 7의 탭도 시간이 없으면 생략</td>
+</tr>
+<tr>
+<td>FAM-17, FAM-20</td>
+<td>6절 없음. 범위 넓힘 직후 안내인데 5절에서 안 나옴(3절 FAM-20 설명: 11/18 장면은 안내가 나오지 않음)</td>
+<td>합치기 17 대신 생략 가능</td>
+</tr>
+</tbody></table></div>
+<p>위 4건 외 6절 &quot;없음&quot; 23개는 요청 기능이거나 설계 보이는 화면이라 Won&#39;t로 두지 않고 합치기로만 처리했다.</p>
+<h2 id="5-kano-moscow-행마다">5. Kano + MoSCoW (행마다)</h2>
+<p>Kano는 &quot;포트폴리오 데모&quot; 맥락이다. 예: SAF-16·17은 현실에서는 기본 기대(법적 의무)지만 데모에서는 감탄(Attractive)으로 분류했다. 별칭 행(AST-01, SAF-07, TRN-10)은 가리키는 화면을 따른다. 기준: Must = 흐름에 나옴 + (백엔드 설계가 보이거나 핵심 일). Should = 흐름에 나오는 보조 화면, 요청한 부록. Could = 부록이나 없음 중 틀 보여 주기. Won&#39;t = 4절.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>모듈</th>
+<th>Kano: 기본(M) / 성능(P) / 감탄(A) / 무관(I)</th>
+<th>MoSCoW</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>공통</td>
+<td>M: COM-01~08</td>
+<td>Must: 전부</td>
+</tr>
+<tr>
+<td>코어</td>
+<td>M: 02, 04, 05, 06, 07, 08. P: 01, 09, 13. A: 14, 15. I: 03, 10, 11, 12</td>
+<td>Must: 01, 02, 04~09, 13, 14. Should: 15. Could: 03, 10, 11. Won&#39;t: 12</td>
+</tr>
+<tr>
+<td>B 안심 알림</td>
+<td>M: 01, 02, 03, 09. P: 04, 05, 06, 12, 15. A: 13, 14, 16, 17. I: 08, 10, 11</td>
+<td>Must: 01, 02, 03, 04, 06, 12, 15. Should: 05, 07, 09, 13, 14. Could: 08, 10, 11, 16, 17 (16·17은 요청 기능이라 지우지 않음)</td>
+</tr>
+<tr>
+<td>D 보호자 포털</td>
+<td>M: 01, 05, 06a, 06d. P: 03, 04, 06b, 06c, 06e, 06f, 09, 10, 11. A: 02, 16, 19. I: 07, 08, 12, 13, 14, 15, 17, 20</td>
+<td>Must: 01, 02, 05, 06a, 06b, 06d, 09, 10, 11, 16. Should: 03, 04, 06c, 06e, 06f. Could: 07, 08, 12, 13, 15, 17, 19, 20. Won&#39;t: 14</td>
+</tr>
+<tr>
+<td>G AI 비서</td>
+<td>M: 02, 04. P: 05, 09. A: 03, 11, 12, 13. I: 06, 07, 08, 10</td>
+<td>Must: 02, 04, 05, 09, 11. Should: 03, 12, 13. Could: 06, 08, 10. Won&#39;t: 07</td>
+</tr>
+<tr>
+<td>C 단계</td>
+<td>M: 01, 02, 09. P: 03, 04, 06, 07. A: 05. I: 11, 12</td>
+<td>Must: 02, 03, 04, 05, 09. Should: 01, 06, 08. Could: 07, 11, 12</td>
+</tr>
+<tr>
+<td>N1 생활 요청</td>
+<td>M: 01, 03, 05, 07, 12, 13. P: 02, 06, 08, 10, 11, 14, 15, 16. A: 09, 19, 20. I: 04, 17, 18, 21</td>
+<td>Must: 01, 02, 03, 05, 07, 08, 12, 13, 14, 15, 19. Should: 09, 10, 11, 16, 20. Could: 04, 06, 17, 18, 21</td>
+</tr>
+<tr>
+<td>N2 커뮤니티</td>
+<td>M: 01, 02, 03, 10, 11, 14, 20. P: 04, 07, 08, 09, 12, 13, 17, 18, 19. A: 05, 21, 23. I: 06, 15, 16, 22</td>
+<td>Must: 01, 02, 03, 05, 11, 14, 17, 18, 19, 20. Should: 07, 08, 09, 10, 12, 13, 21, 23. Could: 04, 06, 15, 16, 22</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>위 표의 Won&#39;t(CORE-12, FAM-14, AST-07)는 4절 표의 앞 3건과 같다. 4절의 FAM-17·20은 표에서 Could(만들 수 있으면 합치기 17의 상태 컷)로 두었다. 사용자 요청 기능은 어느 쪽도 건드리지 않는다.</li>
+<li>Must가 흐름 93개와 거의 겹쳐 변별력이 낮다. 합치기를 거치면 Must 페이지는 대략 45~50개 [추정]로 줄어 아트보드 우선순위로 쓸 수 있다.</li>
+</ul>
+<h2 id="6-이용자별-표-stakeholder-map">6. 이용자별 표 (stakeholder-map)</h2>
+<h3 id="6-1-권력-관심-간단">6-1. 권력 × 관심 (간단)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th></th>
+<th>관심 높음</th>
+<th>관심 낮음</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>권력 높음</td>
+<td><strong>면접관</strong>(만든 사람의 설계 능력 판단), 사업장 책임자(위험 책임), 본사</td>
+<td>소유주 담당자(월 리포트만)</td>
+</tr>
+<tr>
+<td>권력 낮음</td>
+<td>회원 이은숙(주인공), 보호자 김지민, 프런트, 생활 지원 직원</td>
+<td>대리인 김태호(막힘 시연용), 경리, 야간 당번, 데모 진행자</td>
+</tr>
+</tbody></table></div>
+<h3 id="6-2-이용자별">6-2. 이용자별</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>이용자</th>
+<th>핵심 일</th>
+<th>쓰는 화면(합치기 후 페이지)</th>
+<th>빠진 화면 / 겹침</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>회원 이은숙 (홈)</td>
+<td>청구 확인, 허락 정하기, 요청하기, 프로그램 신청, 비서에게 묻기</td>
+<td>CORE-08, FAM-01<del>05, AST-02</del>05, TRN-09, REQ-01·03·05·07·09, CMN-01~03·07·08·10·11, SAF-09</td>
+<td><strong>빠짐:</strong> &quot;급할 때 연락할 분&quot;(1-1절 5번)이 화면 행 없음. <strong>겹침:</strong> REQ-01/02/06, CMN-03/04/05/06/07/09, AST-05/06</td>
+</tr>
+<tr>
+<td>대리인 김태호</td>
+<td>범위 안 일 대신(청구, 비서), 막힘 확인</td>
+<td>FAM-13, AST-08(=AST-02), 패밀리 앱 06a·06f. 5절 10, 11, 16, 25단계에서 COM-04 막힘</td>
+<td><strong>빠짐:</strong> 대리인이 자기 범위를 보는 화면 없음(FAM-13이 &quot;범위 안 일&quot;만) [추정]. <strong>겹침:</strong> AST-08과 AST-02</td>
+</tr>
+<tr>
+<td>보호자 김지민</td>
+<td>허락된 소식 보기, 대신 요청, 일정 확인</td>
+<td>FAM-06a~f, REQ-10·11, CMN-12·13, FAM-16 (패밀리 앱 8페이지)</td>
+<td>빠짐 없음. 겹침: 06a(범위 한 줄)와 06f(내가 볼 수 있는 것)는 1-2절에서 같은 &quot;범위 확인&quot;이라 06f를 06a 하단으로 접는 안도 가능(이번엔 유지)</td>
+</tr>
+<tr>
+<td>프런트 최민수</td>
+<td>전화 받은 일을 대신 기록, 보호자 연결, 부재 시작</td>
+<td>FAM-09, CORE-06·13, SAF-01(전화 호출 등록, 5절 28단계), REQ-12(대신 등록), CMN-14·17(대신 신청·예약), AST-09, FAM-12</td>
+<td><strong>빠짐:</strong> 첫 화면(CORE-01은 본사·경리·책임자 대상, 3-1절 CORE-01 이용자 열) [추정]. <strong>겹침:</strong> &quot;대신 ○○&quot; 6곳(REQ-14, CMN-17, CMN-19, FAM-09, CORE-10, SAF-01)과 받은 일 입구 4곳(AST-09, FAM-12, REQ-12 &quot;분류 전&quot;, CMN-14 오늘). 틀(들은 방법 입력)을 하나로 통일</td>
+</tr>
+<tr>
+<td>생활 지원 직원 윤서연·김하진</td>
+<td>안부 방문, 병원 동행, 주간 리포트, 출석</td>
+<td>SAF-12, SAF-13, SAF-01, FAM-10, CMN-14·17, TRN-03·06</td>
+<td>빠짐 없음. 겹침: SAF-12와 15(같은 호실 표), TRN-06과 TRN-02</td>
+</tr>
+<tr>
+<td>야간 당번</td>
+<td>신호 확인, 조치, 알림</td>
+<td>SAF-01~04, SAF-08, SAF-13·14</td>
+<td>겹침: SAF-02·03·04가 한 사람의 연속 3화면</td>
+</tr>
+<tr>
+<td>사업장 책임자 최영미</td>
+<td>운영 현황 보기, 놓친 것 찾기, 결정</td>
+<td>CORE-01, SAF-05·15·16·17, TRN-05, CMN-21, REQ-12, 설정</td>
+<td>빠짐 없음. 사이드바 9개(6절 참조)</td>
+</tr>
+<tr>
+<td>경리 박소연</td>
+<td>계약, 식사 마감, 청구, 문의, 확인할 일</td>
+<td>CORE-04·05·07·11·12, TRN-08</td>
+<td>겹침: 청구 3행(CORE-06·07·11) 중 06은 프런트도 씀</td>
+</tr>
+<tr>
+<td>본사 정하늘</td>
+<td>사업장 전체, 감사, 요금</td>
+<td>CORE-01~03·15, FAM-08·11·15, TRN-05, 설정</td>
+<td>겹침: 감사 표 3개(FAM-08·11·15) → 탭 하나</td>
+</tr>
+<tr>
+<td>소유주 담당자</td>
+<td>월 리포트</td>
+<td>CORE-09, CORE-14(+REQ-20 칸)</td>
+<td><strong>빠짐/충돌:</strong> 코어 <code>prd.md</code>는 CORE-15를 소유주가 읽는다고 적었는데 1-3절은 &quot;소유주 계정은 CORE-09 하나만&quot;이라 경로 없음. CORE-09 안 카드로 정해야 함 [추정]</td>
+</tr>
+<tr>
+<td>데모 진행자</td>
+<td>계정·시계·초기화, 신호 보내기</td>
+<td>COM-01~03(막대), SAF-06</td>
+<td>겹침: COM-01~03은 3화면이 아니라 막대 하나</td>
+</tr>
+<tr>
+<td>면접관</td>
+<td>5분 안에 설계 이해</td>
+<td>(앱 화면 없음)</td>
+<td><strong>빠짐:</strong> 41단계 길잡이(지금 몇 번째 장면, 무엇을 볼지)와 모듈 경계·이벤트 설명 표시가 없음. 진행자 막대에 &quot;장면 목록&quot; 패널 하나를 더하는 안(새 화면 아님) [추정, Should]</td>
+</tr>
+</tbody></table></div>
+<h2 id="7-앱별-내비게이션-부담">7. 앱별 내비게이션 부담</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>앱</th>
+<th>현재 항목 수</th>
+<th>근거</th>
+<th>7 초과?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>홈(회원)</td>
+<td>10</td>
+<td>1-1절 목록 1<del>7 + 8</del>10(프로그램·시설 예약·공지). 8~10은 CMN-01이 첫 화면에 큰 버튼 셋으로도 더함(중복)</td>
+<td><strong>초과</strong></td>
+</tr>
+<tr>
+<td>패밀리(보호자)</td>
+<td>5 + 공지 칸 1</td>
+<td>1-2절</td>
+<td>아님</td>
+</tr>
+<tr>
+<td>운영 사이드바(전체 묶음)</td>
+<td>11</td>
+<td>1-3절(9에서 서비스 보완으로 11)</td>
+<td><strong>초과</strong>(전체 기준)</td>
+</tr>
+</tbody></table></div>
+<p>운영 역할별로 보이는 묶음 [추정, 1-3절 표에서 계산]:</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>역할</th>
+<th>현재</th>
+<th>제안 후(8묶음)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>책임자</td>
+<td>9 (오늘의 운영, 입주 계약, 안심, 보호자 포털, AI 비서, 단계, 요청, 프로그램, 설정)</td>
+<td>7</td>
+</tr>
+<tr>
+<td>본사</td>
+<td>8~9</td>
+<td>7~8</td>
+</tr>
+<tr>
+<td>프런트</td>
+<td>6~7 (오늘의 운영 없음)</td>
+<td>3~4</td>
+</tr>
+<tr>
+<td>경리</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>생활 지원</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>야간 당번</td>
+<td>1~2</td>
+<td>1~2</td>
+</tr>
+<tr>
+<td>소유주</td>
+<td>0(CORE-09만)</td>
+<td>0</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>제안(운영, 11 → 8묶음): 오늘의 운영 / 사업장·호실 / 계약·청구(입주 계약 + 식사와 청구) / 안심 알림 / 보호자·AI(보호자 포털·동의 + AI 생활 비서) / 생활 지원 단계 / 생활 서비스(생활 요청 + 프로그램·시설·공지) / 설정. 근거: 합친 묶음은 1-3절 표에서 이용자 역할이 거의 같다.</li>
+<li>제안(홈, 10 → 7): 청구서 / 생활 요청 / 생활 지원 단계 / 비서 / 소식 함께 보기 / 프로그램·시설·공지(한 항목, 안에서 CMN-01의 큰 버튼 셋) / 안심 알림(P1). &quot;급할 때 연락할 분&quot;은 항목이 아니라 보조 열(<code>alt-path</code>)이나 CORE-08 옆 칸으로 옮김 [추정].</li>
+<li>패밀리는 1024px 이상에서 보조 열에 목록이 늘 보여(1-2절) 부담이 작다.</li>
+</ul>
+<h2 id="8-확인하지-못한-것-위험">8. 확인하지 못한 것 / 위험</h2>
+<ul>
+<li>각 모듈 <code>prd.md</code> 전문, <code>user-stories.md</code>, <code>copy/</code>는 읽지 않았다. 이용자별 &quot;핵심 일&quot;은 3·5절 표와 PRD 머리말로 추정했다 [추정].</li>
+<li>&quot;합치기 후 페이지 수&quot;는 정의서 행 기준 세기라, 숨은 하위 화면(TRN-09 5개 등)이 더해지면 달라진다.</li>
+<li>합치기 5(SAF-12 + 15), 9(CORE-15), 23(REQ-02)은 한 화면이 두 이용자의 일을 맡게 되거나 REQ-01 구성이 바뀌므로 사용자가 고른다.</li>
+<li>이 파일은 의견이다. <code>mvp-screens.md</code>, <code>shared/</code>는 고치지 않았다. 결정이 나면 허브가 <code>decisions.md</code>에 남기고 정의서 재승인으로 반영해야 한다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1084" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1085" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1086" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1087" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1088" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1089" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1090" data-title="시설 예약"><p>저장은 자원 예약(<code>RESERVATION</code>)</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 시설 예약(community T2-1은 &quot;예약&quot;) / 회원: 예약</dd><dt>영문·코드 이름</dt><dd><code>FacilityReservation</code></dd><dt>출처</dt><dd>community T2-1, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1091" data-title="데모 진행자"><p>데모에서 계정, 시계, 시드를 바꾸는 사람</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 진행자</dd><dt>영문·코드 이름</dt><dd>COM-01~03 막대</dd><dt>출처</dt><dd>화면정의 1-3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1092" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1093" data-title="안부 방문"><p>회원이 받기로 한 정기 순회. 놓치면 신호가 된다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 안부 방문 계획, 안부 방문 기록 / 회원: 안부 방문</dd><dt>영문·코드 이름</dt><dd><code>VisitPlan</code>, <code>VisitRecord</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1094" data-title="생활 요청"><p>고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건. 안전 신호가 아니다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 생활 요청(줄여 요청) / 회원·보호자: 요청</dd><dt>영문·코드 이름</dt><dd><code>ServiceRequest</code></dd><dt>출처</dt><dd>requests T2-2, requests M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1095" data-title="오늘의 운영"><p>운영 앱 첫 화면. 3층 구성이고 조립은 <code>app/</code>이 한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 오늘의 운영</dd><dt>영문·코드 이름</dt><dd>CORE-01</dd><dt>출처</dt><dd>core C2-1·2-10, 화면정의 1-3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

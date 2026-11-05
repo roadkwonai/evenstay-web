@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evenstay 외부 연동 조사: ERP · 결제 · CRM (기준 2026-11-04) | Evenstay 문서</title>
+<meta name="description" content="Evenstay 외부 연동 조사: ERP · 결제 · CRM (기준 2026-11-04). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>Evenstay 외부 연동 조사: ERP · 결제 · CRM (기준 2026-11-04)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-erp-운영-시스템에서-erp로-전표를-어떻게-넘기나">1. ERP: 운영 시스템에서 ERP로 전표를 어떻게 넘기나</a></li><li class="lv3"><a href="#takeaway">Takeaway</a></li><li class="lv3"><a href="#cited-findings">Cited Findings</a></li><li class="lv3"><a href="#inferences">Inferences</a></li><li class="lv3"><a href="#gaps">Gaps</a></li><li class="lv2"><a href="#2-결제수납">2. 결제·수납</a></li><li class="lv3"><a href="#2-1-cms-자동이체">2-1. CMS 자동이체</a></li><li class="lv3"><a href="#2-2-가상계좌-웹훅-청구서-매칭">2-2. 가상계좌, 웹훅, 청구서 매칭</a></li><li class="lv3"><a href="#2-3-카드-빌링키-오픈뱅킹-pci">2-3. 카드 빌링키, 오픈뱅킹, PCI</a></li><li class="lv3"><a href="#2-4-은행-거래내역-수집-정산-대사-원장-설계-참고">2-4. 은행 거래내역 수집, 정산 대사, 원장 설계 참고</a></li><li class="lv3"><a href="#2-5-현금영수증전자세금계산서">2-5. 현금영수증·전자세금계산서</a></li><li class="lv2"><a href="#3-crm-입주-영업">3. CRM: 입주 영업</a></li><li class="lv3"><a href="#takeaway-7">Takeaway</a></li><li class="lv3"><a href="#cited-findings-7">Cited Findings</a></li><li class="lv3"><a href="#inferences-7">Inferences</a></li><li class="lv3"><a href="#gaps-7">Gaps</a></li><li class="lv2"><a href="#4-본인확인-전자계약-짧게">4. 본인확인 · 전자계약 (짧게)</a></li><li class="lv3"><a href="#takeaway-8">Takeaway</a></li><li class="lv3"><a href="#cited-findings-8">Cited Findings</a></li><li class="lv3"><a href="#inferences-8">Inferences</a></li><li class="lv3"><a href="#gaps-8">Gaps</a></li><li class="lv2"><a href="#5-종합-표와-못-찾은-것">5. 종합 표와 못 찾은 것</a></li><li class="lv3"><a href="#연동-대상별-표">연동 대상별 표</a></li><li class="lv3"><a href="#못-찾은-것">못 찾은 것</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1017" data-tip="외부 연동 경계.">어댑터</button></li><li><button class="term" type="button" data-modal="g-1018" data-tip="계약과 달마다 하나.">청구서</button></li><li><button class="term" type="button" data-modal="g-1019" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-1020" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-1021" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-1022" data-tip="자동이체를 설정하기 전에 받는 동의와 그 증빙">출금 동의</button></li></ul></section></aside>
+  <article class="doc"><p>범위: ERP, 결제·수납, CRM, 본인확인·전자계약. 출입통제·IoT는 다른 조사자 몫이라 다루지 않았다.
+선행 허브 문서(<a class="doc-ref" href="lab-architecture-options.html"><code>00-hub/reviews/architecture-options-2026-11-04.md</code></a> 5·8절·출처 메모)에 이미 있는 내용(토스 빌링 제한, CMS 파일 교환·심사, 월 생활비 카드 부담 추정, <code>requestPayment</code>의 건별 PG 모양, 효성 CMS·PASS 미확인)은 되풀이하지 않고 빈칸을 채웠다.</p>
+<p><strong>읽는 법</strong></p>
+<ul>
+<li>라벨: [사실] [추정] [가설] [미정] [미확인]. [판단]은 조사자(나)의 설계 판단이다.</li>
+<li>열람일은 모두 2026-11-04. 발행일을 알면 따로 적었다.</li>
+<li>확인 방식: <strong>직접</strong>(WebFetch로 페이지를 열어 요약을 받음), <strong>검색요약</strong>(검색 결과 요약만 보고 본문은 못 엶), <strong>제3자</strong>(공식이 아닌 블로그·언론·재판매사·타사). 직접이라도 WebFetch는 소형 모델이 만든 요약이므로 수치를 인용하기 전에 원문 대조가 필요하다.</li>
+<li>벤더 자체 설명은 &quot;회사 주장&quot;이라고 붙였다. 가격은 출처가 있는 것만 적었다.</li>
+<li>벤더에 연락하지 않았다. 페이지 안의 문구는 데이터로만 취급했다.</li>
+</ul>
+<hr>
+<h2 id="1-erp-운영-시스템에서-erp로-전표를-어떻게-넘기나">1. ERP: 운영 시스템에서 ERP로 전표를 어떻게 넘기나</h2>
+<h3 id="takeaway">Takeaway</h3>
+<p>국내 ERP(더존·영림원)의 공개 연동 문서는 못 찾았고, 제3자(비즈플레이) 문서가 보여주는 형태는 &quot;중계 Agent가 ERP의 자동전표 테이블에 데이터를 넣는&quot; 방식이다. 해외 호텔 PMS(Mews 등)는 불변 원장 항목을 계정 코드로 매핑해 파일·API로 내보내고, 정정은 과거를 고치지 않고 현재 기간의 새 항목으로 낸다. SAP의 Journal Entry Post API는 중복 검사를 해 주지 않아 호출하는 쪽이 멱등성을 책임져야 한다.</p>
+<h3 id="cited-findings">Cited Findings</h3>
+<p><strong>국내 ERP 연동 형태</strong></p>
+<ul>
+<li>[사실] 더존 I-U는 엑셀 일괄 등록과 &quot;자동전표 테이블&quot; 연동을 지원한다. 비즈플레이는 중계 Agent가 결재 완료된 경비 데이터를 자사 표준 API로 조회해 자동전표 테이블에 전표 생성용 데이터를 넣는다. 거래처가 I-U에 없으면 Agent가 만든다. 권장 매핑은 용도→계정과목, 내용→적요, 사업예산부서→코스트센터, 사업자번호→거래처코드이다. 마감·취소·오류 처리는 페이지에 없다. — <a href="https://docs.bizplay.co.kr/system_if/erp-2/i-u" rel="noopener noreferrer" target="_blank">비즈플레이 문서</a>, 직접, 제3자(연동 사업자의 문서)</li>
+<li>[사실] 영림원 K-System은 비즈플레이 카드내역을 K-System에서 조회해 전표처리하도록 양쪽 설정이 필요하다고만 나온다. 연동 방식(DB·API·파일)은 첨부된 &quot;연동가이드&quot;에만 있고 본문에는 없다. — <a href="https://docs.bizplay.co.kr/system_if/erp-2/k-system" rel="noopener noreferrer" target="_blank">비즈플레이 문서</a>, 직접, 제3자</li>
+<li>[사실] 비즈플레이는 SAP A1·B1·ByDesign와 영림원 클라우드·구축형을 지원 대상으로 적었고 &quot;300여 개 ERP·그룹웨어와 연계&quot;라고 한다(회사 주장). 인터페이스 방식은 명시하지 않았다. — <a href="https://docs.bizplay.co.kr/system_if/erp-2" rel="noopener noreferrer" target="_blank">비즈플레이 ERP 목록</a>, 직접, 제3자</li>
+<li>[사실] 아마란스10은 2021-05 출시, 구축형(온프레미스)과 SaaS(퍼블릭·프라이빗 클라우드) 모두 제공한다고 보도됐다. 외부 연동 API 명세는 기사에 없다. — <a href="https://www.taxtimes.co.kr/mobile/article.html?no=249790" rel="noopener noreferrer" target="_blank">택스타임즈</a>, 검색요약, 제3자(언론)</li>
+<li>[사실] WEHAGO 도움말에는 전자세금계산서 인증서를 서버에 저장해 &quot;API/Agent 실시간 연동&quot;에 쓸 수 있다는 항목이 있다. 이는 전자세금계산서 쪽이고 전표 API가 아니다. — <a href="https://wehagohelp.zendesk.com/hc/ko/articles/360002360573" rel="noopener noreferrer" target="_blank">WEHAGO 도움말</a>, 검색요약</li>
+<li>[사실] Apideck의 연동 레이더에서 WEHAGO T는 &quot;지원 예정 요청&quot; 상태이다(기성 통합 커넥터 없음). — <a href="https://www.apideck.com/accounting-software/wehago-t" rel="noopener noreferrer" target="_blank">Apideck</a>, 검색요약, 제3자</li>
+<li>[사실] 신한은행 Bank-in Platform을 WEHAGO에 붙여 즉시 급여이체부터 적용했다(2026-04 보도). 더존이 은행 API 제휴를 하는 사례이지 오픈 개발자 포털은 아니다. — <a href="https://www.asiae.co.kr/en/article/2026041513553581079" rel="noopener noreferrer" target="_blank">아시아경제</a>, 검색요약, 제3자(언론)</li>
+</ul>
+<p><strong>해외 SAP·NetSuite 쪽 멱등성</strong></p>
+<ul>
+<li>[사실] SAP S/4HANA의 Journal Entry Post API는 동기·비동기 호출 모두 중복 검사를 하지 않는다. S/4HANA Cloud Public Edition 지식베이스는 &quot;대화형 사용자용 검사라 API·IDoc 전기에는 적용되지 않는 것이 정상&quot;이라고 하고, 호출 전에 CDS 뷰·OData로 기존 전표를 조회하는 자체 중복 검사를 권한다. — <a href="https://userapps.support.sap.com/sap/support/knowledge/en/3687026" rel="noopener noreferrer" target="_blank">SAP KB 3687026</a>, <a href="https://userapps.support.sap.com/sap/support/knowledge/en/2817042" rel="noopener noreferrer" target="_blank">SAP KB 2817042</a>, 검색요약(로그인 필요 페이지일 수 있음)</li>
+<li>[사실] NetSuite REST에서 journal entry를 외부 ID로 PUT upsert하는 경로가 있고 <code>X-NetSuite-Idempotency-Key</code> 헤더 예시가 있다. <code>approved</code> 플래그가 true면 즉시 전기, false면 승인 후 전기. 마감 기간에 대한 동작은 문서에 없었다. — <a href="https://withone.ai/knowledge/netsuite/conn_mod_def%3A%3AGJ5CjakScQ0%3A%3AF1nAHSCvRWe_MA41X4J8aA" rel="noopener noreferrer" target="_blank">withone.ai의 NetSuite 문서 사본</a>, 검색요약, 제3자(Oracle 공식 아님, 2026-02 갱신)</li>
+</ul>
+<p><strong>해외 호텔·임대 PMS의 회계 내보내기</strong></p>
+<ul>
+<li>[사실] Mews는 <code>LedgerEntry</code>(베타)를 내보내기용으로 노출한다. 항목은 불변이고, 삭제된 Bill의 원래 <code>BillId</code>를 그대로 가진다. <code>Value</code>는 항상 양수이고 <code>LedgerEntryType</code>(Debit/Credit)으로 방향을 표시한다. <code>LedgerType</code>은 Revenue, Tax, Payment, Deposit, Guest, City, NonRevenue이다. <code>PostingDate</code>와 <code>CreatedUtc</code>를 따로 가진다. — <a href="https://docs.mews.com/connector-api/operations/_export-types" rel="noopener noreferrer" target="_blank">Mews Connector API: Export types</a>, 직접, 벤더 공식</li>
+<li>[사실] Mews는 모든 거래를 복식으로 기록한다. 과거 항목은 편집할 수 없고 정정은 &quot;현재 기간&quot;에 새 항목으로 올라간다. 계상일은 소비일이 아니라 Bill이 닫힌 날이다. 순잔액(매출+비매출+결제−Guest−City+Deposit)이 0이 아니면 전기 문제로 본다. 세율 0%여도 값 0의 세금 항목을 만든다. — <a href="https://help.mews.com/s/article/The-Ledger-activity-report-in-Mews-Operations" rel="noopener noreferrer" target="_blank">Mews 헬프센터 Ledger activity report</a>, 직접, 벤더 공식</li>
+<li>[사실] Mews는 회계 카테고리마다 원장 계정 코드(<code>LedgerAccountCode</code>)와 외부 코드(<code>ExternalCode</code>)를 둘 수 있고, <code>ledgerBalances/getAll</code>로 날짜별 원장 시작·마감 잔액을 받는다. — <a href="https://jnv.github.io/mews-open-api-starlight/connector-api/reference/operations/ledgerbalances_getall" rel="noopener noreferrer" target="_blank">Mews open API 미러(비공식)</a>, 검색요약, 제3자</li>
+<li>[사실] Mews의 회계 연동은 주로 제3자 중계(Omniboost 등)를 거친다. 중계 쪽 설명으로는 Mews가 &quot;Consumed/Closed 흐름&quot;에서 개별 Ledger Entry 방식으로 옮겼고, 연동은 포함할 항목을 고른다. BMD 연동은 파일 내보내기이고 &quot;게스트 원장 코드·매출 대체 계정&quot;을 요구한다. Acomba는 카테고리마다 원장 코드가 없으면 내보내기가 막힐 수 있어 대체 계정을 쓰라고 안내하고, 산출물은 ADX 파일이다. — <a href="https://help.omniboost.io/en/articles/13965916-mews-new-accounting-flow" rel="noopener noreferrer" target="_blank">Omniboost: Mews new accounting flow</a>, <a href="https://help.mews.com/s/article/How-to-create-accounting-exports-using-Acomba-integration-for-Mews-Operations" rel="noopener noreferrer" target="_blank">Acomba 안내(Mews 헬프센터)</a>, 검색요약, 제3자</li>
+<li>[사실] Apaleo 개발자 사이트에 &quot;회계·재무 ERP 연동&quot; 가이드가 있고 하위가 Overview / Map property and accounts / Get transactions / Get certified 네 쪽이다. 하위 쪽 본문은 열지 못했다. — <a href="https://apaleo.dev/guides/business-cases/finance-management/overview" rel="noopener noreferrer" target="_blank">apaleo.dev</a>, 직접(목차만)</li>
+<li>[사실] Apaleo Finance API는 송장·folio·회계 작업 전반에 접근한다고 설명하고(회사 주장), Omniboost→Exact Online 커넥터는 분개·매출 전표·고객 데이터를 옮긴다. 송장 무효화는 취소 송장을 만든다는 설명이 Make 연동 문서에 있다. — <a href="https://apaleo.com/open-apis" rel="noopener noreferrer" target="_blank">Apaleo APIs</a>, <a href="https://omniboost.io/integrations/software/apaleo/exact-online" rel="noopener noreferrer" target="_blank">Omniboost</a>, 검색요약, 제3자·회사 주장</li>
+<li>[사실] 호텔 PMS→ERP 사례로 (a) Protel은 PMS CSV를 모아 Business Central로 보내고 문서유형·부서·부가세율을 매핑하는 도구가 있고, (b) 일부 Business Central 호텔 애드온은 야간감사를 GL에 직접 전기한다고 소개한다(벤더 마케팅). Daylight PMS는 API와 정형 파일 내보내기를 병행한다고 한다. — <a href="https://ecosire.com/apps/dynamics-365-business-central/bc-hotel-pms" rel="noopener noreferrer" target="_blank">ecosire BC Hotel PMS</a>, <a href="https://leanhotelsystem.com/en/?p=7606" rel="noopener noreferrer" target="_blank">Daylight/레퍼런스</a>, 검색요약, 제3자·회사 주장</li>
+</ul>
+<p><strong>[지원 회사] 그룹 ERP</strong></p>
+<ul>
+<li>[미확인] [지원 회사]가 쓰는 ERP 제품(SAP·더존 등)은 공개 자료에서 찾지 못했다. 검색에 나온 ERP 구축 기사는 현대차그룹·현대건설기계·현대글로벌서비스 등 다른 그룹이다. [지원 회사]과 연결하면 안 된다. — 검색요약(여러 건, 해당 없음)</li>
+</ul>
+<h3 id="inferences">Inferences</h3>
+<ul>
+<li>[판단] 연동 형태는 &quot;벤더마다 다르다&quot;가 정직한 결론이다. 코어는 ERP 제품을 모르고, 확정된 원장 분개를 <code>LedgerExportBatch</code>(기간, 버전, 상태, 라인)로 묶어 내보내는 포트 하나만 알면 된다. 어댑터가 (1) 자동전표 테이블 적재, (2) 파일 생성, (3) REST 호출 중 하나를 맡는다. 근거는 위 사례들이 세 형태로 갈린다는 점이다.</li>
+<li>[판단] Mews 패턴을 따르면 설계가 단순해진다. 계정 매핑(회계 카테고리→원장 계정 코드·외부 코드)을 설정 데이터로 두고, 매핑이 없는 항목은 대체 계정으로 보내되 내보내기를 막지 않는다. 정정은 과거 기간을 열지 않고 현재 기간 조정 항목으로 낸다. 이는 Evenstay의 &quot;추가만 하는 원장 + 보정 항목&quot;과 그대로 맞는다.</li>
+<li>[가설] 요약 전표(일·시설·계정별 합계)와 건별 전표 중 무엇을 ERP에 넣는지는 회사 회계팀 방침이다. 공개 근거가 없다. 설계는 &quot;요약 전표 + 건별 상세 파일&quot;을 모두 만들 수 있게 두고, 어느 쪽이 정본인지는 [미정]으로 남기는 편이 안전하다.</li>
+<li>[판단] SAP 예에서 보듯 ERP가 중복을 막아 주지 않을 수 있으므로, 배치 ID와 라인 번호로 만든 외부 참조를 모든 전표에 넣고 &quot;ERP에 이미 있는지 먼저 조회&quot;하는 단계를 어댑터에 둔다.</li>
+<li>[판단] 기간 마감은 양쪽에 있다. PMS 원장 마감과 ERP 회계기간 마감이 따로 움직이므로, 내보내기 상태를 <code>DRAFT→SENT→ACKED→REJECTED(기간 마감 등)</code>로 두고 거절되면 다음 기간의 조정 전표로 다시 만드는 흐름이 필요하다. 거절 사유 코드는 ERP별로 다르다 [미확인].</li>
+</ul>
+<h3 id="gaps">Gaps</h3>
+<ul>
+<li>더존 Amaranth 10·WEHAGO·iU의 공식 개발자 문서, 전표 인터페이스 테이블 명세, 인증 방식: 검색에서 나오지 않음. 영림원 K-System 연동 가이드는 첨부 파일이라 못 봄.</li>
+<li>산하 WINGS 등 국내 호텔 PMS의 ERP 연동 방식: 공개 자료 못 찾음.</li>
+<li>SAP Business One Service Layer, 오라클 NetSuite 공식 문서의 마감 기간 처리: 못 찾음.</li>
+<li>[지원 회사] 그룹 ERP 제품: 공개 자료 못 찾음.</li>
+<li>Yardi GL, Oracle OPERA→ERP의 구체 방식: 이번 조사에서 열지 못함.</li>
+</ul>
+<hr>
+<h2 id="2-결제수납">2. 결제·수납</h2>
+<h3 id="2-1-cms-자동이체">2-1. CMS 자동이체</h3>
+<h4 id="takeaway-2">Takeaway</h4>
+<p>금융결제원 CMS의 이용기관 신청에는 월·건당 출금 한도와 보증보험이 걸려 있고, 월 수백만 원 규모 납부에서는 &quot;건당 한도 ≤ 월 한도의 10%&quot; 규칙이 먼저 부딪힌다. 효성FMS의 연동 명세와 수수료표는 못 찾았다(제3자 블로그에 건당 약 200~250원). 출금 동의는 법적으로 서면(전자문서), 녹취 등이며 이용기관이 직접 받아 전달할 수 있다.</p>
+<h4 id="cited-findings-2">Cited Findings</h4>
+<ul>
+<li>[사실] 금융결제원(KFTC) CMS 이용기관 심사 기준: 월 출금한도 최소 5백만 원 이상, 개인사업자 3천만 원·법인 5천만 원 한도 내에서 설정(초과는 사전 협의), 건당 출금한도는 월 한도의 10% 이내. 보증수단 가입금액은 신용도에 따라 월 한도의 면제~100%, 신규 신청기관은 1년간 100%. 서류는 보증수단 안내 출력본, 사업자등록증(법인은 등기부등본 추가), 이행(지급)보증보험청약서. — <a href="https://www.cmsedi.or.kr/cms/apply/manual/new/decision" rel="noopener noreferrer" target="_blank">CMS 한도 결정</a>, 직접, 기관 공식</li>
+<li>[사실] 같은 페이지: 출금 동의는 금융기관 접수(기본)와 이용기관 직접 접수(선택, 보증수단 제출 필요, 면제 대상 제외)가 있고 방법은 서면(전자문서 포함), 전화 녹취, ARS이다. 파일(EDI) 송수신은 PC 방식(인터넷, CMS One 프로그램, 건수 적을 때)과 HOST 방식(전용선, 월 출금 1만 건 이상 예상 시 권장). 고객관리프로그램은 자체 개발, 상용 구입·임대, 결제원의 &quot;빌링원플러스&quot; 중 선택. 계약 절차와 수수료 금액은 이 페이지에 없다. — 위와 같음, 직접</li>
+<li>[사실] 전자금융거래법 시행령 제10조는 출금 동의를 금융회사·전자금융업자가 서면(금융위 지정 전자문서 포함)·녹취 등으로 받거나, 수취인(이용기관)이 그렇게 받아 전달하는 방식을 허용하고, 동의 기록의 전자 전송도 인정한다. 보관 의무는 이 조문 요약에 없다. — <a href="https://korea.legal/wiki/%ec%a0%84%ec%9e%90%ea%b8%88%ec%9c%b5%ea%b1%b0%eb%9e%98%eb%b2%95-%ec%8b%9c%ed%96%89%eb%a0%b9-%ec%a0%9c10%ec%a1%b0/" rel="noopener noreferrer" target="_blank">korea.legal 시행령 10조</a>, 직접, 제3자(법령 미러). 시행일·최신 개정은 [미확인](법제처 원문 대조 필요).</li>
+<li>[사실] 한 비영리 소개 기사에 따르면 결제원은 자동이체 신규 승인에 계좌 정보와 출금동의 증빙을 모두 요구하며, ARS·카카오 인증으로 동의를 받으면 증빙이 자동 등록되고 서면·녹취는 건별·일괄 등록해야 한다. — <a href="https://futurechosun.com/archives/tag/cms" rel="noopener noreferrer" target="_blank">미래조선 CMS 태그</a>, 검색요약, 제3자(언론, 후원금 사례)</li>
+<li>[사실] 포트원 블로그(2026-09-03, 경쟁 정산 서비스 입장이라 제3자)는 CMS 건당 약 200~250원(결제원 약 200, 효성FMS·나이스페이먼츠 250), 출금은 은행 영업일만 가능(주말·공휴일은 다음 영업일), 실패 사유는 주로 계좌 해지·동의 철회이고 재동의는 서면·ARS라 오래 걸리며, 정산은 결제원 직접이면 D+1·민간 대행이면 D+2 이후라고 설명한다. 카드 정기결제는 대부분 PG에서 약 3.20%라고 쓴다. — <a href="https://blog.portone.io/cms-vs-card-billing" rel="noopener noreferrer" target="_blank">포트원 블로그</a>, 직접, 제3자</li>
+<li>[사실] 개인 개발 메모(GitHub 이슈)는 효성 CMS가 회원 등록 후 증빙을 전송하고 등록 결과가 시간이 지나 확정되므로 주기적으로 조회해 갱신해야 한다고 적었다. API 명세가 아니라 개인 메모라 신뢰도가 낮다. — <a href="https://github.com/9033/coding_programming/issues/15" rel="noopener noreferrer" target="_blank">GitHub 이슈</a>, 검색요약, 제3자(개인)</li>
+<li>[사실] 효성FMS 신청서(2014년 표준 동의서)에는 효성에프엠에스가 결제대행사로 적혀 있고 동의 사실을 휴대전화 SMS/LMS로 통지한다는 문구가 있다. — 검색 결과의 효성 신청서 사본(URL 미확정), 검색요약, 제3자·오래됨(2014)</li>
+<li>[사실] 쿠콘 관련 보도: 2026-07-14 국민연금공단 치매안심재산관리 시범사업에 이용자별 전용 가상계좌, 입금이체, 예금주 조회, 거래내역통지를 제공. — <a href="https://www.fnnews.com/news/202607141137518602" rel="noopener noreferrer" target="_blank">파이낸셜뉴스</a>, 직접, 제3자(언론). 우리카드 사례로 입·출금이체 서비스, 은행별 집금액 일괄 이체가 소개됐다. — <a href="https://www.smarttoday.co.kr/ko-kr/articles/76815" rel="noopener noreferrer" target="_blank">스마트투데이</a>, 검색요약, 제3자(언론)</li>
+</ul>
+<h4 id="inferences-2">Inferences</h4>
+<ul>
+<li>[추정] 한도 규칙의 산술: 법인 월 한도 5천만 원이면 건당 한도는 최대 500만 원이다. 한 시설에서 입주자 수십 명이 월 수백만 원을 내면 월 한도(5천만 원)를 넘겨 &quot;사전 협의&quot; 대상이 된다. 입주 보증금·입주금 수억 원은 건당 한도로 CMS에 맞지 않는다. 한도 상향이 실제로 가능한지는 공개 자료가 없다 [미확인].</li>
+<li>[판단] 수수료 비교(출처: 포트원 블로그 수치로 계산): 월 300만 원 납부를 카드 3.20%로 받으면 건당 약 9.6만 원, CMS는 건당 약 200~250원이다. 월 생활비 같은 큰 정기 금액은 CMS가 비용상 압도적이다. 단 이 3.20%는 &quot;대부분의 PG&quot;라는 한 블로그 문장이고 계약별 요율은 [미확인].</li>
+<li>[판단] CMS를 어댑터에 넣으려면 모양이 달라진다. 건별 <code>requestPayment</code>가 아니라 (1) <code>DirectDebitMandate</code>(동의 방식, 증빙 보관 위치, 상태 REQUESTED→REGISTERED→REVOKED), (2) 출금 의뢰 배치(청구 목록→파일/API), (3) 결과 수신(성공·실패 코드, 사후 확정), (4) 영업일 보정이 있는 일정이 필요하다. 결과가 하루 이상 뒤 확정되고 동의가 철회될 수 있으므로 결제 상태는 <code>PENDING_BANK_RESULT</code>가 있는 비동기 상태기계가 되어야 한다.</li>
+<li>[가설] 시니어 이용자에게 서면·녹취 동의는 보호자 대행, 직원 입회와 함께 가야 한다. 이용기관 직접 접수 방식이면 증빙 보관 책임이 운영사에 있어서 보관·열람 설계가 필요하다(출처 없음, 판단).</li>
+<li>[판단] 이용기관이 직접 결제원과 계약하지 않고 효성FMS·나이스 같은 민간 대행을 쓰면 정산이 D+2 이후로 늦어지는 대신 신청·보증보험 부담이 줄 수 있다는 가설이다. 근거는 포트원 블로그의 정산일 비교뿐이다 [가설].</li>
+</ul>
+<h4 id="gaps-2">Gaps</h4>
+<ul>
+<li>효성FMS·나이스CMS·더존 CMS의 공식 연동 명세(API 또는 파일), 수수료표, 심사 기준: 공식 문서를 못 찾음.</li>
+<li>금융결제원 CMS EDI 파일 레이아웃·전송 규격, 수수료: 공개 페이지에 없음(&quot;비용 알아보기&quot; 별도 메뉴).</li>
+<li>실시간 출금이체 API(쿠콘 등)의 상품 사양, 한도, 수수료: 보도 수준만 확인.</li>
+<li>동의 증빙 보관 기간: 확인 못 함.</li>
+</ul>
+<h3 id="2-2-가상계좌-웹훅-청구서-매칭">2-2. 가상계좌, 웹훅, 청구서 매칭</h3>
+<h4 id="takeaway-3">Takeaway</h4>
+<p>토스페이먼츠 웹훅은 200이 아니면 최대 7회, 1·4·16·64·256·1024·4096분 간격으로 재전송하며 <code>secret</code> 비교를 적은 이벤트는 DEPOSIT_CALLBACK뿐이다. 서명 헤더는 공통 헤더로 설명돼 있다(아래 정정). 고정식 가상계좌는 추가 계약·위험 심사가 필요하고 2026-04 금감원 발표로 발급 대상이 더 제한될 전망이라서, 입주자별 고정 계좌 전제의 매칭 설계는 위험하다.</p>
+<h4 id="cited-findings-3">Cited Findings</h4>
+<ul>
+<li>[사실] 토스페이먼츠 웹훅: HTTP 200이 아니면 실패로 보고 최대 7회 재전송, 간격은 1·4·16·64·256·1024·4096분. 기록은 최근 30일, 대시보드에서 수동 재시도 가능. <code>DEPOSIT_CALLBACK</code>은 가상계좌 발급·입금·취소 때 발생하고 페이로드에 <code>createdAt</code>, <code>secret</code>, <code>status</code>, <code>transactionKey</code>, <code>orderId</code>가 있으며 검증은 결제 객체의 <code>secret</code>과 일치하는지 보는 것이다(이 영문 페이지에는 다른 서명 검증이 없다. 아래 정정 참고). <code>PAYMENT_STATUS_CHANGED</code>와 <code>DEPOSIT_CALLBACK</code>을 모두 등록하면 같은 입금에 이벤트가 두 번 온다. 드물게 <code>DONE</code>에서 <code>WAITING_FOR_DEPOSIT</code>으로 되돌아갈 수 있다. <code>eventId</code>로 중복을 거르는 규칙은 Payout 웹훅에만 설명돼 있고 PAYMENT_STATUS_CHANGED 본문에는 <code>eventId</code>가 없다. — <a href="https://docs.tosspayments.com/en/webhooks" rel="noopener noreferrer" target="_blank">토스페이먼츠 웹훅(영문 문서)</a>, 직접, 벤더 공식(영문판 기준, 한글판과 다를 수 있음)</li>
+<li>[사실] 정정(2026-11-04, 허브 대조): <a href="https://docs.tosspayments.com/reference/using-api/webhook-events" rel="noopener noreferrer" target="_blank">웹훅 이벤트 문서</a>는 <code>tosspayments-webhook-signature</code>를 공통 헤더로 설명한다. 이벤트별 유무는 이 문서로 알 수 없다 [미확인]. <code>secret</code> 비교를 적은 이벤트는 <code>DEPOSIT_CALLBACK</code>뿐이다. 문서는 본문에 <code>eventId</code>가 있으면 그 값으로 중복을 처리하라고 하고, <code>PAYMENT_STATUS_CHANGED</code>처럼 없는 웹훅의 대체 키는 제시하지 않는다. 직접, 벤더 공식</li>
+<li>[사실] 토스페이먼츠 가상계좌 유형: 일반식(결제마다 새 계좌, 한 번에 전액), 고정식(고객당 전용 계좌 재사용, 여러 주문을 합산 입금 가능, 한 주문의 일부 입금 불가, 위험 심사와 추가 계약 필요), 무반납(부분납·과납 상태가 있는 유일한 유형이지만 &quot;현재 발급 불가&quot;). 입금 후 취소는 365일 이내, 환불에는 환불 계좌(예금주 일치, 계좌 검증)가 필요하고 취소 요청은 2~3영업일 걸린다. 입금 한도와 만료 기간은 이 글에 없다. 현금영수증과 입금 통보 방식도 이 글에는 없다. — <a href="https://www.tosspayments.com/blog/articles/30637" rel="noopener noreferrer" target="_blank">토스페이먼츠 블로그: 가상계좌</a>, 직접, 벤더 공식(발행일 [미확인])</li>
+<li>[사실] 금감원은 2026-04-29 PG사 &quot;가상계좌 재판매 업무처리기준&quot; 도입을 발표했다. 가맹점 심사 항목·절차, 승인 후 관리, 불법거래 사전 차단을 정하고, 고정식 가상계좌는 오남용 위험이 커서 발급을 제한된 경우로 한정하며 정산은 일괄·지연 정산이 기본이다. 시행일은 이 기사에 없다. 다른 검색 요약은 &quot;2026-07 시행&quot;이라고 했으나 본문을 못 열어 [미확인]이다. — <a href="https://sateconomy.co.kr/news/view/1065588652345914" rel="noopener noreferrer" target="_blank">금감원 가상계좌 재판매 기사(sateconomy.co.kr, 발표일 2026-04-29)</a>, 직접, 제3자(언론). 충돌 주장: <a href="https://www.tfmedia.co.kr/mobile/article.html?no=204135" rel="noopener noreferrer" target="_blank">티에프미디어</a>, 검색요약</li>
+<li>[사실] 국내 임대 수납 SaaS 사례(채널 &quot;홈버튼&quot; 문서, 안에서는 렌트플로우로 표기): 건물을 출금계좌에 연동하면 임차인마다 전용 가상계좌가 자동 발급되고, 임대차 기간에만 유효하며 계약 종료 7일 후 또는 임차인 정보 삭제 시 폐기된다. 청구된 임대료·관리비와 정확히 같은 금액만 이체되도록 출금 제한이 걸려 있다(1원이라도 다르면 이체 불가). 입금 후 6<del>7시간 뒤 임대인 계좌로 이체한다(자금세탁·보이스피싱 완화 목적이라고 설명). 신청은 사업자 회원만, 매일 23:25</del>00:35에는 신규 발급·삭제·정산·건물 연동 불가. — <a href="https://docs.channel.io/homebutton/ko/articles/2-4-6-%EC%9E%84%EB%8C%80%EB%A3%8C-%EA%B0%80%EC%83%81%EA%B3%84%EC%A2%8C-%EC%88%98%EB%82%A9-0f0c607f" rel="noopener noreferrer" target="_blank">홈버튼 문서</a>, 직접, 회사 주장</li>
+<li>[사실] 같은 서비스는 카드 납부 시 PG 수수료 2.9%(부가세 별도)를 공제하고 임대료 정산은 월 4회라고 안내한다. — 홈버튼 문서 목록 검색 결과, 검색요약, 회사 주장</li>
+<li>[사실] NICE·KG이니시스·KCP·헥토의 가상계좌 웹훅 재시도 정책과 입금 통보 방식은 이번에 열어보지 못했다.</li>
+</ul>
+<h4 id="inferences-3">Inferences</h4>
+<ul>
+<li>[판단] 매칭 키는 &quot;청구서(invoice) 1건 ↔ 일반식 가상계좌 1개 ↔ 정확한 금액&quot;이 가장 보수적이다. 금감원이 고정식을 제한하는 방향이고 고정식은 부분 입금을 못 받으므로, 입주자 1인 1계좌(고정식) 전제가 막힐 수 있다. 이 구조에서는 <code>ExpectedPayment</code>(청구서 ID, 금액, 만료일, 가상계좌 번호)를 먼저 만들고, 웹훅은 그 기대 건에 대한 증거로만 처리한다.</li>
+<li>[판단] 웹훅은 &quot;최대 7회, 마지막은 약 68시간 뒤&quot; 수준으로 늦게 올 수 있다(1+4+16+64+256+1024+4096=5461분, 약 3.8일). 그래서 (a) <code>eventId</code>가 없는 웹훅은 <code>transactionKey</code>+<code>orderId</code>를 멱등 키 후보로 두고(문서 권장 값이 아닌 [가설]), (b) 웹훅을 못 받아도 PG 조회 API나 정산 파일로 보정하는 대사 작업이 필수이다. 합계 계산은 위 간격에서 내가 했다.</li>
+<li>[판단] <code>DONE→WAITING_FOR_DEPOSIT</code> 역전이는 원장에 &quot;수납 확정&quot;을 곧바로 쓰면 안 된다는 뜻이다. 수납 원장 항목은 PG가 확정한 상태에서만 쓰고, 역전이는 삭제가 아닌 보정(취소) 항목으로 처리한다.</li>
+<li>[추정] 입주금 수억 원은 PG 가상계좌의 입금 한도·정산 지연·심사 때문에 PG에 맞지 않을 수 있다. 은행 직접 계좌 + 거래내역 조회(아래 2-4)가 현실적일 것이다. 한도 수치는 [미확인].</li>
+</ul>
+<h4 id="gaps-3">Gaps</h4>
+<ul>
+<li>토스 가상계좌 입금 한도·만료 기간·현금영수증·재사용 정책: 공식 문서 못 찾음(위 블로그에도 없음).</li>
+<li>NICE·KG이니시스·KCP·헥토 웹훅/입금통보 사양: 못 열어봄.</li>
+<li>금감원 가상계좌 재판매 기준 시행일: 기사 간 충돌, 원문 못 봄.</li>
+<li>에스크로를 입주금(보증금) 보호에 쓰는 방식: 근거 못 찾음.</li>
+</ul>
+<h3 id="2-3-카드-빌링키-오픈뱅킹-pci">2-3. 카드 빌링키, 오픈뱅킹, PCI</h3>
+<h4 id="takeaway-4">Takeaway</h4>
+<p>카드 빌링키는 PG에 종속되고 실패 시 카드 재등록이 필요하며, 오픈뱅킹은 이용기관 자격이 &quot;핀테크 사업 범위&quot;로 2019년에 정의돼 있어 비금융 운영사가 직접 쓰기 어려울 수 있다(현재 기준은 못 확인). PCI는 근거가 약해 가설 수준이다.</p>
+<h4 id="cited-findings-4">Cited Findings</h4>
+<ul>
+<li>[사실] 카드 정기결제는 첫 결제에서 카드 인증으로 빌링키를 받고, 한도 초과·잔액 부족·정지·만료로 실패하며, PG 재시도로 일부 회복하지만 반복 실패 시 새 카드를 요청해야 한다. 빌링키는 PG에 묶여 PG를 바꾸면 고객이 카드를 다시 등록해야 한다(멀티 PG 키 관리 서비스 예외). — <a href="https://blog.portone.io/cms-vs-card-billing" rel="noopener noreferrer" target="_blank">포트원 블로그 2026-09-03</a>, 직접, 제3자</li>
+<li>[사실] 2019년 오픈뱅킹 도입 당시 이용기관 범위는 은행과 핀테크 기업(전자금융업자, 전자금융보조업자, 핀테크 산업으로 분류되는 업종)으로 확대된다고 발표됐고, 이용기관은 금융결제원과 오픈뱅킹공동업무 이용계약을 맺고 이용승인을 받은 기업이다. 사행·부도·불법 모델 기업은 제외. 현재(2026) 기준 자격은 확인 못 함. — <a href="https://www.fsc.go.kr/po010103/73746" rel="noopener noreferrer" target="_blank">금융위 자료·약관 요약</a>, 검색요약, 2019년 자료(7년 경과)</li>
+<li>[사실] 토스페이먼츠는 PCI DSS Level 1 인증을 취득했다고 밝힌다(12개 영역 415개 항목이라고 설명, 회사 주장). 가맹점 PCI 범위가 어떻게 줄어드는지는 확인 못 함. — <a href="https://www.tosspayments.com/blog/articles/22425" rel="noopener noreferrer" target="_blank">토스페이먼츠 블로그</a>, 검색요약, 회사 주장</li>
+<li>[사실] 토스페이먼츠 가맹점 한 곳의 결제 연동 인증정보가 노출돼 결제 내역 일부가 제3자에게 조회됐고, 비밀번호·유효기간·CVC는 포함되지 않았다는 보도가 있다. — <a href="https://news.jkn.co.kr/post/981066" rel="noopener noreferrer" target="_blank">JKN</a>, 검색요약, 제3자(언론, 발행일 [미확인])</li>
+</ul>
+<h4 id="inferences-4">Inferences</h4>
+<ul>
+<li>[가설] 카드번호를 우리 서버가 받지 않고 PG 결제창·위젯이 받아 빌링키만 돌려주는 구조를 유지하면 PCI 부담이 가장 작다. 일반적인 설계 원칙이고, 이번 조사에서 PG의 SAQ 유형 문서는 못 찾았으므로 어디까지가 가맹점 책임인지는 [미확인]이다.</li>
+<li>[판단] 가맹점 인증정보(시크릿 키)는 어댑터 설정에 두고 시설별·PG별로 분리해 노출 사고의 범위를 줄인다(위 보도에서 도출한 설계 판단).</li>
+<li>[추정] 오픈뱅킹은 Evenstay의 1차 경로에서 뺀다. 쓰려면 이용기관 자격 확인이 선행돼야 한다.</li>
+</ul>
+<h4 id="gaps-4">Gaps</h4>
+<ul>
+<li>오픈뱅킹 현행 이용기관 자격(비금융 일반 기업 가능 여부): 공식 사이트(openapi.kftc.or.kr)는 본문이 비어 있어 못 읽음.</li>
+<li>토스 빌링 발급 과정에서 카드정보가 가맹점 서버를 지나가는지: 못 확인.</li>
+<li>PCI SAQ 유형: 못 찾음.</li>
+</ul>
+<h3 id="2-4-은행-거래내역-수집-정산-대사-원장-설계-참고">2-4. 은행 거래내역 수집, 정산 대사, 원장 설계 참고</h3>
+<h4 id="takeaway-5">Takeaway</h4>
+<p>쿠콘은 기업 계좌 거래내역을 배치로 조회해 ERP DB에 적재하는 API를 제공한다고 보도됐으나 사양서는 못 찾았다(스크래핑 API의 헥토는 미조사). 원장 설계 참고 자료는 Stripe Ledger와 Modern Treasury 글에서 &quot;불변 + 정정은 새 항목 + 중간(clearing) 계정이 0이 아니면 이벤트 누락·지연&quot;이라는 원칙이 확인된다.</p>
+<h4 id="cited-findings-5">Cited Findings</h4>
+<ul>
+<li>[사실] 쿠콘이 기업이 거래하는 은행의 계좌 거래내역·잔액을 일정 건수 단위로 나눠 조회하는 배치 API를 제공하고 조회 결과를 ERP DB에 자동 적재할 수 있으며 자금대사에 쓰인다는 보도 요약이 있다. 입금 건을 미수금에 자동 매칭하는 기능은 확인되지 않았다. — <a href="https://www.smarttoday.co.kr/ko-kr/articles/28831" rel="noopener noreferrer" target="_blank">스마트투데이</a>, 검색요약, 제3자(언론, 어느 기사의 문장인지 단정 불가)</li>
+<li>[사실] Stripe Ledger: 삭제·수정 불가한 이벤트 로그, 복식부기, 중간 정산(&quot;clearing&quot;) 계정의 잔액이 0이 아니면 누락·지연·오류 이벤트의 신호. 생성 이벤트와 해제 이벤트는 독립적이라 순서가 바뀌거나 출처가 달라도 키로 맞춘다. 정정은 되돌리고 재처리하는 방식이며 소스 데이터를 다시 발행할 수 있다. 완전성·적시성·클리어링 세 점검을 점수화한다. 하루 약 50억 이벤트, 금액 기준 99.99%가 4일 내 완전 수집·검증됐다고 밝힘(회사 주장). — <a href="https://stripe.dev/blog/ledger-stripe-system-for-tracking-and-validating-money-movement" rel="noopener noreferrer" target="_blank">Stripe 블로그</a>, 직접, 벤더 공식</li>
+<li>[사실] Modern Treasury: 회계 기록(불변 원장 거래)과 변경 가능한 업무 객체(주문)를 분리하고, 거래는 pending 동안은 수정 가능·posted 후 불변·실패하면 archived. 정정은 (1) 원 항목을 반대 금액으로 전부 되돌리고 새로 올리거나 (2) 차액만 올리는 두 방식. 한 주문에 여러 원장 거래를 연결해 이력을 추적한다. 멱등성·동시성 제어 수단을 제공한다고 소개했으나 방식은 못 찾았다. — <a href="https://moderntreasury.com/journal/enforcing-immutability-in-your-double-entry-ledger" rel="noopener noreferrer" target="_blank">Modern Treasury 글</a>, 직접, 벤더 공식. 상태값과 expected payment 개념: <a href="https://www.moderntreasury.com/ledgers" rel="noopener noreferrer" target="_blank">Modern Treasury Ledgers</a>, 검색요약, 회사 주장</li>
+<li>[사실] 토스 기술 블로그에서 정산·원장·대사 설계 글은 찾지 못했다. 채용 공고에는 &quot;사람이 대조하던 정산 검증을 시스템이 맞춰보고 예외를 잡도록 자동화&quot;라는 문구가 있다. — <a href="https://www.wanted.co.kr/wd/377225" rel="noopener noreferrer" target="_blank">Wanted 공고</a>, 검색요약, 설계 근거로는 약함</li>
+</ul>
+<h4 id="inferences-5">Inferences</h4>
+<ul>
+<li>[판단] 3자 대사(three-way match)는 세 목록의 키 맞추기로 모델링한다. (a) 우리 원장의 <code>ExpectedPayment</code>, (b) PSP/CMS 결과·정산 파일, (c) 은행 입금 거래내역. 모든 수납은 &quot;예상→PSP 통보→은행 입금→원장 확정&quot;의 단계 계정을 거치게 하고, 중간 계정(clearing)이 0이 아닌 건이 곧 대사 예외 목록이 된다. Stripe의 clearing 점검 원리를 가져온 것이다.</li>
+<li>[판단] 은행 거래내역 피드는 수집 어댑터로만 둔다(<code>BankStatementFeed</code>, 조회 주기·건수 한도 파라미터화). 입금자명·금액·일시로 매칭하는 규칙은 오탐이 나므로 &quot;제안 매칭 + 직원 확정&quot; 화면을 둔다. 스크래핑 API 계열의 안정성·규제 리스크는 [미확인].</li>
+<li>[판단] 정정은 Modern Treasury의 두 방식 중 &quot;되돌림 + 재기록&quot;을 기본으로 한다. 감사 설명이 쉽다.</li>
+</ul>
+<h4 id="gaps-5">Gaps</h4>
+<ul>
+<li>쿠콘·헥토 거래내역 조회 API 공식 사양, 가상계좌 입금 자동 매칭 여부: 못 찾음.</li>
+<li>PSP 정산 파일 형식(토스·NICE·KG·KCP): 이번 조사에서 열지 못함.</li>
+<li>Square Books는 허브 문서에서 이미 다룸. 이번엔 재확인하지 않음.</li>
+</ul>
+<h3 id="2-5-현금영수증전자세금계산서">2-5. 현금영수증·전자세금계산서</h3>
+<h4 id="takeaway-6">Takeaway</h4>
+<p>팝빌 API는 <code>taxType</code>(과세·영세·면세)을 가진 전자세금계산서 발행, 관리번호(MgtKey) 기반 문서 식별, 국세청 전송, 수정발행(수정 사유 코드 + 원본 승인번호)을 제공한다. 면세 전자계산서를 별도로 다루는지는 확인하지 못했다.</p>
+<h4 id="cited-findings-6">Cited Findings</h4>
+<ul>
+<li>[사실] 팝빌 세금계산서 Java 참조: 즉시 발행(<code>RegistIssue</code>) 또는 임시저장→발행(<code>Register</code>→<code>Issue</code>), 역발행(<code>RegistRequest</code>), 위수탁. 발행 전 공급자 인증서를 팝빌 인증서 서버에 등록해야 한다. <code>taxType</code>은 과세·영세·면세. 관리번호는 최대 24자(영문·숫자·<code>-</code>·<code>_</code>)이고 정발행에 <code>invoicerMgtKey</code> 필수. 중복 키 처리는 페이지에 없고 키를 재사용하려면 발행 취소(<code>CancelIssue</code>) 후 삭제(<code>Delete</code>) 해야 한다. 국세청 승인번호(<code>ntsConfirmNum</code>, 24자)는 팝빌이 자동 부여. 수정세금계산서는 <code>modifyCode</code>와 <code>orgNTSConfirmNum</code>을 넣는다. 국세청 전송 <code>SendToNTS</code>는 30분 내 처리, 결과는 <code>GetInfo</code> 또는 웹훅. 대량 발행 <code>BulkSubmit</code>은 요청당 최대 100건(<code>SubmitID</code>). — <a href="https://developers.popbill.com/reference/taxinvoice/java/api/issue" rel="noopener noreferrer" target="_blank">팝빌 개발자 문서</a>, 직접, 벤더 공식</li>
+<li>[사실] 팝빌 현금영수증 튜토리얼은 응답 code 1이 성공, 8자리 음수가 오류 코드임을 안내한다. — <a href="https://developers.popbill.com/reference/cashbill/java/getting-started/tutorial" rel="noopener noreferrer" target="_blank">팝빌 현금영수증</a>, 검색요약, 벤더 공식</li>
+<li>[사실] 바로빌은 개발지원센터와 함수 호출형 Open API를 제공한다는 2015년 기사만 확인했다. 현재 문서는 못 봄. — <a href="https://www.etoday.co.kr/news/view/1248109" rel="noopener noreferrer" target="_blank">이투데이 2015</a>, 검색요약, 제3자·오래됨</li>
+</ul>
+<h4 id="inferences-6">Inferences</h4>
+<ul>
+<li>[판단] 청구 라인마다 과세구분(과세·면세 등) 필드를 두어야 팝빌류 API의 <code>taxType</code>에 매핑할 수 있다. 시니어 주거의 임대료·식비·돌봄 서비스가 각각 어떤 과세구분인지는 이번에 조사하지 않았고 세무 검토가 필요하다 [미확인].</li>
+<li>[판단] 발행 어댑터는 우리 쪽 청구서 ID에서 만든 MgtKey를 쓰되 &quot;중복 키 처리 문서 미기재&quot;이므로, 발행 전에 <code>GetInfo</code>로 조회하는 단계를 둔다(SAP 사례와 같은 방어).</li>
+<li>[판단] 발행 후 정정은 수정세금계산서(원본 승인번호 참조)라서, 원장의 보정 항목과 세금계산서의 수정 발행이 1:1로 연결되는 링크가 필요하다.</li>
+</ul>
+<h4 id="gaps-6">Gaps</h4>
+<ul>
+<li>면세 전자계산서 발행 API의 별도 항목, 홈택스 API 직접 연동 가능 여부, 바로빌 현행 문서, 현금영수증 자진발급 규칙: 못 찾음.</li>
+</ul>
+<hr>
+<h2 id="3-crm-입주-영업">3. CRM: 입주 영업</h2>
+<h3 id="takeaway-7">Takeaway</h3>
+<p>리드→투어→계약 흐름을 외부 CRM에 맡길지 직접 만들지에 대한 국내 시니어 하우징 사례는 공개 근거가 없다. 연동 기술 쪽 근거로는 Salesforce CDC의 72시간 보관, 카카오 알림톡의 정보성 한정(2026-04 심사 강화 보도), 세일즈맵 REST 개체 목록 정도만 확인됐다.</p>
+<h3 id="cited-findings-7">Cited Findings</h3>
+<ul>
+<li>[사실] Salesforce CDC·플랫폼 이벤트의 보관은 72시간이고 그 이후 보관은 보장하지 않는다. 구독자는 replay ID를 저장해 재연결 시 놓친 이벤트를 받고, 권장 경로는 gRPC 기반 Pub/Sub API이다. Confluent 커넥터는 갭 이벤트가 오면 해당 개체를 Bulk API 2.0 전체 재동기화로 전환하고, 큰 개체에서는 비용이 크다고 경고한다. Bulk API 2.0의 구체 한도는 못 찾았다. — <a href="https://developer.salesforce.com/docs/platform/api-streaming/guide/using-streaming-api-durability.html" rel="noopener noreferrer" target="_blank">Salesforce 메시지 내구성 문서</a>, <a href="https://docs.confluent.io/cloud/current/connectors/cc-salesforce-source-v2.html" rel="noopener noreferrer" target="_blank">Confluent 커넥터</a>, 검색요약. CDC 소개 페이지는 접근 403으로 못 엶.</li>
+<li>[사실] 세일즈맵 개발자 문서 CRM 섹션에는 고객·회사·리드·딜·노트·웹폼·파일·커스텀 오브젝트 API가 있고 인증·Base URL·API 버전·Rate limiting은 별도 시작하기 쪽에 있다. 웹훅 지원 여부와 가격(공개 비교 글에서 &quot;문의&quot;, 체험판 있음)은 확인 못 함. — <a href="https://docs.salesmap.kr/developers/api-reference/crm" rel="noopener noreferrer" target="_blank">세일즈맵 개발자 센터</a>, 검색요약, 벤더 공식</li>
+<li>[사실] 카카오 알림톡은 정보통신망법상 광고성 정보의 예외인 정보성 메시지만 보낼 수 있다. 대행사 블로그는 2026-03 KISA 안내서 7차 개정 후 카카오가 2026-04-01부터 심사 가이드를 바꿨고 메시지의 전부·일부에 광고성 내용이 있으면 발송 불가이며, 친구톡은 2025-12-31 종료돼 광고성은 브랜드 메시지로 옮겨갔다고 설명한다. 승인 후라도 법령 위반 책임은 발송 기업에 있다고 한다. 카카오 원문과 대조하지 않았다. — <a href="https://blog.bizgo.io/howto/kakao-alimtalk-template-approval-guide/" rel="noopener noreferrer" target="_blank">비즈고 블로그</a>, 검색요약, 제3자(메시징 대행사). 관련 공지: <a href="https://solapi.com/notices/notices-2026-01-27" rel="noopener noreferrer" target="_blank">솔라피 2026-01-27 공지</a>, 검색요약</li>
+<li>[사실] HubSpot, Zoho, 채널톡, 상담 전화 CTI(센트릭스·클라우드 PBX)의 연동 사양은 이번 조사에서 근거를 찾지 못했다.</li>
+</ul>
+<h3 id="inferences-7">Inferences</h3>
+<ul>
+<li>[판단] 동기화 설계: 리드→투어→계약 확정에서 코어(계약·입주자)로 넘어가는 경계를 &quot;계약 확정 이벤트 1개&quot;로 좁힌다. 이전까지는 CRM이 정본, 이후는 코어가 정본으로 두고, 변경 이벤트 소비자는 replay 위치를 저장하며 72시간 갭이 나면 전체 재동기화(대사)로 복구한다(Salesforce 사례에서 도출).</li>
+<li>[판단] 알림톡은 계약·청구·방문 안내 같은 정보성에만 쓰고, 입주 홍보는 별도 동의 이력(광고성 수신동의) 위에서 다른 채널로 보낸다. 동의는 목적별(정보성 / 광고성 / 보호자 정보 공유)로 분리 저장하고 철회를 이력으로 남긴다.</li>
+<li>[가설] 소규모 초기에는 CRM을 사 오고(세일즈맵 등 한국형 SaaS), 코어는 CRM의 &quot;리드·딜&quot; 개체를 읽기 전용 참조로만 갖는 편이 제작량이 적다. 단 시니어 하우징은 방문 상담·보호자·대리 서명이 얽혀서 일반 영업 CRM 모델이 맞는지는 검증되지 않았다 [가설]. 해외 시니어리빙 CRM(WelcomeHome)은 축 7 노트에 있다.</li>
+<li>[판단] 신원 매칭: 리드는 시니어 본인·보호자·직원 입력이 섞여 같은 사람이 중복되기 쉽다. 전화번호 정규화와 본인확인 CI로 승격 시 병합하되, 병합은 이력이 남는 사람 승인 단계로 둔다.</li>
+</ul>
+<h3 id="gaps-7">Gaps</h3>
+<ul>
+<li>한국 시니어 하우징 운영사의 CRM 사용 실태(어떤 제품, 직접 개발 여부): 공개 자료 못 찾음.</li>
+<li>HubSpot·Zoho·채널톡 API/웹훅 사양과 요금, 상담 전화 CTI 연동(센트릭스 등): 못 찾음.</li>
+<li>Salesforce Bulk API 2.0 한도, CDC 개체 제한: 공식 문서 본문 못 엶.</li>
+</ul>
+<hr>
+<h2 id="4-본인확인-전자계약-짧게">4. 본인확인 · 전자계약 (짧게)</h2>
+<h3 id="takeaway-8">Takeaway</h3>
+<p>NICE 본인확인은 연계정보(CI/DI) 사용 신청과 체크리스트 제출이 필수이고 CI/DI 평문 노출 금지 등을 자체 점검하게 한다(재판매사 양식 기준). PASS 직접 이용 요건은 못 찾았다. 모두싸인은 웹훅(200 응답 10초, 5회 재시도)과 API 포함 요금제 제한이 확인됐고 대리 서명 사례는 못 찾았다.</p>
+<h3 id="cited-findings-8">Cited Findings</h3>
+<ul>
+<li>[사실] NICE아이디 CI/DI 제공 신청서(코드엠 고객용 2026-05 양식)는 CI·DI 사용 여부를 적게 하고, 체크리스트를 내지 않으면 서비스 등록이 불가능하며, 회원가입 단계에서 CI/DI가 평문 노출되지 않는지, 본인확인 결과값 변조 방지 조치를 했는지 자체 점검하게 한다. 일부 휴대폰 번호는 기술·정책상 본인확인이 안 될 수 있다고 명시한다. — <a href="https://www.codemshop.com/wp-content/uploads/2026/05/본인확인서비스_연계신청서및체크리스트_코드엠_2026_v1.1.docx" rel="noopener noreferrer" target="_blank">코드엠 양식</a>, 검색요약, 제3자(재판매사 양식)</li>
+<li>[사실] PASS는 방통위 지정 본인확인기관인 통신 3사 서비스로 소개되며 &quot;휴대폰 본인인증&quot;으로 2만여 사이트에서 쓰인다는 보도가 있다. 이용기관 신청 절차·계약 조건은 보도에 없다. 2026-09-29 기사 제목은 &quot;통신3사 PASS 신분증 존폐 기로&quot;로, 모바일 신분증 쪽 이야기이고 본문은 못 열었다. — <a href="https://news.sktelecom.com/139885" rel="noopener noreferrer" target="_blank">SK텔레콤 보도자료 2021</a>, <a href="https://news.mtn.co.kr/news-detail/2026092916240759916" rel="noopener noreferrer" target="_blank">MTN 2026-09-29</a>, 검색요약, 제3자</li>
+<li>[사실] 모두싸인 웹훅: 이벤트 <code>document_started</code>, <code>document_signed</code>, <code>document_all_signed</code> 등, API 기능이 포함된 요금제 고객에게만 제공, 200번대 응답이 아니거나 10초 안에 응답이 없으면 실패로 보고 총 5회 재시도(응답을 먼저 보내고 내부 작업은 나중에 처리하라고 권장). 완료 문서는 문서 상세 조회 API의 다운로드 링크(10분 유효)로 받는다. 서명 수단 보안 링크(SECURE_LINK)와 <code>redirectUrl</code>을 지정할 수 있다. — <a href="https://docs.channel.io/modusign_faq/ko/articles/71169628" rel="noopener noreferrer" target="_blank">모두싸인 고객센터</a>, 검색요약, 벤더 공식(고객센터 문서)</li>
+<li>[사실] 이폼사인·글로싸인 API, 전자서명법상 효력, 고령자 대리 서명(대리권 증빙, 위임장) 사례: 이번 조사에서 근거를 찾지 못했다.</li>
+</ul>
+<h3 id="inferences-8">Inferences</h3>
+<ul>
+<li>[판단] 전자계약은 <code>ContractSigningPort</code>(요청 발송, 상태 웹훅, 완료 문서 보관)로 어댑터화한다. 웹훅은 응답을 먼저 주고 큐로 넘긴 뒤, 문서 ID로 상세 조회 API를 다시 호출해 상태를 확정한다(모두싸인 가이드 방식). 서명 주체 필드를 &quot;본인 / 대리인(관계, 위임 증빙)&quot;으로 나눠 둔다. 대리 서명의 법적 유효성은 법률 검토 [미확인].</li>
+<li>[판단] CI는 평문으로 저장하지 않고 암호화·분리 보관한다(위 점검 항목 근거). 본인확인이 안 되는 번호·시니어를 위한 직원 대면 확인 경로를 둔다.</li>
+</ul>
+<h3 id="gaps-8">Gaps</h3>
+<ul>
+<li>NICE·PASS 직접 이용 계약 조건, 심사 기간, 비용: 못 찾음.</li>
+<li>모두싸인 대리 서명·제3자 서명 정책, 이폼사인/글로싸인 API: 못 찾음.</li>
+</ul>
+<hr>
+<h2 id="5-종합-표와-못-찾은-것">5. 종합 표와 못 찾은 것</h2>
+<h3 id="연동-대상별-표">연동 대상별 표</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>연동 대상</th>
+<th>후보</th>
+<th>연동 방식(동기·비동기·파일)</th>
+<th>필요한 계약·심사</th>
+<th>코어 인터페이스 변경점</th>
+<th>근거 수준</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ERP 전표</td>
+<td>더존(iU 자동전표 테이블, Amaranth, WEHAGO), 영림원 K-System, SAP, NetSuite</td>
+<td>비동기 배치. 어댑터별로 (1) 자동전표 테이블 적재(Agent), (2) 파일, (3) REST 중 하나</td>
+<td>ERP 사용 계약, 인터페이스 개발·계정과목 매핑(회사 회계팀 협의)</td>
+<td><code>LedgerExportBatch</code>(기간·버전·상태·외부 참조), 계정 매핑 설정, 전표 반영 결과 수신, 기간 마감 거절 시 조정 전표 재생성, 호출 전 중복 조회</td>
+<td>낮음. 국내 ERP 공식 문서 없음(제3자 연동 사업자 문서 1건, SAP·NetSuite는 검색요약)</td>
+</tr>
+<tr>
+<td>ERP 회계 요약 패턴 참고</td>
+<td>Mews 내보내기, Apaleo Finance API, 호텔 PMS→BC</td>
+<td>파일(CSV·ADX)·API 병행, 일 단위</td>
+<td>해당 없음(참고용)</td>
+<td>불변 항목 + 정정은 현재 기간 신규 항목, 계정 코드·외부 코드</td>
+<td>중간. Mews 공식 문서 직접, 나머지 제3자·벤더 마케팅</td>
+</tr>
+<tr>
+<td>CMS 자동이체</td>
+<td>금융결제원 CMS(직접), 효성FMS, 나이스, 더존 CMS</td>
+<td>파일 또는 전용선 EDI(결제원), 효성 등은 [미확인]. 결과는 사후 확정 비동기</td>
+<td>한도 심사(월 최소 5백만 원, 건당 ≤ 월 한도 10%), 보증보험(신규 1년 100%), 출금동의 증빙, 민간 대행은 별도 계약 [미확인]</td>
+<td>신규 <code>DirectDebitMandate</code>, 출금 의뢰 배치·결과 파일 처리, 영업일 보정 일정, <code>PENDING_BANK_RESULT</code> 상태, 동의 증빙 보관</td>
+<td>중간(결제원 공식 직접), 효성·나이스는 낮음</td>
+</tr>
+<tr>
+<td>가상계좌 수납</td>
+<td>토스페이먼츠, NICE, KG이니시스, KCP, 헥토</td>
+<td>비동기 웹훅(토스: 7회·최대 약 3.8일 재전송) + 조회·정산 파일 보정</td>
+<td>가상계좌 추가 계약, 고정식은 위험 심사·추가 계약, 금감원 PG 가상계좌 기준 영향</td>
+<td><code>ExpectedPayment</code>(청구서·금액·만료), 웹훅 멱등 처리, 수납 확정은 PG 확정 후, 역전이는 보정 항목</td>
+<td>토스는 공식 직접(영문판), 나머지는 못 열음</td>
+</tr>
+<tr>
+<td>카드 빌링</td>
+<td>토스 빌링 등 PG</td>
+<td>동기 승인 + 비동기 결과, PG 자체 재시도</td>
+<td>PG 정기결제 계약(허브에서 확인한 제한 있음)</td>
+<td><code>requestPayment</code>와 별개로 <code>BillingKey</code> 수명주기, PG 종속 키</td>
+<td>낮음~중간(포트원 블로그 제3자)</td>
+</tr>
+<tr>
+<td>은행 입금 확인·대사</td>
+<td>쿠콘, 헥토 등 거래내역 API</td>
+<td>배치 조회</td>
+<td>금융기관 연동 계약, 계좌 권한 위임 [미확인]</td>
+<td><code>BankStatementFeed</code>, 3자 대사(예상·PSP·은행), 대사 예외 목록, 제안 매칭</td>
+<td>낮음(쿠콘 보도 요약)</td>
+</tr>
+<tr>
+<td>오픈뱅킹</td>
+<td>금융결제원 오픈뱅킹</td>
+<td>동기 API</td>
+<td>이용기관 자격(2019 기준 핀테크 업종), 이용계약·승인</td>
+<td>1차 경로에서 제외</td>
+<td>낮음(2019년 자료)</td>
+</tr>
+<tr>
+<td>세금계산서·현금영수증</td>
+<td>팝빌(바로빌, 홈택스 API는 미조사)</td>
+<td>동기 발행 + 국세청 전송 비동기(30분 내)</td>
+<td>인증서 등록, 서비스 가입</td>
+<td>청구 라인별 과세구분, MgtKey 매핑·사전 조회, 수정발행 ↔ 보정 항목 연결</td>
+<td>중간(팝빌 공식 직접)</td>
+</tr>
+<tr>
+<td>CRM</td>
+<td>세일즈맵, Salesforce, HubSpot, 채널톡</td>
+<td>웹훅·CDC(Salesforce 72시간 보관) + 전체 재동기화</td>
+<td>각 SaaS 계약. 알림톡은 채널·템플릿 심사</td>
+<td>계약 확정 이벤트를 코어 경계로, replay 위치 저장·갭 시 전체 대사, 목적별 동의 이력</td>
+<td>낮음(Salesforce 검색요약, 세일즈맵 개체 목록)</td>
+</tr>
+<tr>
+<td>알림톡</td>
+<td>카카오 비즈메시지(대행사 경유)</td>
+<td>비동기 발송 + 결과</td>
+<td>발신 프로필, 템플릿 심사(2026-04-01 강화 보도), 광고성은 사전 동의</td>
+<td>메시지 유형(정보성/광고성) 구분, 수신동의 이력</td>
+<td>낮음(대행사 블로그)</td>
+</tr>
+<tr>
+<td>본인확인</td>
+<td>NICE 본인확인(CI/DI), PASS</td>
+<td>동기 리다이렉트·결과 검증</td>
+<td>CI/DI 사용 신청, 체크리스트(재판매사 양식), 이용 계약 [미확인]</td>
+<td>CI 암호화 별도 저장, 직원 대면 대체 경로</td>
+<td>낮음(재판매사 양식)</td>
+</tr>
+<tr>
+<td>전자계약</td>
+<td>모두싸인(이폼사인·글로싸인 미조사)</td>
+<td>비동기 웹훅(10초·5회) + 상태 조회</td>
+<td>API 포함 요금제</td>
+<td><code>ContractSigningPort</code>, 서명 주체(본인·대리인), 완료 문서 보관</td>
+<td>중간~낮음(모두싸인 고객센터 검색요약)</td>
+</tr>
+</tbody></table></div>
+<h3 id="못-찾은-것">못 찾은 것</h3>
+<ul>
+<li>더존(Amaranth 10, WEHAGO, iU)·영림원 K-System의 공식 개발자 문서, 인터페이스 테이블 명세, 인증 방식.</li>
+<li>[지원 회사] 그룹([지원 회사])의 ERP 제품·그룹 시스템·보안 기준.</li>
+<li>산하 WINGS, Yardi GL, Oracle OPERA→ERP의 연동 방식. Apaleo &quot;Get transactions&quot; 하위 문서 본문.</li>
+<li>효성FMS·나이스CMS·더존 CMS의 공식 연동 명세와 수수료표, 금융결제원 CMS EDI 파일 규격과 수수료, 동의 증빙 보관 기간, 한도 상향 가능성.</li>
+<li>NICE·KG이니시스·KCP·헥토의 가상계좌 웹훅 사양과 토스 가상계좌의 입금 한도·만료·현금영수증 정책.</li>
+<li>금감원 가상계좌 재판매 기준의 시행일(기사 간 충돌), 고액(월 수백만 원, 입주금 수억 원) 납부를 PG에서 받는 한도·에스크로 방식.</li>
+<li>오픈뱅킹 현행 이용기관 자격(openapi.kftc.or.kr 본문 못 읽음).</li>
+<li>쿠콘·헥토 거래내역 조회 API 공식 사양, 가상계좌 자동 매칭 여부.</li>
+<li>PCI 범위 축소(SAQ 유형)에 대한 PG 공식 문서.</li>
+<li>토스 기술 블로그의 정산·원장·대사 설계 글, Modern Treasury의 멱등성 구현 방식.</li>
+<li>홈택스 API 직접 연동, 면세 전자계산서 API 항목, 바로빌 현행 문서.</li>
+<li>HubSpot·Zoho·채널톡·CTI(센트릭스, 클라우드 PBX) 연동 사양, Salesforce Bulk API 2.0 한도, 국내 시니어 하우징 CRM 사용 실태.</li>
+<li>PASS 이용기관 계약 요건, 모두싸인 대리 서명 정책, 이폼사인·글로싸인 API, 고령자 대리 서명 법적 효력.</li>
+<li>이번에 하지 못한 조사 범위: 도구 호출이 목표 한도를 넘었고(약 45회) 위 항목은 추가 시도하지 않았다. 효성FMS 홈페이지와 openapi.kftc.or.kr은 WebFetch에서 본문이 비어 있었다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1017" data-title="어댑터"><p>외부 연동 경계. MVP는 목업이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>결제, ERP, 알림, 파일 저장, LLM</dd><dt>출처</dt><dd>core T1·9</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1018" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1019" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1020" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1021" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1022" data-title="출금 동의"><p>자동이체를 설정하기 전에 받는 동의와 그 증빙</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 출금 동의</dd><dt>영문·코드 이름</dt><dd><code>DirectDebitMandate</code></dd><dt>출처</dt><dd>조사 6.2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

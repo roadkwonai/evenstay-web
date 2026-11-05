@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evenstay 클릭형 프로토타입 | Evenstay 문서</title>
+<meta name="description" content="Evenstay 클릭형 프로토타입. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>Evenstay 클릭형 프로토타입</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#여는-법">여는 법</a></li><li class="lv2"><a href="#쓰는-법">쓰는 법</a></li><li class="lv2"><a href="#메인-홈">메인 홈</a></li><li class="lv2"><a href="#소개-사이트">소개 사이트</a></li><li class="lv2"><a href="#폴더">폴더</a></li><li class="lv2"><a href="#시험">시험</a></li></ol></details></nav></aside>
+  <article class="doc"><p>이름과 숫자는 모두 가상이다. HTML, CSS, JS만 쓰고 빌드가 없다. 상태는 브라우저 localStorage에 남는다.</p>
+<h2 id="여는-법">여는 법</h2>
+<pre><code>python3 -m http.server 4173 --directory design/prototype</code></pre>
+<p>저장소 루트에서 실행하고 <a href="http://localhost:4173/" rel="noopener noreferrer" target="_blank">http://localhost:4173/</a> 을 연다.</p>
+<h2 id="쓰는-법">쓰는 법</h2>
+<ul>
+<li>위쪽 시연 막대: 사용자·권한 바꾸기, 날짜·시간 이동, 처음 상태로 되돌리기, 보낸 문자 보기, 모바일 보기, 시연 순서, 이 화면 설명, 설명 켜기, 도움말.</li>
+<li>오른쪽 시연 순서: <a class="doc-ref" href="mvp-screens.html"><code>design/mvp-screens.md</code></a> 5절 41장면을 단계로 잇는다. [이 순서 열기]는 날짜·사용자·화면을 옮기고, 사람이 직접 누른다. [자동으로 누르기]는 정의된 대로 누른다.</li>
+</ul>
+<h2 id="메인-홈">메인 홈</h2>
+<p><code>/</code>(index.html)는 프로토타입과 서비스를 안내하는 홈이다. 권한별 화면(<code>home/roles.html</code>), 화면 찾아보기, 문서(<code>home/docs/</code>), 근거, 아트보드, 기술과 스킬, 제작 히스토리(<code>home/history*.html</code>) 페이지가 있다. 제작 히스토리의 문구는 <code>strings/history.json</code>, 자료는 <code>design/home/history/*.json</code>이다. 앱은 <code>app.html</code>이다.
+<code>index.html</code>, <code>home/*.html</code>, <code>home/docs/*.html</code>, <code>home/history/data/</code>, <code>data/roles.json</code>은 생성물이라 손으로 고치지 않는다. 문장은 <code>strings/home.json</code>, 틀은 <code>design/home/build.mjs</code>, 스타일과 동작은 <code>home/assets/home.css</code>, <code>home/assets/home.js</code>다. 원본 문서와 <code>design/home/facts.json</code>, <code>design/home/artboards.json</code>, <code>design/home/test-results.json</code>이 바뀌면 저장소 루트에서 다시 만든다.</p>
+<pre><code>node design/home/build.mjs</code></pre>
+<p>시험을 돌려 <code>design/home/test-results.json</code>에 기록하는 명령(결과는 홈 화면에 보이지 않고 기록으로만 남는다):</p>
+<pre><code>PPTR=&lt;puppeteer-core가 있는 폴더&gt; node design/home/run-tests.mjs</code></pre>
+<p>흐름도는 <code>home/assets/mermaid.min.js</code>(MIT, 라이선스 <code>mermaid.LICENSE.txt</code>)로 브라우저에서 그리고, mermaid 블록이 있는 문서 페이지에서만 불러온다. 마크다운은 생성할 때 <code>design/home/vendor/marked.esm.js</code>(MIT)로 바꾼다. 인터넷이 필요 없다.</p>
+<h2 id="소개-사이트">소개 사이트</h2>
+<p><a href="http://localhost:4173/site/" rel="noopener noreferrer" target="_blank">http://localhost:4173/site/</a> 에 있다. 앱 위쪽 막대의 [소개 사이트]로 가고, 사이트의 [프로토타입 열기]로 앱에 온다.
+<code>site/</code>는 생성물이라 손으로 고치지 않는다. 문장은 <code>design/site/src/strings/</code>, 동작은 <code>design/site/src/static-site.js</code>를 고친 뒤 아래를 돌린다.</p>
+<pre><code>python3 design/site/src/build_static.py</code></pre>
+<h2 id="폴더">폴더</h2>
+<ul>
+<li><code>js/lib/</code> 틀, 저장, 시계, 진행기. <code>js/modules/</code> 모듈마다 상태, 공개 함수, 화면, 장면 단계.</li>
+<li><code>strings/</code> 화면 문구. 문구를 고칠 때는 이 파일만 고친다. <code>strings/help.json</code>은 툴팁과 도움말 설명이다. <code>data/</code> 시드 값.</li>
+<li><code>css/proto.css</code>는 캔버스 공유 CSS 사본이다. 값은 <a class="doc-ref" href="x-design-design-system.html"><code>DESIGN.md</code></a>가 원본이다.</li>
+<li><code>CONTRACT.md</code> 모듈 규칙. <code>review-notes.md</code> 문구·흐름 검수 기록.</li>
+</ul>
+<h2 id="시험">시험</h2>
+<pre><code>PPTR=&lt;puppeteer-core가 있는 폴더&gt; node design/prototype/test/run-flow.mjs --width 1640 --extra</code></pre>
+<pre><code>PPTR=&lt;puppeteer-core가 있는 폴더&gt; node design/prototype/test/visit-all.mjs</code></pre>
+<pre><code>PPTR=&lt;puppeteer-core가 있는 폴더&gt; node design/prototype/test/start-states.mjs</code></pre>
+<pre><code>PPTR=&lt;puppeteer-core가 있는 폴더&gt; node design/prototype/test/meal-count.mjs</code></pre>
+<pre><code>PPTR=&lt;puppeteer-core가 있는 폴더&gt; node design/prototype/test/bar-layout.mjs</code></pre>
+<pre><code>PPTR=&lt;puppeteer-core가 있는 폴더&gt; node design/prototype/test/help-all.mjs --width 1640</code></pre>
+<pre><code>PPTR=&lt;puppeteer-core가 있는 폴더&gt; node design/prototype/test/visit-site.mjs --width 1440</code></pre>
+<pre><code>PPTR=&lt;puppeteer-core가 있는 폴더&gt; node design/prototype/test/visit-home.mjs</code></pre>
+<pre><code>node design/prototype/test/check-strings.mjs</code></pre>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

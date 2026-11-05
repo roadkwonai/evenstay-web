@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>보완 지시서 (2026-11-04) | Evenstay 문서</title>
+<meta name="description" content="보완 지시서 (2026-11-04). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>보완 지시서 (2026-11-04)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#공통-규칙-모든-세션">공통 규칙 (모든 세션)</a></li><li class="lv3"><a href="#통합-데모에-넣을-새-장면-허브-제안-각-모듈이-시각계정을-확정">통합 데모에 넣을 새 장면 (허브 제안, 각 모듈이 시각·계정을 확정)</a></li><li class="lv2"><a href="#코어-a-core-planning">코어 (a-core-planning)</a></li><li class="lv2"><a href="#안심-알림-b-safety-planning">안심 알림 (b-safety-planning)</a></li><li class="lv2"><a href="#보호자-포털동의-d-family-planning">보호자 포털·동의 (d-family-planning)</a></li><li class="lv2"><a href="#ai-생활-비서-g-assistant-planning">AI 생활 비서 (g-assistant-planning)</a></li><li class="lv2"><a href="#생활-요청-n1-requests-planning">생활 요청 (n1-requests-planning)</a></li><li class="lv2"><a href="#생활-지원-단계-c-transitions-planning">생활 지원 단계 (c-transitions-planning)</a></li><li class="lv2"><a href="#n2-커뮤니티-새-모듈-slug-community">N2 커뮤니티 (새 모듈, slug community)</a></li><li class="lv2"><a href="#카피-세션">카피 세션</a></li><li class="lv2"><a href="#소개-사이트-landing-planning">소개 사이트 (landing-planning)</a></li><li class="lv2"><a href="#화면-정의서-evenstay-proto-review-기획-보완이-끝난-뒤">화면 정의서 (evenstay-proto-review) — 기획 보완이 끝난 뒤</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1141" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-1142" data-tip="고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건.">생활 요청</button></li><li><button class="term" type="button" data-modal="g-1143" data-tip="알림에서 이어진 동행의 직원과 시각만.">병원 동행</button></li><li><button class="term" type="button" data-modal="g-1144" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li><li><button class="term" type="button" data-modal="g-1145" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-1146" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-1147" data-tip="회원이 받기로 한 정기 순회.">안부 방문</button></li><li><button class="term" type="button" data-modal="g-1148" data-tip="동별 입주, 빈 호실, 입주 예정, 퇴거 예정 수">호실 현황</button></li></ul></section></aside>
+  <article class="doc"><p>사용자 결정: &quot;추천대로 시작&quot;(2026-11-04). 앞선 결정: 모든 화면을 만들고(MVP 구현 없음), <strong>화면 흐름대로 실제처럼 동작하는 HTML·JS 클릭형 프로토타입</strong>이 최종 목표(<a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04). 제작 순서는 보완 → 화면 정의서 → 검수 → <strong>Design 캔버스 아트보드 완성(먼저)</strong> → 클릭형 프로토타입(뒤).
+근거 리뷰: , , 모듈 사이 어긋남 리뷰 25건(아래 &quot;R번호&quot;), 누락 리뷰.</p>
+<h2 id="공통-규칙-모든-세션">공통 규칙 (모든 세션)</h2>
+<ul>
+<li>모듈 경계 규칙(<a class="doc-ref" href="x-rules-evenstay-claude.html"><code>evenstay/CLAUDE.md</code></a> 22~32행)을 지켜요: 자기 스키마만 쓰기, <code>api/</code>로만 읽기, 데이터 사본 금지, 아웃박스·멱등, <code>authorize()</code> 하나.</li>
+<li>지어낸 사실·수치 금지, 문장마다 [사실]/[추정]/[가설]/[미정]. 판단 단어 금지. &quot;판&quot; 대신 &quot;버전&quot;. 이모지 금지.</li>
+<li>상태 줄은 그대로 두고 &quot;변경: 2026-11-04 전체 리뷰 보완(재승인 대기)&quot; 메모와 변경 기록을 붙여요.</li>
+<li>새 화면 문구는 <code>[NEED: 카피]</code>. 허브가 카피 세션에 맡겨요.</li>
+<li>끝나면 evenstay <code>docs/&lt;모듈&gt;/</code>로 재인계하고 경로 줄만 다른지 diff로 확인해요.</li>
+<li><strong>데모 흐름</strong>: 오늘부터 Must/Next는 &quot;통합 데모 흐름에 나오는지&quot; 표시예요. 모든 화면을 프로토타입으로 만들어요. 새 기능은 통합 데모(<code>evenstay/design/mvp-screens.md</code> 5절, 22단계)에 장면으로 들어가요. 각 모듈 prd 9절에 새 장면(기준 시각, 계정, 화면, 보여 줄 것)을 적어 주세요. 시드 초기화로 앞 장면을 지우지 않고 <strong>시계만 옮겨</strong> 이어 붙여요.</li>
+</ul>
+<h3 id="통합-데모에-넣을-새-장면-허브-제안-각-모듈이-시각계정을-확정">통합 데모에 넣을 새 장면 (허브 제안, 각 모듈이 시각·계정을 확정)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>제안 위치</th>
+<th>장면</th>
+<th>담당</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8단계(11/12 02:30~02:58 야간 신호) 바로 뒤, 11/12 07:30</td>
+<td>책임자 최영미의 운영 현황 대시보드: 호실 현황, 열린 신호와 맡지 않은 것, 확인까지 걸린 시간, 확인할 일. 같은 시각 야간 당번 보기 한 줄</td>
+<td>코어(카드), 안심 알림(boardOf, D2)</td>
+</tr>
+<tr>
+<td>11/12 오전</td>
+<td>안부 방문 한 바퀴(다녀왔습니다 / 방에 계시지 않았습니다), 놓친 방문이 신호로 들어감, 호실 현황판</td>
+<td>안심 알림</td>
+</tr>
+<tr>
+<td>10단계(11/12)와 11단계(11/23) 사이, 11/17</td>
+<td>생활 요청: 회원 요청 → 직원 배정·처리 → 완료 → 회원 확인, 보호자 보기(허락한 경우), 유료 요청 청구</td>
+<td>생활 요청, 코어, 보호자 포털</td>
+</tr>
+<tr>
+<td>11/20 전후</td>
+<td>프로그램 신청·공용시설 예약·공지(N2 커뮤니티)</td>
+<td>N2(새 모듈)</td>
+</tr>
+<tr>
+<td>12/2~12/7 (C 장면의 입원 기간)</td>
+<td><strong>이은숙 회원님 병원 동행 기록(B) → 장기 부재 시작(코어) → 보호자 부재 소식(D, 허락 범위) → 12/7 복귀 기록 → C 퇴원 뒤 장면</strong>으로 잇기. 부재 종류·병원 이름은 기록하지 않음</td>
+<td>코어, 안심 알림, 보호자 포털, 생활 지원 단계</td>
+</tr>
+<tr>
+<td>11/30 또는 12/1</td>
+<td>소유주 월 리포트(온누리·다온 담당자): 입주율, 청구·수납, 안전 신호 처리 시간, 생활 요청 처리</td>
+<td>코어</td>
+</tr>
+<tr>
+<td>부록</td>
+<td>사고·학대 보고, 비상 때 재실 명단, 보증 상태, 위탁 운영 계약 이력</td>
+<td>코어, 안심 알림</td>
+</tr>
+</tbody></table></div>
+<h2 id="코어-a-core-planning">코어 (a-core-planning)</h2>
+<ol>
+<li><strong>R1 / N1-C3</strong>: 시드 직원 4명(한도윤, 오수진, 정태영, 윤서연)을 9절에 넣고 데모 계정 목록에 더해요(카피 2-11은 카피 세션).</li>
+<li><strong>R8 / N1-C1·C2·C4</strong>: <code>ServiceChargeCommand.record</code>, 청구 항목 <code>SERVICE_FEE</code>, 요금표 <code>SERVICE_FEES</code>·<code>ServiceFeeQuery.priceOf</code>, 10절 N1 줄과 <code>openCount</code> 반환 확정(N1 형태), <code>/demo/reset</code> 순서에 requests.</li>
+<li><strong>R9</strong>: 장기 부재 시드를 B 데모 호출벨 호실(A동 401호 박영순)과 겹치지 않게 옮기고, 이은숙 12/2~12/7 입원 기간을 장기 부재로 넣어요(위 표). 확인할 것 25를 닫아요.</li>
+<li><strong>R12</strong>: 6-2 행동에 코드 이름(<code>core.absence.*</code>, <code>core.operations.view</code> 등).</li>
+<li><strong>R13</strong>: 카드 다시 불러오기 방식 명시.</li>
+<li><strong>R25</strong>: copy 경로(<a class="doc-ref" href="x-writing-requests-names.html"><code>docs/requests/copy/names.md</code></a>), US 표의 P1 목록·이용자 줄.</li>
+<li><strong>새 기능</strong>: ① 소유주 월 리포트(CORE-09 확장, 대시보드와 같은 조회, 소유주별 이름 가림) ② 입소보증금 보증 상태(계약 칸: 전세권 설정일·보증보험 가입 여부, 회원·보호자 화면 한 줄, 근거는 <a class="doc-ref" href="lab-service-coverage-review.html"><code>01-research/outputs/service-coverage-review.md</code></a> S05) ③ 위탁 운영 계약 이력(roadmap Later → 이번 버전, 설치자·위탁 운영자·기간·변경 이력, 시행규칙 개정안은 입법예고 단계라 [미정]).</li>
+<li>운영 현황 카드를 통합 데모 장면으로(위 표).</li>
+</ol>
+<h2 id="안심-알림-b-safety-planning">안심 알림 (b-safety-planning)</h2>
+<ol>
+<li><strong>R7 / N1-B1~B4</strong>: 8-2 <code>registerFromRequest</code>(또는 정한 이름) 명령, 출처 &quot;생활 요청에서 옮김&quot;, F17 순서, N1 병원 동행 신청과 B 병원 동행 기록을 섞지 않는다는 한 줄. N1 쪽 [안심 알림으로 옮기기]는 P1로 내려요(허브 결정).</li>
+<li><strong>R17</strong>: SAF-01 P1 줄(병원에 가신 분, 부재 중, 연결 필요 수)과 SAF-13 목록을 읽는 API, board 응답 필드. 끊김 칸을 숨긴 버전의 처리.</li>
+<li><strong>새 기능</strong>: ① 호실 현황판(호실마다 오늘 안부 방문, 부재 중, 마지막 신호 시각, 처리 중 알림. 직원 화면만, 위치·영상 없음) ② 사고·학대 보고(알림 한 건에서 열어 경위, 보호자 통보, 신고함/하지 않음·신고 기관만 사람이 기록. 판정 칸 없음. 신고의무 근거는 [미확인]이면 그대로 표시) ③ 비상 때 재실 명단(동·층별 명단과 회원·보호자가 미리 고른 &quot;도움 필요&quot; 한 칸, 직원이 &quot;대피 확인함&quot;. 출입 신호로 재실을 추정하지 않음. 법 전제 [미확인]).</li>
+<li>안부 방문, 병원 동행(이은숙 12/2), 걸린 시간 표시, 야간 당번 보기를 통합 데모 장면으로.</li>
+</ol>
+<h2 id="보호자-포털동의-d-family-planning">보호자 포털·동의 (d-family-planning)</h2>
+<ol>
+<li><strong>R4</strong>: 김지민의 <code>LIFE_REQUEST</code> 허락을 D의 상태별 시작점 표에 넣어요(N1이 <code>family</code> 스키마에 쓰지 않게).</li>
+<li><strong>R5 / N1-D3</strong>: 8-3 구독 표에 <code>ServiceRequestStatusChanged</code>(event_id 멱등), 보호자 문자는 D가 보냄. (마) 줄 삭제.</li>
+<li><strong>R10 / N1-D6</strong>: 생활 소식의 &quot;요청&quot; 재료를 N1 <code>api/</code>에서 읽게(시드 요청 사본 없음).</li>
+<li><strong>R14 / N1-D2·D4</strong>: N1을 <code>viewersOf</code>·<code>FamilyConsentChanged</code> 사용처에서 지우고, 보호자의 생활 요청 열람을 회원 &quot;본 기록&quot;에 넣을지 확인할 것으로.</li>
+<li><strong>R15</strong>: 허락 항목은 다섯 개(생활 요청 포함)로 하나로 정해요(허브 결정).</li>
+<li><strong>R22</strong>: 낡은 줄 정리.</li>
+<li>이은숙 12/2~12/7 부재 소식 장면(위 표).</li>
+</ol>
+<h2 id="ai-생활-비서-g-assistant-planning">AI 생활 비서 (g-assistant-planning)</h2>
+<ol>
+<li><strong>R3</strong>: <code>assistant.usage.read</code> 같은 행동 등록(책임자·본사), 8-2 쓰는 곳에 <code>app/</code> 카드, 카드 기간(예: 기준일 앞 7일 [가설]).</li>
+<li><strong>R6 / N1-G1~G4</strong>: Handoff 상태 FORWARDED, <code>external_ref</code> 두 용도, 넘김 저장 뒤 N1 <code>receiveFromAssistant</code> 호출(실패해도 넘김 유지), 10-1 의존 표의 requests/api, AST-09 목록 규칙(N1으로 간 것), 평가 세트 문항, handoff &quot;시설 요청 접수 안 함&quot; 줄 고치기.</li>
+<li><strong>R24</strong>: 넘긴 이유 UNKNOWN → OUT_OF_SCOPE.</li>
+<li>N2 커뮤니티의 프로그램 일정을 비서가 읽는 도구는 Next로 적어 둬요.</li>
+</ol>
+<h2 id="생활-요청-n1-requests-planning">생활 요청 (n1-requests-planning)</h2>
+<ol>
+<li><strong>R2</strong>: 데모를 시드 초기화 없이 11/17 시계 옮기기로 통합 흐름에 넣어요(0단계 [시드 초기화] 삭제). 시작점은 세 상태 그대로.</li>
+<li>[안심 알림으로 옮기기]는 P1.</li>
+<li><strong>R19</strong>: 부록 예문에서 &quot;은행&quot;을 다른 곳으로.</li>
+<li>코어 시드 직원 4명, D 허락 시작점, G FORWARDED와 맞추기(각 모듈 결과가 오면 허브가 전달).</li>
+</ol>
+<h2 id="생활-지원-단계-c-transitions-planning">생활 지원 단계 (c-transitions-planning)</h2>
+<ol>
+<li>이은숙 12/2~12/7 입원 기간을 B 병원 동행 → 코어 장기 부재 → D 부재 소식과 잇는 장면을 C 데모 앞에 맞춰요. C의 기존 장면(퇴원 뒤 평가·제안·결정)은 그대로.</li>
+</ol>
+<h2 id="n2-커뮤니티-새-모듈-slug-community">N2 커뮤니티 (새 모듈, slug <code>community</code>)</h2>
+<p>카피 → 기획 → 인계 순서. 프로그램 일정·신청·정원·출석, 공용시설 예약(겹침 방지), 공지. 소개 사이트 <code>/life</code> 여가 프로그램과 맞춰요.</p>
+<h2 id="카피-세션">카피 세션</h2>
+<ul>
+<li>코어: R11 운영 현황 카드 문구를 B·D·N1 반환 형태에 맞춰 고치기, 2-11 직원 4명 계정 줄, 새 기능 <code>[NEED: 카피]</code>(기획 뒤).</li>
+<li>안심 알림: R18 &quot;○○병원으로 가셨어요&quot; → &quot;병원으로 가셨어요&quot;, 새 기능 문구(기획 뒤).</li>
+<li>보호자 포털: R23 FAM-16 예시를 시드 인물·날짜로, 새 장면 문구(기획 뒤).</li>
+</ul>
+<h2 id="소개-사이트-landing-planning">소개 사이트 (landing-planning)</h2>
+<ol>
+<li>메인 섹션 순서: 액티브 시니어의 생활(공간, 하루, 식사, 여가)을 앞에, 안심·건강 지원은 뒤로(레드팀 3).</li>
+<li>낡은 표시 정리: <code>[미정: B 검토 중]</code> → B F21·F22 반영, 생활 요청과 보호자 생활 요청 허락, 커뮤니티(N2) 연결.</li>
+<li>간호 직원 카드처럼 운영 확인 전 사실로 읽히는 곳 정리.</li>
+<li>사용자가 정할 것(14 + 21)을 한 목록으로 묶고, 항목마다 추천안을 붙여요.</li>
+</ol>
+<h2 id="화면-정의서-evenstay-proto-review-기획-보완이-끝난-뒤">화면 정의서 (evenstay-proto-review) — 기획 보완이 끝난 뒤</h2>
+<ul>
+<li>새 화면 전부, R16(SAF-05 API 열), R20(배치 숫자) 정리.</li>
+<li><strong>흐름 정의 추가</strong>: 화면마다 들어오는 곳, 나가는 곳, 버튼별 목적지, 바뀌는 상태, 쓰는 목업 데이터, 빈·오류 상태. 앱별 화면 연결 지도. 통합 데모 시나리오를 클릭 순서로.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1141" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1142" data-title="생활 요청"><p>고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건. 안전 신호가 아니다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 생활 요청(줄여 요청) / 회원·보호자: 요청</dd><dt>영문·코드 이름</dt><dd><code>ServiceRequest</code></dd><dt>출처</dt><dd>requests T2-2, requests M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1143" data-title="병원 동행(알림 뒤)"><p>알림에서 이어진 동행의 직원과 시각만. 생활 요청의 병원 동행과 다른 기록이다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 병원 동행, 병원에 가신 분</dd><dt>영문·코드 이름</dt><dd><code>HospitalEscort</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1144" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1145" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1146" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1147" data-title="안부 방문"><p>회원이 받기로 한 정기 순회. 놓치면 신호가 된다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 안부 방문 계획, 안부 방문 기록 / 회원: 안부 방문</dd><dt>영문·코드 이름</dt><dd><code>VisitPlan</code>, <code>VisitRecord</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1148" data-title="호실 현황"><p>동별 입주, 빈 호실, 입주 예정, 퇴거 예정 수</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 호실 현황</dd><dt>영문·코드 이름</dt><dd><code>OccupancyQuery.summary</code></dd><dt>출처</dt><dd>core T10</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시니어 하우징 PMS의 구조적 차이 (호텔·임대 PMS 대비) + 국내 호출·비상설비 규정 | Evenstay 문서</title>
+<meta name="description" content="시니어 하우징 PMS의 구조적 차이 (호텔·임대 PMS 대비) + 국내 호출·비상설비 규정. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>시니어 하우징 PMS의 구조적 차이 (호텔·임대 PMS 대비) + 국내 호출·비상설비 규정</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#q1-노인복지주택의-호출비상직원배치-법령-원문은-무엇이라고-하는가">Q1. 노인복지주택의 호출·비상·직원배치 법령 원문은 무엇이라고 하는가</a></li><li class="lv3"><a href="#takeaway">Takeaway</a></li><li class="lv3"><a href="#cited-findings">Cited Findings</a></li><li class="lv3"><a href="#inferences">Inferences</a></li><li class="lv3"><a href="#gaps">Gaps</a></li><li class="lv2"><a href="#q2-건축편의안전-설비-법령-고령자복지주택-20242026-정책-변화-돌봄통합지원법">Q2. 건축·편의·안전 설비 법령, 고령자복지주택, 2024~2026 정책 변화, 돌봄통합지원법</a></li><li class="lv3"><a href="#takeaway-2">Takeaway</a></li><li class="lv3"><a href="#cited-findings-2">Cited Findings</a></li><li class="lv3"><a href="#inferences-2">Inferences</a></li><li class="lv3"><a href="#gaps-2">Gaps</a></li><li class="lv2"><a href="#q3-데이터-모델-차이-시니어-vs-호텔-vs-임대-해외-증거-포함">Q3. 데이터 모델 차이: 시니어 vs 호텔 vs 임대 (해외 증거 포함)</a></li><li class="lv3"><a href="#takeaway-3">Takeaway</a></li><li class="lv3"><a href="#cited-findings-3">Cited Findings</a></li><li class="lv3"><a href="#inferences-3">Inferences</a></li><li class="lv3"><a href="#gaps-3">Gaps</a></li><li class="lv2"><a href="#q4-운영-sla신뢰성-교대-인수인계-다운타임-비상-대비">Q4. 운영 SLA·신뢰성: 교대 인수인계, 다운타임, 비상 대비</a></li><li class="lv3"><a href="#takeaway-4">Takeaway</a></li><li class="lv3"><a href="#cited-findings-4">Cited Findings</a></li><li class="lv3"><a href="#inferences-4">Inferences</a></li><li class="lv3"><a href="#gaps-4">Gaps</a></li><li class="lv2"><a href="#q5-국내-시니어-주거-운영-실태-중-아키텍처에-영향을-주는-사실">Q5. 국내 시니어 주거 운영 실태 중 아키텍처에 영향을 주는 사실</a></li><li class="lv3"><a href="#takeaway-5">Takeaway</a></li><li class="lv3"><a href="#cited-findings-5">Cited Findings</a></li><li class="lv3"><a href="#inferences-5">Inferences</a></li><li class="lv3"><a href="#gaps-5">Gaps</a></li><li class="lv2"><a href="#q6-보안준수-설계-hipaa-최소필요-vs-한국-짧게">Q6. 보안·준수 설계: HIPAA 최소필요 vs 한국 (짧게)</a></li><li class="lv3"><a href="#cited-findings-6">Cited Findings</a></li><li class="lv3"><a href="#inferences-6">Inferences</a></li><li class="lv2"><a href="#요약-표-설계-요구-비교">요약 표: 설계 요구 비교</a></li><li class="lv2"><a href="#못-찾은-것">못 찾은 것</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1013" data-tip="수익이 아니라 맡긴 돈.">보증금</button></li><li><button class="term" type="button" data-modal="g-1014" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-1015" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-1016" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li></ul></section></aside>
+  <article class="doc"><p>선행 문서: <code>../outputs/pms-landscape.md</code> (c)절. 이 노트는 그 내용을 반복하지 않고 1차 근거로 확장한다.</p>
+<p>표기</p>
+<ul>
+<li>문장 앞 라벨: [사실] [추정] [가설] [미정] [미확인]</li>
+<li>검증 방식: 직접(본문 열람) / 검색요약(검색 결과 요약만 봄, 본문 못 엶) / 제3자(2차 해설·블로그·언론)</li>
+<li><strong>법령 본문 주의</strong>: law.go.kr 본문은 도구로 열리지 않았다(WebFetch 실패). 대신 법령 미러 사이트 nepla.ai의 본문 텍스트와 별표 PDF를 직접 내려받아 읽었다. 즉 &quot;직접(미러 본문)&quot;이다. 원본(law.go.kr) 대조는 안 했으므로 인용 전 대조 필요 [미확인].</li>
+<li>법적 결론은 내리지 않는다. 조문이 말하는 바만 적고 해석은 [추정]으로 표시한다.</li>
+</ul>
+<hr>
+<h2 id="q1-노인복지주택의-호출비상직원배치-법령-원문은-무엇이라고-하는가">Q1. 노인복지주택의 호출·비상·직원배치 법령 원문은 무엇이라고 하는가</h2>
+<h3 id="takeaway">Takeaway</h3>
+<p>노인복지주택에 대해 법령이 정하는 설비는 &quot;경보장치 1개소 이상, 거실·화장실·욕실·복도 등에 설치&quot;까지다. 호출을 누가 몇 분 안에 받는지(24시간 근무, 응답시간, 로그)는 별표 2·3 본문에 한 글자도 없다(키워드 검색 0건). 따라서 Evenstay의 &quot;5분 인계 타이머&quot;는 법정 요건이 아니라 자체 SLA로 설계해야 한다.</p>
+<h3 id="cited-findings">Cited Findings</h3>
+<ul>
+<li>[사실] 노인복지법 시행규칙 제17조: 노인주거복지시설의 시설기준·직원배치기준은 별표 2, 운영기준은 별표 3. 시행규칙 현행은 2025.12.29. 시행(보건복지부령 제1143호, 2025.12.29. 일부개정). — 직접(미러 본문) <a href="https://www.nepla.ai/law/노인복지법-시행규칙" rel="noopener noreferrer" target="_blank">시행규칙</a>, 2026-11-04</li>
+<li>[사실] 별표 2 파일 상단 표기는 <code>&lt;개정 2019. 9. 27.&gt;</code>. 별표 3은 <code>&lt;개정 2021. 6. 30.&gt;</code>. 즉 별표 자체의 마지막 개정은 이 날짜로 표시된다(규칙 본문은 이후에도 개정됨). — 직접(미러 PDF) <a href="https://www.nepla.ai/api/law-file?flSeq=159739753&amp;ext=pdf" rel="noopener noreferrer" target="_blank">별표 2</a>, <a href="https://www.nepla.ai/api/law-file?flSeq=159739769&amp;ext=pdf" rel="noopener noreferrer" target="_blank">별표 3</a>, 2026-11-04</li>
+<li>[사실] 별표 2 &quot;1. 공통사항 가. 시설의 규모&quot;: 노인복지주택은 30세대 이상. — 직접(미러 PDF) <a href="https://www.nepla.ai/api/law-file?flSeq=159739753&amp;ext=pdf" rel="noopener noreferrer" target="_blank">별표 2</a></li>
+<li>[사실] 별표 2 &quot;3. 시설기준&quot; 표의 노인복지주택 행: 침실 1, 관리실 1(사무실·숙직실 포함), 식당 및 조리실 1, 체력단련실 및 프로그램실 1, 의료 및 간호사실 1, 식료품점 또는 매점 1, 비상재해대비시설 1, 경보장치 1. — 직접(미러 PDF) 위 링크</li>
+<li>[사실] 별표 2 &quot;4. 설비기준&quot; 노인복지주택 열 &quot;마. 경보장치&quot;: 타인의 도움이 필요할 때 경보가 울릴 수 있도록 거실, 화장실, 욕실, 복도 등 필요한 곳에 설치. 같은 열에서 침실(독신용·동거용) 20㎡ 이상, 취사설비, 목욕실·화장실, 의료 및 간호사실(상용의약품·위생재료·의료기구), 야간 상용등, 경사로 규정이 있다. — 직접(미러 PDF) 위 링크</li>
+<li>[사실] 별표 2 1.나.(3): 「화재예방, 소방시설 설치·유지 및 안전관리에 관한 법률」에 따라 소화용 기구와 비상구 설치. — 직접(미러 PDF) 위 링크</li>
+<li>[사실] 별표 2 &quot;5. 직원의 자격기준&quot;은 시설의 장에서 노인복지주택을 제외한다고 쓴다. &quot;6. 직원의 배치기준&quot; 표의 노인복지주택 행에는 1명 표기가 3칸 있다. PDF 좌표로 보면 사회복지사 열 근처 1명, 관리인 열 1명, 그리고 앞쪽 열 1명이다. — 직접(미러 PDF, 좌표 판독)</li>
+<li>[추정] 위 3칸 중 앞쪽 1명은 사무국장 열로 읽히나 표가 PDF에서 깨져 확정 못 한다. 사회복지사 1명·관리인 1명은 비교적 확실. 원본 대조 필요.</li>
+<li>[사실] 별표 2 직원 배치 비고: (6) 모든 종사자는 시설의 장과 근로계약을 체결한 사람이어야 한다. 별표 3 3.라도 같은 취지. — 직접(미러 PDF) 위 링크</li>
+<li>[사실] 별표 2·3 본문 키워드 검색(우리가 pdftotext로 확인): &quot;24시간&quot; 0건, &quot;당직&quot; 0건, &quot;응답&quot; 0건, &quot;호출&quot; 0건. &quot;야간&quot;은 야간 상용등(별표 2)과 주·야간보호(별표 3)에서만 나옴. 별표 2의 &quot;기록&quot;·&quot;로그&quot; 관련 규정 0건. — 직접(미러 PDF, 우리 검색)</li>
+<li>[사실] 별표 3 8.마 노인복지주택 사업 내용: (나) 사회복지사는 순회서비스를 제공하는 등 항상 입주자 안전에 세심한 배려를 하고 다음 서비스를 제공: ①생활지도·상담 ②문안 ③긴급사태시 대처 ④의료기관 등 관계기관과의 연락 ⑤일상생활상 필요한 원조. — 직접(미러 PDF) <a href="https://www.nepla.ai/api/law-file?flSeq=159739769&amp;ext=pdf" rel="noopener noreferrer" target="_blank">별표 3</a></li>
+<li>[사실] 별표 3 1.(건강관리)은 &quot;노인복지주택의 경우는 제외한다&quot;고 쓴다. 즉 입소자 건강관리 책임자·계약의사·월 1회 의사 방문 규정은 노인복지주택에 적용되지 않는 것으로 적혀 있다. — 직접(미러 PDF) 위 링크</li>
+<li>[사실] 별표 3 7.(기거자)도 &quot;노인복지주택은 제외&quot;. 입소자 침실 건물마다 직원 1명이 함께 기거하라는 규정은 노인복지주택에서 빠져 있다. — 직접(미러 PDF) 위 링크</li>
+<li>[사실] 노인복지법 제32조 제1항 제3호: 노인복지주택은 노인에게 주거시설을 임대하여 주거의 편의·생활지도·상담 및 안전관리 등 일상생활에 필요한 편의를 제공하는 시설. 제3항: 이 법에서 규정한 사항 외에는 「주택법」·「공동주택관리법」 관련 규정을 준용. 법 현행: 시행 2026.10.02. 법률 제22020호(2026.09.29. 일부개정). — 직접(미러 본문) <a href="https://www.nepla.ai/law/노인복지법" rel="noopener noreferrer" target="_blank">노인복지법</a>, 2026-11-04</li>
+<li>[미확인] 법률 제22020호(2026.09.29.)가 무엇을 개정했는지 확인 못 함. 제32조·제33조의2 조문에는 최근 개정 표시가 2024.1.2.·2019.1.15.까지만 보인다.</li>
+<li>[사실] 법 제33조의2 ①: 입소자격자는 60세 이상. 배우자, 부양 책임 24세 미만 자녀·손자녀, 보건복지부령 정한 장애의 24세 이상 자녀·손자녀는 함께 입소 가능. ②: 설치자는 입소자격자에게 임대. ③: 임차인이 입소자격자 아닌 자에게 재임대 금지. ⑥: 설치자는 시설 전부·일부를 시장·군수·구청장 확인을 받아 대통령령 정한 자에게 위탁운영 가능. ⑦: 입소자격자가 사망하거나 거주하지 않으면 동반 배우자·자녀는 보건복지부령 기간 내 퇴소, 단 해외 체류 등 부득이한 사유는 예외. ⑧⑨: 시장·군수·구청장이 입소자격·사망·실거주 여부를 조사하고 부자격자 퇴소 조치. — 직접(미러 본문) 위 노인복지법 링크</li>
+<li>[사실] 시행규칙 제17조의2: ② 법 제33조의2 제7항의 기간은 90일. ③ 예외 사유: 1) 입소자격자가 90일 미만 해외 체류 2) 건강상 이유로 의료기관 입원 중 3) 그 밖에 보건복지부장관이 인정하는 경우. [본조신설 2018.4.25.][제목개정 2024.4.3.] — 직접(미러 본문) <a href="https://www.nepla.ai/law/노인복지법-시행규칙" rel="noopener noreferrer" target="_blank">시행규칙</a></li>
+<li>[사실] 시행규칙 제14조 ① 제2호: 노인복지주택 입소대상자는 &quot;단독취사 등 독립된 주거생활을 하는 데 지장이 없는 60세 이상의 자&quot;. [개정 2015.12.29., 2021.6.30., 2025.10.31.] — 직접(미러 본문) 위 링크</li>
+<li>[사실] 시행규칙 제15조 ⑥: 노인복지주택 입소는 임대차계약에 따른다. 신청자가 정원 초과 시 순위: 부양의무자 없는 자 → 주민등록상 연령 많은 자 → 배우자와 함께 입소하는 자 → 자녀·손자녀와 함께 입소하는 자(같은 순위는 신청순). ⑦: 입소대상자가 계약 체결 불가한 부득이 사유를 시장·군수·구청장이 인정하면 부양의무자가 대신 계약당사자가 될 수 있다. 제15조의2 제4호: 노인복지주택 입소비용은 입소자 본인이 전부 부담. — 직접(미러 본문) 위 링크</li>
+<li>[사실] 시행규칙 제16조 ①: 설치신고 서류에 입소보증금·이용료 등 비용부담 관계서류, 사업계획서(의료기관과의 연계에 관한 사항 포함, 노인복지주택 포함)가 들어간다. — 직접(미러 본문) 위 링크</li>
+<li>[사실] 시행령 제20조의3(노인복지주택 운영의 위탁): 위탁받을 수 있는 자는 노인복지주택 운영업무를 담당할 전담인력 및 전담조직을 갖춘 법인 또는 단체. [전문개정 2025.5.20.] 시행령 현행 시행 2026.01.24.(대통령령 제36050호). — 직접(미러 본문) [시행령](<a href="https://www.nepla.ai/law/노인복지법" rel="noopener noreferrer" target="_blank">https://www.nepla.ai/law/노인복지법</a> 시행령)</li>
+<li>[사실] 별표 3 3.나(운영규정 필수사항): 입소정원·모집, 입소계약(계약기간, 입소보증금, 월 이용료, 그 밖의 비용부담액, 신원인수인의 권리·의무, 계약 해제, 보증금 반환), 비용 변경 방법(노인복지주택은 비용 변경 시 입소자 의견수렴 과정 포함), 서비스 내용과 비용, 특별 보호가 필요한 경우의 서비스 기준·비용, 의료 필요 시 처리 절차, 서비스 제공자 배상책임·면책 범위, 운영위원회·운영간담회, 입소예정자·입소자가 사망 또는 중대한 질병으로 계약을 해지하는 경우 위약금 감면(노인복지주택 적용), 보증 관련 설명·계약서 기재·서명. — 직접(미러 PDF) <a href="https://www.nepla.ai/api/law-file?flSeq=159739769&amp;ext=pdf" rel="noopener noreferrer" target="_blank">별표 3</a></li>
+<li>[사실] 별표 3 4.나: 노인주거복지시설(분양형 노인복지주택 제외)은 퇴소 시 지체 없이 보증금을 입소자 또는 입소계약을 체결한 배우자·부양의무자에게 반환. — 직접(미러 PDF) 위 링크</li>
+<li>[사실] 별표 2 2.다: 임대형 노인복지주택 설치자는 입소계약 체결 후 보증금 수납일부터 10일 이내에 인·허가보증보험 가입. 보증내용 입소보증금 반환채무 이행, 보증가입금액 입소보증금 합계의 100분의 50 이상, 기간 보증금 납부일부터 퇴소 시까지, 피보험자 시장·군수·구청장, 보험금은 시장·군수·구청장 확인 하에 입소자가 직접 수령. 별표 2 2.가: 저당권 설정 시 피담보채권액과 입소보증금의 합이 건설원가의 80% 이하. — 직접(미러 PDF) <a href="https://www.nepla.ai/api/law-file?flSeq=159739753&amp;ext=pdf" rel="noopener noreferrer" target="_blank">별표 2</a></li>
+<li>[사실] 별표 3 5(회계): 시설의 회계는 법인회계 또는 다른 사업 회계와 분리 처리. 보조금·기부금은 별도 계정. 6(장부 비치): 시설운영일지, 총계정원장·수입지출보조부, 금전·물품 출납부와 증빙, 입소자 관리카드(입소계약 체결일, 입소보증금, 이용료, 그 밖의 비용부담 관계 포함), 연계의료시설과의 제휴계약서, 계약의사 근무상황부(해당 시) 등. — 직접(미러 PDF) <a href="https://www.nepla.ai/api/law-file?flSeq=159739769&amp;ext=pdf" rel="noopener noreferrer" target="_blank">별표 3</a></li>
+</ul>
+<h3 id="inferences">Inferences</h3>
+<ul>
+<li>[추정] 법정 하한은 &quot;경보장치를 필요한 곳에 설치&quot;이고, 받는 쪽(프런트·관리실)과 응답 시간은 시설 자율이다. 따라서 safety 모듈의 신호 허브·5분 타이머는 규정 준수가 아니라 운영 품질 설계로 정당화해야 한다.</li>
+<li>[추정] 별표 3의 &quot;긴급사태시 대처, 의료기관 등 관계기관과의 연락, 문안&quot;은 사회복지사 서비스 항목이다. 이를 PMS의 requests/safety 이벤트 유형(문안 기록, 긴급 대처 기록, 의료기관 연락 기록)으로 추적하는 설계는 근거가 있다. 다만 기록 의무 자체는 별표에 없다(운영일지 비치만 있음).</li>
+<li>[추정] &quot;관리실 1(사무실·숙직실 포함)&quot; 표기는 숙직 공간을 전제하는 문구로 읽히나, 숙직 인원·시간은 쓰지 않는다.</li>
+<li>[추정] 법이 &quot;임대&quot;로 못 박고(제33조의2 ②) 재임대를 금지하며(③) 위탁운영을 열어두므로(⑥) Owner(설치자)–Operator(위탁운영자) 분리가 법적으로 전제된다. 시행령 2025.5 개정은 위탁운영자 요건을 전담인력·조직 보유 법인으로 정해 이 분리를 더 확실히 한다.</li>
+</ul>
+<h3 id="gaps">Gaps</h3>
+<ul>
+<li>[미확인] law.go.kr 원본 대조. 별표 2의 직원 배치표 열 판독(앞쪽 1명이 어느 직종인지).</li>
+<li>[미확인] 보건복지부가 정하는 &quot;중대한 질병&quot; 범위(별표 3 3.나 ⑾), 월 이용료 변경 절차의 고시 세부.</li>
+<li>[미확인] 노인복지주택의 &quot;긴급연락장치&quot;라는 용어는 법령 본문에서 발견하지 못했다. 규정은 &quot;경보장치&quot;로만 쓴다.</li>
+</ul>
+<hr>
+<h2 id="q2-건축편의안전-설비-법령-고령자복지주택-20242026-정책-변화-돌봄통합지원법">Q2. 건축·편의·안전 설비 법령, 고령자복지주택, 2024~2026 정책 변화, 돌봄통합지원법</h2>
+<h3 id="takeaway-2">Takeaway</h3>
+<p>노인복지주택은 주택건설기준 규정에서 관리사무소 설치 의무(제28조) 등이 면제되는 대신 노인복지법 별표 2의 관리실·경보장치가 적용되는 이중 구조다. 2026-10-13~11-23 입법예고 중인 시행규칙 개정안은 &quot;건강 악화 후 계속 거주&quot;, 입소자대표회의, 위탁운영 신고를 넣는다. 이는 transitions·community 모듈과 직접 맞닿는다(미확정).</p>
+<h3 id="cited-findings-2">Cited Findings</h3>
+<ul>
+<li>[사실] 주택건설기준 등에 관한 규정(현행 2026.09.08.) 제7조(적용의 특례) ⑧: 「노인복지법」에 따라 노인복지주택을 건설하는 경우 제28조(관리사무소 등)·제34조(가스공급시설)·제52조(유치원)·제55조의2(주민공동시설)를 적용하지 않는다. — 직접(미러 본문) [주택건설기준 등에 관한 규정](<a href="https://www.nepla.ai/law/주택건설기준" rel="noopener noreferrer" target="_blank">https://www.nepla.ai/law/주택건설기준</a> 등에 관한 규정), 2026-11-04</li>
+<li>[사실] 같은 규정 제32조 ②: 경비실을 설치하는 공동주택의 각 세대에는 경비실과 통화가 가능한 구내전화를 설치. 제32조의2: 지능형 홈네트워크 설비를 설치하는 경우 고시 기술기준에 적합해야 함. 제7조 ⑧의 면제 목록에 제32조는 없다. — 직접(미러 본문) 위 링크</li>
+<li>[추정] 노인복지주택에도 경비실이 있다면 제32조 ②(세대↔경비실 구내전화)가 적용될 수 있어 보인다. 법률 해석이므로 확정 아님. &quot;방 호출 → 프런트 전화&quot; 구조의 법적 흔적은 이 조항 정도이며, 노인복지법 별표에는 없다.</li>
+<li>[사실] 주택건설기준 규정 본문에서 &quot;비상호출&quot;이라는 설비 규정은 발견하지 못했다. &quot;비상&quot;은 비상용승강기(제15조 ②), 비상문자동개폐장치(옥상 출입문), 비상급수시설(제35조) 등으로만 나옴. 제22조는 장애인 편의시설을 편의증진법에 따르도록 위임. — 직접(미러 본문, 우리 키워드 검색)</li>
+<li>[사실] 장애인·노인·임산부 등의 편의증진 보장에 관한 법률 시행규칙(현행 시행 2026.07.02., 보건복지부령 제1166호): 제2조가 편의시설 세부기준을 별표 1로 정한다. 별표 1 본문은 미러에서 파일로만 제공되어 열람 못 했다. — 직접(미러 본문, 별표 미열람) [편의증진법 시행규칙](<a href="https://www.nepla.ai/law/장애인ㆍ노인ㆍ임산부" rel="noopener noreferrer" target="_blank">https://www.nepla.ai/law/장애인ㆍ노인ㆍ임산부</a> 등의 편의증진 보장에 관한 법률 시행규칙)</li>
+<li>[제3자/검색요약] 한 Q&amp;A 사이트가 편의증진법 시행규칙 별표 1을 인용해 &quot;소방시설법령에 따라 비상벨이나 피난구유도등을 설치하는 경우 비상벨 주변에 점멸형 비상경보등을 함께 설치&quot;한다고 설명. 별표 원문은 못 봄. — 검색요약 <a href="https://qnaqc.co.kr/product/2020-09-23_%ea%b3%b5%eb%8f%99%ec%a3%bc%ed%83%9d%ec%9d%98-%ec%9e%a5%ec%95%a0%ec%9d%b8-%ed%8e%b8%ec%9d%98%ec%8b%9c%ec%84%a4%ec%9d%98-%ec%95%88%eb%82%b4%ec%8b%9c%ec%84%a4-%ec%a4%91-%ea%b2%bd%eb%b3%b4/" rel="noopener noreferrer" target="_blank">qnaqc.co.kr</a>, 2026-11-04</li>
+<li>[미확인] 「주거약자 지원에 관한 특별법」 시행규칙의 &quot;주거약자용 주택&quot; 시설기준 중 비상연락·호출 규정: 미러에서 해당 법령을 못 불러왔고 검색에서도 관련 결과가 없었다.</li>
+<li>[미확인] 고령자복지주택·공공실버주택의 응급호출 설비 기준 원문: 검색에서 공식 설계기준을 찾지 못했다. LH가 공공실버주택·노유자시설에 스프링클러·자동화재탐지설비를 도입한다는 언론 보도만 있다(날짜 불명). — 검색요약 <a href="https://www.inews24.com/view/1204365" rel="noopener noreferrer" target="_blank">아이뉴스24</a></li>
+<li>[제3자/검색요약] 건축법 시행령 별표 1에서 노인복지시설은 공동주택·단독주택 범위에서 &quot;노인복지주택은 제외&quot;한다는 설명이 있고, 노유자시설은 별표 1 제11호로 분류된다는 설명. 원문 미열람. — 검색요약 <a href="https://www.nepla.ai/wiki/국토와-건설-부동산/건설-건축-주거환경/-유권해석-건축법-시행령-별표-1-용도별-건축물의-종류-제3조의5-관련-제1호-단독주택-단독주택의-형태를-갖춘-가정어린이집·공동생활가정·지역아동센터-공동육아나눔터-작은도서관-및-노인복지시설-j21nmv6v1n73" rel="noopener noreferrer" target="_blank">nepla 위키 유권해석</a></li>
+<li>[사실] 시니어 레지던스 활성화 방안: 2024.7.23. 경제관계장관회의 발표(국토교통부 자료 게재). 사용권 기반 설립(서비스 전문사업자), 인구감소지역 신분양형 실버타운(일정 비율 임대형 포함 의무화, 노인복지법 개정 시 반영), 고령자복지주택 매년 3천 호, 실버스테이 시범사업, 표준계약서·품질인증제·정보공개 시스템, &quot;요양서비스가 필요해져도 다른 입주자의 생활권을 침해하지 않는 범위에서 입주를 유지할 수 있는 기준&quot; 마련. — 직접(요약 페이지 본문, KB 게시 국토부 보도자료 사본) <a href="https://kbthink.com/main/real-estate/government-policy/molit-press/2024/molit-press-240723.html" rel="noopener noreferrer" target="_blank">kbthink</a>, 2026-11-04</li>
+<li>[사실] 2026-10-12 보도: 보건복지부가 노인복지법 시행규칙 일부개정령안을 2026.10.13.~11.23. 입법예고. 내용: 현행 입소·거주 요건(&quot;단독취사 등 독립된 주거생활에 지장 없는 60세 이상&quot;)에서, 기존 입소자 중 65세 이상이 장기요양급여 등 보건복지부장관이 정하는 서비스를 받아 독립생활을 유지할 수 있으면 계속 거주 허용, 입소자 과반수 서면동의와 지자체 승인으로 입소자대표회의 구성, 위탁운영자 선정·변경 신고. 시행 시점은 보도마다 다름(공포 3개월 후라는 보도 vs 언급 없음). — 직접(기사 본문 2건) <a href="https://biz.sbs.co.kr/amp/article/20000339428" rel="noopener noreferrer" target="_blank">SBS Biz 2026-10-12</a>, <a href="https://www.imaeil.com/page/view/2026101215574176948" rel="noopener noreferrer" target="_blank">매일신문 2026-10-12</a></li>
+<li>[사실] 같은 기사: 전국 노인복지주택은 2025년 12월 기준 47개소, 11,090세대(복지부 설명으로 보도). 매일신문은 입소자대표회의에 시설장이 관리비 부과 내역과 서비스 운영 상황을 정기 보고, 운영 주체가 없어지면 대표회의가 위탁사 선정 등을 제한적으로 대행, 위탁운영자 의무 불이행 시 설치자가 시정요구 후 위탁 철회, 퇴원 후 단기 주거지원서비스(&quot;중간집&quot;) 근거 포함이라고 보도. SBS Biz는 &quot;중간집&quot;과 대표회의 집행력 한계를 다루지 않음(기사별 상이). — 직접(기사 본문) 위 링크</li>
+<li>[미확인] 입법예고 원문(국민참여입법센터), 확정 여부·시행일, &quot;장관이 고시하는 서비스&quot; 세부. 기사 간 서술 차이가 있어 보도 내용을 확정 사실로 쓰지 않는다.</li>
+<li>[제3자/검색요약] 돌봄통합지원법(의료·요양 등 지역돌봄의 통합지원에 관한 법률)은 2024.3.26. 제정, 2026.3.27. 전국 시행. 시행령·시행규칙 제정안은 2025.12.9. 공포로 보도. 읍·면·동이 대상자 발굴·신청 접수, 시·군·구가 통합지원계획·연계, 건보공단이 조사·판정을 맡는다는 설명이 있으나 자료마다 신청 창구 설명이 다르다. 법 조문 원문은 열람 못 함. — 검색요약 <a href="https://jjan.kr/article/20251028580181" rel="noopener noreferrer" target="_blank">서울신문 등 검색결과</a>, <a href="https://www.kihasa.re.kr/api/kihasa/file/download?seq=30863" rel="noopener noreferrer" target="_blank">국회/연구 PDF</a>, 2026-11-04</li>
+<li>[사실] 복지부가 2026-10 입법예고 취지로 &quot;노인복지주택이 통합돌봄체계에서 돌봄과 주거를 잇는 인프라가 되도록 한다&quot;고 설명했다고 SBS Biz가 보도. — 직접(기사 본문) <a href="https://biz.sbs.co.kr/amp/article/20000339428" rel="noopener noreferrer" target="_blank">SBS Biz</a></li>
+</ul>
+<h3 id="inferences-2">Inferences</h3>
+<ul>
+<li>[추정] 계속 거주 허용이 확정되면 노인복지주택에서 &quot;재가급여를 받는 입소자&quot;가 생기고, 월 이용료(민간 임대차·서비스)와 장기요양 재가급여(보험 청구·본인부담)가 한 입소자 계정 위에서 공존한다. payor 분리(민간 / 보험 / 지자체)가 core 모듈의 요구가 된다.</li>
+<li>[추정] 입소자대표회의에 관리비 부과 내역을 정기 보고해야 한다는 안은, 입소자 단위가 아니라 기간·항목별 관리비 명세와 서비스 운영 지표를 뽑는 리포트를 요구한다(community+core).</li>
+<li>[가설] 위탁운영 신고·변경이 의무가 되면 위탁운영자 변경 시점의 데이터 이관·인수인계(계약·원장·동의 기록)가 PMS의 실제 이벤트가 된다.</li>
+</ul>
+<h3 id="gaps-2">Gaps</h3>
+<ul>
+<li>[미확인] 소방시설법 시행령 별표(노유자시설 소방설비), 건축법 원문. 미러가 해당 법을 불러오지 못했다.</li>
+<li>[미확인] 2025~2026 &quot;시니어 레지던스 활성화 방안&quot; 후속 대책의 공식 발표문(국토부·복지부 원문). 검색에서 2024.7 방안만 확인.</li>
+<li>[미확인] 돌봄통합지원법 조문 번호별 내용과 시설 입소자 대상 여부.</li>
+</ul>
+<hr>
+<h2 id="q3-데이터-모델-차이-시니어-vs-호텔-vs-임대-해외-증거-포함">Q3. 데이터 모델 차이: 시니어 vs 호텔 vs 임대 (해외 증거 포함)</h2>
+<h3 id="takeaway-3">Takeaway</h3>
+<p>시니어 하우징에서 실제로 다른 것은 (1) 점유 단위가 &quot;방+사람(동반 입주자)&quot;, (2) 요금이 계약 시점 고정이 아니라 평가(케어 포인트)에 따라 시간에 따라 변함, (3) 입소금·보증금 구조와 반환 의무, (4) 입원·사망·부재 중 계약의 연속성, (5) 대리·책임자 구조다. 호텔은 박·재고·폴리오, 임대는 리스·렌트롤·연체 관리라는 골격을 제공하지만 위 5개는 제공하지 않는다.</p>
+<h3 id="cited-findings-3">Cited Findings</h3>
+<ul>
+<li>[사실] Bayview(미국 시애틀 CCRC) 2026-01-08 생성 가격표: 입주자는 기본 월 요금과 &quot;평가된 케어 비용&quot;을 낸다. 케어 비용은 제공된 시간과 서비스량에 근거하고 케어 플랜 변경에 따라 달마다 달라질 수 있으며, 요금 변경은 30일 서면 통지. 케어 포인트는 15개 영역(이동/이송, 옷 입기, 화장실, 목욕, 건강관리, 피부, 당뇨, 약, 영양, 감각, 의사소통, 인지/행동, 환경, 세탁, 일과) 종합평가에 기반하며 apartment 요금에 3포인트가 포함되고 초과분은 포인트당 $115. 같은 표에서 Second Person Fee(일부 호실 $1,675)와 &quot;기존 Bayview 입주자 vs 직접 입소&quot; 요금이 따로 있다. — 직접(PDF 본문 pdftotext) <a href="https://www.bayviewseattle.org/wp-content/uploads/2026/01/Bayview-Assisted-Living-Pricing-2026-1.pdf" rel="noopener noreferrer" target="_blank">Bayview Pricing 2026</a>, 2026-11-04 (회사 공시 자료)</li>
+<li>[제3자/검색요약] 미국 AL 가격표 사례 검색에서: 평가 포인트 기반 레벨제(예: 0점 Level 1 ~ 91-105점 Level 8, 간호사 평가에 따라), 입주 시와 입주 후 약 30일 후 재평가, 두 번째 거주자에게도 케어 레벨 요금이 평가에 따라 붙을 수 있음, 일회성 community fee. 가격 수치는 시설별이므로 인용하지 않는다. — 검색요약 <a href="https://g5-assets-cld-res.cloudinary.com/image/upload/v1691084999/g5/g5-c-5nqy744d3-ebenezer-senior-living/g5-cl-1kqnirau0h-sanctuary-of-brooklyn-center/uploads/2023_AL_Sanctuary_Brooklyn_Center_Price_Sheets_nsmnfr.pdf" rel="noopener noreferrer" target="_blank">Ebenezer 가격표</a>, <a href="https://spectrumretirement.com/enclaveatgilbert-senior-living-az-gilbert/care-community-fees/assisted-living/" rel="noopener noreferrer" target="_blank">Spectrum</a>, 2026-11-04</li>
+<li>[사실] Yardi Senior Living Suite 업그레이드 소개(검색요약): Voyager Senior Housing 7.15 릴리스 노트에 &quot;입주 예정자의 공동 거주자(co-occupant)에 대한 평가 실행&quot; 옵션, 입주 체크리스트 항목에 첨부파일, 평가 단계에서 정한 데이터에서 청구 정보를 가져옴. 2009년 보도자료는 Fixed Charge, Gradient, Tiered, Time Based, Service Level 점수제 요금 방식을 언급. — 검색요약(회사 주장) <a href="https://www.yardi.com/blog/yardi-senior-living-suite-upgrade/" rel="noopener noreferrer" target="_blank">Yardi 블로그</a>, <a href="https://www.multihousingnews.com/yardi-voyager-upgrades-senior-housing-software/" rel="noopener noreferrer" target="_blank">MultiHousingNews</a>, 2026-11-04</li>
+<li>[미확인] Yardi 공식 지원 문서에서 2인 입주 시 인원별 케어 청구 설정 방법: 못 찾음.</li>
+<li>[제3자/검색요약] NIC MAP은 최소 25실 이상 시설을 분기마다 조사하고 점유율은 한 시설 안의 모든 유닛 유형을 포함한다고 설명. 점유율 공식(점유 유닛/재고 유닛)의 공식 정의 페이지는 못 찾았다. — 검색요약 <a href="https://www.caassistedliving.org/CALA/Member_Resources/Publications/Research___Data/NIC_MAP_Quarterly_Metrics.aspx" rel="noopener noreferrer" target="_blank">CALA NIC 요약</a>, 2026-11-04</li>
+<li>[제3자/검색요약] CCRC 입주금(entrance fee) 회계: 환불 불가 부분은 계약 시점에 이연수익으로 처리하고 서비스 제공에 따라 수익 인식(time-based, cost-to-cost 등). 환불 가능 부분은 부채로 처리하고 거래가격에서 제외. 환불이 &quot;해당 유닛 재판매 대금으로 한정&quot;이라고 계약에 명시해야 상각 가능하다는 설명. ASC 606은 비상장 기준 2018-12-15 이후 시작 회계연도. 관련 코드는 ASC 954-440. 자문사 해설이며 AICPA 지침 원문은 못 열었다. — 검색요약 <a href="https://www.bakertilly.com/insights/asc-606-implementation-guidance-for-ccrcs" rel="noopener noreferrer" target="_blank">Baker Tilly</a>, <a href="https://marcumllp.com/insights/application-of-fasb-asc-606-revenue-from-contracts-with-customers" rel="noopener noreferrer" target="_blank">Marcum</a>, <a href="https://www.peasebell.com/insights/ccrc-accounting-advance-fees/" rel="noopener noreferrer" target="_blank">Peasebell</a>, <a href="https://seniorhousingnews.com/?p=11736" rel="noopener noreferrer" target="_blank">Seniorhousingnews</a>, 2026-11-04 (Plante Moran 원문 링크는 직접 열람 시 404)</li>
+<li>[미확인] AICPA 감사지침(Health Care Entities 장) 원문의 입주금 관련 조항 번호·문구.</li>
+<li>[사실] Medicaid 1915(c) 웨이버는 방·식사(room and board) 비용을 연방 재정 지원에서 제외한다. 일부 예외(단기 respite 등)는 CMS 자료에서 언급. 다수 주는 AL의 케어 서비스만 웨이버로 지불. — 검색요약(HHS DAB 결정문·CMS 자료·언론) <a href="https://www.hhs.gov/sites/default/files/static/dab/decisions/board-decisions/2011/dab2391.pdf" rel="noopener noreferrer" target="_blank">HHS DAB 2391</a>, <a href="https://advancingstates.org/sites/default/files/1915(c)%20Waiver%20-%20One%20Pager.pdf" rel="noopener noreferrer" target="_blank">AdvancingStates 1915(c)</a>, 2026-11-04</li>
+<li>[사실] 입원·자리 보전(bed hold): 텍사스 행정규정(AL 계약)은 CBA 클라이언트가 시설에 있는 경우 60일 침상 보전, 시설 입소일에는 bedhold 금액만 청구. 워싱턴 주 규정은 Medicaid 입주자 대상 최대 20일 유닛 보전과 정책 고지 의무. 일반 민간 지불자의 부재 중 청구 규칙은 검색에서 못 찾았고 계약이 정한다고만 안내. — 검색요약 <a href="https://regulations.justia.com/states/texas/title-26/part-1/chapter-276/subchapter-c/section-276-49" rel="noopener noreferrer" target="_blank">Texas 26 TAC 276.49</a>, <a href="https://lawfilesext.leg.wa.gov/Law/WACArchive/2024/htm/WAC%20388%20-110%20%20CHAPTER/WAC%20388%20-110%20-100.htm" rel="noopener noreferrer" target="_blank">WAC 388-110-100</a>, 2026-11-04</li>
+<li>[사실] 사고 보고: 주마다 다르다. 로드아일랜드는 24시간 또는 다음 영업일 마감, 앨라배마는 서면 72시간 + 일부 24시간 온라인, 매사추세츠는 특정 보고를 24시간 내 인증부서에 온라인, 미시간은 입주자 소재 불명(무단 이탈)을 보고 대상으로 열거. — 검색요약 <a href="https://HEALTH.RI.GOV/forms/reporting/AssistedLivingIncident.pdf" rel="noopener noreferrer" target="_blank">RI 보건국 양식</a>, <a href="https://www.mass.gov/info-details/incident-reporting-for-assisted-living-residences" rel="noopener noreferrer" target="_blank">Mass.gov</a>, <a href="https://www.law.cornell.edu/regulations/michigan/Mich-Admin-Code-R-400-1416a" rel="noopener noreferrer" target="_blank">Mich. Admin. Code R 400.1416a</a>, 2026-11-04</li>
+<li>[사실] Mews(회사 블로그, 2025-12-15): 전통 야간감사는 숙박 요금 게시, 폴리오 검증, 결제 대사, 영업일 마감으로 구성. Mews는 자정에 날짜가 자동 전환되고 예약 생성 시점에 요금이 게시되며 약 7일 이내 수정 가능 창을 둔다고 회사 주장. — 직접(블로그 본문, 회사 주장) <a href="https://www.mews.com/en/blog/hotel-night-audit-automation" rel="noopener noreferrer" target="_blank">Mews 블로그</a>, 2026-11-04</li>
+<li>[제3자/검색요약] Yardi Voyager 임대 측: 렌트롤, 리스 차지(Lease Charges), 입주자 원장, 연체(delinquency) 리포트 필터(물건·기간·연체 임계치·거주 상태·차지 코드). 공식 문서는 못 열었고 교육 자료·체크리스트 수준. — 검색요약(낮은 신뢰) <a href="https://sites.google.com/sequoiaequities.com/month-end-close-mec/menu/yardi-pre-close-checklist" rel="noopener noreferrer" target="_blank">Yardi pre-close checklist</a>, 2026-11-04</li>
+<li>[사실] HIPAA 164.502(g)(4): 사망한 개인의 경우 집행자·관리자 등 법적 권한자를 개인 대리인으로 취급. (g)(2): 성인의 의료 결정 법적 권한자는 그 권한 범위 내 정보에 대한 대리인. — 직접(법령 본문) <a href="https://www.law.cornell.edu/cfr/text/45/164.502" rel="noopener noreferrer" target="_blank">45 CFR 164.502</a>, 2026-11-04</li>
+</ul>
+<h3 id="inferences-3">Inferences</h3>
+<ul>
+<li>[추정] 호텔 PMS의 폴리오(청구서 귀속)와 계정 개념은 재사용 가능하다. 그러나 호텔의 재고 모델(박 단위 가용성)과 요금 모델(rate plan이 예약 시점에 고정)은 평가 기반 변동 요금(케어 레벨 포인트, 소급 조정)에 맞지 않는다. 야간감사 대신 월 정산 마감이 필요하다.</li>
+<li>[추정] 임대 PMS의 리스·렌트롤·원장·연체·오너 명세서는 core의 기반으로 재사용 가능하다. 단 &quot;Lease&quot;에 사람(동반 입주자)별 서비스 계약, 케어 서비스 요금 구성(기본료+서비스 포인트), 보증금 반환·보증보험 상태, 부재·입원 청구 규칙이 붙어야 한다.</li>
+<li>[추정] 한국 노인복지주택에서 입소비용은 본인 전액 부담이고(시행규칙 제15조의2 제4호) 특별 보호 서비스는 별도 기준·비용을 운영규정에 정해야 한다(별표 3). 장기요양 보험 청구가 입소 요금 구조의 일부가 되지는 않는다(재가급여를 입주자가 별도 이용하는 구조는 입법예고안으로 확대 가능성). 따라서 미국식 Medicaid waiver payor는 직접 대응물이 없다 — 대신 민간 계약금 / 장기요양 재가급여(다른 사업자 청구) / 지자체 지원의 구분이 필요하다.</li>
+<li>[추정] 법정 90일 규정과 입원 예외(시행규칙 제17조의2)는 &quot;입소자격자 사망·부재 시 동반 가족의 퇴소 기한&quot;이지, 입원 중 요금 청구 규칙이 아니다. 국내 입원·부재 중 월 이용료 처리는 계약·운영규정 사항으로 보인다(법령에 청구 규칙 없음). 이를 규칙 엔진으로 모델링하되 근거를 &quot;계약 조항&quot;으로 둬야 한다.</li>
+<li>[가설] &quot;입주자 1인 = 계약 N개 + 동반 입주자&quot; 구조에서 동반 배우자 1인이 입소자격자 사망 후 90일 퇴소 의무 타이머를 갖는다는 점은 호텔·임대에 없는 상태기계다(lease 상태 + 자격자 상태).</li>
+<li>[추정] 국내 사망 정산: 법령상 위약금 감면(별표 3)과 반환 시한(&quot;지체 없이&quot;)만 확인됨. 상속인·집행자에 대한 정보 열람은 HIPAA의 구조를 참고할 수 있으나 한국법 근거는 이번 조사에서 확인 못 함.</li>
+</ul>
+<h3 id="gaps-3">Gaps</h3>
+<ul>
+<li>[미확인] 점유율·census의 공식 정의(NIC MAP, Argentum, ASHA 문서). Argentum·ASHA 문서는 이번 검색에서 나오지 않았다.</li>
+<li>[미확인] Level of care 변경이 소급 청구를 만드는 규칙, 청구 주기, 반환 가능 입주금의 상각표 같은 벤더 문서(Yardi·ALIS·MatrixCare·PointClickCare 지원 문서는 열람 못 함).</li>
+<li>[미확인] 호텔 PMS 채널 매니저·하우스키핑·키 연동, 임대 PMS 유지보수(work order) 공식 문서: 이번 라운드에서 새 1차 근거를 추가하지 못함(선행 문서 B8·B11 참조).</li>
+<li>[미확인] 혼합 포트폴리오(시니어+임대+숙박)를 단일 PMS로 운영하는 사례의 공식 문서.</li>
+</ul>
+<hr>
+<h2 id="q4-운영-sla신뢰성-교대-인수인계-다운타임-비상-대비">Q4. 운영 SLA·신뢰성: 교대 인수인계, 다운타임, 비상 대비</h2>
+<h3 id="takeaway-4">Takeaway</h3>
+<p>오프라인·다운타임 요건은 한국 노인복지주택 법령에는 없고, 미국 CMS 장기요양시설 비상대비 규칙(42 CFR 483.73)과 개별 시설의 다운타임 절차 문서에서 구체적 형태를 볼 수 있다. 실제 한국 교대·인수인계 관행에 대한 공개 근거는 못 찾았다.</p>
+<h3 id="cited-findings-4">Cited Findings</h3>
+<ul>
+<li>[사실] 42 CFR 483.73(미국 장기요양시설 비상대비): (a)(1) 위험평가는 시설·지역 기반이고 all-hazards, 실종 입소자 포함. (b)(5) 입소자 정보 보존·기밀 보호·기록 가용성을 보장하는 의료기록 시스템. (c) 통신계획: 직원·계약업체·주치의·다른 시설 연락처, 입소자 상태·위치 정보 공유(45 CFR 164.510), 시설 점유·필요 정보 공유. (c)(3) 직원과 비상관리기관에 대한 주 통신수단과 대체 통신수단. (d) 훈련·테스트: 연 1회 이상 계획 검토, 연 2회 이상 훈련(예고 없는 직원 훈련 포함). (e) 비상·예비 전원은 NFPA 99·101·110. 조문 개정 이력: 81 FR 64030(2016-09-16), 81 FR 80594(2016-11-16), 84 FR 51824(2019-09-30). — 직접(법령 본문) <a href="https://www.law.cornell.edu/cfr/text/42/483.73" rel="noopener noreferrer" target="_blank">42 CFR 483.73</a>, 2026-11-04</li>
+<li>[사실] 규칙 대상: 조문이 Part 483(장기요양시설 요건)에 속한다. — 직접(경로·본문)</li>
+<li>[추정] 이 규칙은 Medicare/Medicaid 인증 장기요양시설(요양원) 대상이라 민간 Assisted Living에는 직접 적용되지 않을 가능성이 높고 AL은 주 규정을 따른다(주별 상이). 이번 조사에서 AL 주 규정 비상대비 조항은 확인 못 함.</li>
+<li>[사실] 캐나다 PEI 장기요양 정보관리시스템(PointClickCare) 다운타임 절차 문서: 2시간 미만이고 한 교대 안에 끝나는 장애는 절차를 발동하지 않고 복구 후 기록. 2시간 초과 또는 교대 경계를 넘는 장애는 당직 RN 슈퍼바이저가 주도: eMAR 백업 리포트를 인쇄해 각 하우스홀드에 배포, 종이 기록, 복구 후 직원이 직접 전산에 이전 기록(재입력 후 대조하고 임시 종이는 파기)하거나 교대 경계를 넘으면 종이 기록을 다음 교대에 인계해 계속 작성 후 영구 기록으로 종이 차트에 편철. 슈퍼바이저가 장애 시작·복구 시각을 기록. 1시간 시점에 인쇄 시작, 장애 확인은 IT(ITSS)에 연락 후 하우스홀드 전체에 fan-out 호출. 장애 원인 예: 네트워크 단절, 인터넷 장애, 정전 및 발전기 실패, PCC 계획/비계획 점검. — 직접(PDF 본문) <a href="https://src.healthpei.ca/sites/src.healthpei.ca/files/PointClickCare/Downtime_Procedures.pdf" rel="noopener noreferrer" target="_blank">PEI 다운타임 절차</a>, 2026-11-04 (발행 연도는 문서에서 확인 못 함 [미확인]; 한 지자체 시설 내부 절차이며 PointClickCare 공식 기준 아님)</li>
+<li>[제3자/검색요약] PointClickCare 외부 상태 추적 사이트가 최근 2년 간 22건 장애, 합계 44시간 4분으로 집계(제3자 집계). eMAR 백업 제품(EMAR Vault)은 로컬 오프라인 저장을 홍보(회사 주장). — 검색요약 <a href="https://pingoru.io/providers/pointclickcare/outage-history" rel="noopener noreferrer" target="_blank">Pingoru</a>, <a href="https://digacore.blogspot.com/2025/06/why-emar-vault-is-backup-solution-every.html" rel="noopener noreferrer" target="_blank">Digacore 블로그</a>, 2026-11-04</li>
+<li>[미확인] PointClickCare 공식 다운타임·비상대비 문서와 &quot;Emergency Preparedness&quot; 제품 설명. 직접 열람하지 못했다.</li>
+<li>[사실] 한국 연구(한국화재소방학회 논문지 2018, 노인복지시설 소방안전관리 실태): 요양보호사 등만 주·야간 교대하고 그 외 인력은 대체로 주간에만 근무해 야간에 근무 인원이 적다는 문제 제기. 조사 대상은 노인복지시설 일반(노인복지주택 한정이 아님). — 직접(PDF 본문) <a href="https://koreascience.kr/article/JAKO201820540196711.pdf" rel="noopener noreferrer" target="_blank">고왕열·허만성 2018</a>, 2026-11-04</li>
+<li>[미확인] 한국 노인복지주택 야간 인력 배치 실태 통계, 호출 응답 시간 통계, 인수인계 문서 양식: 공개 근거를 찾지 못했다.</li>
+</ul>
+<h3 id="inferences-4">Inferences</h3>
+<ul>
+<li>[추정] 5분 인계 타이머 같은 SLA는 위 미국 근거에서도 법정 수치가 아니다(PEI의 2시간 임계는 시설 내부 합의). 타이머의 숫자는 &quot;근거 없는 설계값&quot;임을 명시하고 설정값(운영사별)로 둬야 한다.</li>
+<li>[추정] 다운타임 절차의 공통 구조 — 임계 시간(2시간) 후 종이 전환, 책임자 지정, 사전 인쇄 백업 리포트, 교대 인수인계 시 종이 이관, 복구 후 재입력·대조 — 는 PMS 설계에 (a) 읽기 전용 오프라인 스냅샷(입주자 연락처·알레르기·비상연락·진행 중 요청), (b) 재입력 시 원시 발생 시각과 입력 시각을 분리해 저장, (c) 장애 구간 표시를 요구한다.</li>
+<li>[가설] 호출(safety) 경로는 PMS 본체 장애와 독립적으로 동작해야 한다(법령은 요구하지 않음). 이는 설계 원칙이지 규정 근거가 없다.</li>
+</ul>
+<h3 id="gaps-4">Gaps</h3>
+<ul>
+<li>[미확인] 한국 실버타운 야간 교대·인수인계 실제 관행(운영사 직원 증언·채용공고 외 근거 없음).</li>
+<li>[미확인] 미국 AL 주 규정의 비상대비·백업 요구, 주 심사(survey) 대비 문서 목록.</li>
+<li>[미확인] 응답시간 보고 요구 규정(미국·한국 모두).</li>
+</ul>
+<hr>
+<h2 id="q5-국내-시니어-주거-운영-실태-중-아키텍처에-영향을-주는-사실">Q5. 국내 시니어 주거 운영 실태 중 아키텍처에 영향을 주는 사실</h2>
+<h3 id="takeaway-5">Takeaway</h3>
+<p>공개 운영사 자료에서 &quot;방 호출 → 프런트 전화&quot; 구조를 직접 확인한 근거는 이번에 찾지 못했다. 확인된 것은 운영사 보도·채용공고 수준의 24시간 간호·간호사 근무형태 차이뿐이다.</p>
+<h3 id="cited-findings-5">Cited Findings</h3>
+<ul>
+<li>[제3자/검색요약] 삼성노블카운티(삼성노블라이프 운영) 보도(헤럴드경제 2026-06-20): 타워동에 24시간 간호 인력이 대기하고, 단지 내 5개 과 의원에 의사·간호사가 상주하며 큰 병원 이송 시 간호사가 119에 동행한다고 보도. 비상 호출 장치·응답 시간은 보도에 없음. — 검색요약 <a href="https://www.heraldk.com/article/2026062013480077891" rel="noopener noreferrer" target="_blank">헤럴드경제</a>, 2026-11-04</li>
+<li>[제3자/검색요약] KB골든라이프케어 평창동 실버타운 안내(영문 보도 2023-11): 24시간 긴급 대응 서비스와 호실 내 건강 모니터링 센서. — 검색요약 <a href="https://www.asiae.co.kr/en/article/2023110811015339424" rel="noopener noreferrer" target="_blank">아시아경제</a></li>
+<li>[제3자/검색요약] 광주 비엔날레 실버타운 간호사 채용공고: 주 5일 09~18시, 주말·휴일 당직. 야간 상시 간호 여부는 공고만으로 확인 불가. — 검색요약 <a href="https://www.theteams.kr/recruit/wanted/3835696" rel="noopener noreferrer" target="_blank">theteams</a></li>
+<li>[제3자/검색요약] 한 분양 단지 기사가 &quot;세대 내 응급 호출 버튼과 동작 감지 센서, 프런트·구급대 연계 시스템&quot;을 소개(홍보성). — 검색요약 <a href="https://www.segye.com/newsView/20250410517761" rel="noopener noreferrer" target="_blank">세계일보</a></li>
+<li>[사실] 응급안전안심서비스(독거노인 재가 대상 복지부 정책)는 응급 호출·화재·활동 미감지 시 119와 지역 응급관리요원에게 정보가 전달되는 구조라고 설명된다. 노인복지주택 관리실 연계와는 별개 제도. — 검색요약 <a href="https://www.heraldk.com/article/2025101621112528067" rel="noopener noreferrer" target="_blank">헤럴드경제 2025-10</a></li>
+<li>[제3자/검색요약] 한국소비자원 조사(2016 보도): 임대형 실버타운 17곳 중 14곳(82.4%)이 입주 전 위약금 면제·감면 규정이 없었고 8곳은 입주 후에도 없음. 2012~2015 실버타운 민원 81건 중 27건(33.3%)이 보증금 반환 거부·지연. 오래된 자료(2016)이므로 현재와 차이 가능. — 검색요약 <a href="https://www.khan.co.kr/article/201603161200011" rel="noopener noreferrer" target="_blank">시사저널/경향</a>, 2026-11-04</li>
+<li>[제3자/검색요약] 경기 용인 노인복지주택에서 법인 재정난·보증보험 미가입으로 입주자 수백 명이 보증금을 못 돌려받는 분쟁이라는 언론 설명. 정확한 사건 출처 날짜는 확인 못 함. — 검색요약 <a href="https://www.finanandinvest.kr/2026/02/blog-post_10.html" rel="noopener noreferrer" target="_blank">finanandinvest 블로그</a></li>
+</ul>
+<h3 id="inferences-5">Inferences</h3>
+<ul>
+<li>[추정] 운영사마다 24시간 간호·프런트 구성이 달라 safety 허브의 에스컬레이션 대상(프런트 → 간호 → 119)은 시설별 구성 가능해야 한다. 법정 기본값이 없다.</li>
+<li>[추정] 보증금 반환 분쟁과 위약금 감면 규정 부재는 core에서 보증보험 상태·보증금 계정·반환 타임라인을 1급 객체로 둘 근거가 된다(법령 상 설치자 의무이기도 함: 별표 2 2.다).</li>
+</ul>
+<h3 id="gaps-5">Gaps</h3>
+<ul>
+<li>[미확인] 방 호출이 프런트 전화로 연결되는 구조(PBX/인터폰/전용 콘솔) — 운영사 안내문·기사에서 확인하지 못했다.</li>
+<li>[미확인] 국내 운영사의 야간 인력 인원수·직종.</li>
+</ul>
+<hr>
+<h2 id="q6-보안준수-설계-hipaa-최소필요-vs-한국-짧게">Q6. 보안·준수 설계: HIPAA 최소필요 vs 한국 (짧게)</h2>
+<h3 id="cited-findings-6">Cited Findings</h3>
+<ul>
+<li>[사실] HIPAA 45 CFR 164.502(b): 사용·공개·요청 시 최소필요 한도로 제한하되 치료 목적의 의료제공자 대상 공개, 본인 대상 공개, 승인(authorization) 기반 공개, 법이 요구하는 공개 등은 적용 제외. — 직접(법령 본문) <a href="https://www.law.cornell.edu/cfr/text/45/164.502" rel="noopener noreferrer" target="_blank">45 CFR 164.502</a>, 2026-11-04</li>
+<li>[미확인] 개인정보 보호법의 최소수집 원칙(제16조)·민감정보(제23조) 원문은 이번에 열람하지 않았다.</li>
+</ul>
+<h3 id="inferences-6">Inferences</h3>
+<ul>
+<li>[추정] 구조 차이 가설: HIPAA는 &quot;치료 목적 공개는 최소필요 면제&quot;이지만 한국 개인정보 보호법은 건강 정보를 민감정보로 보고 별도 동의가 기본이라 알고 있다. 이 부분은 법 원문을 열람해야 확정 가능. 가족 동의 모듈(family)은 &quot;치료 예외&quot; 가정을 두지 말고 동의 범위별 열람으로 설계하는 편이 안전하다 — 이는 설계 판단.</li>
+</ul>
+<hr>
+<h2 id="요약-표-설계-요구-비교">요약 표: 설계 요구 비교</h2>
+<p>범례: ○ 그대로/거의 재사용, △ 부분 재사용, × 맞지 않음/새로 필요. 근거 번호는 위 Q 섹션.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>설계 요구</th>
+<th>호텔 PMS</th>
+<th>임대 PMS</th>
+<th>시니어 하우징</th>
+<th>근거</th>
+<th>Evenstay 모듈 후보</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>점유 단위(방 vs 사람, 동반 입주자)</td>
+<td>△ 박·재고 단위, 투숙객 1:N</td>
+<td>△ 리스 1:1 호실</td>
+<td>호실 + 입소자격자 + 동반 배우자·자녀 구성(법 §33조의2). 2인 입주 시 인원별 평가·요금</td>
+<td>법 §33조의2 ①, 시행규칙 제15조 ⑥, Yardi co-occupant 평가(회사 주장), Bayview Second Person Fee</td>
+<td>core, transitions</td>
+</tr>
+<tr>
+<td>입소 자격·평가</td>
+<td>× 해당 없음</td>
+<td>△ 입주 심사(소득·신용)</td>
+<td>60세 이상·독립생활 가능 여부(시행규칙 제14조), 입주 시 평가 후 재평가</td>
+<td>시행규칙 제14조, 미국 가격표 사례(입주 후 약 30일 재평가)</td>
+<td>transitions, core</td>
+</tr>
+<tr>
+<td>케어 레벨/서비스 → 요금 변동</td>
+<td>× rate plan은 예약 시점 고정</td>
+<td>△ 고정 월세 + 부가 차지</td>
+<td>평가 포인트·시간 기반 변동 청구, 변경 통지</td>
+<td>Bayview(포인트당 $115, 월별 변동, 30일 통지)</td>
+<td>core, transitions</td>
+</tr>
+<tr>
+<td>입소보증금/입주금 상각·반환</td>
+<td>△ 보증 승인(deposit/hold)</td>
+<td>○ 보증금 원장</td>
+<td>입소보증금 반환 의무 + 보증보험 상태, 지체 없는 반환. 미국 CCRC는 입주금 상각·부채 처리</td>
+<td>별표 2 2.다, 별표 3 4.나, ASC 606 해설(검색요약)</td>
+<td>core</td>
+</tr>
+<tr>
+<td>입원·부재 중 계약 연속성</td>
+<td>△ no-show/조기퇴실</td>
+<td>△ 공실 시에도 임대료 계속</td>
+<td>동반 가족 90일 퇴소 타이머·입원 예외(법 §33조의2 ⑦, 시행규칙 제17조의2). 입원 중 요금은 계약 사항</td>
+<td>법 §33조의2, 시행규칙 제17조의2, TX/WA bed hold</td>
+<td>core, transitions</td>
+</tr>
+<tr>
+<td>사망·상속 정산</td>
+<td>×</td>
+<td>△ 임차인 사망 처리</td>
+<td>위약금 감면(별표 3), 반환 대상(배우자·부양의무자), 동반 가족 퇴소 기한, 대리인 구조</td>
+<td>별표 3 3.나 ⑾·4.나, 법 §33조의2 ⑦, HIPAA 164.502(g)(4)</td>
+<td>core, family</td>
+</tr>
+<tr>
+<td>책임자·대리인(신원인수인/부양의무자)</td>
+<td>× 예약자=투숙객</td>
+<td>△ 보증인·공동 임차인</td>
+<td>신원인수인 권리·의무(운영규정 필수), 부양의무자의 대리 계약</td>
+<td>별표 3 3.나 ⑵, 시행규칙 제15조 ⑦</td>
+<td>family, core</td>
+</tr>
+<tr>
+<td>주요 서비스 계약(식사·청소·세탁) 청구</td>
+<td>○ 폴리오 차지</td>
+<td>△ 부가서비스 차지</td>
+<td>서비스 내용·비용을 운영규정·계약에 명시, 비용 변경 시 입소자 의견수렴</td>
+<td>별표 3 3.나 ⑷⑶</td>
+<td>core, requests</td>
+</tr>
+<tr>
+<td>호출·경보 설비</td>
+<td>× 객실 전화/프런트</td>
+<td>△ 긴급 정비 요청</td>
+<td>경보장치 설치 의무(거실·화장실·욕실·복도 등). 수신자·응답시간 규정 없음</td>
+<td>별표 2 3·4</td>
+<td>safety</td>
+</tr>
+<tr>
+<td>24시간 근무·응답시간·기록 의무</td>
+<td>○ 프런트 24시간(운영 관행)</td>
+<td>△ 비상 연락 정책</td>
+<td>법령에 없음(키워드 0건). 사회복지사 순회·문안·긴급사태 대처 서비스 항목만 규정</td>
+<td>별표 2·3 키워드 검색, 별표 3 8.마</td>
+<td>safety (자체 SLA)</td>
+</tr>
+<tr>
+<td>직원 배치</td>
+<td>△ 부서별</td>
+<td>△ 현장 관리인</td>
+<td>사회복지사 1명, 관리인 1명 등 최소 인원(열 판독 일부 [추정]); 근로계약 직접 체결 요건</td>
+<td>별표 2 6</td>
+<td>requests, community</td>
+</tr>
+<tr>
+<td>교대 인수인계</td>
+<td>○ 야간감사/인수인계</td>
+<td>△ 당직</td>
+<td>사람 건강·사건 상태 인계. 공개 근거 부족</td>
+<td>PEI 절차(교대 경계 종이 인계). 한국 관행 [미확인]</td>
+<td>safety</td>
+</tr>
+<tr>
+<td>다운타임·오프라인</td>
+<td>△ 오프라인 패킷</td>
+<td>△</td>
+<td>비상대비 계획·기록 가용성·대체 통신수단·훈련(미국 CMS, LTC 대상). 한국 규정 없음</td>
+<td>42 CFR 483.73, PEI 절차</td>
+<td>safety, core</td>
+</tr>
+<tr>
+<td>사고 보고·감독 대비</td>
+<td>×</td>
+<td>×</td>
+<td>미국은 주별 24~72시간 보고. 한국은 운영일지·입소자 관리카드 등 장부 비치 의무</td>
+<td>별표 3 6, RI/AL/MA 사고 보고 요건</td>
+<td>safety, core</td>
+</tr>
+<tr>
+<td>회계 분리·오너 명세서</td>
+<td>△ 체인 코드 분석</td>
+<td>○ 오너 명세서</td>
+<td>시설 회계는 법인회계·다른 사업과 분리, 보조금 별도 계정</td>
+<td>별표 3 5, 선행 문서 B14</td>
+<td>core</td>
+</tr>
+<tr>
+<td>위탁운영·운영자 변경</td>
+<td>△ 체인/프랜차이즈</td>
+<td>△ 수탁 관리</td>
+<td>설치자(임대) vs 위탁운영자 분리, 2025.5 시행령 개정, 2026-10 입법예고(신고 의무)</td>
+<td>법 §33조의2 ⑥, 시행령 §20조의3, 입법예고 보도</td>
+<td>core, community</td>
+</tr>
+<tr>
+<td>계속 거주 vs 전환(건강 악화)</td>
+<td>×</td>
+<td>×</td>
+<td>현행 독립생활 요건. 2026-10 입법예고: 재가서비스 받으며 계속 거주 허용 안(미확정). 2024 방안도 요양 필요 시 입주 유지 기준 마련 언급</td>
+<td>시행규칙 제14조, 입법예고 보도, 2024.7.23. 방안</td>
+<td>transitions</td>
+</tr>
+<tr>
+<td>입소자 참여·의견수렴</td>
+<td>×</td>
+<td>△ 입주민 공지</td>
+<td>운영위원회/운영간담회, 비용 변경 시 의견수렴, 입소자대표회의 신설안</td>
+<td>별표 3 3.나 ⑶⑽·9, 입법예고 보도</td>
+<td>community</td>
+</tr>
+<tr>
+<td>가족·제3자 열람</td>
+<td>×</td>
+<td>×</td>
+<td>가족 동의 범위별 열람. HIPAA 개인 대리인 개념 참고</td>
+<td>HIPAA 164.502(g), (b)</td>
+<td>family</td>
+</tr>
+<tr>
+<td>Payor 구분(민간/보험/공공)</td>
+<td>×</td>
+<td>△ 정부 보조 임대(바우처)</td>
+<td>한국은 입소비용 본인 전액(노인복지주택) + 재가급여는 별도 사업자. 미국 Medicaid는 room&amp;board 제외</td>
+<td>시행규칙 제15조의2, 1915(c) 자료</td>
+<td>core</td>
+</tr>
+<tr>
+<td>외부 의료기관 연계</td>
+<td>×</td>
+<td>×</td>
+<td>설치신고 사업계획서에 의료기관 연계 사항 포함</td>
+<td>시행규칙 제16조 ①4호, 별표 3 3.나 ⑹</td>
+<td>transitions, safety</td>
+</tr>
+<tr>
+<td>AI 비서</td>
+<td>△ 컨시어지 챗봇</td>
+<td>△ 입주 문의 응대(선행 문서)</td>
+<td>건강·돌봄 정보 연결 시 민감정보 경계, 사람 인계 지점</td>
+<td>선행 문서 B17~B19(회사 주장)</td>
+<td>assistant</td>
+</tr>
+</tbody></table></div>
+<p>참고: &quot;호텔 PMS&quot;·&quot;임대 PMS&quot; 열은 선행 문서의 제품 근거와 Mews 블로그 정도의 근거이고, 위 표의 ○△×는 내 판단 [추정]이다.</p>
+<hr>
+<h2 id="못-찾은-것">못 찾은 것</h2>
+<ol>
+<li>law.go.kr 원본 대조. 이번 조문·별표는 nepla.ai 미러 기준이다.</li>
+<li>노인복지주택 별표 2 직원 배치표의 정확한 직종 열(앞쪽 1명).</li>
+<li>편의증진법 시행규칙 별표 1 본문(비상벨·점멸 비상경보등). 주거약자법 시행규칙 별표(비상연락 장치). 소방시설법 시행령 별표(노유자시설 설비). 건축법 시행령 원문.</li>
+<li>고령자복지주택·공공실버주택의 공식 시설기준(응급호출, 생활지원사 배치).</li>
+<li>2025~2026 시니어 레지던스 후속 정책의 정부 원문. 2026-10 입법예고 시행규칙 개정안 원문과 확정 여부·시행일. 법률 제22020호(2026.09.29.) 개정 내용.</li>
+<li>돌봄통합지원법 조문 원문과 노인복지주택 입소자 적용 방식.</li>
+<li>한국 실버타운의 방 호출→프런트 연결 구조, 야간 인원 수, 교대 인수인계 실무, 응답시간 지표.</li>
+<li>Argentum·ASHA·NIC 공식 정의 문서(census, occupancy 공식), AICPA 감사지침 원문, FASB ASC 606 원문. 현재는 자문사 해설(검색요약)뿐이다.</li>
+<li>Yardi·ALIS·MatrixCare·PointClickCare의 공식 문서(2인 입주 청구 설정, 케어 레벨 소급, 다운타임/오프라인 eMAR). PointClickCare 오프라인 기능 공식 설명.</li>
+<li>미국 AL 주 규정의 비상대비·백업·사고 보고 전체 비교. 사고 보고는 6개 주 사례 요약만 있음.</li>
+<li>개인정보 보호법 원문 기준 HIPAA와의 구조 차이(제16조·제23조·제26조 등)</li>
+<li>호텔 PMS(Apaleo·OPERA)의 키·채널 매니저·하우스키핑 공식 문서, Yardi·AppFolio 렌트롤·연체의 공식 문서. 혼합 포트폴리오 단일 PMS 운영 사례.</li>
+<li>입원·부재 중 월 이용료 처리의 국내 표준 계약 조항(2024 방안의 표준계약서 상세 포함).</li>
+</ol>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1013" data-title="보증금"><p>수익이 아니라 맡긴 돈. 청구 원장과 나눈 별도 원장</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보증금 / 회원: 맡기신 보증금</dd><dt>영문·코드 이름</dt><dd><code>Deposit</code>, <code>DepositEntry</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1014" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1015" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1016" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

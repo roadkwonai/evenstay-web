@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>기회 솔루션 트리 (OST) | Evenstay 문서</title>
+<meta name="description" content="기회 솔루션 트리 (OST). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>기회 솔루션 트리 (OST)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#목표-결과-하나">목표 결과 (하나)</a></li><li class="lv2"><a href="#기회-고객-관점와-점수">기회 (고객 관점)와 점수</a></li><li class="lv2"><a href="#트리">트리</a></li><li class="lv2"><a href="#실험-상위-해결책">실험 (상위 해결책)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1072" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-1073" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-1074" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-1075" data-tip="사업장 자산을 가진 쪽">소유주</button></li></ul></section></aside>
+  <article class="doc"><h2 id="목표-결과-하나">목표 결과 (하나)</h2>
+<p><strong>입주자 한 명이 머무는 동안(입주 전 → 거주 → 전환·퇴거) 요청, 건강 변화, 돈과 관련된 일이 누락 없이 처리된다.</strong></p>
+<ul>
+<li>지표 후보: 기한 내 처리율(요청, 이상 신호, 정산), 직원 1인당 담당 입주자 수</li>
+<li>이 목표를 고른 이유<ul>
+<li>시니어 효용(놓치지 않음)과 운영사 수익성(직원 효율, P-012)을 하나의 지표로 묶을 수 있다.</li>
+<li>공고의 &quot;운영 효율화, 고객 경험 개선, 운영 데이터 축적&quot;(S2)과도 그대로 겹친다.</li>
+</ul>
+</li>
+<li>수치 목표는 정하지 않았다. 기준선이 없기 때문이다.</li>
+</ul>
+<h2 id="기회-고객-관점와-점수">기회 (고객 관점)와 점수</h2>
+<p>기회 점수 = 중요도 × (1 − 현재 만족도). <strong>두 값 모두 근거 문제의 빈도·심각도와 현재 대안을 보고 내가 매긴 [추정]이다.</strong> 인터뷰로 보정해야 한다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>기회</th>
+<th>과업</th>
+<th>근거 문제</th>
+<th>중요도</th>
+<th>만족도</th>
+<th>점수</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>O3</td>
+<td>&quot;몸이 변하거나 이상이 생겨도 누군가 알아채고 이어서 챙겨 주면 좋겠다&quot;</td>
+<td>J1, J4, J5</td>
+<td>P-003, P-010, P-019, P-020, P-025, P-031</td>
+<td>0.9</td>
+<td>0.2</td>
+<td><strong>0.72</strong></td>
+</tr>
+<tr>
+<td>O6</td>
+<td>&quot;소유주가 다른 사이트를 한 기준으로 운영하고 증명하고 싶다&quot;</td>
+<td>J6</td>
+<td>P-012, P-017, P-018</td>
+<td>0.8</td>
+<td>0.2</td>
+<td><strong>0.64</strong></td>
+</tr>
+<tr>
+<td>O4</td>
+<td>&quot;멀리서도 부모 상황을 한곳에서 보고 함께 결정하고 싶다&quot;</td>
+<td>J4</td>
+<td>P-023, P-024, P-033, P-041, P-042</td>
+<td>0.7</td>
+<td>0.2</td>
+<td>0.56</td>
+</tr>
+<tr>
+<td>O5</td>
+<td>&quot;계약이 바뀌거나 떠날 때 돈과 정보가 깔끔하게 정리되면 좋겠다&quot;</td>
+<td>J7</td>
+<td>P-002, P-009, P-014, P-015, P-021</td>
+<td>0.8</td>
+<td>0.3</td>
+<td>0.56</td>
+</tr>
+<tr>
+<td>O1</td>
+<td>&quot;다음 거처를 비교하고 기다리는 동안 상황을 알고 싶다&quot;</td>
+<td>J3</td>
+<td>P-004, P-005, P-007, P-011, P-016</td>
+<td>0.7</td>
+<td>0.3</td>
+<td>0.49</td>
+</tr>
+<tr>
+<td>O2</td>
+<td>&quot;식사·서비스 이용과 청구가 맞고, 요청을 어디로든 할 수 있으면 좋겠다&quot;</td>
+<td>J2, J5</td>
+<td>P-001, P-006, P-008, P-013, P-037</td>
+<td>0.8</td>
+<td>0.4</td>
+<td>0.48</td>
+</tr>
+<tr>
+<td>O7</td>
+<td>&quot;판단이 흐려져도 내 돈과 계약이 내 뜻대로, 안전하게 다뤄지면 좋겠다&quot; (2026-11-02 축 8 추가)</td>
+<td>J7, J8</td>
+<td>P-039, P-042, P-044~P-049</td>
+<td>0.8</td>
+<td>0.2</td>
+<td>0.64</td>
+</tr>
+</tbody></table></div>
+<p>우선 기회는 <strong>O3, O6, O4/O5</strong>다. 축 8로 추가한 O7(0.64)은 O6과 같은 점수다. O7의 해결책은 <code>../outputs/idea-longlist.md</code>의 I-29~I-36에 있다.</p>
+<ul>
+<li>O2는 점수가 낮지만 모든 기회의 바탕인 계약·청구 데이터를 다룬다. 그래서 O6의 해결책(코어)에 포함했다.</li>
+</ul>
+<h2 id="트리">트리</h2>
+<pre><code>목표: 입주자 생애주기 동안 요청·변화·정산이 누락 없이 처리된다
+├─ O3 몸이 변하거나 이상이 생겨도 이어서 챙겨 주기 (0.72)
+│   ├─ I-12 이상 신호 통합 허브 (센서·호출벨·출입·안부전화 이벤트 → 규칙 → 직원 알림·에스컬레이션·기록)
+│   ├─ I-13 케어 단계 전환 관리 (평가 기록 → 단계 변경 → 요금·보호자 통지 이력)
+│   ├─ I-14 외부 돌봄 연계 타임라인 (방문요양·통합돌봄 일정을 입주자 이력에 연결, 중복·누락 경고)
+│   ├─ I-15 퇴원 복귀 체크리스트
+│   └─ I-16 복약·진료 일정 공유 (기록·알림만)
+├─ O6 여러 사이트를 한 기준으로 운영·증명 (0.64)
+│   ├─ I-24 Multi-site·Multi-owner PMS 코어 (운영사 → 소유주 → 사이트 → 동 → 호실, 자산 유형 확장)
+│   ├─ I-25 소유주 리포트 자동 생성
+│   ├─ I-26 위탁 운영 규제 기록 (운영사 변경 이력, 신고 자료)
+│   └─ I-07 월 청구·수납 원장 (O2와 공유)
+├─ O4 멀리서도 한곳에서 보고 함께 결정 (0.56)
+│   ├─ I-18 동의 기반 보호자 포털 (입주자가 항목별 열람 허용, 보호자별 범위)
+│   ├─ I-19 주간 안부 리포트 (자동 생성 + 직원 검수)
+│   └─ I-20 형제별 비용 분담
+├─ O5 계약 변경·퇴거 때 돈과 정보 정리 (0.56)
+│   ├─ I-21 계약 상태 전이와 변경 이력 (승계, 평형 변경, 해지, 보증금 정산·몰취)
+│   ├─ I-22 입주자 이관 패키지 (동의·마스킹 내보내기 + 인수인계 감사 로그)
+│   └─ I-23 보증금 보호 현황 공개
+├─ O1 다음 거처 비교와 대기 (0.49)
+│   ├─ I-01 입주 상담 CRM과 대기자 관리
+│   ├─ I-02 총비용 시뮬레이터
+│   ├─ I-27 입주 문의 AI 에이전트 (공실·요금 API 호출, 사람 인계)
+│   └─ I-03, I-04
+└─ O2 이용과 청구가 맞고 어디로든 요청 (0.48)
+    ├─ I-05 통합 요청 큐
+    ├─ I-06 식사 이용 기록 → 청구 정산
+    ├─ I-11 전화·음성 요청 AI 접수
+    └─ I-08, I-09, I-10</code></pre>
+<h2 id="실험-상위-해결책">실험 (상위 해결책)</h2>
+<p>포트폴리오 단계라서 &quot;실제 고객 반응&quot; 실험은 제한적이다. 인터뷰와 데모 피드백 위주로 잡았다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>해결책</th>
+<th>가설</th>
+<th>방법</th>
+<th>지표</th>
+<th>성공 기준</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I-12</td>
+<td>야간 직원은 이상 신호가 흩어져 있어 늦게 대응한다</td>
+<td>시설 종사자 인터뷰 1~2명 + 하루 이벤트 흐름 재구성</td>
+<td>인터뷰에서 확인된 알림 경로 수, 놓친 사례</td>
+<td>경로가 2개 이상이고 누락 사례가 1건 이상 나오면 유지</td>
+</tr>
+<tr>
+<td>I-13</td>
+<td>입주자·보호자는 단계 전환 규칙을 미리 알고 싶어 한다</td>
+<td>보호자·시니어 인터뷰 3명 (<code>mom-test</code>: 지난번 건강 변화 때 무엇을 했나)</td>
+<td>전환 시점의 정보 부족을 말한 사람 수</td>
+<td>3명 중 2명 이상이면 유지</td>
+</tr>
+<tr>
+<td>I-18</td>
+<td>보호자는 한곳에서 보기를 원하지만 부모는 열람 범위를 정하고 싶어 한다</td>
+<td>부모·자녀 쌍 인터뷰 2쌍</td>
+<td>열람을 원하는 항목과 거부하는 항목</td>
+<td>항목별 차이가 있으면 동의 모델 유지</td>
+</tr>
+<tr>
+<td>I-24, I-21</td>
+<td>운영사는 사이트마다 소유주별 정산·리포트가 필요하다</td>
+<td>해외 임대 PMS owner statement 문서 조사, [지원 회사] 면접 질문 준비</td>
+<td>확인된 리포트 항목</td>
+<td>항목 목록이 나오면 MVP 범위에 반영</td>
+</tr>
+</tbody></table></div>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1072" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1073" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1074" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1075" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

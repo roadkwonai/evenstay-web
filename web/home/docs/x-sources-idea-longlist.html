@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>아이디어 롱리스트 | Evenstay 문서</title>
+<meta name="description" content="아이디어 롱리스트. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>아이디어 롱리스트</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#관점별-상위-아이디어-brainstorm-ideas-new-우선순위-기준-핵심-가치-빠른-검증-차별화">관점별 상위 아이디어 (brainstorm-ideas-new 우선순위 기준: 핵심 가치, 빠른 검증, 차별화)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1067" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-1068" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-1069" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-1070" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-1071" data-tip="수익이 아니라 맡긴 돈.">보증금</button></li></ul></section></aside>
+  <article class="doc"><p>관점: <strong>PM</strong>(시장·가치·차별화), <strong>디자인</strong>(경험·온보딩·참여), <strong>엔지니어</strong>(연동·플랫폼·데이터)
+형태: B2B(운영사·직원용), B2C(입주자·보호자용), B2B2C(운영사가 제공하고 입주자·보호자가 사용)</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>아이디어</th>
+<th>한 줄 설명</th>
+<th>기회</th>
+<th>페르소나</th>
+<th>관련 문제</th>
+<th>관점</th>
+<th>형태</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I-01</td>
+<td>입주 상담 CRM·대기자 관리</td>
+<td>문의 → 투어 → 대기 → 심사 → 계약 파이프라인. 대기자의 건강·희망 조건 변화를 갱신</td>
+<td>O1</td>
+<td>U2, U5</td>
+<td>P-004, P-007</td>
+<td>PM</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-02</td>
+<td>총비용 시뮬레이터</td>
+<td>보증금과 월비 교환, 의무식, 공과금, 선납을 넣어 시설 간 비교 견적</td>
+<td>O1</td>
+<td>U2, U3</td>
+<td>P-005, P-011</td>
+<td>디자인</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-03</td>
+<td>입주 적합성 자가 점검</td>
+<td>실버타운과 요양시설 차이, 내 상황에 맞는 유형 안내</td>
+<td>O1</td>
+<td>U2</td>
+<td>P-016, P-036</td>
+<td>디자인</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-04</td>
+<td>체험 입주 예약</td>
+<td>숙박 자산을 활용한 단기 체험 입주 예약</td>
+<td>O1</td>
+<td>U2, U5</td>
+<td>P-016</td>
+<td>PM</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-05</td>
+<td>통합 요청 큐</td>
+<td>전화·프런트·앱·보호자 요청을 하나의 티켓으로. 배정, 기한, 이력</td>
+<td>O2</td>
+<td>U4, U1</td>
+<td>P-013, P-037</td>
+<td>엔지니어</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-06</td>
+<td>식사 이용 → 청구 정산</td>
+<td>의무식·결식 감면 규칙으로 식사 기록을 월 청구에 자동 반영</td>
+<td>O2</td>
+<td>U4, U5</td>
+<td>P-006</td>
+<td>엔지니어</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-07</td>
+<td>월 청구·수납 원장</td>
+<td>생활비, 식비, 서비스, 공과금, 선납, 감면을 원장으로 관리. 입주자·보호자 명세서</td>
+<td>O2, O6</td>
+<td>U5, U3</td>
+<td>P-006, P-008</td>
+<td>엔지니어</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-08</td>
+<td>서비스 이행 현황 공개</td>
+<td>약속한 서비스(식당, 의원 운영)의 실제 운영 현황을 입주자에게 공개</td>
+<td>O2</td>
+<td>U1, U3</td>
+<td>P-001, P-008</td>
+<td>PM</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-09</td>
+<td>시설·프로그램 예약</td>
+<td>정원, 대기, 노쇼 관리</td>
+<td>O2</td>
+<td>U1, U4</td>
+<td>(근거 약함)</td>
+<td>디자인</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-10</td>
+<td>입소자대표회의 지원</td>
+<td>구성 동의, 안건, 의결, 민원 집계</td>
+<td>O2</td>
+<td>U1, U5</td>
+<td>P-013</td>
+<td>PM</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-11</td>
+<td>전화·음성 요청 AI 접수</td>
+<td>전화로 말하면 요청 티켓이 생성되고 직원에게 배정</td>
+<td>O2</td>
+<td>U1, U4</td>
+<td>P-037</td>
+<td>엔지니어</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-12</td>
+<td>이상 신호 통합 허브</td>
+<td>센서, 호출벨, 출입, 안부전화 이벤트를 수집해 규칙으로 직원에게 알리고 에스컬레이션·기록</td>
+<td>O3</td>
+<td>U4, U3, U1</td>
+<td>P-010, P-025</td>
+<td>엔지니어</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-13</td>
+<td>케어 단계 전환 관리</td>
+<td>평가 기록 → 단계 변경 → 요금 변경 → 보호자 통지까지 이력 관리</td>
+<td>O3</td>
+<td>U1, U3, U5</td>
+<td>P-003, P-031</td>
+<td>PM</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-14</td>
+<td>외부 돌봄 연계 타임라인</td>
+<td>방문요양·통합돌봄 일정과 담당 기관을 입주자 이력에 연결, 중복·누락 경고</td>
+<td>O3</td>
+<td>U4</td>
+<td>P-019, P-022</td>
+<td>엔지니어</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-15</td>
+<td>퇴원 복귀 체크리스트</td>
+<td>입원 → 퇴원 → 복귀 상태 전이와 케어 계획 갱신</td>
+<td>O3</td>
+<td>U4, U3</td>
+<td>P-020</td>
+<td>디자인</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-16</td>
+<td>복약·진료 일정 공유</td>
+<td>복약·진료 기록과 알림을 본인·보호자·직원이 공유 (의료 판단 없음)</td>
+<td>O3</td>
+<td>U1, U3</td>
+<td>P-024, P-027</td>
+<td>디자인</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-17</td>
+<td>병원 동행·셔틀 배차</td>
+<td>동행 요청과 셔틀 일정을 배차</td>
+<td>O3</td>
+<td>U1, U4</td>
+<td>P-033</td>
+<td>PM</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-18</td>
+<td>동의 기반 보호자 포털</td>
+<td>입주자가 항목별(청구, 일정, 건강, 이벤트) 열람을 허용하고 보호자마다 범위를 다르게</td>
+<td>O4</td>
+<td>U3, U1</td>
+<td>P-023, P-041, P-042</td>
+<td>엔지니어</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-19</td>
+<td>주간 안부 리포트</td>
+<td>식사 참여, 프로그램, 요청, 특이사항을 자동 요약하고 직원 검수 후 보호자에게 발송</td>
+<td>O4</td>
+<td>U3, U4</td>
+<td>P-023</td>
+<td>디자인</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-20</td>
+<td>형제별 비용 분담</td>
+<td>청구를 보호자별로 나눠 결제</td>
+<td>O4</td>
+<td>U3</td>
+<td>P-042</td>
+<td>PM</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-21</td>
+<td>계약 상태 전이·변경 이력</td>
+<td>승계(사별), 평형 변경, 해지, 보증금 정산·몰취를 상태 전이로 관리</td>
+<td>O5</td>
+<td>U5, U1</td>
+<td>P-002, P-014, P-015</td>
+<td>엔지니어</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-22</td>
+<td>입주자 이관 패키지</td>
+<td>퇴거·전원·운영사 변경 때 동의·마스킹된 표준 데이터 내보내기와 인수인계 감사 로그</td>
+<td>O5</td>
+<td>U5, U4</td>
+<td>P-009, P-021</td>
+<td>엔지니어</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-23</td>
+<td>보증금 보호 현황 공개</td>
+<td>보증보험·전세권 상태를 입주자가 열람</td>
+<td>O5</td>
+<td>U1, U3</td>
+<td>P-002</td>
+<td>PM</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-24</td>
+<td>Multi-site·Multi-owner PMS 코어</td>
+<td>운영사 → 소유주 → 사이트 → 동 → 호실, 자산 유형(시니어·임대·숙박) 확장, 범위 기반 권한</td>
+<td>O6</td>
+<td>U5</td>
+<td>P-017, P-018</td>
+<td>엔지니어</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-25</td>
+<td>소유주 리포트 자동 생성</td>
+<td>입주율, 청구·수납, 민원, 서비스 KPI를 소유주별 명세서로</td>
+<td>O6</td>
+<td>U5</td>
+<td>P-012, P-018</td>
+<td>PM</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-26</td>
+<td>위탁 운영 규제 기록</td>
+<td>위탁운영자 변경 이력과 신고 자료 생성, 준수사항 체크</td>
+<td>O6</td>
+<td>U5</td>
+<td>P-009</td>
+<td>PM</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-27</td>
+<td>입주 문의 AI 에이전트</td>
+<td>공실·요금 조회 API를 호출해 문의에 답하고 상담 직원에게 인계</td>
+<td>O1</td>
+<td>U2, U5</td>
+<td>P-004, P-005</td>
+<td>엔지니어</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-28</td>
+<td>금융 사기 확인 요청</td>
+<td>낯선 금융 연락을 받으면 직원·보호자에게 확인 요청을 연결 (판단 대행 없음)</td>
+<td>O7</td>
+<td>U1, U3</td>
+<td>P-039</td>
+<td>디자인</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-29</td>
+<td>청구 명세 설명·이의 제기</td>
+<td>청구 항목마다 근거(식사 기록, 감면 규칙, 계약 조건)를 따라가 보고, 이의 제기를 접수·처리</td>
+<td>O7, O2</td>
+<td>U1, U3, U4</td>
+<td>P-008, P-047</td>
+<td>엔지니어</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-30</td>
+<td>대리권·후견 상태 관리</td>
+<td>입주자별 법적 대리인(후견인, 임의후견, 위임)과 증빙·유효기간·권한 범위를 등록하고, 계약 서명·청구 결제·열람 권한에 연결</td>
+<td>O7, O5</td>
+<td>U3, U5, U1</td>
+<td>P-044, P-046, P-049</td>
+<td>엔지니어</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-31</td>
+<td>금전 업무 경계·감사</td>
+<td>직원이 받은 금전 관련 요청을 허용·금지로 분류하고, 금지 업무는 보호자·대리인에게 넘기며 모든 처리를 감사 로그로 남김</td>
+<td>O7</td>
+<td>U4, U5, U1</td>
+<td>P-048</td>
+<td>PM</td>
+<td>B2B</td>
+</tr>
+<tr>
+<td>I-32</td>
+<td>입주 자금 계획 (본인 입력)</td>
+<td>보증금, 월비, 연금, 주택 처분 방식을 본인이 입력해 입주 후 현금흐름을 계산. 상품 추천 없음</td>
+<td>O7, O1</td>
+<td>U2, U3</td>
+<td>P-005, P-011</td>
+<td>디자인</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-33</td>
+<td>보호자 공동 지출 확인</td>
+<td>본인이 입력하거나 올린 지출과 시설 청구를 보호자와 공유하고 이례적인 지출을 표시 (계좌 자동 연동 없음)</td>
+<td>O7</td>
+<td>U3, U1</td>
+<td>P-039, P-042, P-050</td>
+<td>디자인</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-34</td>
+<td>재산관리 준비·전문가 연결</td>
+<td>후견·신탁 개념과 준비 체크리스트 안내, 자격 있는 전문가와 공공 창구 연결 (판매 없음)</td>
+<td>O7</td>
+<td>U2, U3</td>
+<td>P-045</td>
+<td>PM</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-35</td>
+<td>시니어 투자 포트폴리오 추천</td>
+<td>나이·자산에 맞춰 투자 상품과 비중을 추천</td>
+<td>O7</td>
+<td>U1, U2</td>
+<td>P-050</td>
+<td>PM</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-36</td>
+<td>계좌 연동 자산 대시보드</td>
+<td>은행·증권·연금 계좌를 자동으로 모아 자산 현황 표시</td>
+<td>O7</td>
+<td>U1, U3</td>
+<td>P-038, P-050</td>
+<td>엔지니어</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-37</td>
+<td>시니어 AI 생활 비서</td>
+<td>말이나 큰 버튼 하나로 일정, 시설 요청, 청구 설명, 케어 소식, 보호자 연결을 처리하고 판단이 필요한 일은 사람에게 인계. 다른 모듈 API를 도구로 호출</td>
+<td>O2, O3, O4, O7</td>
+<td>U1, U3, U4</td>
+<td>P-023, P-024, P-027, P-037, P-047</td>
+<td>엔지니어</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-38</td>
+<td>자산 이해 도우미 (조회 전용)</td>
+<td>회원이 본인 앱키로 직접 연결한 증권 계좌의 잔고·보유·시세를 쉬운 말로 설명. 추천·주문 없음</td>
+<td>O7</td>
+<td>U1, U3</td>
+<td>P-038, P-050</td>
+<td>엔지니어</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-39</td>
+<td>소비 습관·저축 점검 (본인 입력)</td>
+<td>본인이 입력한 수입·지출과 목표로 소비 습관과 저축 계획 점검</td>
+<td>O7</td>
+<td>U1</td>
+<td>P-050</td>
+<td>디자인</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-40</td>
+<td>목표·한도 기반 자동매매</td>
+<td>목표·위험 허용 범위·거래 한도 안에서 투자 계획을 실행하고 자동매매 (모의투자 검증)</td>
+<td>O7</td>
+<td>U1</td>
+<td>P-050</td>
+<td>엔지니어</td>
+<td>B2C</td>
+</tr>
+<tr>
+<td>I-41</td>
+<td>이례 거래 숙려·보호자 확인</td>
+<td>조회 데이터로 큰 거래나 낯선 패턴을 표시하고 동의한 보호자에게 알림 (주문 차단 없음)</td>
+<td>O7</td>
+<td>U1, U3</td>
+<td>P-039, P-044, P-049</td>
+<td>엔지니어</td>
+<td>B2B2C</td>
+</tr>
+<tr>
+<td>I-42</td>
+<td>AI 고지·동의·감사 콘솔</td>
+<td>AI 사용 사전 고지, 건강정보 별도 동의, 보호자 공유 범위, 사람 감독·인계 기록을 입주자별로 한곳에서 관리 (AI 기본법·개인정보보호법 대응)</td>
+<td>O4, O7</td>
+<td>U5, U1, U3</td>
+<td>P-053, P-054</td>
+<td>엔지니어</td>
+<td>B2B</td>
+</tr>
+</tbody></table></div>
+<p><strong>축 8 추가분(I-29~I-41)</strong>: 2026-11-02 사용자가 자산 관리, 투자, 지출 관리 아이디어를 요청해 추가했다. 투자(I-35)와 계좌 연동(I-36)도 요청 범위라서 롱리스트에 넣고 평가표에서 판정했다. I-37~I-41은 같은 날 사용자가 요청한 AI 생활 비서와, 사용자가 구상한 AI 자산관리 비서(증권 API 연동, 자동매매)를 나눠 넣은 것이다. 상세는 .</p>
+<h2 id="관점별-상위-아이디어-brainstorm-ideas-new-우선순위-기준-핵심-가치-빠른-검증-차별화">관점별 상위 아이디어 (<code>brainstorm-ideas-new</code> 우선순위 기준: 핵심 가치, 빠른 검증, 차별화)</h2>
+<ul>
+<li><strong>PM</strong>: I-13 단계 전환(규제 변화와 입주자 불안을 동시에 겨냥), I-25 소유주 리포트(위탁 운영 영업)</li>
+<li><strong>디자인</strong>: I-19 주간 안부 리포트(보호자가 매일 쓸 이유), I-16 복약·진료 공유</li>
+<li><strong>엔지니어</strong>: I-12 이상 신호 허브(웹훅, 멱등성, 규칙), I-24 코어(Multi-site), I-18 동의 권한 모델(RBAC + 관계 + 동의)</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1067" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1068" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1069" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1070" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1071" data-title="보증금"><p>수익이 아니라 맡긴 돈. 청구 원장과 나눈 별도 원장</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보증금 / 회원: 맡기신 보증금</dd><dt>영문·코드 이름</dt><dd><code>Deposit</code>, <code>DepositEntry</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

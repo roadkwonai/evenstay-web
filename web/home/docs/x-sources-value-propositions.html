@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>가치 제안 (숏리스트 후보) | Evenstay 문서</title>
+<meta name="description" content="가치 제안 (숏리스트 후보). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>가치 제안 (숏리스트 후보)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#a-계약청구-코어-pms-core-billing-i-24-i-21-i-07-i-06">A. 계약·청구 코어 (pms-core-billing) — I-24 + I-21 + I-07 + I-06</a></li><li class="lv2"><a href="#b-이상-신호-통합-허브-safety-signal-hub-i-12">B. 이상 신호 통합 허브 (safety-signal-hub) — I-12</a></li><li class="lv2"><a href="#c-케어-단계-전환-관리-care-stage-transition-i-13-i-14">C. 케어 단계 전환 관리 (care-stage-transition) — I-13 + I-14</a></li><li class="lv2"><a href="#d-동의-기반-보호자-포털-family-consent-portal-i-18-i-19">D. 동의 기반 보호자 포털 (family-consent-portal) — I-18 + I-19</a></li><li class="lv2"><a href="#e-입주-상담-crm-ai-문의-에이전트-move-in-crm-agent-i-01-i-27-예비-후보">E. 입주 상담 CRM + AI 문의 에이전트 (move-in-crm-agent) — I-01 + I-27 (예비 후보)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1076" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-1077" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-1078" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-1079" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-1080" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li></ul></section></aside>
+  <article class="doc"><p>평가표 상위 아이디어를 묶어 MVP 후보 5개로 만들었다. 묶은 이유는 <code>../outputs/shortlist.md</code>에 있다.</p>
+<hr>
+<h2 id="a-계약청구-코어-pms-core-billing-i-24-i-21-i-07-i-06">A. 계약·청구 코어 (<code>pms-core-billing</code>) — I-24 + I-21 + I-07 + I-06</h2>
+<ul>
+<li><strong>Who</strong>: 위탁 운영사 운영 매니저(U5)와 경리·현장 직원(U4). 소유주가 다른 사이트를 함께 운영한다.</li>
+<li><strong>Why</strong>: 소유주별로 데이터를 나누고, 계약 변경과 월 청구를 틀림없이 처리해 성과를 증명해야 한다(J6, J7. P-006, P-014, P-015, P-017, P-018).</li>
+<li><strong>What before</strong>: 시니어하우징 전용 SW가 국내에서 확인되지 않는다. 호텔·임대 SW나 엑셀을 쓴다 [추정](B30~B33). 의무식·결식 감면, 보증금·월비 교환, 사별 승계는 수작업이다 [추정].</li>
+<li><strong>How</strong><ul>
+<li>운영사 → 소유주 → 사이트 → 동 → 호실 계층으로 데이터를 나눈다. 자산 유형(시니어하우징, 임대)이 늘어나도 같은 구조를 쓴다.</li>
+<li>계약은 상태 전이로 관리한다(초안 → 체결 → 입주 → 변경·승계 → 해지 → 정산 완료).</li>
+<li>월 청구 원장은 생활비, 식비, 서비스, 공과금, 선납, 감면을 담는다. 식사 기록이 정산 규칙을 거쳐 청구에 반영된다.</li>
+</ul>
+</li>
+<li><strong>What after</strong>: 사이트를 추가해도 바로 운영할 수 있다. 계약 변경과 청구에 이력이 남고, 소유주별로 숫자를 설명할 수 있다.</li>
+<li><strong>Alternatives</strong>: 해외 시니어리빙 스위트(현지화·비용 문제 [추정]), 국내 임대관리 SW(시니어 고유 항목 없음), 엑셀. 자체 구축하기로 한 회사 결정(S2)이 이 MVP의 존재 이유다.</li>
+<li><strong>가치 제안 문장</strong>: <em>소유주가 다른 여러 시니어하우징·임대 사이트의 계약과 청구를 하나의 기준으로 처리하고, 바뀐 모든 것을 이력으로 남기는 운영 코어.</em></li>
+</ul>
+<h2 id="b-이상-신호-통합-허브-safety-signal-hub-i-12">B. 이상 신호 통합 허브 (<code>safety-signal-hub</code>) — I-12</h2>
+<ul>
+<li><strong>Who</strong>: 야간·휴일 근무 직원(U4), 그리고 그 결과를 알고 싶은 보호자(U3)와 입주자(U1).</li>
+<li><strong>Why</strong>: 낙상이나 이상이 생겨도 신호가 기기·서비스마다 따로 와서 놓치거나 늦는다(J5. P-010, P-025, P-028).</li>
+<li><strong>What before</strong>: 센서, 호출벨, 출입 기록, 안부전화가 각자 알림을 보낸다(E7, E15, E17, E18). 간호 인력은 낮 시간에만 상주하는 사례가 있다(A12).</li>
+<li><strong>How</strong>: 기기와 외부 서비스 이벤트를 웹훅으로 받아 중복을 제거하고, 규칙으로 판단해 직원에게 알린다. 응답이 없으면 다음 사람에게 넘기고(에스컬레이션), 처리 과정을 기록한다. 보호자에게는 동의 범위 안에서 결과만 알린다.</li>
+<li><strong>What after</strong>: 직원은 한 사람의 이상 신호를 한 화면에서 보고, 누가 언제 대응했는지가 기록에 남는다.</li>
+<li><strong>Alternatives</strong>: 기기별 앱, 응급안전안심서비스(대상 한정), 비소비(순찰과 기억).</li>
+<li><strong>경계</strong>: 응급 판단과 119 신고는 사람이 한다. 시스템은 알림과 기록만 한다.</li>
+<li><strong>가치 제안 문장</strong>: <em>흩어진 안전 신호를 한곳에 모아 사람이 놓치지 않고 대응하게 하고, 그 과정을 기록으로 남기는 허브.</em></li>
+</ul>
+<h2 id="c-케어-단계-전환-관리-care-stage-transition-i-13-i-14">C. 케어 단계 전환 관리 (<code>care-stage-transition</code>) — I-13 + I-14</h2>
+<ul>
+<li><strong>Who</strong>: 건강이 변해 가는 입주자(U1)와 보호자(U3), 그리고 판단과 기록을 맡는 운영사(U4, U5).</li>
+<li><strong>Why</strong>: 건강이 나빠지면 계속 살 수 있는지, 무엇이 바뀌는지 알 수 없다. 외부 돌봄을 받기 시작하면 시설 서비스와 겹치거나 빠진다(J1. P-003, P-019, P-031).</li>
+<li><strong>What before</strong>: 전환 규칙이 시설마다 다르고 잘 공개되지 않는다(A15). 2026-10 개정안은 서비스를 받으며 계속 거주할 근거를 만든다(A3). 외부 방문요양 일정은 시설과 따로 관리된다 [추정].</li>
+<li><strong>How</strong><ul>
+<li>단계 정의(자립 → 생활 지원 → 외부 돌봄 병행 → 전원 검토)를 사이트별 설정으로 둔다.</li>
+<li>평가 기록을 근거로 단계를 바꾼다.</li>
+<li>단계가 바뀌면 서비스·요금 변경(A의 계약·청구와 연동)과 보호자 통지가 이력으로 묶인다.</li>
+<li>외부 돌봄 일정을 입주자 타임라인에 연결한다.</li>
+</ul>
+</li>
+<li><strong>What after</strong>: 입주자와 보호자는 다음 단계와 비용을 미리 알고, 운영사는 전환 결정의 근거와 이력을 갖는다.</li>
+<li><strong>Alternatives</strong>: 상담 때 구두 설명, 요양원 전원, 비소비(문제가 생길 때까지 미룸).</li>
+<li><strong>가치 제안 문장</strong>: <em>건강이 바뀌어도 무엇이 바뀌고 무엇이 그대로인지 미리 보여주고, 그 결정을 근거와 함께 남기는 단계 관리.</em></li>
+</ul>
+<h2 id="d-동의-기반-보호자-포털-family-consent-portal-i-18-i-19">D. 동의 기반 보호자 포털 (<code>family-consent-portal</code>) — I-18 + I-19</h2>
+<ul>
+<li><strong>Who</strong>: 원거리 보호자(U3)와 열람 범위를 정하는 입주자 본인(U1).</li>
+<li><strong>Why</strong>: 보호자는 시설, 병원, 방문요양, 공공에서 따로 확인해야 하고, 입주자는 무엇을 누구에게 보일지 정하고 싶다(J4. P-023, P-024, P-041) [추정].</li>
+<li><strong>What before</strong>: 전화, 가족 단톡방, 서비스별 앱을 쓴다. 국내 입주자 가족 앱은 확인되지 않았다(E13).</li>
+<li><strong>How</strong><ul>
+<li>입주자와 보호자의 관계를 모델로 만든다.</li>
+<li>입주자가 항목별(청구, 일정, 건강 이벤트, 생활 리포트)로 보호자마다 동의한다.</li>
+<li>보호자는 동의 범위 안에서 타임라인과 주간 리포트(자동 생성 + 직원 검수)를 본다.</li>
+<li>열람할 때마다 감사 로그를 남긴다.</li>
+</ul>
+</li>
+<li><strong>What after</strong>: 보호자는 한곳에서 보고, 입주자는 자기 정보를 통제하며, 직원의 반복 전화 응대가 줄어든다 [추정].</li>
+<li><strong>Alternatives</strong>: 전화와 단톡방, 해외 가족 포털(Caremerge 등, B28).</li>
+<li><strong>가치 제안 문장</strong>: <em>입주자가 허락한 만큼만, 보호자가 한곳에서 부모의 생활과 변화를 보게 하는 포털.</em></li>
+</ul>
+<h2 id="e-입주-상담-crm-ai-문의-에이전트-move-in-crm-agent-i-01-i-27-예비-후보">E. 입주 상담 CRM + AI 문의 에이전트 (<code>move-in-crm-agent</code>) — I-01 + I-27 (예비 후보)</h2>
+<ul>
+<li><strong>Who</strong>: 입주를 고민하는 시니어·부부(U2), 보호자(U3), 상담 직원(U5 조직).</li>
+<li><strong>Why</strong>: 비용 구조가 시설마다 다르고 대기가 길어 상황을 알기 어렵다. 상담 직원은 반복 문의에 시간을 쓴다(J3. P-004, P-005, P-016).</li>
+<li><strong>What before</strong>: 전화 상담과 엑셀 대기 명단 [추정].</li>
+<li><strong>How</strong>: 문의 → 투어 → 대기 → 심사 → 계약 파이프라인. AI 에이전트가 공실·요금 조회 API로 기본 문의에 답하고, 판단이 필요하면 사람에게 넘긴다. 개인정보는 마스킹한다.</li>
+<li><strong>What after</strong>: 문의가 대기와 계약으로 끊김 없이 이어지고, 직원은 판단이 필요한 상담에 집중한다.</li>
+<li><strong>Alternatives</strong>: 전화 상담, 해외 리싱 AI(EliseAI 등, 회사 주장. B17).</li>
+<li><strong>가치 제안 문장</strong>: <em>반복 문의는 에이전트가 PMS 데이터로 답하고, 결정이 필요한 상담은 사람이 이어받는 입주 파이프라인.</em></li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1076" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1077" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1078" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1079" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1080" data-title="에이전트"><p>다음 단계를 스스로 고르며 도구를 호출하는 실행. Evenstay에서는 직원용 초안과 제안까지 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>agent</dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

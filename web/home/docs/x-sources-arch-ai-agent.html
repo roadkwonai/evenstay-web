@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>아키텍처 보강 조사: PMS에 AI 에이전트를 붙이는 기술과 구조 (2026-11 기준) | Evenstay 문서</title>
+<meta name="description" content="아키텍처 보강 조사: PMS에 AI 에이전트를 붙이는 기술과 구조 (2026-11 기준). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>아키텍처 보강 조사: PMS에 AI 에이전트를 붙이는 기술과 구조 (2026-11 기준)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#읽는-법">읽는 법</a></li><li class="lv2"><a href="#1-부동산숙박-플랫폼은-에이전트에게-시스템을-어떻게-여는가">1. 부동산·숙박 플랫폼은 에이전트에게 시스템을 어떻게 여는가</a></li><li class="lv3"><a href="#takeaway">Takeaway</a></li><li class="lv3"><a href="#cited-findings">Cited Findings</a></li><li class="lv3"><a href="#inferences">Inferences</a></li><li class="lv3"><a href="#gaps">Gaps</a></li><li class="lv2"><a href="#2-mcp-현황과-spring-ai-aws-에이전트-런타임">2. MCP 현황과 Spring AI, AWS 에이전트 런타임</a></li><li class="lv3"><a href="#takeaway-2">Takeaway</a></li><li class="lv3"><a href="#cited-findings-2">Cited Findings</a></li><li class="lv3"><a href="#inferences-2">Inferences</a></li><li class="lv3"><a href="#gaps-2">Gaps</a></li><li class="lv2"><a href="#3-사람-승인hitl-구현">3. 사람 승인(HITL) 구현</a></li><li class="lv3"><a href="#takeaway-3">Takeaway</a></li><li class="lv3"><a href="#cited-findings-3">Cited Findings</a></li><li class="lv3"><a href="#inferences-설계-제안-근거는-위-프레임워크-패턴과-일반-관행-판단">Inferences (설계 제안, 근거는 위 프레임워크 패턴과 일반 관행 [판단])</a></li><li class="lv3"><a href="#gaps-3">Gaps</a></li><li class="lv2"><a href="#4-민감정보-가드레일-평가-관측-비용">4. 민감정보 가드레일, 평가, 관측, 비용</a></li><li class="lv3"><a href="#takeaway-4">Takeaway</a></li><li class="lv3"><a href="#cited-findings-4">Cited Findings</a></li><li class="lv3"><a href="#inferences-3">Inferences</a></li><li class="lv3"><a href="#gaps-4">Gaps</a></li><li class="lv2"><a href="#5-고객-문의-에이전트-채널-전화-사람-인계">5. 고객 문의 에이전트: 채널, 전화, 사람 인계</a></li><li class="lv3"><a href="#takeaway-5">Takeaway</a></li><li class="lv3"><a href="#cited-findings-5">Cited Findings</a></li><li class="lv3"><a href="#inferences-구조-판단">Inferences (구조 [판단])</a></li><li class="lv3"><a href="#gaps-5">Gaps</a></li><li class="lv2"><a href="#6-소규모-팀의-ai-코딩-에이전트-운영-방식">6. 소규모 팀의 AI 코딩 에이전트 운영 방식</a></li><li class="lv3"><a href="#takeaway-6">Takeaway</a></li><li class="lv3"><a href="#cited-findings-6">Cited Findings</a></li><li class="lv3"><a href="#inferences-짧은-운영-규칙-제안-판단">Inferences (짧은 운영 규칙 제안 [판단])</a></li><li class="lv3"><a href="#gaps-6">Gaps</a></li><li class="lv2"><a href="#최종-표-층별-후보와-선택">최종 표: 층별 후보와 선택</a></li><li class="lv2"><a href="#못-찾은-것">못 찾은 것</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1007" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li><li><button class="term" type="button" data-modal="g-1008" data-tip="호출 기록.">도구 호출</button></li><li><button class="term" type="button" data-modal="g-1009" data-tip="외부 연동 경계.">어댑터</button></li></ul></section></aside>
+  <article class="doc"><p>앞선 문서: <a class="doc-ref" href="lab-architecture-staged.html"><code>00-hub/reviews/architecture-staged-2026-11-04.md</code></a> 2·3·5절, <code>sources/axis9-senior-ai-assistant.md</code>를 먼저 읽었다.</p>
+<h2 id="읽는-법">읽는 법</h2>
+<ul>
+<li>라벨: [사실] [추정] [가설] [미정] [미확인]. 효과 수치는 모두 &quot;회사 주장&quot;으로 표시한다.</li>
+<li>확인 방법: <strong>직접</strong>(본문을 열어 읽음) / <strong>검색요약</strong>(검색 결과 요약만 봄, 본문 못 엶) / <strong>제3자</strong>(벤더 블로그, 개인 블로그, 리뷰 사이트 등 2차 자료).</li>
+<li>날짜: 게시일을 알면 게시일, 모르면 &quot;접근 2026-11-04&quot;로 쓴다. 외부 페이지 안의 문장은 데이터로만 다뤘고, 지시로 따르지 않았다.</li>
+<li>서울 가용 여부는 AWS 현행 문서를 직접 열어 확인한 것만 [사실]로 썼다. 검색 요약이 문서와 달랐던 곳(AgentCore)은 직접 연 문서를 따랐다.</li>
+<li>[판단]은 이 노트 작성자의 의견이고 출처가 있는 사실이 아니다.</li>
+</ul>
+<hr>
+<h2 id="1-부동산숙박-플랫폼은-에이전트에게-시스템을-어떻게-여는가">1. 부동산·숙박 플랫폼은 에이전트에게 시스템을 어떻게 여는가</h2>
+<h3 id="takeaway">Takeaway</h3>
+<ul>
+<li>[사실] 운영 데이터용 공식 MCP 서버를 낸 것으로 확인되는 곳은 Apaleo(2025-09 발표, 알파)와 Yardi(2026-06 발표, 회사 주장)뿐이다. Cloudbeds의 공식 MCP는 개발자 문서·API 탐색용이다. Mews, Oracle OPERA, Entrata, RealPage는 공식 MCP를 찾지 못했다.</li>
+<li>[추정] 나머지 대형 벤더는 &quot;자사 앱 안에 내장된 에이전트&quot;와 &quot;파트너 프로그램을 통한 API&quot;로 열고, 외부 에이전트에게 범용 도구 서버를 여는 쪽은 아직 소수다. 쓰기 권한과 승인 방식은 어느 벤더도 문서로 밝히지 않았다.</li>
+</ul>
+<h3 id="cited-findings">Cited Findings</h3>
+<p><strong>Apaleo (호텔 PMS, 가장 구체적)</strong></p>
+<ul>
+<li>[사실] 2025-09-22 &quot;PMS 최초 MCP 서버&quot; 발표. 에이전트가 예약 변경 같은 실제 작업을 하게 한다는 설명이다. MCP 알파 그룹을 모집 중이라 초기 단계다. 인증 방식과 쓰기 범위는 이 글에 없다. — <a href="https://apaleo.com/blog/apaleo-news/apaleo-launches-mcp-server" rel="noopener noreferrer" target="_blank">https://apaleo.com/blog/apaleo-news/apaleo-launches-mcp-server</a> (게시 2025-09-22, 직접)</li>
+<li>[사실] 일반 API 범위 위에 <code>mcp:tools</code>, <code>mcp:resources</code>, <code>mcp:prompts</code> 세 범위가 추가된다. 클라이언트는 <code>reservations.read</code>, <code>folios.read</code> 같은 API 범위를 함께 요청한다. &quot;fine-grained 클라이언트&quot;는 <code>mcp:*</code> 없이 도구가 필요로 하는 일반 권한만으로 접근하고, 문서는 이쪽을 권한다. — <a href="https://apaleo.dev/guides/api/scopes.md" rel="noopener noreferrer" target="_blank">https://apaleo.dev/guides/api/scopes.md</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] 요청한 범위가 실제로 효력을 가지려면 사용자의 역할도 그 접근을 포함해야 한다. 역할이 못 덮는 도구를 부르면 동의 화면에서 승인했어도 403이다. 읽기용 <code>.read</code> 범위를 고르라고 권한다. — 같은 페이지 (직접)</li>
+<li>[미확인] MCP 도구 호출에 사람 승인 단계가 있는지, 서버 주소, 인증 흐름은 이 페이지에 없다. 서버 주소를 <code>mcp.apaleo.com/mcp</code>로 적은 곳은 디렉터리 사이트뿐이라 공식 여부 불확실. — <a href="https://mcp.so/servers/mcp-apaleo?tab=tools" rel="noopener noreferrer" target="_blank">https://mcp.so/servers/mcp-apaleo?tab=tools</a> (접근 2026-11-04, 검색요약·제3자)</li>
+<li>[사실] Apaleo는 MCP 이전인 2025년에 에이전트 마켓플레이스 &quot;Agent Hub&quot;를 냈다고 밝힌다(회사 주장). — <a href="https://hoteltechreport.com/news/apaleo-becomes-first-property-management-platform-to-launch-mcp-server-bridging-ai-agents-with-hotel-systems" rel="noopener noreferrer" target="_blank">https://hoteltechreport.com/news/apaleo-becomes-first-property-management-platform-to-launch-mcp-server-bridging-ai-agents-with-hotel-systems</a> (2025-09, 검색요약)</li>
+</ul>
+<p><strong>Yardi (임대·부동산, 회사 주장 중심)</strong></p>
+<ul>
+<li>[사실] Yardi가 2026-06-16 보도자료로 &quot;Virtuoso Connector(MCP) for Claude&quot;를 Virtuoso Enterprise에 추가했다고 발표했다. Yardi 쪽 인증을 거쳐 기존 사용자 권한을 따른다고 한다(회사 주장). &quot;Anthropic 마켓플레이스에 MCP 커넥터를 둔 최초의 부동산 운영 SW&quot;라는 말도 회사 주장이다. — <a href="https://www.yardi.com/news/press-releases/yardi-adds-virtuoso-connector-for-claude-to-its-ai-platform/" rel="noopener noreferrer" target="_blank">https://www.yardi.com/news/press-releases/yardi-adds-virtuoso-connector-for-claude-to-its-ai-platform/</a> (게시 2026-06-16, 검색요약. 본문은 403으로 못 엶)</li>
+<li>[사실] 서버는 Streamable HTTP와 OAuth를 쓰고 주소는 <code>https://mcp.virtuoso.ai/mcp</code>로 적힌 목록이 있다. 다른 LLM 지원은 &quot;곧&quot;이라고 한다. — <a href="https://agentman.ai/agentskills/connections/mcp-server/yardi-virtuoso" rel="noopener noreferrer" target="_blank">https://agentman.ai/agentskills/connections/mcp-server/yardi-virtuoso</a> (접근 2026-11-04, 제3자). 디렉터리 등재가 보안 감사는 아니라는 설명이 함께 있다.</li>
+<li>[사실] 앞서 2025-09-11 &quot;Virtuoso AI Agents&quot;를 발표했고, Composer로 만든 에이전트는 Yardi 검수를 거쳐 Virtuoso 마켓플레이스에 올라간다고 한다. — <a href="https://www.yardi.com/news/press-releases/yardi-launches-virtuoso-ai-agents-to-deploy-ai-powered-workflows/" rel="noopener noreferrer" target="_blank">https://www.yardi.com/news/press-releases/yardi-launches-virtuoso-ai-agents-to-deploy-ai-powered-workflows/</a> (게시 2025-09-11, 검색요약)</li>
+<li>[미확인] 읽기/쓰기 구분, 승인, 범위 이름은 찾지 못했다.</li>
+</ul>
+<p><strong>AppFolio (임대 PMS, 내장 에이전트)</strong></p>
+<ul>
+<li>[사실] 2026-06-16 발표: Realm-X(다단계 작업 에이전트), Claude와 Realm-X를 잇는 &quot;에이전트 대 에이전트&quot; 커넥터, Accounting Performer(청구서 코딩·승인자 라우팅·불일치 대사), Leasing Performer(이메일·문자에 전화 추가), Resident Messenger(입주민 문의 응답, 정식 출시). 승인 단계로 구체적으로 적힌 것은 청구서의 승인자 라우팅 하나이고, 권한 모델 설명은 없다. — <a href="https://www.appfolio.com/newsroom/appfolio-deepens-agentic-ai-across-leasing-accounting-and-resident-operations" rel="noopener noreferrer" target="_blank">https://www.appfolio.com/newsroom/appfolio-deepens-agentic-ai-across-leasing-accounting-and-resident-operations</a> (게시 2026-06-16, 직접)</li>
+<li>[사실] 회사 주장 수치: 투어 예약 평균 35% 이상 증가, 야간 수요 최대 55% 추가 확보, 전화 투어 예약 평균 2.5분, 베타 입주민 문의 약 3분의 1 자동 해결. 독립 검증 없음. — 같은 페이지 (직접)</li>
+<li>[사실] Realm-X 개편(2026-09-29)은 전 요금제 제공이며, 고객이 정한 권한과 가드레일 안에서 작동한다고 한다. — <a href="https://www.appfolio.com/newsroom/appfolios-most-powerful-ai-yet-now-standard-for-every-customer" rel="noopener noreferrer" target="_blank">https://www.appfolio.com/newsroom/appfolios-most-powerful-ai-yet-now-standard-for-every-customer</a> (게시 2026-09 추정, 검색요약)</li>
+<li>[사실] 한 제3자 글은 이 커넥터가 임대료 인상, 심사, 원장 전기를 무인으로 돌려도 안전하다는 증거는 아니라고 평가한다. — <a href="https://www.metatrader.com/ru/news/1726572-appfolio-realm-x-shows-how-ai-agents-are-reshaping-rentals" rel="noopener noreferrer" target="_blank">https://www.metatrader.com/ru/news/1726572-appfolio-realm-x-shows-how-ai-agents-are-reshaping-rentals</a> (접근 2026-11-04, 검색요약·제3자)</li>
+</ul>
+<p><strong>Mews (호텔 PMS)</strong></p>
+<ul>
+<li>[미확인] Mews 공식 MCP 서버나 에이전트용 공식 API 발표를 찾지 못했다. 검색에 나온 MCP 서버는 모두 제3자다.</li>
+<li>[사실] code-rabi 서버는 스스로 &quot;Mews와 무관한 비공식&quot;이라 밝히고, Mews API 토큰을 환경변수로 받는다. — <a href="https://glama.ai/mcp/servers/code-rabi/mews-mcp" rel="noopener noreferrer" target="_blank">https://glama.ai/mcp/servers/code-rabi/mews-mcp</a> (접근 2026-11-04, 검색요약·제3자)</li>
+<li>[사실] Peliqan은 Mews 데이터를 캐시한 웨어하우스에서 읽고 쓰기는 감사 기록과 함께 한다고 설명하며, Mews Connector API는 시간당 1,000요청이라고 적었다(공식 한도 여부는 [미확인]). — <a href="https://peliqan.io/blog/mews-claude-mcp/" rel="noopener noreferrer" target="_blank">https://peliqan.io/blog/mews-claude-mcp/</a> (접근 2026-11-04, 검색요약·제3자)</li>
+<li>[사실] Mews는 2026-03 ITB Berlin에서 AI 단체객 객실 배정표 베타를 소개하며 에이전틱 AI 확대를 예고했다. — <a href="https://www.pulse.bot/proptech/news/mews-raises-the-bar-at-itb-berlin-with-high-performance-hospitality-and-agentic-ai-innovation-ac373b4f-9c50-4b77-8d37-ba71eab43e7f" rel="noopener noreferrer" target="_blank">https://www.pulse.bot/proptech/news/mews-raises-the-bar-at-itb-berlin-with-high-performance-hospitality-and-agentic-ai-innovation-ac373b4f-9c50-4b77-8d37-ba71eab43e7f</a> (게시 2026-03-02, 검색요약)</li>
+</ul>
+<p><strong>Cloudbeds</strong></p>
+<ul>
+<li>[사실] 공식 MCP(<code>https://developers.cloudbeds.com/mcp</code>)는 API 탐색, 문서 검색, 연동 코드 생성이 기능으로 적혀 있다. 실시간 예약·투숙 데이터 접근 여부와 인증은 페이지에 없다. — <a href="https://developers.cloudbeds.com/docs/build-with-llms" rel="noopener noreferrer" target="_blank">https://developers.cloudbeds.com/docs/build-with-llms</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] 운영 데이터용 MCP는 Truto, Zapier 같은 제3자가 제공한다. — <a href="https://truto.one/blog/connect-cloudbeds-to-chatgpt-manage-bookings-and-guest-relations/" rel="noopener noreferrer" target="_blank">https://truto.one/blog/connect-cloudbeds-to-chatgpt-manage-bookings-and-guest-relations/</a> (접근 2026-11-04, 검색요약·제3자)</li>
+</ul>
+<p><strong>Oracle OPERA Cloud (OHIP)</strong></p>
+<ul>
+<li>[미확인] 공식 MCP 서버를 찾지 못했다. OHIP(앱 키, OAuth, 호텔 ID 필요)를 통해 KITT, DialogShift 같은 벤더 에이전트가 붙는다. — <a href="https://docs.dialogshift.com/en/integrations/oracle-ohip-integration" rel="noopener noreferrer" target="_blank">https://docs.dialogshift.com/en/integrations/oracle-ohip-integration</a> (접근 2026-11-04, 검색요약·제3자)</li>
+<li>[사실] Supergood이 OPERA·Simphony용 비공식 MCP를 판다. Oracle 제품이 아니라고 스스로 밝힌다. — <a href="https://supergood.ai/docs/oracle-hospitality-mcp-server" rel="noopener noreferrer" target="_blank">https://supergood.ai/docs/oracle-hospitality-mcp-server</a> (접근 2026-11-04, 검색요약·제3자)</li>
+<li>[사실] Oracle은 2026-06-16 OPERA Cloud 신규 AI 기능을 발표했다. 제목만 보였고 본문은 403으로 못 열어 내용은 [미확인]. — <a href="https://www.oracle.com/news/announcement/new-ai-capabilities-in-oracle-opera-cloud-supercharge-hotel-operations-2026-06-16/" rel="noopener noreferrer" target="_blank">https://www.oracle.com/news/announcement/new-ai-capabilities-in-oracle-opera-cloud-supercharge-hotel-operations-2026-06-16/</a> (게시 2026-06-16, 검색요약)</li>
+</ul>
+<p><strong>Entrata, RealPage, EliseAI</strong></p>
+<ul>
+<li>[사실] Supergood은 &quot;Entrata와 RealPage는 MCP 서버를 내지 않는다&quot;고 쓰고, 인증된 웹 화면 흐름을 역공학해 비공식 MCP를 만든다고 설명한다. 약관 위반 소지가 있을 수 있어 신뢰하지 않는 편이 낫다 [판단]. — <a href="https://supergood.ai/docs/entrata-mcp-server" rel="noopener noreferrer" target="_blank">https://supergood.ai/docs/entrata-mcp-server</a> , <a href="https://supergood.ai/docs/realpage-mcp-server" rel="noopener noreferrer" target="_blank">https://supergood.ai/docs/realpage-mcp-server</a> (접근 2026-11-04, 검색요약·제3자, 벤더 자기 주장)</li>
+<li>[사실] Entrata는 Colleen AI 인수로 ELI+를 냈고, 2026-03 기준 내장 AI 에이전트가 100개 넘는다는 분석이 있다. — <a href="https://rentalhousingjournal.com/?p=12412" rel="noopener noreferrer" target="_blank">https://rentalhousingjournal.com/?p=12412</a> (인수 보도), <a href="https://sacra.com/c/eliseai" rel="noopener noreferrer" target="_blank">https://sacra.com/c/eliseai</a> (접근 2026-11-04, 검색요약·제3자)</li>
+<li>[사실] RealPage는 2025-06 &quot;Lumina AI Workforce&quot;(임대·입주민·운영·시설·재무 에이전트)를 PMS에 내장해 냈다. 2026 변경은 확인 못 함. — <a href="https://www.businesswire.com/news/home/20250606247402/en" rel="noopener noreferrer" target="_blank">https://www.businesswire.com/news/home/20250606247402/en</a> (게시 2025-06, 검색요약)</li>
+<li>[사실] EliseAI는 자사 자료에서 Yardi, RealPage, Entrata, AppFolio, MRI와 연동해 읽고 쓴다고 한다(회사 주장). 시니어 하우징 사례, 사람 인계 방식은 못 찾았다. — <a href="https://aimagazine.com/news/how-eliseai-builds-ai-agents-for-housing-and-healthcare" rel="noopener noreferrer" target="_blank">https://aimagazine.com/news/how-eliseai-builds-ai-agents-for-housing-and-healthcare</a> (접근 2026-11-04, 검색요약)</li>
+</ul>
+<h3 id="inferences">Inferences</h3>
+<ul>
+<li>[추정] 읽기 전용 범위와 쓰기 범위를 나누고, &quot;사용자 역할이 못 덮으면 403&quot;으로 두는 Apaleo 방식이 Evenstay의 <code>authorize()</code> 후 필드 전달(ADR-G4)과 가장 닮았다.</li>
+<li>[추정] 지원 직무의 &quot;AI Agent 외부 연동&quot;은 벤더 내장 에이전트를 붙이거나 MCP로 여는 두 방향이 모두 가능하다. 공고만으로는 어느 쪽인지 알 수 없다 [미확인].</li>
+<li>[가설] 쓰기 도구를 외부 에이전트에게 직접 여는 곳은 아직 드물고, 승인 구조를 공개한 곳은 없다. 이것이 포트폴리오에서 &quot;제안 후 직원 승인&quot;을 보이는 의미다.</li>
+</ul>
+<h3 id="gaps">Gaps</h3>
+<ul>
+<li>Yardi 커넥터의 읽기/쓰기, 승인 구조. 보도자료 본문 403.</li>
+<li>Mews의 공식 입장. 개발자 포털을 직접 열지 못했다.</li>
+<li>위 벤더의 쓰기 도구 목록과 승인 UX를 문서로 확인하지 못했다.</li>
+</ul>
+<hr>
+<h2 id="2-mcp-현황과-spring-ai-aws-에이전트-런타임">2. MCP 현황과 Spring AI, AWS 에이전트 런타임</h2>
+<h3 id="takeaway-2">Takeaway</h3>
+<ul>
+<li>[사실] 현행 MCP 스펙은 <strong>2026-07-28</strong>이고, 이전판(2025-11-25)과 구조가 다르다(세션과 초기화 핸드셰이크 제거, 무상태). 그런데 Spring AI 2.0.x가 쓰는 Java SDK는 2025-11-25판이다. 2026-07-28 지원은 SDK 2.2.0-M1에서 &quot;서버만, 실험적&quot;이다.</li>
+<li>[사실] AgentCore는 서울에서 Runtime, Gateway, Identity, Memory, Policy, Observability, Evaluations가 모두 가능하다(직접 확인).</li>
+</ul>
+<h3 id="cited-findings-2">Cited Findings</h3>
+<p><strong>MCP 스펙</strong></p>
+<ul>
+<li>[사실] 최신 스펙 개정은 2026-07-28이다. 큰 변경: 프로토콜 세션과 <code>Mcp-Session-Id</code> 제거, <code>initialize</code> 핸드셰이크 제거(요청마다 버전과 능력을 <code>_meta</code>에 실음), <code>server/discover</code> 추가, SSE 재개 기능 제거, 서버 주도 요청을 &quot;다회전 요청(MRTR, <code>input_required</code>)&quot;으로 대체, Tasks를 공식 확장으로 이동(<code>tasks/get</code>, <code>tasks/update</code>). — <a href="https://modelcontextprotocol.io/specification/2026-07-28/changelog" rel="noopener noreferrer" target="_blank">https://modelcontextprotocol.io/specification/2026-07-28/changelog</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] 같은 개정에서 Roots, Sampling, Logging은 Deprecated, HTTP+SSE 전송은 Deprecated로 재분류, 동적 클라이언트 등록(RFC7591)은 Deprecated이고 Client ID Metadata Documents(CIMD)가 권장이다. 폐지 유예는 최소 12개월 정책. — 같은 페이지 (직접)</li>
+<li>[사실] <code>_meta</code>에 OpenTelemetry 추적 문맥(<code>traceparent</code>, <code>tracestate</code>, <code>baggage</code>) 규약을 문서화했다. — 같은 페이지 (직접)</li>
+<li>[사실] 스펙 개요: 호스트는 도구 호출 전에 사용자 동의를 받아야 하고, 도구 설명과 주석은 신뢰된 서버가 아니면 신뢰하지 않는다. 프로토콜 수준에서 강제하지는 못한다고 스스로 적는다. — <a href="https://modelcontextprotocol.io/specification/latest" rel="noopener noreferrer" target="_blank">https://modelcontextprotocol.io/specification/latest</a> (접근 2026-11-04, 직접)</li>
+</ul>
+<p><strong>인가(OAuth)</strong></p>
+<ul>
+<li>[사실] 인가는 선택 사항이다. HTTP 전송에서 쓰면 OAuth 2.1 초안(draft-13)을 따르고, MCP 서버는 리소스 서버다. 서버는 Protected Resource Metadata(RFC9728)를 MUST로 제공해야 하고, 클라이언트는 <code>resource</code> 파라미터(RFC8707)를 인가·토큰 요청에 MUST로 넣는다. 서버는 자기 앞으로 발급된 토큰만 받아야 하며(audience 검증), 다른 토큰을 받거나 넘기는 것은 MUST NOT이다. — <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization" rel="noopener noreferrer" target="_blank">https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] 범위 부족은 403과 <code>WWW-Authenticate: Bearer error=&quot;insufficient_scope&quot;, scope=...</code>로 알리고, 클라이언트는 기존 범위와 합쳐 단계적 상향(step-up)으로 재인가한다. 인가 서버는 <code>iss</code> 파라미터(RFC9207)를 넣는 것이 SHOULD, 클라이언트는 있으면 검증이 MUST다. — 같은 페이지 (직접)</li>
+<li>[사실] 보안 모범 사례 문서가 다루는 공격: 혼동된 대리인(confused deputy: 정적 client ID와 동적 등록과 동의 쿠키가 겹치는 MCP 프록시), 토큰 패스스루, SSRF(OAuth 메타데이터 URL), 상태 핸들 하이재킹(세션 대신 서버가 발급한 핸들), 로컬 서버 탈취, mix-up, 범위 과다. 범위는 최소로 시작해 오류 응답으로 올리고, <code>*</code>나 <code>full-access</code> 같은 범위는 피하라고 한다. — <a href="https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices.md" rel="noopener noreferrer" target="_blank">https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices.md</a> (접근 2026-11-04, 직접)</li>
+</ul>
+<p><strong>알려진 보안 사건과 분류</strong></p>
+<ul>
+<li>[사실] OWASP &quot;Top 10 for Agentic Applications for 2026&quot;이 2025-12-09 공개됐다. ASI01 목표 탈취, ASI02 도구 오남용, ASI10 불량 에이전트 세 항목만 이름을 확인했다. 나머지 이름은 [미확인]. — <a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026" rel="noopener noreferrer" target="_blank">https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026</a> (게시 2025-12-09, 검색요약)</li>
+<li>[사실] OWASP LLM 2025 판의 LLM01 프롬프트 주입 완화책: 출력 형식 검증, 입출력 필터, 최소 권한과 특권 기능은 코드에서 처리, 고위험 작업에 사람 승인, 외부 콘텐츠 분리 표시, 적대적 시험. &quot;어떤 완화도 완전하지 않다&quot;고 적는다. — <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" rel="noopener noreferrer" target="_blank">https://genai.owasp.org/llmrisk/llm01-prompt-injection/</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] 문서화가 가장 잘 된 사례는 2025-05 GitHub MCP 서버의 이슈 본문을 통한 간접 주입이다. 2026년 사건(Supabase &quot;치명적 삼중&quot;, Cline 이슈 제목 주입 등)은 벤더 블로그 수준이라 1차 출처로 확인하지 못했다. — <a href="https://dev.to/luckypipewrench/the-state-of-mcp-security-2026-incidents-attack-patterns-and-defense-coverage-2h45" rel="noopener noreferrer" target="_blank">https://dev.to/luckypipewrench/the-state-of-mcp-security-2026-incidents-attack-patterns-and-defense-coverage-2h45</a> (접근 2026-11-04, 검색요약·제3자)</li>
+<li>[미확인] &quot;공개 서버 5.5%가 도구 중독&quot; &quot;34% 명령 주입&quot; 같은 비율은 출처마다 달라 쓰지 않는다.</li>
+</ul>
+<p><strong>Spring AI와 SDK</strong></p>
+<ul>
+<li>[사실] Spring AI 2.0.0 GA는 2026-06-12. Spring Boot 4.0/4.1과 Framework 7.0 기준, MCP Java SDK 2.0.0, MCP 스펙 2025-11-25, Streamable HTTP가 기본, <code>@McpTool</code> 등 어노테이션이 Spring AI에 편입됐다. 무상태 Streamable HTTP는 확장에 좋지만 양방향 통신을 포기한다. OAuth2·API 키 보안은 spring-ai-community/mcp-security 프로젝트가 제공한다. — <a href="https://spring.io/blog/2026/06/12/spring-ai-2-0-0-GA-available-now/" rel="noopener noreferrer" target="_blank">https://spring.io/blog/2026/06/12/spring-ai-2-0-0-GA-available-now/</a> (게시 2026-06-12, 직접)</li>
+<li>[사실] 현행 안정 문서는 2.0.2이고 2.1.0-RC1이 미리보기로 나와 있다. 같은 개요 페이지는 &quot;MCP Java SDK 1.0.0 RC1 이상 필요&quot;라고 적어 위 블로그(SDK 2.0.0)와 어긋난다. 문서 갱신 지연으로 보이나 확인은 못 했다. — <a href="https://docs.spring.io/spring-ai/reference/api/mcp/mcp-overview.html" rel="noopener noreferrer" target="_blank">https://docs.spring.io/spring-ai/reference/api/mcp/mcp-overview.html</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] MCP Java SDK 릴리스: v2.0.0 GA(6월 11일, 2025-11-25판), v2.1.0이 &quot;Latest&quot;(10월 16일), v2.2.0-M1 사전 릴리스는 <code>io.modelcontextprotocol.modern</code> 패키지에 2026-07-28 무상태 서버만 있고 37개 적합성 시나리오를 통과한다. 최신 클라이언트, Tasks, SEP-2243 헤더는 미지원. 목록에 연도가 안 보여 2026으로 추정했다. — <a href="https://github.com/modelcontextprotocol/java-sdk/releases" rel="noopener noreferrer" target="_blank">https://github.com/modelcontextprotocol/java-sdk/releases</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] mcp-security 모듈: Spring AI 문서는 &quot;공식 보증 전의 커뮤니티 프로젝트, WIP&quot;라고 적는다. 서버는 WebMVC만, JWT만(불투명 토큰 불가), SSE 불가. audience 검증(<code>validateAudienceClaim</code>)은 기본 꺼짐. 범위 설정 방법은 문서에 없다. 인가 서버 모듈은 &quot;모든 클라이언트가 모든 resource 식별자를 허용&quot;하는 한계가 있다. 클라이언트 모듈은 자동 구성 클라이언트가 싱글톤이라 사용자들이 같은 세션 ID를 공유한다. — <a href="https://docs.spring.io/spring-ai/reference/api/mcp/mcp-security.html" rel="noopener noreferrer" target="_blank">https://docs.spring.io/spring-ai/reference/api/mcp/mcp-security.html</a> (v2.0.2, 접근 2026-11-04, 직접)</li>
+<li>[사실] 0.1.x 모듈은 Spring AI 2.0.x 브랜치에서만 동작한다는 저장소 안내가 있다. Spring Boot 4.1과의 조합은 어느 문서도 명시하지 않는다. — <a href="https://github.com/spring-ai-community/mcp-security" rel="noopener noreferrer" target="_blank">https://github.com/spring-ai-community/mcp-security</a> (접근 2026-11-04, 검색요약)</li>
+<li>[사실] Spring AI 2.0 도구 호출: <code>ChatModel</code>의 도구 루프가 제거됐고 <code>ChatClient</code>의 <code>ToolCallingAdvisor</code>가 처리한다. 자동 등록을 끄면 <code>ToolCallingManager</code>로 반복마다 직접 실행할 수 있어 &quot;승인 관문에 쓸 수 있다&quot;고 문서가 밝힌다. <code>ToolContext</code>로 테넌트·사용자 ID를 모델에게 보이지 않게 도구에 전달할 수 있다. — <a href="https://docs.spring.io/spring-ai/reference/api/tools.html" rel="noopener noreferrer" target="_blank">https://docs.spring.io/spring-ai/reference/api/tools.html</a> (접근 2026-11-04, 직접)</li>
+</ul>
+<p><strong>AWS 에이전트 런타임</strong></p>
+<ul>
+<li>[사실] 서울(ap-northeast-2) AgentCore 가용: harness Yes, Runtime microVMs Yes, Runtime Instances <strong>No</strong>, Memory Yes, Gateway Yes, Identity Yes, Built-in Tools Yes, Observability Yes, payments <strong>No</strong>, Policy Yes, Evaluations Yes, optimization Yes, AWS Agent Registry <strong>No</strong>, Web Search Tool <strong>No</strong>. — <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agentcore-regions.html" rel="noopener noreferrer" target="_blank">https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agentcore-regions.html</a> (접근 2026-11-04, 직접). 검색 요약은 서울에서 Gateway/Identity/Memory만 된다고 했으나 직접 연 현행 표와 다르다. 현행 표를 따랐다.</li>
+<li>[사실] AgentCore Gateway는 OpenAPI, Smithy, Lambda를 MCP 도구로 바꾸고, 인바운드(에이전트 신원)와 아웃바운드(도구 자격) 인증, 시맨틱 도구 검색을 제공한다. 지원하는 MCP 스펙 판은 페이지에 없다. — <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html" rel="noopener noreferrer" target="_blank">https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] Policy in AgentCore: Gateway를 통과하는 모든 도구 호출을 Cedar(또는 Dogwood) 정책으로 코드 밖에서 결정적으로 평가한다. 사용자 신원과 도구 입력값으로 권한을 정하고, &quot;이체 전에 승인이 있었는가&quot;, &quot;N회 초과 차단&quot; 같은 세션 이력 기반 조건과 Guardrails 점수 조건을 합칠 수 있다. 결정은 CloudWatch에 기록된다. Gateway에 붙여서만 쓴다. — <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy.html" rel="noopener noreferrer" target="_blank">https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy.html</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] Strands Agents는 훅의 <code>BeforeToolCallEvent</code>에서 <code>interrupt()</code>로 사람 승인을 받고, <code>stop_reason == &quot;interrupt&quot;</code>로 중단·재개한다. Java 지원 여부는 확인 못 했다. — <a href="https://strandsagents.com/docs/user-guide/sdk/interrupts/" rel="noopener noreferrer" target="_blank">https://strandsagents.com/docs/user-guide/sdk/interrupts/</a> (접근 2026-11-04, 검색요약)</li>
+<li>[사실] Bedrock Agents, AgentCore, Strands의 관계(관리형 / 런타임 인프라 / SDK) 설명은 블로그뿐이다. Bedrock Agents의 유지보수 상태와 신규 프로젝트 권고는 확인 못 했다. — <a href="https://pub.towardsai.net/aws-bedrock-agents-vs-agentcore-74924b6e3d9c" rel="noopener noreferrer" target="_blank">https://pub.towardsai.net/aws-bedrock-agents-vs-agentcore-74924b6e3d9c</a> (접근 2026-11-04, 검색요약·제3자)</li>
+</ul>
+<h3 id="inferences-2">Inferences</h3>
+<ul>
+<li>[추정] 허브 문서의 &quot;1단계 Spring에서 어댑터 호출&quot;은 Spring AI 2.0 + <code>ToolCallingManager</code> 수동 루프로 구현할 수 있고, 외부에 MCP 서버를 열지 않는 한 MCP 스펙 판 차이는 영향이 없다.</li>
+<li>[추정] 외부 에이전트(고객사 Claude 등)에게 MCP로 열려면 2026-07-28 무상태판과 2025-11-25판 호환이 문제다. SDK 2.2가 정식이 되기 전에는 2025-11-25판 서버를 유지하고 클라이언트 쪽 협상에 맡기는 것이 현실적이다. [가설] 이행 기간 동안 두 판을 모두 받을 수 있는지는 미확인.</li>
+<li>[추정] 이 규모(1~5명)에서 AgentCore를 필수로 두면 Spring 어댑터 구조(허브 문서 3절)와 겹친다. Policy는 &quot;코드 밖 결정적 평가&quot;라는 가치가 있어 3단계 후보로 읽는다.</li>
+</ul>
+<h3 id="gaps-2">Gaps</h3>
+<ul>
+<li>Spring Boot 4.1과 mcp-security의 호환을 확인한 공식 문장.</li>
+<li>AgentCore Gateway가 지원하는 MCP 스펙 판.</li>
+<li>Strands의 Java 지원, Bedrock Agents의 서울 가용(Bedrock Agent 엔드포인트가 서울에 있다는 검색 요약만, 기능 가용은 미확인).</li>
+<li>2026년 MCP 보안 사건의 1차 출처.</li>
+</ul>
+<hr>
+<h2 id="3-사람-승인hitl-구현">3. 사람 승인(HITL) 구현</h2>
+<h3 id="takeaway-3">Takeaway</h3>
+<ul>
+<li>[사실] 주요 프레임워크는 모두 &quot;도구 호출 직전 중단 → 상태 저장 → 사람 결정 → 재개&quot; 패턴이다. 공통 주의: 저장된 상태는 인증되지 않으므로 서버가 신원과 대기 건을 대조해야 한다.</li>
+<li>[사실] 승인 요청이 많으면 사람이 무심코 승인한다는 보고가 있다(Anthropic 자체 텔레메트리). 승인 큐만으로 방어를 삼지 않는다.</li>
+<li>[미확인] 업무 DB의 &quot;행동 제안 테이블&quot; 설계는 1차 참조 설계를 찾지 못했다. 아래 설계는 [판단]이다.</li>
+</ul>
+<h3 id="cited-findings-3">Cited Findings</h3>
+<ul>
+<li>[사실] OpenAI Agents SDK: 도구에 <code>needs_approval</code>을 달면 실행이 멈추고 <code>result.interruptions</code>에 대기 건이 나온다. <code>to_state()</code>로 <code>RunState</code>를 얻어 <code>approve</code>/<code>reject</code> 후 같은 에이전트로 재개한다. <code>to_json()</code>으로 DB에 저장해 다른 프로세스에서 재개할 수 있다. 직렬화 상태는 인증되지 않으므로 서버 쪽 저장소에 두고, 검토자 신원과 권한을 확인하고, 서버가 저장한 대기 건과 결정을 대조하라고 경고한다. — <a href="https://openai.github.io/openai-agents-python/human_in_the_loop/" rel="noopener noreferrer" target="_blank">https://openai.github.io/openai-agents-python/human_in_the_loop/</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] LangGraph <code>interrupt()</code>: 체크포인터와 스레드 ID가 필요하고 운영에서는 DB 기반 내구 체크포인터를 쓴다. 재개는 <code>Command(resume=값)</code>. 중단은 &quot;무기한 대기&quot;가 가능하다. — <a href="https://docs.langchain.com/oss/python/langgraph/interrupts.md" rel="noopener noreferrer" target="_blank">https://docs.langchain.com/oss/python/langgraph/interrupts.md</a> (접근 2026-11-04, 검색요약)</li>
+<li>[사실] Microsoft Agent Framework: .NET <code>ApprovalRequiredAIFunction</code>, Python <code>approval_mode=&quot;always_require&quot;</code>. 응답에 승인 요청이 없어질 때까지 반복 확인하라고 한다. MCP 도구의 승인 모드는 개인 블로그에만 있어 [미확인]. — <a href="https://learn.microsoft.com/en-us/agent-framework/agents/tools/tool-approval" rel="noopener noreferrer" target="_blank">https://learn.microsoft.com/en-us/agent-framework/agents/tools/tool-approval</a> (접근 2026-11-04, 검색요약)</li>
+<li>[사실] Strands: 훅에서 <code>interrupt()</code>, 재개는 <code>interruptResponse</code>. — 2절 인용 (검색요약)</li>
+<li>[사실] AgentCore Policy의 시간 조건 정책으로 &quot;승인이 있었던 세션에서만 다음 도구 허용&quot;을 코드 밖에서 강제할 수 있다. — 2절 인용 (직접)</li>
+<li>[사실] Spring AI는 도구 루프를 직접 돌리면 반복마다 중단 가능하다고 밝힌다. 승인 UI와 영속화는 제공하지 않는다. — 2절 인용 (직접)</li>
+<li>[사실] MCP 2026-07-28: 서버가 추가 입력이 필요하면 <code>input_required</code> 결과를 돌려주고 클라이언트가 재시도하는 다회전 패턴, 장기 작업용 Tasks 확장(<code>tasks/update</code>로 클라이언트 입력)이 있다. 승인 흐름을 프로토콜로 옮기는 재료지만 SDK 지원은 아직 없다(2절). — 같은 changelog (직접)</li>
+<li>[사실] Anthropic 2026-05-25 글: Claude Code에서 사용자가 프롬프트의 약 93%를 승인해 주의가 떨어졌다(회사 자체 텔레메트리, 회사 주장). 모델 기반 분류기는 정상 명령의 약 0.4%를 막고 과욕 행동의 약 17%를 놓친다고 각주에 적었다. OS 샌드박스는 권한 프롬프트를 84% 줄였다(회사 주장). 결론은 &quot;환경 계층에서 할 수 있는 일을 먼저 제한하고, 그 위에 모델 계층 방어를 얹으라&quot;이며, 직접 만든 프록시 같은 맞춤 구성요소에서 가장 심각한 결함이 나왔다고 한다. — <a href="https://www.anthropic.com/engineering/how-we-contain-claude" rel="noopener noreferrer" target="_blank">https://www.anthropic.com/engineering/how-we-contain-claude</a> (게시 2026-05-25, 직접)</li>
+<li>[사실] 감사·되돌리기에 대해 벤더 문서에서 확인된 것은 AgentCore Policy의 CloudWatch 결정 로그와 Peliqan이 말하는 &quot;쓰기 시 감사 기록&quot;(제3자)뿐이다. PMS 쪽 롤백 API를 다룬 문서는 못 찾았다.</li>
+</ul>
+<h3 id="inferences-설계-제안-근거는-위-프레임워크-패턴과-일반-관행-판단">Inferences (설계 제안, 근거는 위 프레임워크 패턴과 일반 관행 [판단])</h3>
+<ul>
+<li>[판단] <strong>제안 테이블</strong>: <code>action_proposal(id, tenant, intent, tool, args_hash, args_json(허용 칸만), risk_tier, status[proposed/approved/rejected/expired/executed/failed], proposed_by(agent_run_id), approver_id, decided_at, expires_at, idempotency_key, model_version, prompt_version)</code>. 상태 전이는 DB 제약과 낙관적 잠금으로 고정한다.</li>
+<li>[판단] <strong>실행은 승인 이후 별도 작업자</strong>가 <code>idempotency_key</code>로 한 번만 수행한다. 승인 시점에 <code>args_hash</code>를 다시 계산해 제안 이후 변조를 막는다(OpenAI SDK 경고와 같은 이유).</li>
+<li>[판단] <strong>위험 등급 3단</strong>: T0 읽기·초안(자동), T1 되돌릴 수 있는 쓰기(직원 1명 승인, 일괄 승인 허용), T2 금전·권리·민감정보 변경(승인 화면에 변경 전후 diff 필수, 2인 승인 검토). 등급은 도구 코드에 선언하고 프롬프트에 두지 않는다(OWASP &quot;특권 기능은 코드에서&quot;).</li>
+<li>[판단] 승인 피로를 줄이려면 T0는 승인 요구를 아예 없애고, T1은 묶음 승인과 기본 정렬 화면으로 처리하고, T2에만 마찰을 준다. Anthropic 수치는 방향 참고용이다.</li>
+<li>[판단] 롤백은 &quot;취소 제안&quot;을 새 제안으로 만드는 보상 작업으로 둔다. 이 부분은 근거 없이 설계한 것이다.</li>
+<li>[판단] 내구성: 승인이 하루를 넘기는 흐름이 생기기 전에는 DB 상태 머신(JobRunr 포함)으로 충분하고, 허브 문서의 &quot;LangGraph는 승인이 하루를 넘길 때&quot; 신호와 같다.</li>
+</ul>
+<h3 id="gaps-3">Gaps</h3>
+<ul>
+<li>제안 테이블·멱등 실행·롤백을 다룬 공식 참조 설계(AWS, Google, Microsoft). 못 찾음.</li>
+<li>Google ADK의 도구 확인 기능은 열어 보지 못했다.</li>
+<li>Claude의 API 쪽 &quot;승인&quot; 가이드는 직접 확인 못 함.</li>
+</ul>
+<hr>
+<h2 id="4-민감정보-가드레일-평가-관측-비용">4. 민감정보 가드레일, 평가, 관측, 비용</h2>
+<h3 id="takeaway-4">Takeaway</h3>
+<ul>
+<li>[사실] Bedrock Guardrails는 한국어를 &quot;최적화 지원&quot;으로 두지만, 그 정책(콘텐츠 필터·프롬프트 공격·금지 주제)의 Standard 티어는 <strong>교차 리전 추론을 쓰며 프롬프트와 출력이 주 리전 밖으로 나갈 수 있다</strong>. 서울 리전 안 처리 전제와 충돌할 수 있다.</li>
+<li>[사실] Guardrails PII 필터는 도구 호출 인자와 결과를 보지 않고, 한국 고유 식별자(주민등록번호) 유형이 없다. 앱에서 먼저 마스킹해야 한다.</li>
+</ul>
+<h3 id="cited-findings-4">Cited Findings</h3>
+<ul>
+<li>[사실] 한국어 지원: 콘텐츠 필터·프롬프트 공격(Standard) Korean &quot;Optimized and supported&quot;, 금지 주제(Standard) 동일, 민감정보 필터 Korean 동일, 문맥 근거 확인(Standard) 동일. 단어 필터는 영어·프랑스어·스페인어만. Classic 티어는 영어·프랑스어·스페인어만. 문서가 &quot;대상 언어를 반드시 직접 시험하라&quot;고 권고한다. — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-supported-languages.html" rel="noopener noreferrer" target="_blank">https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-supported-languages.html</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] Standard 티어는 교차 리전 추론을 사용한다. 교차 리전 요청은 &quot;데이터가 원래 있던 지리권 안의 리전들&quot;로 가며, 가드레일 설정은 주 리전에만 있지만 입력 프롬프트와 출력 결과는 주 리전 밖으로 이동할 수 있다고 한다. 서울이 속하는 지리권과 목적지 리전은 이 페이지에 없다. — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-tiers.html" rel="noopener noreferrer" target="_blank">https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-tiers.html</a> , <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-cross-region.html" rel="noopener noreferrer" target="_blank">https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-cross-region.html</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] 서울은 안전 티어 지원 리전 목록에 있다. 하지만 문맥 근거 확인의 Standard 티어 가용 리전에는 서울이 없고, 다른 리전에서 지정하면 검증 오류가 난다. — 같은 tiers 페이지 (직접)</li>
+<li>[사실] 민감정보 필터: 내장 유형은 일반(주소, 나이, 이름, 이메일, 전화, 사용자명, 비밀번호 등), 금융(카드, 계좌 IBAN 등), IT, 미국·캐나다·영국 전용이며 <strong>한국 전용 유형은 없다</strong>. 정규식 사용자 정의(1~500자, lookaround 불가)가 가능하고 차단/마스킹/탐지만 선택한다. 필터는 텍스트만 평가하며 <strong>도구 호출 인자, 도구 결과, 도구 정의의 PII는 차단도 마스킹도 하지 않는다</strong>. 마스킹은 모델 호출 로그(CloudWatch)에는 적용되지 않아 원문이 남고, 트레이스의 <code>match</code> 필드에도 원문이 들어 있다. — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-sensitive-filters.html" rel="noopener noreferrer" target="_blank">https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-sensitive-filters.html</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] 서울에서 Claude Opus 5와 Sonnet 5를 리전 안에서 처리한다(직접 모델 ID, 교차 리전 프로필 아님). Bedrock이 호출한 리전 안에서 처리하고, 처리량은 리전 쿼터에 묶이며 요금은 해당 리전 온디맨드다. 이 글에 나온 서울 모델은 2종뿐이다. — <a href="https://aws.amazon.com/blogs/machine-learning/introducing-anthropic-models-on-amazon-bedrock-for-in-region-inference-in-seoul-and-singapore/" rel="noopener noreferrer" target="_blank">https://aws.amazon.com/blogs/machine-learning/introducing-anthropic-models-on-amazon-bedrock-for-in-region-inference-in-seoul-and-singapore/</a> (게시 2026-09-29, 직접)</li>
+<li>[사실] OpenTelemetry는 GenAI 시맨틱 컨벤션을 별도 저장소로 옮겼고, 스팬·메트릭·이벤트(GenAI 클라이언트, MCP, 제공자별)를 다룬다. — <a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" rel="noopener noreferrer" target="_blank">https://opentelemetry.io/docs/specs/semconv/gen-ai/</a> , <a href="https://github.com/open-telemetry/semantic-conventions-genai" rel="noopener noreferrer" target="_blank">https://github.com/open-telemetry/semantic-conventions-genai</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] 상태가 &quot;Development&quot;(안정판 아님)이고 에이전트 연산(<code>create_agent</code>, <code>invoke_agent</code>, <code>execute_tool</code> 등)이 정의돼 있으며, 프롬프트 내용 수집 이벤트는 옵트인이라는 설명은 블로그에만 있다. 공식 페이지에서 상태를 직접 확인하지 못했다. — <a href="https://greptime.com/blogs/2026-05-09-opentelemetry-genai-semantic-conventions" rel="noopener noreferrer" target="_blank">https://greptime.com/blogs/2026-05-09-opentelemetry-genai-semantic-conventions</a> (게시 2026-05-09, 검색요약·제3자)</li>
+<li>[사실] Langfuse 자체 호스팅은 Web·Worker 컨테이너에 PostgreSQL, ClickHouse, Redis/Valkey, S3가 필요하다. 프로덕션은 Kubernetes(Helm)·AWS 등이며 Docker Compose는 단일 VM용(고가용성·백업 없음)이다. 라이선스 종류는 페이지에 명시가 없고 일부 기능은 라이선스 키가 필요하다. — <a href="https://langfuse.com/self-hosting" rel="noopener noreferrer" target="_blank">https://langfuse.com/self-hosting</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] Spring AI는 Micrometer 스팬과 OpenTelemetry 호환 메트릭으로 서버 상호작용을 관측한다. — Spring AI 2.0 GA 블로그 (직접)</li>
+<li>[사실] AgentCore Observability와 Evaluations는 서울에서 Yes다. 평가 기능의 내용(평가자 종류, 비용)은 열어 보지 못했다. — 2절 표 (직접, 기능 내용은 [미확인])</li>
+<li>[사실] 외부 PMS API 호출 한도가 에이전트 설계의 병목이 될 수 있다. Mews Connector API는 시간당 1,000요청이라는 제3자 기록이 있다(공식 확인 못 함). — 1절 Peliqan (제3자)</li>
+<li>[미확인] 회귀 시험용 평가 세트 구성, 입주민 입력 주입 시험 데이터셋은 벤더 문서에서 한국어 기준으로 찾지 못했다.</li>
+</ul>
+<h3 id="inferences-3">Inferences</h3>
+<ul>
+<li>[판단] 마스킹은 앱 계층이 먼저 한다(주민번호, 계좌, 연락처, 입주민 이름과 호실). 허브 문서의 &quot;Spring이 허용 칸만 넘긴다(ADR-G4)&quot;가 이 한계(도구 인자·결과 미검사)를 이미 막는 구조다. Guardrails는 보조 그물로 둔다.</li>
+<li>[판단] 입주민이 보낸 글은 전부 비신뢰 입력이다. ADR-G1(뜻 고르기만, 생성 답변 없음)은 주입 피해를 &quot;잘못된 뜻 선택&quot;으로 제한하고, 뜻 목록 밖의 값은 코드에서 거부한다. 직원용 초안 기능만 생성 텍스트 위험이 남는다.</li>
+<li>[판단] 한국어 프롬프트 공격 필터가 필요하면 Standard 티어의 교차 리전 영향을 데이터 유형별로 정리하고 쓸지 정한다(예: 입주민 개인정보 제거 후 텍스트만 통과). 이 판단은 지리권 정보를 확인한 뒤에야 할 수 있다.</li>
+<li>[판단] 평가 세트는 JSON 골든 파일로 시작해 CI에서 의도 분류 정확도와 &quot;목록 밖 거부율&quot;을 본다. 허브 문서 1단계 &quot;평가 JSON&quot;과 일치한다.</li>
+<li>[판단] 비용·한도: 서울에서 모델이 2종이므로 서울 안 폴백은 Sonnet 5 ↔ Opus 5가 전부이고, 타 공급자나 교차 리전으로 폴백하면 리전 안 처리 약속이 깨진다. 기본은 &quot;폴백 시 직원 수동 처리&quot;로 둔다. 사용자·사업장별 호출 상한과 일일 예산은 앱 계층 카운터로 둔다 [판단, 근거 없음].</li>
+<li>[판단] 관측은 1단계 구조화 로그 + OTel, 프롬프트·응답 원문은 기본 비저장으로 둔다(Guardrails 로그에 원문이 남는 한계와 같은 이유).</li>
+</ul>
+<h3 id="gaps-4">Gaps</h3>
+<ul>
+<li>서울이 속하는 Guardrails 교차 리전 지리권과 목적지 리전.</li>
+<li>OTel GenAI 컨벤션의 현재 공식 안정성 표기.</li>
+<li>Langfuse 라이선스 종류.</li>
+<li>한국어 입주민 문장 기준의 주입 시험 벤치마크.</li>
+</ul>
+<hr>
+<h2 id="5-고객-문의-에이전트-채널-전화-사람-인계">5. 고객 문의 에이전트: 채널, 전화, 사람 인계</h2>
+<h3 id="takeaway-5">Takeaway</h3>
+<ul>
+<li>[사실] 서울에서 Amazon Connect와 Contact Lens, 에이전틱 음성(speech-to-speech), 에이전트 보조가 모두 가능하고 Lex는 한국어(ko_KR)를 지원한다. 카카오 상담톡과 채널톡은 한국 SaaS라 리전 개념이 맞지 않으며, 개발자용 공식 인계 API는 확인하지 못했다.</li>
+<li>[사실] AI 기본법 사전 고지(2026-01-22 시행)는 UI에서 &quot;AI가 응대한다&quot;는 고지와 기록을 요구한다고 해석된다(2차 자료).</li>
+</ul>
+<h3 id="cited-findings-5">Cited Findings</h3>
+<p><strong>Amazon Connect 서울 (직접, 접근 2026-11-04)</strong></p>
+<ul>
+<li>[사실] 서울 리전에서 Connect 지원, 에이전트 작업공간, 에이전트 보조, 데이터 레이크, Cases, Tasks, Customer Profiles, 라이브 미디어 스트리밍, 채팅 위젯, 고객 인증, 외부 도구, 예측·상담원 스케줄링이 가능하다. 메시징 연동은 SMS, WhatsApp, Apple Messages for Business, 푸시가 Yes다. 서울 인스턴스에서 아웃바운드 캠페인은 한국 번호로 발신한다. — <a href="https://docs.aws.amazon.com/connect/latest/adminguide/regions.html" rel="noopener noreferrer" target="_blank">https://docs.aws.amazon.com/connect/latest/adminguide/regions.html</a></li>
+<li>[사실] 에이전틱 음성과 Agentic CX Designer가 서울 목록에 있다. 문서가 제품명을 &quot;Connect Customer&quot;로 부른다. — 같은 페이지</li>
+<li>[사실] Contact Lens 서울: 생성형 AI 접촉 분류·요약·정보 추출 Yes, 실시간 통화 분석 Yes, 화면 녹화 Yes, 주제 탐지 Yes, <strong>생성형 AI 성과 평가 없음</strong>, 외부 음성은 녹음만. — 같은 페이지</li>
+<li>[사실] 서울에 <strong>없는 것</strong>: Voice ID(서울 없음), Global Resiliency(도쿄·오사카 등에 있고 서울 없음). — 같은 페이지</li>
+<li>[사실] 에이전틱 음성의 서울·한국어 확대는 2026-04 발표라는 요약과 일본어 블로그가 있다. 본문 확인은 못 했다. — <a href="https://aws.amazon.com/about-aws/whats-new/2026/04/amazon-connect-aws/" rel="noopener noreferrer" target="_blank">https://aws.amazon.com/about-aws/whats-new/2026/04/amazon-connect-aws/</a> (게시 2026-04, 검색요약)</li>
+<li>[사실] Lex V2는 ko_KR을 지원한다. 단 <code>AMAZON.AlphaNumeric</code> 슬롯은 한국어 제외, 사용자 정의 어휘와 신뢰도 점수는 영어 로케일에서만 된다. Lex의 서울 리전 가용은 이 문서가 General Reference로 넘겨서 확인하지 못했다. — <a href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html" rel="noopener noreferrer" target="_blank">https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] Lex의 생성형 AI 기반 NLU가 한국어 포함 8개 언어로 확대됐다(2025-09). — <a href="https://aws.amazon.com/about-aws/whats-new/2025/09/amazon-lex-generative-ai-natural-language-eight-languages" rel="noopener noreferrer" target="_blank">https://aws.amazon.com/about-aws/whats-new/2025/09/amazon-lex-generative-ai-natural-language-eight-languages</a> (게시 2025-09, 검색요약)</li>
+</ul>
+<p><strong>네이버 클로바 케어콜</strong></p>
+<ul>
+<li>[사실] 기존 노트: 2024-09 기준 128개 시군구, 사용자 3만 명, 응답률 96%(회사 주장). 공급 방식과 API는 이번에도 못 찾았다. — <code>axis9-senior-ai-assistant.md</code> G7 (<a href="https://www.kukinews.com/article/view/kuk202409050089" rel="noopener noreferrer" target="_blank">https://www.kukinews.com/article/view/kuk202409050089</a>, 게시 2024-09-05)</li>
+<li>[미확인] 민간 하우징 사업자가 케어콜 API를 쓸 수 있는지.</li>
+</ul>
+<p><strong>카카오톡 상담</strong></p>
+<ul>
+<li>[사실] 카카오 상담톡의 제공 범위는 메시지 발송 요청·결과 확인의 기술 규약과 접근 권한이고, 고객센터용 채팅 상담 시스템은 포함되지 않는다. 그래서 채널톡 같은 상담 솔루션이 받아서 상담원 화면을 만든다. 다만 근거 글은 2016년 출시 자료와 일반 안내이므로 최신 명세는 아니다. — <a href="https://www.kakaocorp.com/page/detail/8160?lang=ENG" rel="noopener noreferrer" target="_blank">https://www.kakaocorp.com/page/detail/8160?lang=ENG</a> (2016, 검색요약)</li>
+<li>[사실] 채널톡의 카카오톡 연동은 비즈니스 채널 관리자 번호로 인증 메시지를 보내며, &quot;다른 파트너가 이미 상담톡을 쓰는 프로필&quot;이면 오류가 나서 카카오에 문의해야 한다. — <a href="https://docs.channel.io/help/ko/articles/카카오톡-연동하기-04f5721d" rel="noopener noreferrer" target="_blank">https://docs.channel.io/help/ko/articles/카카오톡-연동하기-04f5721d</a> (접근 2026-11-04, 검색요약)</li>
+<li>[사실] 카카오 챗봇 관리자센터는 카카오 비즈니스 가입이 필요하고 음성봇은 베타이며 파트너 계약이 있어야 설계가 열린다. 스킬 서버, 콜백, 상담 연결 사양은 이 페이지에 없다. — <a href="https://kakaobusiness.gitbook.io/main/tool/chatbot/start/prepare" rel="noopener noreferrer" target="_blank">https://kakaobusiness.gitbook.io/main/tool/chatbot/start/prepare</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] 2026-06 카카오 개발자 포럼에 &quot;AI 챗봇 관리 메뉴가 없어 AI 챗봇 전환(콜백) 신청이 안 된다&quot;는 글이 있다. 계정 조건에 따라 메뉴가 다를 수 있다는 정도만 말할 수 있다. — <a href="https://devtalk.kakao.com/c/general/19?page=2" rel="noopener noreferrer" target="_blank">https://devtalk.kakao.com/c/general/19?page=2</a> (2026-06, 검색요약)</li>
+<li>[사실] 오픈빌더 스킬이 외부 서버 API를 호출하는 구조는 개인 튜토리얼에 있다(FastAPI와 OpenAI 예). — <a href="https://wikidocs.net/280514" rel="noopener noreferrer" target="_blank">https://wikidocs.net/280514</a> (접근 2026-11-04, 검색요약·제3자)</li>
+<li>[미확인] 카카오 공식 AI 챗봇 콜백 규격과 시간 제한, 상담원 연결 API 명세.</li>
+</ul>
+<p><strong>채널톡 ALF</strong></p>
+<ul>
+<li>[사실] ALF 채팅·전화는 그로스·엔터프라이즈 요금제에서 쓴다(2025-11-25 공지). 전화 중 어려운 문의를 감지하면 채팅 상담 링크를 문자로 보내고 통화를 종료하며, 채팅 ALF가 통화 문맥을 이어받는다. 문자 비용은 실비이고 고객 프로필에 휴대폰 번호가 없으면 못 쓴다(2026-04-24 공지). — <a href="https://docs.channel.io/updates/ko/articles/20251125-ALF-전화-상담-v2로-업그레이드-e5e3d003" rel="noopener noreferrer" target="_blank">https://docs.channel.io/updates/ko/articles/20251125-ALF-전화-상담-v2로-업그레이드-e5e3d003</a> , <a href="https://docs.channel.io/updates/ko/articles/2026424-CX-Score업데이트-fd2a5845" rel="noopener noreferrer" target="_blank">https://docs.channel.io/updates/ko/articles/2026424-CX-Score업데이트-fd2a5845</a> (검색요약)</li>
+<li>[사실] ALF v2가 주문 취소 가능 여부 확인, 반품, 예약 변경을 직접 실행한다는 소개가 있다(회사 주장). 외부 시스템 연동 방식은 명시가 없다. — <a href="https://docs.channel.io/ko-blog/ko/revisions/db428b75" rel="noopener noreferrer" target="_blank">https://docs.channel.io/ko-blog/ko/revisions/db428b75</a> (접근 2026-11-04, 검색요약)</li>
+<li>[미확인] 개발자용 Open API/웹훅으로 상담 배정과 인계를 제어하는 방법. 이번 조사로 찾지 못함.</li>
+</ul>
+<p><strong>AI 기본법 고지(UI·시스템에 미치는 것만)</strong></p>
+<ul>
+<li>[사실] 2026-01-22 시행. 생성형·고영향 AI 기반 서비스는 이용자에게 사전 고지해야 한다. 고지 방법 예시는 이용약관·가입 절차 명시, 화면 표시, 오프라인 게시. 시행령 제23조는 한 번 이상 안내 문구나 음성으로 알리라고 설명하는 법률 자문 자료가 있다. 생성물이 외부로 유통되면 AI 생성 표시, 다운로드·공유 기능이 있으면 결과물 자체에 표시가 필요하다. 계도기간은 1년 이상. — <a href="https://www.lawtimes.co.kr/news/articleView.html?idxno=215368" rel="noopener noreferrer" target="_blank">https://www.lawtimes.co.kr/news/articleView.html?idxno=215368</a> , <a href="https://www.daeryunlaw.com/newsletter/news/246" rel="noopener noreferrer" target="_blank">https://www.daeryunlaw.com/newsletter/news/246</a> (2026-01 / 2025-11-12, 검색요약·제3자)</li>
+<li>[미확인] 챗봇 대화 시작 시 &quot;AI입니다&quot; 고지가 필수인지, 전화 음성 고지의 구체 방식. 이번 검색에서 확정 규정을 못 찾았다. 법령 원문(law.go.kr)은 이번에도 못 열었고, 기존 노트 G4~G6의 한계가 그대로다. 법적 판단 전에 원문 확인이 필요하다.</li>
+</ul>
+<h3 id="inferences-구조-판단">Inferences (구조 [판단])</h3>
+<ul>
+<li>[판단] 채널 어댑터를 한 계층(<code>InboundChannel</code>)으로 만들고 카카오(상담톡/채널톡), 전화(Connect), 웹챗, 앱 모두 같은 <code>Inquiry</code> 모델로 변환한다. 에이전트는 채널을 모른다.</li>
+<li>[판단] 인계 규칙을 코드에 둔다: 응급·건강 단어, 불만, 2회 이상 뜻 불명, 개인정보 변경, 금액 관련은 즉시 사람에게 넘긴다. 인계 시 직원 화면에 대화 요약과 AI가 고른 뜻 후보, 입주민 식별 결과를 함께 보여 준다(Contact Lens의 서울 요약 기능, 채널톡의 문맥 이어받기와 같은 방향).</li>
+<li>[판단] 전화는 시니어 대안 경로이므로 1순위는 사람 연결이다. AI 전화는 접수·일정 확인처럼 뜻 고르기 범위로 제한한다(ADR-G1). 서울에서 Connect + Lex(ko_KR)는 가능하지만 한국어 인식 품질은 시험 전에는 [미확인].</li>
+<li>[판단] 고지 설계: 첫 응답에 &quot;AI 도우미가 응대합니다. 직원 연결은 언제든 가능합니다&quot; 문구, 고지 노출 시각과 문구 버전을 대화 기록에 저장, 전화는 첫 안내 음성에 포함. 단 법적 충족 여부는 [미확인].</li>
+</ul>
+<h3 id="gaps-5">Gaps</h3>
+<ul>
+<li>카카오 공식 챗봇 콜백·상담 연결 명세, 채널톡 개발자 API.</li>
+<li>클로바 케어콜의 외부 연동 가능성.</li>
+<li>Lex의 서울 가용 페이지, Connect 한국어 음성 품질 근거.</li>
+</ul>
+<hr>
+<h2 id="6-소규모-팀의-ai-코딩-에이전트-운영-방식">6. 소규모 팀의 AI 코딩 에이전트 운영 방식</h2>
+<h3 id="takeaway-6">Takeaway</h3>
+<ul>
+<li>[사실] 공식 문서의 핵심은 &quot;문서로 부탁하는 규칙&quot;과 &quot;도구가 강제하는 규칙&quot;을 구분하라는 것이다. CLAUDE.md는 맥락일 뿐 강제 설정이 아니고, 예외 없는 규칙은 훅·거부 규칙·관리 설정으로 옮기라고 한다.</li>
+<li>[사실] 검증 수단(테스트, 타입 검사)을 에이전트가 실행할 수 있게 주고, 작성자와 다른 문맥에서 검토시키는 것이 반복되는 권고다. 과장된 생산성 수치는 1차 자료에서 찾지 못해 인용하지 않는다.</li>
+</ul>
+<h3 id="cited-findings-6">Cited Findings</h3>
+<ul>
+<li>[사실] Claude Code는 CLAUDE.md를 읽을 수 있고, 저장소의 <a class="doc-ref" href="x-rules-evenstay-agents.html"><code>AGENTS.md</code></a>를 CLAUDE.md 대신 읽을 수도 있다. 둘 다 &quot;집행되는 설정이 아니라 맥락&quot;이며, 더 구체적이고 짧을수록 잘 지켜진다. 막아야 할 동작은 PreToolUse 훅을 쓰라고 한다. — <a href="https://code.claude.com/docs/en/memory" rel="noopener noreferrer" target="_blank">https://code.claude.com/docs/en/memory</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] 모범 사례 문서: (1) 결정적 방식(훅, 거부 규칙, 관리 설정, 테스트, CI)과 비결정적 방식(프롬프트, CLAUDE.md, 스킬)을 구분한다. (2) CLAUDE.md는 코드에서 알 수 없는 것만 담는다: 검증 명령, 저장소 밖 결정, 함정. (3) CLAUDE.md의 강조를 계속 더해도 안 지켜지면 훅으로 옮긴다. (4) 에이전트에게 실행 가능한 검증(테스트, 타입 검사)을 주고, 완료 시 &quot;명령과 출력&quot;이라는 증거를 요구한다. (5) 작성한 대화를 보지 않은 서브에이전트로 diff를 검토시킨다. 검토 프롬프트에 &quot;스타일은 건너뛰라&quot;를 넣지 않으면 불필요한 추상화가 늘어난다. (6) 명세는 에이전트에게 인터뷰시켜 <code>SPEC.md</code>로 만들고 새 세션에서 구현하며, 검토도 SPEC 기준으로 한다. (7) 경로별 규칙은 <code>.claude/rules/</code>로 나눈다. — <a href="https://code.claude.com/docs/en/best-practices" rel="noopener noreferrer" target="_blank">https://code.claude.com/docs/en/best-practices</a> (접근 2026-11-04, 직접)</li>
+<li>[사실] Anthropic 글: 에이전트가 할 수 있는 일을 샌드박스·파일시스템 경계·외부 통신 제한으로 먼저 제한하고, 승인 프롬프트에만 기대지 말라. 2026-02 레드팀에서 피싱된 사용자가 시작한 악성 프롬프트로 25회 중 24회 자격증명 유출이 성공했고, 모델 계층 방어가 못 막아 외부 통신 제한과 파일시스템 경계가 효과적이었다(회사 주장). — <a href="https://www.anthropic.com/engineering/how-we-contain-claude" rel="noopener noreferrer" target="_blank">https://www.anthropic.com/engineering/how-we-contain-claude</a> (게시 2026-05-25, 직접)</li>
+<li>[사실] GitHub Spec Kit(명세 → 계획 → 작업 → 구현의 MIT 라이선스 도구)과 AGENTS.md(공개 서식이지만 표준화 기구 승인은 확인 못 함)가 널리 거론된다. — <a href="https://rywalker.com/research/github-spec-kit" rel="noopener noreferrer" target="_blank">https://rywalker.com/research/github-spec-kit</a> (접근 2026-11-04, 검색요약·제3자)</li>
+<li>[사실] DORA 2025 보고서(약 5,000명 설문): AI 도입 90%, AI는 조직의 강점과 약점을 증폭하고, 느슨히 결합된 아키텍처와 빠른 피드백이 있는 팀이 이득을 본다고 한다. 증폭 역량 7가지의 이름은 확인 못 했다. 설문 기반이라 인과를 단정하지 않는다. — <a href="https://www.dora.dev/research/ai" rel="noopener noreferrer" target="_blank">https://www.dora.dev/research/ai</a> (접근 2026-11-04, 검색요약)</li>
+<li>[사실] 코딩 에이전트의 공격면: 이슈 제목·README·MCP 설정 파일·마켓플레이스 스킬이 주입 경로로 쓰인 사례가 2026년에 보고됐다. 2026-03 Cline 사례 등은 1차 확인을 못 했다. — <a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-mcp-tool-poisoning-auto-execution-20260701/" rel="noopener noreferrer" target="_blank">https://labs.cloudsecurityalliance.org/research/csa-research-note-mcp-tool-poisoning-auto-execution-20260701/</a> (게시 2026-07-01, 검색요약)</li>
+</ul>
+<h3 id="inferences-짧은-운영-규칙-제안-판단">Inferences (짧은 운영 규칙 제안 [판단])</h3>
+<ul>
+<li>[판단] 저장소에 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a>(검증 명령, 모듈 경계 규칙, ADR 번호, 함정)와 필요 시 <a class="doc-ref" href="x-rules-evenstay-agents.html"><code>AGENTS.md</code></a>를 두고, 예외 없는 규칙(모듈 경계 위반 금지, 마이그레이션 파일 직접 수정 금지, 비밀 파일 읽기 금지)은 테스트·CI·훅으로 강제한다. Evenstay의 Modulith 경계 CI 검사(허브 문서 6절 3항)가 이 구조의 핵심 예다.</li>
+<li>[판단] PR 관문: 작성자 에이전트와 다른 문맥의 검토, 명세(SPEC/ADR) 대비 검토, 새 로직에 테스트 필수, 금액·권한 코드는 사람이 직접 읽는다.</li>
+<li>[판단] 코딩 에이전트에게 외부 MCP·스킬 설치를 허용 목록으로 제한하고, 이슈·문서 텍스트를 명령으로 취급하지 않는 규칙을 둔다.</li>
+<li>[미확인] Cursor, Codex 등 다른 도구의 공식 규칙 파일 문서는 이번에 열지 못했다. 위 근거는 Claude Code 문서와 일반 원칙에 기운다.</li>
+</ul>
+<h3 id="gaps-6">Gaps</h3>
+<ul>
+<li>Cursor Rules, Codex AGENTS.md 지원 범위의 공식 문서.</li>
+<li>AI 코딩 도입 효과를 측정한 독립 연구(METR 등)는 확인하지 않았다. 효과 수치는 쓰지 않았다.</li>
+<li>DORA 7개 역량의 정확한 이름.</li>
+</ul>
+<hr>
+<h2 id="최종-표-층별-후보와-선택">최종 표: 층별 후보와 선택</h2>
+<p>서울 가용 칸은 AWS 현행 문서를 직접 연 것만 &quot;예/아니오&quot;로 썼다. &quot;해당 없음&quot;은 리전 개념이 맞지 않는 소프트웨어·서비스다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>층</th>
+<th>후보</th>
+<th>서울 가용</th>
+<th>고른다면 무엇 [판단]</th>
+<th>대가</th>
+<th>근거 수준</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>에이전트 노출(외부)</td>
+<td>Spring AI MCP 서버 + mcp-security / OpenAPI만</td>
+<td>해당 없음(ECS 서울에서 직접 운영)</td>
+<td>1단계는 외부 MCP를 열지 않고 내부 <code>IntentRouter</code> 어댑터 유지. 열 때는 읽기 도구부터, Apaleo식 읽기/쓰기 범위 분리</td>
+<td>mcp-security는 커뮤니티·WIP, JWT·WebMVC만. SDK는 2025-11-25판이라 최신 스펙 협상은 미지원</td>
+<td>상(스펙·Spring 문서 직접) / Boot 4.1 호환은 미확인</td>
+</tr>
+<tr>
+<td>LLM 호출</td>
+<td>Bedrock 서울 Sonnet 5, Opus 5</td>
+<td>예(리전 내 처리, 2종)</td>
+<td>Sonnet 5 기본, 수동 폴백</td>
+<td>서울 안 폴백은 2종뿐. 타 공급자·교차 리전 폴백은 리전 약속을 깸</td>
+<td>상(AWS 블로그 직접, 2026-09-29)</td>
+</tr>
+<tr>
+<td>에이전트 런타임</td>
+<td>Spring 직접 루프(<code>ToolCallingManager</code>) / AgentCore Runtime / Strands / Bedrock Agents</td>
+<td>AgentCore Runtime 예(Instances 아니오), Strands는 SDK라 해당 없음, Bedrock Agents 미확인</td>
+<td>1~2단계는 Spring 직접 루프. AgentCore는 3단계 후보</td>
+<td>직접 루프는 중단·재개와 영속화를 직접 짬. AgentCore는 Java 지침이 없고 Python 중심으로 보임 [추정]</td>
+<td>중(Spring·AgentCore 문서 직접, 비교는 블로그)</td>
+</tr>
+<tr>
+<td>도구 게이트웨이·정책</td>
+<td>AgentCore Gateway + Policy(Cedar) / 앱 내 <code>authorize()</code></td>
+<td>예(Gateway, Policy 모두)</td>
+<td>1~2단계는 앱 내 <code>authorize()</code>와 도구 코드의 위험 등급. Policy는 외부 에이전트를 열 때</td>
+<td>Policy는 Gateway 경유 호출에만 적용. 이중 정책 관리 부담</td>
+<td>중(문서 직접, 운영 사례 없음)</td>
+</tr>
+<tr>
+<td>사람 승인</td>
+<td>PG 제안 테이블 + JobRunr / LangGraph interrupt / Agents SDK RunState / Strands interrupt</td>
+<td>해당 없음</td>
+<td>PG 제안 테이블 + 위험 3단 + 멱등 키. LangGraph는 승인이 하루 넘길 때</td>
+<td>승인 UI·만료·멱등을 직접 짬. 승인 피로는 설계(T0 자동, T1 묶음)로 줄여야 함</td>
+<td>프레임워크 패턴은 중~상(직접·검색요약), 테이블 설계는 하(판단, 참조 설계 못 찾음)</td>
+</tr>
+<tr>
+<td>가드레일</td>
+<td>Bedrock Guardrails / 앱 마스킹·정규식·코드 검증</td>
+<td>서울은 티어 지원 리전. 문맥 근거 Standard는 아니오</td>
+<td>앱 마스킹과 코드 검증이 주, Guardrails는 보조 그물. 한국어 프롬프트 공격 필터는 교차 리전 영향 확인 후</td>
+<td>Standard 티어는 교차 리전이라 프롬프트가 서울 밖으로 갈 수 있음(지리권 미확인). PII 필터는 주민번호 유형 없음, 도구 인자·결과 미검사</td>
+<td>상(AWS 문서 직접)</td>
+</tr>
+<tr>
+<td>PII 마스킹</td>
+<td>앱 계층 마스킹 / Guardrails 민감정보 필터</td>
+<td>해당 없음 / 예</td>
+<td>앱 계층(<code>authorize()</code> 후 허용 칸만)</td>
+<td>정규식·사전 유지보수, 주민번호 등 직접 정의</td>
+<td>상(문서 직접)</td>
+</tr>
+<tr>
+<td>평가·회귀</td>
+<td>자체 골든 JSON + CI / AgentCore Evaluations</td>
+<td>후자는 예(기능 내용 미확인)</td>
+<td>1단계 골든 JSON, 한국어 입주민 문장 + 주입 문장 포함</td>
+<td>세트 작성은 사람이 해야 하고 한국어 공개 벤치마크는 못 찾음</td>
+<td>중(리전 직접, 평가 방법은 판단)</td>
+</tr>
+<tr>
+<td>관측</td>
+<td>OTel + CloudWatch / AgentCore Observability / Langfuse 자체 호스팅</td>
+<td>앞의 둘은 예(Observability), Langfuse는 해당 없음</td>
+<td>1단계 구조화 로그 + OTel, 원문 기본 비저장. Langfuse는 3단계</td>
+<td>OTel GenAI 컨벤션은 개발 단계(블로그). Langfuse는 ClickHouse·Valkey·S3 운영 부담</td>
+<td>중(OTel 상태는 제3자)</td>
+</tr>
+<tr>
+<td>카톡 채널</td>
+<td>채널톡(상담톡 연동) / 카카오 오픈빌더 스킬</td>
+<td>해당 없음(데이터 위치 미확인)</td>
+<td>채널톡 같은 상담 솔루션을 인계 창구로, 에이전트는 우리 API 뒤에</td>
+<td>요금제 제한, 상담톡 프로필 중복 사용 제약, 개발자 인계 API는 미확인</td>
+<td>하~중(검색요약·제3자 중심)</td>
+</tr>
+<tr>
+<td>전화</td>
+<td>Amazon Connect + Lex ko_KR + 에이전틱 음성 / 클로바 케어콜</td>
+<td>Connect·에이전틱 음성·Contact Lens·에이전트 보조 예. Voice ID, Global Resiliency 아니오. Lex 서울은 미확인</td>
+<td>사람 연결 우선, AI 전화는 접수·일정 확인 범위. 문서 설계만</td>
+<td>한국어 인식 품질 미확인, Lex 일부 기능(영숫자, 어휘)은 한국어 제외, 케어콜 외부 연동 불명</td>
+<td>중(Connect 직접, 나머지 검색요약)</td>
+</tr>
+<tr>
+<td>AI 고지</td>
+<td>첫 응답 문구 + 기록</td>
+<td>해당 없음</td>
+<td>채팅·음성 모두 첫 안내에 고지, 노출 기록 저장</td>
+<td>법적 충족 여부는 원문 확인 전 미확인</td>
+<td>하(2차 자료)</td>
+</tr>
+<tr>
+<td>AI 코딩 운영</td>
+<td>CLAUDE.md/AGENTS.md + 훅·CI + 분리 검토</td>
+<td>해당 없음</td>
+<td>지침은 짧게, 예외 없는 규칙은 CI·훅으로</td>
+<td>규칙 파일 유지 비용. 비결정적 규칙은 어겨질 수 있음</td>
+<td>상(Claude Code 문서 직접, 다른 도구는 미확인)</td>
+</tr>
+</tbody></table></div>
+<h2 id="못-찾은-것">못 찾은 것</h2>
+<ul>
+<li>Yardi 커넥터의 쓰기 범위·승인 방식(보도자료 본문 403). Oracle 2026-06-16 발표 본문(403).</li>
+<li>Mews의 공식 MCP 또는 에이전트 API 발표. 제3자 서버만 확인됨.</li>
+<li>Apaleo MCP의 서버 주소, 인증 흐름, 도구별 승인 방식.</li>
+<li>어느 PMS·임대 벤더도 쓰기 도구의 승인 UX를 문서로 공개하지 않음. 수치(AppFolio 35% 등)는 모두 회사 주장이고 검증 못 함.</li>
+<li>시니어 하우징에서의 EliseAI 사례와 사람 인계 방식.</li>
+<li>Spring Boot 4.1과 mcp-security 0.1.x의 호환을 보증하는 공식 문장. Spring AI 개요 페이지와 GA 블로그의 SDK 버전 불일치 원인.</li>
+<li>AgentCore Gateway의 지원 MCP 스펙 판. MCP 2026-07-28판을 Spring이 정식 지원하는 시점.</li>
+<li>Bedrock Guardrails 교차 리전의 서울 지리권·목적지 리전. Bedrock Agents의 서울 기능 가용과 유지보수 상태. Strands Java 지원.</li>
+<li>OTel GenAI 컨벤션의 공식 안정성 표기(블로그만 확인). Langfuse 라이선스 종류.</li>
+<li>업무 DB 행동 제안·멱등 실행·롤백의 공식 참조 설계(AWS, Google, Microsoft 모두). Google ADK 확인 기능은 열지 않음.</li>
+<li>한국어 입주민 문장 기준의 주입·회귀 평가 벤치마크.</li>
+<li>카카오 공식 AI 챗봇 콜백·상담 연결 명세, 채널톡 개발자 API(웹훅, 배정), 클로바 케어콜 외부 연동.</li>
+<li>AI 기본법에서 챗봇 대화 시작 고지와 전화 음성 고지의 확정 규정(law.go.kr 원문 미열람).</li>
+<li>Cursor, Codex의 공식 규칙 파일 문서. DORA 7개 역량의 이름. 2026년 MCP 보안 사건의 1차 출처.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1007" data-title="에이전트"><p>다음 단계를 스스로 고르며 도구를 호출하는 실행. Evenstay에서는 직원용 초안과 제안까지 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>agent</dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1008" data-title="도구 호출"><p>호출 기록. 결과 본문은 저장하지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 도구 호출, 도구 호출 기록 / 회원: 확인한 곳(답 아래 한 줄, assistant T2-1은 표시 안 함) <code>[문서 다름]</code></dd><dt>영문·코드 이름</dt><dd><code>ToolCall</code></dd><dt>출처</dt><dd>assistant T2-1·2-2, assistant M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1009" data-title="어댑터"><p>외부 연동 경계. MVP는 목업이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>결제, ERP, 알림, 파일 저장, LLM</dd><dt>출처</dt><dd>core T1·9</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

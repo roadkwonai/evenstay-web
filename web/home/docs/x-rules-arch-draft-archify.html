@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>archify 도식 5장 (arch-system, arch-signal, arch-payment, arch-agent, arch-doc) | Evenstay 문서</title>
+<meta name="description" content="archify 도식 5장 (arch-system, arch-signal, arch-payment, arch-agent, arch-doc). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>archify 도식 5장 (arch-system, arch-signal, arch-payment, arch-agent, arch-doc)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#다시-만드는-명령">다시 만드는 명령</a></li><li class="lv2"><a href="#문구를-고치는-곳">문구를 고치는 곳</a></li></ol></details></nav></aside>
+  <article class="doc"><h2 id="다시-만드는-명령">다시 만드는 명령</h2>
+<pre><code>bash design/home/architecture/archify/build.sh</code></pre>
+<ul>
+<li><code>~/.claude/skills/archify</code>를 임시 폴더로 복사하고 <code>patch-template.py</code>로 색 토큰, Pretendard, 밝은 화면 기본값을 입힌 뒤 다섯 도식을 <code>finalize</code>(검증, 전달, 구조 검사, 브라우저 검사)로 만든다. 원본 스킬 폴더는 고치지 않는다.</li>
+<li>결과: <code>design/prototype/home/architecture/&lt;id&gt;.html</code>, <code>&lt;id&gt;.png</code>(폭 2100px). 검사 영수증은 <code>&lt;id&gt;/evidence/</code>.</li>
+<li>Chrome이 있어야 한다(<code>/Applications/Google Chrome.app</code>).</li>
+</ul>
+<h2 id="문구를-고치는-곳">문구를 고치는 곳</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>고칠 것</th>
+<th>파일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>도식 안의 글, 위치, 연결</td>
+<td><code>&lt;id&gt;/candidate.json</code></td>
+</tr>
+<tr>
+<td>화면 단추, 범례, 안내의 한국어</td>
+<td><code>ko-translations.json</code> (<code>build.sh</code>가 각 <code>candidate.json</code>의 <code>meta.translations</code>에 다시 채운다)</td>
+</tr>
+<tr>
+<td>색, 글꼴, 강조(#F3D766)를 칠할 단계</td>
+<td><code>patch-template.py</code></td>
+</tr>
+</tbody></table></div>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

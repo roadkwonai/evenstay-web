@@ -113,7 +113,7 @@
 <td>ServiceUsage</td>
 <td>서비스 사용 기록(반영됨, copy 2-14)</td>
 <td>(표시 안 함)</td>
-<td>추가(2026-11-04, N1-C1). 생활 요청 같은 모듈의 유료 사용을 다음 청구서에 넣기 전까지 기다리는 기록. 회원 화면 이름은 N1 <code>names.md</code>(evenstay <code>docs/requests/copy/names.md</code>)를 따른다</td>
+<td>추가(2026-11-04, N1-C1). 생활 요청 같은 모듈의 유료 사용을 다음 청구서에 넣기 전까지 기다리는 기록. 회원 화면 이름은 N1 <code>names.md</code>(evenstay <a class="doc-ref" href="x-writing-requests-names.html"><code>docs/requests/copy/names.md</code></a>)를 따른다</td>
 </tr>
 <tr>
 <td>Contract.deposit_protection</td>
@@ -713,7 +713,7 @@ ACTIVE ──(revoke, 사유 필수)──► REVOKED</code></pre>
 </ul>
 <h3 id="adr-3-저장소패키지-구조">ADR-3. 저장소·패키지 구조</h3>
 <ul>
-<li><strong>맥락</strong>: 개발 저장소는 <code>evenstay/</code> 하나에 코어와 모듈을 하위 폴더로 둔다 [사실, 2026-11-02 확정]. 상위 <code>CLAUDE.md</code>에는 공통 규칙, 모듈 폴더 <code>CLAUDE.md</code>에는 그 모듈의 범위와 하지 않을 것을 둔다.</li>
+<li><strong>맥락</strong>: 개발 저장소는 <code>evenstay/</code> 하나에 코어와 모듈을 하위 폴더로 둔다 [사실, 2026-11-02 확정]. 상위 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a>에는 공통 규칙, 모듈 폴더 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a>에는 그 모듈의 범위와 하지 않을 것을 둔다.</li>
 <li><strong>선택지</strong>: (A) 모듈마다 저장소 / (B) 한 저장소 + 모듈마다 따로 배포 / (C) 한 저장소 + 한 번에 배포(모듈형 모놀리스).</li>
 <li><strong>결정</strong>: <strong>C.</strong></li>
 </ul>
@@ -2133,7 +2133,7 @@ ACTIVE ──(revoke, 사유 필수)──► REVOKED</code></pre>
 23. <strong>이벤트 범위 [가설]</strong>: <code>ResidentAbsenceStarted</code>·<code>ResidentAbsenceEnded</code>는 허브가 B·D에 알린 이름과 payload(absenceId, residentId, siteId(공통), unitId, 날짜, 예정 복귀일) 그대로다. 등록 취소도 Ended로 내고, 예정 복귀일 변경은 이벤트를 내지 않는다. D가 변경 이벤트를 원하면 <code>ResidentAbsenceUpdated</code>를 더한다. B는 이벤트를 구독하지 않는다(B ADR-S7).
 24. <strong>운영 현황 카드의 모듈 조회 이름(N1 확정 2026-11-04)</strong>: B <code>SafetyBoardQuery.boardOf(siteId, at, actor)</code>(열린 신호, 맡지 않은 것, 걸린 시간, 끊긴 기기, 오늘 당번을 한 번에)와 D <code>FamilyConsentSummaryQuery.siteSummary(siteId, at)</code>는 각 모듈이 확정했다(2026-11-03). 두 조회의 반환 형태는 아직 [가설]이다. N1 <code>ServiceRequestQuery.openCount</code>는 이름과 반환 형태 모두 N1이 확정했다(2026-11-04). 코어가 정한 것은 <code>OccupancyQuery.summary</code>, <code>AbsenceQuery</code>, <code>TodoQuery</code>의 ABSENCE_RETURN_OVERDUE다.
 25. <strong>이은숙의 12/2~12/7 입원 기간을 장기 부재로(닫힘, 2026-11-04 허브 지시 R9)</strong>: 통합 데모에서 B 병원 동행 기록 뒤 직원이 CORE-13에서 시작하고(예정 복귀일 모름) 12/7에 복귀를 기록한다. 종류·병원 이름은 받지 않는다. 시드 요금표는 부재 끼니 설정이 꺼져 있어 12월 청구서는 2,910,000원 그대로다.</p>
-<p><strong>전체 리뷰 보완 (2026-11-04, 허브 지시서 <code>00-hub/reviews/supplement-orders-2026-11-04.md</code>, 사용자 재승인 2026-11-04)</strong>
+<p><strong>전체 리뷰 보완 (2026-11-04, 허브 지시서 <a class="doc-ref" href="x-process-supplement-orders-2026-11-04.html"><code>00-hub/reviews/supplement-orders-2026-11-04.md</code></a>, 사용자 재승인 2026-11-04)</strong>
 26. <strong>통합 데모를 이어 돌릴 때의 12월 청구서(닫힘, 2026-11-04 결정 H1)</strong>: N1 L9 유료 요청은 배경 입주자 정옥자(A동 202호) 것이다. 그 사용은 정옥자 11월 청구서에 들어가고, 이은숙 12월 청구서는 이어 돌려도 2,910,000원이다.
 27. <strong>넣을 청구 기간 규칙(확정 [가설], N1 확인할 것 10)</strong>: 사용일에 활성인 계약의 청구 기간 안에서 ISSUED 청구서가 없는 가장 이른 달. 대안은 사용일이 속한 달(승계 달에는 옛 계약으로 감).
 28. <strong>[가설] 서비스 단가는 계약 고정이 아님</strong>: 안내 때 기준일 유효 버전을 쓰고 넘긴 버전으로 청구한다. 대안은 계약 고정 버전(그러면 요금표에 서비스를 더하거나 값을 바꿔도 이미 체결한 계약에는 반영되지 않는다).
@@ -2243,12 +2243,12 @@ ACTIVE ──(revoke, 사유 필수)──► REVOKED</code></pre>
 <li>N2 카드 문구 반영 표시(같은 날): 코어 카피 2-10 카드 9 &quot;프로그램·시설·공지&quot;와 2-13 운영사 이름(새봄라이프운영)이 채워져 남은 <code>[NEED: 카피]</code>를 &quot;반영됨&quot;으로 바꿨다.</li>
 </ul>
 <h3 id="2026-11-04-쉬운-말-재검수공용-문구-반영-허브-요청-사용자-추천대로-사용자-재승인-2026-11-04">2026-11-04 쉬운 말 재검수·공용 문구 반영 (허브 요청, 사용자 &quot;추천대로&quot;, 사용자 재승인 2026-11-04)</h3>
-<p>근거: <code>03-copywriting/ideas/pms-core-billing/plain-read-review-2026-11-04.md</code>, <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구. 기능, 범위, 정책, 수치는 그대로다. 직원 화면과 업무 용어 &quot;퇴거&quot;도 그대로다.</p>
+<p>근거: <a class="doc-ref" href="x-writing-core-plain-read-review.html"><code>03-copywriting/ideas/pms-core-billing/plain-read-review-2026-11-04.md</code></a>, <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구. 기능, 범위, 정책, 수치는 그대로다. 직원 화면과 업무 용어 &quot;퇴거&quot;도 그대로다.</p>
 <ul>
 <li>2절 용어표 EmergencyContact의 보호자 화면 말을 &quot;비상 연락처에 적힌 분&quot;으로 맞췄다.</li>
 </ul>
 <h3 id="2026-11-04-시니어-하우징-조사-반영-허브-00-hubreviewsresearch-reflection-2026-11-04md-r6r10-사용자-검토-후-반영-사용자-재승인-2026-11-04">2026-11-04 시니어 하우징 조사 반영 (허브 <a class="doc-ref" href="lab-research-reflection.html"><code>00-hub/reviews/research-reflection-2026-11-04.md</code></a> R6~R10, 사용자 &quot;검토 후 반영&quot;, 사용자 재승인 2026-11-04)</h3>
-<p>근거: <a class="doc-ref" href="lab-senior-housing-architecture.html"><code>01-research/outputs/senior-housing-architecture.md</code></a> 6·9절, <code>01-research/sources/arch-erp-payment-crm.md</code>, <code>01-research/sources/arch-design-requirements.md</code>. 화면, 원장 불변(ADR-4), 시드 금액은 그대로다. 실연동 설계라 프로토타입과 데모에는 넣지 않는다.</p>
+<p>근거: <a class="doc-ref" href="lab-senior-housing-architecture.html"><code>01-research/outputs/senior-housing-architecture.md</code></a> 6·9절, <a class="doc-ref" href="x-sources-arch-erp-payment-crm.html"><code>01-research/sources/arch-erp-payment-crm.md</code></a>, <a class="doc-ref" href="x-sources-arch-design-requirements.html"><code>01-research/sources/arch-design-requirements.md</code></a>. 화면, 원장 불변(ADR-4), 시드 금액은 그대로다. 실연동 설계라 프로토타입과 데모에는 넣지 않는다.</p>
 <ul>
 <li>R6: 2-2에 DirectDebitMandate, DirectDebitBatch, ExpectedPayment, Payment.method DIRECT_DEBIT·expected_payment_id. 2-3 ERD, 3-5 상태 전이, 9절 CMS 줄과 3자 대사, 11절 테스트 줄, 3-1 승계·정산 줄, 7절 자동이체 자료, 8-3 비고.</li>
 <li>R7: Payment 유일 조건을 (provider, provider_dedupe_key)로, 8-1 웹훅 줄, 9절 제공자별 검증·멱등 키 표와 중복을 막는 두 층. 키는 [가설].</li>

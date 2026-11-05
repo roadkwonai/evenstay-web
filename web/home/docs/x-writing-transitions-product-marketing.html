@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product Marketing Context — care-stage-transition (생활 지원 단계) | Evenstay 문서</title>
+<meta name="description" content="Product Marketing Context — care-stage-transition (생활 지원 단계). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>Product Marketing Context — care-stage-transition (생활 지원 단계)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#product-overview">Product Overview</a></li><li class="lv2"><a href="#target-audience">Target Audience</a></li><li class="lv2"><a href="#personas">Personas</a></li><li class="lv2"><a href="#problems-pain-points">Problems &amp; Pain Points</a></li><li class="lv2"><a href="#competitive-landscape">Competitive Landscape</a></li><li class="lv2"><a href="#differentiation">Differentiation</a></li><li class="lv2"><a href="#objections">Objections</a></li><li class="lv2"><a href="#switching-dynamics">Switching Dynamics</a></li><li class="lv2"><a href="#customer-language">Customer Language</a></li><li class="lv2"><a href="#brand-voice">Brand Voice</a></li><li class="lv2"><a href="#proof-points">Proof Points</a></li><li class="lv2"><a href="#goals">Goals</a></li><li class="lv2"><a href="#learnings">Learnings</a></li><li class="lv2"><a href="#changelog">Changelog</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-896" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-897" data-tip="받는 도움의 양.">생활 지원 단계</button></li><li><button class="term" type="button" data-modal="g-898" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-899" data-tip="당사자는 같고 조건만 바뀌는 일.">계약 변경</button></li><li><button class="term" type="button" data-modal="g-900" data-tip="B, C가 올린 본문 스냅샷.">건강 소식</button></li><li><button class="term" type="button" data-modal="g-901" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-902" data-tip="직원이 관찰한 내용.">평가 기록</button></li><li><button class="term" type="button" data-modal="g-903" data-tip="호실과 입주자를 잇는 계약.">입주 계약</button></li><li><button class="term" type="button" data-modal="g-904" data-tip="외부 돌봄과 서비스 시간이 겹친 기록.">시간 겹침</button></li><li><button class="term" type="button" data-modal="g-905" data-tip="사업장 운영을 맡고 운영 현황 카드를 본다">사업장 책임자</button></li><li><button class="term" type="button" data-modal="g-906" data-tip="MVP는 C 안의 기록이고 경리 확인할 일에 한 줄 보인다">계약 변경 요청</button></li><li><button class="term" type="button" data-modal="g-907" data-tip="방문요양 같은 다른 기관 일정.">외부 돌봄 일정</button></li></ul></section></aside>
+  <article class="doc"><p><strong>Document version:</strong> v1.4 · <strong>Last updated:</strong> 2026-11-04
+따르는 문서: 코어 <code>senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md</code> v1.1(목소리, 용어집, 호칭), D <code>senior-lab/03-copywriting/ideas/family-consent-portal/</code>(건강 소식, 동의, 일정), B <code>senior-lab/03-copywriting/ideas/safety-signal-hub/</code>(관찰한 사실만 쓰는 원칙). <strong>이 파일에는 C에 필요한 말만 더한다.</strong> 겹치는 항목은 코어 표기를 그대로 쓴다.</p>
+<blockquote>
+<p>이 제품은 <strong>포트폴리오용 MVP</strong>다. 실제 고객, 실적, 후기, 인터뷰 원문은 없다. 아래 고객 언어는 리서치 출처를 바꿔 쓴 것이다. 원문이 필요한 곳은 <code>[NEED: ...]</code>로 표시했다.</p>
+</blockquote>
+<h2 id="product-overview">Product Overview</h2>
+<p><strong>One-liner:</strong> 건강이 바뀌어도 무엇이 바뀌고 무엇이 그대로인지 먼저 보여 주고, 단계를 바꾼 근거와 결정을 사람 이름과 함께 남기는 생활 지원 단계 관리. (숏리스트 C 가치 제안을 화면 용어로 바꿈)
+<strong>What it does:</strong> 사업장마다 생활 지원 단계와 단계별 서비스를 정한다. 간호·생활지원 직원과 외부 전문가가 평가를 기록하면, 직원이 단계 변경을 제안하고 회원님께 설명한 뒤 다른 사람이 결정한다. 외부 방문요양 일정을 입주자 일정에 붙여 시설 서비스와 시간이 겹치면 직원에게 알린다. 요금이 달라지는 경우는 직원이 계약 변경을 요청하는 데서 멈춘다(요금 자동 반영 없음).
+<strong>Product category:</strong> 시니어하우징 PMS의 케어 단계 모듈. 해외에서는 &quot;level of care assessment&quot;, &quot;service plan&quot; 기능으로 불린다 [추정].
+<strong>Product type:</strong> B2B2C. 직원이 쓰는 내부 화면(&quot;생활 지원 단계&quot;)과 회원 화면(Evenstay 홈 안의 &quot;생활 지원 단계&quot;). 보호자는 D의 &quot;건강 소식&quot;으로만 본다.
+<strong>Business model:</strong> 포트폴리오에서는 해당 없음.</p>
+<p><strong>시스템이 하지 않는 일</strong> (모든 카피의 전제)</p>
+<ul>
+<li>단계를 판정하지 않는다. 점수를 매기거나 다음 단계를 추천하지 않는다. 사람이 기록한 평가와 사람이 한 결정을 보여 준다.</li>
+<li>진단명, 진료 결과, 처방을 받지 않는다(D 건강 소식과 같은 경계).</li>
+<li>단계가 바뀌어도 입주 계약을 끝내거나 바꾸지 않는다. 계약 변경은 코어에서 따로, 서명으로 한다.</li>
+<li>요금을 바꾸지 않는다. 코어 요금표는 체결 때 고정되고 일할 계산이 없다. 계약 변경 API(<code>ContractCommand.requestAmendment</code>)는 코어 Next 항목이다 [사실: 코어 기획].</li>
+</ul>
+<h2 id="target-audience">Target Audience</h2>
+<p><strong>Target companies:</strong> 시니어하우징(노인복지주택)을 위탁 운영하는 회사. 개정안이 확정되면 입주자가 재가서비스를 받으며 계속 사는 경우가 늘어난다 [추정, A3·E12].
+<strong>Decision-makers:</strong> 운영사 운영 책임자, 사업장 책임자. 기술 판단은 Tech Lead.
+<strong>Primary use case:</strong> 입주자의 건강이 바뀌었을 때(퇴원, 바닥에 앉아 계셨던 일, 기억이 흐려지는 일) 평가 → 제안 → 설명 → 결정 → 서비스 변경을 기록으로 남긴다.
+<strong>Jobs to be done:</strong></p>
+<ul>
+<li>(회원) 몸이 조금씩 약해져도 지금 사는 곳에서 내 생활 방식대로 계속 살고 싶다(U1 핵심 과업).</li>
+<li>(직원) 퇴원하고 돌아온 입주자의 서비스를 바로 맞추고, 외부 돌봄 기관과 시간이 겹치지 않게 하고 싶다(U4 기대 3, P-019, P-020).</li>
+<li>(운영 매니저) 단계 변경을 누가 왜 결정했는지 설명할 수 있게 남기고 싶다(U5 기대 3).
+<strong>Use cases:</strong></li>
+<li>퇴원 후 평가 기록 → &quot;기본 서비스&quot;에서 &quot;생활 지원 더하기&quot;로 변경 제안 → 회원님께 설명하고 의견 기록 → 사업장 책임자 결정</li>
+<li>장기요양 인정 뒤 방문요양 시작 → 외부 일정 입력 → 시설 목욕 도움과 시간이 겹친다는 경고</li>
+<li>회복 뒤 다시 평가 → 이전 단계로 돌아감(단계는 양쪽으로 바뀐다)</li>
+<li>회원님이 결정에 동의하지 않음 → 다시 봐 달라는 요청 기록 → 재평가</li>
+</ul>
+<h2 id="personas">Personas</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Cares about</th>
+<th>Challenge</th>
+<th>Value we promise</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>회원(U1, 정보를 받는 사람·의견을 내는 사람)</td>
+<td>계속 여기서 살 수 있는지, 무엇이 바뀌는지</td>
+<td>전환 규칙이 시설마다 다르고 잘 보이지 않는다(P-003, A15)</td>
+<td>바뀌는 것과 바뀌지 않는 것, 단계가 바뀌는 때를 미리 쉬운 말로 본다. 의견이 기록에 남는다</td>
+</tr>
+<tr>
+<td>보호자(U3, 동의 범위 안에서 보는 사람)</td>
+<td>부모님이 어떤 도움을 받게 됐는지</td>
+<td>시설, 병원, 방문요양에서 따로 듣는다(P-023)</td>
+<td>회원님이 허락하면 건강 소식에서 단계가 바뀐 일과 그 내용을 본다</td>
+</tr>
+<tr>
+<td>사용자: 간호·생활지원 직원(U4)</td>
+<td>퇴원 뒤 서비스를 바로 맞추기, 외부 기관과 겹치지 않기</td>
+<td>퇴원 경로에 시설이 빠져 있다(P-020). 외부 돌봄과 역할이 나뉘어 있다(P-019)</td>
+<td>평가 기록 틀, 제안 화면, 외부 일정 겹침 경고</td>
+</tr>
+<tr>
+<td>챔피언: 운영 매니저(U5)</td>
+<td>결정의 근거와 이력, 개정안 대응</td>
+<td>단계 결정이 분쟁이 되면 설명할 기록이 없다 [추정]</td>
+<td>평가 → 제안 → 설명 → 결정이 한 이력으로 남는다</td>
+</tr>
+<tr>
+<td>결정권자: 사업장 책임자</td>
+<td>공정한 결정, 혼자 정하지 않기</td>
+<td>결정 책임이 한 사람에게 쏠린다 [추정]</td>
+<td>제안한 사람과 결정하는 사람을 나누고, 회원 의견을 본 뒤 결정한다</td>
+</tr>
+<tr>
+<td>기술 영향자·면접관</td>
+<td>도메인 이해와 설계 판단</td>
+<td>개정안을 시스템으로 어떻게 다루는가</td>
+<td>개정안 조항과 기능 대응, 사람의 결정 지점, 다른 모듈(A, D)과의 경계</td>
+</tr>
+</tbody></table></div>
+<h2 id="problems-pain-points">Problems &amp; Pain Points</h2>
+<p><strong>Core problem:</strong> 한 시설 사례에서 입주자는 평균 7.3년 머문다(A6, 노블카운티). 그동안 건강이 바뀌는 일은 정해진 경로에 가깝다(U1 통찰) [추정]. 그런데 건강이 나빠지면 계속 살 수 있는지, 어떤 서비스로 이어지는지가 시설마다 다르고 잘 보이지 않는다(P-003). 개정안은 서비스를 받아 독립생활을 유지할 수 있으면 계속 살 수 있게 하려 한다(A3, E12. 입법예고 2026-10-13~11-23, 확정 전).
+<strong>Why alternatives fall short:</strong></p>
+<ul>
+<li>상담 때 말로 설명: 기록이 남지 않고 설명한 사람마다 다르다 [추정].</li>
+<li>종이 평가표와 엑셀: 평가와 결정, 서비스 변경, 요금이 따로 논다 [추정].</li>
+<li>외부 기관 일정은 회원·보호자 말이나 기관 전화로만 안다(P-019, 조정은 시설별 수기 [추정]).</li>
+<li>문제가 생길 때까지 미룸: 퇴원 뒤 케어 계획이 맞지 않는다(P-020).
+<strong>What it costs them:</strong> 퇴원 직후 서비스 공백, 외부 돌봄과 겹치거나 빠지는 시간, 단계 결정 분쟁 [추정. NEED: 직원·보호자 인터뷰].
+<strong>Emotional tension:</strong> 회원은 단계가 &quot;나가라는 신호&quot;로 들릴까 두렵다 [가설, 숏리스트 가장 위험한 가정]. 보호자는 갑자기 전원 이야기를 들을까 불안하다 [가설]. 직원은 결정이 나중에 문제가 될까 부담스럽다 [추정].</li>
+</ul>
+<h2 id="competitive-landscape">Competitive Landscape</h2>
+<p><strong>Direct:</strong> 해외 시니어리빙 스위트의 케어 단계·서비스 계획 기능(B1 계열) — 한국 제도(장기요양, 개정안)와 계약 구조에 맞지 않는다 [추정].
+<strong>Secondary:</strong> 장기요양기관용 기록 프로그램 — 급여 기록 중심이고, 민간 계약 기반 노인복지주택의 단계·계약 연결이 없다 [추정].
+<strong>Indirect:</strong> 상담 직원의 설명, 종이 평가표, 보호자 단톡방 — 근거와 이력이 남지 않는다.</p>
+<h2 id="differentiation">Differentiation</h2>
+<p><strong>Key differentiators:</strong></p>
+<ul>
+<li>판정 엔진이 없다. 평가는 사람이 기록하고, 제안한 사람과 결정한 사람이 다르다.</li>
+<li>회원 화면은 &quot;바뀌는 것과 바뀌지 않는 것&quot;을 단계 이름보다 먼저 보인다.</li>
+<li>단계는 양쪽으로 바뀐다. 회복하면 이전 단계로 돌아간다.</li>
+<li>단계 변경과 계약 변경을 나눈다. 단계가 바뀌어도 계약은 서명 없이 바뀌지 않는다.</li>
+<li>외부 돌봄 일정을 시설 서비스와 한 줄에 놓고 시간 겹침을 알린다.
+<strong>How we do it differently:</strong> 단계를 입주자의 상태가 아니라 &quot;받는 서비스의 묶음&quot;으로 정의한다. 그래서 단계 이름도 사람이 아니라 서비스를 말한다(names.md 1절).
+<strong>Why that&#39;s better:</strong> 단계가 낙인이 되지 않고, 분쟁이 생기면 누가 무엇을 보고 결정했는지 기록으로 설명할 수 있다 [가설: 인터뷰로 확인].
+<strong>Why customers choose us:</strong> [NEED: 도입 근거 없음. 포트폴리오에서는 설계 근거로 대신한다]</li>
+</ul>
+<h2 id="objections">Objections</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Objection</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>단계 기록이 퇴거 근거로 쓰이지 않나</td>
+<td>단계 변경은 계약을 끝내지 않는다. 계약 해지는 코어에서 따로, 본인이나 서명 권한이 있는 대리인의 요청으로만 접수된다(코어 2-7). 회원 의견과 다시 봐 달라는 요청이 결정 기록에 붙는다. 실제 입주 계약서의 해지 조항은 [NEED]</td>
+</tr>
+<tr>
+<td>시스템이 단계를 정하면 더 공정하지 않나</td>
+<td>점수로 정하면 근거를 설명하기 어렵고 책임이 흐려진다. 사람이 평가하고 다른 사람이 결정하게 했다. 숏리스트 가정 표 윤리 항목의 대응(&quot;사람의 최종 결정&quot;)이다</td>
+</tr>
+<tr>
+<td>개정안이 바뀌면 다시 만들어야 하나</td>
+<td>단계 이름과 조건은 사업장 설정이다. 개정안은 확정 전이라 화면에 법 조항을 약속하지 않는다</td>
+</tr>
+<tr>
+<td>건강정보를 너무 많이 모으지 않나</td>
+<td>진단명·진료 결과·처방 칸이 없다. 평가는 직원이 본 일과 도움을 드린 일로 적는다. 보호자에게는 D 건강 소식(별도 동의)으로만 간다</td>
+</tr>
+<tr>
+<td><strong>Anti-persona:</strong> 장기요양 급여 청구가 필요한 요양시설, 의료 판단을 시스템에 맡기려는 곳.</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h2 id="switching-dynamics">Switching Dynamics</h2>
+<p><strong>Push:</strong> 말로만 하는 단계 설명, 퇴원 뒤 서비스 공백, 외부 기관과의 시간 겹침(P-003, P-019, P-020).
+<strong>Pull:</strong> 바뀌는 것과 바뀌지 않는 것이 한 화면에, 결정 근거가 한 이력에.
+<strong>Habit:</strong> 상담 직원의 설명, 종이 평가표.
+<strong>Anxiety:</strong> 기록이 남는 것 자체에 대한 부담(직원), 단계 이름이 남는 것에 대한 부담(회원) [가설].</p>
+<h2 id="customer-language">Customer Language</h2>
+<p><strong>How they describe the problem:</strong> [NEED: 회원·보호자·직원 인터뷰 원문]. 리서치를 바꿔 쓴 표현:</p>
+<ul>
+<li>회원 쪽: &quot;아파지면 여기서 계속 살 수 있나&quot;(P-003), &quot;요양원으로 가야 하나&quot;(A15 요양시설 혼동)</li>
+<li>보호자 쪽: &quot;퇴원하고 돌아오셨는데 뭐가 달라지는지 모르겠다&quot;(P-020)</li>
+<li>직원 쪽: &quot;방문요양 선생님이 오는 시간과 목욕 시간이 겹친다&quot;(P-019) [추정]
+<strong>How they describe us:</strong> [NEED: 데모 피드백]
+<strong>Words to use:</strong></li>
+<li>직원용: 평가 기록, 단계 변경 제안, 결정, 입주자 의견, 다시 검토 요청, 외부 돌봄 일정, 시간 겹침, 계약 변경 요청</li>
+<li>회원용: 생활 지원 단계, 바뀌는 것, 바뀌지 않는 것, 단계가 바뀌는 때, 회원님 생각, 다시 봐 주세요, 다른 기관 돌봄
+<strong>Words to avoid:</strong> (코어 목록에 더함)</li>
+<li>모든 화면: &quot;판정&quot;, &quot;등급&quot;(단계를 뜻할 때. 장기요양 인정 등급과 헷갈린다), &quot;하향·상향&quot;, &quot;악화&quot;, &quot;중증&quot;, &quot;퇴소&quot;, &quot;강제&quot;, &quot;부적합&quot;, &quot;문제 행동&quot;, &quot;배회&quot;, &quot;치매 환자&quot;, &quot;입소자&quot;(법령 인용 밖에서)</li>
+<li>회원·보호자 화면: &quot;전원&quot;, &quot;요양원으로 옮기심&quot;, &quot;단계가 떨어짐&quot;, &quot;케어 플랜&quot;, &quot;평가 점수&quot;, 1·2·3·4 같은 단계 번호
+<strong>Glossary (C 추가분: 도메인 → 직원 화면 → 회원·보호자 화면).</strong> 나머지는 코어 용어집 그대로. 단계 이름·상태·선택지 전체는 <code>names.md</code>.<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>도메인(코드)</th>
+<th>직원 화면</th>
+<th>회원·보호자 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Module</td>
+<td>생활 지원 단계</td>
+<td>생활 지원 단계</td>
+</tr>
+<tr>
+<td>CareStageDefinition (사업장 설정)</td>
+<td>단계 정의</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>CareStage</td>
+<td>단계</td>
+<td>생활 지원 단계</td>
+</tr>
+<tr>
+<td>Assessment</td>
+<td>평가 기록</td>
+<td>(표시 안 함. 회원 화면은 &quot;직원이 살펴본 날&quot;만)</td>
+</tr>
+<tr>
+<td>StageChangeProposal</td>
+<td>단계 변경 제안</td>
+<td>직원이 드린 제안</td>
+</tr>
+<tr>
+<td>ResidentOpinion</td>
+<td>입주자 의견</td>
+<td>회원님 생각</td>
+</tr>
+<tr>
+<td>ReviewRequest</td>
+<td>다시 검토 요청</td>
+<td>다시 봐 주세요</td>
+</tr>
+<tr>
+<td>StageDecision</td>
+<td>결정</td>
+<td>정해진 내용</td>
+</tr>
+<tr>
+<td>ExternalCareSchedule</td>
+<td>외부 돌봄 일정</td>
+<td>다른 기관 돌봄 (회원 화면만. 보호자 일정에는 넣지 않음)</td>
+</tr>
+<tr>
+<td>ScheduleOverlap</td>
+<td>시간 겹침</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>AmendmentRequest (코어 Next)</td>
+<td>계약 변경 요청</td>
+<td>&quot;입주 계약을 바꿀지 따로 여쭤봐요&quot;</td>
+</tr>
+<tr>
+<td>StageHistory</td>
+<td>단계 변경 이력</td>
+<td>지난 단계 기록</td>
+</tr>
+</tbody></table></div>
+</li>
+</ul>
+<h2 id="brand-voice">Brand Voice</h2>
+<p>코어의 네 속성(차분하다, 존중한다, 근거를 보인다, 기록이 남는다)을 그대로 쓴다. C에서 특히 더 지키는 것:</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Means</th>
+<th>Doesn&#39;t mean</th>
+<th>Example line</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>바뀌지 않는 것부터</td>
+<td>회원 화면은 바뀌지 않는 것을 먼저, 바뀌는 것을 다음에</td>
+<td>바뀌는 것을 숨기기</td>
+<td>&quot;방과 입주 계약은 그대로예요.&quot;</td>
+</tr>
+<tr>
+<td>사람이 정한다</td>
+<td>누가 살펴보고 누가 정했는지 이름으로</td>
+<td>시스템이 정한 것처럼 &quot;단계가 변경되었습니다&quot;</td>
+<td>&quot;간호 담당 박서준 직원이 살펴보고, 최영미 책임자가 정했어요.&quot;</td>
+</tr>
+<tr>
+<td>다시 바뀔 수 있다</td>
+<td>단계는 회복하면 돌아간다</td>
+<td>내리막 사다리처럼 번호 매기기</td>
+<td>&quot;몸이 나아지시면 직원이 다시 살펴보고 단계를 다시 정해요.&quot;</td>
+</tr>
+<tr>
+<td>본 일을 쓴다 (직원용)</td>
+<td>B처럼 관찰한 사실과 도와 드린 일</td>
+<td>상태 판단, 진단 짐작</td>
+<td>&quot;식당 가는 길을 두 번 물으셨습니다.&quot;</td>
+</tr>
+</tbody></table></div>
+<p><strong>Tone by context:</strong></p>
+<ul>
+<li>회원 화면: 해요체, &quot;회원님&quot;, 한 문장에 하나의 사실, 단계 번호 없음.</li>
+<li>직원 화면: 합쇼체·명사형 라벨, &quot;입주자&quot;, 다음 행동을 함께.</li>
+<li>보호자(D 건강 소식 안): D 4-4 틀. 있었던 일 → 정해진 내용 → 문의처. 평가 내용은 넣지 않는다.</li>
+<li>오류: 코어 순서(무엇 → 왜 → 할 일).</li>
+<li>면접관: 문제 → 설계 판단(판정하지 않음, 단계와 계약 분리) → 데모.
+<strong>Terms we own:</strong> 생활 지원 단계(직원·회원 화면 같은 이름). <code>senior-lab/03-copywriting/ideas/pms-core-billing/names.md</code> v3 확정, 직원 화면 이름은 2026-11-03 한글로 바꿈.
+<strong>Never use (and why):</strong></li>
+<li>&quot;AI가 단계를 추천&quot; — C에는 AI가 없다. 판정 대행으로 읽힌다.</li>
+<li>&quot;계속 거주 보장&quot; — 개정안 확정 전이고, 계약 조항을 확인하지 않았다.</li>
+<li>&quot;자동으로 요금 반영&quot; — 코어에 일할·계약 변경 API가 없다(Next).</li>
+</ul>
+<h2 id="proof-points">Proof Points</h2>
+<p><strong>Metrics:</strong> 없음. 효과 수치를 주장하지 않는다.
+<strong>Customers / Testimonials:</strong> 없음.
+<strong>Value themes:</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Proof (데모에서 보이는 사실)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>사람이 결정한다</td>
+<td>제안자와 결정자가 같으면 결정 버튼이 막힌다</td>
+</tr>
+<tr>
+<td>낙인이 아닌 서비스 묶음</td>
+<td>회원 화면 첫 줄이 &quot;바뀌지 않는 것&quot;</td>
+</tr>
+<tr>
+<td>근거가 남는다</td>
+<td>결정 기록에서 평가 기록과 회원 의견으로 따라간다</td>
+</tr>
+<tr>
+<td>외부 돌봄과 맞춘다</td>
+<td>방문요양 일정 입력 시 시설 목욕 도움과 겹침 경고</td>
+</tr>
+<tr>
+<td>계약과 분리</td>
+<td>요금이 다른 단계로 바뀌면 &quot;계약 변경 요청&quot;만 생기고 청구는 그대로</td>
+</tr>
+</tbody></table></div>
+<h2 id="goals">Goals</h2>
+<p><strong>Business goal (포트폴리오):</strong> 면접관이 &quot;개정안의 계속 거주를 PMS에서 이렇게 다루겠다&quot;와 &quot;시스템이 판정하지 않는 설계&quot;를 5분 안에 이해한다.
+<strong>Conversion action:</strong> 데모 열기 → 퇴원 뒤 평가부터 결정, 외부 일정 겹침까지 따라가기.
+<strong>Current metrics:</strong> 없음.</p>
+<h2 id="learnings">Learnings</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Learning</th>
+<th>Evidence</th>
+<th>Applies to</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2026-11-03</td>
+<td>단계 이름은 사람의 상태가 아니라 받는 서비스를 말한다</td>
+<td>결정(가설 근거: 숏리스트 가장 위험한 가정, B 등급 라벨 원칙)</td>
+<td>C 전 화면</td>
+<td>watch (회원 사용성 확인 전)</td>
+</tr>
+</tbody></table></div>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li>v1.4 (2026-11-04) — 화면 문구 풀어 쓰기(사용자 결정): &quot;그대로인 것&quot; → &quot;바뀌지 않는 것&quot;. Personas, Differentiation, Switching Dynamics, Words to use, Brand Voice, Value themes.</li>
+<li>v1.3 (2026-11-04) — 문구 규칙 정리(허브 요청): Primary use case의 &quot;넘어지신 뒤&quot;는 판단 단어 &quot;낙상&quot;과 같은 뜻이라 관찰 사실 &quot;바닥에 앉아 계셨던 일&quot;로 바꿈.</li>
+<li>v1.2 (2026-11-03) — 브랜드 뒷말 한글 표기(사용자 결정): Product type의 Evenstay Home → Evenstay 홈.</li>
+<li>v1.1 (2026-11-03) — 직원 화면 모듈 이름 Evenstay Transitions → 생활 지원 단계(사용자 결정). 제목, Product type, Glossary Module 줄, Terms we own.</li>
+<li>v1 (2026-11-03) — 처음 작성. 숏리스트 C와 코어 v1.1 용어집·목소리, D 건강 소식, B 관찰 사실 원칙을 기준으로 C 추가분만 정리.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-896" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-897" data-title="생활 지원 단계"><p>받는 도움의 양. 코드는 순서와 정렬에만 쓰고 화면에 번호가 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 기본 서비스 / 생활 지원 추가 / 외부 돌봄 병행 / 거처 상담. 회원: 기본 서비스 / 생활 지원 더하기 / 다른 기관 돌봄 함께 / 지낼 곳 함께 의논</dd><dt>영문·코드 이름</dt><dd><code>CareStage</code>: <code>BASIC</code>, <code>LIVING_SUPPORT</code>, <code>WITH_EXTERNAL_CARE</code>, <code>PLACE_CONSULT</code></dd><dt>출처</dt><dd>transitions T2-1, transitions N1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-898" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-899" data-title="계약 변경"><p>당사자는 같고 조건만 바뀌는 일. 코어 명령은 다음 버전이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 계약 변경 요청</dd><dt>영문·코드 이름</dt><dd><code>ContractCommand.requestAmendment</code>(Next)</dd><dt>출처</dt><dd>core T ADR-5·8-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-900" data-title="건강 소식"><p>B, C가 올린 본문 스냅샷. 건강 소식이 보호자에게 가는 길은 D 하나다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 건강 소식. 종류: 직원이 다녀간 일 / 병원에 가신 일 / 그 밖의 건강 기록 / 생활 지원 단계가 바뀐 일 / 다른 기관 돌봄이 시작된 일</dd><dt>영문·코드 이름</dt><dd><code>HealthEvent</code>: <code>SAFETY_SIGNAL</code>, <code>HOSPITAL_TRANSFER</code>, <code>CARE_NOTE</code>, <code>CARE_STAGE_CHANGE</code>, <code>EXTERNAL_CARE_START</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-901" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-902" data-title="평가 기록"><p>직원이 관찰한 내용. 추가만 한다. 점수와 진단 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 평가 기록 / 회원: 직원이 살펴본 날</dd><dt>영문·코드 이름</dt><dd><code>Assessment</code></dd><dt>출처</dt><dd>transitions T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-903" data-title="입주 계약"><p>호실과 입주자를 잇는 계약. 요금표 버전을 체결 때 고정한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원: 입주 계약</dd><dt>영문·코드 이름</dt><dd><code>Contract</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-904" data-title="시간 겹침"><p>외부 돌봄과 서비스 시간이 겹친 기록. 경고만 하고 막지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 시간 겹침</dd><dt>영문·코드 이름</dt><dd><code>ScheduleOverlap</code></dd><dt>출처</dt><dd>transitions T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-905" data-title="사업장 책임자"><p>사업장 운영을 맡고 운영 현황 카드를 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 책임자 / 회원 공지: 센터장</dd><dt>영문·코드 이름</dt><dd><code>SITE_MANAGER</code></dd><dt>출처</dt><dd>core T6-1, requests N</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-906" data-title="계약 변경 요청"><p>MVP는 C 안의 기록이고 경리 확인할 일에 한 줄 보인다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 계약 변경 요청 / 회원: 입주 계약을 바꿀지 직원이 따로 여쭤봐요</dd><dt>영문·코드 이름</dt><dd><code>AmendmentRequest</code>: <code>OPEN</code>, <code>ACKNOWLEDGED</code></dd><dt>출처</dt><dd>transitions T2-1·2-2, ADR-T3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-907" data-title="외부 돌봄 일정"><p>방문요양 같은 다른 기관 일정. 보호자 일정에는 넣지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 외부 돌봄 일정 / 회원: 다른 기관 돌봄</dd><dt>영문·코드 이름</dt><dd><code>ExternalCareSchedule</code></dd><dt>출처</dt><dd>transitions T2-1·2-2, transitions M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,4209 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>카피 — evenstay-landing (Evenstay 소개 사이트) | Evenstay 문서</title>
+<meta name="description" content="카피 — evenstay-landing (Evenstay 소개 사이트). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>카피 — evenstay-landing (Evenstay 소개 사이트)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#0-모든-페이지-공통">0. 모든 페이지 공통</a></li><li class="lv3"><a href="#c-01-상단-바-lnd-00-모든-페이지">C-01 상단 바 (LND-00, 모든 페이지)</a></li><li class="lv3"><a href="#c-05-가상-번호-안내-전화-버튼을-누르면-모든-페이지-같음">C-05 가상 번호 안내 (전화 버튼을 누르면, 모든 페이지 같음)</a></li><li class="lv3"><a href="#c-19-페이지-머리-site-com-01">C-19 페이지 머리 (SITE-COM-01)</a></li><li class="lv3"><a href="#c-19-하단-상담전화-띠-site-com-02-입주-상담-페이지에서는-숨김">C-19 하단 상담·전화 띠 (SITE-COM-02, 입주 상담 페이지에서는 숨김)</a></li><li class="lv3"><a href="#c-17-푸터-lnd-12-모든-페이지">C-17 푸터 (LND-12, 모든 페이지)</a></li><li class="lv2"><a href="#1-메인-화면-순서">1. 메인 (/, 화면 순서)</a></li><li class="lv3"><a href="#lnd-01-히어로-c-02c-06">LND-01 히어로 (C-02~C-06)</a></li><li class="lv3"><a href="#lnd-03-공간과-하루-c-08">LND-03 공간과 하루 (C-08)</a></li><li class="lv3"><a href="#lnd-14-식사-c-41">LND-14 식사 (C-41)</a></li><li class="lv3"><a href="#lnd-15-여가와-모임-c-49">LND-15 여가와 모임 (C-49)</a></li><li class="lv3"><a href="#lnd-02-약속-세-가지-c-07">LND-02 약속 세 가지 (C-07)</a></li><li class="lv3"><a href="#lnd-04-직원-c-09">LND-04 직원 (C-09)</a></li><li class="lv3"><a href="#lnd-05-회원님의-evenstay-홈-c-10">LND-05 회원님의 Evenstay 홈 (C-10)</a></li><li class="lv3"><a href="#lnd-06-가족의-evenstay-패밀리-c-11">LND-06 가족의 Evenstay 패밀리 (C-11)</a></li><li class="lv3"><a href="#lnd-07-몸이-바뀔-때-c-12">LND-07 몸이 바뀔 때 (C-12)</a></li><li class="lv3"><a href="#lnd-13-도움이-필요하실-때-c-35">LND-13 도움이 필요하실 때 (C-35)</a></li><li class="lv3"><a href="#lnd-08-앱이-어려우시면-c-13">LND-08 앱이 어려우시면 (C-13)</a></li><li class="lv3"><a href="#lnd-09-사람이-정해요-c-14">LND-09 사람이 정해요 (C-14)</a></li><li class="lv3"><a href="#lnd-10-상담전화방문-c-15-consult-site-con-01과-같은-폼">LND-10 상담·전화·방문 (C-15, /consult SITE-CON-01과 같은 폼)</a></li><li class="lv3"><a href="#lnd-11-포트폴리오로-오신-분께-c-16-합쇼체">LND-11 포트폴리오로 오신 분께 (C-16, 합쇼체)</a></li><li class="lv2"><a href="#2-evenstay-소개-about">2. Evenstay 소개 (/about)</a></li><li class="lv3"><a href="#site-about-01-브랜드-이야기-c-20">SITE-ABOUT-01 브랜드 이야기 (C-20)</a></li><li class="lv3"><a href="#site-about-02-센터장-인사-c-21">SITE-ABOUT-02 센터장 인사 (C-21)</a></li><li class="lv3"><a href="#site-about-03-직원-소개-c-22-카드-4장">SITE-ABOUT-03 직원 소개 (C-22, 카드 4장)</a></li><li class="lv2"><a href="#3-시설-소개-facility">3. 시설 소개 (/facility)</a></li><li class="lv3"><a href="#site-fac-01-건물-전경-c-23">SITE-FAC-01 건물 전경 (C-23)</a></li><li class="lv3"><a href="#site-fac-02-공용-공간-c-23">SITE-FAC-02 공용 공간 (C-23)</a></li><li class="lv3"><a href="#site-fac-03-안전편의-설비-c-23">SITE-FAC-03 안전·편의 설비 (C-23)</a></li><li class="lv2"><a href="#4-숙소-안내-rooms">4. 숙소 안내 (/rooms)</a></li><li class="lv3"><a href="#site-room-01-숙소-유형-c-24">SITE-ROOM-01 숙소 유형 (C-24)</a></li><li class="lv3"><a href="#site-room-02-유형-상세-c-24">SITE-ROOM-02 유형 상세 (C-24)</a></li><li class="lv2"><a href="#5-생활서비스-life">5. 생활·서비스 (/life)</a></li><li class="lv3"><a href="#site-life-01-하루-일과-c-25">SITE-LIFE-01 하루 일과 (C-25)</a></li><li class="lv3"><a href="#site-life-02-식사-요약-c-26">SITE-LIFE-02 식사 요약 (C-26)</a></li><li class="lv3"><a href="#site-life-03-여가-프로그램-c-27">SITE-LIFE-03 여가 프로그램 (C-27)</a></li><li class="lv3"><a href="#site-life-05-생활-요청-c-50">SITE-LIFE-05 생활 요청 (C-50)</a></li><li class="lv3"><a href="#site-life-04-evenstay-홈패밀리-앱-c-28">SITE-LIFE-04 Evenstay 홈·패밀리 앱 (C-28)</a></li><li class="lv2"><a href="#6-식사-dining">6. 식사 (/dining)</a></li><li class="lv3"><a href="#site-dine-01-식당-공간-c-42">SITE-DINE-01 식당 공간 (C-42)</a></li><li class="lv3"><a href="#site-dine-02-하루-세-끼-c-43">SITE-DINE-02 하루 세 끼 (C-43)</a></li><li class="lv3"><a href="#site-dine-03-예시-주간-식단표-c-44">SITE-DINE-03 예시 주간 식단표 (C-44)</a></li><li class="lv3"><a href="#site-dine-04-상차림-사진-c-45">SITE-DINE-04 상차림 사진 (C-45)</a></li><li class="lv3"><a href="#site-dine-05-함께-드시는-식사-c-46">SITE-DINE-05 함께 드시는 식사 (C-46)</a></li><li class="lv3"><a href="#site-dine-06-드시지-않는-날과-청구서-c-47">SITE-DINE-06 드시지 않는 날과 청구서 (C-47)</a></li><li class="lv3"><a href="#site-dine-07-식사에-대해-말씀하실-것-c-48">SITE-DINE-07 식사에 대해 말씀하실 것 (C-48)</a></li><li class="lv2"><a href="#7-안심건강-지원-safety">7. 안심·건강 지원 (/safety)</a></li><li class="lv3"><a href="#site-safe-01-도움을-부르는-길-c-36">SITE-SAFE-01 도움을 부르는 길 (C-36)</a></li><li class="lv3"><a href="#site-safe-02-호출이-오면-c-37">SITE-SAFE-02 호출이 오면 (C-37)</a></li><li class="lv3"><a href="#site-safe-03-병원에-가셔야-할-때-c-38">SITE-SAFE-03 병원에 가셔야 할 때 (C-38)</a></li><li class="lv3"><a href="#site-safe-04-평소-살핌-c-39">SITE-SAFE-04 평소 살핌 (C-39)</a></li><li class="lv3"><a href="#site-safe-05-가족에게-알리는-범위-c-40">SITE-SAFE-05 가족에게 알리는 범위 (C-40)</a></li><li class="lv2"><a href="#8-오시는-길-location-c-29">8. 오시는 길 (/location) (C-29)</a></li><li class="lv2"><a href="#9-입주-상담-consult">9. 입주 상담 (/consult)</a></li><li class="lv3"><a href="#site-con-01-상담-신청-c-15">SITE-CON-01 상담 신청 (C-15)</a></li><li class="lv3"><a href="#site-con-02-전화방문-안내-c-30">SITE-CON-02 전화·방문 안내 (C-30)</a></li><li class="lv3"><a href="#site-con-03-입주-절차-c-31">SITE-CON-03 입주 절차 (C-31)</a></li><li class="lv3"><a href="#site-con-04-자주-묻는-질문-c-32">SITE-CON-04 자주 묻는 질문 (C-32)</a></li><li class="lv2"><a href="#10-개인정보-처리방침-privacy-c-33">10. 개인정보 처리방침 (/privacy) (C-33)</a></li><li class="lv2"><a href="#11-404-c-34">11. 404 (C-34)</a></li><li class="lv2"><a href="#12-대체-텍스트-검토-c-18">12. 대체 텍스트 검토 (C-18)</a></li><li class="lv3"><a href="#12-1-영상과-포스터-c-18-공간-영상-3편-포함">12-1. 영상과 포스터 (C-18, 공간 영상 3편 포함)</a></li><li class="lv2"><a href="#13-c-번호별-작성-여부">13. C 번호별 작성 여부</a></li><li class="lv2"><a href="#14-교정-기록">14. 교정 기록</a></li><li class="lv2"><a href="#남은-need와-미정">남은 [NEED]와 [미정]</a></li><li class="lv2"><a href="#정한-것-2026-11-04-사용자-모두-추천대로-2026-11-04">정한 것 (2026-11-04, 사용자 &quot;모두 추천대로&quot; 2026-11-04)</a></li><li class="lv2"><a href="#다른-곳에-필요한-것-이-세션은-고치지-않음">다른 곳에 필요한 것 (이 세션은 고치지 않음)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-802" data-tip="계약과 달마다 하나.">청구서</button></li><li><button class="term" type="button" data-modal="g-803" data-tip="고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건.">생활 요청</button></li><li><button class="term" type="button" data-modal="g-804" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-805" data-tip="받는 도움의 양.">생활 지원 단계</button></li><li><button class="term" type="button" data-modal="g-806" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-807" data-tip="호실과 입주자를 잇는 계약.">입주 계약</button></li><li><button class="term" type="button" data-modal="g-808" data-tip="B, C가 올린 본문 스냅샷.">건강 소식</button></li><li><button class="term" type="button" data-modal="g-809" data-tip="알림에서 이어진 동행의 직원과 시각만.">병원 동행</button></li><li><button class="term" type="button" data-modal="g-810" data-tip="저장은 자원 예약(RESERVATION)">시설 예약</button></li><li><button class="term" type="button" data-modal="g-811" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-812" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-813" data-tip="운영 단위.">사업장</button></li></ul></section></aside>
+  <article class="doc"><p>이름과 반복 라벨은 <code>names.md</code>에 있다.</p>
+<p><strong>읽는 법</strong>: 표의 &quot;문구&quot; 칸은 화면에 들어갈 카피 제안이라 태그를 붙이지 않는다. 그 문구가 기대는 사실, 규칙, 값은 &quot;근거&quot; 칸에 [사실]/[추정]/[가설]/[미정]으로 적었다. 서술 문단(머리말, 규칙 줄)에는 문장 끝에 태그를 붙였다.</p>
+<p><strong>모든 문구에 적용한 규칙</strong></p>
+<ul>
+<li>해요체, &quot;회원님&quot;. 면접관 섹션(LND-11)만 합쇼체 포트폴리오 말투다 [사실: screen-spec 1절]. 입주 전 방문자에게 바로 말하는 히어로는 &quot;내&quot;를 쓰거나 호칭을 뺀다 [가설: 2026-11-04 검수].</li>
+<li>지어내지 않는다: 효과 수치, 후기, 입주자 수, 정원, 면적, 가격, 수상, 인증, 협력 병원, 경력·자격·학력, 설립 연도, 운영사 이름 [사실: 허브 지시, handoff 카피 세션 절].</li>
+<li>운영 확인 항목(간호 인력 상주, 밤 근무 직원 수, 응급처치 교육, 직원 병원 동행 여부, 협력 의료기관, 식사 시각, 영양사, 원산지, 프런트 운영 시간, 방문 상담 시간)은 문장에 넣지 않고 빈 칸도 보이지 않게 한다 [사실: U-17].</li>
+<li>진단, 치료, 모니터링, 감시, 알람, 즉시 출동, 숙소 체크, 응급, 위험, 낙상, 쓰러짐, 배회, 미납, 연체, 퇴소, 판정을 쓰지 않는다. 진단·치료는 &quot;병원과 119가 해요&quot; 경계 한 줄만 둔다 [사실: U-14, screen-spec 7절]. 넘김 기준 시간(5분)은 숫자 없이 &quot;바로 받지 못하면&quot;으로 쓴다 [사실: U-15]. 안부 방문은 주기·시간 숫자 없이 쓴다 [사실: U-25].</li>
+<li>메인 순서는 생활(공간, 식사, 여가) 먼저, 안심·건강 지원은 뒤다 [사실: screen-spec 2절]. 이 문서도 화면 순서로 적었다.</li>
+<li>식사는 &quot;예시 식단&quot;으로 밝히고 &quot;의무식&quot;, &quot;의료식&quot;, &quot;치료식&quot;, &quot;건강식&quot;, &quot;맞춤 영양&quot;을 쓰지 않는다. 식이 선택은 &quot;상담 때 말씀해 주세요&quot; 한 줄만 둔다 [사실: U-19, U-21, U-23].</li>
+<li>사진·영상에는 AI 생성 표기, 전화번호에는 &quot;가상 번호&quot;, 주소에는 &quot;가상 주소&quot;, 상담 폼에는 보내지 않는 데모라는 안내를 붙인다 [사실: 허브 지시, prd 성공 기준].</li>
+<li>이모지를 쓰지 않는다. 버전을 말할 때 &quot;판&quot;을 쓰지 않는다. 재촉하는 말(&quot;지금 바로&quot;, &quot;놓치지 마세요&quot;, &quot;마감 임박&quot;)을 쓰지 않는다.</li>
+<li>사람은 모두 가상이다. 직원은 시드 이름(센터장 최영미, 프런트 최민수, 생활 지원 김하진)을 쓰고 식당 직원은 이 문서에서 정한 송은주다 [사실: U-11 / 가설: 식당 직원 이름]. 회원 예시는 앱 시드의 이은숙 회원님이다 [사실: B·D copy 시드].</li>
+</ul>
+<hr>
+<h2 id="0-모든-페이지-공통">0. 모든 페이지 공통</h2>
+<h3 id="c-01-상단-바-lnd-00-모든-페이지">C-01 상단 바 (LND-00, 모든 페이지)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>로고 대체 텍스트</td>
+<td>Evenstay 메인으로</td>
+<td>[사실: U-09 Evenstay만]</td>
+</tr>
+<tr>
+<td>건너뛰기 링크</td>
+<td>본문으로</td>
+<td>[사실: screen-spec LND-00]</td>
+</tr>
+<tr>
+<td>링크 4개 (1024px 이상)</td>
+<td>숙소 · 생활 · 식사 · 오시는 길</td>
+<td>정한 것 3</td>
+</tr>
+<tr>
+<td>전체 메뉴 버튼</td>
+<td>전체 메뉴</td>
+<td></td>
+</tr>
+<tr>
+<td>전체 메뉴 항목 (순서)</td>
+<td>소개 · 시설 · 숙소 · 생활 · 식사 · 안심·건강 지원 · 오시는 길 · 입주 상담</td>
+<td>[사실: screen-spec LND-00, U-18 식사 최상위]</td>
+</tr>
+<tr>
+<td>전체 메뉴 닫기</td>
+<td>닫기</td>
+<td></td>
+</tr>
+<tr>
+<td>전화</td>
+<td>전화 상담 02-000-0000 (가상 번호)</td>
+<td>정한 것 2</td>
+</tr>
+<tr>
+<td>모바일 전화 · 메뉴</td>
+<td>전화 · 메뉴</td>
+<td>[사실: screen-spec LND-00]</td>
+</tr>
+<tr>
+<td>주 버튼 (C-04)</td>
+<td>입주 상담 신청</td>
+<td><code>names.md</code> 2절</td>
+</tr>
+<tr>
+<td>메뉴 영역 이름 (<code>nav</code> 라벨)</td>
+<td>주요 메뉴</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="c-05-가상-번호-안내-전화-버튼을-누르면-모든-페이지-같음">C-05 가상 번호 안내 (전화 버튼을 누르면, 모든 페이지 같음)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>안내 창 제목</td>
+<td>가상 번호예요</td>
+<td>[사실: screen-spec LND-01 상호작용]</td>
+</tr>
+<tr>
+<td>안내 창 본문</td>
+<td>이 사이트는 포트폴리오로 만든 데모예요. 02-000-0000은 가상 번호라 전화가 걸리지 않아요.</td>
+<td></td>
+</tr>
+<tr>
+<td>안내 창 버튼</td>
+<td>알겠어요 · 입주 상담 신청하기</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="c-19-페이지-머리-site-com-01">C-19 페이지 머리 (SITE-COM-01)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>페이지</th>
+<th>제목</th>
+<th>소개 한 줄</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>소개</td>
+<td>Evenstay 소개</td>
+<td>하루도 내 소식도 회원님이 정하시는 곳이에요.</td>
+<td>[사실: 브랜드 3안 &quot;함께 보는 기록&quot;, screen-spec SITE-ABOUT-01]</td>
+</tr>
+<tr>
+<td>시설</td>
+<td>시설 소개</td>
+<td>두 동의 4층 건물이 1층 공용 공간으로 이어져 있어요.</td>
+<td>[가설: prd 11절 가상 시설 설정]</td>
+</tr>
+<tr>
+<td>숙소</td>
+<td>숙소 안내</td>
+<td>혼자 지내시는 1인 숙소와 두 분이 함께 지내시는 2인 숙소가 있어요.</td>
+<td>[사실: U-13]</td>
+</tr>
+<tr>
+<td>생활</td>
+<td>생활·서비스</td>
+<td>이곳의 하루와 필요한 일을 부탁하는 방법을 알려 드려요.</td>
+<td></td>
+</tr>
+<tr>
+<td>식사</td>
+<td>식사</td>
+<td>1층 식당에서 아침, 점심, 저녁을 차려 드려요.</td>
+<td>[사실: 코어 시드 하루 3끼 / 가설: 1층 식당]</td>
+</tr>
+<tr>
+<td>안심·건강 지원</td>
+<td>안심·건강 지원</td>
+<td>도움이 필요하실 때 누가 무엇을 하는지 미리 알려 드려요.</td>
+<td>[사실: prd 12절]</td>
+</tr>
+<tr>
+<td>오시는 길</td>
+<td>오시는 길</td>
+<td>오시기 전에 전화로 날짜를 먼저 잡아 주세요.</td>
+<td>[가설]</td>
+</tr>
+<tr>
+<td>입주 상담</td>
+<td>입주 상담</td>
+<td>상담 신청, 전화, 방문 가운데 편한 방법으로 시작하세요.</td>
+<td>[사실: screen-spec LND-10]</td>
+</tr>
+<tr>
+<td>대표 사진 캡션 끝 (C-06)</td>
+<td>AI로 만든 가상 사진</td>
+<td>[사실: 허브 지시]</td>
+<td></td>
+</tr>
+<tr>
+<td>대표 영상 캡션 끝 (C-06, 시설·숙소)</td>
+<td>AI로 만든 가상 장면</td>
+<td>[사실: screen-spec SITE-COM-01, 시설 VID-BLDG, 숙소 VID-ROOM. 영상과 포스터 모두에 맞는 말]</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="c-19-하단-상담전화-띠-site-com-02-입주-상담-페이지에서는-숨김">C-19 하단 상담·전화 띠 (SITE-COM-02, 입주 상담 페이지에서는 숨김)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>띠 이름</td>
+<td>입주 상담</td>
+<td></td>
+</tr>
+<tr>
+<td>문장</td>
+<td>궁금하신 점이 있으면 상담을 신청해 주세요. 숙소와 비용은 상담 때 안내해 드려요.</td>
+<td>[사실: 가격·면적 [미정], prd 11절]</td>
+</tr>
+<tr>
+<td>버튼</td>
+<td>입주 상담 신청 · 전화 상담 02-000-0000</td>
+<td></td>
+</tr>
+<tr>
+<td>번호 옆</td>
+<td>가상 번호</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="c-17-푸터-lnd-12-모든-페이지">C-17 푸터 (LND-12, 모든 페이지)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>가상 서비스 고지</td>
+<td>Evenstay는 포트폴리오로 만든 가상 시니어 레지던스예요. 실제로 운영하는 곳이 아니에요.</td>
+<td>[사실: 허브 지시]</td>
+</tr>
+<tr>
+<td>AI 표기</td>
+<td>사이트의 사진과 영상은 모두 AI로 만든 가상 장면이에요. 나오는 분들도 실제 인물이 아니에요.</td>
+<td>[사실: asset-plan 생성 에셋]</td>
+</tr>
+<tr>
+<td>연락처</td>
+<td>전화 02-000-0000 (가상 번호) · 가상시 안뜰구 머묾로 12 (가상 주소)</td>
+<td><code>names.md</code> 7절</td>
+</tr>
+<tr>
+<td>상담 폼</td>
+<td>상담 신청은 데모라서 어디에도 보내지 않아요.</td>
+<td>[사실: screen-spec LND-10 목업]</td>
+</tr>
+<tr>
+<td>포트폴리오 목적</td>
+<td>시니어 레지던스 운영 시스템 기획과 프로토타입을 보여 드리려고 만든 사이트예요.</td>
+<td>[사실: 포트폴리오 목적]</td>
+</tr>
+<tr>
+<td>페이지 링크</td>
+<td>소개 · 시설 · 숙소 · 생활 · 식사 · 안심·건강 지원 · 오시는 길 · 입주 상담 · 개인정보 처리방침</td>
+<td>[사실: prd 9절]</td>
+</tr>
+<tr>
+<td>맨 위로</td>
+<td>맨 위로</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="1-메인-화면-순서">1. 메인 (<code>/</code>, 화면 순서)</h2>
+<h3 id="lnd-01-히어로-c-02c-06">LND-01 히어로 (C-02~C-06)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목 (C-02)</td>
+<td>편안한 하루를 내 뜻대로</td>
+<td>[가설: prd 6-1 문장을 줄임]</td>
+</tr>
+<tr>
+<td>부제 (C-03)</td>
+<td>아침에는 창가에서 책을 읽고, 저녁에는 정원을 거닐어요. 내 소식을 어느 가족에게 어디까지 알릴지도 직접 정하실 수 있어요.</td>
+<td>장면은 히어로 영상 VID-H1·H4 [사실: asset-plan 5-1]. 둘째 문장은 [사실: D value-prop 1]</td>
+</tr>
+<tr>
+<td>주 버튼 (C-04)</td>
+<td>입주 상담 신청</td>
+<td>390폭 첫 화면에 올려도 같은 문구 [사실: 2026-11-04 결정]</td>
+</tr>
+<tr>
+<td>보조</td>
+<td>전화 상담 02-000-0000 (가상 번호)</td>
+<td></td>
+</tr>
+<tr>
+<td>영상 영역 이름 (C-05)</td>
+<td>Evenstay의 공간과 하루</td>
+<td>[사실: screen-spec LND-01, 공간을 먼저 보이고 하루로 이음]</td>
+</tr>
+<tr>
+<td>현재 영상 설명 (C-05, 6개)</td>
+<td>안뜰 정원을 사이에 둔 두 동의 건물이에요. · 큰 창으로 햇살이 드는 1인 숙소예요. · 아침에는 창가에 앉아 책을 읽어요. · 오전에는 발코니에서 차를 마셔요. · 오후에는 이웃과 함께 수채화를 그려요. · 해 질 녘에는 안뜰 정원을 천천히 걸어요.</td>
+<td><code>names.md</code> 6절, 12-1. 장면 버튼 대신 한 줄 [사실: 2026-11-04 결정]</td>
+</tr>
+<tr>
+<td>순서 표시 (C-05)</td>
+<td>2 / 6</td>
+<td>[사실: screen-spec LND-01]</td>
+</tr>
+<tr>
+<td>이전·다음 화살표 이름 (C-05)</td>
+<td>이전 영상 · 다음 영상</td>
+<td>[사실: screen-spec LND-01 <code>aria-label</code>]</td>
+</tr>
+<tr>
+<td>멈추기 버튼 (C-05)</td>
+<td>멈추기 / (멈춘 뒤) 다시 보기</td>
+<td></td>
+</tr>
+<tr>
+<td>AI 표기 (C-06)</td>
+<td>영상은 AI로 만든 가상 장면이에요.</td>
+<td>6편 모두에 쓴다 [사실: screen-spec LND-01]</td>
+</tr>
+</tbody></table></div>
+<p>대안</p>
+<ul>
+<li>A. &quot;편안한 하루는 그대로, 내 소식을 보여 줄 범위는 회원님이 정하는 레지던스&quot; — prd 문장 그대로라 정확하지만 히어로 제목으로 길다.</li>
+<li>B. &quot;창가의 아침부터 정원의 저녁까지&quot; — 장면은 보이지만 다른 시설도 쓸 수 있는 문장이다(바꿔 넣기 검사 실패).</li>
+<li>고른 것: 쉬는 하루(영상)와 스스로 정한다(차별점)를 한 줄에 둔 제목. 부제에서 장면과 범위를 풀었다. 보는 분이 아직 입주 전이라 &quot;회원님&quot; 대신 &quot;내&quot;를 썼다(2026-11-04 검수).</li>
+<li>다른 후보(사용자 확인): &quot;내 하루를 내가 정하는 곳&quot;, &quot;하루도, 소식도 내 뜻대로&quot;.</li>
+<li>쓰지 않음: &quot;건강이 나빠져도 계속 사실 수 있어요&quot;, &quot;24시간 지켜 드려요&quot; [사실: C·B value-prop 쓰지 않기로 한 문장].</li>
+</ul>
+<h3 id="lnd-03-공간과-하루-c-08">LND-03 공간과 하루 (C-08)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>햇살 드는 내 방, 이웃을 만나는 1층</td>
+<td>[가설: 가상 시설 설정]</td>
+</tr>
+<tr>
+<td>캡션: 라운지 (VID-LOUNGE)</td>
+<td>1층 라운지. 큰 창 너머로 안뜰 정원이 보여요.</td>
+<td>[사실: KEY-INT-C 첫 장면을 직접 봄 / 가설: 1층 라운지 설정]</td>
+</tr>
+<tr>
+<td>캡션: 1인 숙소 (KEY-INT-R)</td>
+<td>1인 숙소. 큰 창 옆 문을 열면 발코니예요.</td>
+<td>[가설: asset-plan KEY-INT-R 장면]</td>
+</tr>
+<tr>
+<td>캡션: 식당 (IMG-S2)</td>
+<td>1층 식당. 창이 넓어 낮에는 밝아요.</td>
+<td>[가설: IMG-S2 장면]</td>
+</tr>
+<tr>
+<td>캡션: 도서 공간 (IMG-S3)</td>
+<td>1층 도서 공간. 낮은 책장 옆 의자에서 조용히 책을 읽어요.</td>
+<td>[가설: IMG-S3 장면]</td>
+</tr>
+<tr>
+<td>캡션 끝 (사진)</td>
+<td>AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+<tr>
+<td>캡션 끝 (영상 자리, C-06)</td>
+<td>AI로 만든 가상 장면</td>
+<td>[사실: screen-spec C-06 영상이 놓이는 곳 표기. 영상과 포스터 모두에 맞는 말]</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>시설 자세히 보기 · 숙소 자세히 보기</td>
+<td>[가설: screen-spec LND-03]</td>
+</tr>
+</tbody></table></div>
+<h3 id="lnd-14-식사-c-41">LND-14 식사 (C-41)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>이웃과 함께 드시는 하루 세 끼</td>
+<td>[사실: 코어 시드 하루 3끼]</td>
+</tr>
+<tr>
+<td>설명</td>
+<td>아침, 점심, 저녁을 1층 식당에서 차려 드려요. 아래는 상차림 예시예요.</td>
+<td>[가설: 1층 식당]</td>
+</tr>
+<tr>
+<td>캡션: 큰 사진 (IMG-DINE-TOGETHER)</td>
+<td>이웃과 함께 드시는 점심. AI로 만든 가상 사진</td>
+<td>[사실: 사진을 직접 봄, 점심 장면은 2026-11-04 사용자 결정]</td>
+</tr>
+<tr>
+<td>캡션: 아침</td>
+<td>아침. 흰죽, 맑은 뭇국, 계란찜, 취나물, 물김치, 과일</td>
+<td>C-44 수요일 아침과 같음</td>
+</tr>
+<tr>
+<td>캡션: 점심</td>
+<td>점심. 잡곡밥, 된장국, 코다리조림, 고사리나물, 무나물, 배추김치</td>
+<td>C-44 수요일 점심과 같음</td>
+</tr>
+<tr>
+<td>캡션: 저녁</td>
+<td>저녁. 잡곡밥, 콩나물국, 고등어구이, 두부조림, 시금치나물, 깍두기</td>
+<td>[사실: asset-plan IMG-MEAL-DINNER]</td>
+</tr>
+<tr>
+<td>청구서 연결</td>
+<td>식사를 거르실 날은 프런트에 미리 말씀해 주세요. 그 끼니 값은 청구서에서 빼고 왜 빠졌는지도 적어 드려요.</td>
+<td>[사실: 코어 결식 감면 규칙, 코어 copy 3절, 시드 &quot;사전 신청한 결식만&quot;]</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>식사 자세히 보기</td>
+<td></td>
+</tr>
+<tr>
+<td>캡션 끝</td>
+<td>예시 상차림이에요. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="lnd-15-여가와-모임-c-49">LND-15 여가와 모임 (C-49)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>마음 가는 모임만 골라서 함께해요</td>
+<td></td>
+</tr>
+<tr>
+<td>설명</td>
+<td>레지던스에서 수채화, 가벼운 체조, 텃밭 가꾸기 같은 모임을 열어요. 가고 싶으신 것만 신청하시면 돼요.</td>
+<td>[사실: N2 names 2-1 프로그램 이름. 요일·정원은 쓰지 않음, screen-spec LND-15]</td>
+</tr>
+<tr>
+<td>카드: 수채화 (IMG-H3)</td>
+<td>수채화. 물감으로 꽃과 풍경을 그려요.</td>
+<td>[사실: N2 names 2-1 풀이]</td>
+</tr>
+<tr>
+<td>카드: 가벼운 체조 (IMG-LIFE-EXER)</td>
+<td>가벼운 체조. 의자에 앉거나 서서 몸을 풀어요.</td>
+<td>[사실: N2 names 2-1 풀이]</td>
+</tr>
+<tr>
+<td>카드: 텃밭 가꾸기 (IMG-LIFE-GARDEN)</td>
+<td>텃밭 가꾸기. 안뜰 텃밭에서 채소를 심고 돌봐요.</td>
+<td>[사실: N2 names 2-1 풀이]</td>
+</tr>
+<tr>
+<td>N2 연결 한 줄</td>
+<td>신청은 Evenstay 홈 앱에서 요일과 남은 자리를 보고 하시면 돼요. 프런트에 전화하셔도 똑같이 신청돼요.</td>
+<td>[사실: N2 copy 2-0, 2-2. 앱 안 위치는 말하지 않음, 결정 14]</td>
+</tr>
+<tr>
+<td>앱 캡처 캡션 (CAP-10)</td>
+<td>데모 화면, 가상 데이터</td>
+<td>[사실: CAP-10은 CMN-02 이번 주 프로그램, 2026-11-04 결정]</td>
+</tr>
+<tr>
+<td>캡처 대체 텍스트: CAP-10</td>
+<td>이번 주 프로그램 화면. 11월 19일 목요일 아래에 오전 10시 산책 모임은 &quot;신청 없이 오시면 돼요&quot;, 오후 2시 수채화는 &quot;자리가 다 찼어요&quot;가 보인다.</td>
+<td>[사실: CAP-10 캡처를 직접 봄]</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>여가 프로그램 자세히 보기</td>
+<td></td>
+</tr>
+<tr>
+<td>캡션 끝</td>
+<td>AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>효과(&quot;건강 개선&quot;, &quot;치매 예방&quot;, &quot;외로움을 덜어 드려요&quot;)를 쓰지 않는다 [사실: N2 value-prop 쓰지 않기로 한 문장].</li>
+</ul>
+<h3 id="lnd-02-약속-세-가지-c-07">LND-02 약속 세 가지 (C-07)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>Evenstay가 지키는 세 가지</td>
+<td></td>
+</tr>
+<tr>
+<td>1. 짧은 제목</td>
+<td>내 소식은 내가 정해요</td>
+<td></td>
+</tr>
+<tr>
+<td>1. 설명</td>
+<td>어떤 소식을 누구에게 보여 줄지 가족마다 따로 정하세요. 마음이 바뀌면 언제든 바꾸실 수 있어요.</td>
+<td>첫 문장 [사실: D value-prop 회원 첫 화면 승인 문장]. 둘째 문장 [사실: D value-prop 1]</td>
+</tr>
+<tr>
+<td>2. 짧은 제목</td>
+<td>가족은 허락하신 소식만 봐요</td>
+<td></td>
+</tr>
+<tr>
+<td>2. 설명</td>
+<td>허락하신 소식은 직원이 확인한 기록 그대로 보여요. 회원님이 보시는 내용과 똑같아요.</td>
+<td>[사실: D value-prop 2, 브랜드 3안 &quot;함께 보는 기록&quot;, 2026-11-04 결정. AI 고지는 앱 문구 한 곳에서 관리]</td>
+</tr>
+<tr>
+<td>3. 짧은 제목</td>
+<td>중요한 일은 사람이 정해요</td>
+<td></td>
+</tr>
+<tr>
+<td>3. 설명</td>
+<td>앱과 비서는 소식을 알리고 말을 전할 뿐이에요. 어떻게 할지는 직원이 회원님과 이야기해서 정해요.</td>
+<td>[사실: B·G·C value-prop, LND-09와 같은 뜻]</td>
+</tr>
+</tbody></table></div>
+<h3 id="lnd-04-직원-c-09">LND-04 직원 (C-09)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>로비와 라운지에서 얼굴을 마주하는 직원</td>
+<td></td>
+</tr>
+<tr>
+<td>캡션: 로비 맞이 (IMG-T1/VID-T1)</td>
+<td>산책에서 돌아오신 회원님을 프런트 직원이 나와서 맞이해요.</td>
+<td>[사실: asset-plan IMG-T1 장면]</td>
+</tr>
+<tr>
+<td>캡션: 함께 보기 (IMG-T2/VID-T2)</td>
+<td>궁금한 점을 물어보시면 생활 지원 직원이 곁에 앉아 함께 살펴봐요.</td>
+<td>[사실: asset-plan IMG-T2 장면]</td>
+</tr>
+<tr>
+<td>캡션 끝 (영상 자리)</td>
+<td>AI로 만든 가상 장면</td>
+<td>영상과 포스터 모두에 맞는 말</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>직원 소개 보기</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>인원수, 자격, &quot;친절한 직원&quot;처럼 평가하는 말은 쓰지 않는다. 장면만 말한다 [사실: screen-spec LND-04].</li>
+</ul>
+<h3 id="lnd-05-회원님의-evenstay-홈-c-10">LND-05 회원님의 Evenstay 홈 (C-10)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>회원님이 쓰시는 앱, Evenstay 홈</td>
+<td>[사실: 코어 names v4]</td>
+</tr>
+<tr>
+<td>소개 한 줄</td>
+<td>휴대폰이나 태블릿으로 쓰세요. 글자가 크고, 한 화면에 한 가지 일만 나와요.</td>
+<td>[사실: 모듈 카피 공통 회원 화면 원칙(&quot;큰 글씨, 한 화면에 한 가지 일&quot;)]</td>
+</tr>
+<tr>
+<td>기능 1 제목</td>
+<td>왜 이 금액인지 적혀 있는 청구서</td>
+<td></td>
+</tr>
+<tr>
+<td>기능 1 설명</td>
+<td>항목마다 왜 이 금액인지 적혀 있어요. 거르신 식사처럼 빼 드린 금액도 이유와 함께 보여요.</td>
+<td>[사실: 코어 copy 3절(승인) 감면 안내·항목 목록]</td>
+</tr>
+<tr>
+<td>기능 2 제목</td>
+<td>생활 요청</td>
+<td>[사실: N1 names]</td>
+</tr>
+<tr>
+<td>기능 2 설명</td>
+<td>고장 난 곳이나 필요한 일을 알려 주시면 담당 직원에게 전해 드려요.</td>
+<td>[사실: N1 value-prop 회원 첫 화면, 승인]</td>
+</tr>
+<tr>
+<td>기능 3 제목</td>
+<td>홈 비서</td>
+<td>[사실: 코어 names v4 Evenstay 홈 비서]</td>
+</tr>
+<tr>
+<td>기능 3 설명</td>
+<td>계약 날짜와 청구서 내용을 물어보시면 답해요. 그 밖의 일은 직원에게 전해 드려요.</td>
+<td>[사실: G value-prop 회원 첫 화면, 승인]</td>
+</tr>
+<tr>
+<td>캡처 캡션</td>
+<td>데모 화면, 가상 데이터</td>
+<td>[사실: screen-spec LND-05]</td>
+</tr>
+<tr>
+<td>캡처 대체 텍스트: CAP-1</td>
+<td>이번 달 청구서 화면. 합계와 납부 기한 아래에 &quot;드시지 않은 식사 3끼, 27,000원을 빼 드렸어요.&quot;가 보인다.</td>
+<td>[사실: 코어 copy 3절 화면 예시]</td>
+</tr>
+<tr>
+<td>캡처 대체 텍스트: CAP-9</td>
+<td>생활 요청 첫 화면. &quot;어떤 일인가요?&quot; 아래에 고장·수리, 청소, 세탁 같은 일의 종류가 이어진다.</td>
+<td>[사실: CAP-9 캡처를 직접 봄. 패널에는 위쪽 세 종류만 보임]</td>
+</tr>
+<tr>
+<td>캡처 대체 텍스트: CAP-3</td>
+<td>홈 비서 첫 화면. 계약 날짜와 청구서를 묻는 큰 버튼이 있다.</td>
+<td>[사실: G copy 회원 첫 화면]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>설명은 승인된 코어 copy 3절 화면 문장에서 만들었다. 코어 value-prop 문장(&quot;이번 달 청구서가 나왔어요. 항목을 누르면 이유가 보여요.&quot;)은 쓰지 않는다(정한 것 1).</li>
+</ul>
+<h3 id="lnd-06-가족의-evenstay-패밀리-c-11">LND-06 가족의 Evenstay 패밀리 (C-11)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>가족이 쓰는 앱, Evenstay 패밀리</td>
+<td>[사실: D value-prop 2]</td>
+</tr>
+<tr>
+<td>설명 1</td>
+<td>생활 소식, 일정, 청구서, 건강 소식, 생활 요청 가운데 회원님이 허락하신 것만 가족에게 보여요.</td>
+<td>[사실: D copy 4-1 항목 이름, D prd F20 생활 요청]</td>
+</tr>
+<tr>
+<td>설명: 일정</td>
+<td>일정에는 계약과 청구서 날짜, 신청하신 프로그램이 나와요. 자리를 기다리시는 프로그램과 시설 예약은 나오지 않아요.</td>
+<td>[사실: D copy 2-3 항목 2, mvp CMN-12, N2 정한 것 2. 부재 소식은 쓰지 않음]</td>
+</tr>
+<tr>
+<td>설명 2</td>
+<td>가족마다 항목을 따로 정하세요. 바꾸시면 바로 적용돼요. 누가 언제 무엇을 봤는지도 회원님 앱에 나와요.</td>
+<td>[사실: D value-prop 1]</td>
+</tr>
+<tr>
+<td>설명 3 (생활 요청)</td>
+<td>생활 요청을 허락받은 가족은 고장 수리나 청소를 회원님 대신 요청하실 수도 있어요.</td>
+<td>[사실: N1 prd F15, D prd F20]</td>
+</tr>
+<tr>
+<td>두 캡처 관계 문장</td>
+<td>회원님이 정하신 항목만 가족 화면에 나와요.</td>
+<td>[사실: screen-spec LND-06 접근성 뜻. 배치를 말하지 않아 위아래로 쌓여도 맞음]</td>
+</tr>
+<tr>
+<td>캡처 캡션</td>
+<td>데모 화면, 가상 데이터</td>
+<td></td>
+</tr>
+<tr>
+<td>캡처 대체 텍스트: CAP-5</td>
+<td>회원님이 가족마다 보여 줄 것을 고르는 화면. 딸 김지민 님은 다섯 가지 모두 안 보이고, 아들 김태호 님은 생활 소식이 보인다.</td>
+<td>[사실: FAM-01 보드 캡처를 직접 봄]</td>
+</tr>
+<tr>
+<td>캡처 대체 텍스트: CAP-4</td>
+<td>가족이 보는 첫 화면. 위에 &quot;이은숙 회원님이 허락하신 소식이에요.&quot;가 있다.</td>
+<td>[사실: CAP-4 캡처를 직접 봄]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>쓰지 않음: &quot;멀리서도 부모님을 지켜보세요&quot; [사실: D value-prop 쓰지 않기로 한 문장].</li>
+</ul>
+<h3 id="lnd-07-몸이-바뀔-때-c-12">LND-07 몸이 바뀔 때 (C-12)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>도움이 더 필요해지면, 무엇이 달라지는지 먼저 알려 드려요</td>
+<td>[사실: C value-prop 1]</td>
+</tr>
+<tr>
+<td>설명 1</td>
+<td>직원이 먼저 회원님께 설명드리고 말씀을 들어요. 생활 지원 단계는 직원이 기록을 남긴 뒤 센터장이 정해요.</td>
+<td>[사실: C value-prop 1·4]</td>
+</tr>
+<tr>
+<td>설명 2</td>
+<td>앱을 열면 바뀌지 않는 것(지금 계신 방, 입주 계약, 급할 때 연락할 분)이 맨 위에 보이고, 새로 받으시는 도움이 그 아래에 보여요.</td>
+<td>[사실: C value-prop 1]</td>
+</tr>
+<tr>
+<td>캡처 캡션 (CAP-6)</td>
+<td>방과 입주 계약은 그대로예요. 목욕 도움이 새로 생겼어요. (데모 화면, 가상 데이터)</td>
+<td>[사실: C value-prop 회원 화면 문장, 승인]</td>
+</tr>
+<tr>
+<td>캡처 대체 텍스트</td>
+<td>생활 지원 단계 화면. 지금 방, 입주 계약, 급할 때 연락할 분은 그대로이고, 목욕 도움이 새로 생겼다.</td>
+<td>[사실: screen-spec LND-07]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>쓰지 않음: &quot;건강이 나빠져도 계속 사실 수 있어요&quot;, &quot;요양원에 가지 않아도 돼요&quot;, &quot;AI가 알맞은 단계를 추천해요&quot; [사실: C value-prop].</li>
+</ul>
+<h3 id="lnd-13-도움이-필요하실-때-c-35">LND-13 도움이 필요하실 때 (C-35)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>도움이 필요하실 때</td>
+<td></td>
+</tr>
+<tr>
+<td>단계 1</td>
+<td>부르세요. 호출벨을 누르시면 당번 직원에게 바로 알려요. 침대 센서가 알릴 때도 마찬가지예요.</td>
+<td>[사실: B copy 4-1 승인 문장]</td>
+</tr>
+<tr>
+<td>단계 2</td>
+<td>직원이 찾아가요. 당번 직원이 바로 받지 못하면 다른 직원에게도 알려요.</td>
+<td>[사실: B copy 4-1 승인 문장, U-15 숫자 없음]</td>
+</tr>
+<tr>
+<td>단계 3</td>
+<td>기록이 남아요. 직원이 한 일을 기록해요. 건강 소식을 허락하신 가족은 Evenstay 패밀리에서 봐요.</td>
+<td>[사실: B value-prop 3, B copy 4-4]</td>
+</tr>
+<tr>
+<td>119 안내</td>
+<td>급하시면 119에 바로 전화하셔도 돼요.</td>
+<td>[사실: B copy 4-1 승인 문장]</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>안심·건강 지원 자세히 보기</td>
+<td></td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-SAFE-VISIT)</td>
+<td>밤에 부르신 회원님 곁에 직원이 앉아 이야기를 들어요. AI로 만든 가상 장면</td>
+<td>[사실: asset-plan 5-3 장면]</td>
+</tr>
+<tr>
+<td>캡처 캡션 (CAP-2)</td>
+<td>호출벨을 누른 뒤 앱 화면. &quot;김하진 직원이 가고 있어요.&quot; (데모 화면, 가상 데이터)</td>
+<td>[사실: B copy 4-3 승인 문장]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>쓰지 않음: 응급, 위험, 낙상, 쓰러짐, 배회, &quot;출동 n분&quot;, &quot;24시간 지켜 드려요&quot;, &quot;놓치지 않아요&quot;, 진단·치료를 한다는 문장 [사실: screen-spec LND-13, B value-prop 쓰지 않기로 한 문장].</li>
+</ul>
+<h3 id="lnd-08-앱이-어려우시면-c-13">LND-08 앱이 어려우시면 (C-13)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>앱이 어려우시면 이렇게 하세요</td>
+<td></td>
+</tr>
+<tr>
+<td>길 1: 호출벨</td>
+<td>방마다 호출벨이 있어요. 누르시면 당번 직원에게 알려요.</td>
+<td>[사실: B value-prop 4, B copy 4-1]</td>
+</tr>
+<tr>
+<td>길 2: 프런트 전화</td>
+<td>방 전화로 프런트(내선 0번)에 걸어 주세요. 부탁하신 일은 직원이 대신 요청해 드려요.</td>
+<td>[사실: B copy 4-1, N1 value-prop 1. 내선 번호는 데모 값]</td>
+</tr>
+<tr>
+<td>길 3: 직원이 함께</td>
+<td>가까이 있는 직원에게 말씀하셔도 돼요. 앱 설정은 프런트 직원이 곁에서 도와 드려요.</td>
+<td>[사실: D value-prop 1, N1 value-prop 1]</td>
+</tr>
+<tr>
+<td>버튼</td>
+<td>전화 상담 02-000-0000 (가상 번호)</td>
+<td>정한 것 2</td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-T3)</td>
+<td>프런트 직원이 전화를 받으며 메모해요. AI로 만든 가상 사진</td>
+<td>[사실: asset-plan IMG-T3 장면]</td>
+</tr>
+</tbody></table></div>
+<h3 id="lnd-09-사람이-정해요-c-14">LND-09 사람이 정해요 (C-14)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>앱이 혼자 정하지 않아요</td>
+<td></td>
+</tr>
+<tr>
+<td>홈 비서</td>
+<td>홈 비서는 계약서와 청구서에 적힌 내용만 답해요. 건강, 돈, 계약처럼 결정이 필요한 일은 회원님께 여쭌 뒤 직원에게 전해요.</td>
+<td>[사실: G value-prop 1]</td>
+</tr>
+<tr>
+<td>안심 알림</td>
+<td>안심 알림은 호출벨과 센서 신호를 직원에게 전하고 기록을 남겨요. 가서 살피고 어떻게 할지는 직원이 정해요.</td>
+<td>[사실: B value-prop 5, B copy]</td>
+</tr>
+<tr>
+<td>생활 지원 단계</td>
+<td>생활 지원 단계도 앱이 정하지 않아요. 직원이 회원님 말씀을 듣고 기록한 뒤 센터장이 정해요.</td>
+<td>[사실: C value-prop 1·5]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>쓰지 않음: &quot;AI가 알아서&quot;, &quot;안심 보장&quot;, &quot;100%&quot; [사실: screen-spec LND-09].</li>
+</ul>
+<h3 id="lnd-10-상담전화방문-c-15-consult-site-con-01과-같은-폼">LND-10 상담·전화·방문 (C-15, <code>/consult</code> SITE-CON-01과 같은 폼)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>입주 상담 신청</td>
+<td></td>
+</tr>
+<tr>
+<td>안내</td>
+<td>성함과 연락처를 남겨 주시면 상담 직원이 연락드려요. 숙소, 비용, 입주 절차를 상담 때 안내해 드려요.</td>
+<td>[사실: 가격·면적은 상담에서 [미정]]</td>
+</tr>
+<tr>
+<td>데모 안내 (폼 맨 위, 늘 보임)</td>
+<td>이 사이트는 포트폴리오로 만든 데모예요. 신청 내용은 보내지 않고 저장하지도 않아요.</td>
+<td>[사실: screen-spec LND-10 목업]</td>
+</tr>
+<tr>
+<td>전화로 하시려면</td>
+<td>전화로 하시려면 02-000-0000 (가상 번호)</td>
+<td></td>
+</tr>
+<tr>
+<td>라벨: 신청하시는 분</td>
+<td>누가 신청하시나요?</td>
+<td>[가설: screen-spec 입력 항목]</td>
+</tr>
+<tr>
+<td>선택지</td>
+<td>본인 · 가족(대신 신청)</td>
+<td></td>
+</tr>
+<tr>
+<td>라벨: 성함</td>
+<td>성함</td>
+<td></td>
+</tr>
+<tr>
+<td>라벨: 연락처</td>
+<td>연락처</td>
+<td></td>
+</tr>
+<tr>
+<td>연락처 안내</td>
+<td>숫자만 적으셔도 돼요. 예: 010-0000-0000</td>
+<td></td>
+</tr>
+<tr>
+<td>라벨: 상담 방법</td>
+<td>어떻게 상담하실까요?</td>
+<td></td>
+</tr>
+<tr>
+<td>선택지</td>
+<td>전화 상담 · 방문 상담</td>
+<td></td>
+</tr>
+<tr>
+<td>라벨: 편한 때</td>
+<td>연락받기 편한 때 (고르지 않으셔도 돼요)</td>
+<td></td>
+</tr>
+<tr>
+<td>선택지</td>
+<td>오전 · 오후</td>
+<td></td>
+</tr>
+<tr>
+<td>라벨: 남기실 말</td>
+<td>남기실 말 (적지 않으셔도 돼요)</td>
+<td></td>
+</tr>
+<tr>
+<td>남기실 말 안내</td>
+<td>건강이나 병에 관한 내용은 적지 말아 주세요. 필요한 것은 상담 때 여쭤볼게요.</td>
+<td>[사실: <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a> 민감정보 최소 수집]</td>
+</tr>
+<tr>
+<td>동의 제목</td>
+<td>개인정보 수집 동의 (꼭 필요해요)</td>
+<td></td>
+</tr>
+<tr>
+<td>동의 문구</td>
+<td>[법률 검토 전 초안] 상담 연락을 위해 성함, 연락처, 신청하시는 분, 상담 방법, 편한 때, 남기실 말을 받아요. 상담 연락에만 쓰고, 상담이 끝나면 지워요. 보관 기간: [미정] 동의하지 않으셔도 전화로 상담하실 수 있어요.</td>
+<td>[미정: 보관 기간, 법률 검토]</td>
+</tr>
+<tr>
+<td>동의 체크박스</td>
+<td>위 내용에 동의해요</td>
+<td>미리 체크하지 않음 [사실: screen-spec]</td>
+</tr>
+<tr>
+<td>개인정보 링크</td>
+<td>개인정보 처리방침 보기</td>
+<td></td>
+</tr>
+<tr>
+<td>보내기 버튼</td>
+<td>신청 보내기</td>
+<td></td>
+</tr>
+<tr>
+<td>보내는 중</td>
+<td>보내는 중이에요</td>
+<td></td>
+</tr>
+<tr>
+<td>오류: 신청하시는 분</td>
+<td>본인과 가족(대신 신청) 가운데 하나를 골라 주세요.</td>
+<td>[사실: 오류: 상담 방법과 같은 꼴]</td>
+</tr>
+<tr>
+<td>오류: 성함</td>
+<td>성함을 적어 주세요.</td>
+<td>[사실: 코어 copy 오류 말투(무엇 → 왜 → 할 일)]</td>
+</tr>
+<tr>
+<td>오류: 연락처 빈 칸</td>
+<td>연락처를 적어 주세요. 상담 직원이 이 번호로 연락드려요.</td>
+<td></td>
+</tr>
+<tr>
+<td>오류: 연락처 자리 수</td>
+<td>연락처 자릿수가 맞지 않아요. 다시 한번 봐 주세요.</td>
+<td></td>
+</tr>
+<tr>
+<td>오류: 상담 방법</td>
+<td>전화 상담과 방문 상담 가운데 하나를 골라 주세요.</td>
+<td></td>
+</tr>
+<tr>
+<td>오류: 동의</td>
+<td>동의하셔야 신청이 돼요. 동의하지 않으시면 전화로 상담하실 수 있어요.</td>
+<td></td>
+</tr>
+<tr>
+<td>오류 요약 (폼 위)</td>
+<td>아직 채우지 않은 칸이 2개 있어요. 칸 아래 안내를 봐 주세요.</td>
+<td>색만으로 알리지 않음: 아이콘 + 글자 [사실: screen-spec LND-10]</td>
+</tr>
+<tr>
+<td>접수 뒤 제목</td>
+<td>신청을 받았어요</td>
+<td></td>
+</tr>
+<tr>
+<td>접수 뒤 본문</td>
+<td>실제 서비스라면 고르신 시간대에 상담 직원이 연락드려요.</td>
+<td>회신 기한은 약속하지 않음 [가설]</td>
+</tr>
+<tr>
+<td>접수 뒤 데모 안내</td>
+<td>데모라서 이 신청은 보내지 않았고 저장하지도 않았어요.</td>
+<td></td>
+</tr>
+<tr>
+<td>접수 뒤 버튼</td>
+<td>처음 화면으로 · 다시 써 보기</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="lnd-11-포트폴리오로-오신-분께-c-16-합쇼체">LND-11 포트폴리오로 오신 분께 (C-16, 합쇼체)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>포트폴리오를 보러 오신 분께</td>
+<td>[사실: screen-spec LND-11]</td>
+</tr>
+<tr>
+<td>안내</td>
+<td>Evenstay는 실제로 운영하지 않는 가상의 시니어 레지던스입니다. 이 사이트와 앱 화면은 시니어 레지던스 운영 시스템을 기획하고 프로토타입으로 만든 결과입니다. 위에서 보신 회원 앱과 가족 앱, 직원 화면을 프로토타입의 화면 모음에서 이어서 보실 수 있습니다.</td>
+<td>[사실: 지금 링크는 Design 캔버스 화면 모음. &quot;동작&quot;은 클릭형이 나온 뒤에만 쓴다]</td>
+</tr>
+<tr>
+<td>모듈: 코어</td>
+<td>여러 레지던스의 계약과 청구를 같은 기준으로 처리합니다.</td>
+<td>[사실: 코어 copy 1절 제목(승인)을 소개 줄 꼴로]</td>
+</tr>
+<tr>
+<td>모듈: 안심 알림</td>
+<td>호출벨과 센서 신호를 한곳에 모아 직원에게 전하고 대응 과정을 기록합니다.</td>
+<td>[사실: B value-prop 포트폴리오 한 줄]</td>
+</tr>
+<tr>
+<td>모듈: 보호자 포털·동의</td>
+<td>입주자가 가족마다 보여 줄 항목을 정합니다. 누가 무엇을 봤는지는 모두 기록합니다.</td>
+<td>[사실: D value-prop. 호칭만 이 섹션의 &quot;입주자&quot;로]</td>
+</tr>
+<tr>
+<td>모듈: AI 생활 비서</td>
+<td>계약 날짜와 청구 내용만 답합니다. 판단이 필요한 일은 직원에게 넘깁니다.</td>
+<td>[사실: G value-prop. 호칭만 이 섹션의 &quot;입주자&quot;로]</td>
+</tr>
+<tr>
+<td>모듈: 생활 지원 단계</td>
+<td>건강이 달라진 입주자의 지원 단계를 사람이 기록해 정합니다. 바뀌는 것과 바뀌지 않는 것을 입주자에게 먼저 보여 줍니다.</td>
+<td>[사실: C value-prop]</td>
+</tr>
+<tr>
+<td>모듈: 생활 요청</td>
+<td>수리, 청소, 세탁, 외출 차량, 병원 동행, 의견을 한 목록으로 받아 담당을 정합니다. 입주자 확인까지 기록합니다.</td>
+<td>[사실: N1 value-prop]</td>
+</tr>
+<tr>
+<td>모듈: 프로그램·시설·공지</td>
+<td>여가 프로그램 신청과 대기, 출석, 공용 시설 예약, 공지 확인을 한곳에서 관리합니다.</td>
+<td>[사실: N2 value-prop(승인 2026-11-04)]</td>
+</tr>
+<tr>
+<td>모듈 아래 한 줄: 소유주</td>
+<td>소유주는 자기 사업장의 월 리포트와 위탁 운영 계약 이력을 볼 수 있습니다.</td>
+<td>[사실: 코어 copy 2-12·2-13, mvp CORE-14·15, 2026-11-04 결정. 사고 보고와 재실 명단은 쓰지 않음]</td>
+</tr>
+<tr>
+<td>캡처 캡션 (CAP-8)</td>
+<td>직원 화면: 안심 알림 목록 (데모 화면, 가상 데이터)</td>
+<td>[사실: U-16 이 섹션에만]</td>
+</tr>
+<tr>
+<td>버튼</td>
+<td>프로토타입 열기</td>
+<td></td>
+</tr>
+<tr>
+<td>버튼 아래</td>
+<td>새 창에서 열립니다. 링크는 면접 때 공유합니다.</td>
+<td>[사실: U-10 비공개]</td>
+</tr>
+<tr>
+<td>설계 문서 링크</td>
+<td>설계 문서 보기</td>
+<td>위치 [미정: screen-spec LND-11]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>screen-spec은 모듈 다섯 줄을 적었고, 이 문서는 생활 요청과 프로그램·시설·공지를 더해 일곱 줄로 썼다(두 모듈 모두 승인 카피가 있다). 일곱 줄로 정했다(정한 것 7).</li>
+</ul>
+<hr>
+<h2 id="2-evenstay-소개-about">2. Evenstay 소개 (<code>/about</code>)</h2>
+<h3 id="site-about-01-브랜드-이야기-c-20">SITE-ABOUT-01 브랜드 이야기 (C-20)</h3>
+<blockquote>
+<p>Evenstay라는 이름은 영어 even(고르게)과 stay(머묾)를 합친 말이에요. 어느 회원님께나 같은 기준을 적용하고, 왜 그런지 설명해 드린다는 뜻을 담았어요.</p>
+<p>이곳에서는 언제 쉬고 어떤 모임에 갈지, 내 소식을 어느 가족에게 어디까지 보여 줄지 회원님이 정하세요. 청구서에는 항목마다 이유가 적혀 있어서 왜 이 금액인지 직접 보실 수 있어요.</p>
+<p>가족은 회원님이 허락하신 소식만, 회원님이 보시는 것과 똑같이 봐요. 직원이 확인한 기록이에요. 어떻게 할지는 직원이 회원님과 이야기해서 정해요.</p>
+</blockquote>
+<p>근거: 이름 뜻 [사실: 코어 names v3 Evenstay 행 &quot;even(고르게, 공정하게) + stay(머묾)&quot;], 회원님이 정함 [사실: D value-prop 1], 청구서 이유 [사실: 코어 copy 3절], 함께 보는 기록 [사실: 브랜드 3안, 승인 2026-11-03], 판단은 사람 [사실: B·G·C value-prop]. 운영사·모회사 이름, 설립 연도, 운영 실적은 쓰지 않았다 [사실: screen-spec SITE-ABOUT-01].</p>
+<h3 id="site-about-02-센터장-인사-c-21">SITE-ABOUT-02 센터장 인사 (C-21)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>센터장 인사</td>
+<td></td>
+</tr>
+<tr>
+<td>인사말</td>
+<td>안녕하세요. Evenstay 센터장 최영미입니다. 처음 오시는 분께 꼭 드리고 싶은 말씀이 있어요. 이곳의 하루는 회원님이 정하세요. 어떤 모임에 가실지, 가족에게 무엇을 보여 주실지 모두 회원님의 선택이에요. 부르시면 저희 직원이 찾아가고, 한 일은 기록으로 남겨요. 생활 지원 단계처럼 정해야 할 일이 생기면 먼저 회원님 말씀을 들어요. 궁금하신 점이 있으면 오셔서 직접 둘러보세요.</td>
+<td>[사실: B·C value-prop, C copy &quot;최영미 책임자가 정했어요&quot;]</td>
+</tr>
+<tr>
+<td>이름 줄 (사진 아래)</td>
+<td>센터장 최영미</td>
+<td>[사실: U-11]</td>
+</tr>
+<tr>
+<td>가상 표기</td>
+<td>가상 인물이에요. 사진은 AI로 만든 가상 사진이에요.</td>
+<td>[가설: 인사말이 실제 사람 말로 읽히지 않게]</td>
+</tr>
+<tr>
+<td>사진 대체 텍스트 (IMG-DIR)</td>
+<td>로비 창가에 선 센터장이 웃고 있다</td>
+<td>[사실: asset-plan 5-2]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>경력, 자격, 학력, 수상, 서명 이미지를 넣지 않는다 [사실: screen-spec SITE-ABOUT-02].</li>
+</ul>
+<h3 id="site-about-03-직원-소개-c-22-카드-4장">SITE-ABOUT-03 직원 소개 (C-22, 카드 4장)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>역할</th>
+<th>이름</th>
+<th>하는 일</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>센터장</td>
+<td>최영미</td>
+<td>레지던스 운영을 맡아요. 생활 지원 단계처럼 정해야 할 일은 직원 기록을 보고 회원님 말씀을 들은 뒤 정해요.</td>
+<td>[사실: C value-prop 4, C copy 결정자]</td>
+</tr>
+<tr>
+<td>프런트</td>
+<td>최민수</td>
+<td>로비에서 맞이하고 전화를 받아요. 앱 설정을 도와 드려요. 전화로 부탁하신 일은 대신 요청해 드려요.</td>
+<td>[사실: D value-prop 1, N1 value-prop 3]</td>
+</tr>
+<tr>
+<td>생활 지원</td>
+<td>김하진</td>
+<td>생활에 필요한 도움과 생활 요청을 맡아요. 도움이 더 필요해지면 회원님께 먼저 설명드리고 말씀을 들어요.</td>
+<td>[사실: N1, C value-prop 1·3]</td>
+</tr>
+<tr>
+<td>식당</td>
+<td>송은주</td>
+<td>아침, 점심, 저녁 상을 차려 드려요. 거르실 끼니는 프런트에 미리 말씀해 주세요.</td>
+<td>[가설: 식당 직원 이름. 역할은 코어 시드 하루 3끼]</td>
+</tr>
+<tr>
+<td>카드 아래</td>
+<td>직원은 모두 가상 인물이고, 사진은 AI로 만든 가상 사진이에요.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>인원수와 근무 시간은 쓰지 않는다 [사실: U-17]. 간호 카드는 운영 확인 뒤에 더한다 [사실: U-12].</li>
+</ul>
+<hr>
+<h2 id="3-시설-소개-facility">3. 시설 소개 (<code>/facility</code>)</h2>
+<h3 id="site-fac-01-건물-전경-c-23">SITE-FAC-01 건물 전경 (C-23)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>소개 문단</td>
+<td>Evenstay는 4층 건물 두 동(A동, B동)이 1층 공용 공간으로 이어져 있어요. 1층에는 로비와 프런트, 식당, 라운지, 도서 공간이 있고, 숙소는 2층부터 4층까지예요. 두 동 사이에는 산책로와 작은 텃밭이 있는 안뜰 정원이 있어요.</td>
+<td>[사실: 코어 시드 A동·B동 / 가설: prd 11절 층·1층 공간·정원]</td>
+</tr>
+<tr>
+<td>캡션: 낮 (KEY-BLDG)</td>
+<td>안뜰 정원 쪽에서 본 낮의 모습</td>
+<td></td>
+</tr>
+<tr>
+<td>캡션: 저녁 (IMG-FAC-EVE)</td>
+<td>해가 진 뒤, 같은 자리에서</td>
+<td></td>
+</tr>
+<tr>
+<td>캡션 끝</td>
+<td>AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="site-fac-02-공용-공간-c-23">SITE-FAC-02 공용 공간 (C-23)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>공간</th>
+<th>캡션</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>라운지 (KEY-INT-C)</td>
+<td>라운지. 큰 창 앞에 소파와 테이블이 있어요. 가벼운 체조 같은 프로그램도 여기서 열려요.</td>
+<td>[가설: N2 names 2-1 장소 예시]</td>
+</tr>
+<tr>
+<td>식당 (IMG-S2)</td>
+<td>식당. 네 분이 앉는 식탁이 창 쪽으로 놓여 있어요.</td>
+<td>[가설]</td>
+</tr>
+<tr>
+<td>도서 공간 (IMG-S3)</td>
+<td>도서 공간. 낮은 책장과 독서등이 있어 혼자 쉬어 가기 좋아요.</td>
+<td>[가설]</td>
+</tr>
+<tr>
+<td>안뜰 정원 (IMG-FAC-GARDEN)</td>
+<td>안뜰 정원. 산책로와 벤치가 있어요.</td>
+<td>[가설]</td>
+</tr>
+<tr>
+<td>N2 연결 한 줄</td>
+<td>함께 쓰는 방은 Evenstay 홈에서 비어 있는 시간을 골라 예약하세요. 프런트에 말씀하셔도 직원이 대신 예약해 드려요.</td>
+<td>[사실: N2 copy 4-6 대신 예약. 앱 안 위치는 말하지 않음, 결정 14]</td>
+</tr>
+<tr>
+<td>캡션 끝</td>
+<td>AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>이용 시간은 쓰지 않는다 [미정].</li>
+</ul>
+<h3 id="site-fac-03-안전편의-설비-c-23">SITE-FAC-03 안전·편의 설비 (C-23)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>설비</th>
+<th>설명</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>호출벨</td>
+<td>방마다 손 닿는 곳에 호출벨이 있어요. 누르시면 당번 직원에게 바로 알려요.</td>
+<td>[사실: B copy 4-2 승인 문장, B value-prop 4]</td>
+</tr>
+<tr>
+<td>침대 센서</td>
+<td>동의하신 분 방에만 달아요. 영상이나 소리는 남기지 않아요.</td>
+<td>[사실: B copy 4-2, B prd F15]</td>
+</tr>
+<tr>
+<td>1층 프런트</td>
+<td>궁금하신 점이나 부탁하실 일은 1층 프런트에 말씀해 주세요.</td>
+<td>[사실: B·D·G value-prop]</td>
+</tr>
+<tr>
+<td>엘리베이터</td>
+<td>두 동 모두 엘리베이터로 오르내리실 수 있어요.</td>
+<td>[가설: 가상 시설]</td>
+</tr>
+<tr>
+<td>문턱 없는 복도와 손잡이</td>
+<td>숙소 층 복도에 문턱이 없고 벽을 따라 손잡이가 있어요.</td>
+<td>[가설: IMG-FAC-HALL 장면]</td>
+</tr>
+<tr>
+<td>넓은 문</td>
+<td>숙소 문이 넓어 드나드시기 편해요.</td>
+<td>[가설]</td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-FAC-HALL)</td>
+<td>숙소 층 복도. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-FAC-CALL)</td>
+<td>침대 옆 벽의 호출벨. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>안심·건강 지원 자세히 보기</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>&quot;지켜 드려요&quot;, &quot;놓치지 않아요&quot;, &quot;100%&quot;, 법정 기준 충족, 인증은 쓰지 않는다 [사실: screen-spec SITE-FAC-03].</li>
+</ul>
+<hr>
+<h2 id="4-숙소-안내-rooms">4. 숙소 안내 (<code>/rooms</code>)</h2>
+<h3 id="site-room-01-숙소-유형-c-24">SITE-ROOM-01 숙소 유형 (C-24)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>카드: 1인 숙소</td>
+<td>1인 숙소. 혼자 지내시는 숙소예요. 침실 겸 거실, 욕실, 발코니가 있어요.</td>
+<td>[사실: U-13 / 가설: PLAN-1 구성]</td>
+</tr>
+<tr>
+<td>카드: 2인 숙소</td>
+<td>2인 숙소. 두 분이 함께 지내시는 숙소예요. 침실과 거실이 나뉘어 있고 작은 주방이 있어요.</td>
+<td>[사실: U-13 / 가설: PLAN-2 구성]</td>
+</tr>
+<tr>
+<td>카드 아래</td>
+<td>면적과 비용은 상담 때 안내해 드려요.</td>
+<td>[사실: 면적·가격 [미정], prd 11절]</td>
+</tr>
+</tbody></table></div>
+<h3 id="site-room-02-유형-상세-c-24">SITE-ROOM-02 유형 상세 (C-24)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>1인 숙소</th>
+<th>2인 숙소</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>구성 목록</td>
+<td>침실 겸 거실 · 욕실 · 발코니 · 붙박이장</td>
+<td>침실 · 거실 · 작은 주방 · 욕실 · 발코니</td>
+<td>[가설: asset-plan PLAN-1·2]</td>
+</tr>
+<tr>
+<td>기본 가구 한 줄</td>
+<td>침대, 1인 소파, 작은 책상이 있어요.</td>
+<td>침대 두 개와 거실 탁자, 2인 식탁이 있어요.</td>
+<td>[가설: KEY-INT-R, IMG-ROOM2 장면]</td>
+</tr>
+<tr>
+<td>평면 라벨</td>
+<td>현관 · 욕실 · 침실 겸 거실 · 발코니 · 붙박이장</td>
+<td>현관 · 작은 주방 · 거실 · 침실 · 욕실 · 발코니</td>
+<td>[사실: asset-plan PLAN 대체 텍스트]</td>
+</tr>
+<tr>
+<td>평면 아래</td>
+<td>그림은 방의 배치만 보여 드려요. 크기는 실제와 달라요.</td>
+<td>같음</td>
+<td>[사실: 치수·축척 없음, screen-spec]</td>
+</tr>
+<tr>
+<td>사진 캡션</td>
+<td>방 전체 · 욕실 · 발코니</td>
+<td>방 전체 · 작은 주방과 식탁 · 욕실</td>
+<td></td>
+</tr>
+<tr>
+<td>사진 넘기기</td>
+<td>이전 사진 · 다음 사진</td>
+<td>같음</td>
+<td></td>
+</tr>
+<tr>
+<td>지금 위치 (읽기 프로그램)</td>
+<td>사진 3장 가운데 첫 번째</td>
+<td>같음</td>
+<td></td>
+</tr>
+<tr>
+<td>욕실 캡션</td>
+<td>넓은 샤워 공간과 손잡이가 있어요. 두 숙소의 욕실은 같아요.</td>
+<td>같음</td>
+<td>[가설: IMG-ROOM1-BATH 공용]</td>
+</tr>
+<tr>
+<td>캡션 끝</td>
+<td>AI로 만든 가상 사진</td>
+<td>같음</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>남은 호실, 보증금, 입주 가능 날짜는 쓰지 않는다 [미정].</li>
+</ul>
+<hr>
+<h2 id="5-생활서비스-life">5. 생활·서비스 (<code>/life</code>)</h2>
+<h3 id="site-life-01-하루-일과-c-25">SITE-LIFE-01 하루 일과 (C-25)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>때</th>
+<th>문장</th>
+<th>사진</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>아침</td>
+<td>창가에서 책을 읽으며 하루를 시작해요.</td>
+<td>IMG-H1</td>
+<td>[사실: 히어로 장면]</td>
+</tr>
+<tr>
+<td>점심 무렵</td>
+<td>1층 식당에서 이웃과 점심을 드세요.</td>
+<td>IMG-S2</td>
+<td></td>
+</tr>
+<tr>
+<td>오후</td>
+<td>라운지에서 수채화를 그리거나 조용히 쉬어 가세요.</td>
+<td>IMG-H3</td>
+<td>[사실: N2 프로그램 이름]</td>
+</tr>
+<tr>
+<td>해 질 녘</td>
+<td>안뜰 정원을 천천히 걸어요.</td>
+<td>IMG-H4</td>
+<td></td>
+</tr>
+<tr>
+<td>시간 줄 아래</td>
+<td>한 가지 예시예요. 하루를 어떻게 보내실지는 회원님이 정하세요.</td>
+<td></td>
+<td>[사실: screen-spec &quot;의무 일과처럼 읽히지 않게&quot;]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>시각 숫자 대신 &quot;아침&quot;, &quot;점심 무렵&quot; 같은 때를 썼다. 시각을 쓰면 식사 시각을 정한 것처럼 읽히는데 식사 시각은 운영 확인 전이다 [사실: U-17]. screen-spec의 &quot;시각 4~5개&quot;와 다르다. 때로 쓰기로 정했다(정한 것 5).</li>
+</ul>
+<h3 id="site-life-02-식사-요약-c-26">SITE-LIFE-02 식사 요약 (C-26)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>문장</td>
+<td>아침, 점심, 저녁을 1층 식당에서 차려 드려요. 거르실 끼니를 프런트에 미리 말씀하시면 그 값은 청구서에서 빼고 왜 빠졌는지도 적어 드려요.</td>
+<td>[사실: 코어 결식 감면 규칙, 코어 copy 3절]</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>식사 자세히 보기 · 청구서 화면 보기</td>
+<td>[가설: 청구서 링크는 메인 LND-05로]</td>
+</tr>
+<tr>
+<td>사진 캡션 (KEY-MEAL)</td>
+<td>예시 점심 상. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-DINE)</td>
+<td>식당 직원이 상을 차려 드려요. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="site-life-03-여가-프로그램-c-27">SITE-LIFE-03 여가 프로그램 (C-27)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>여가 프로그램</td>
+<td>[사실: SITE-LIFE-03 이름]</td>
+</tr>
+<tr>
+<td>소개</td>
+<td>레지던스가 여는 프로그램 가운데 가고 싶은 것만 골라 신청하세요.</td>
+<td></td>
+</tr>
+<tr>
+<td>카드: 수채화</td>
+<td>수채화. 물감으로 꽃과 풍경을 그려요.</td>
+<td>[사실: N2 names 2-1]</td>
+</tr>
+<tr>
+<td>카드: 가벼운 체조</td>
+<td>가벼운 체조. 의자에 앉거나 서서 몸을 풀어요.</td>
+<td>[사실: N2 names 2-1]</td>
+</tr>
+<tr>
+<td>카드: 텃밭 가꾸기</td>
+<td>텃밭 가꾸기. 안뜰 텃밭에서 채소를 심고 돌봐요.</td>
+<td>[사실: N2 names 2-1]</td>
+</tr>
+<tr>
+<td>신청하는 길</td>
+<td>Evenstay 홈 앱에서 요일과 남은 자리를 보고 신청하세요. 자리가 다 찼으면 기다리실 수 있어요. 자리가 나면 순서대로 신청되고 문자가 가요. 신청 마감 뒤에 자리가 나면 직원이 전화로 여쭤봐요.</td>
+<td>[사실: N2 names 3-1, N2 copy 2-4, N2 정한 것 3]</td>
+</tr>
+<tr>
+<td>다른 길</td>
+<td>앱이 어려우시면 프런트에 전화하세요. 직원이 대신 신청해 드려요.</td>
+<td>[사실: N2 copy 2-0, 4-4]</td>
+</tr>
+<tr>
+<td>공지 한 줄</td>
+<td>레지던스 공지는 Evenstay 홈에서 보실 수 있어요.</td>
+<td>[사실: N2 names 1절. 앱 안 위치는 말하지 않음, 결정 14]</td>
+</tr>
+<tr>
+<td>앱 캡처 캡션 (CAP-10)</td>
+<td>데모 화면, 가상 데이터</td>
+<td>[사실: CAP-10은 CMN-02]</td>
+</tr>
+<tr>
+<td>캡처 대체 텍스트: CAP-10</td>
+<td>LND-15와 같음</td>
+<td></td>
+</tr>
+<tr>
+<td>캡션 끝</td>
+<td>AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>요일, 시간, 정원, 강사를 쓰지 않는다 [사실: screen-spec SITE-LIFE-03]. 효과를 쓰지 않는다.</li>
+</ul>
+<h3 id="site-life-05-생활-요청-c-50">SITE-LIFE-05 생활 요청 (C-50)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>생활 요청</td>
+<td>[사실: N1 names]</td>
+</tr>
+<tr>
+<td>첫 문장</td>
+<td>고장 난 곳이나 필요한 일을 알려 주시면 담당 직원에게 전해 드려요.</td>
+<td>[사실: N1 value-prop 회원 첫 화면, 승인]</td>
+</tr>
+<tr>
+<td>종류 (Lucide + 글자)</td>
+<td>고장·수리 · 청소 · 세탁 · 외출 차량 · 불편한 점 · 그 밖의 일</td>
+<td>[사실: N1 names 2절 회원 버튼. 병원 동행은 운영 확인 전까지 뺌(정한 것 6)]</td>
+</tr>
+<tr>
+<td>길 1</td>
+<td>Evenstay 홈에서 [생활 요청]을 열고 일의 종류를 고르세요.</td>
+<td>[사실: mvp REQ-01, 결정 15]</td>
+</tr>
+<tr>
+<td>길 2</td>
+<td>프런트에 말씀하시면 직원이 대신 요청해 드려요.</td>
+<td>[사실: N1 value-prop 1]</td>
+</tr>
+<tr>
+<td>길 3</td>
+<td>생활 요청을 허락받은 가족이 Evenstay 패밀리에서 대신 요청하실 수도 있어요.</td>
+<td>[사실: N1 prd F15, D prd F20]</td>
+</tr>
+<tr>
+<td>길 4</td>
+<td>홈 비서에게 말씀하셔도 직원에게 전해 드려요.</td>
+<td>[사실: N1 value-prop 1]</td>
+</tr>
+<tr>
+<td>끝나는 방법</td>
+<td>직원이 일을 마치면 회원님이 [다 됐어요]를 누르셔야 요청이 끝나요. 아직 덜 됐으면 [아직이에요]를 누르세요. 직원에게 다시 봐 달라고 전해 드려요.</td>
+<td>[사실: N1 value-prop 1, N1 names 3절]</td>
+</tr>
+<tr>
+<td>비용</td>
+<td>세탁처럼 돈이 드는 일은 부탁하시기 전에 금액을 알려 드려요. 일이 끝나면 청구서에 들어가요.</td>
+<td>[사실: N1 copy 2-4. 금액은 쓰지 않음]</td>
+</tr>
+<tr>
+<td>급한 일과 구분</td>
+<td>급한 일이나 몸이 불편하실 때는 생활 요청 대신 호출벨을 누르시거나 프런트로 전화해 주세요.</td>
+<td>[사실: N1 copy 2-0, N1 names 원칙 3]</td>
+</tr>
+<tr>
+<td>버튼</td>
+<td>전화 상담 02-000-0000 (가상 번호)</td>
+<td>정한 것 2</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>안심·건강 지원 자세히 보기</td>
+<td></td>
+</tr>
+<tr>
+<td>캡처 캡션 (CAP-9)</td>
+<td>데모 화면, 가상 데이터</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>처리 시간 약속(&quot;24시간 안에&quot;, &quot;바로 처리&quot;)을 쓰지 않는다 [사실: N1 value-prop 쓰지 않기로 한 문장].</li>
+</ul>
+<h3 id="site-life-04-evenstay-홈패밀리-앱-c-28">SITE-LIFE-04 Evenstay 홈·패밀리 앱 (C-28)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>회원님과 가족이 쓰는 앱</td>
+<td></td>
+</tr>
+<tr>
+<td>Evenstay 홈</td>
+<td>회원님이 쓰시는 앱이에요. 청구서의 이유를 보고, 생활 요청을 하고, 프로그램을 신청하고, 홈 비서에게 계약 날짜와 청구서를 물어보세요.</td>
+<td>[사실: 코어·N1·N2·G value-prop 회원]</td>
+</tr>
+<tr>
+<td>Evenstay 패밀리</td>
+<td>가족이 쓰는 앱이에요. 회원님이 허락하신 소식만 보여요.</td>
+<td>[사실: D value-prop 2]</td>
+</tr>
+<tr>
+<td>다른 길</td>
+<td>앱이 어려우시면 호출벨을 누르시거나, 프런트에 전화하시거나, 직원에게 말씀해 주세요.</td>
+<td>[사실: LND-08과 같음]</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>회원님 앱 화면 보기 · 가족 앱 화면 보기</td>
+<td>메인 LND-05·06으로</td>
+</tr>
+<tr>
+<td>캡처 캡션</td>
+<td>데모 화면, 가상 데이터</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="6-식사-dining">6. 식사 (<code>/dining</code>)</h2>
+<h3 id="site-dine-01-식당-공간-c-42">SITE-DINE-01 식당 공간 (C-42)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>설명</td>
+<td>1층 식당은 창이 넓어 아침에는 햇빛이 들어요. 네 분이 앉는 식탁과 창가에 두 분 자리가 있어요.</td>
+<td>[가설: prd 13절, asset-plan IMG-S2·IMG-DINE-WINDOW 장면]</td>
+</tr>
+<tr>
+<td>캡션 (IMG-S2)</td>
+<td>점심 무렵의 식당</td>
+<td></td>
+</tr>
+<tr>
+<td>캡션 (IMG-DINE-WINDOW)</td>
+<td>안뜰이 보이는 창가 자리</td>
+<td></td>
+</tr>
+<tr>
+<td>캡션 끝</td>
+<td>AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>좌석 수, 면적은 쓰지 않는다 [사실: screen-spec SITE-DINE-01].</li>
+</ul>
+<h3 id="site-dine-02-하루-세-끼-c-43">SITE-DINE-02 하루 세 끼 (C-43)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>하루 세 끼</td>
+<td>[사실: 코어 시드 하루 3끼]</td>
+</tr>
+<tr>
+<td>아침</td>
+<td>아침. 밥이나 죽, 국과 반찬</td>
+<td>[사실: U-19 예시 구성 &quot;아침은 밥 또는 죽&quot;]</td>
+</tr>
+<tr>
+<td>점심</td>
+<td>점심. 밥과 국, 반찬</td>
+<td></td>
+</tr>
+<tr>
+<td>저녁</td>
+<td>저녁. 밥과 국, 반찬</td>
+<td></td>
+</tr>
+<tr>
+<td>식사 시간</td>
+<td>식사 시간은 프런트에 물어봐 주세요.</td>
+<td>[사실: U-17 식사 시각 쓰지 않음]</td>
+</tr>
+</tbody></table></div>
+<h3 id="site-dine-03-예시-주간-식단표-c-44">SITE-DINE-03 예시 주간 식단표 (C-44)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>배지</td>
+<td>예시 식단</td>
+<td>[사실: U-19]</td>
+</tr>
+<tr>
+<td>표 위 문장</td>
+<td>어떤 음식이 나오는지 보여 드리려고 만든 예시예요. 실제 식단은 계절과 재료에 따라 바뀌어요.</td>
+<td></td>
+</tr>
+<tr>
+<td>표 제목 (<code>caption</code>)</td>
+<td>예시 식단: 한 주 아침, 점심, 저녁</td>
+<td></td>
+</tr>
+<tr>
+<td>요일 버튼 (640px 아래)</td>
+<td>월 · 화 · 수 · 목 · 금 · 토 · 일</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<p>예시 식단표 (칸마다 밥 또는 죽 · 국 · 주찬 · 부찬 두 가지 · 김치. 늦봄~초여름 [사실: U-06 계절]. 수요일 세 끼는 상차림 사진과 같다 [가설: asset-plan 5-4와 맞춤])</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>요일</th>
+<th>아침</th>
+<th>점심</th>
+<th>저녁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>월</td>
+<td>쌀밥 또는 흰죽 · 북엇국 · 두부부침 · 숙주나물 · 물김치</td>
+<td>잡곡밥 · 미역국 · 제육볶음 · 애호박볶음 · 도라지무침 · 배추김치</td>
+<td>쌀밥 · 아욱된장국 · 가자미구이 · 감자조림 · 오이무침 · 깍두기</td>
+</tr>
+<tr>
+<td>화</td>
+<td>쌀밥 또는 호박죽 · 맑은 콩나물국 · 계란말이 · 비름나물 · 물김치</td>
+<td>잡곡밥 · 쇠고기뭇국 · 닭찜 · 두부 브로콜리무침 · 미나리무침 · 배추김치</td>
+<td>쌀밥 · 근대된장국 · 동태전 · 청포묵무침 · 콩나물무침 · 깍두기</td>
+</tr>
+<tr>
+<td>수</td>
+<td>흰죽 또는 쌀밥 · 맑은 뭇국 · 계란찜 · 취나물 · 물김치 · 과일</td>
+<td>잡곡밥 · 된장국 · 코다리조림 · 고사리나물 · 무나물 · 배추김치</td>
+<td>잡곡밥 · 콩나물국 · 고등어구이 · 두부조림 · 시금치나물 · 깍두기</td>
+</tr>
+<tr>
+<td>목</td>
+<td>쌀밥 또는 잣죽 · 시금치된장국 · 연두부와 양념장 · 멸치볶음 · 물김치</td>
+<td>잡곡밥 · 버섯들깨탕 · 불고기 · 잡채 · 오이소박이</td>
+<td>쌀밥 · 감잣국 · 조기구이 · 메추리알장조림 · 참나물무침 · 배추김치</td>
+</tr>
+<tr>
+<td>금</td>
+<td>쌀밥 또는 단호박죽 · 순두부국 · 동그랑땡 · 무나물 · 물김치</td>
+<td>잡곡밥 · 오이냉국 · 닭갈비 · 감자채볶음 · 상추겉절이 · 배추김치</td>
+<td>쌀밥 · 된장찌개 · 삼치구이 · 꽈리고추멸치볶음 · 가지나물 · 깍두기</td>
+</tr>
+<tr>
+<td>토</td>
+<td>쌀밥 또는 흰죽 · 두부계란국 · 김구이 · 애호박나물 · 물김치</td>
+<td>잡곡밥 · 호박잎된장국 · 돼지고기수육과 쌈채소 · 무말랭이무침 · 배추김치</td>
+<td>쌀밥 · 쑥국 · 갈치구이 · 연근조림 · 숙주나물 · 깍두기</td>
+</tr>
+<tr>
+<td>일</td>
+<td>쌀밥 또는 녹두죽 · 맑은 감잣국 · 두부부침 · 도라지나물 · 물김치</td>
+<td>콩나물밥과 양념장 · 맑은 된장국 · 너비아니구이 · 시금치나물 · 배추김치</td>
+<td>쌀밥 · 미역국 · 가자미조림 · 고구마줄기볶음 · 오이무침 · 깍두기</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>메뉴는 모두 가상 예시다 [가설]. 칼로리, 영양 표시, 원산지, 영양사, 식비 칸을 두지 않는다 [사실: screen-spec SITE-DINE-03, U-17].</li>
+<li>수요일 아침의 &quot;맑은 뭇국&quot;과 &quot;취나물&quot;, 점심의 &quot;코다리조림&quot;, &quot;고사리나물&quot;, &quot;무나물&quot;은 asset-plan 5-4의 &quot;맑은 국&quot;, &quot;나물&quot;, &quot;생선조림&quot;, &quot;나물 두 가지&quot;를 구체적인 이름으로 정한 것이다. 상차림 이미지를 만들 때 이 이름으로 맞춰야 한다 [가설: evenstay 세션에 전달].</li>
+</ul>
+<h3 id="site-dine-04-상차림-사진-c-45">SITE-DINE-04 상차림 사진 (C-45)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>사진</th>
+<th>캡션</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IMG-MEAL-BREAKFAST</td>
+<td>아침 상. 흰죽, 맑은 뭇국, 계란찜, 취나물, 물김치, 과일</td>
+<td>수요일 아침</td>
+</tr>
+<tr>
+<td>KEY-MEAL</td>
+<td>점심 상. 잡곡밥, 된장국, 코다리조림, 고사리나물, 무나물, 배추김치</td>
+<td>수요일 점심</td>
+</tr>
+<tr>
+<td>IMG-MEAL-DINNER</td>
+<td>저녁 상. 잡곡밥, 콩나물국, 고등어구이, 두부조림, 시금치나물, 깍두기</td>
+<td>[사실: asset-plan 5-4]</td>
+</tr>
+<tr>
+<td>IMG-MEAL-SPECIAL1</td>
+<td>늦봄 계절 특식. 봄나물 비빔밥, 맑은 국, 과일 화채</td>
+<td>[사실: asset-plan 5-4, U-24]</td>
+</tr>
+<tr>
+<td>IMG-MEAL-SPECIAL2</td>
+<td>초여름 계절 특식. 냉국수, 제철 나물 두 가지, 수박</td>
+<td>[사실: asset-plan 5-4, U-24]</td>
+</tr>
+<tr>
+<td>캡션 끝 (모든 사진)</td>
+<td>예시 상차림이에요. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="site-dine-05-함께-드시는-식사-c-46">SITE-DINE-05 함께 드시는 식사 (C-46)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>사진</th>
+<th>캡션</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IMG-DINE-TOGETHER</td>
+<td>이웃과 함께 드시는 점심</td>
+<td>[사실: 사진을 직접 봄, 2026-11-04 사용자 결정]</td>
+</tr>
+<tr>
+<td>IMG-DINE</td>
+<td>식당 직원이 상을 차려 드려요</td>
+<td>[사실: asset-plan 5-2 장면]</td>
+</tr>
+<tr>
+<td>캡션 끝</td>
+<td>AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="site-dine-06-드시지-않는-날과-청구서-c-47">SITE-DINE-06 드시지 않는 날과 청구서 (C-47)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>식사를 거르실 날이 있으면</td>
+<td></td>
+</tr>
+<tr>
+<td>알리는 법</td>
+<td>거르실 끼니를 프런트에 미리 말씀해 주세요. 직원이 적어 두면 그 끼니 값은 청구서에서 빼 드려요.</td>
+<td>[사실: 코어 F6 직원 입력, 시드 &quot;사전 신청한 결식만&quot;]</td>
+</tr>
+<tr>
+<td>청구서 연결</td>
+<td>청구서에는 몇 끼에 얼마를 뺐는지 이유와 함께 적혀 있어요.</td>
+<td>[사실: 코어 copy 3절 감면 안내]</td>
+</tr>
+<tr>
+<td>버튼</td>
+<td>전화 상담 02-000-0000 (가상 번호)</td>
+<td>정한 것 2</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>청구서 화면 보기</td>
+<td>메인 LND-05로</td>
+</tr>
+<tr>
+<td>캡처 캡션 (CAP-1)</td>
+<td>청구서의 &quot;드시지 않은 식사 3끼, 27,000원을 빼 드렸어요.&quot; (데모 화면, 가상 데이터)</td>
+<td>[사실: 코어 copy 3절 화면 예시]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>앱에서 직접 알리는 기능과 오래 비우실 때의 식사 처리는 쓰지 않는다 [사실: U-20, U-22]. &quot;결식&quot;, &quot;차감&quot;을 쓰지 않는다.</li>
+</ul>
+<h3 id="site-dine-07-식사에-대해-말씀하실-것-c-48">SITE-DINE-07 식사에 대해 말씀하실 것 (C-48)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>문장</td>
+<td>부드러운 음식이 필요하시거나 알레르기가 있으시면 상담 때 말씀해 주세요.</td>
+<td>[사실: U-23]</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>입주 상담 신청하기</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="7-안심건강-지원-safety">7. 안심·건강 지원 (<code>/safety</code>)</h2>
+<h3 id="site-safe-01-도움을-부르는-길-c-36">SITE-SAFE-01 도움을 부르는 길 (C-36)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>도움을 부르는 방법</td>
+<td></td>
+</tr>
+<tr>
+<td>첫 문장</td>
+<td>앱을 쓰지 않으셔도 호출벨을 누르시거나 방 전화로 프런트(내선 0번)에 거시면 직원을 부르실 수 있어요.</td>
+<td>[사실: B copy 4-1 승인 문장을 번호 규칙에 맞춤. 앱에 호출 버튼이 없어 &quot;앱과 똑같이&quot;는 뺌. 내선 번호는 데모 값]</td>
+</tr>
+<tr>
+<td>길 1: 호출벨</td>
+<td>방과 욕실에 있는 호출벨을 누르세요. 당번 직원에게 바로 알려요.</td>
+<td>[사실: B copy 4-2, screen-spec SITE-SAFE-01 &quot;욕실 포함&quot;]</td>
+</tr>
+<tr>
+<td>길 2: 프런트 전화</td>
+<td>방 전화로 프런트(내선 0번)에 걸어 주세요. 휴대폰으로는 02-000-0000 (가상 번호)로 걸어 주세요.</td>
+<td>[사실: B copy 4-1]</td>
+</tr>
+<tr>
+<td>길 3: 119</td>
+<td>급하시면 119에 바로 전화하셔도 돼요.</td>
+<td>[사실: B copy 4-1 승인 문장]</td>
+</tr>
+<tr>
+<td>버튼</td>
+<td>전화 상담 02-000-0000 (가상 번호)</td>
+<td>119는 버튼으로 두지 않음 [사실: screen-spec SITE-SAFE-01]</td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-FAC-CALL)</td>
+<td>침대 옆 벽의 호출벨. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h3 id="site-safe-02-호출이-오면-c-37">SITE-SAFE-02 호출이 오면 (C-37)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>부르시면 이렇게 움직여요</td>
+<td></td>
+</tr>
+<tr>
+<td>단계 1</td>
+<td>직원에게 알려요. 호출벨이나 센서 신호는 당번 직원 휴대폰으로 가요. 같은 신호가 여러 번 와도 알림은 한 번 가요.</td>
+<td>[사실: B prd F5·F6, B value-prop 1]</td>
+</tr>
+<tr>
+<td>단계 2</td>
+<td>한 직원이 맡아요. 맡은 직원 이름이 회원님 앱에 보여요.</td>
+<td>[사실: B copy 4-3]</td>
+</tr>
+<tr>
+<td>단계 3</td>
+<td>직원이 회원님을 찾아가요.</td>
+<td>[사실: B prd F5]</td>
+</tr>
+<tr>
+<td>단계 4</td>
+<td>한 일을 기록해요.</td>
+<td>[사실: B value-prop 2]</td>
+</tr>
+<tr>
+<td>갈래: 아무도 맡지 않으면</td>
+<td>당번 직원이 바로 받지 못하면 다른 직원에게 알리고, 그래도 맡는 사람이 없으면 책임자와 모든 직원에게 차례로 알려요.</td>
+<td>[사실: B prd F5, U-15 숫자 없음]</td>
+</tr>
+<tr>
+<td>앱에서 보기</td>
+<td>부르신 뒤 직원이 어디까지 왔는지 앱의 안심 알림에서 보실 수 있어요.</td>
+<td>[사실: mvp SAF-09, B prd F14, P1 화면]</td>
+</tr>
+<tr>
+<td>회원님 앱에 보이는 말 (예)</td>
+<td>1. 직원에게 알렸어요. 2. 김하진 직원이 가고 있어요. 3. 다른 직원에게도 알렸어요. 4. 직원이 다녀갔어요.</td>
+<td>[사실: B copy 4-3 승인 문장]. 화면에는 번호 목록(<code>ol</code>)으로 쓰고 화살표는 쓰지 않는다 [사실: DESIGN.md]</td>
+</tr>
+<tr>
+<td>캡처 캡션 (CAP-2)</td>
+<td>호출벨을 누른 뒤 앱 화면 (데모 화면, 가상 데이터)</td>
+<td>[사실: screen-spec C-37, SITE-SAFE-02]</td>
+</tr>
+<tr>
+<td>경계 한 줄</td>
+<td>앱과 장치가 상황을 판단하거나 119에 저절로 신고하지는 않아요. 119 신고는 직원이 해요.</td>
+<td>[사실: B prd F5·F8]</td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-SAFE-PHONE)</td>
+<td>알림을 받은 직원이 복도를 걸어가요. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-SAFE-VISIT)</td>
+<td>직원이 곁에 앉아 이야기를 들어요. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>도착 시간을 쓰지 않는다 [사실: screen-spec SITE-SAFE-02, U-14 &quot;즉시 출동&quot; 대신].</li>
+</ul>
+<h3 id="site-safe-03-병원에-가셔야-할-때-c-38">SITE-SAFE-03 병원에 가셔야 할 때 (C-38)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>병원에 가셔야 할 때</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>119 신고는 현장 직원이 해요.</td>
+<td>[사실: B prd F8]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>병원에 가시게 되면 직원이 급할 때 연락할 분께 정해 두신 순서대로 전화드려요.</td>
+<td>[사실: 코어 copy 3절 &quot;급할 때 연락할 분 안내&quot;, B prd F8]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>전화를 받지 않으시면 문자로 알리고 다시 전화드리도록 기록해 둬요.</td>
+<td>[사실: B prd F18, P1]</td>
+</tr>
+<tr>
+<td>4</td>
+<td>병원으로 가신 시각과 돌아오신 시각을 기록으로 남겨요. 병원 이름과 진료 내용은 적지 않아요.</td>
+<td>[사실: B prd F21, P1]</td>
+</tr>
+<tr>
+<td>5</td>
+<td>건강 소식을 허락하신 가족은 이 기록을 Evenstay 패밀리에서 봐요. 급할 때 연락할 분께는 허락과 상관없이 따로 전화드려요.</td>
+<td>[사실: B prd 12절, D value-prop]</td>
+</tr>
+<tr>
+<td>경계 한 줄</td>
+<td>진단과 치료는 병원과 119가 해요.</td>
+<td>[사실: U-14]</td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-SAFE-CONTACT)</td>
+<td>직원이 프런트 뒤 책상에서 전화를 걸며 메모해요. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>가족에게 알리는 범위 보기</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>&quot;직원이 병원까지 함께 가요&quot;는 쓰지 않는다. 동행 여부는 운영 확인 전이다 [사실: U-17]. 직원이 할 수 있는 도움의 범위, 간호 인력, 협력 의료기관도 쓰지 않는다.</li>
+</ul>
+<h3 id="site-safe-04-평소-살핌-c-39">SITE-SAFE-04 평소 살핌 (C-39)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>평소에 살펴 드리는 일</td>
+<td>[사실: U-14 &quot;평소 살핌&quot;]</td>
+</tr>
+<tr>
+<td>소개</td>
+<td>별일 없는 날에도 살피는 장치와 직원이 있어요. 어디까지 살필지는 회원님이 동의하신 만큼이에요.</td>
+<td>[사실: B copy 4-2, B prd F15]</td>
+</tr>
+<tr>
+<td>침대 센서</td>
+<td>침대에 계신지 알려 주는 장치예요. 밤에 침대에서 일어나신 뒤 오래 돌아오지 않으시면 직원에게 알려요. 영상이나 소리는 남기지 않아요.</td>
+<td>[사실: B copy 4-2. 숫자는 뺐다(정한 것 4)]</td>
+</tr>
+<tr>
+<td>호출벨</td>
+<td>누르시면 당번 직원에게 바로 알려요.</td>
+<td>[사실: B copy 4-2 승인 문장]</td>
+</tr>
+<tr>
+<td>출입 기록</td>
+<td>밤늦게 회원님 출입 카드로 1층 정문을 나가시면 직원에게 알려요.</td>
+<td>[사실: B copy 4-2. 숫자는 뺐다(정한 것 4)]</td>
+</tr>
+<tr>
+<td>안부 전화</td>
+<td>신청하신 분께만 전화드려요. 같은 날 전화를 두 번 못 받으시면 직원이 들러요.</td>
+<td>[사실: B copy 4-2 승인 문장]</td>
+</tr>
+<tr>
+<td>동의 안내</td>
+<td>침대 센서, 출입 기록, 안부 전화는 회원님이 동의하셔야 연결해요. 호출벨은 동의 없이 늘 쓰실 수 있어요.</td>
+<td>[사실: B prd F15·F16]</td>
+</tr>
+<tr>
+<td>안부 방문</td>
+<td>안부 방문을 받기로 하신 분께는 직원이 들러 안부를 여쭤요. 원하지 않으시는 날은 직원에게 말씀해 주세요.</td>
+<td>[사실: B prd F22, U-25 숫자 없음]</td>
+</tr>
+<tr>
+<td>오래 비우실 때</td>
+<td>오래 비우시는 동안에는 침대 센서, 밤 출입, 안부 방문 알림을 멈춰요.</td>
+<td>[사실: B prd F23, P1]</td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-CARE)</td>
+<td>정원 벤치에서 직원이 회원님 이야기를 들어요. AI로 만든 가상 사진</td>
+<td>직무 이름 없이 [사실: screen-spec SITE-ABOUT-03 간호 카드 정리]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>B copy 4-2의 승인 문장에는 &quot;30분&quot;, &quot;밤 11시부터 아침 6시&quot;가 있다. 사이트에서는 숫자를 빼고 뜻만 썼다. 기기 사양이 <code>[NEED: 실제 기기 사양 확인]</code>이고, 숫자가 사이트에 있으면 약속으로 읽히기 쉬워서다 [추정]. 사이트에서는 숫자를 빼기로 정했다(정한 것 4).</li>
+<li>&quot;모니터링&quot;, &quot;감시&quot;, &quot;숙소 체크&quot;를 쓰지 않는다 [사실: U-14].</li>
+</ul>
+<h3 id="site-safe-05-가족에게-알리는-범위-c-40">SITE-SAFE-05 가족에게 알리는 범위 (C-40)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>가족에게 어디까지 알리는지</td>
+<td></td>
+</tr>
+<tr>
+<td>첫 문장</td>
+<td>직원이 다녀간 일은 건강 소식으로 남아요. 누구에게 보여 줄지는 &quot;소식 함께 보기&quot;에서 정하세요.</td>
+<td>[사실: B copy 4-4 승인 문장]</td>
+</tr>
+<tr>
+<td>둘째</td>
+<td>소식은 직원이 한 일을 기록한 뒤에 올라가요.</td>
+<td>[사실: B value-prop 3]</td>
+</tr>
+<tr>
+<td>셋째</td>
+<td>프런트에 말씀하셔도 바꿔 드려요.</td>
+<td>[사실: B copy 4-4 승인 문장]</td>
+</tr>
+<tr>
+<td>넷째</td>
+<td>병원에 가시게 되면 급할 때 연락할 분께 전화드려요. 이 전화는 설정과 상관없어요.</td>
+<td>[사실: B prd 12절]</td>
+</tr>
+<tr>
+<td>캡처 캡션 (CAP-7)</td>
+<td>가족이 보는 건강 소식 화면 (데모 화면, 가상 데이터)</td>
+<td></td>
+</tr>
+<tr>
+<td>캡처 대체 텍스트: CAP-7</td>
+<td>건강 소식 화면. 위에 &quot;이은숙 회원님이 따로 동의하고 허락하신 건강 소식이에요.&quot;가 있고, 아래에 직원이 11월 12일 새벽 방에 다녀온 일이 적혀 있다.</td>
+<td>[사실: CAP-7 캡처를 직접 봄]</td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>가족 앱 화면 보기</td>
+<td>메인 LND-06으로</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="8-오시는-길-location-c-29">8. 오시는 길 (<code>/location</code>) (C-29)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>주소</td>
+<td>가상시 안뜰구 머묾로 12 (가상 주소)</td>
+<td><code>names.md</code> 7절</td>
+</tr>
+<tr>
+<td>주소 복사</td>
+<td>주소 복사 / (누른 뒤) 주소를 복사했어요.</td>
+<td></td>
+</tr>
+<tr>
+<td>지하철</td>
+<td>가상선 안뜰역 2번 출구로 나오세요.</td>
+<td>[가설: 가상 교통]</td>
+</tr>
+<tr>
+<td>버스</td>
+<td>가상 버스 12번을 타고 안뜰공원 정류장에서 내리세요.</td>
+<td>[가설]</td>
+</tr>
+<tr>
+<td>자가용·주차</td>
+<td>차로 오시면 주차할 곳을 방문 전에 전화로 물어봐 주세요.</td>
+<td>[미정: 주차]</td>
+</tr>
+<tr>
+<td>방문 전</td>
+<td>오시기 전에 전화로 날짜를 먼저 잡아 주세요.</td>
+<td>[가설]</td>
+</tr>
+<tr>
+<td>버튼</td>
+<td>전화 상담 02-000-0000 (가상 번호)</td>
+<td></td>
+</tr>
+<tr>
+<td>약도 라벨 (HTML)</td>
+<td>가상선 안뜰역 · 2번 출구 · 안뜰공원 · Evenstay 정문 · A동 · B동</td>
+<td>[가설: MAP-1 그림과 맞출 것]</td>
+</tr>
+<tr>
+<td>약도 대체 텍스트</td>
+<td>가상 안뜰역 2번 출구로 나와 큰길을 따라 걸으면 왼쪽에 안뜰공원이 있고, 공원을 지나 오른쪽에 Evenstay 정문과 두 동 건물이 있다.</td>
+<td>[가설: MAP-1 생성 때 이 길 순서로]</td>
+</tr>
+<tr>
+<td>정문 사진 캡션 (IMG-FAC-GATE)</td>
+<td>유리로 된 1층 입구가 정문이에요. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+<tr>
+<td>약도 아래</td>
+<td>약도는 가상 그림이에요. 실제 지도가 아니에요.</td>
+<td>[사실: 허브 지시 실제 지도 금지]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>걸리는 시간과 거리는 쓰지 않는다 [미정].</li>
+</ul>
+<hr>
+<h2 id="9-입주-상담-consult">9. 입주 상담 (<code>/consult</code>)</h2>
+<h3 id="site-con-01-상담-신청-c-15">SITE-CON-01 상담 신청 (C-15)</h3>
+<p>메인 LND-10 표와 같은 문구를 쓴다. 이 페이지가 폼의 원본이다 [가설: screen-spec SITE-CON-01].</p>
+<h3 id="site-con-02-전화방문-안내-c-30">SITE-CON-02 전화·방문 안내 (C-30)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>전화 상담</td>
+<td>전화로 상담하시려면 02-000-0000으로 전화해 주세요. 숙소, 비용, 입주 절차를 안내해 드려요.</td>
+<td>[사실: 가격은 상담에서]</td>
+</tr>
+<tr>
+<td>번호 옆</td>
+<td>가상 번호</td>
+<td></td>
+</tr>
+<tr>
+<td>방문 상담</td>
+<td>직접 보고 싶으시면 오셔서 숙소와 식당, 공용 공간을 둘러보세요. 오시기 전에 전화로 날짜를 잡아 주세요.</td>
+<td>[가설]</td>
+</tr>
+<tr>
+<td>버튼</td>
+<td>전화 상담 02-000-0000 · 오시는 길 보기</td>
+<td></td>
+</tr>
+<tr>
+<td>사진 캡션 (IMG-T3)</td>
+<td>프런트 직원이 전화를 받으며 메모해요. AI로 만든 가상 사진</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>운영 시간과 방문 상담 시간은 쓰지 않는다 [사실: U-17].</li>
+</ul>
+<h3 id="site-con-03-입주-절차-c-31">SITE-CON-03 입주 절차 (C-31)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>이름</th>
+<th>설명</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>상담</td>
+<td>상담 신청이나 전화로 궁금하신 점을 물어보세요.</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>방문</td>
+<td>숙소와 식당, 공용 공간을 직접 둘러보세요.</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>계약</td>
+<td>입주 계약서를 함께 읽고 서명해요. 대신 처리하실 분이 계시면 함께하실 수 있어요.</td>
+<td>[사실: 코어 Glossary 대리인 &quot;대신 처리하실 분&quot;]</td>
+</tr>
+<tr>
+<td>4</td>
+<td>입주 준비</td>
+<td>입주일이 정해지면 앱에 &quot;아직 입주 전이에요&quot;가 보여요. 앱 설정은 프런트 직원이 곁에서 도와 드려요. 급할 때 연락할 분과 가족에게 보여 줄 것도 이때 직원과 함께 정해요.</td>
+<td>[사실: 코어 copy 3절 입주 예정 문구, 코어 copy 급할 때 연락할 분, D value-prop 1. 입주 전에 앱을 어디까지 쓰는지는 [미확인]이라 쓰지 않음]</td>
+</tr>
+<tr>
+<td>5</td>
+<td>입주</td>
+<td>정하신 날에 입주하세요. 앱이나 방에서 궁금하신 점은 프런트 직원에게 말씀해 주세요.</td>
+<td>[사실: B·D·G value-prop 프런트 안내]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>걸리는 기간, 필요한 서류, 입주 자격은 쓰지 않는다 [미정].</li>
+</ul>
+<h3 id="site-con-04-자주-묻는-질문-c-32">SITE-CON-04 자주 묻는 질문 (C-32)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>질문</th>
+<th>답</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>비용과 보증금은 얼마인가요?</td>
+<td>비용은 보증금, 월 생활비, 식비로 나뉘어요. 금액은 숙소 유형에 따라 달라요. 항목별 금액과 공과금을 따로 내시는지는 상담 때 안내해 드려요. 입주하신 뒤 받으시는 청구서에는 항목마다 이유가 적혀 있어요.</td>
+<td>[사실: 코어 copy 1절 청구 항목, 코어 copy 3절, 2026-11-04 결정. 금액과 공과금 별도 여부는 [미정]]</td>
+</tr>
+<tr>
+<td>식사를 거르는 날은 어떻게 되나요?</td>
+<td>거르실 끼니를 프런트에 미리 말씀하시면 그 값은 청구서에서 빼 드려요. 몇 끼에 얼마를 뺐는지도 청구서에 적혀 있어요.</td>
+<td>[사실: 코어 결식 감면 규칙]</td>
+</tr>
+<tr>
+<td>가족이 무엇을 볼 수 있나요?</td>
+<td>회원님이 허락하신 것만 봐요. 생활 소식, 일정, 청구서, 건강 소식, 생활 요청을 가족마다 따로 정하시고, 언제든 바꾸실 수 있어요.</td>
+<td>[사실: D value-prop 1, D prd F20]</td>
+</tr>
+<tr>
+<td>앱을 잘 못 써도 괜찮을까요?</td>
+<td>괜찮아요. 호출벨을 누르시거나, 프런트에 전화하시거나, 지나가는 직원에게 말씀하시면 도와 드려요. 앱 설정은 프런트 직원이 함께 해 드려요.</td>
+<td>[사실: B value-prop 4, D value-prop 1]</td>
+</tr>
+<tr>
+<td>도움이 더 필요해지면 어떻게 되나요?</td>
+<td>직원이 먼저 설명드리고 회원님 말씀을 들어요. 생활 지원 단계는 직원이 기록을 남긴 뒤 센터장이 정해요. 지금 계신 방, 입주 계약, 급할 때 연락할 분처럼 바뀌지 않는 것은 먼저 보여 드려요. 계속 지내실 수 있는지는 상황과 입주 계약에 따라 달라서 상담 때 함께 확인해요.</td>
+<td>[사실: C value-prop 1. &quot;계속 사실 수 있다&quot;는 약속은 하지 않음]</td>
+</tr>
+<tr>
+<td>AI 비서는 무엇을 하나요?</td>
+<td>계약 날짜와 청구서 내용을 알려 드려요. 건강, 돈, 계약을 정해야 하는 일은 회원님께 여쭌 뒤 직원에게 전해요.</td>
+<td>[사실: G value-prop 1]</td>
+</tr>
+<tr>
+<td>부드러운 음식이나 알레르기는 어떻게 알리나요?</td>
+<td>상담 때 말씀해 주세요.</td>
+<td>[사실: U-23]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>답이 [미정]인 방문 상담 시간 질문은 넣지 않았다 [사실: screen-spec SITE-CON-04].</li>
+</ul>
+<hr>
+<h2 id="10-개인정보-처리방침-privacy-c-33">10. 개인정보 처리방침 (<code>/privacy</code>) (C-33)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>개인정보 처리방침(데모)</td>
+<td></td>
+</tr>
+<tr>
+<td>표시</td>
+<td>[법률 검토 전 초안]</td>
+<td>[사실: 코어 copy 표기 관례]</td>
+</tr>
+<tr>
+<td>본문 1</td>
+<td>이 페이지는 데모 사이트에 넣은 예시예요. 실제 처리방침이 아니에요.</td>
+<td></td>
+</tr>
+<tr>
+<td>본문 2</td>
+<td>상담 신청 폼은 성함, 연락처, 신청하시는 분, 상담 방법, 편한 때, 남기실 말을 받도록 만들었어요. 건강이나 생년월일, 주소는 받지 않아요.</td>
+<td>[사실: screen-spec LND-10 입력 항목]</td>
+</tr>
+<tr>
+<td>본문 3</td>
+<td>데모라서 폼에 적으신 내용은 어디에도 보내지 않고 저장하지도 않아요.</td>
+<td>[사실: 목업]</td>
+</tr>
+<tr>
+<td>본문 4</td>
+<td>실제 서비스를 연다면 처리 목적, 보관 기간, 맡기는 곳, 회원님 권리를 법률 검토를 거쳐 이 자리에 적어요.</td>
+<td>[미정: 법률 검토]</td>
+</tr>
+</tbody></table></div>
+<h2 id="11-404-c-34">11. 404 (C-34)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>문구</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>제목</td>
+<td>페이지를 찾을 수 없어요</td>
+<td></td>
+</tr>
+<tr>
+<td>본문</td>
+<td>주소가 바뀌었거나 없는 페이지예요. 메인이나 입주 상담에서 다시 찾아보세요.</td>
+<td>[사실: 코어 copy 오류 말투]</td>
+</tr>
+<tr>
+<td>버튼</td>
+<td>메인으로</td>
+<td></td>
+</tr>
+<tr>
+<td>글자 링크</td>
+<td>입주 상담 신청하기</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="12-대체-텍스트-검토-c-18">12. 대체 텍스트 검토 (C-18)</h2>
+<p>asset-plan 5절의 대체 텍스트 초안을 모두 읽었다. 판단 단어, 이름, 직무 이름(간호), 효과 표현은 없었다. 아래만 고친다. 나머지는 초안 그대로 쓴다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>에셋</th>
+<th>초안</th>
+<th>고친 것</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IMG-MEAL-BREAKFAST</td>
+<td>흰죽과 맑은 국, 계란찜, 나물, 물김치가 차려진 아침 상</td>
+<td>흰죽과 맑은 뭇국, 계란찜, 취나물, 물김치, 과일이 차려진 아침 상</td>
+<td>식단표 수요일 아침과 맞춤</td>
+</tr>
+<tr>
+<td>IMG-H1</td>
+<td>창밖으로 산과 강이 보인다</td>
+<td>창밖으로 신록이 보인다</td>
+<td>KEY-TONE 확정(가까운 신록, 입지를 드러내지 않음)과 맞춤. 장소 칸은 기획이 고친다</td>
+</tr>
+<tr>
+<td>IMG-DINE-TOGETHER</td>
+<td>식당 식탁에서 시니어 세 분이 함께 저녁을 드시며 웃고 있다</td>
+<td>식당 식탁에서 시니어 세 분이 함께 점심을 드시며 웃고 있다</td>
+<td>점심 장면으로 씀(2026-11-04 사용자 결정). 장면 칸은 기획이 고친다</td>
+</tr>
+<tr>
+<td>KEY-MEAL</td>
+<td>(초안 없음)</td>
+<td>잡곡밥과 된장국, 코다리조림, 고사리나물, 무나물, 배추김치가 차려진 점심 상</td>
+<td>식단표 수요일 점심과 맞춤</td>
+</tr>
+<tr>
+<td>IMG-SAFE-PHONE</td>
+<td>직원이 밤 복도에서 업무용 휴대폰 알림을 보며 걸어가고 있다</td>
+<td>직원이 밤 복도에서 업무용 휴대폰을 보며 걸어가고 있다</td>
+<td>사진에 휴대폰 뒷면만 보여 &quot;알림&quot;을 뺌(보드와 맞춤)</td>
+</tr>
+<tr>
+<td>IMG-CARE</td>
+<td>정원 벤치에 나란히 앉아 직원이 시니어 여성의 이야기를 듣고 있다</td>
+<td>(그대로)</td>
+<td>직무 이름 없음 확인</td>
+</tr>
+<tr>
+<td>IMG-DIR</td>
+<td>로비 창가에 선 센터장이 웃고 있다</td>
+<td>(그대로)</td>
+<td></td>
+</tr>
+<tr>
+<td>KEY-INT-R</td>
+<td>(초안 없음)</td>
+<td>큰 창과 발코니 문이 있는 1인 숙소. 창밖으로 신록이 보이고 침대 옆 벽에 둥근 호출벨이 있다</td>
+<td>메인 LND-03에 쓰임. VID-ROOM 포스터</td>
+</tr>
+<tr>
+<td>KEY-INT-C</td>
+<td>(초안 없음)</td>
+<td>큰 창 앞에 소파와 원목 테이블이 놓인 1층 라운지. 창밖으로 안뜰 정원이 보인다</td>
+<td>SITE-FAC-02에 쓰임. VID-LOUNGE 포스터</td>
+</tr>
+<tr>
+<td>KEY-BLDG</td>
+<td>(초안 없음)</td>
+<td>안뜰 정원 쪽에서 본 4층 건물 두 동과 산책로</td>
+<td>SITE-FAC-01에 쓰임. VID-BLDG 포스터</td>
+</tr>
+<tr>
+<td>KEY-TONE</td>
+<td>(초안 없음)</td>
+<td>창가 나무 탁자 위의 펼친 책과 찻잔</td>
+<td>소개 페이지 머리</td>
+</tr>
+<tr>
+<td>PLAN-1·PLAN-2</td>
+<td>초안</td>
+<td>(그대로, 라벨 목록과 같음)</td>
+<td></td>
+</tr>
+<tr>
+<td>MAP-1</td>
+<td><code>[NEED: 카피 C-29]</code></td>
+<td>8절 약도 대체 텍스트</td>
+<td></td>
+</tr>
+<tr>
+<td>CAP-1~10</td>
+<td>—</td>
+<td>각 절 &quot;캡처 대체 텍스트&quot;와 캡션</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>영상(VID-*)은 <code>aria-hidden</code>이라 영상 자체에는 대체 텍스트가 없고, 같은 뜻을 포스터 이미지의 대체 텍스트와 장면 이름이 전한다 [사실: screen-spec LND-01, LND-03].</li>
+</ul>
+<h3 id="12-1-영상과-포스터-c-18-공간-영상-3편-포함">12-1. 영상과 포스터 (C-18, 공간 영상 3편 포함)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>영상</th>
+<th>놓이는 곳</th>
+<th>포스터</th>
+<th>영상 설명 또는 캡션</th>
+<th>포스터 대체 텍스트</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VID-BLDG</td>
+<td>LND-01 첫째, 시설 페이지 머리</td>
+<td>KEY-BLDG</td>
+<td>안뜰 정원을 사이에 둔 두 동의 건물이에요.</td>
+<td>안뜰 정원 쪽에서 본 4층 건물 두 동과 산책로</td>
+</tr>
+<tr>
+<td>VID-ROOM</td>
+<td>LND-01 둘째, 숙소 페이지 머리</td>
+<td>KEY-INT-R(16:9로 자름)</td>
+<td>큰 창으로 햇살이 드는 1인 숙소예요.</td>
+<td>큰 창과 발코니 문이 있는 1인 숙소. 창밖으로 신록이 보이고 침대 옆 벽에 둥근 호출벨이 있다</td>
+</tr>
+<tr>
+<td>VID-H1</td>
+<td>LND-01 셋째</td>
+<td>IMG-H1</td>
+<td>아침에는 창가에 앉아 책을 읽어요.</td>
+<td>창가 안락의자에서 책을 읽는 시니어 여성, 창밖으로 신록이 보인다</td>
+</tr>
+<tr>
+<td>VID-H2</td>
+<td>LND-01 넷째</td>
+<td>IMG-H2</td>
+<td>오전에는 발코니에서 차를 마셔요.</td>
+<td>정원이 내려다보이는 발코니에서 차를 따르는 시니어 남성</td>
+</tr>
+<tr>
+<td>VID-H3</td>
+<td>LND-01 다섯째</td>
+<td>IMG-H3</td>
+<td>오후에는 이웃과 함께 수채화를 그려요.</td>
+<td>라운지 창가 테이블에서 함께 수채화를 그리며 웃는 시니어 두 분</td>
+</tr>
+<tr>
+<td>VID-H4</td>
+<td>LND-01 여섯째</td>
+<td>IMG-H4</td>
+<td>해 질 녘에는 안뜰 정원을 천천히 걸어요.</td>
+<td>노을 지는 정원 산책로를 나란히 걸으며 이야기하는 시니어 두 분</td>
+</tr>
+<tr>
+<td>VID-LOUNGE</td>
+<td>LND-03 큰 칸</td>
+<td>KEY-INT-C</td>
+<td>1층 라운지. 큰 창 너머로 안뜰 정원이 보여요.</td>
+<td>큰 창 앞에 소파와 원목 테이블이 놓인 1층 라운지. 창밖으로 안뜰 정원이 보인다</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>움직임 줄이기와 데이터 절약에서는 영상 대신 이 포스터가 보인다 [사실: screen-spec LND-01, SITE-COM-01]. VID-T1·T2, VID-SAFE-VISIT 포스터는 asset-plan 초안 그대로다.</li>
+<li>KEY-INT-R, KEY-INT-C는 키 이미지를 직접 보고 &quot;창밖&quot; 구절을 더했다 [사실]. VID-ROOM은 위아래를 자르므로, 자른 뒤 호출벨이 보이지 않으면 호출벨 구절을 뺀다 [가설].</li>
+<li>입지를 드러내는 말(산, 강, 호수, 전망)을 쓰지 않는다 [사실: 2026-11-04 KEY-TONE 확정, 허브 지시].</li>
+</ul>
+<hr>
+<h2 id="13-c-번호별-작성-여부">13. C 번호별 작성 여부</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>C</th>
+<th>자리</th>
+<th>작성</th>
+<th>절</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C-01</td>
+<td>상단 바</td>
+<td>작성(링크 4개는 정한 것 3)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C-02~C-06</td>
+<td>히어로</td>
+<td>작성(현재 영상 설명 6개)</td>
+<td>1 LND-01, 0 C-05</td>
+</tr>
+<tr>
+<td>C-07</td>
+<td>약속 세 가지</td>
+<td>작성</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-08</td>
+<td>공간과 하루</td>
+<td>작성(캡션 4개)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-09</td>
+<td>직원</td>
+<td>작성</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-10</td>
+<td>Evenstay 홈</td>
+<td>작성(코어 copy 승인 문장)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-11</td>
+<td>Evenstay 패밀리</td>
+<td>작성</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-12</td>
+<td>몸이 바뀔 때</td>
+<td>작성</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-13</td>
+<td>앱이 어려우시면</td>
+<td>작성</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-14</td>
+<td>사람이 정해요</td>
+<td>작성</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-15</td>
+<td>상담 폼</td>
+<td>작성(보관 기간 [미정])</td>
+<td>1 LND-10</td>
+</tr>
+<tr>
+<td>C-16</td>
+<td>면접관 섹션</td>
+<td>작성(모듈 7줄, 정한 것 7)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-17</td>
+<td>푸터</td>
+<td>작성</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C-18</td>
+<td>대체 텍스트 검토</td>
+<td>작성(공간 영상 포스터 포함)</td>
+<td>12, 12-1</td>
+</tr>
+<tr>
+<td>C-19</td>
+<td>페이지 머리·하단 띠</td>
+<td>작성</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C-20</td>
+<td>브랜드 이야기</td>
+<td>작성</td>
+<td>2</td>
+</tr>
+<tr>
+<td>C-21</td>
+<td>센터장 인사</td>
+<td>작성</td>
+<td>2</td>
+</tr>
+<tr>
+<td>C-22</td>
+<td>직원 소개</td>
+<td>작성(4장, 간호 카드 없음)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>C-23</td>
+<td>시설</td>
+<td>작성</td>
+<td>3</td>
+</tr>
+<tr>
+<td>C-24</td>
+<td>숙소</td>
+<td>작성(유형 이름은 정한 것 8)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>C-25</td>
+<td>하루 일과</td>
+<td>작성(시각 대신 때, 정한 것 5)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C-26</td>
+<td>식사 요약</td>
+<td>작성</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C-27</td>
+<td>여가 프로그램</td>
+<td>작성(CAP-10은 CMN-02)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C-28</td>
+<td>앱 소개</td>
+<td>작성</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C-29</td>
+<td>오시는 길</td>
+<td>작성(주차·거리 [미정])</td>
+<td>8</td>
+</tr>
+<tr>
+<td>C-30</td>
+<td>전화·방문 안내</td>
+<td>작성(시간 없음, U-17)</td>
+<td>9</td>
+</tr>
+<tr>
+<td>C-31</td>
+<td>입주 절차</td>
+<td>작성(기간·서류 [미정])</td>
+<td>9</td>
+</tr>
+<tr>
+<td>C-32</td>
+<td>자주 묻는 질문</td>
+<td>작성(7개)</td>
+<td>9</td>
+</tr>
+<tr>
+<td>C-33</td>
+<td>개인정보 처리방침</td>
+<td>작성(데모 자리)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>C-34</td>
+<td>404</td>
+<td>작성</td>
+<td>11</td>
+</tr>
+<tr>
+<td>C-35</td>
+<td>도움이 필요하실 때</td>
+<td>작성</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-36~C-40</td>
+<td>안심·건강 지원</td>
+<td>작성(숫자는 뺌, 정한 것 4)</td>
+<td>7</td>
+</tr>
+<tr>
+<td>C-41</td>
+<td>메인 식사</td>
+<td>작성</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-42~C-48</td>
+<td>식사 페이지</td>
+<td>작성(식단표 21칸)</td>
+<td>6</td>
+</tr>
+<tr>
+<td>C-49</td>
+<td>여가와 모임</td>
+<td>작성</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C-50</td>
+<td>생활 요청</td>
+<td>작성(병원 동행은 뺌, 정한 것 6)</td>
+<td>5</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="14-교정-기록">14. 교정 기록</h2>
+<p>2026-11-04, 이 세션에서 호출한 순서대로 적는다.</p>
+<p><strong><code>copy-editing</code></strong> (일곱 번 훑기 + AI 티 점검. 금지어·U-14 낱말·U-17 항목·약속 표현은 grep으로도 확인: 화면 문구에는 &quot;쓰지 않는다&quot; 규칙 줄과 경계 한 줄 &quot;진단과 치료는 병원과 119가 해요&quot; 말고는 없음. &quot;바로&quot;는 B 승인 문장의 &quot;직원에게 바로 전해요/가요&quot;(전달)와 &quot;119에 바로 전화&quot;에만 있어 도착 약속이 아니라 둠)</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C-20 첫 문단</td>
+<td>같은 기준으로, 이유를 보여 드리며 지낸다는 뜻</td>
+<td>같은 기준을 쓰고, 그 이유를 보여 드린다는 뜻</td>
+<td>주어가 흐렸다</td>
+</tr>
+<tr>
+<td>C-20 끝 문장</td>
+<td>그래서 Evenstay는 함께 보는 기록 위에서 지내는 곳이에요.</td>
+<td>(지움)</td>
+<td>정리하는 맺음말(AI 티). 앞 문장으로 뜻이 끝난다</td>
+</tr>
+<tr>
+<td>C-15 오류 요약</td>
+<td>빨간 글자를 봐 주세요.</td>
+<td>칸 아래 안내를 봐 주세요.</td>
+<td>색만으로 안내하지 않는다(접근성)</td>
+</tr>
+<tr>
+<td>C-43 하루 세 끼</td>
+<td>아침은 밥이나 죽 가운데 고르실 수 있어요 / 차려 드려요</td>
+<td>아침. 밥이나 죽, 국과 반찬 / 점심·저녁 같은 꼴</td>
+<td>고르는 것을 운영 약속처럼 썼다. 예시 구성(U-19)만 말한다</td>
+</tr>
+<tr>
+<td>C-36 호출벨 근거</td>
+<td>B 시드 호실마다 욕실</td>
+<td>screen-spec SITE-SAFE-01 &quot;욕실 포함&quot;</td>
+<td>근거를 정확한 곳으로</td>
+</tr>
+</tbody></table></div>
+<p><strong><code>grammar-checker</code></strong>: 확실한 오류 1건을 고쳤다. &quot;맑은 무국&quot;(LND-14 캡션) → &quot;맑은 뭇국&quot;(사이시옷, 표준어 &quot;뭇국&quot;). 국 이름 17개(감잣국, 북엇국, 쇠고기뭇국 등)를 모두 확인했다. &quot;잘 못 써도&quot;는 &quot;잘하지 못하다&quot; 뜻이라 띄어 쓴 것이 맞다. 가운뎃점(·)은 다른 모듈 카피와 같은 화면 구분 기호라 그대로 둔다(의도한 표기).</p>
+<p><strong><code>style-guide</code></strong>: 문서 타입은 마케팅 사이트 + 화면 문구. 사이트 문구는 모두 해요체이고 LND-11만 합쇼체다(해요체 0건). 센터장 인사의 &quot;최영미입니다&quot;는 첫인사라 둔다. 용어는 회원님·가족(사이트 화면에 &quot;보호자&quot;, &quot;입주자&quot;, &quot;호실&quot; 0건), 대리인은 &quot;대신 처리하실 분&quot;, AI 표기는 &quot;AI로 만든 가상 사진/영상/장면&quot;, 전화는 &quot;전화 상담 02-000-0000 (가상 번호)&quot;로 하나씩이다(<code>names.md</code> 2·3절).</p>
+<p><strong><code>humanizer</code></strong>: C-20 브랜드 이야기, C-21 센터장 인사, C-16 면접관 안내, 히어로 부제와 화면 문구 전체의 번역투를 봤다. 번역투 2건을 고쳤다: C-48 문장과 자주 묻는 질문의 &quot;식사에 대해&quot; → &quot;부드러운 음식이 필요하시거나 알레르기가 있으시면&quot;, 질문 &quot;부드러운 음식이나 알레르기는 어떻게 알리나요?&quot;(통해, 에 의해, 가지고 있다는 0건). 복수형 1건도 고쳤다: C-21 &quot;정하시는 일들이에요&quot; → &quot;정하시는 일이에요&quot;. 히어로 부제의 세 가지 장면 나열은 실제 영상 장면이라 둔다. 자연도 등급 A(S1 0건, S2 1건: C-20 문단 끝 &quot;-요&quot;가 이어지는 리듬).</p>
+<p><strong>2026-11-04 문구 규칙 정리 (허브 요청, 사용자 재승인 2026-11-04)</strong>: 번호 표기를 허브 규칙에 맞췄다(회원·보호자 화면은 &quot;02-000-0000 (가상 번호)&quot; 하나, &quot;내선 0번&quot;은 방 전화로 거는 경우에만 그 용도를 밝혀서).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LND-08 길 2</td>
+<td>프런트(내선 0번)로 전화하세요.</td>
+<td>방 전화로 프런트(내선 0번)에 거세요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-01 첫 문장</td>
+<td>호출벨이나 프런트 전화(내선 0번)로 앱과 똑같이 직원을 부르실 수 있어요.</td>
+<td>앱을 쓰지 않으셔도 호출벨을 누르시거나 방 전화로 프런트(내선 0번)에 거시면 직원을 부르실 수 있어요. (B 승인 문장을 규칙에 맞춤)</td>
+</tr>
+<tr>
+<td>SITE-SAFE-01 길 2</td>
+<td>방 전화로 프런트(내선 0번)에 거세요.</td>
+<td>뒤에 &quot;휴대폰으로는 02-000-0000 (가상 번호)이에요.&quot;</td>
+</tr>
+<tr>
+<td>남은 <code>[NEED]</code></td>
+<td>실제 내선 번호</td>
+<td>데모 값으로 정함(허브 결정)</td>
+</tr>
+<tr>
+<td>정한 것 2 표</td>
+<td>입주 뒤 길을 말할 때만 &quot;프런트(내선 0번)&quot;</td>
+<td>입주 뒤 방 전화로 거는 길을 말할 때만 &quot;방 전화로 프런트(내선 0번)&quot;</td>
+</tr>
+</tbody></table></div>
+<p><strong>2026-11-04 소개 사이트 반영 검토 결정 반영 (허브 요청, 사용자 &quot;모두 추천대로&quot;, 사용자 재승인 2026-11-04)</strong>: 기준은 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 마지막 줄과 <a class="doc-ref" href="x-process-landing-reflection-review-2026-11-04.html"><code>00-hub/reviews/landing-reflection-review-2026-11-04.md</code></a>다. 호출한 스킬: <code>copywriting</code>(상황 C, 점 단위 수정) → <code>copy-editing</code> → <code>grammar-checker</code> → <code>style-guide</code> → <code>humanizer</code>.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R-01</td>
+<td>SITE-SAFE-01</td>
+<td>길 넷(호출벨, 프런트 전화, Evenstay 홈, 119)</td>
+<td>길 셋(호출벨, 프런트 전화, 119)</td>
+</tr>
+<tr>
+<td>R-01</td>
+<td>SITE-SAFE-02</td>
+<td>(없음)</td>
+<td>&quot;앱에서 보기&quot; 줄 추가</td>
+</tr>
+<tr>
+<td>R-02</td>
+<td>12절</td>
+<td>IMG-H1 고침 없음</td>
+<td>&quot;창밖으로 신록이 보인다&quot;</td>
+</tr>
+<tr>
+<td>R-04</td>
+<td>LND-15, SITE-LIFE-03, 13절, 남은 <code>[미정]</code></td>
+<td>CAP-10 [미정]</td>
+<td>CMN-02로 정하고 대체 텍스트 추가</td>
+</tr>
+<tr>
+<td>R-05</td>
+<td>CAP-9 대체 텍스트, SITE-LIFE-05 길 1</td>
+<td>합치기 전 큰 버튼 둘, [요청하기]</td>
+<td>종류 여섯과 내 요청 목록, [생활 요청]</td>
+</tr>
+<tr>
+<td>G-01</td>
+<td>LND-06</td>
+<td>(없음)</td>
+<td>&quot;설명: 일정&quot; 줄 추가. 부재 소식은 쓰지 않음</td>
+</tr>
+<tr>
+<td>G-02</td>
+<td>LND-15, SITE-FAC-02, SITE-LIFE-03 둘</td>
+<td>[프로그램], [시설 예약], [공지]</td>
+<td>앱 안 위치를 말하지 않는 문장</td>
+</tr>
+<tr>
+<td>G-03</td>
+<td>SITE-LIFE-03 신청하는 길</td>
+<td>자리가 나면 문자로 알려 드려요</td>
+<td>순서대로 신청이 되고 문자로 알림, 마감 뒤에는 직원 전화</td>
+</tr>
+<tr>
+<td>G-04</td>
+<td>LND-11</td>
+<td>(없음)</td>
+<td>&quot;모듈 아래 한 줄: 소유주&quot; 추가</td>
+</tr>
+<tr>
+<td>G-06</td>
+<td>자주 묻는 질문 비용</td>
+<td>숙소 유형에 따라 다르고 상담 때 안내</td>
+<td>보증금, 월 생활비, 식비 구조 추가. 금액과 공과금 별도 여부는 상담 때</td>
+</tr>
+<tr>
+<td>G-07</td>
+<td>LND-02, SITE-ABOUT-01</td>
+<td>직원이 남긴 기록</td>
+<td>직원이 확인한 기록</td>
+</tr>
+<tr>
+<td>G-08</td>
+<td>SITE-CON-03 4·5단계</td>
+<td>이때 정하셔도 돼요 / 입주하시는 날부터 앱</td>
+<td>직원과 함께 정해요 / 5단계에서 앱 시작 시점을 말하지 않음</td>
+</tr>
+<tr>
+<td>G-10</td>
+<td>머리말 2곳, LND-05 아래, 13절 C-10, 정한 것 1</td>
+<td>코어·기획 문서 &quot;초안&quot;</td>
+<td>승인으로 고침. 정한 것 1은 이유만 바뀌고 결정은 그대로</td>
+</tr>
+<tr>
+<td>G-17</td>
+<td>LND-11 안내</td>
+<td>실제로 어떻게 동작하는지</td>
+<td>프로토타입의 화면 모음에서 이어서 보실 수 있습니다</td>
+</tr>
+<tr>
+<td>G-19</td>
+<td>SITE-SAFE-02 앱 문구 예</td>
+<td>화살표</td>
+<td>번호 목록(<code>ol</code>)</td>
+</tr>
+<tr>
+<td>G-19</td>
+<td>LND-11 보호자 포털·동의, AI 생활 비서</td>
+<td>입주 회원, 시니어 회원용</td>
+<td>입주자, 시니어 입주자용</td>
+</tr>
+<tr>
+<td>결정 반영</td>
+<td>다른 곳에 필요한 것</td>
+<td>직원 이름 불일치(허브 판단)</td>
+<td>책임자 최영미로 통일</td>
+</tr>
+</tbody></table></div>
+<p>검수에서 고친 것: <code>copy-editing</code>으로 금지어, 사고 보고, 재실, 부재 낱말과 금액을 고친 줄에서 찾았고 0건이었다. 입주 절차 4단계의 &quot;함께&quot; 겹침을 고쳤다. <code>grammar-checker</code>는 확실한 오류 0건이다. <code>style-guide</code>로 &quot;볼 수 있어요&quot;를 사이트 높임에 맞춰 &quot;보실 수 있어요&quot;로 고쳤고, LND-11은 합쇼체와 &quot;입주자&quot;로 하나다. <code>humanizer</code>로 비용 답의 &quot;공과금이 따로인지와 함께&quot;를 문장 둘로 나눴다. 자연도 등급 A(S1 0건, S2 0건).</p>
+<p><strong>2026-11-04 &quot;앱과 똑같이&quot; 삭제 (허브 요청, 사용자 재승인 2026-11-04)</strong>: 앱에는 호출 버튼이 없어 이 표현을 뺐다. 호출한 스킬: <code>copy-editing</code>(점 단위 수정).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LND-08 길 1</td>
+<td>앱과 똑같이 당번 직원에게 가요.</td>
+<td>당번 직원에게 가요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-01 첫 문장</td>
+<td>거시면 앱과 똑같이 직원을 부르실 수 있어요.</td>
+<td>거시면 직원을 부르실 수 있어요.</td>
+</tr>
+<tr>
+<td>위 문구 규칙 정리 표의 SITE-SAFE-01 줄</td>
+<td>후 칸 같은 문장</td>
+<td>같은 문장으로 맞춤</td>
+</tr>
+<tr>
+<td>CAP-2 캡션</td>
+<td>SITE-SAFE-01</td>
+<td>SITE-SAFE-02로 옮김(기획 요청)</td>
+</tr>
+</tbody></table></div>
+<p><strong>2026-11-04 공간 영상 3편 반영 (허브 요청, 사용자 재승인 2026-11-04)</strong>: VID-BLDG, VID-ROOM, VID-LOUNGE가 더해져 히어로가 6편이 됐다(screen-spec LND-01, LND-03, SITE-COM-01, asset-plan 5-6). 호출한 스킬: <code>copywriting</code>(상황 C) → <code>copy-editing</code> → <code>grammar-checker</code>.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C-05 영역 이름</td>
+<td>Evenstay의 하루 장면</td>
+<td>Evenstay의 공간과 하루</td>
+</tr>
+<tr>
+<td>C-05 장면 버튼</td>
+<td>4개</td>
+<td>6개(안뜰에서 본 건물, 1인 숙소 안 추가)</td>
+</tr>
+<tr>
+<td>C-06</td>
+<td>LND-01만</td>
+<td>6편에 쓴다고 표시, LND-03과 시설·숙소 머리에 &quot;AI로 만든 가상 영상&quot; 추가</td>
+</tr>
+<tr>
+<td>C-08</td>
+<td>캡션 3개</td>
+<td>라운지 캡션 추가, 4개</td>
+</tr>
+<tr>
+<td>C-18</td>
+<td>포스터 설명 없음</td>
+<td>KEY-INT-R·KEY-INT-C 창밖 구절 추가, 12-1 표 추가</td>
+</tr>
+<tr>
+<td>C-03 근거</td>
+<td>히어로 영상 4편</td>
+<td>VID-H1·H3·H4</td>
+</tr>
+<tr>
+<td>13절 C-02~C-06, C-08, C-18</td>
+<td>작성</td>
+<td>새 구성 표시</td>
+</tr>
+</tbody></table></div>
+<p>검수: 입지 낱말과 금지어를 고친 줄에서 찾았고 0건이다. 맞춤법 오류 0건이다.</p>
+<p><strong>2026-11-04 메인 아트보드 지적 반영 (허브 요청, 사용자 재승인 2026-11-04)</strong>: 기준은 <code>evenstay/design/canvas-notes.md</code> 끝 절과 2026-11-04 사용자 결정이다. 호출한 스킬: <code>copywriting</code>(상황 C) → <code>copy-editing</code> → <code>grammar-checker</code>. 맞춤법 오류 0건이다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LND-14</td>
+<td>큰 사진 캡션 없음</td>
+<td>이웃과 함께 드시는 점심. AI로 만든 가상 사진</td>
+</tr>
+<tr>
+<td>SITE-DINE-05</td>
+<td>이웃과 함께 드시는 저녁</td>
+<td>이웃과 함께 드시는 점심</td>
+</tr>
+<tr>
+<td>12절 IMG-DINE-TOGETHER</td>
+<td>고침 없음</td>
+<td>대체 텍스트를 점심으로</td>
+</tr>
+<tr>
+<td>LND-10</td>
+<td>신청하시는 분 오류 없음</td>
+<td>본인과 가족(대신 신청) 가운데 하나를 골라 주세요.</td>
+</tr>
+<tr>
+<td>CAP-5 대체 텍스트</td>
+<td>김지민 님 세 항목 켜짐</td>
+<td>FAM-01 보드 상태</td>
+</tr>
+<tr>
+<td>LND-06 관계 문장</td>
+<td>왼쪽은 …, 오른쪽은 …</td>
+<td>회원님이 가족마다 정하시면, 정하신 항목만 가족 화면에 보여요.</td>
+</tr>
+<tr>
+<td>LND-03, LND-04, LND-13, 시설·숙소 머리</td>
+<td>AI로 만든 가상 영상</td>
+<td>AI로 만든 가상 장면</td>
+</tr>
+<tr>
+<td>C-04 근거</td>
+<td>없음</td>
+<td>390폭 첫 화면도 같은 문구</td>
+</tr>
+</tbody></table></div>
+<p><strong>2026-11-04 korean-skills 다시 검수 (허브 요청, 사용자 &quot;문장이나 용어들이 좀 어색한거 같은데&quot;, 사용자 재승인 2026-11-04)</strong>: 호출한 스킬: <code>grammar-checker</code> → <code>style-guide</code> → <code>humanizer</code>. 사실과 약속 범위는 바꾸지 않았다. 고친 곳 47곳(아래 표 45곳, 순서 표시와 화살표 이름 추가 2곳).</p>
+<ul>
+<li><code>grammar-checker</code>: 회원이 직원에게 &quot;여쭤보다&quot;로 쓴 높임 방향 오류 3곳을 &quot;물어보다&quot;로 고쳤다. 직원이 회원에게 쓰는 &quot;여쭤요&quot;는 맞아 둔다. 맞춤법 오류는 0건이다.</li>
+<li><code>style-guide</code>: &quot;길&quot;을 &quot;방법&quot;으로, &quot;궁금하신 것&quot;을 &quot;궁금하신 점&quot;으로, 링크 &quot;○○ 보기&quot;를 &quot;입주 상담 신청하기&quot;로 맞췄다. &quot;방 전화로 프런트(내선 0번)에 거세요&quot;는 번호 규칙 문장이라 둔다. 호칭은 히어로만 &quot;내&quot;로 바꾸고 입주 뒤를 말하는 곳은 &quot;회원님&quot;을 유지한다.</li>
+<li><code>humanizer</code>: 쉼표로 끊은 명사형, 영어식 구조(&quot;일어나는 일&quot;, &quot;회원님 것이에요&quot;), 세 박자 나열을 고쳤다. 자연도 등급 A(S1 0건, S2 1건: 해요체 끝맺음 반복).</li>
+<li>&quot;병원으로 모실 때&quot;는 직원 동행으로 읽혀 &quot;병원에 가시게 되면&quot;으로 고쳤다(U-17 동행 여부 운영 확인 전). &quot;앱과 같은 도움&quot;은 앱이 부르는 곳으로 읽혀 뺐다.</li>
+</ul>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C-19 소개</td>
+<td>회원님이 정하시고, 가족은 함께 보고, 판단은 사람이 하는 곳이에요.</td>
+<td>회원님이 정하시고, 가족이 함께 보고, 사람이 판단하는 곳이에요.</td>
+</tr>
+<tr>
+<td>C-19 입주 상담</td>
+<td>상담 신청, 전화, 방문 가운데 편한 길로 시작하세요.</td>
+<td>상담 신청, 전화, 방문 가운데 편한 방법으로 시작하세요.</td>
+</tr>
+<tr>
+<td>하단 띠</td>
+<td>궁금하신 것이 있으면 상담으로 시작하세요.</td>
+<td>궁금하신 점이 있으면 상담을 신청해 주세요.</td>
+</tr>
+<tr>
+<td>C-05 안내 창 버튼</td>
+<td>알겠어요 · 입주 상담 신청 보기</td>
+<td>알겠어요 · 입주 상담 신청하기</td>
+</tr>
+<tr>
+<td>C-02 제목</td>
+<td>편안한 하루, 정하는 사람은 회원님</td>
+<td>편안한 하루를 내 뜻대로</td>
+</tr>
+<tr>
+<td>C-03 부제</td>
+<td>창가에서 책을 읽고, 오후에는 그림을 그리고, 저녁에는 정원을 걸어요. 내 소식을 가족 중 누구에게 얼마나 보여 줄지도 회원님이 정하세요.</td>
+<td>아침에는 창가에서 책을 읽고, 저녁에는 정원을 거닐어요. 내 소식을 어느 가족에게 어디까지 보여 줄지도 직접 정하세요.</td>
+</tr>
+<tr>
+<td>LND-03 제목</td>
+<td>햇빛이 드는 방, 함께 쓰는 1층</td>
+<td>햇살 드는 방, 이웃과 함께 쓰는 1층</td>
+</tr>
+<tr>
+<td>LND-03 도서 공간</td>
+<td>낮은 책장 옆에 혼자 앉는 의자가 있어요.</td>
+<td>낮은 책장 옆에 혼자 앉아 읽기 좋은 의자가 있어요.</td>
+</tr>
+<tr>
+<td>LND-15 설명</td>
+<td>가고 싶은 것만 골라 신청하시면 돼요.</td>
+<td>가고 싶으신 모임만 골라 신청하시면 돼요.</td>
+</tr>
+<tr>
+<td>LND-02 1</td>
+<td>가족마다, 항목마다 따로 정하고 언제든 바꾸세요.</td>
+<td>가족마다, 항목마다 따로 정하고 언제든 바꾸실 수 있어요.</td>
+</tr>
+<tr>
+<td>LND-04 함께 보기</td>
+<td>궁금한 것을 여쭤보시면 생활 지원 직원이</td>
+<td>궁금한 점을 물어보시면 생활 지원 직원이</td>
+</tr>
+<tr>
+<td>LND-05 소개</td>
+<td>회원님 휴대폰이나 태블릿에서 쓰는 앱이에요. 글자가 크고 한 화면에 한 가지 일만 해요.</td>
+<td>휴대폰이나 태블릿에서 쓰시는 앱이에요. 글자가 크고, 한 화면에서 한 가지 일만 해요.</td>
+</tr>
+<tr>
+<td>LND-06 설명 2</td>
+<td>바꾸시면 그 순간부터 적용돼요.</td>
+<td>바꾸시면 바로 적용돼요.</td>
+</tr>
+<tr>
+<td>LND-07 제목</td>
+<td>몸이 바뀌어도 그대로인 것부터 보여 드려요</td>
+<td>몸 상태가 달라져도 그대로인 것부터 보여 드려요</td>
+</tr>
+<tr>
+<td>LND-10 오류</td>
+<td>연락처 숫자가 조금 모자라거나 많아요. 다시 한번 봐 주세요.</td>
+<td>연락처 자릿수가 맞지 않아요. 다시 한번 봐 주세요.</td>
+</tr>
+<tr>
+<td>C-20 첫 문단</td>
+<td>Evenstay의 이름은 영어 even(고르게)과 stay(머묾)를 합친 말이에요. 어느 회원님께나 같은 기준을 쓰고,</td>
+<td>Evenstay라는 이름은 영어 even(고르게)과 stay(머묾)를 합친 말이에요. 어느 회원님께나 같은 기준을 적용하고,</td>
+</tr>
+<tr>
+<td>C-20 둘째 문단</td>
+<td>여기서 보내시는 하루는 회원님 것이에요. 언제 쉬고 어떤 모임에 갈지, 내 소식을 가족 중 누구에게 얼마나 보여 줄지 회원님이 정하세요.</td>
+<td>이곳에서는 언제 쉬고 어떤 모임에 갈지, 내 소식을 어느 가족에게 어디까지 보여 줄지 회원님이 정하세요.</td>
+</tr>
+<tr>
+<td>C-20 셋째 문단</td>
+<td>가족은 회원님이 보여 주기로 한 만큼, 직원이 확인한 기록을 회원님과 같은 내용으로 봐요.</td>
+<td>가족은 회원님이 보여 주기로 한 만큼만, 직원이 확인한 기록을 회원님과 똑같이 봐요.</td>
+</tr>
+<tr>
+<td>C-21 인사말</td>
+<td>처음 오시는 분께 가장 먼저 보여 드리고 싶은 것은 회원님이 정하시는 일이에요. 어떤 모임에 가실지, 가족에게 무엇을 보여 주실지는 회원님이 정하세요. 저희 직원은 부르시면 가고, 한 일을 기록으로 남겨요. 생활 지원 단계처럼 정해야 할 일이 생기면 먼저 회원님 말씀을 듣고 정해요. 궁금하신 것이 있으면 오셔서 직접 둘러보세요.</td>
+<td>처음 오시는 분께 가장 먼저 말씀드리고 싶은 것은, 이곳의 일상은 회원님이 정하신다는 점이에요. 어떤 모임에 가실지, 가족에게 무엇을 보여 주실지 모두 회원님의 선택이에요. 저희 직원은 부르시면 찾아가고, 한 일을 기록으로 남겨요. 생활 지원 단계처럼 정해야 할 일이 생기면 먼저 회원님 말씀을 듣고 정해요. 궁금하신 점이 있으면 오셔서 직접 둘러보세요.</td>
+</tr>
+<tr>
+<td>SITE-FAC-03 1층 프런트</td>
+<td>궁금하신 것이나 부탁하실 일은 1층 프런트에 말씀하세요.</td>
+<td>궁금하신 점이나 부탁하실 일은 1층 프런트에 말씀해 주세요.</td>
+</tr>
+<tr>
+<td>SITE-ROOM-02 평면 아래</td>
+<td>그림은 방의 위치만 보여 드려요.</td>
+<td>그림은 방의 배치만 보여 드려요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-05 끝나는 방법</td>
+<td>직원이 마치면 회원님이 [다 됐어요]를 누르셔야 끝나요. 아직이면 [아직이에요]를 누르세요. 다시 봐 달라고 전해요.</td>
+<td>직원이 일을 마치면 회원님이 [다 됐어요]를 누르셔야 요청이 끝나요. 아직 덜 됐으면 [아직이에요]를 누르세요. 직원에게 다시 봐 달라고 전해 드려요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-04 다른 길</td>
+<td>앱이 어려우시면 호출벨, 프런트 전화, 직원에게 말씀하시는 길로 같은 일을 하실 수 있어요.</td>
+<td>앱이 어려우시면 호출벨을 누르시거나, 프런트에 전화하시거나, 직원에게 말씀해 주세요.</td>
+</tr>
+<tr>
+<td>SITE-DINE-07 링크</td>
+<td>글자 링크</td>
+<td>입주 상담 신청 보기</td>
+</tr>
+<tr>
+<td>SITE-SAFE-01 제목</td>
+<td>제목</td>
+<td>도움을 부르는 길</td>
+</tr>
+<tr>
+<td>SITE-SAFE-02 제목</td>
+<td>제목</td>
+<td>부르신 뒤에 일어나는 일</td>
+</tr>
+<tr>
+<td>SITE-SAFE-02 단계 3</td>
+<td>직원이 회원님을 만나요.</td>
+<td>직원이 회원님을 찾아가요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-03 2</td>
+<td>병원으로 모실 때 직원이 급할 때 연락할 분께</td>
+<td>병원에 가시게 되면 직원이 급할 때 연락할 분께</td>
+</tr>
+<tr>
+<td>SITE-SAFE-03 4</td>
+<td>병원으로 가신 시각과 돌아오신 시각이 기록으로 이어져요.</td>
+<td>병원으로 가신 시각과 돌아오신 시각을 기록으로 남겨요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-04 소개</td>
+<td>일이 없을 때도 살피는 장치와 사람이 있어요. 어디까지 할지는 회원님이 동의하신 만큼이에요.</td>
+<td>별일 없는 날에도 살피는 장치와 직원이 있어요. 어디까지 살필지는 회원님이 동의하신 만큼이에요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-05 넷째</td>
+<td>병원에 가셔야 할 때 급할 때 연락할 분께 드리는 전화는</td>
+<td>병원에 가시는 일로 급할 때 연락할 분께 드리는 전화는</td>
+</tr>
+<tr>
+<td>오시는 길 주차</td>
+<td>주차할 곳을 방문 전에 전화로 여쭤봐 주세요.</td>
+<td>주차할 곳을 방문 전에 전화로 물어봐 주세요.</td>
+</tr>
+<tr>
+<td>SITE-CON-02 전화</td>
+<td>전화로 상담하시려면 02-000-0000으로 거세요.</td>
+<td>전화로 상담하시려면 02-000-0000으로 전화해 주세요.</td>
+</tr>
+<tr>
+<td>SITE-CON-03 1</td>
+<td>상담 신청이나 전화로 궁금하신 것을 여쭤보세요.</td>
+<td>상담 신청이나 전화로 궁금하신 점을 물어보세요.</td>
+</tr>
+<tr>
+<td>SITE-CON-03 5</td>
+<td>앱이나 방에서 궁금하신 것은 프런트 직원에게</td>
+<td>앱이나 방에서 궁금하신 점은 프런트 직원에게</td>
+</tr>
+<tr>
+<td>FAQ 몸</td>
+<td>몸이 바뀌면 어떻게 되나요?</td>
+<td>몸 상태가 달라지면 어떻게 되나요?</td>
+</tr>
+<tr>
+<td>FAQ 앱</td>
+<td>괜찮아요. 호출벨, 프런트 전화, 지나가는 직원에게 말씀하시는 길로 앱과 같은 도움을 받으세요.</td>
+<td>괜찮아요. 호출벨을 누르시거나, 프런트에 전화하시거나, 지나가는 직원에게 말씀하시면 도와 드려요.</td>
+</tr>
+<tr>
+<td>개인정보 본문 1</td>
+<td>이 페이지는 데모 사이트의 자리표시예요.</td>
+<td>이 페이지는 데모 사이트에 넣은 예시예요.</td>
+</tr>
+<tr>
+<td>404 링크</td>
+<td>글자 링크</td>
+<td>입주 상담 보기</td>
+</tr>
+<tr>
+<td>C-05 영상 설명 1</td>
+<td>안뜰에서 본 건물</td>
+<td>안뜰 정원 쪽에서 바라본 두 동의 건물이에요.</td>
+</tr>
+<tr>
+<td>C-05 영상 설명 2</td>
+<td>1인 숙소 안</td>
+<td>큰 창으로 햇살이 드는 1인 숙소예요.</td>
+</tr>
+<tr>
+<td>C-05 영상 설명 3</td>
+<td>아침, 창가에서 책</td>
+<td>아침에는 창가에 앉아 책을 읽어요.</td>
+</tr>
+<tr>
+<td>C-05 영상 설명 4</td>
+<td>오전, 발코니에서 차</td>
+<td>오전에는 발코니에서 차를 마셔요.</td>
+</tr>
+<tr>
+<td>C-05 영상 설명 5</td>
+<td>오후, 함께 그림</td>
+<td>오후에는 이웃과 함께 수채화를 그려요.</td>
+</tr>
+<tr>
+<td>C-05 영상 설명 6</td>
+<td>저녁, 정원 산책</td>
+<td>해 질 녘에는 안뜰 정원을 천천히 걸어요.</td>
+</tr>
+</tbody></table></div>
+<p><strong>2026-11-04 문장 다시 쓰기 (허브 요청, 사용자 &quot;어색한 문장이 아직도 있는데?&quot;, 사용자 재승인 2026-11-04)</strong>: 기준은 &quot;입주를 생각하는 70대와 자녀가 소리 내어 읽고 바로 뜻을 아는가&quot;다. 먼저 사람 말로 다시 쓰고 스킬로 확인했다. 호출한 스킬: <code>humanize-korean:humanize-korean</code>(standard 경로의 진단 단계까지. 윤문 콜은 돌리지 않고 진단을 손으로 반영), <code>grammar-checker</code>(확실한 오류 0건). 고친 곳 97곳.</p>
+<ul>
+<li>기획 개념어를 풀었다: 그대로인 것 → 바뀌지 않는 것, 더해진 도움 → 새로 받으시는 도움, 보여 주기로 한 → 허락하신, 정하는 사람·판단은 사람이 → 사람이 정해요, 시스템 → 앱, 맡을 직원 → 담당 직원, 드시지 않을 끼니 → 거르실 끼니. 앱 화면을 그대로 옮긴 인용(CAP-1·4·6)은 화면과 같아야 해서 둔다.</li>
+<li>진단이 지목한 것을 고쳤다: 연결어미 뒤 쉼표, &quot;앱은 여기까지, 결정은 사람&quot; 대구의 반복, 사실만 말하는 줄의 &quot;<del>할 수 있어요&quot;, 나란히 놓인 &quot;</del>드려요&quot;, 긴 앞 수식, &quot;~다는 거예요&quot;.</li>
+<li>LND-07 제목은 계속 지낼 수 있다는 약속이 되지 않게 &quot;먼저 알려 드려요&quot;로 썼다. FAQ의 &quot;상황과 입주 계약에 따라 상담 때 확인&quot;은 그대로다.</li>
+<li>LND-07, LND-09, FAQ의 &quot;사람이 정해요&quot;는 &quot;센터장이 정해요&quot;로 구체화했다 [사실: C copy 결정자, 센터장 최영미는 사업장 책임자].</li>
+</ul>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C-19 소개 한 줄</td>
+<td>회원님이 정하시고, 가족이 함께 보고, 사람이 판단하는 곳이에요.</td>
+<td>하루도 내 소식도 회원님이 정하시는 곳이에요.</td>
+</tr>
+<tr>
+<td>C-19 생활 한 줄</td>
+<td>하루를 어떻게 보내실 수 있는지, 필요한 일은 어떻게 부탁하시는지 보여 드려요.</td>
+<td>이곳의 하루와 필요한 일을 부탁하는 방법을 알려 드려요.</td>
+</tr>
+<tr>
+<td>LND-01 부제</td>
+<td>아침에는 창가에서 책을 읽고, 저녁에는 정원을 거닐어요. 내 소식을 어느 가족에게 어디까지 보여 줄지도 직접 정하세요.</td>
+<td>아침에는 창가에서 책을 읽고, 저녁에는 정원을 거닐어요. 내 소식을 어느 가족에게 어디까지 알릴지도 직접 정하실 수 있어요.</td>
+</tr>
+<tr>
+<td>LND-01 영상 설명 1</td>
+<td>안뜰 정원 쪽에서 바라본 두 동의 건물이에요.</td>
+<td>안뜰 정원을 사이에 둔 두 동의 건물이에요.</td>
+</tr>
+<tr>
+<td>LND-03 제목</td>
+<td>햇살 드는 방, 이웃과 함께 쓰는 1층</td>
+<td>햇살 드는 내 방, 이웃을 만나는 1층</td>
+</tr>
+<tr>
+<td>LND-03 1인 숙소</td>
+<td>1인 숙소. 큰 창 옆에 발코니로 나가는 문이 있어요.</td>
+<td>1인 숙소. 큰 창 옆 문을 열면 발코니예요.</td>
+</tr>
+<tr>
+<td>LND-03 도서 공간</td>
+<td>1층 도서 공간. 낮은 책장 옆에 혼자 앉아 읽기 좋은 의자가 있어요.</td>
+<td>1층 도서 공간. 낮은 책장 옆 의자에서 조용히 책을 읽어요.</td>
+</tr>
+<tr>
+<td>LND-14 설명</td>
+<td>아래는 예시 상차림이에요.</td>
+<td>아래는 상차림 예시예요.</td>
+</tr>
+<tr>
+<td>LND-14 청구서</td>
+<td>드시지 않을 끼니를 미리 프런트에 말씀하시면, 그 끼니는 청구서에서 빼 드리고 이유도 함께 적어 드려요.</td>
+<td>식사를 거르실 날은 프런트에 미리 말씀해 주세요. 그 끼니 값은 청구서에서 빼고 왜 빠졌는지도 적어 드려요.</td>
+</tr>
+<tr>
+<td>LND-15 제목</td>
+<td>골라서 함께하는 모임</td>
+<td>마음 가는 모임만 골라서 함께해요</td>
+</tr>
+<tr>
+<td>LND-15 설명</td>
+<td>수채화, 가벼운 체조, 텃밭 가꾸기처럼 레지던스가 여는 모임이 있어요. 가고 싶으신 모임만 골라 신청하시면 돼요.</td>
+<td>레지던스에서 수채화, 가벼운 체조, 텃밭 가꾸기 같은 모임을 열어요. 가고 싶으신 것만 신청하시면 돼요.</td>
+</tr>
+<tr>
+<td>LND-15 신청</td>
+<td>Evenstay 홈에서 요일과 남은 자리를 보고 프로그램을 신청하세요. 프런트에 전화하셔도 같은 명단에 들어가요.</td>
+<td>신청은 Evenstay 홈 앱에서 요일과 남은 자리를 보고 하시면 돼요. 프런트에 전화하셔도 똑같이 신청돼요.</td>
+</tr>
+<tr>
+<td>LND-02 1 제목</td>
+<td>회원님이 정해요</td>
+<td>내 소식은 내가 정해요</td>
+</tr>
+<tr>
+<td>LND-02 1 설명</td>
+<td>내 소식을 누구에게 보여 줄지 정하실 수 있어요. 가족마다, 항목마다 따로 정하고 언제든 바꾸실 수 있어요.</td>
+<td>어떤 소식을 누구에게 보여 줄지 가족마다 따로 정하세요. 마음이 바뀌면 언제든 바꾸실 수 있어요.</td>
+</tr>
+<tr>
+<td>LND-02 2 제목</td>
+<td>가족은 허락하신 만큼 함께 봐요</td>
+<td>가족은 허락하신 소식만 봐요</td>
+</tr>
+<tr>
+<td>LND-02 2 설명</td>
+<td>가족은 회원님이 보여 주기로 한 소식만 봐요. 직원이 확인한 기록을 회원님과 같은 내용으로 봐요.</td>
+<td>허락하신 소식은 직원이 확인한 기록 그대로 보여요. 회원님이 보시는 내용과 똑같아요.</td>
+</tr>
+<tr>
+<td>LND-02 3 제목</td>
+<td>판단은 사람이 해요</td>
+<td>중요한 일은 사람이 정해요</td>
+</tr>
+<tr>
+<td>LND-02 3 설명</td>
+<td>앱과 비서는 알리고 전하는 일을 해요. 무엇을 할지는 직원이 회원님과 이야기하고 정해요.</td>
+<td>앱과 비서는 소식을 알리고 말을 전할 뿐이에요. 어떻게 할지는 직원이 회원님과 이야기해서 정해요.</td>
+</tr>
+<tr>
+<td>LND-04 제목</td>
+<td>로비와 라운지에서 만나는 직원</td>
+<td>로비와 라운지에서 얼굴을 마주하는 직원</td>
+</tr>
+<tr>
+<td>LND-04 함께 보기</td>
+<td>생활 지원 직원이 곁에 앉아 함께 봐요.</td>
+<td>생활 지원 직원이 곁에 앉아 함께 살펴봐요.</td>
+</tr>
+<tr>
+<td>LND-05 제목</td>
+<td>회원님의 Evenstay 홈</td>
+<td>회원님이 쓰시는 앱, Evenstay 홈</td>
+</tr>
+<tr>
+<td>LND-05 소개</td>
+<td>휴대폰이나 태블릿에서 쓰시는 앱이에요. 글자가 크고, 한 화면에서 한 가지 일만 해요.</td>
+<td>휴대폰이나 태블릿으로 쓰세요. 글자가 크고, 한 화면에 한 가지 일만 나와요.</td>
+</tr>
+<tr>
+<td>LND-05 기능 1 제목</td>
+<td>이유가 적힌 청구서</td>
+<td>왜 이 금액인지 적혀 있는 청구서</td>
+</tr>
+<tr>
+<td>LND-05 기능 1</td>
+<td>이번 달 청구서에 항목마다 이유가 적혀 있어요. 드시지 않은 식사처럼 빼 드린 금액도 이유와 함께 보여요.</td>
+<td>항목마다 왜 이 금액인지 적혀 있어요. 거르신 식사처럼 빼 드린 금액도 이유와 함께 보여요.</td>
+</tr>
+<tr>
+<td>LND-05 기능 2, SITE-LIFE-05 첫 문장</td>
+<td>고칠 것이나 필요한 일을 알려 주시면 맡을 직원에게 전해요.</td>
+<td>고장 난 곳이나 필요한 일을 알려 주시면 담당 직원에게 전해 드려요.</td>
+</tr>
+<tr>
+<td>LND-05 기능 3</td>
+<td>계약 날짜와 청구서를 알려 드려요.</td>
+<td>계약 날짜와 청구서 내용을 물어보시면 답해요.</td>
+</tr>
+<tr>
+<td>LND-06 제목</td>
+<td>가족은 회원님이 보여 주기로 한 만큼 봐요</td>
+<td>가족이 쓰는 앱, Evenstay 패밀리</td>
+</tr>
+<tr>
+<td>LND-06 설명 1</td>
+<td>가족은 Evenstay 패밀리에서 생활 소식, 일정, 청구서, 건강 소식, 생활 요청 가운데 회원님이 보여 주기로 한 것만 봐요.</td>
+<td>생활 소식, 일정, 청구서, 건강 소식, 생활 요청 가운데 회원님이 허락하신 것만 가족에게 보여요.</td>
+</tr>
+<tr>
+<td>LND-06 일정</td>
+<td>일정에는 입주 계약과 청구서에 적힌 날짜, 회원님이 신청하신 프로그램이 보여요. 기다리시는 프로그램과 시설 예약은 보이지 않아요.</td>
+<td>일정에는 계약과 청구서 날짜, 신청하신 프로그램이 나와요. 자리를 기다리시는 프로그램과 시설 예약은 나오지 않아요.</td>
+</tr>
+<tr>
+<td>LND-06 설명 2</td>
+<td>가족마다, 항목마다 따로 정하시고, 바꾸시면 바로 적용돼요. 누가 언제 무엇을 봤는지도 회원님 화면에 남아요.</td>
+<td>가족마다 항목을 따로 정하세요. 바꾸시면 바로 적용돼요. 누가 언제 무엇을 봤는지도 회원님 앱에 나와요.</td>
+</tr>
+<tr>
+<td>LND-06 설명 3</td>
+<td>생활 요청을 보여 주기로 한 가족은 고장이나 청소 같은 요청을 회원님 대신 올릴 수도 있어요.</td>
+<td>생활 요청을 허락받은 가족은 고장 수리나 청소를 회원님 대신 부탁할 수도 있어요.</td>
+</tr>
+<tr>
+<td>LND-06 관계 문장</td>
+<td>회원님이 가족마다 정하시면, 정하신 항목만 가족 화면에 보여요.</td>
+<td>회원님이 정하신 항목만 가족 화면에 나와요.</td>
+</tr>
+<tr>
+<td>LND-07 제목</td>
+<td>몸 상태가 달라져도 그대로인 것부터 보여 드려요</td>
+<td>도움이 더 필요해지면, 무엇이 달라지는지 먼저 알려 드려요</td>
+</tr>
+<tr>
+<td>LND-07 설명 1</td>
+<td>도움이 더 필요해지면 직원이 먼저 회원님께 설명하고 말씀을 들어요. 생활 지원 단계는 사람이 기록하고 정해요.</td>
+<td>직원이 먼저 회원님께 설명드리고 말씀을 들어요. 생활 지원 단계는 직원이 기록을 남긴 뒤 센터장이 정해요.</td>
+</tr>
+<tr>
+<td>LND-07 설명 2</td>
+<td>회원님 화면에는 그대로인 것(지금 계신 방, 입주 계약, 급할 때 연락할 분)이 맨 위에 있고, 더해진 도움이 그 아래에 보여요.</td>
+<td>앱을 열면 바뀌지 않는 것(지금 계신 방, 입주 계약, 급할 때 연락할 분)이 맨 위에 보이고, 새로 받으시는 도움이 그 아래에 보여요.</td>
+</tr>
+<tr>
+<td>LND-13 단계 1</td>
+<td>부르세요. 호출벨을 누르시거나 침대 센서가 알려 주면 당번 직원에게 바로 전해요.</td>
+<td>부르세요. 호출벨을 누르시면 당번 직원에게 바로 전해져요. 침대 센서가 알릴 때도 마찬가지예요.</td>
+</tr>
+<tr>
+<td>LND-13 단계 2</td>
+<td>직원이 가요. 직원이 바로 받지 못하면 다른 직원에게도 알려요.</td>
+<td>직원이 찾아가요. 당번 직원이 바로 받지 못하면 다른 직원에게도 알려요.</td>
+</tr>
+<tr>
+<td>LND-13 단계 3</td>
+<td>기록이 남아요. 직원이 한 일이 기록되고, 회원님이 건강 소식을 보여 주기로 한 가족은 Evenstay 패밀리에서 봐요.</td>
+<td>기록이 남아요. 직원이 한 일을 기록해요. 건강 소식을 허락하신 가족은 Evenstay 패밀리에서 봐요.</td>
+</tr>
+<tr>
+<td>LND-13 캡션</td>
+<td>밤에 부르신 회원님 방에 직원이 와서 곁에 앉아 이야기를 들어요.</td>
+<td>밤에 부르신 회원님 곁에 직원이 앉아 이야기를 들어요.</td>
+</tr>
+<tr>
+<td>LND-08 길 1</td>
+<td>방마다 있는 호출벨을 누르세요. 당번 직원에게 가요.</td>
+<td>방마다 호출벨이 있어요. 누르시면 당번 직원에게 알려요.</td>
+</tr>
+<tr>
+<td>LND-08 길 2</td>
+<td>방 전화로 프런트(내선 0번)에 거세요. 부탁하신 일은 직원이 대신 올려 드려요.</td>
+<td>방 전화로 프런트(내선 0번)에 걸어 주세요. 부탁하신 일은 직원이 대신 앱에 올려 드려요.</td>
+</tr>
+<tr>
+<td>LND-08 길 3</td>
+<td>지나가는 직원에게 말씀하셔도 돼요. 앱 설정도 프런트 직원이 곁에서 함께 해 드려요.</td>
+<td>가까이 있는 직원에게 말씀하셔도 돼요. 앱 설정은 프런트 직원이 곁에서 도와 드려요.</td>
+</tr>
+<tr>
+<td>LND-09 제목</td>
+<td>시스템이 정하지 않는 일</td>
+<td>앱이 혼자 정하지 않아요</td>
+</tr>
+<tr>
+<td>LND-09 홈 비서</td>
+<td>홈 비서는 계약과 청구서에 적힌 것만 말해요. 건강, 돈, 계약을 정해야 하는 일은 회원님께 여쭌 뒤 직원에게 전해요.</td>
+<td>홈 비서는 계약서와 청구서에 적힌 내용만 답해요. 건강, 돈, 계약처럼 결정이 필요한 일은 회원님께 여쭌 뒤 직원에게 전해요.</td>
+</tr>
+<tr>
+<td>LND-09 안심 알림</td>
+<td>안심 알림은 신호를 직원에게 전하고 기록을 남겨요. 가서 살피고 무엇을 할지는 직원이 정해요.</td>
+<td>안심 알림은 호출벨과 센서 신호를 직원에게 전하고 기록을 남겨요. 가서 살피고 어떻게 할지는 직원이 정해요.</td>
+</tr>
+<tr>
+<td>LND-09 생활 지원 단계</td>
+<td>생활 지원 단계는 시스템이 정하지 않아요. 직원이 회원님 말씀을 듣고 기록한 뒤 사람이 정해요.</td>
+<td>생활 지원 단계도 앱이 정하지 않아요. 직원이 회원님 말씀을 듣고 기록한 뒤 센터장이 정해요.</td>
+</tr>
+<tr>
+<td>LND-10 편한 때</td>
+<td>연락드리기 편한 때 (고르지 않으셔도 돼요)</td>
+<td>연락받기 편한 때 (고르지 않으셔도 돼요)</td>
+</tr>
+<tr>
+<td>LND-10 접수 뒤</td>
+<td>실제 서비스라면 상담 직원이 고르신 때에 연락드려요.</td>
+<td>실제 서비스라면 고르신 시간대에 상담 직원이 연락드려요.</td>
+</tr>
+<tr>
+<td>LND-11 제목</td>
+<td>포트폴리오로 오신 분께</td>
+<td>포트폴리오를 보러 오신 분께</td>
+</tr>
+<tr>
+<td>LND-11 안내</td>
+<td>Evenstay는 가상 시니어 레지던스입니다. 이 사이트와 앱 화면은 시니어 레지던스 운영 시스템의 기획과 프로토타입입니다. 위에서 본 Evenstay 홈과 Evenstay 패밀리 화면, 직원 화면을 프로토타입의 화면 모음에서 이어서 보실 수 있습니다.</td>
+<td>Evenstay는 실제로 운영하지 않는 가상의 시니어 레지던스입니다. 이 사이트와 앱 화면은 시니어 레지던스 운영 시스템을 기획하고 프로토타입으로 만든 결과입니다. 위에서 보신 회원 앱과 가족 앱, 직원 화면을 프로토타입의 화면 모음에서 이어서 보실 수 있습니다.</td>
+</tr>
+<tr>
+<td>LND-11 코어</td>
+<td>시니어 레지던스 여러 곳의 계약과 청구를 한 기준으로 처리하는 코어</td>
+<td>여러 레지던스의 계약과 청구를 같은 기준으로 처리합니다.</td>
+</tr>
+<tr>
+<td>LND-11 안심 알림</td>
+<td>시니어 레지던스의 흩어진 안전 신호를 한곳에 모아 직원에게 넘기고, 대응 과정을 남기는 이벤트 허브</td>
+<td>호출벨과 센서 신호를 한곳에 모아 직원에게 전하고 대응 과정을 기록합니다.</td>
+</tr>
+<tr>
+<td>LND-11 보호자 포털·동의</td>
+<td>입주자가 가족마다, 항목마다 보여 줄 범위를 정하고 모든 열람이 기록되는 동의 기반 보호자 포털</td>
+<td>입주자가 가족마다 보여 줄 항목을 정합니다. 누가 무엇을 봤는지는 모두 기록합니다.</td>
+</tr>
+<tr>
+<td>LND-11 AI 생활 비서</td>
+<td>코어 PMS의 날짜와 청구 근거만으로 답하고, 판단이 필요한 일은 직원에게 넘기는 시니어 입주자용 AI 비서</td>
+<td>계약 날짜와 청구 내용만 답합니다. 판단이 필요한 일은 직원에게 넘깁니다.</td>
+</tr>
+<tr>
+<td>LND-11 생활 지원 단계</td>
+<td>건강이 바뀐 입주자의 생활 지원 단계를 사람이 기록하고 정하며, 바뀌는 것과 그대로인 것을 먼저 보여 주는 단계 관리</td>
+<td>건강이 달라진 입주자의 지원 단계를 사람이 기록해 정합니다. 바뀌는 것과 바뀌지 않는 것을 입주자에게 먼저 보여 줍니다.</td>
+</tr>
+<tr>
+<td>LND-11 생활 요청</td>
+<td>시니어 레지던스의 생활 요청(수리·청소·세탁·외출 차량·병원 동행·의견)을 한 큐로 받아 배정하고, 입주자 확인까지 남기는 작업 지시 모듈</td>
+<td>수리, 청소, 세탁, 외출 차량, 병원 동행, 의견을 한 목록으로 받아 담당을 정합니다. 입주자 확인까지 기록합니다.</td>
+</tr>
+<tr>
+<td>LND-11 프로그램·시설·공지</td>
+<td>시니어 레지던스의 여가 프로그램 신청·대기·출석, 공용 시설 예약, 공지 확인을 한 자원 예약 모델과 한 게시판으로 묶은 모듈</td>
+<td>여가 프로그램 신청과 대기, 출석, 공용 시설 예약, 공지 확인을 한곳에서 관리합니다.</td>
+</tr>
+<tr>
+<td>LND-11 소유주</td>
+<td>소유주 계정에서는 자기 사업장의 월 리포트와 위탁 운영 계약 이력을 봅니다.</td>
+<td>소유주는 자기 사업장의 월 리포트와 위탁 운영 계약 이력을 볼 수 있습니다.</td>
+</tr>
+<tr>
+<td>C-20 첫 문단</td>
+<td>어느 회원님께나 같은 기준을 적용하고, 그 이유를 보여 드린다는 뜻을 담았어요.</td>
+<td>어느 회원님께나 같은 기준을 적용하고, 왜 그런지 설명해 드린다는 뜻을 담았어요.</td>
+</tr>
+<tr>
+<td>C-20 둘째 문단</td>
+<td>청구서에는 항목마다 이유가 적혀 있어서 왜 이만큼인지 직접 보실 수 있어요.</td>
+<td>청구서에는 항목마다 이유가 적혀 있어서 왜 이 금액인지 직접 보실 수 있어요.</td>
+</tr>
+<tr>
+<td>C-20 셋째 문단</td>
+<td>가족은 회원님이 보여 주기로 한 만큼만, 직원이 확인한 기록을 회원님과 똑같이 봐요. 앱은 알리고 전하는 일을 하고, 무엇을 할지는 직원이 회원님과 이야기해서 정해요.</td>
+<td>가족은 회원님이 허락하신 소식만, 회원님이 보시는 것과 똑같이 봐요. 직원이 확인한 기록이에요. 어떻게 할지는 직원이 회원님과 이야기해서 정해요.</td>
+</tr>
+<tr>
+<td>C-21 인사말</td>
+<td>처음 오시는 분께 가장 먼저 말씀드리고 싶은 것은, 이곳의 일상은 회원님이 정하신다는 점이에요. 어떤 모임에 가실지, 가족에게 무엇을 보여 주실지 모두 회원님의 선택이에요. 저희 직원은 부르시면 찾아가고, 한 일을 기록으로 남겨요. 생활 지원 단계처럼 정해야 할 일이 생기면 먼저 회원님 말씀을 듣고 정해요.</td>
+<td>처음 오시는 분께 꼭 드리고 싶은 말씀이 있어요. 이곳의 하루는 회원님이 정하세요. 어떤 모임에 가실지, 가족에게 무엇을 보여 주실지 모두 회원님의 선택이에요. 부르시면 저희 직원이 찾아가고, 한 일은 기록으로 남겨요. 생활 지원 단계처럼 정해야 할 일이 생기면 먼저 회원님 말씀을 들어요.</td>
+</tr>
+<tr>
+<td>C-22 센터장</td>
+<td>생활 지원 단계처럼 정해야 할 일은 직원 기록과 회원님 말씀을 보고 정해요.</td>
+<td>생활 지원 단계처럼 정해야 할 일은 직원 기록을 보고 회원님 말씀을 들은 뒤 정해요.</td>
+</tr>
+<tr>
+<td>C-22 프런트</td>
+<td>앱 설정을 함께 해 드리고, 전화로 들은 부탁은 생활 요청으로 대신 올려 드려요.</td>
+<td>앱 설정을 도와 드려요. 전화로 부탁하신 일은 대신 앱에 올려 드려요.</td>
+</tr>
+<tr>
+<td>C-22 식당</td>
+<td>드시지 않을 끼니는 프런트에 미리 말씀해 주세요.</td>
+<td>거르실 끼니는 프런트에 미리 말씀해 주세요.</td>
+</tr>
+<tr>
+<td>호출벨 설명 2곳</td>
+<td>누르시면 당번 직원에게 바로 가요.</td>
+<td>누르시면 당번 직원에게 바로 알려요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-01 길 1</td>
+<td>방과 욕실에 있는 호출벨을 누르세요. 당번 직원에게 바로 가요.</td>
+<td>방과 욕실에 있는 호출벨을 누르세요. 당번 직원에게 바로 알려요.</td>
+</tr>
+<tr>
+<td>SITE-FAC-03 침대 센서</td>
+<td>동의하신 분 방에만 연결해요.</td>
+<td>동의하신 분 방에만 달아요.</td>
+</tr>
+<tr>
+<td>SITE-ROOM-02 욕실</td>
+<td>두 숙소 욕실이 같아요.</td>
+<td>두 숙소의 욕실은 같아요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-02 문장</td>
+<td>드시지 않을 끼니를 미리 프런트에 말씀하시면 청구서에서 빼 드리고 이유도 적어 드려요.</td>
+<td>거르실 끼니를 프런트에 미리 말씀하시면 그 값은 청구서에서 빼고 왜 빠졌는지도 적어 드려요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-03 신청</td>
+<td>Evenstay 홈에서 요일과 남은 자리를 보고 프로그램을 신청하세요. 자리가 다 찼으면 기다리실 수 있어요. 자리가 나면 순서대로 신청이 되고 문자로 알려 드려요. 신청 마감 뒤에 자리가 나면 직원이 전화로 여쭤요.</td>
+<td>Evenstay 홈 앱에서 요일과 남은 자리를 보고 신청하세요. 자리가 다 찼으면 기다리실 수 있어요. 자리가 나면 순서대로 신청되고 문자가 가요. 신청 마감 뒤에 자리가 나면 직원이 전화로 여쭤봐요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-03 다른 방법</td>
+<td>직원이 대신 신청해 드리고 같은 명단에 들어가요.</td>
+<td>직원이 대신 신청해 드려요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-05 길 3</td>
+<td>생활 요청을 보여 주기로 한 가족이 Evenstay 패밀리에서 대신 올릴 수도 있어요.</td>
+<td>생활 요청을 허락받은 가족이 Evenstay 패밀리에서 대신 부탁할 수도 있어요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-05 길 4</td>
+<td>홈 비서에게 말씀하셔도 직원에게 전해요.</td>
+<td>홈 비서에게 말씀하셔도 직원에게 전해 드려요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-05 비용</td>
+<td>세탁처럼 비용이 드는 요청은 올리기 전에 금액을 알려 드리고, 마친 뒤 청구서에 들어가요.</td>
+<td>세탁처럼 돈이 드는 일은 부탁하시기 전에 금액을 알려 드려요. 일이 끝나면 청구서에 들어가요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-04 패밀리</td>
+<td>가족이 쓰는 앱이에요. 회원님이 보여 주기로 한 소식만 보여요.</td>
+<td>가족이 쓰는 앱이에요. 회원님이 허락하신 소식만 보여요.</td>
+</tr>
+<tr>
+<td>SITE-DINE-06 제목</td>
+<td>드시지 않는 날이 있으면</td>
+<td>식사를 거르실 날이 있으면</td>
+</tr>
+<tr>
+<td>SITE-DINE-06 알리는 법</td>
+<td>드시지 않을 끼니를 미리 프런트에 말씀해 주세요. 직원이 적어 두면 그 끼니는 청구서에서 빼 드려요.</td>
+<td>거르실 끼니를 프런트에 미리 말씀해 주세요. 직원이 적어 두면 그 끼니 값은 청구서에서 빼 드려요.</td>
+</tr>
+<tr>
+<td>SITE-DINE-06 청구서</td>
+<td>청구서에는 몇 끼를 얼마 빼 드렸는지 이유와 함께 적혀 있어요.</td>
+<td>청구서에는 몇 끼에 얼마를 뺐는지 이유와 함께 적혀 있어요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-01 길 2</td>
+<td>방 전화로 프런트(내선 0번)에 거세요. 휴대폰으로는 02-000-0000 (가상 번호)이에요.</td>
+<td>방 전화로 프런트(내선 0번)에 걸어 주세요. 휴대폰으로는 02-000-0000 (가상 번호)으로 걸어 주세요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-02 제목</td>
+<td>부르신 뒤에는 이렇게 해요</td>
+<td>부르시면 이렇게 움직여요</td>
+</tr>
+<tr>
+<td>SITE-SAFE-02 갈래</td>
+<td>바로 받지 못하면 다른 직원에게 알리고, 그래도 맡는 사람이 없으면 책임자와 모든 직원에게 차례로 알려요.</td>
+<td>당번 직원이 바로 받지 못하면 다른 직원에게 알리고, 그래도 맡는 사람이 없으면 책임자와 모든 직원에게 차례로 알려요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-02 경계</td>
+<td>시스템은 상황을 판단하지 않고, 119에 저절로 신고하지도 않아요.</td>
+<td>앱과 장치가 상황을 판단하거나 119에 저절로 신고하지는 않아요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-03 3</td>
+<td>전화가 닿지 않으면 문자로 알리고, 다시 전화할 일을 남겨요.</td>
+<td>전화를 받지 않으시면 문자로 알리고 다시 전화드리도록 기록해 둬요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-03 5</td>
+<td>회원님이 건강 소식을 보여 주기로 한 가족은 이 기록을 Evenstay 패밀리에서 봐요. 급할 때 연락할 분께 드리는 전화는 이것과 따로예요.</td>
+<td>건강 소식을 허락하신 가족은 이 기록을 Evenstay 패밀리에서 봐요. 급할 때 연락할 분께는 허락과 상관없이 따로 전화드려요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-04 제목</td>
+<td>평소 살핌</td>
+<td>평소에 살펴 드리는 일</td>
+</tr>
+<tr>
+<td>SITE-SAFE-04 안부 전화</td>
+<td>신청하신 분만 받아요. 같은 날 두 번 받지 않으시면 직원이 들러요.</td>
+<td>신청하신 분께만 전화드려요. 같은 날 두 번 받지 않으시면 직원이 들러요.</td>
+</tr>
+<tr>
+<td>SITE-SAFE-05 제목</td>
+<td>가족에게 알리는 범위</td>
+<td>가족에게 어디까지 알리는지</td>
+</tr>
+<tr>
+<td>SITE-SAFE-05 넷째</td>
+<td>병원에 가시는 일로 급할 때 연락할 분께 드리는 전화는 이 설정과 따로예요.</td>
+<td>병원에 가시게 되면 급할 때 연락할 분께 전화드려요. 이 전화는 설정과 상관없어요.</td>
+</tr>
+<tr>
+<td>FAQ 식사</td>
+<td>드시지 않을 끼니를 미리 프런트에 말씀하시면 그 끼니는 청구서에서 빼 드려요. 청구서에 몇 끼를 얼마 빼 드렸는지 적혀 있어요.</td>
+<td>거르실 끼니를 프런트에 미리 말씀하시면 그 값은 청구서에서 빼 드려요. 몇 끼에 얼마를 뺐는지도 청구서에 적혀 있어요.</td>
+</tr>
+<tr>
+<td>FAQ 가족</td>
+<td>회원님이 보여 주기로 한 것만 봐요. 생활 소식, 일정,</td>
+<td>회원님이 허락하신 것만 봐요. 생활 소식, 일정,</td>
+</tr>
+<tr>
+<td>FAQ 몸 질문</td>
+<td>몸 상태가 달라지면 어떻게 되나요?</td>
+<td>도움이 더 필요해지면 어떻게 되나요?</td>
+</tr>
+<tr>
+<td>FAQ 몸 답</td>
+<td>도움이 더 필요해지면 직원이 먼저 설명드리고 회원님 말씀을 들어요. 생활 지원 단계는 사람이 기록하고 정하고, 그대로인 것(방, 입주 계약, 급할 때 연락할 분)을 먼저 보여 드려요.</td>
+<td>직원이 먼저 설명드리고 회원님 말씀을 들어요. 생활 지원 단계는 직원이 기록을 남긴 뒤 센터장이 정해요. 지금 계신 방, 입주 계약, 급할 때 연락할 분처럼 바뀌지 않는 것은 먼저 보여 드려요.</td>
+</tr>
+<tr>
+<td>FAQ 비서</td>
+<td>계약 날짜와 청구서를 알려 드려요.</td>
+<td>계약 날짜와 청구서 내용을 알려 드려요.</td>
+</tr>
+</tbody></table></div>
+<p><strong>2026-11-04 LND-07 캡션과 대체 텍스트 풀기 (허브 요청, 사용자 재승인 2026-11-04)</strong>: 스킬 호출 없음(허브가 준 문장을 그대로 씀).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CAP-6 캡션</td>
+<td>방과 입주 계약은 그대로예요. 목욕 도움이 더해졌어요. (데모 화면, 가상 데이터)</td>
+<td>방과 입주 계약은 그대로예요. 목욕 도움이 새로 생겼어요. (데모 화면, 가상 데이터)</td>
+</tr>
+<tr>
+<td>CAP-6 대체 텍스트</td>
+<td>생활 지원 단계 화면. 그대로인 것: 방, 입주 계약, 급할 때 연락할 분. 더해진 도움: 목욕 도움.</td>
+<td>생활 지원 단계 화면. 지금 방, 입주 계약, 급할 때 연락할 분은 그대로이고, 목욕 도움이 새로 생겼다.</td>
+</tr>
+</tbody></table></div>
+<p><strong>2026-11-04 공용 문구 확정 반영 (허브 요청, 사용자 &quot;추천대로&quot;, 사용자 재승인 2026-11-04)</strong>: 스킬 호출 없음(확정 문구를 그대로 넣음). 안심 알림 <code>plain-read-review-2026-11-04.md</code> 새 문장과 맞췄다. 앞선 기록 칸은 고치지 않았다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LND-13 단계 1</td>
+<td>호출벨을 누르시면 당번 직원에게 바로 전해져요.</td>
+<td>호출벨을 누르시면 당번 직원에게 바로 알려요.</td>
+</tr>
+<tr>
+<td>LND-06 설명 3</td>
+<td>고장 수리나 청소를 회원님 대신 부탁할 수도 있어요.</td>
+<td>고장 수리나 청소를 회원님 대신 요청하실 수도 있어요.</td>
+</tr>
+<tr>
+<td>LND-08 길 2</td>
+<td>부탁하신 일은 직원이 대신 앱에 올려 드려요.</td>
+<td>부탁하신 일은 직원이 대신 요청해 드려요.</td>
+</tr>
+<tr>
+<td>C-22 프런트</td>
+<td>전화로 부탁하신 일은 대신 앱에 올려 드려요.</td>
+<td>전화로 부탁하신 일은 대신 요청해 드려요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-05 길 2</td>
+<td>프런트에 말씀하시면 직원이 대신 올려 드려요.</td>
+<td>프런트에 말씀하시면 직원이 대신 요청해 드려요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-05 길 3</td>
+<td>Evenstay 패밀리에서 대신 부탁할 수도 있어요.</td>
+<td>Evenstay 패밀리에서 대신 요청하실 수도 있어요.</td>
+</tr>
+<tr>
+<td>SITE-LIFE-04 Evenstay 홈</td>
+<td>청구서의 이유를 보고, 생활 요청을 올리고,</td>
+<td>청구서의 이유를 보고, 생활 요청을 하고,</td>
+</tr>
+<tr>
+<td>SITE-SAFE-04 침대 센서</td>
+<td>밤에 침대를 떠나신 뒤 오래 돌아오지 않으시면</td>
+<td>밤에 침대에서 일어나신 뒤 오래 돌아오지 않으시면</td>
+</tr>
+<tr>
+<td>SITE-SAFE-04 안부 전화</td>
+<td>같은 날 두 번 받지 않으시면 직원이 들러요.</td>
+<td>같은 날 전화를 두 번 못 받으시면 직원이 들러요.</td>
+</tr>
+<tr>
+<td>SITE-CON-03 4</td>
+<td>앱에 &quot;입주를 기다리고 있어요&quot;가 보여요.</td>
+<td>앱에 &quot;아직 입주 전이에요&quot;가 보여요.</td>
+</tr>
+</tbody></table></div>
+<p><strong>2026-11-04 IMG-SAFE-PHONE 대체 텍스트 (허브 요청, 사용자 재승인 2026-11-04)</strong>: 스킬 호출 없음. &quot;직원이 밤 복도에서 업무용 휴대폰 알림을 보며 걸어가고 있다&quot; → &quot;직원이 밤 복도에서 업무용 휴대폰을 보며 걸어가고 있다&quot;. 사진 캡션은 그대로다.</p>
+<p><strong>2026-11-04 앱 캡처 대체 텍스트 맞춤 (허브 요청, 사용자 재승인 2026-11-04)</strong>: 스킬 호출 없음. <code>evenstay/design/site/web/cap-*.webp</code>를 직접 보고 CAP-4, CAP-9, CAP-10을 고치고 CAP-7 줄을 더했다. 캡션은 고치지 않았다.</p>
+<hr>
+<h2 id="남은-need와-미정">남은 <code>[NEED]</code>와 <code>[미정]</code></h2>
+<ul>
+<li><code>[NEED]</code> 침대 센서 실제 사양(B copy에서 이어짐). 번호는 허브 결정(2026-11-04)대로 가상 번호 02-000-0000과 방 전화 내선 0번을 데모 값으로 쓴다</li>
+<li><code>[미정]</code> 상담 폼 개인정보 보관 기간과 법률 검토, 설계 문서 링크 위치, 주차, 역에서 걸리는 시간, 입주 절차 기간·서류·자격, 공용 공간 이용 시간</li>
+<li><code>[가설]</code> 가상 시설 설정(4층, 1층 공간, 엘리베이터, 문턱 없는 복도, 넓은 문, 기본 가구), 가상 주소·역·버스와 약도 길 순서, 식당 직원 이름 송은주, 예시 식단 메뉴 21칸과 수요일 상차림 이름, 접수 뒤 회신 시점을 약속하지 않음</li>
+</ul>
+<h2 id="정한-것-2026-11-04-사용자-모두-추천대로-2026-11-04">정한 것 (2026-11-04, 사용자 &quot;모두 추천대로&quot; 2026-11-04)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>번호</th>
+<th>정한 것</th>
+<th>결정</th>
+<th>고르지 않은 안</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>코어 value-prop 문장(C-10 &quot;이번 달 청구서가 나왔어요. 항목을 누르면 이유가 보여요.&quot;, C-16 코어 한 줄)을 쓸지</td>
+<td>쓰지 않는다. 승인된 코어 copy(3절 화면 문장, 1절 제목)에서 같은 뜻을 만들었다. 코어 value-prop도 2026-11-04에 승인돼 이유는 달라졌고 결정은 그대로다</td>
+<td>코어 value-prop 문장을 그대로 쓴다</td>
+</tr>
+<tr>
+<td>2</td>
+<td>사이트 전화 버튼 라벨</td>
+<td>&quot;전화 상담 02-000-0000 (가상 번호)&quot;. 사이트를 보는 분은 입주 전이다. 입주 뒤 방 전화로 거는 길을 말할 때만 &quot;방 전화로 프런트(내선 0번)&quot;</td>
+<td>앱과 같은 &quot;프런트로 전화하기&quot;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1024px 이상 상단 바에 보이는 링크 4개</td>
+<td>숙소 · 생활 · 식사 · 오시는 길(나머지는 [전체 메뉴])</td>
+<td>시설 · 숙소 · 생활 · 식사</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B 장치 문장의 숫자(&quot;30분&quot;, &quot;밤 11시부터 아침 6시&quot;)를 사이트에 쓸지</td>
+<td>빼고 뜻만 쓴다(&quot;오래 돌아오지 않으시면&quot;, &quot;밤늦게&quot;). 앱 화면에는 그대로 있다</td>
+<td>승인 문장 그대로 숫자를 쓴다</td>
+</tr>
+<tr>
+<td>5</td>
+<td>하루 일과를 시각 숫자로 쓸지</td>
+<td>숫자 대신 &quot;아침, 점심 무렵, 오후, 해 질 녘&quot;(식사 시각이 운영 확인 전, U-17)</td>
+<td>시각을 쓰고 &quot;가상 예시&quot; 표시</td>
+</tr>
+<tr>
+<td>6</td>
+<td>생활 요청 종류에 &quot;병원 동행&quot;을 사이트에 쓸지</td>
+<td>운영 확인 전까지 뺀다. 직원 병원 동행 여부가 U-17 항목이다. 면접관 섹션의 N1 한 줄에는 그대로 둔다</td>
+<td>N1 회원 버튼 그대로 넣는다</td>
+</tr>
+<tr>
+<td>7</td>
+<td>면접관 섹션 모듈 줄 수</td>
+<td>일곱 줄(생활 요청, 프로그램·시설·공지 포함)</td>
+<td>screen-spec대로 다섯 줄</td>
+</tr>
+<tr>
+<td>8</td>
+<td>숙소 유형 이름</td>
+<td>1인 숙소, 2인 숙소</td>
+<td>한 분 숙소, 두 분 숙소</td>
+</tr>
+</tbody></table></div>
+<h2 id="다른-곳에-필요한-것-이-세션은-고치지-않음">다른 곳에 필요한 것 (이 세션은 고치지 않음)</h2>
+<ul>
+<li>evenstay 세션(에셋): 상차림 이미지 프롬프트의 메뉴를 6절 수요일 이름으로 맞춘다(IMG-MEAL-BREAKFAST, KEY-MEAL). MAP-1은 8절 약도 길 순서로 그린다.</li>
+<li>04-planning landing: screen-spec C-25 &quot;시각 4~5개&quot;, LND-11 &quot;모듈 다섯 개&quot;, SITE-LIFE-05 &quot;병원 동행&quot;을 정한 것 5·6·7에 맞춰 바꾼다. 식당 직원 이름 송은주를 asset-plan 4절 PER-DINE 짝에 적는다.</li>
+<li>직원 이름: 책임자는 최영미로 통일했다(2026-11-04 결정). N2 카피는 고쳤고 N1 카피의 문해진은 N1 쪽에서 고친다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-802" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-803" data-title="생활 요청"><p>고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건. 안전 신호가 아니다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 생활 요청(줄여 요청) / 회원·보호자: 요청</dd><dt>영문·코드 이름</dt><dd><code>ServiceRequest</code></dd><dt>출처</dt><dd>requests T2-2, requests M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-804" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-805" data-title="생활 지원 단계"><p>받는 도움의 양. 코드는 순서와 정렬에만 쓰고 화면에 번호가 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 기본 서비스 / 생활 지원 추가 / 외부 돌봄 병행 / 거처 상담. 회원: 기본 서비스 / 생활 지원 더하기 / 다른 기관 돌봄 함께 / 지낼 곳 함께 의논</dd><dt>영문·코드 이름</dt><dd><code>CareStage</code>: <code>BASIC</code>, <code>LIVING_SUPPORT</code>, <code>WITH_EXTERNAL_CARE</code>, <code>PLACE_CONSULT</code></dd><dt>출처</dt><dd>transitions T2-1, transitions N1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-806" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-807" data-title="입주 계약"><p>호실과 입주자를 잇는 계약. 요금표 버전을 체결 때 고정한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원: 입주 계약</dd><dt>영문·코드 이름</dt><dd><code>Contract</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-808" data-title="건강 소식"><p>B, C가 올린 본문 스냅샷. 건강 소식이 보호자에게 가는 길은 D 하나다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 건강 소식. 종류: 직원이 다녀간 일 / 병원에 가신 일 / 그 밖의 건강 기록 / 생활 지원 단계가 바뀐 일 / 다른 기관 돌봄이 시작된 일</dd><dt>영문·코드 이름</dt><dd><code>HealthEvent</code>: <code>SAFETY_SIGNAL</code>, <code>HOSPITAL_TRANSFER</code>, <code>CARE_NOTE</code>, <code>CARE_STAGE_CHANGE</code>, <code>EXTERNAL_CARE_START</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-809" data-title="병원 동행(알림 뒤)"><p>알림에서 이어진 동행의 직원과 시각만. 생활 요청의 병원 동행과 다른 기록이다. P1</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 병원 동행, 병원에 가신 분</dd><dt>영문·코드 이름</dt><dd><code>HospitalEscort</code></dd><dt>출처</dt><dd>safety T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-810" data-title="시설 예약"><p>저장은 자원 예약(<code>RESERVATION</code>)</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 시설 예약(community T2-1은 &quot;예약&quot;) / 회원: 예약</dd><dt>영문·코드 이름</dt><dd><code>FacilityReservation</code></dd><dt>출처</dt><dd>community T2-1, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-811" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-812" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-813" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

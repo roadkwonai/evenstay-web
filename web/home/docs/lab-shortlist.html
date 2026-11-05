@@ -31,7 +31,7 @@
 </header>
 <div class="doc-cols">
   <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#제안-구조-하나의-코어-모듈">제안 구조: 하나의 코어 + 모듈</a></li><li class="lv2"><a href="#후보">후보</a></li><li class="lv2"><a href="#a-계약청구-코어-pms-core-billing">A. 계약·청구 코어 pms-core-billing</a></li><li class="lv2"><a href="#b-이상-신호-통합-허브-safety-signal-hub">B. 이상 신호 통합 허브 safety-signal-hub</a></li><li class="lv2"><a href="#c-케어-단계-전환-관리-care-stage-transition">C. 케어 단계 전환 관리 care-stage-transition</a></li><li class="lv2"><a href="#d-동의-기반-보호자-포털-family-consent-portal">D. 동의 기반 보호자 포털 family-consent-portal</a></li><li class="lv2"><a href="#e-입주-상담-crm-ai-문의-에이전트-move-in-crm-agent-예비">E. 입주 상담 CRM + AI 문의 에이전트 move-in-crm-agent (예비)</a></li><li class="lv2"><a href="#확정된-것-2026-11-02">확정된 것 (2026-11-02)</a></li><li class="lv2"><a href="#축-8시니어-금융-반영-확정-2026-11-02-기존-모듈에-넣는-안-아래-통합안에-포함">축 8(시니어 금융) 반영 — 확정 (2026-11-02, 기존 모듈에 넣는 안. 아래 통합안에 포함)</a></li><li class="lv2"><a href="#ai-비서금융-자산관리-반영-확정-2026-11-02-통합안">AI 비서·금융 자산관리 반영 — 확정 (2026-11-02, 통합안)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-739" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-740" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-741" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-742" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li><li><button class="term" type="button" data-modal="g-743" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li></ul></section></aside>
-  <article class="doc"><p>근거: <code>scorecard.md</code>(점수), <code>../drafts/ost.md</code>(기회), <code>../drafts/value-propositions.md</code>(가치 제안), <code>../drafts/assumptions.md</code>(가정)</p>
+  <article class="doc"><p>근거: <code>scorecard.md</code>(점수), <code>../drafts/ost.md</code>(기회), <code>../drafts/value-propositions.md</code>(가치 제안), (가정)</p>
 <h2 id="제안-구조-하나의-코어-모듈">제안 구조: 하나의 코어 + 모듈</h2>
 <p>평가표 상위 5개 중 계약(I-21), 청구 원장(I-07), 식사 정산(I-06), PMS 코어(I-24)는 같은 데이터(사이트, 호실, 입주자, 계약, 청구)를 다룬다. 따로 만들면 같은 것을 네 번 만들게 된다. 그래서 이 넷을 <strong>A. 코어</strong>로 묶고, 나머지를 그 위에 얹는 모듈로 제안한다.</p>
 <pre><code>          ┌───────────── D. 보호자 포털 (공통 출구: B·C의 결과를 동의 범위 안에서 보호자에게) ─────────────┐
@@ -282,7 +282,7 @@
 </ul>
 <hr>
 <h2 id="ai-비서금융-자산관리-반영-확정-2026-11-02-통합안">AI 비서·금융 자산관리 반영 — 확정 (2026-11-02, 통합안)</h2>
-<p>사용자 요청(2026-11-02)으로 시니어 AI 비서와 금융 자산관리 서비스를 리서치한 뒤 다시 평가했다. 근거는 <code>scorecard.md</code> &quot;축 9·10 반영 재평가&quot;, 설계는 <code>../drafts/ai-assistant.md</code>.</p>
+<p>사용자 요청(2026-11-02)으로 시니어 AI 비서와 금융 자산관리 서비스를 리서치한 뒤 다시 평가했다. 근거는 <code>scorecard.md</code> &quot;축 9·10 반영 재평가&quot;, 설계는 .</p>
 <p><strong>제안 구조</strong> (위 &quot;축 8 반영 제안&quot;을 포함한 통합안)</p>
 <pre><code>                    G. AI 생활 비서 (새 모듈, 4.05) — 회원·보호자의 단일 창구
                     ┌─────────────┬─────────────┬─────────────┐

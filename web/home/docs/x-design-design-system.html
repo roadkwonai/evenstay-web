@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evenstay — DESIGN.md | Evenstay 문서</title>
+<meta name="description" content="Evenstay — DESIGN.md. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>Evenstay — DESIGN.md</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#overview">Overview</a></li><li class="lv3"><a href="#세-밀도">세 밀도</a></li><li class="lv2"><a href="#colors">Colors</a></li><li class="lv3"><a href="#원자-램프">원자 램프</a></li><li class="lv3"><a href="#의미-색의-역할">의미 색의 역할</a></li><li class="lv3"><a href="#대비-wcag-22-2026-11-03-계산">대비 (WCAG 2.2, 2026-11-03 계산)</a></li><li class="lv2"><a href="#typography">Typography</a></li><li class="lv3"><a href="#단계-18개">단계 (18개)</a></li><li class="lv2"><a href="#layout">Layout</a></li><li class="lv3"><a href="#너비와-그리드">너비와 그리드</a></li><li class="lv3"><a href="#반응형-기준점">반응형 기준점</a></li><li class="lv3"><a href="#homefamily-데스크톱-1024px-이상">Home·Family 데스크톱 (1024px 이상)</a></li><li class="lv3"><a href="#운영-휴대폰-640px-아래">운영 휴대폰 (640px 아래)</a></li><li class="lv3"><a href="#터치-영역">터치 영역</a></li><li class="lv2"><a href="#elevation-depth">Elevation &amp; Depth</a></li><li class="lv3"><a href="#motion">Motion</a></li><li class="lv2"><a href="#shapes">Shapes</a></li><li class="lv2"><a href="#components">Components</a></li><li class="lv3"><a href="#화면-틀">화면 틀</a></li><li class="lv3"><a href="#actions">Actions</a></li><li class="lv3"><a href="#selection-and-input">Selection and input</a></li><li class="lv3"><a href="#contents">Contents</a></li><li class="lv3"><a href="#feedback">Feedback</a></li><li class="lv3"><a href="#loading">Loading</a></li><li class="lv3"><a href="#navigations">Navigations</a></li><li class="lv2"><a href="#dos-and-donts">Do's and Don'ts</a></li><li class="lv2"><a href="#responsive-behavior">Responsive Behavior</a></li><li class="lv2"><a href="#accessibility">Accessibility</a></li><li class="lv2"><a href="#소개-사이트-예외">소개 사이트 예외</a></li><li class="lv2"><a href="#exports">Exports</a></li><li class="lv2"><a href="#known-gaps">Known Gaps</a></li><li class="lv2"><a href="#references">References</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1081" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-1082" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-1083" data-tip="계약과 달마다 하나.">청구서</button></li></ul></section></aside>
+  <article class="doc"><h2 id="overview">Overview</h2>
+<p>Evenstay는 **&quot;함께 보는 기록&quot;**이다. 회원님, 보호자, 직원이 같은 사실을 같은 때에 보고, 숫자에는 언제나 이유가 붙는다. 화면은 차분하고 정확하다. 장식으로 마음을 끌지 않고, 근거를 보여 줘서 믿음을 얻는다.</p>
+<ul>
+<li><strong>제품:</strong> Evenstay(운영, 직원), Evenstay 홈(회원 앱), Evenstay 패밀리(보호자 화면). [지원 회사] 이름과 표지는 쓰지 않는다.</li>
+<li><strong>목소리:</strong> 차분하다, 존중한다, 근거를 보인다(<a class="doc-ref" href="x-writing-core-product-marketing.html"><code>docs/core/copy/product-marketing.md</code></a>).</li>
+<li><strong>UI 구현:</strong> 컴포넌트는 shadcn/ui, 스타일은 Tailwind CSS v4, 아이콘은 Lucide다(<a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a> 디자인 작업 규칙). 이 파일의 토큰이 <code>design/system/globals.css</code>를 거쳐 Tailwind 테마와 shadcn 변수가 된다(Exports 절). 다른 UI 라이브러리, 아이콘 세트, 이모지는 쓰지 않는다.</li>
+<li><strong>원칙 세 가지:</strong><ol>
+<li><strong>같은 사실, 다른 밀도.</strong> 세 화면은 색, 모양, 컴포넌트를 공유하고 글자 크기와 컨트롤 높이만 다르다(아래 밀도 표).</li>
+<li><strong>근거가 강조다.</strong> 강조색은 행동(코발트)과 근거(노란 밑줄) 두 곳에만 쓴다. 상태, 장식, 감정에는 쓰지 않는다.</li>
+<li><strong>사람이 정한다.</strong> 판단, 점수, 등급을 화면이 만들지 않는다. 관찰된 사실과 누가 언제 무엇을 했는지만 보인다.</li>
+</ol>
+</li>
+<li><strong>로고:</strong> 겹친 두 둥근 사각형(먹 선과 코발트 선, 겹친 칸은 노랑)과 소문자 워드마크 &quot;evenstay&quot;. 겹친 부분이 같이 보는 기록이다. 확정 파일과 규칙은 <code>design/brand/logo/</code>(README.md, index.html), 시안 원본은 <code>design/brand/concepts.html</code> 3안.</li>
+</ul>
+<h3 id="세-밀도">세 밀도</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>화면</th>
+<th>이용자</th>
+<th>본문</th>
+<th>라벨</th>
+<th>버튼·입력 높이</th>
+<th>최소 터치</th>
+<th>한 화면의 행동</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Home</td>
+<td>70~80대 회원</td>
+<td><code>body-lg</code> 20px</td>
+<td><code>label-lg</code> 17px</td>
+<td>56px</td>
+<td>56px</td>
+<td>채운 버튼 1개 + 앱 밖 경로 1개</td>
+</tr>
+<tr>
+<td>Family</td>
+<td>보호자 자녀</td>
+<td><code>body-md</code> 17px</td>
+<td><code>label-lg</code> 17px</td>
+<td>56px(주), 48px(보조)</td>
+<td>48px</td>
+<td>채운 버튼 1개</td>
+</tr>
+<tr>
+<td>운영</td>
+<td>운영사 직원</td>
+<td><code>body-sm</code> 15px</td>
+<td><code>label</code> 15px</td>
+<td>40px(<code>button-sm</code>), 44px 입력</td>
+<td>44px</td>
+<td>화면당 채운 버튼 1개, 표 안에는 텍스트 버튼</td>
+</tr>
+</tbody></table></div>
+<p>Home에서는 <code>body-sm</code>, <code>label</code>, <code>caption</code>을 쓰지 않는다. 가장 작은 글자가 17px이다. Home에서는 <code>heading2</code>(20px)가 본문 <code>body-lg</code>(20px)와 크기가 같아 제목 구실을 못 하므로 쓰지 않고, 카드·섹션 제목은 <code>heading1</code>(22px)을 쓴다.</p>
+<h2 id="colors">Colors</h2>
+<p>밝은 종이 바탕, 먹색 글자, 코발트 하나, 근거를 표시하는 노랑 하나. 두 층으로 운영한다.</p>
+<ol>
+<li><strong>원자 램프(atomic):</strong> 아래 7개 램프. 화면 코드에서 직접 부르지 않고, 새 의미 색을 정의할 때만 쓴다.</li>
+<li><strong>의미 색(semantic):</strong> 위 YAML <code>colors</code>. 화면과 컴포넌트는 이것만 부른다. 다크 모드는 같은 이름에 <code>dark-</code>를 붙인 값이고, 앱에서는 <code>.dark</code> 클래스로 바뀐다.</li>
+</ol>
+<h3 id="원자-램프">원자 램프</h3>
+<p>OKLCH에서 앵커 색(굵게 표시한 단계)의 색상(hue)을 유지하고 밝기를 고르게 나눈 뒤 sRGB로 옮겼다. 중성색은 두 갈래다. <strong>paper</strong>(따뜻한 흰색 계열)는 바탕과 구분선, <strong>ink</strong>(차가운 회색 계열)는 글자와 컨트롤 테두리를 맡는다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>램프</th>
+<th>단계</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cobalt</td>
+<td>50 <code>#F4F7FE</code> · 100 <code>#E8EDF8</code> · 200 <code>#D2DBEF</code> · 300 <code>#B2C1E3</code> · 400 <code>#8BA1D4</code> · 500 <code>#6681C3</code> · 600 <code>#4664B3</code> · <strong>700 <code>#2340A0</code></strong> · 800 <code>#183083</code> · 900 <code>#0C1D60</code> · 950 <code>#040D43</code></td>
+</tr>
+<tr>
+<td>ink</td>
+<td>50 <code>#F6F7F8</code> · 100 <code>#ECEDEE</code> · 200 <code>#D9DBDD</code> · 300 <code>#BFC1C4</code> · 400 <code>#9FA2A6</code> · 500 <code>#808488</code> · 600 <code>#65696F</code> · <strong>700 <code>#555A60</code></strong> · 800 <code>#373B3F</code> · 900 <code>#24272A</code> · <strong>950 <code>#17191C</code></strong></td>
+</tr>
+<tr>
+<td>paper</td>
+<td>0 <code>#FEFEFC</code> · <strong>25 <code>#FAFAF7</code></strong> · 50 <code>#F4F4F0</code> · 100 <code>#EEEFEA</code> · 200 <code>#E3E4DF</code> · 300 <code>#D2D4CE</code></td>
+</tr>
+<tr>
+<td>yellow</td>
+<td>50 <code>#FFF7D9</code> · 100 <code>#FFEDA8</code> · <strong>200 <code>#F3D766</code></strong> · 300 <code>#D8C060</code> · 400 <code>#B4A158</code> · 500 <code>#90834F</code> · 600 <code>#726946</code> · 700 <code>#55503C</code> · 800 <code>#3D3B33</code> · 900 <code>#28261F</code> · 950 <code>#18160F</code></td>
+</tr>
+<tr>
+<td>red</td>
+<td>50 <code>#FEF4F2</code> · 100 <code>#FEE7E3</code> · 200 <code>#FFCDC5</code> · 300 <code>#F4ACA1</code> · 400 <code>#E18476</code> · 500 <code>#CD5B4C</code> · <strong>600 <code>#B42318</code></strong> · 700 <code>#94170E</code> · 800 <code>#710A05</code> · 900 <code>#4F0100</code> · 950 <code>#320000</code></td>
+</tr>
+<tr>
+<td>green</td>
+<td>50 <code>#EBFCEF</code> · 100 <code>#DEF3E3</code> · 200 <code>#C6E3CE</code> · 300 <code>#A5CCB0</code> · 400 <code>#7BB08B</code> · 500 <code>#509467</code> · <strong>600 <code>#1E7A46</code></strong> · 700 <code>#125F34</code> · 800 <code>#064725</code> · 900 <code>#003016</code> · 950 <code>#001C0A</code></td>
+</tr>
+<tr>
+<td>amber</td>
+<td>50 <code>#FEF5EC</code> · 100 <code>#FEE9D5</code> · 200 <code>#F1D5BB</code> · 300 <code>#DEB997</code> · 400 <code>#C6976A</code> · 500 <code>#AD753A</code> · <strong>600 <code>#9A5B00</code></strong> · 700 <code>#724303</code> · 800 <code>#563000</code> · 900 <code>#3A1F00</code> · 950 <code>#231100</code></td>
+</tr>
+</tbody></table></div>
+<h3 id="의미-색의-역할">의미 색의 역할</h3>
+<ul>
+<li><strong>바탕:</strong> <code>bg-canvas</code>(페이지) → <code>bg-surface</code>(카드, 입력) → <code>bg-subtle</code>(표 머리, 알림) → <code>bg-muted</code>(배지, 비활성, 트랙). <code>bg-elevated</code>는 대화상자와 메뉴, <code>bg-inverse</code>는 토스트와 툴팁이다. 반전 바탕 위 글자는 <code>fg-on-inverse</code>, 반전 바탕 위 행동은 <code>fg-brand-on-inverse</code>다.</li>
+<li><strong>글자:</strong> <code>fg-strong</code>(제목, 금액) → <code>fg-default</code>(본문) → <code>fg-secondary</code>(라벨, 캡션) → <code>fg-tertiary</code>(자리표시 글자). 비활성 글자 <code>fg-disabled</code>는 <code>fg-tertiary</code>와 같은 값이라 읽을 수 있다(4.8:1 이상). 회원이 왜 누를 수 없는지 읽어야 하기 때문이다.</li>
+<li><strong>테두리 세 단계:</strong> <code>border-subtle</code>(카드 경계, 구분선) → <code>border-default</code>(강한 구분선, 표 머리 아래) → <code>border-strong</code>(입력칸, 보조 버튼, 체크박스. 바탕 대비 6.6:1). 앞의 두 단계는 1.4:1이라 <strong>누를 수 있는 것의 경계로 쓰지 않는다.</strong></li>
+<li><strong>행동:</strong> <code>primary</code>(코발트)와 <code>primary-hover</code>, <code>primary-active</code>. <code>primary-subtle</code>과 <code>fg-brand</code>는 선택된 내비게이션 항목과 브랜드 배지에 쓴다.</li>
+<li><strong>근거:</strong> <code>highlight</code>는 숫자와 그 이유 뒤에 까는 밑줄이다. 글자는 언제나 <code>on-highlight</code>(12.4:1)이고 다크 모드에서도 같은 값을 쓴다. 한 화면에 한 곳만 쓴다.</li>
+<li><strong>시스템 피드백:</strong> <code>danger</code>, <code>fg-success</code>, <code>fg-warning</code>과 각 <code>-subtle</code> 바탕. <strong>저장됨, 보내지 못함, 입력 오류처럼 시스템이 한 일의 결과에만 쓴다.</strong> 입주자의 건강, 생활, 단계, 계약 상태를 빨강, 초록, 주황으로 칠하지 않는다. 그런 상태는 중립 배지와 글자로 쓴다.</li>
+<li><strong>상호작용 층:</strong> <code>state-hover</code>(먹 6%), <code>state-active</code>(먹 12%)를 중립 표면(보조 버튼, 표 행, 메뉴 항목, 아이콘 버튼) 위에 덮는다. 채운 버튼은 <code>-hover</code>/<code>-active</code> 색 단계를 쓴다.</li>
+<li><strong>가림막:</strong> <code>scrim</code>(먹 50%, 다크 검정 65%)은 대화상자와 시트 뒤에만 쓴다.</li>
+</ul>
+<h3 id="대비-wcag-22-2026-11-03-계산">대비 (WCAG 2.2, 2026-11-03 계산)</h3>
+<p>모든 컴포넌트의 글자·바탕 쌍은 라이트와 다크 모두 <code>npx @google/design.md lint</code>로 4.5:1 이상을 확인했다. 주요 값은 다음과 같다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>쌍</th>
+<th>라이트</th>
+<th>다크</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fg-strong / bg-canvas</td>
+<td>16.8</td>
+<td>16.9</td>
+</tr>
+<tr>
+<td>fg-default / bg-canvas</td>
+<td>14.4</td>
+<td>14.5</td>
+</tr>
+<tr>
+<td>fg-secondary / bg-canvas</td>
+<td>6.7</td>
+<td>8.7</td>
+</tr>
+<tr>
+<td>fg-tertiary / bg-muted</td>
+<td>4.8</td>
+<td>4.8</td>
+</tr>
+<tr>
+<td>on-primary / primary</td>
+<td>8.6</td>
+<td>7.4</td>
+</tr>
+<tr>
+<td>primary / bg-canvas (링크, 포커스 링)</td>
+<td>8.7</td>
+<td>7.8</td>
+</tr>
+<tr>
+<td>border-strong / bg-canvas (컨트롤 경계)</td>
+<td>6.7</td>
+<td>6.2</td>
+</tr>
+<tr>
+<td>on-highlight / highlight</td>
+<td>12.4</td>
+<td>12.4</td>
+</tr>
+<tr>
+<td>fg-danger / danger-subtle</td>
+<td>6.1</td>
+<td>6.7</td>
+</tr>
+<tr>
+<td>fg-success / success-subtle</td>
+<td>5.0</td>
+<td>7.4</td>
+</tr>
+<tr>
+<td>fg-warning / warning-subtle</td>
+<td>5.0</td>
+<td>7.6</td>
+</tr>
+</tbody></table></div>
+<p>Home 화면의 본문(<code>fg-default</code>, <code>fg-strong</code>)은 AAA(7:1) 이상이다.</p>
+<h2 id="typography">Typography</h2>
+<p>글꼴은 <strong>Pretendard 하나</strong>다. 파일은 <code>design/fonts/pretendard/PretendardVariable.woff2</code>(v1.3.9, SIL OFL 1.1, <a href="https://cactus.tistory.com/306" rel="noopener noreferrer" target="_blank">https://cactus.tistory.com/306</a> 이 안내하는 공식 GitHub 릴리스)이고 CDN을 쓰지 않는다. 가변 굵기 45~920 중 <strong>400, 500, 600, 700</strong> 네 단계만 쓴다.</p>
+<h3 id="단계-18개">단계 (18개)</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>무리</th>
+<th>이름</th>
+<th>크기/굵기/줄간격</th>
+<th>자간</th>
+<th>쓰는 곳</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Display</td>
+<td><code>display1</code>, <code>display2</code></td>
+<td>48/700/1.25, 40/700/1.3</td>
+<td>-2.5%, -2.2%</td>
+<td>소개 페이지, 슬라이드 표지</td>
+</tr>
+<tr>
+<td>Title</td>
+<td><code>title1</code>~`title3`</td>
+<td>32/700/1.35, 28/700/1.36, 24/700/1.4</td>
+<td>-2.0% ~ -1.5%</td>
+<td>화면 제목. Home 첫 인사는 <code>title3</code></td>
+</tr>
+<tr>
+<td>Heading</td>
+<td><code>heading1</code>, <code>heading2</code></td>
+<td>22/700/1.45, 20/600/1.45</td>
+<td>-1.2%, -1.0%</td>
+<td>카드·섹션 제목</td>
+</tr>
+<tr>
+<td>Headline</td>
+<td><code>headline</code></td>
+<td>18/600/1.5</td>
+<td>-0.4%</td>
+<td>목록 행 제목, 운영 화면 섹션 제목</td>
+</tr>
+<tr>
+<td>Body</td>
+<td><code>body-lg</code>, <code>body-md</code>, <code>body-md-read</code>, <code>body-sm</code></td>
+<td>20/400/1.6, 17/400/1.6, 17/400/1.75, 15/400/1.55</td>
+<td>0 ~ +0.6%</td>
+<td>본문. <code>-read</code>는 안내문과 동의서처럼 긴 글</td>
+</tr>
+<tr>
+<td>Label</td>
+<td><code>label-lg</code>, <code>label</code></td>
+<td>17/600/1.4, 15/600/1.4</td>
+<td>0, +0.4%</td>
+<td>버튼, 입력 라벨, 탭, 배지</td>
+</tr>
+<tr>
+<td>Caption</td>
+<td><code>caption</code></td>
+<td>13/500/1.45</td>
+<td>+1.2%</td>
+<td>운영 화면의 브레드크럼, 사이드바 묶음 이름, 데모 안내만. 입력 도움말과 결과를 바꾸는 설명은 <code>body-sm</code>(15px)</td>
+</tr>
+<tr>
+<td>Number</td>
+<td><code>number-lg</code>, <code>number</code>, <code>number-sm</code></td>
+<td>28/700, 20/700, 15/600, 고정폭 숫자</td>
+<td>-1.5% ~ 0</td>
+<td>금액, 날짜, 호실, 건수</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>18px 이상은 음수 자간, 17px 이하는 0 또는 양수 자간이다. 큰 한글 제목은 조이고, 작은 글자는 숨을 준다.</li>
+<li>금액은 언제나 원 단위까지 쓰고 <code>number</code> 계열(<code>font-variant-numeric: tabular-nums</code>)로 세로 정렬한다. 표의 숫자 열은 오른쪽 정렬이다.</li>
+<li>대문자 자간 라벨, 작은 대문자, 모노 글꼴 라벨, 기울임은 쓰지 않는다.</li>
+<li>한글 줄바꿈은 <code>word-break: keep-all</code>(낱말 단위), 제목은 <code>text-wrap: balance</code>, 본문은 <code>text-wrap: pretty</code>.</li>
+<li>본문 한 줄은 한글 기준 최대 40자(약 <code>max-width: 36em</code>)다.</li>
+<li>Tailwind 기본 크기도 함께 올린다: <code>text-xs</code> 13px, <code>text-sm</code> 15px, <code>text-base</code> 17px, <code>text-lg</code> 20px(<code>globals.css</code>). shadcn 컴포넌트가 기본으로 쓰는 <code>text-sm</code>이 14px보다 작아지지 않게 하기 위해서다.</li>
+</ul>
+<h2 id="layout">Layout</h2>
+<p>간격은 4px 단위이고, 키를 <strong>Tailwind 배수와 같은 숫자</strong>로 지었다(<code>&quot;4&quot;</code> = 16px = <code>p-4</code>). 2px 보정은 Tailwind 기본 <code>0.5</code>를 쓴다(내보내기가 점이 든 이름을 받지 않는다). 이름형 키(<code>lg</code>, <code>xl</code>)를 쓰면 Tailwind v4에서 <code>max-w-lg</code> 같은 크기 클래스까지 덮어써 shadcn 대화상자 폭이 16px이 되는 문제를 2026-11-03에 컴파일로 확인했다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>용도</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>아이콘과 글자 사이</td>
+<td><code>2</code>(8px)</td>
+</tr>
+<tr>
+<td>라벨과 입력, 목록 행 안</td>
+<td><code>2</code><del><code>3</code>(8</del>12px)</td>
+</tr>
+<tr>
+<td>카드 안 여백</td>
+<td><code>6</code>(24px). Home 카드는 <code>6</code>, 운영 표 셀은 <code>3</code>×<code>4</code>(12×16px)</td>
+</tr>
+<tr>
+<td>카드 사이, 폼 묶음 사이</td>
+<td><code>4</code><del><code>6</code>(16</del>24px)</td>
+</tr>
+<tr>
+<td>섹션 사이</td>
+<td><code>12</code><del><code>16</code>(48</del>64px)</td>
+</tr>
+<tr>
+<td>소개 페이지 섹션 사이</td>
+<td><code>20</code><del><code>24</code>(80</del>96px)</td>
+</tr>
+</tbody></table></div>
+<h3 id="너비와-그리드">너비와 그리드</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>화면</th>
+<th>최대 콘텐츠 폭</th>
+<th>그리드</th>
+<th>바깥 여백</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Home</td>
+<td>1024px 아래: 560px(글자가 놓이는 폭. 바깥 여백은 따로), 한 열. 1024px 이상: 바깥 틀 1120px</td>
+<td>1단 / 본문 + 보조 열 2단</td>
+<td>모바일 16px, 그 이상 24px, 1024px 이상 32px</td>
+</tr>
+<tr>
+<td>Family</td>
+<td>1024px 아래: 720px(글자가 놓이는 폭). 1024px 이상: 바깥 틀 1120px</td>
+<td>1~2단 / 본문 + 보조 열 2단</td>
+<td>16 / 24 / 32px</td>
+</tr>
+<tr>
+<td>운영</td>
+<td>1280px(사이드바 포함 바깥 틀. 1280px보다 넓으면 가운데 두고 여백만 늘린다)</td>
+<td>12단, 사이 24px. 640px 아래 직원 휴대폰은 4단 한 열(아래 &quot;운영 휴대폰&quot;)</td>
+<td>640px 아래 16px, 24 / 32px</td>
+</tr>
+<tr>
+<td>소개·포트폴리오</td>
+<td>1120px</td>
+<td>12단, 사이 24px</td>
+<td>24 / 64px</td>
+</tr>
+</tbody></table></div>
+<h3 id="반응형-기준점">반응형 기준점</h3>
+<p>Tailwind 기본값을 그대로 쓴다. 새 기준점을 만들지 않는다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>이름</th>
+<th>최소 폭</th>
+<th>바뀌는 것</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(기본)</td>
+<td>0</td>
+<td>Home·Family 한 열, 운영 표는 가로 스크롤 영역 안에</td>
+</tr>
+<tr>
+<td><code>sm</code></td>
+<td>640px</td>
+<td>Family 2단 카드</td>
+</tr>
+<tr>
+<td><code>md</code></td>
+<td>768px</td>
+<td>운영 화면 상단 바에 내비게이션 노출</td>
+</tr>
+<tr>
+<td><code>lg</code></td>
+<td>1024px</td>
+<td>표 전체 폭. Home·Family는 본문 + 보조 열 2단(아래 &quot;Home·Family 데스크톱&quot;). 운영 사이드바는 이 기준점이 아니라 아래 60rem을 따른다</td>
+</tr>
+<tr>
+<td><code>xl</code></td>
+<td>1280px</td>
+<td>운영 화면 최대 폭 도달, 여백만 늘어남</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>이동할 곳이 7개 이하면 상단 바, 넘으면 사이드바다. 60rem(960px) 아래에서 사이드바는 메뉴 버튼과 시트로 접는다. 사이드바를 접는 기준점은 이 60rem 하나다.</li>
+<li>앱 바 안쪽(로고와 오른쪽 버튼)은 넓은 화면에서 콘텐츠 틀의 양끝에 맞춘다(1024px 아래 Home 560px·Family 720px, 1024px 이상 1120px).</li>
+<li>Home은 하단 탭을 쓰지 않는다(Family도 같고, 운영 휴대폰의 야간·생활지원 역할만 예외다. 아래 &quot;운영 휴대폰&quot;). 첫 화면 목록에서 들어가고, 모든 화면 위쪽에 &quot;처음으로&quot; 버튼이 있다. 첫 화면에서는 같은 자리에 같은 글자로 두되 링크가 아니라 &quot;지금 여기&quot; 표시다(<code>fg-secondary</code>, <code>aria-current=&quot;page&quot;</code>, 누름 반응 없음).</li>
+</ul>
+<h3 id="homefamily-데스크톱-1024px-이상">Home·Family 데스크톱 (1024px 이상)</h3>
+<p>1024px 아래는 한 열 그대로다. 1024px 이상에서는 한 줄을 길게 늘이지 않고, 늘어난 폭에 정보를 나눠 담는다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>바깥 틀</td>
+<td>최대 1120px, 가운데, 좌우 32px</td>
+</tr>
+<tr>
+<td>열</td>
+<td>본문 <code>minmax(0, 1fr)</code> + 보조 열 320px, 사이 48px</td>
+</tr>
+<tr>
+<td>본문 글 한 줄</td>
+<td>36em 그대로(Home 20px → 720px, Family 17px → 612px)</td>
+</tr>
+<tr>
+<td>보조 열</td>
+<td><code>side-rail</code>. 앱 바 아래에 붙어 따라온다(<code>position: sticky</code>, 위 88px)</td>
+</tr>
+<tr>
+<td>화면 유형</td>
+<td>네 가지: 타일(첫 화면, 고르는 화면), 목록-상세(<code>list-detail</code>), 본문 2단(한 카드 안의 요약과 내역을 나란히), 한 열 + 보조 열(읽고 답하는 화면). 화면마다의 유형은 <a class="doc-ref" href="mvp-screens.html"><code>design/mvp-screens.md</code></a> 4-7절</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li><strong>화면 제목만 한 단계 올린다:</strong> 1024px 이상 Home·Family의 화면 제목(h1)은 <code>title3</code>(24px) 대신 <code>title2</code>(28px)다. 타일 제목(22px)과 인사가 같은 무게로 보이지 않게 하기 위해서다. 예외: 청구서 화면(<code>card bill</code>이 있는 화면)은 금액(<code>number-lg</code> 28px)이 입구이므로 제목을 <code>title3</code>(24px)에 둔다.</li>
+<li><strong>바뀌지 않는 것:</strong> 화면 제목을 뺀 글자 크기, 버튼·입력 높이, 터치 최소값(Home 56px, Family 48px), 화면당 채운 버튼 1개, 근거 밑줄 한 곳, 하단 탭 없음, &quot;처음으로&quot;의 자리.</li>
+<li><strong>읽고 답하는 화면의 행동 줄은 본문 열 바닥에 붙는다:</strong> 1024px 이상에서 글이 첫 화면보다 긴 &quot;한 열 + 보조 열&quot; 화면(FAM-05)은 채운 버튼 줄을 <code>position: sticky; bottom: 0</code>으로 본문 열 아래에 붙인다. 바탕은 위쪽 24px 동안 투명에서 <code>bg-canvas</code>로 차오르는 그라디언트(글이 아래로 이어진다는 표시, 선을 그으면 글의 끝처럼 보인다), 위 32px·아래 16px, 버튼은 한 줄에 나란히. 앱 밖 경로(보조 열)보다 주 행동이 먼저 보이게 하기 위해서다.</li>
+<li><strong>보조 열에는 채운 버튼을 두지 않는다.</strong> Home 보조 열의 행동은 앱 밖 경로(<code>alt-path</code>) 하나뿐이다. 세 밀도 표의 &quot;채운 버튼 1개 + 앱 밖 경로 1개&quot;에서 그 1개가 옆으로 옮겨 간 것이고, 긴 화면에서도 늘 보인다.</li>
+<li>Family 보조 열의 내용은 화면 틀마다 다르다(첫 화면, 읽기·쓰기, 목록-상세 세 가지. Components <code>side-rail</code>).</li>
+<li>640~1023px(태블릿)은 한 열이고, 타일만 2열이다. 640px 아래 타일은 지금의 목록 행(<code>list-cell</code>)으로 돌아간다. 640px은 타일 쪽에 속한다(모바일 규칙은 639.98px까지).</li>
+<li><strong>본문 2단 카드</strong>(요약과 내역)와 나란히 놓는 두 덩어리(<code>pair</code>)는 본문 열이 740px 이상일 때만 나란히 놓고(컨테이너 쿼리), 그보다 좁으면(1024~약 1170px 포함) 쌓는다. 본문 열 최대가 752px이므로 740px은 그 아래여야 한다. 700px 바로 위에서는 내역 띠가 좁아 줄이 꺾였다. 나란히 놓을 때 내역 띠는 카드 오른쪽 끝까지 닿는 면이고, 카드 안에 떠 있는 상자로 만들지 않는다(카드 안 카드 금지).</li>
+<li><strong>전화기 아이콘은 앱 밖 경로 전용이다.</strong> Home·Family에서 전화기 모양(Lucide <code>phone</code>)은 프런트로 전화하는 버튼에만 쓴다. 사람 목록으로 가는 메뉴(&quot;급할 때 연락할 분&quot;)는 <code>contact-round</code>를 쓴다.</li>
+<li>앱 바 오른쪽 글자 버튼은 버튼 상자가 아니라 글자 끝을 틀 오른쪽 끝에 맞춘다(640px 이상 <code>margin-inline-end: -20px</code>, 360~639px -12px, 360px 아래는 0). 앱 바 로고 높이는 세 앱이 같다(640px 이상 28px, 아래 24px). 회원 앱만 키우면 워드마크가 화면 제목과 같은 무게가 된다.</li>
+<li>정보 위에 두는 <code>consent-scope</code>는 보조 열로 옮기지 않는다. 보는 정보 바로 위에 있어야 하기 때문이다.</li>
+</ul>
+<h3 id="운영-휴대폰-640px-아래">운영 휴대폰 (640px 아래)</h3>
+<p>야간 직원, 생활지원, 현장 팀이 복도와 방에서 한 손으로 쓰는 화면만 이 틀을 쓴다: SAF-01<del>04, SAF-12</del>14, SAF-16, SAF-17, REQ-13, CMN-18, TRN-03(<a class="doc-ref" href="mvp-screens.html"><code>design/mvp-screens.md</code></a> 4-9절). 사무실 화면(코어, 보호자 포털, 설정, 기록)은 데스크톱 전제이고 640px 아래에서는 표 접기 규칙만 따른다.</p>
+<ul>
+<li><strong>4단, 바깥 16px, 내용 한 열.</strong> 데스크톱 카드를 그대로 쌓지 않는다. 카드 안 상세(중복 수신 내역 등)는 접어 두고 줄을 고르면 연다.</li>
+<li><strong>아래 고정 행동 줄.</strong> 화면의 채운 버튼 하나만 <code>position: sticky; bottom: 0</code>, <code>padding-bottom: env(safe-area-inset-bottom)</code>에 둔다. 카드마다 채운 버튼을 두지 않고, 줄을 고르면 아래 줄에 그 줄의 행동([확인하러 갑니다], [완료], [저장])이 나온다.</li>
+<li><strong>야간 밀도.</strong> 버튼 <code>md</code> 48px, 줄 64px, 터치 44px 이상. 새 값이 아니라 기존 토큰이다. 다크 모드로 한 번 더 확인한다.</li>
+<li><strong>상세는 <code>bottom-sheet</code>.</strong> 1024px 이상의 옆 패널(<code>side-panel</code>)이 휴대폰에서는 아래에서 올라오는 시트가 된다(손잡이, 끌어 닫기, 닫기 버튼 둘 다).</li>
+<li><strong>체크 목록 줄.</strong> 안부 방문, 비상 때 재실 명단, 출석은 줄 전체가 누르는 영역이고, 결과는 시트에서 고른다. 줄마다 라디오 셋을 두지 않는다.</li>
+<li><strong><code>nav-bottom</code>.</strong> 야간 직원·생활지원 역할만, 4칸(신호 / 안부 방문 / 비상 명단 / 더 보기). 다른 역할은 메뉴 버튼과 시트다. 가장자리 서랍은 쓰지 않는다(iOS 뒤로 가기 몸짓과 겹친다).</li>
+<li>전화는 한 번 누름(<code>tel:</code>)이고, 1024px 이상에서는 번호를 글자로 함께 보인다.</li>
+</ul>
+<h3 id="터치-영역">터치 영역</h3>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>화면</th>
+<th>최소</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Home</td>
+<td>56×56px</td>
+<td>70~80대 손 떨림과 시력 [가설: 내부 원칙. WCAG 2.5.5 AAA 44px보다 크게]</td>
+</tr>
+<tr>
+<td>Family</td>
+<td>48×48px</td>
+<td></td>
+</tr>
+<tr>
+<td>운영</td>
+<td>44×44px</td>
+<td>WCAG 2.5.8(AA) 24px 이상, 2.5.5(AAA) 44px</td>
+</tr>
+</tbody></table></div>
+<p>40px 버튼(<code>button-sm</code>)과 작은 체크박스는 투명 히트 영역(<code>::after { inset: -4px }</code>)으로 44px을 채운다.</p>
+<h2 id="elevation-depth">Elevation &amp; Depth</h2>
+<p>평면이 기본이다. 깊이는 바탕 단계(<code>bg-canvas</code> → <code>bg-surface</code> → <code>bg-elevated</code>)와 1px 구분선으로 만든다. 카드에는 그림자를 쓰지 않는다. 그림자는 화면 위에 떠야 하는 것에만 쓰고, 두 겹(넓게 퍼지는 주변광 + 아래로 떨어지는 직사광)을 쌓는다. 그림자 색은 먹(<code>#17191C</code>)에 투명도만 바꾼다.</p>
+<pre><code>--shadow-1: 0 1px 2px #17191C0F, 0 1px 3px #17191C0A;   /* 스위치 손잡이, 선택된 세그먼트 */
+--shadow-2: 0 4px 12px #17191C14, 0 1px 3px #17191C0F;   /* 드롭다운, 툴팁, 토스트 */
+--shadow-3: 0 12px 32px #17191C1F, 0 4px 8px #17191C0F;  /* 대화상자, 시트 */</code></pre>
+<p>다크 모드에서는 그림자가 잘 보이지 않으므로 <code>bg-elevated</code>의 밝기 차이와 1px <code>dark-border-default</code>로 띄운다.</p>
+<h3 id="motion">Motion</h3>
+<p>방금 설치한 <code>emil-design-eng</code> 스킬의 기준을 따른다(<code>.claude/skills/emil-design-eng/SKILL.md</code>, emilkowalski/skills f1090be).</p>
+<pre><code>--ease-out: cubic-bezier(0.23, 1, 0.32, 1);     /* 들어오고 반응하는 모든 것 */
+--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1); /* 화면 안에서 위치를 옮기는 것 */
+--ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);  /* 시트, 서랍 */
+--duration-press: 120ms;   /* 버튼 누름 */
+--duration-fast: 160ms;    /* 색, 툴팁 */
+--duration-base: 200ms;    /* 드롭다운, 토스트 */
+--duration-slow: 280ms;    /* 대화상자, 시트 */</code></pre>
+<ul>
+<li>UI 모션은 300ms를 넘지 않는다. <code>ease-in</code>은 쓰지 않는다.</li>
+<li>누름: <code>transform: scale(0.97)</code>. 나타남: <code>opacity 0 → 1</code>과 <code>scale(0.95) → 1</code>(0에서 시작하지 않는다).</li>
+<li><code>transform</code>과 <code>opacity</code>만 움직인다. <code>transition: all</code>, 너비·높이·위치 애니메이션은 쓰지 않는다.</li>
+<li>키보드로 한 행동, 자주 반복하는 행동(표 정렬, 탭 전환)에는 모션을 넣지 않는다.</li>
+<li>hover 효과는 <code>@media (hover: hover) and (pointer: fine)</code> 안에만 둔다. 터치 기기에서 누른 뒤 hover 색이 남아 &quot;아직 눌린 상태&quot;로 보이지 않게 하기 위해서다. 누름(<code>:active</code>)과 포커스는 모든 기기에 둔다.</li>
+<li><code>prefers-reduced-motion: reduce</code>에서는 이동(<code>transform</code>의 이동·크기·회전, 시트 미끄러짐)을 모두 끄고, 투명도와 색 전환은 <code>duration-fast</code>(160ms)로 남긴다. 바뀐 것을 알아채게 돕는 페이드까지 없애지 않는다. 정보는 모션 없이도 전달된다.</li>
+<li>연달아 생길 수 있는 것(토스트, 상태 전환)은 keyframes가 아니라 CSS transition으로 움직여 중간에 끊겨도 자연스럽게 이어지게 한다. 처음 나타남은 <code>@starting-style</code>로 만든다.</li>
+<li>튕김, 시차, 페이지 슬라이드, 자동 재생은 쓰지 않는다. 소개 사이트의 영상은 &quot;소개 사이트 예외&quot; 절을 따른다.</li>
+</ul>
+<h2 id="shapes">Shapes</h2>
+<ul>
+<li>모서리는 크기가 클수록 커진다: <code>sm</code> 4px(배지, 체크박스, 스켈레톤) → <code>md</code> 8px(버튼, 입력, 메뉴 항목) → <code>lg</code> 12px(알림, 토스트, 메뉴, 세그먼트) → <code>xl</code> 16px(카드) → <code>2xl</code> 20px(대화상자) → <code>3xl</code> 24px(시트 위쪽) → <code>full</code>(칩, 스위치, 아바타, 아이콘 버튼).</li>
+<li>안쪽 모서리 = 바깥 모서리 - 안쪽 여백. 카드(16px) 안에 꽉 찬 요소를 둘 때는 8px 이하로 줄인다.</li>
+<li>카드 안에 카드를 넣지 않는다. 카드 안의 묶음은 구분선이나 <code>bg-subtle</code> 띠로 나눈다.</li>
+<li>구분선은 1px. 섹션을 크게 나눌 때만 8px <code>bg-subtle</code> 띠를 쓴다.</li>
+<li>장식용 2px 테두리, 색 있는 왼쪽 띠 카드, 그라디언트, 유리 효과, 질감은 쓰지 않는다.</li>
+</ul>
+<p><strong>아이콘:</strong> Lucide(<a href="https://lucide.dev" rel="noopener noreferrer" target="_blank">https://lucide.dev</a>), 선 굵기 2px(Home 2.25px), 크기 16/20/24px, 색은 <code>currentColor</code>를 물려받는다. Home에서는 아이콘만 있는 버튼을 쓰지 않고 언제나 글자를 함께 둔다. 운영 화면의 아이콘 버튼은 <code>aria-label</code>과 툴팁을 함께 둔다. 이모지와 유니코드 화살표는 쓰지 않는다.</p>
+<p><strong>일러스트:</strong> 빈 상태와 첫 사용 안내에만, 평면·기하 형태, cobalt와 paper 램프 안에서 <code>gpt-image</code>로 만든다. 사람 얼굴, 노화를 과장한 모습, 의료 장면은 그리지 않는다. 소개 사이트는 &quot;소개 사이트 예외&quot; 절을 따른다.</p>
+<h2 id="components">Components</h2>
+<p>shadcn/ui 컴포넌트를 쓰고 위 토큰으로 칠한다. YAML <code>components</code>의 값이 기준이고, 아래는 해부도, 상태, 쓰는 규칙이다. 모든 컨트롤은 <strong>8가지 상태</strong>(기본, hover, focus-visible, active, disabled, loading, error, success)를, 데이터를 읽는 영역은 <strong>4가지 상태</strong>(loading, empty, error, full)를 그린다. 포커스는 모든 컴포넌트에서 같다: <code>primary</code> 2px 선 + 2px 띄움, 바로 나타난다. 반전 바탕(<code>bg-inverse</code>: 토스트, 데모 막대) 위에서는 선 색만 <code>fg-brand-on-inverse</code>로 바꾼다(<code>primary</code>는 반전 바탕 대비 2:1이라 보이지 않는다). 반전 바탕 위 입력칸 경계는 <code>fg-tertiary</code>(3.2:1)다.</p>
+<h3 id="화면-틀">화면 틀</h3>
+<p>화면은 아래 틀 중 하나로 만든다. 같은 틀의 화면은 같은 골격(영역 순서, 행동 자리)을 쓰고 내용과 상태만 다르다. 상태만 다른 화면은 한 아트보드의 상태로 그린다(<a class="doc-ref" href="mvp-screens.html"><code>design/mvp-screens.md</code></a> 6-2절). 화면마다의 틀은 <a class="doc-ref" href="mvp-screens.html"><code>design/mvp-screens.md</code></a> 4-7절(Home·Family)과 4-9절(운영).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>앱</th>
+<th>틀</th>
+<th>골격</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Home</td>
+<td>메뉴 타일</td>
+<td>인사 → <code>menu-tile</code> 2~3열(모바일은 <code>list-cell</code>) → <code>alt-path</code>. 첫 화면 타일은 6개까지</td>
+</tr>
+<tr>
+<td>Home</td>
+<td>단계 입력</td>
+<td>&quot;n/m 단계&quot; → 질문 하나 → 입력 하나 → 예 문구 → [다음으로]. 한 화면 한 칸, 2단으로 늘이지 않는다</td>
+</tr>
+<tr>
+<td>Home</td>
+<td>확인 카드</td>
+<td>요약 → 채운 버튼 + 같은 크기 테두리 버튼. 단계 입력의 끝, 읽을 요약이 세 줄 이상일 때</td>
+</tr>
+<tr>
+<td>Home</td>
+<td>안내 확인</td>
+<td>제목 → 본문(36em) → 1024px 이상에서 본문 열 바닥에 붙는 행동 줄([읽었어요]·[알겠어요] 채움)</td>
+</tr>
+<tr>
+<td>Home·Family</td>
+<td>목록-상세</td>
+<td><code>list-detail</code>. 1024px 이상 보조 열 없음, 앱 밖 경로는 목록 열 아래(Home) 또는 상세 열 아래(Family)</td>
+</tr>
+<tr>
+<td>Family</td>
+<td>첫 화면</td>
+<td>허락 문장(h1) → 새 소식 줄(부재 카드만) → 허락 항목 타일 → 볼 수 없는 것 → 내가 볼 수 있는 것 한 줄. 보조 열에 레지던스 공지</td>
+</tr>
+<tr>
+<td>Family</td>
+<td>읽기</td>
+<td>뒤로 → <code>consent-scope</code> → h1 → 카드 → (행동). 보조 열에 볼 수 있는 것 목록</td>
+</tr>
+<tr>
+<td>Family</td>
+<td>쓰기</td>
+<td>뒤로 → <code>consent-scope</code> → 안내 → 입력 → 채운 버튼 하나. 1024px 이상 입력이 첫 화면보다 길면 행동 줄을 본문 열 바닥에 붙인다</td>
+</tr>
+<tr>
+<td>운영</td>
+<td>처리 큐</td>
+<td>위 <code>stat-strip</code> → 거름(<code>segmented</code>·<code>chip</code>) → 줄 목록 → 고른 줄의 상세(<code>side-panel</code>, 휴대폰은 <code>bottom-sheet</code>). 맡기·시작·완료는 상세의 채운 버튼 하나</td>
+</tr>
+<tr>
+<td>운영</td>
+<td>체크 목록</td>
+<td>대상 줄 목록 → 줄마다 한 가지 기록(시트에서 고름) → 아래 고정 [저장]</td>
+</tr>
+<tr>
+<td>운영</td>
+<td>표 + 옆 패널</td>
+<td><code>table</code>(첫 열은 사람·사업장 이름) → 고른 행의 <code>side-panel</code>(1024px 아래는 시트)</td>
+</tr>
+<tr>
+<td>운영</td>
+<td>기록·로그</td>
+<td>거름(기간·사람·종류) → 시간 순 <code>table</code> 또는 <code>record-row</code>(첫 열 날짜와 시각) → 줄을 열면 <code>side-panel</code>. 고치거나 지울 수 없다는 문장</td>
+</tr>
+<tr>
+<td>운영</td>
+<td>설정 폼</td>
+<td>묶음 제목 → 칸 → 새 버전 안내 → [저장] 하나</td>
+</tr>
+<tr>
+<td>운영</td>
+<td>현황 카드</td>
+<td>확인할 일 목록(입구) → <code>stat-strip</code> 4칸 → 지표 칸. 첫 화면 숫자 10개 이하, 화면 기준 시각 하나</td>
+</tr>
+<tr>
+<td>모든 앱</td>
+<td>짧은 창</td>
+<td>칸 4개 이하, <code>dialog</code> 440px</td>
+</tr>
+<tr>
+<td>모든 앱</td>
+<td>긴 입력</td>
+<td>칸 5개 이상, 오른쪽 시트 480px(운영) 또는 한 화면 폼(Home·Family). 휴대폰은 전체 화면</td>
+</tr>
+</tbody></table></div>
+<h3 id="actions">Actions</h3>
+<p><strong>button.</strong> 변형 5개 × 크기 3개.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>변형</th>
+<th>바탕 / 글자 / 테두리</th>
+<th>쓰는 곳</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>primary</code></td>
+<td>primary / on-primary / 없음</td>
+<td>화면의 한 가지 행동</td>
+</tr>
+<tr>
+<td><code>secondary</code></td>
+<td>bg-surface / fg-strong / 2px border-strong</td>
+<td>앱 밖 경로(&quot;프런트에 전화하기&quot;), 취소, 나중에</td>
+</tr>
+<tr>
+<td><code>tertiary</code></td>
+<td>bg-muted / fg-strong / 없음</td>
+<td>같은 화면의 덜 중요한 행동(운영)</td>
+</tr>
+<tr>
+<td><code>ghost</code></td>
+<td>투명 / fg-brand / 없음</td>
+<td>표 안 행동, &quot;더 보기&quot;</td>
+</tr>
+<tr>
+<td><code>danger</code></td>
+<td>danger / on-danger / 없음</td>
+<td>되돌릴 수 없는 행동만(동의 철회, 계약 해지 확정). 누르기 전 확인 대화상자</td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>크기</th>
+<th>높이</th>
+<th>좌우 여백</th>
+<th>글자</th>
+<th>쓰는 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>lg</code>(기본)</td>
+<td>56px</td>
+<td>24px</td>
+<td><code>label-lg</code></td>
+<td>Home, Family</td>
+</tr>
+<tr>
+<td><code>md</code></td>
+<td>48px</td>
+<td>20px</td>
+<td><code>label-lg</code></td>
+<td>Family 보조, 운영 대화상자</td>
+</tr>
+<tr>
+<td><code>sm</code></td>
+<td>40px(히트 44px)</td>
+<td>16px</td>
+<td><code>label</code></td>
+<td>운영</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>상태: hover는 <code>-hover</code> 색(중립 변형은 <code>state-hover</code> 층), active는 <code>-active</code> 색 + <code>scale(0.97)</code>, disabled는 <code>bg-muted</code> + <code>fg-disabled</code> + 아래에 이유 한 문장, loading은 회전 아이콘 + 글자 바꿈(&quot;보내는 중&quot;) + <code>aria-busy</code>, 폭 고정.</li>
+<li>라벨은 동사로 끝낸다(&quot;청구서 보기&quot;, &quot;보내기&quot;, &quot;동의 철회하기&quot;). &quot;확인&quot;, &quot;여기를 누르세요&quot;는 쓰지 않는다. 라벨 끝에 마침표를 찍지 않는다.</li>
+<li>Home·Family 모바일에서는 버튼이 전체 폭이다.</li>
+<li><strong>확인 규칙.</strong> 앞 화면이 내용을 다 보여 줬으면 확인 창(<code>dialog</code>), 단계 입력의 끝이거나 읽을 요약이 세 줄 이상이면 확인 카드(화면). 되돌릴 수 없거나 새로 시작하는 결정(신청, 전달, 확정, 발행)은 채운 버튼 + 같은 크기 테두리 버튼, 취소·그만두기 확인은 두 버튼 모두 테두리다. 운영의 되돌릴 수 없는 확정은 한 방식이다: 쪽의 채운 [○○하기] → 확인 창(취소 <code>secondary</code>, 같은 라벨 채움).</li>
+<li><strong>표 줄 행동.</strong> 표와 목록 줄 안 행동은 <code>ghost</code>다. 한 줄에 둘 이상이면 가장 잦은 하나만 보이고 나머지는 더 보기(<code>dropdown-menu</code>)에 둔다. <code>secondary</code> 2px 테두리를 줄마다 반복하지 않는다.</li>
+<li>Home에서 큰 버튼을 쌓을 때 버튼 사이는 16px, 대화상자의 버튼 행도 16px이다(손 떨림으로 옆 버튼을 누르지 않게).</li>
+</ul>
+<p><strong>icon-button.</strong> 44px 원형(운영), 아이콘 20px, <code>state-hover</code> 층. 반드시 <code>aria-label</code>이 있다. Home에서는 쓰지 않는다.</p>
+<p><strong>link.</strong> <code>fg-brand</code>, 밑줄 1px, 밑줄 띄움 0.16em. 본문 안 링크는 밑줄을 없애지 않는다.</p>
+<p><strong>alt-path (Evenstay 고유).</strong> 앱 밖 경로 블록. <code>secondary</code> 버튼 + 전화 아이콘 + 번호를 글자로 보인다(&quot;프런트 02-000-0000&quot;). Home의 모든 화면 아래쪽에 있다. 화면 안 행동 버튼과 섞이지 않게 위에 1px <code>border-subtle</code> 선과 24px 간격을 두고, 버튼 묶음 안에 넣지 않는다. 번호 줄은 17px 이상 <code>fg-strong</code> 600이다.</p>
+<h3 id="selection-and-input">Selection and input</h3>
+<p><strong>input / textarea / select.</strong> 해부도: 라벨(위, <code>label-lg</code> 또는 <code>label</code>) → 입력 상자 → 도움말(<code>body-sm</code>, <code>fg-secondary</code>) 또는 오류(<code>field-error</code>).</p>
+<ul>
+<li>크기: Home·Family 56px, <code>body-lg</code>, 좌우 16px. 운영 44px(<code>input-sm</code>), <code>body-sm</code>.</li>
+<li>테두리 2px <code>border-strong</code>, 모서리 <code>md</code>. hover는 테두리 <code>fg-strong</code>, focus는 포커스 링, error는 테두리 <code>danger</code> + 아래 오류 문장(아이콘 + &quot;무엇이 안 됐는지, 무엇을 하면 되는지&quot;), disabled는 <code>bg-muted</code> 바탕과 <code>fg-disabled</code> 글자.</li>
+<li>자리표시 글자(<code>fg-tertiary</code>)는 예시만 쓴다. 라벨을 대신하지 않는다.</li>
+<li>필수 항목은 라벨 옆에 &quot;(필수)&quot; 글자로 쓴다. 별표만 쓰지 않는다.</li>
+<li>전화번호, 금액은 <code>inputmode</code>를 맞추고, 확대를 막지 않도록 모바일 입력 글자는 16px 이상이다.</li>
+<li>textarea는 최소 높이 120px, <code>body-md-read</code>, 아래쪽에 글자 수(<code>number-sm</code>)를 둔다.</li>
+</ul>
+<p><strong>checkbox / radio.</strong> 24px(Home 28px), 테두리 2px <code>border-strong</code>. 선택 시 <code>primary</code> 채움 + <code>on-primary</code> 체크. 라벨 전체가 누를 수 있는 영역이고 줄 높이를 합쳐 터치 최소값을 채운다.</p>
+<p><strong>switch.</strong> 52×32px, 손잡이 26px + <code>shadow-1</code>. 꺼짐은 <code>border-strong</code>, 켜짐은 <code>primary</code>. 켜짐과 꺼짐을 글자로도 쓴다(&quot;알림 받음&quot;). <strong>동의처럼 법적 의미가 있는 선택에는 쓰지 않는다.</strong> 동의는 체크박스와 확인 버튼으로 받는다.</p>
+<p><strong>chip.</strong> 44px 높이, 모서리 <code>full</code>, 1px <code>border-default</code> 바탕 테두리 + <code>bg-surface</code>. 선택 시 <code>fg-strong</code> 채움 + <code>bg-canvas</code> 글자(명도 반전). 필터에만 쓴다.</p>
+<p><strong>Home 터치 변형.</strong> Home의 탭, 구간 버튼(<code>segmented</code>), 칩은 높이 56px다(운영·Family 값 44~48px를 그대로 쓰지 않는다).</p>
+<p><strong>날짜 고르기 (Home).</strong> 한 달 격자 달력을 쓰지 않는다(칸이 56px보다 작아진다). 앞으로 일주일을 큰 줄 목록(&quot;오늘&quot;, &quot;내일&quot;, &quot;수요일 11월 18일&quot;)으로 보이고, 그 밖의 날은 [다른 날 고르기]에서 연다. 하루씩 보는 화면은 &quot;◀ 11월 18일 수요일 ▶&quot; 큰 화살표 둘(56px)로 옮긴다. 1024px 이상에서는 7일을 한 줄로 보여도 된다.</p>
+<p><strong>segmented.</strong> 2~4개의 서로 배타적인 보기 전환. <code>bg-muted</code> 트랙(모서리 <code>lg</code>, 안쪽 4px) 안에서 선택된 항목만 <code>bg-surface</code> + <code>shadow-1</code>. 높이 48px.</p>
+<h3 id="contents">Contents</h3>
+<p><strong>card.</strong> <code>bg-surface</code>, 1px <code>border-subtle</code>, 모서리 <code>xl</code>, 안쪽 24px, 그림자 없음. 제목 <code>heading1</code>(Home)·<code>headline</code>(운영), 부제 <code>body-sm</code> <code>fg-secondary</code>. 누를 수 있는 카드는 카드 전체가 하나의 링크이고 hover에서 <code>state-hover</code> 층.</p>
+<p><strong>list-cell.</strong> 앞(아이콘 24px 또는 아바타) · 몸(제목 <code>headline</code> + 부제 <code>body-sm</code>) · 뒤(값 <code>number-sm</code> 또는 chevron 아이콘) 세 칸. 높이 64px 이상(Home 72px), 안쪽 16px. 구분선은 몸 칸부터 시작한다.</p>
+<p><strong>table (운영).</strong> 머리 44px <code>bg-subtle</code> + <code>label</code> <code>fg-secondary</code> + 아래 1px <code>border-default</code>. 행 52px, <code>body-sm</code>, 아래 1px <code>border-subtle</code>, hover <code>bg-subtle</code>. 숫자 열 오른쪽 정렬, 고정폭 숫자. 선택 행은 <code>primary-subtle</code>. 정렬 가능한 머리에는 방향 아이콘. 작은 화면에서는 가로 스크롤 영역(<code>overflow-x: auto</code>)에 두고 첫 열을 고정한다. 결정·상태 열은 앞쪽에 둔다. 칸마다 고르는 선택 표는 640px 아래에서 행마다 &quot;머리: 값&quot; 묶음으로 푼다. 날짜·시각 열은 왼쪽 정렬(고정폭 숫자), 금액 열만 오른쪽 정렬이다. 카드 안에 넣는 표는 바깥 테두리 없이 위 1px <code>border-default</code> 선만 둔다.</p>
+<p><strong>badge.</strong> 높이 24px(Home 28px), 안쪽 2×8px, 모서리 <code>sm</code>, <code>label</code>. 변형 <code>neutral</code>·<code>brand</code>·<code>success</code>·<code>warning</code>·<code>danger</code>. <strong>언제나 글자가 있다.</strong> 입주자 상태(동의함, 갱신 필요, 공개 안 함)는 <code>neutral</code>, 시스템 결과(보냄, 보내지 못함)만 의미 색을 쓴다.</p>
+<ul>
+<li><strong>알림 등급 배지(B 안심 알림).</strong> 색 없이 선과 굵기의 사다리로 구분한다: &quot;즉시 확인&quot;은 <code>bg-surface</code> + 안쪽 2px <code>fg-strong</code> 선 + 700, &quot;확인 필요&quot;는 <code>bg-surface</code> + 안쪽 1px <code>border-strong</code> 선 + 600, &quot;기록만&quot;은 투명 + 안쪽 1px <code>border-default</code> 선 + 500 + <code>fg-secondary</code>. 아이콘 모양도 서로 다르게 둔다. 빨강·주황은 쓰지 않는다(<a class="doc-ref" href="mvp-screens.html"><code>design/mvp-screens.md</code></a> 7절 결정 10).</li>
+</ul>
+<p><strong>avatar.</strong> 원형 32/40/56px, 사진이 없으면 <code>bg-muted</code> 바탕에 이름 첫 글자(<code>label</code>, <code>fg-secondary</code>). 그라디언트를 쓰지 않는다.</p>
+<p><strong>divider.</strong> 1px <code>border-subtle</code>. 강한 구분은 <code>border-default</code>, 섹션 구분은 8px <code>bg-subtle</code> 띠.</p>
+<p><strong>evidence-highlight (Evenstay 고유).</strong> 숫자와 이유 뒤에 깐다. 라이트는 아래쪽 45% 밑줄(<code>background: linear-gradient(transparent 55%, var(--highlight) 55%)</code>), 다크는 글자 뒤 전체를 칠한다(<code>background: var(--highlight)</code>, 좌우 4px, 모서리 <code>sm</code>). 글자는 두 모드 모두 <code>on-highlight</code>라서, 다크에서 밑줄만 깔면 글자 위쪽 절반이 어두운 바탕 위의 먹색이 되기 때문이다. 한 화면 한 곳. 글자 굵기는 바꾸지 않는다.</p>
+<p><strong>money (Evenstay 고유).</strong> 금액 행: 왼쪽 항목 이름(<code>body-md</code>), 오른쪽 금액(<code>number</code>, <code>fg-strong</code>). 차이와 이유는 다음 줄 <code>body-sm</code> <code>fg-secondary</code>. 금액에는 언제나 &quot;원&quot;을 붙이고 0원도 숨기지 않는다.</p>
+<p><strong>consent-scope (Evenstay 고유).</strong> 자리: 보호자 읽기·목록-상세·쓰기 화면의 같은 곳, 뒤로 가기 바로 아래와 h1 위. 첫 줄은 눈 아이콘 + 허락 문장(D copy &quot;…보여 주기로 한 ~이에요.&quot;), 둘째 줄(선택)은 범위 설명 <code>body-sm</code> <code>fg-secondary</code>, 아이콘 없음. 첫 화면(h1이 허락 문장이다), &quot;내가 볼 수 있는 것&quot;(화면이 허락 자체다), 허락이 아닌 안내(레지던스 공지)에는 쓰지 않는다. 정보 위에 둔다: 눈 아이콘 + &quot;이은숙 님이 청구서 열람을 허락하셨어요.&quot; <code>bg-muted</code>, 모서리 <code>md</code>, 안쪽 12×16px. 허락 범위 밖 정보는 자리를 비우지 않고 D copy 6절 문구(&quot;이 소식은 지금 볼 수 없어요. 볼 수 있는 범위는 이은숙 회원님이 정해요.&quot;)를 쓴다.</p>
+<p><strong>stat-strip (운영).</strong> 라벨 + 숫자(<code>number</code>)의 가로 한 줄, 4칸 이하. 칸을 누르면 같은 화면의 거름이나 그 목록으로 간다. 해석 문구, 목표선, 좋음·나쁨 색이 없다. 기준 시각은 화면 오른쪽 위에 하나(&quot;10:20 기준 [다시 불러오기]&quot;)만 두고, 칸의 기준 시각이 다를 때만 칸에 쓴다.</p>
+<p><strong>record-row (Evenstay 고유).</strong> 변경 기록 한 줄: 누가(이름 + 역할) · 언제(날짜와 시각, <code>number-sm</code>) · 무엇을(바꾼 내용). <code>body-sm</code> <code>fg-secondary</code>, 위아래 12px, 아래 1px <code>border-subtle</code>. 고친 값은 &quot;이전 → 이후&quot;를 글자로 쓴다(화살표는 Lucide 아이콘).</p>
+<h3 id="feedback">Feedback</h3>
+<p><strong>alert (페이지 안 알림).</strong> <code>bg-subtle</code> + 1px <code>border-subtle</code>, 모서리 <code>lg</code>, 안쪽 16px. 앞 아이콘 20px(상태 색은 아이콘에만), 제목 <code>label-lg</code> <code>fg-strong</code>, 내용 <code>body-md</code> <code>fg-default</code>. 변형 <code>info</code>(cobalt 아이콘), <code>success</code>, <code>warning</code>, <code>danger</code>. 닫기 버튼이 없고 페이지 흐름에 남는다.</p>
+<p><strong>toast.</strong> Sonner(<code>ask-sonner</code> 스킬). <code>bg-inverse</code> + <code>fg-on-inverse</code>, 모서리 <code>lg</code>, 안쪽 16×20px, <code>shadow-2</code>, 최대 폭 420px, 아래 가운데. 자동으로 닫히는 시간 6초(Home은 토스트 대신 화면 안 알림), 마우스를 올리거나 탭이 가려지면 멈춤. 아래에서 <code>translateY(100%)</code> + 투명도 0으로 시작해 <code>duration-base</code> <code>ease-out</code>으로 올라오고, 닫힐 때는 같은 방향으로 내려간다(transition, 끊겨도 이어짐). 행동 버튼(&quot;되돌리기&quot;)은 <code>fg-brand-on-inverse</code>(반전 바탕 위 코발트, 라이트 8.5:1·다크 8.7:1). <code>aria-live=&quot;polite&quot;</code>.</p>
+<p><strong>tooltip (운영만).</strong> <code>bg-inverse</code>, <code>body-sm</code>, 모서리 <code>md</code>, 안쪽 8×12px, 지연 400ms(같은 무리 안에서는 지연 없음). 중요한 정보를 툴팁에만 두지 않는다.</p>
+<p><strong>dialog.</strong> <code>scrim</code> 위 <code>bg-elevated</code>, 모서리 <code>2xl</code>, 폭 440px(모바일은 좌우 16px 여백), 안쪽 24px, <code>shadow-3</code>. 제목 <code>heading1</code>, 내용 <code>body-md</code>, 아래 버튼 행(오른쪽 정렬, 모바일은 세로로 쌓고 주 버튼이 위). 열림 <code>opacity</code> + <code>scale(0.95 → 1)</code> 280ms <code>ease-out</code>. Esc와 바깥 누름으로 닫히되, 위험 확인 대화상자는 바깥 누름으로 닫히지 않는다.</p>
+<p><strong>menu-tile (Home·Family, 640px 이상).</strong> 첫 화면과 고르는 화면의 볼 곳·물을 것 하나. 타일 전체가 하나의 링크이고, 같은 무게의 큰 버튼 규칙(<a class="doc-ref" href="mvp-screens.html"><code>design/mvp-screens.md</code></a> 7절 결정 3)에 따라 채우지 않는다: <code>bg-surface</code> + 2px <code>border-strong</code>, 모서리 <code>xl</code>, 안쪽 24px, hover <code>state-hover</code>, 누름 <code>state-active</code>. 해부도: 아이콘(Home 32px, Family 24px, <code>fg-strong</code>) → 제목(Home <code>heading1</code> 22px, Family <code>headline</code> 18px) → 부제(<code>body-md</code> 17px, <code>fg-secondary</code>, 두 줄까지). 최소 높이 Home 136px, Family 112px. 제목과 부제는 <code>text-wrap: balance</code>로 한 글자만 다음 줄에 남지 않게 한다. 한 줄 타일 행은 높이가 같다(<code>grid-auto-rows: 1fr</code>). 어떤 타일에 붙는 범위 밖 안내(<code>alert</code> <code>neutral</code>)는 640px 이상에서 그 타일 옆 칸을 채우고, 640px 아래에서는 그 타일 바로 아래에 온다. Home 첫 화면은 1024px 이상에서 타일 한 칸이 200px 이상일 때 3열(<code>repeat(auto-fit, minmax(200px, 1fr))</code>, 1024~1058px에서는 2열로 접힘), 그 밖 2열. 640px 아래는 <code>list-cell</code>. 타일 수가 홀수면 마지막 타일을 전폭으로 늘려 빈 칸을 남기지 않는다. Home 첫 화면은 6개까지(3×2)이고, 더 많은 볼 곳은 묶음 화면(같은 <code>menu-tile</code> 2열)으로 한 번 더 연다.</p>
+<p><strong>side-rail (Home·Family, 1024px 이상).</strong> 본문 옆 320px 보조 열. <code>bg-surface</code>, 1px <code>border-subtle</code>, 모서리 <code>xl</code>, 안쪽 24px, 그림자 없음. Home은 <code>alt-path</code> 하나(전화 버튼 전체 폭 + 번호 줄). 데스크톱에는 전화가 없는 경우가 많아 번호 줄을 <code>heading1</code>(22px, 700, <code>fg-strong</code>)로 올려 버튼과 같은 무게로 읽히게 한다. Family는 제목 <code>label-lg</code> <code>fg-secondary</code> → 소식 목록(<code>nav</code>로 감싼 <code>list-cell</code>, 항목 글자 <code>body-md</code> 17px 500, 항목 사이 구분선 없음) → 구분선 → 프런트 문의 문장. 지금 보는 화면은 색만으로 알리지 않는다: <code>primary-subtle</code> 바탕 + <code>fg-brand</code> 700 + 오른쪽 화살표 숨김 + <code>aria-current=&quot;page&quot;</code>. 1024px 아래에서는 보조 열의 내용이 본문 맨 아래로 돌아가되, 앱 밖 경로가 멀어지지 않게 프런트 문의 문장을 목록보다 먼저 두고 구분선은 숨긴다. Family 보조 열은 화면 틀마다 셋 중 하나다: 첫 화면은 레지던스 공지 카드(없으면 &quot;보호자께 알리는 공지가 없어요.&quot;) → 신뢰 문장 → 구분선 → 프런트 문의. 읽기·쓰기 화면은 &quot;볼 수 있는 것&quot; 목록(허락 항목, 지금 화면 표시) → 구분선 → &quot;내가 볼 수 있는 것&quot; 한 줄 → 구분선 → 프런트 문의. 목록-상세 화면은 보조 열이 없고 상세 열 아래에 프런트 문의를 둔다(다른 소식으로는 &quot;첫 화면으로&quot;를 거친다).</p>
+<p><strong>list-detail.</strong> 1024px 이상에서 목록 열 360px + 상세 <code>minmax(0, 1fr)</code>, 사이 32px. 고른 줄은 <code>primary-subtle</code> + <code>aria-current=&quot;true&quot;</code>. 이 유형의 화면은 보조 열을 두지 않고 상세 열 맨 아래에 앱 밖 경로나 문의 문장을 둔다. 1024px 아래에서는 목록 → 고른 항목의 상세 하나로 쌓는다. 고른 줄 표시는 폭과 상관없이 같고, 고르지 않은 항목의 상세는 그리지 않는다(같은 제목이 두 번 보이지 않게).</p>
+<p><strong>side-panel (운영, 화면 안 보조 패널).</strong> 표 옆에 붙어 고른 행의 근거·상세를 보여 주는 패널은 떠 있는 것이 아니라 화면의 일부다. 카드와 같이 <code>bg-elevated</code>, 1px <code>border-subtle</code>, 모서리 <code>xl</code>, 그림자 없음. 가장자리에서 밀려 나오는 오버레이 시트만 아래 <code>bottom-sheet</code>처럼 그림자와 위쪽 <code>3xl</code> 모서리를 쓴다.</p>
+<p><strong>bottom-sheet (Family·Home 모바일, 운영 휴대폰).</strong> 아래에서 올라오는 시트, 위쪽 모서리 <code>3xl</code>, 손잡이 40×4px, <code>ease-drawer</code> 280ms. 끌어서 닫을 수 있고 닫기 버튼도 있다.</p>
+<p><strong>empty-state.</strong> 가운데 정렬, 안쪽 48×24px. 56px 원(<code>bg-muted</code>) 안 아이콘 28px(<code>fg-secondary</code>) → 제목 <code>heading2</code> → 설명 <code>body-md</code> <code>fg-secondary</code> → 버튼 하나(채울 방법). 문구는 &quot;무엇이 여기에 오는지 + 어떻게 채우는지&quot;(&quot;아직 발행한 청구서가 없어요. 청구 일정을 확인해 보세요.&quot;).</p>
+<h3 id="loading">Loading</h3>
+<p><strong>skeleton.</strong> 오게 될 내용의 모양 그대로, <code>bg-muted</code>, 모서리 <code>sm</code>. 반짝임 애니메이션은 1.6초, <code>prefers-reduced-motion</code>에서는 멈춘 채로 둔다.
+<strong>spinner.</strong> 버튼 안 20px, 독립 24/32px, 한 바퀴 800ms linear(빠를수록 빠르게 느껴진다). <code>prefers-reduced-motion</code>에서는 돌지 않고 투명도가 1.2초마다 1 → 0.4 → 1로 바뀌며, 옆에 &quot;불러오는 중&quot; 글자를 둔다(멈춘 원은 &quot;멈췄다&quot;로 읽힌다).
+<strong>progress.</strong> 트랙 8px <code>bg-muted</code>, 막대 <code>primary</code>, 모서리 <code>full</code>. 몇 단계 중 몇 번째인지 글자(&quot;2/3 단계&quot;)를 함께 쓴다.</p>
+<h3 id="navigations">Navigations</h3>
+<p><strong>app-bar.</strong> 높이 64px, <code>bg-surface</code>, 아래 1px <code>border-subtle</code>, 위쪽 고정. 왼쪽 로고, 가운데·왼쪽 내비게이션, 오른쪽 사업장 선택과 사용자 메뉴.
+<strong>nav-item.</strong> <code>label</code>, 선택 시 <code>primary-subtle</code> 바탕 + <code>fg-brand</code> 글자 + <code>aria-current=&quot;page&quot;</code>.
+<strong>nav-bottom (운영 휴대폰, 야간·생활지원만).</strong> 높이 64px + 안전 영역, 4칸(아이콘 24px + <code>label</code> 글자), 선택 칸은 <code>fg-strong</code> + 위 2px 선. 글자를 숨기지 않는다. Home·Family에는 쓰지 않는다.</p>
+<p><strong>tabs.</strong> 높이 48px(Home 56px), <code>label-lg</code> <code>fg-secondary</code>, 선택 시 <code>fg-strong</code> + 아래 2px <code>fg-strong</code> 선. 선 이동에 모션을 넣지 않는다.
+<strong>pagination.</strong> 40px 칸, 모서리 <code>md</code>, 선택된 쪽은 <code>fg-strong</code> 채움 + <code>bg-canvas</code> 글자. 처음·이전·다음·끝 버튼은 글자 라벨을 숨기지 않는다(운영).
+<strong>breadcrumb.</strong> <code>body-sm</code>, 링크 <code>fg-secondary</code>, 구분 아이콘 chevron 16px <code>fg-tertiary</code>, 현재 위치 <code>fg-strong</code> 600.
+<strong>accordion.</strong> 머리 56px <code>headline</code> + 오른쪽 chevron(열면 180° 회전, 200ms). Home에서는 중요한 내용을 접어 두지 않는다.
+<strong>dropdown-menu.</strong> <code>bg-elevated</code>, 1px <code>border-subtle</code>, 모서리 <code>lg</code>, 안쪽 4px, <code>shadow-2</code>, 최소 폭 200px. 항목 44px, 모서리 <code>md</code>, hover <code>state-hover</code>. 위험 항목은 <code>fg-danger</code>이고 구분선 아래 맨 끝에 둔다. 열 때 연 버튼 쪽을 기준점(<code>transform-origin</code>, Radix는 <code>var(--radix-dropdown-menu-content-transform-origin)</code>)으로 <code>scale(0.95)</code> + 투명도 0에서 <code>duration-base</code> <code>ease-out</code>으로 나타나고, 닫힐 때는 <code>duration-fast</code>로 사라진다. 대화상자는 기준점을 가운데로 둔다. 키보드 단축키로 연 메뉴는 모션 없이 바로 연다.</p>
+<h2 id="dos-and-donts">Do&#39;s and Don&#39;ts</h2>
+<p><strong>Do</strong></p>
+<ul>
+<li>숫자 옆에 이유를 쓴다(&quot;식사 3끼를 드시지 않아 27,000원을 빼 드렸어요&quot;).</li>
+<li>Home의 모든 화면에 앱 밖 경로(전화, 프런트)를 둔다.</li>
+<li>보호자에게 보이는 정보 위에 회원님이 허락한 범위를 밝힌다.</li>
+<li>화면 코드는 의미 색(<code>bg-*</code>, <code>fg-*</code>, <code>border-*</code>, <code>primary</code>)만 부른다. 원자 램프는 새 의미 색을 만들 때만 쓴다.</li>
+<li>화면당 채운 버튼은 하나다.</li>
+<li>상태는 글자로 쓰고, 색은 그 글자를 돕기만 한다.</li>
+<li>회원·보호자에게는 해요체와 &quot;회원님&quot;, 직원 화면은 합쇼체 또는 명사형 라벨과 &quot;입주자&quot;를 쓴다.</li>
+<li>오류 문장은 &quot;무엇이 안 됐는지 → 무엇을 하면 되는지&quot; 순서로, 사용자 탓을 하지 않는다.</li>
+<li>데모 데이터는 가상임을 화면에 밝힌다.</li>
+</ul>
+<p><strong>Don&#39;t</strong></p>
+<ul>
+<li>판단 단어(낙상, 쓰러짐, 응급, 위험, 배회)를 화면에 쓰지 않는다. 관찰된 사실만 쓴다.</li>
+<li>점수, 등급, 단계 번호, 추천을 색이나 그래프로 만들지 않는다.</li>
+<li>입주자 상태를 빨강·초록·주황 신호등으로 칠하지 않는다.</li>
+<li>코발트를 장식이나 넓은 면에 쓰지 않는다. 노랑을 배경 면으로 쓰지 않는다.</li>
+<li><code>border-subtle</code>, <code>border-default</code>를 버튼이나 입력칸의 경계로 쓰지 않는다.</li>
+<li>그라디언트, 빛 번짐, 유리 효과, 질감, 이모지, 대문자 자간 라벨, 기울임 강조를 쓰지 않는다.</li>
+<li>카드에 그림자를 주지 않는다. 카드 안에 카드를 넣지 않는다.</li>
+<li>동의를 스위치나 미리 체크된 체크박스로 받지 않는다.</li>
+<li>지어낸 수치, 후기, 로고를 넣지 않는다.</li>
+<li>원티드를 비롯한 다른 회사의 색, 서체, 로고, 도메인 개념을 가져오지 않는다. 참고한 것은 문서의 구성 방식뿐이다.</li>
+</ul>
+<h2 id="responsive-behavior">Responsive Behavior</h2>
+<ul>
+<li><strong>접는 순서:</strong> 운영 표는 가로 스크롤(첫 열 고정) → 사이드바는 메뉴 시트 → 카드 그리드는 1단. Home·Family는 1024px 아래에서 보조 열을 본문 맨 아래로, 목록-상세를 목록 → 상세로, 타일을 2열 → 목록 행으로 접는다.</li>
+<li><strong>글자 확대:</strong> 브라우저 글자 200% 확대에서도 가로 스크롤 없이 읽혀야 한다(WCAG 1.4.4, 1.4.10). 크기는 rem으로만 쓴다.</li>
+<li><strong>안전 영역:</strong> 모바일 아래쪽 고정 버튼은 <code>padding-bottom: env(safe-area-inset-bottom)</code>를 더한다(<code>mobile-native</code> 스킬).</li>
+<li><strong>이미지:</strong> 사진은 쓰지 않는 것이 기본이다. 쓴다면 16:9 또는 4:3으로 자르고 <code>alt</code>에 사실을 쓴다. 소개 사이트는 &quot;소개 사이트 예외&quot; 절을 따른다.</li>
+</ul>
+<h2 id="accessibility">Accessibility</h2>
+<ul>
+<li>목표: WCAG 2.2 AA, Home 본문은 AAA 대비(7:1).</li>
+<li>모든 기능은 키보드로 쓸 수 있고, 포커스 순서가 보이는 순서와 같다. 포커스 링을 지우지 않는다.</li>
+<li>색만으로 뜻을 전하지 않는다. 오류는 아이콘 + 글자 + <code>aria-invalid</code> + <code>aria-describedby</code>.</li>
+<li>바뀌는 내용은 <code>aria-live</code>로 알리고(토스트 polite, 오류 assertive), 로딩 영역은 <code>aria-busy</code>.</li>
+<li>고대비 모드(<code>forced-colors: active</code>)에서 로고와 근거 밑줄은 <code>forced-color-adjust: none</code>으로 지킨다.</li>
+<li>시간 제한이 있는 화면(인증번호 등)은 연장 버튼을 둔다.</li>
+</ul>
+<h2 id="소개-사이트-예외">소개 사이트 예외</h2>
+<p>회원·보호자 대상 소개 사이트(<code>senior-lab/04-planning/ideas/evenstay-landing/</code>, 사용자 결정 U-01, U-07, 2026-11-04 &quot;모두 추천대로&quot;)에만 쓴다. <strong>앱 화면(Evenstay, Evenstay 홈, Evenstay 패밀리)에는 쓰지 않고, 앱 화면 규칙은 이 절로 바뀌지 않는다.</strong> 여기 적지 않은 것은 이 파일의 규칙을 그대로 따른다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>무엇</th>
+<th>앱 화면 규칙</th>
+<th>소개 사이트</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>자동 재생 영상</td>
+<td>자동 재생을 쓰지 않는다</td>
+<td>쓴다. 소리 없음, 키보드와 터치로 되는 일시정지 버튼. <code>prefers-reduced-motion: reduce</code>나 <code>Save-Data</code>면 영상을 받지 않고 포스터만 보인다</td>
+</tr>
+<tr>
+<td>사람 사진</td>
+<td>사진을 쓰지 않는 것이 기본</td>
+<td>쓴다. 가상 데모 인물이고 <code>alt</code>에 사실을 쓴다</td>
+</tr>
+<tr>
+<td>히어로 영상 전환</td>
+<td>UI 모션 300ms 이하</td>
+<td>약 1.6초 교차 전환, <code>ease-in-out</code>. 다음 장면은 지금 영상 끝 1.2초 전에 시작해 겹치고, 들어오는 장면은 1.035배에서 2.4초 동안 제자리로 온다. 좌우 이동은 없다. 움직임 줄이기에서는 확대와 자동 넘김 없이 포스터만 160ms로 바뀐다. 히어로 영상에만 쓰고 버튼, 메뉴, 시트 같은 UI 모션은 300ms 상한 그대로다</td>
+</tr>
+<tr>
+<td>히어로 지속 시간 띠</td>
+<td>정한 것 없음</td>
+<td>영상별 칸으로 나뉜 띠. 보이는 줄 4px, 칸마다 누르는 영역 높이 56px. 지금 칸이 재생 시간에 맞춰 선형으로 차고, 칸을 누르면 그 영상으로 간다. <code>button</code>이고 포커스 링을 유지한다</td>
+</tr>
+<tr>
+<td>히어로 화살표</td>
+<td>Home에서는 아이콘만 있는 버튼을 쓰지 않는다</td>
+<td>Lucide <code>chevron-left</code>, <code>chevron-right</code>, 글자 없는 아이콘 버튼. 보이는 크기 48px, 누르는 영역 56px. 접근성 이름은 카피를 쓴다</td>
+</tr>
+<tr>
+<td>자르기</td>
+<td>16:9 또는 4:3</td>
+<td>인물 카드는 4:5로 자른다. 히어로 영상의 640px 아래 화면도 4:5다</td>
+</tr>
+<tr>
+<td>일러스트 사용처</td>
+<td>빈 상태와 첫 사용 안내에만</td>
+<td>메인 섹션에도 쓴다(ILL-1 LND-02·SITE-ABOUT-01, ILL-2 LND-06, ILL-3 LND-07). 그림 안에 글자를 넣지 않고, 뜻은 본문이 말한다</td>
+</tr>
+<tr>
+<td>일러스트 색</td>
+<td>cobalt와 paper 램프 안</td>
+<td>ILL-1, ILL-2, ILL-3, 마스코트 두칸(MAS-1)은 <code>ink</code> 램프의 먹색과 <code>yellow</code> 200도 쓴다. 평면도, 약도는 cobalt와 paper 램프 안에 둔다</td>
+</tr>
+<tr>
+<td>마스코트</td>
+<td>정한 것 없음</td>
+<td>두칸 MAS-1 하나를 LND-08, LND-10 접수 뒤 안내, SITE-404-01에만 둔다. 얼굴 없이 자세로 표정을 내고, 말풍선과 대사는 없다</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>쓰지 않는 것: 붙박이 스크롤(LND-05 포함). 시니어가 화면 위치를 잃기 쉬워 U-01에서 뺐다.</li>
+<li>일러스트에 사람 얼굴, 노화를 과장한 모습, 의료 장면을 그리지 않는 규칙은 소개 사이트에도 그대로다. 그라디언트와 질감도 쓰지 않는다.</li>
+<li>먹색과 노랑 예외는 그림(ILL-1, ILL-2, ILL-3, MAS-1) 안의 색에만 해당한다. 소개 사이트의 글자, 버튼, 바탕 색 규칙은 바뀌지 않는다.</li>
+</ul>
+<h2 id="exports">Exports</h2>
+<p>세 파일은 <code>node design/system/build.mjs</code>가 이 파일 하나에서 만든다. 손으로 고치지 않는다.</p>
+<ul>
+<li><code>design/system/theme.css</code>: <code>npx @google/design.md export --format css-tailwind</code>의 결과. Tailwind v4 <code>@theme</code> 블록.</li>
+<li><code>design/system/tokens.css</code>: 같은 값을 <code>:root</code> 변수로 바꾸고, 내보내기가 빠뜨리는 줄 간격(<code>--text-*--line-height</code>)과 <code>.dark</code>에서 바뀌는 의미 색 층(<code>--bg-canvas</code>, <code>--primary</code> 등)을 더한 정적 HTML용 파일. 미리보기와 슬라이드가 읽는다.</li>
+<li><code>design/system/globals.css</code>: Next.js 앱용. Pretendard <code>@font-face</code>, shadcn/ui 변수(<code>--background</code>, <code>--primary</code> 등)와 <code>.dark</code> 짝, 줄 간격과 자간, 그림자와 모션 변수, Tailwind 기본 글자 크기 상향. 앱을 만들 때 <code>app/globals.css</code>로 옮기고 글꼴 경로를 고친다. shadcn 변수에는 값을 직접 넣는다(<code>--primary</code>가 같은 이름의 DESIGN.md 색을 <code>var()</code>로 부르면 순환한다).</li>
+<li><code>design/system/preview.html</code>: 토큰과 컴포넌트를 세 밀도, 라이트·다크로 보여 주는 확인 페이지. 글자 단계 값은 실행 중에 <code>tokens.css</code>에서 읽는다.</li>
+<li>바꾸는 순서: DESIGN.md 수정 → <code>npx @google/design.md lint DESIGN.md</code>(오류·경고 0) → <code>node design/system/build.mjs</code> → 미리보기 확인.</li>
+</ul>
+<h2 id="known-gaps">Known Gaps</h2>
+<ul>
+<li><strong>내보내기 한계:</strong> <code>@google/design.md</code>(alpha)의 <code>css-tailwind</code> 내보내기는 <code>lineHeight</code>, 그림자, 모션을 싣지 않는다. 그래서 줄 간격은 <code>build.mjs</code>가 이 파일의 YAML을 직접 읽어 채우고, 그림자와 모션 값은 <code>build.mjs</code> 안에 따로 적혀 있어 바꿀 때 본문 CSS 블록과 함께 고쳐야 한다.</li>
+<li><strong>그림자·모션 토큰:</strong> design.md 명세에 그림자와 모션 토큰 형식이 없어서 YAML이 아니라 본문 CSS 블록에 둔다.</li>
+<li><strong>다크 모드 검증 범위:</strong> 다크 값은 대비 계산으로 확인했고, 실제 기기(OLED, 저밝기)에서는 보지 않았다.</li>
+<li><strong>고령 이용자 검증 없음:</strong> 크기, 대비, 터치 영역은 기준(WCAG)과 내부 원칙에서 정한 [가설]이다. 70~80대 이용자 시험은 하지 않았다.</li>
+<li><strong>상표:</strong> &quot;Evenstay&quot; 상표는 KIPRIS·USPTO에서 확인하지 않았다 미확인.</li>
+<li><strong>원자 램프:</strong> 앵커를 뺀 단계는 OKLCH 보간으로 만든 값이라, 실제 화면에서 단계 간 차이를 눈으로 다시 맞춰야 할 수 있다.</li>
+</ul>
+<h2 id="references">References</h2>
+<ol>
+<li>google-labs-code/design.md README와 명세(alpha), <a href="https://github.com/google-labs-code/design.md" rel="noopener noreferrer" target="_blank">https://github.com/google-labs-code/design.md</a> , 2026-11-03 확인.</li>
+<li>원티드 몽타주 design.md(사용자 제공 <code>~/Downloads/wanted.md</code>, last_updated 2026-10-27). 구성(원자→의미 2층, 다크 짝, 글자 단계표, 컴포넌트 해부도, 반응형, Known Gaps, 출처)만 참고했다.</li>
+<li>Pretendard v1.3.9, <a href="https://github.com/orioncactus/pretendard" rel="noopener noreferrer" target="_blank">https://github.com/orioncactus/pretendard</a> (배포 안내 <a href="https://cactus.tistory.com/306" rel="noopener noreferrer" target="_blank">https://cactus.tistory.com/306</a> ), SIL OFL 1.1.</li>
+<li>WCAG 2.2, <a href="https://www.w3.org/TR/WCAG22/" rel="noopener noreferrer" target="_blank">https://www.w3.org/TR/WCAG22/</a> (1.4.3 대비, 1.4.4 글자 크기 조정, 1.4.10 리플로, 1.4.11 비텍스트 대비, 2.5.5·2.5.8 타깃 크기).</li>
+<li>emilkowalski/skills f1090be(2026-11-02), <code>emil-design-eng</code> 모션 기준, MIT.</li>
+<li>Tailwind CSS v4.1.13, shadcn/ui 테마 변수 규약. <code>max-w-*</code> 충돌은 2026-11-03 로컬 컴파일로 확인.</li>
+<li>Lucide 아이콘, <a href="https://lucide.dev" rel="noopener noreferrer" target="_blank">https://lucide.dev</a> , ISC.</li>
+</ol>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1081" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1082" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1083" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

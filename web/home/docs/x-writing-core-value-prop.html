@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>가치 제안 문장 — pms-core-billing | Evenstay 문서</title>
+<meta name="description" content="가치 제안 문장 — pms-core-billing. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>가치 제안 문장 — pms-core-billing</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#이용자별-가치-제안">이용자별 가치 제안</a></li><li class="lv2"><a href="#쓰임새별-짧은-문장">쓰임새별 짧은 문장</a></li><li class="lv2"><a href="#쓰지-않기로-한-문장-근거가-없어서">쓰지 않기로 한 문장 (근거가 없어서)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-830" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-831" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-832" data-tip="계약과 달마다 하나.">청구서</button></li></ul></section></aside>
+  <article class="doc"><p>원칙: 근거 없는 효과 수치는 쓰지 않는다. 데모로 보여줄 수 있는 사실만 쓴다.</p>
+<h2 id="이용자별-가치-제안">이용자별 가치 제안</h2>
+<p><strong>1. 운영 매니저 (U5, 챔피언)</strong>
+Evenstay는 소유주가 다른 시니어 레지던스와 임대주택을 같은 계약·청구 기준으로 운영하게 한다. 새 사업장을 추가해도 요금 항목과 감면 규칙만 정하면 바로 같은 방식으로 청구서가 나온다. 소유주 계정은 자기 사업장 숫자만 본다.</p>
+<p><strong>2. 경리·현장 직원 (U4, 사용자)</strong>
+월말에 식사 기록과 청구서를 맞추느라 표를 뒤지지 않아도 된다. 드시지 않은 식사는 규칙대로 감면되고, 청구 항목을 누르면 그 금액이 나온 기록이 보인다. 부부 중 한 분이 돌아가시면 계약 승계 한 번으로 요금과 이력이 함께 바뀐다.</p>
+<p><strong>3. 소유주·펀드 (재무 이해관계자)</strong>
+소유주 계정으로 들어오면 자기 사업장의 입주 현황, 청구, 수납만 보인다. 다른 소유주의 데이터는 처음부터 분리되어 있다.</p>
+<p><strong>4. 입주 회원 (U1, 명세서를 보는 사람)</strong>
+이번 달 내실 돈이 왜 이만큼인지 항목마다 이유가 적혀 있다. 드시지 않은 식사, 바뀐 요금, 맡기신 보증금을 쉬운 말로 볼 수 있다.</p>
+<p><strong>5. 보호자 (U3)</strong>
+부모님 청구서를 회원님이 허락한 범위에서 함께 볼 수 있다. 부모님이 직접 처리하기 어려워지면, 대신 처리하실 분으로 등록된 사람이 정해진 일만 할 수 있다.</p>
+<p><strong>6. 면접관·Tech Lead (포트폴리오 독자)</strong>
+[지원 회사] 공고의 PMS 핵심 도메인(고객, 사업장, Unit, 계약, 청구·수납)을 Multi-site 구조와 권한 모델로 먼저 설계하고, 시니어하우징 고유 규칙(의무식 감면, 사별 승계, 후견인 권한)을 그 위에 얹은 코어다. 계약은 상태 전이로, 청구는 원장으로, 변경은 이력으로 남는다.</p>
+<h2 id="쓰임새별-짧은-문장">쓰임새별 짧은 문장</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>쓰임</th>
+<th>문장</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>포트폴리오 한 줄 (README 첫 줄)</td>
+<td>소유주가 다른 여러 시니어 레지던스의 계약과 청구를 한 기준으로 처리하는 PMS 코어</td>
+</tr>
+<tr>
+<td>데모 시작 안내</td>
+<td>소유주 두 곳, 사업장 두 곳(시니어 레지던스, 임대주택)이 들어 있습니다. 부부 입주 계약부터 시작해 보세요.</td>
+</tr>
+<tr>
+<td>직원 첫 로그인 안내</td>
+<td>사업장과 호실이 준비되어 있습니다. 첫 입주 계약을 만들어 보세요.</td>
+</tr>
+<tr>
+<td>소유주 첫 로그인 안내</td>
+<td>소유하신 사업장의 입주 현황과 이번 달 청구가 보입니다.</td>
+</tr>
+<tr>
+<td>회원 청구서 상단</td>
+<td>이번 달 청구서가 나왔어요. 항목을 누르면 이유가 보여요.</td>
+</tr>
+<tr>
+<td>보호자 청구서 상단</td>
+<td>○○○ 회원님이 허락하신 청구서예요.</td>
+</tr>
+</tbody></table></div>
+<h2 id="쓰지-않기로-한-문장-근거가-없어서">쓰지 않기로 한 문장 (근거가 없어서)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>하고 싶은 말</th>
+<th>쓰지 않는 이유</th>
+<th>쓰려면 필요한 근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;월말 정산 시간을 절반으로&quot;</td>
+<td>측정한 적이 없다</td>
+<td>현장 직원의 실제 정산 시간 기록(전후 비교)</td>
+</tr>
+<tr>
+<td>&quot;청구 분쟁이 줄어듭니다&quot;</td>
+<td>측정한 적이 없다</td>
+<td>도입 전후 이의 제기 건수</td>
+</tr>
+<tr>
+<td>&quot;국내 유일의 시니어하우징 PMS&quot;</td>
+<td>검색에서 못 찾았을 뿐 확정이 아니다(P-017)</td>
+<td>시장 조사 확정 자료</td>
+</tr>
+</tbody></table></div>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-830" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-831" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-832" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

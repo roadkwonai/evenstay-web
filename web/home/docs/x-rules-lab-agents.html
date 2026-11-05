@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>다른 AI와 함께 작업하는 지침 | Evenstay 문서</title>
+<meta name="description" content="다른 AI와 함께 작업하는 지침. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>다른 AI와 함께 작업하는 지침</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-프로젝트-한눈에-보기">1. 프로젝트 한눈에 보기</a></li><li class="lv2"><a href="#2-진행-상황을-확인하는-순서">2. 진행 상황을 확인하는 순서</a></li><li class="lv2"><a href="#3-주제별-확인-파일">3. 주제별 확인 파일</a></li><li class="lv2"><a href="#4-파일을-올려서-쓰는-aichatgpt-웹-등">4. 파일을 올려서 쓰는 AI(ChatGPT 웹 등)</a></li><li class="lv2"><a href="#5-검토할-때-확인할-것">5. 검토할 때 확인할 것</a></li><li class="lv2"><a href="#6-함께-작업할-때-지킬-것">6. 함께 작업할 때 지킬 것</a></li><li class="lv2"><a href="#7-고치는-위치">7. 고치는 위치</a></li><li class="lv2"><a href="#8-아키텍처-페이지-제작">8. 아키텍처 페이지 제작</a></li><li class="lv2"><a href="#9-설치하고-사용한-스킬">9. 설치하고 사용한 스킬</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1149" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li></ul></section></aside>
+  <article class="doc"><p>ChatGPT, Codex, Gemini처럼 Claude Code가 아닌 AI가 이 프로젝트의 진행 상황을 확인하고 검토할 때 읽는 문서다. 규칙의 원본은 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a>이고, 이 문서는 무엇을 어떤 순서로 확인할지, 아키텍처 페이지와 도식을 어떻게 만드는지, 어떤 스킬을 설치하고 썼는지 정리한다. 2026-11-05 사용자 요청으로 추가했다.</p>
+<h2 id="1-프로젝트-한눈에-보기">1. 프로젝트 한눈에 보기</h2>
+<ul>
+<li>시니어 하우징 회사 지원용 포트폴리오다. 결과물은 기획 문서, 아트보드, 클릭형 프로토타입, 아키텍처 설계안까지다. MVP는 만들지 않는다.</li>
+<li>저장소가 둘이다. <code>senior-lab/</code>은 리서치와 기획, <code>evenstay/</code>는 디자인과 프로토타입이다. 같은 폴더에 있는 <code>senior-lab</code>과 <code>evenstay</code>다.</li>
+<li><strong>두 폴더 모두 git 저장소가 아니다.</strong> 변경 이력이 없어서 덮어쓰면 되돌릴 수 없다. 같은 파일을 두 AI가 동시에 고치지 않는다.</li>
+</ul>
+<h2 id="2-진행-상황을-확인하는-순서">2. 진행 상황을 확인하는 순서</h2>
+<p>아래 순서로 읽으면 현재 상태를 알 수 있다. 앞의 네 파일만 읽어도 전체 그림이 잡힌다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>순서</th>
+<th>파일</th>
+<th>여기서 확인할 것</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><a class="doc-ref" href="x-rules-lab-claude.html"><code>senior-lab/CLAUDE.md</code></a></td>
+<td>공통 규칙, 사실 표기, 시니어 서비스 원칙</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a class="doc-ref" href="x-process-idea-board.html"><code>senior-lab/shared/idea-board.md</code></a></td>
+<td>아이디어별 단계와 다음 행동</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a class="doc-ref" href="lab-decisions.html"><code>senior-lab/shared/decisions.md</code></a></td>
+<td>사용자가 정한 결정. 맨 아래가 최신이다. 여기 적힌 결정은 뒤집지 않는다</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>evenstay/docs/project.md</code></td>
+<td>서비스, 흐름, 기술 기준, 문구 관리 규칙</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>evenstay/docs/glossary.md</code></td>
+<td>용어, 화면 말, 쓰지 않는 말</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>evenstay/CLAUDE.md</code></td>
+<td>모듈 경계, 화면 원칙, 디자인 규칙</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>senior-lab/00-hub/reviews/</code></td>
+<td>날짜별 검토 기록과 결정 대기 항목</td>
+</tr>
+</tbody></table></div>
+<p>산출물이 승인됐는지는 제목 아래 <code>상태:</code> 줄을 본다. <code>상태: 초안</code>이면 사용자가 아직 승인하지 않은 문서다.</p>
+<h2 id="3-주제별-확인-파일">3. 주제별 확인 파일</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>주제</th>
+<th>원본</th>
+<th>웹에서 보기</th>
+<th>근거와 대조 기록</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>아키텍처, 기술 스택, 로드맵</td>
+<td><a class="doc-ref" href="lab-senior-housing-architecture-design.html"><code>senior-lab/01-research/outputs/senior-housing-architecture-design.md</code></a></td>
+<td><code>evenstay/design/prototype/home/architecture.html</code></td>
+<td><code>senior-lab/01-research/sources/arch-*.md</code>, <a class="doc-ref" href="lab-senior-housing-architecture.html"><code>senior-lab/01-research/outputs/senior-housing-architecture.md</code></a></td>
+</tr>
+<tr>
+<td>리서치와 문제 은행</td>
+<td><code>senior-lab/01-research/outputs/</code></td>
+<td><code>home/research.html</code></td>
+<td><code>senior-lab/01-research/sources/</code>, <code>notes/</code></td>
+</tr>
+<tr>
+<td>아이디어 평가</td>
+<td><code>senior-lab/02-ideation/outputs/</code></td>
+<td>없음</td>
+<td></td>
+</tr>
+<tr>
+<td>모듈 기획</td>
+<td><code>evenstay/docs/&lt;모듈&gt;/</code> (<code>prd.md</code>, <code>tech-design.md</code>, <code>user-stories.md</code>, <code>handoff.md</code>)</td>
+<td><code>home/docs.html</code></td>
+<td><code>senior-lab/04-planning/ideas/&lt;slug&gt;/</code></td>
+</tr>
+<tr>
+<td>화면 문구</td>
+<td><code>evenstay/design/prototype/strings/&lt;모듈&gt;.json</code></td>
+<td><code>index.html</code>, <code>app.html</code></td>
+<td><code>evenstay/docs/&lt;모듈&gt;/copy/copy.md</code></td>
+</tr>
+<tr>
+<td>디자인 값</td>
+<td><code>evenstay/DESIGN.md</code></td>
+<td><code>home/artboards.html</code></td>
+<td>없음</td>
+</tr>
+</tbody></table></div>
+<p>웹은 <code>evenstay/</code>에서 아래 명령으로 연 뒤 <a href="http://localhost:4173/" rel="noopener noreferrer" target="_blank">http://localhost:4173/</a> 에서 본다.</p>
+<pre><code>python3 -m http.server 4173 --directory design/prototype</code></pre>
+<h2 id="4-파일을-올려서-쓰는-aichatgpt-웹-등">4. 파일을 올려서 쓰는 AI(ChatGPT 웹 등)</h2>
+<p>폴더를 직접 읽지 못하면 사용자가 아래 파일을 올린다. 아키텍처를 검토할 때 필요한 최소 묶음이다.</p>
+<ol>
+<li><a class="doc-ref" href="x-rules-lab-claude.html"><code>senior-lab/CLAUDE.md</code></a></li>
+<li><a class="doc-ref" href="lab-decisions.html"><code>senior-lab/shared/decisions.md</code></a></li>
+<li><a class="doc-ref" href="lab-senior-housing-architecture-design.html"><code>senior-lab/01-research/outputs/senior-housing-architecture-design.md</code></a></li>
+<li><code>evenstay/docs/glossary.md</code></li>
+<li>필요하면 <a class="doc-ref" href="lab-senior-housing-architecture.html"><code>senior-lab/01-research/outputs/senior-housing-architecture.md</code></a>, <a class="doc-ref" href="lab-arch-gpt-crosscheck.html"><code>senior-lab/01-research/sources/arch-gpt-crosscheck.md</code></a></li>
+</ol>
+<p>아래 문장을 함께 붙여 넣는다.</p>
+<pre><code>올린 파일은 시니어 레지던스 운영 시스템의 설계안이고 구현물이 아닙니다.
+파일을 다시 쓰지 말고 검토 의견만 주세요. 이미 결정된 사항은 decisions.md에 있습니다.
+의견마다 위치(파일과 절), 문제, 근거 출처와 조회일, 고칠 내용, 심각도(높음/중간/낮음)를 적어 주세요.
+확인하지 못한 내용은 '미확인'이라고 쓰고, 없는 수치와 회사 내부 사정을 지어내지 마세요.</code></pre>
+<h2 id="5-검토할-때-확인할-것">5. 검토할 때 확인할 것</h2>
+<p><strong>사실과 근거</strong></p>
+<ul>
+<li>문장마다 [사실] [추정] [가설] [미정] [미확인]이 내용과 맞는가.</li>
+<li>통계, 정책, 회사 정보에 출처 URL과 기준 날짜가 있는가. 없는 수치, 인터뷰, 회사 내부 사정이 들어가지 않았는가.</li>
+<li>법령은 시행일과 개정 여부를 확인했는가. 법적 결론을 단정하지 않았는가.</li>
+<li>자주 바뀌는 값을 지금 기준으로 다시 봤는가. 프레임워크 버전, 클라우드 단가, Bedrock 모델의 서울 처리 범위가 해당한다.</li>
+</ul>
+<p><strong>내용이 서로 맞는지</strong></p>
+<ul>
+<li>단계, 비용, 도입 기준, 마일스톤, 영역별 로드맵이 절끼리 맞는가.</li>
+<li>설계안, <code>strings/architecture.json</code>, 도식 16장의 내용이 같은가.</li>
+<li><a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a>의 결정과 어긋나지 않는가.</li>
+</ul>
+<p><strong>지켜야 할 원칙</strong></p>
+<ul>
+<li>호출 접수는 건물 안에서 끝나고, 클라우드가 멈춰도 호출은 동작한다.</li>
+<li>의료, 응급, 금전, 계약 판단은 사람이 한다. 금전을 실행하는 AI 도구를 만들지 않는다.</li>
+<li>회원에게 보이는 답은 기록을 틀에 채워 만든다. 건강 소식이 보호자에게 가는 경로는 <code>family</code> 하나다.</li>
+<li>입주자와 보호자에게는 전화, 문자, 직원 대행, 보호자 대행 같은 앱 밖 경로가 있다.</li>
+<li>건강과 돌봄 정보는 민감정보로 다룬다. 수집은 최소로 하고 동의와 열람 권한을 설계한다.</li>
+<li>화면에 회사 이름, 이모지, 판단 단어(낙상, 응급, 위험 등)를 쓰지 않는다.</li>
+</ul>
+<p><strong>한국어</strong></p>
+<ul>
+<li>용어가 <code>evenstay/docs/glossary.md</code>와 맞는가. &quot;쓰지 않는 말&quot;이 남아 있지 않은가.</li>
+<li>번역투와 한국 개발 문서에서 쓰지 않는 말이 없는가. 원본 문서는 한다체, 웹 문장은 합쇼체다.</li>
+</ul>
+<h2 id="6-함께-작업할-때-지킬-것">6. 함께 작업할 때 지킬 것</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>할 수 있음</th>
+<th>사용자에게 물어야 함</th>
+<th>하지 않음</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>파일 읽기, 검토 노트 쓰기, 공식 자료 대조</td>
+<td>승인 문서 내용 변경, 범위 변경, 결정 번복</td>
+<td><code>상태: 승인</code> 표시, <code>shared/</code> 수정, MVP 구현</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>승인은 사용자만 한다. <code>shared/</code>는 허브 세션(<code>00-hub/</code>)이 고친다.</li>
+<li>검토 결과는 원본을 고치지 말고 <code>senior-lab/00-hub/reviews/&lt;주제&gt;-&lt;AI 이름&gt;-&lt;날짜&gt;.md</code>에 쓴다. 예: <code>architecture-chatgpt-2026-11-06.md</code>. 노트 맨 위에 읽은 파일과 조회일을 적는다.</li>
+<li>사용자가 직접 수정을 맡기면 고치기 전에 고칠 파일을 말한다. 다른 세션이 쓰는 중인지 사용자에게 확인한다.</li>
+<li><code>방법:</code> 줄과 보고에는 실제로 한 일만 적는다. Claude Code 스킬은 Claude Code에서만 호출된다. 다른 AI는 <code>방법: ChatGPT 검토</code>처럼 쓴다.</li>
+<li>외부 AI에 파일을 올리는 일은 사용자가 정한다. 데모 인물과 수치는 모두 가상이고, 실제 개인정보를 넣지 않는다.</li>
+</ul>
+<p><strong>허브에 요청하는 절차</strong></p>
+<p>사용자가 승인했거나 <code>shared/</code>, 다른 단계 문서의 수정이 필요할 때 쓴다. 허브에 요청은 사용자가 승인하거나 지시한 뒤에만 한다.</p>
+<ol>
+<li>사용자가 승인하면 대상 문서의 <code>상태:</code> 줄을 <code>상태: 승인(날짜)</code>로 바꾼다. 다른 AI는 이 줄을 고치지 않고 요청 파일에 적는다.</li>
+<li>요청에 아래 내용을 적는다.<ul>
+<li>사용자 말을 그대로 인용한 승인 또는 지시</li>
+<li>승인 대상 파일과, 승인이 포함하지 않는 것</li>
+<li><a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a>에 남길 내용(날짜, 결정, 이유, 근거)</li>
+<li><a class="doc-ref" href="x-process-idea-board.html"><code>shared/idea-board.md</code></a>에서 바꿀 내용이 있으면 그 내용</li>
+<li>다른 문서의 보강 요청(파일, 절, 무엇이 없는지)</li>
+<li>근거 파일</li>
+</ul>
+</li>
+<li>요청을 보낸다.<ul>
+<li>Claude Code 세션: 허브 세션에 <code>SendMessage</code>로 보내고, 세션 공유 노트가 있으면 같은 내용을 남긴다.</li>
+<li>다른 AI: 세션 메시지를 보낼 수 없다. <code>senior-lab/00-hub/reviews/hub-request-&lt;주제&gt;-&lt;AI 이름&gt;-&lt;날짜&gt;.md</code>에 쓰고, 사용자에게 허브에서 처리를 지시해 달라고 한다.</li>
+</ul>
+</li>
+<li>보낸 것과 처리된 것을 구분해 보고한다. 허브의 처리 결과는 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a>와 허브 보고로 확인한다.</li>
+</ol>
+<h2 id="7-고치는-위치">7. 고치는 위치</h2>
+<p>고치는 곳이 정해져 있다. 생성물을 직접 고치면 다음 빌드에서 사라진다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>고칠 것</th>
+<th>고칠 파일</th>
+<th>고친 뒤 (<code>evenstay/</code>에서 실행)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>아키텍처 설계 내용</td>
+<td>senior-lab 설계안, 그다음 <code>strings/architecture.json</code>과 도식 원본</td>
+<td><code>node design/home/build.mjs</code></td>
+</tr>
+<tr>
+<td>아키텍처 문장 하나</td>
+<td><code>evenstay/docs/project.md</code> 15절의 &quot;고칠 문장&quot; 칸</td>
+<td><code>node design/home/architecture/sync-text.mjs</code></td>
+</tr>
+<tr>
+<td>아키텍처 용어 전체</td>
+<td><code>evenstay/docs/glossary.md</code>의 &quot;쓰지 않는 말&quot;</td>
+<td><code>node design/home/architecture/sync-text.mjs</code></td>
+</tr>
+<tr>
+<td>프로토타입 화면 문장</td>
+<td><code>evenstay/design/prototype/strings/&lt;모듈&gt;.json</code></td>
+<td>없음</td>
+</tr>
+<tr>
+<td>메인 홈 문장</td>
+<td><code>evenstay/design/prototype/strings/home.json</code></td>
+<td><code>node design/home/build.mjs</code></td>
+</tr>
+</tbody></table></div>
+<p>손으로 고치지 않는 생성물: <code>design/prototype/index.html</code>, <code>design/prototype/home/*.html</code>, <code>design/prototype/home/docs/</code>, <code>design/prototype/home/architecture/</code>, <code>design/prototype/site/</code>.</p>
+<p>고친 뒤 검사는 아래 두 명령이다. 둘 다 <code>evenstay/</code>에서 돌린다.</p>
+<pre><code>node design/prototype/test/check-strings.mjs</code></pre>
+<pre><code>node design/home/architecture/check-terms.mjs</code></pre>
+<h2 id="8-아키텍처-페이지-제작">8. 아키텍처 페이지 제작</h2>
+<p>통합웹 페이지는 <code>design/prototype/home/architecture.html</code>이고 생성물이다. 아래 순서로 만든다. 2026-11-05 작업을 기준으로 적었다.</p>
+<ol>
+<li><strong>내용 확정.</strong> <a class="doc-ref" href="lab-senior-housing-architecture-design.html"><code>senior-lab/01-research/outputs/senior-housing-architecture-design.md</code></a>를 먼저 고친다. 나머지는 이 문서를 따라간다.</li>
+<li><strong>페이지 문장.</strong> <code>design/prototype/strings/architecture.json</code>을 고친다. 문장은 합쇼체이고 <code>[[용어]]</code>로 감싸면 용어집 단추가 된다. 감싼 말은 <a class="doc-ref" href="glossary.html"><code>docs/glossary.md</code></a>의 &quot;아키텍처 용어&quot;에 있어야 한다.</li>
+<li><strong>페이지 틀.</strong> 새 절이나 항목을 더할 때만 <code>design/home/build.mjs</code>의 <code>pageArchitecture</code>와 <code>design/prototype/home/assets/home.css</code>를 고친다.</li>
+<li><strong>도식.</strong> 아래 표의 원본을 고치고 도구별 명령으로 다시 만든다. 결과는 <code>design/prototype/home/architecture/</code>에 html과 png로 쌓인다.</li>
+<li><strong>빌드.</strong> <code>node design/home/build.mjs</code>로 페이지와 문서 페이지를 다시 만든다.</li>
+<li><strong>문장표.</strong> <code>node design/home/architecture/sync-text.mjs --list</code>로 <a class="doc-ref" href="project.html"><code>docs/project.md</code></a> 15절을 새로 쓴다.</li>
+<li><strong>검사.</strong> 7절의 두 명령과 <code>sloplint</code>를 돌리고, 데스크톱과 375px 폭을 브라우저로 본다.</li>
+</ol>
+<p><strong>도식 스킬 고르기</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>그릴 것</th>
+<th>스킬</th>
+<th>원본</th>
+<th>다시 만드는 명령</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>클라우드 구성, 서비스 로고가 들어가는 인프라</td>
+<td><code>stack-diagram</code></td>
+<td><code>design/home/architecture/stack/make.py</code></td>
+<td><code>stack/</code> 폴더에서 <code>./build.sh</code></td>
+</tr>
+<tr>
+<td>전체 구조, 신호 흐름, 상태 전이, 시퀀스처럼 따라가며 보는 흐름</td>
+<td><code>archify</code></td>
+<td><code>design/home/architecture/archify/&lt;id&gt;/candidate.json</code></td>
+<td>저장소 루트에서 <code>bash design/home/architecture/archify/build.sh</code></td>
+</tr>
+<tr>
+<td>문서에 넣는 표, 판단 흐름, 층 구조, 단계 비교</td>
+<td><code>diagram-design</code></td>
+<td><code>design/home/architecture/dd/&lt;id&gt;/diagram.py</code></td>
+<td><code>dd/</code> 폴더에서 <code>python3 build.py</code></td>
+</tr>
+</tbody></table></div>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>스킬</th>
+<th>도식</th>
+<th>출처와 설치 위치</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>stack-diagram</code></td>
+<td><code>stack-a1</code>, <code>stack-a2</code>, <code>stack-a5</code>, <code>stack-b</code>, <code>stack-c</code></td>
+<td><a href="https://github.com/caru-ini/stack-diagram" rel="noopener noreferrer" target="_blank">caru-ini/stack-diagram</a>, <code>01-research/.claude/skills/</code>. 공개 공유 기능 <code>share.py</code>는 뺐다</td>
+</tr>
+<tr>
+<td><code>archify</code></td>
+<td><code>arch-system</code>(구조), <code>arch-signal</code>, <code>arch-doc</code>(데이터 흐름), <code>arch-payment</code>(상태), <code>arch-agent</code>(시퀀스)</td>
+<td><a href="https://github.com/tt-a1i/archify" rel="noopener noreferrer" target="_blank">tt-a1i/archify</a>, 전역 <code>~/.claude/skills/</code>. 빌드 때 임시 사본에 Evenstay 색과 글꼴을 입힌다</td>
+</tr>
+<tr>
+<td><code>diagram-design</code></td>
+<td><code>dd-roadmap</code>, <code>dd-choose</code>, <code>dd-modules</code>, <code>dd-timing</code>, <code>dd-ai-route</code>, <code>dd-delivery</code></td>
+<td><a href="https://github.com/cathrynlavery/diagram-design" rel="noopener noreferrer" target="_blank">cathrynlavery/diagram-design</a>, <code>01-research/.claude/skills/</code></td>
+</tr>
+</tbody></table></div>
+<ul>
+<li><code>archify</code>는 라벨이 겹치거나 상자가 좁으면 빌드가 멈춘다. <code>finalize</code> 결과만으로 원인이 안 보이면 임시 사본의 <code>renderers/&lt;유형&gt;/render-&lt;유형&gt;.mjs</code>를 직접 돌리면 메시지가 나온다. 시퀀스는 참여자 7개까지 기본 폭에 맞는다.</li>
+<li>도식의 내용 기준은 설계안이다. <code>design/home/architecture/brief.md</code>는 처음 만들 때의 지시서라 옛 값이 남아 있다.</li>
+<li>웹 도식의 프레임 높이는 <code>strings/architecture.json</code>의 <code>figs.&lt;id&gt;.h</code>다. 도식 내용이 길어지면 함께 고친다.</li>
+<li>페이지 디자인은 <code>hallmark</code>를 쓴다. <a class="doc-ref" href="x-design-design-system.html"><code>DESIGN.md</code></a>가 잠긴 시스템이라 테마를 새로 뽑지 않고 앱 범위로 돌린다. 끝낼 때 <code>sloplint</code>로 FAIL 0을 확인한다.</li>
+<li>한국어 검수는 <code>grammar-checker</code>(맞춤법), <code>style-guide</code>(어조와 용어), <code>humanizer</code>(번역투) 순서로 한다.</li>
+</ul>
+<h2 id="9-설치하고-사용한-스킬">9. 설치하고 사용한 스킬</h2>
+<p>Claude Code 스킬은 Claude Code에서 Skill 도구로만 호출된다. 다른 AI는 호출할 수 없으니 이 표로 어떤 방법을 썼는지 파악한다.</p>
+<p>호출 횟수는 <code>evenstay/design/home/history/skills.json</code>의 집계다(2026-11-04 22:37 기준, 호출 ID로 중복 제거). 2026-11-05 아키텍처 작업은 집계 전이고, 이때 쓴 <code>stack-diagram</code>, <code>archify</code>, <code>diagram-design</code>은 숫자가 없다.</p>
+<p><strong>기획과 PM 스킬.</strong> 폴더마다 필요한 스킬만 <code>npx skills add</code>로 설치했다. 출처는 폴더별 <code>skills-lock.json</code>에 있다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>폴더</th>
+<th>스킬(호출 횟수)</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>00-hub</code></td>
+<td><code>prioritization-frameworks</code>(5), <code>strategy-red-team</code>(4), <code>pre-mortem</code>(3), <code>stakeholder-map</code>(1). 설치만: <code>retro</code>, <code>sprint-plan</code>, <code>summarize-meeting</code></td>
+<td><a href="https://github.com/phuryn/pm-skills" rel="noopener noreferrer" target="_blank">phuryn/pm-skills</a></td>
+</tr>
+<tr>
+<td><code>01-research</code></td>
+<td><code>competitor-analysis</code>(2), <code>deep-research</code>(1, 전역). 호출 기록 없음: <code>jobs-to-be-done</code>, <code>user-personas</code>. 설치만: <code>customer-research</code>, <code>mom-test</code>, <code>interview-script</code>, <code>summarize-interview</code></td>
+<td>pm-skills, <a href="https://github.com/wondelai/skills" rel="noopener noreferrer" target="_blank">wondelai/skills</a>, <a href="https://github.com/coreyhaines31/marketingskills" rel="noopener noreferrer" target="_blank">coreyhaines31/marketingskills</a></td>
+</tr>
+<tr>
+<td><code>02-ideation</code></td>
+<td>호출 기록 없음: <code>brainstorm-ideas-new</code>, <code>opportunity-solution-tree</code>, <code>value-proposition</code>, <code>identify-assumptions-new</code></td>
+<td>pm-skills</td>
+</tr>
+<tr>
+<td><code>03-copywriting</code></td>
+<td><code>copywriting</code>(52), <code>copy-editing</code>(51), <code>product-marketing</code>(7), <code>value-prop-statements</code>(6), <code>product-name</code>(4)</td>
+<td>marketingskills, pm-skills</td>
+</tr>
+<tr>
+<td><code>04-planning</code></td>
+<td><code>create-prd</code>(58), <code>user-stories</code>(47), <code>service-blueprint</code>(36), <code>outcome-roadmap</code>(28), <code>product-strategy</code>(17), <code>north-star-metric</code>(2)</td>
+<td>pm-skills, <a href="https://github.com/Owl-Listener/designer-skills" rel="noopener noreferrer" target="_blank">Owl-Listener/designer-skills</a></td>
+</tr>
+<tr>
+<td><code>05-portfolio</code></td>
+<td>설치만: <code>case-study</code>, <code>presentation-deck</code>, <code>review-resume</code></td>
+<td>designer-skills, pm-skills</td>
+</tr>
+</tbody></table></div>
+<p>&quot;호출 기록 없음&quot;은 산출물의 <code>방법:</code> 줄에는 이름이 있는데 대화 기록에서 호출을 찾지 못한 스킬이다. 실제로 호출했다고 단정하지 않는다.</p>
+<p><strong>디자인 스킬.</strong> <code>evenstay/.claude/skills/</code>에 설치했다. 출처와 버전은 그 폴더의 <code>SOURCES.txt</code>에 있고, 작업별 사용 규칙은 <code>evenstay/CLAUDE.md</code>의 &quot;디자인 스킬 사용 지침&quot;을 따른다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>묶음</th>
+<th>호출한 스킬(횟수)</th>
+<th>설치만 한 스킬</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>화면 제작</td>
+<td><code>hallmark</code>(30), <code>web-design-engineer</code>(12), <code>landing-page-design</code>(4), <code>build-awwwards-quality-sites</code>(3)</td>
+<td><code>tastemaker</code></td>
+<td>Nutlope/hallmark, ConardLi/garden-skills, elayadesign/ai-design-skills, MengTo/Skills, codeswithroh/tastemaker</td>
+</tr>
+<tr>
+<td>시각 검수</td>
+<td><code>critique-visual-hierarchy</code>(36), <code>critique-information-density</code>(25), <code>critique-affordance</code>(22), <code>critique-typography</code>(16), <code>critique-composition</code>(15), <code>critique-brand-consistency</code>(9), <code>critique-color</code>(9)</td>
+<td>없음</td>
+<td>Owl-Listener/designer-skills</td>
+</tr>
+<tr>
+<td>UI 설계 원칙</td>
+<td><code>responsive-design</code>(16), <code>platform-conventions</code>(9), <code>layout-grid</code>(4), <code>law-of-common-region</code>(2), <code>readable-measure</code>(2), <code>color-system</code>(1), <code>spacing-system</code>(1), <code>typography-scale</code>(1), <code>visual-hierarchy</code>(1)</td>
+<td>나머지 10종</td>
+<td>Owl-Listener/designer-skills</td>
+</tr>
+<tr>
+<td>모션</td>
+<td><code>emil-design-eng</code>(9)</td>
+<td>나머지 11종</td>
+<td>emilkowalski/skills</td>
+</tr>
+<tr>
+<td>인터페이스 검수</td>
+<td><code>better-accessibility</code>(1), <code>better-ui</code>(1), <code>review-animations</code>(1)</td>
+<td>나머지 7종</td>
+<td>jakubkrehel/skills, emilkowalski/skills</td>
+</tr>
+</tbody></table></div>
+<p><strong>전역 스킬.</strong> <code>~/.claude/skills/</code>에 있고 어느 폴더에서나 쓴다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>쓰임</th>
+<th>스킬(호출 횟수)</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>한국어 검수</td>
+<td><code>grammar-checker</code>(101), <code>humanizer</code>(52), <code>style-guide</code>(50), <code>humanize-korean:humanize-korean</code>(1)</td>
+<td><a href="https://github.com/DaleSeo/korean-skills" rel="noopener noreferrer" target="_blank">DaleSeo/korean-skills</a>, 플러그인 humanize-korean</td>
+</tr>
+<tr>
+<td>이미지와 영상</td>
+<td><code>gpt-image-api</code>(6), <code>gpt-image</code>(4), <code>higgsfield-generate</code>(1), <code>higgsfield-soul-id</code>(1)</td>
+<td>설치 기록 없음</td>
+</tr>
+</tbody></table></div>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1149" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

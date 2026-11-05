@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product Marketing Context — community (커뮤니티: 프로그램·공용 시설·공지) | Evenstay 문서</title>
+<meta name="description" content="Product Marketing Context — community (커뮤니티: 프로그램·공용 시설·공지). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>Product Marketing Context — community (커뮤니티: 프로그램·공용 시설·공지)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#읽는-법">읽는 법</a></li><li class="lv2"><a href="#product-overview">Product Overview</a></li><li class="lv2"><a href="#target-audience">Target Audience</a></li><li class="lv2"><a href="#personas">Personas</a></li><li class="lv2"><a href="#problems-pain-points">Problems &amp; Pain Points</a></li><li class="lv2"><a href="#competitive-landscape">Competitive Landscape</a></li><li class="lv2"><a href="#differentiation">Differentiation</a></li><li class="lv2"><a href="#objections">Objections</a></li><li class="lv2"><a href="#switching-dynamics">Switching Dynamics</a></li><li class="lv2"><a href="#customer-language">Customer Language</a></li><li class="lv2"><a href="#brand-voice">Brand Voice</a></li><li class="lv2"><a href="#proof-points">Proof Points</a></li><li class="lv2"><a href="#goals">Goals</a></li><li class="lv2"><a href="#learnings">Learnings</a></li><li class="lv2"><a href="#changelog">Changelog</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-949" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-950" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-951" data-tip="저장은 자원 예약(RESERVATION)">시설 예약</button></li><li><button class="term" type="button" data-modal="g-952" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-953" data-tip="확인을 받는 공지.">중요 공지</button></li><li><button class="term" type="button" data-modal="g-954" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-955" data-tip="규칙이 바뀌면 다음 예약 때 다시 보인다">이용 규칙</button></li></ul></section></aside>
+  <article class="doc"><blockquote>
+<p>이 모듈은 <strong>포트폴리오용 MVP</strong>의 새 모듈(N2)이다. 실제 고객, 실적, 후기, 강사, 참여 인원은 없다 [사실]. 아래 &quot;고객 언어&quot;는 인터뷰 원문이 아니고 리서치와 다른 모듈 카피를 바꿔 쓴 것이다 [사실]. 원문이 필요한 곳은 <code>[NEED: ...]</code>로 남겼다.</p>
+</blockquote>
+<h2 id="읽는-법">읽는 법</h2>
+<ul>
+<li>문장 끝의 **[사실]**은 출처나 기존 확정 문서에서 확인한 것, **[추정]**은 이 문서의 해석, **[가설]**은 기획에서 확인할 제안, **[미정]**은 사용자가 정할 것이다.</li>
+<li>화면에 들어갈 말(라벨, 예문)은 카피 제안이라 태그를 붙이지 않는다. 그 말이 기대는 사실에만 태그를 붙인다.</li>
+<li>모듈 이름은 <code>names.md</code> 1절에서 정한 것(직원 화면 <strong>프로그램·시설·공지</strong>, 회원 화면 버튼 <strong>프로그램</strong>, <strong>시설 예약</strong>, <strong>공지</strong>)이다 (사용자 &quot;모두 추천대로&quot; 2026-11-04).</li>
+</ul>
+<h2 id="product-overview">Product Overview</h2>
+<p><strong>One-liner:</strong> 레지던스의 여가 프로그램 신청과 출석, 공용 시설 예약, 사업장 공지를 한 일정표와 한 게시판으로 묶는 모듈.
+<strong>What it does:</strong> 직원이 프로그램(수채화, 가벼운 체조, 텃밭 가꾸기 같은 반복 모임)을 등록하고 정원을 정하면, 회원은 앱이나 프런트 전화로 신청하고 자리가 없으면 대기 순서를 받는다. 모임방 같은 공용 시설은 같은 시간에 두 예약이 들어가지 않게 받는다. 사업장 공지는 동·층별로 올리고, 꼭 봐야 할 공지는 회원이 &quot;읽었어요&quot;를 눌렀는지 직원이 본다 [사실: 허브 요약, coverage review 4-1 N2 행].
+<strong>Product category:</strong> 시니어 리빙 입주자 앱의 활동 달력·활동 신청·출석·공지 기능 [사실: Touchtown 활동 달력·공지(R10), LifeLoop 활동 신청·직원 앱 출석(R11)]. 국내에서 찾는 말로는 &quot;프로그램 신청&quot;, &quot;시설 예약&quot;, &quot;공지사항&quot; [추정].
+<strong>Product type:</strong> Evenstay 코어 위에 붙는 모듈. 직원 화면(Evenstay), 회원 화면(Evenstay 홈), 보호자 화면(Evenstay 패밀리, 일정 허락 범위 안)에 걸친다.
+<strong>Business model:</strong> 포트폴리오에서는 해당 없음.</p>
+<h2 id="target-audience">Target Audience</h2>
+<p><strong>Target companies:</strong> 시니어하우징(노인복지주택)과 임대주택을 위탁 운영하는 회사 [사실: 코어와 같음].
+<strong>Decision-makers:</strong> 사업장 책임자(시설장), 프로그램을 맡는 생활 지원 담당. 기술 판단은 Tech Lead.
+<strong>Primary use case:</strong> 프로그램과 공용 시설의 자리를 종이 명단과 전화 대신 한 일정표에서 나누고, 공지가 닿았는지 확인한다.
+<strong>Jobs to be done:</strong></p>
+<ul>
+<li>회원: 이번 주 무엇이 있는지 보고, 가고 싶은 것을 신청하고, 자리가 없으면 몇 번째로 기다리는지 알고 싶다.</li>
+<li>생활 지원 담당: 정원, 대기, 출석을 한 화면에서 관리하고 싶다. 같은 방에 모임이 두 개 잡히지 않게 하고 싶다.</li>
+<li>책임자·프런트: 단수나 점검처럼 꼭 알려야 할 일이 모든 호실에 닿았는지 알고, 못 본 분께는 직접 전하고 싶다.
+<strong>Use cases:</strong></li>
+<li>회원이 Evenstay 홈에서 목요일 수채화를 신청 → 정원 8명이 차 있어 대기 첫 번째 → 다른 회원이 취소 → 신청으로 올라가고 문자로 알림</li>
+<li>회원이 프런트에 전화해 모임방을 예약하려 함 → 그 시간에 수채화가 있어 겹침 → 비어 있는 시간을 안내받아 직원이 대신 예약</li>
+<li>생활 지원 담당이 체조가 끝나고 출석을 체크 → 출석 기록은 보호자 생활 소식의 재료가 됨(D)</li>
+<li>책임자가 &quot;11월 21일 오전 A동 단수&quot; 중요 공지를 올림 → 확인 전인 호실을 프런트가 전화나 방문으로 직접 전하고 기록</li>
+<li>딸(보호자)이 Evenstay 패밀리 일정에서 어머니가 신청한 프로그램 날짜를 봄(회원이 &quot;일정&quot;을 허락한 경우, D 일정 항목에 신청 프로그램을 더함. 사용자 &quot;모두 추천대로&quot; 2026-11-04. D 문서 반영은 D 몫)</li>
+</ul>
+<h2 id="personas">Personas</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Cares about</th>
+<th>Challenge</th>
+<th>Value we promise</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>사용자: 입주 회원(U1)</td>
+<td>이번 주 할 일을 고르는 것, 자리를 놓치지 않는 것</td>
+<td>게시판 종이와 프런트 전화로만 일정을 안다 [추정]</td>
+<td>큰 글씨 일정표에서 신청하고 대기 순서를 본다. 전화로 해도 같은 명단에 들어간다</td>
+</tr>
+<tr>
+<td>사용자: 생활 지원 담당(U4)</td>
+<td>정원, 대기, 출석, 방 겹침</td>
+<td>신청 명단을 종이로 받아 옮겨 적는다 [추정. NEED: 현장 직원 인터뷰]</td>
+<td>프로그램마다 신청·대기·출석이 한 화면에 있고 방 겹침은 저장할 때 막힌다</td>
+</tr>
+<tr>
+<td>사용자: 프런트 직원(U4)</td>
+<td>전화로 받은 신청과 예약</td>
+<td>누가 신청했는지 담당에게 다시 묻는다 [추정]</td>
+<td>대신 신청, 대신 예약 버튼이 있다</td>
+</tr>
+<tr>
+<td>챔피언: 사업장 책임자</td>
+<td>중요한 안내가 빠짐없이 닿는 것</td>
+<td>공지를 붙여도 누가 봤는지 모른다 [추정]</td>
+<td>중요 공지의 확인 전 호실 목록과 직접 전함 기록</td>
+</tr>
+<tr>
+<td>보호자(U3)</td>
+<td>부모님이 어떤 모임에 가시는지</td>
+<td>전화로 물어야 안다 [추정]</td>
+<td>회원이 일정을 허락하면 신청한 프로그램 날짜가 보인다 [가설]</td>
+</tr>
+<tr>
+<td>기술 영향자: Tech Lead</td>
+<td>정원·대기 순서의 동시성, 자원 예약 겹침, 공지 대상과 확인</td>
+<td>신청이 앱·전화·직원 세 길로 동시에 들어온다</td>
+<td>한 자원 예약 모델에 프로그램 회차와 시설 예약을 함께 올려 겹침을 한 규칙으로 막는다 [가설: 기획에서 설계. Mews Resource/Reservation 모델 참고는 coverage review 4-1 N2 행]</td>
+</tr>
+</tbody></table></div>
+<h2 id="problems-pain-points">Problems &amp; Pain Points</h2>
+<p><strong>Core problem:</strong> Evenstay에는 프로그램 일정, 신청, 정원, 출석과 공용 시설 예약, 입주자 공지가 하나도 없다. 다른 모듈은 이 데이터를 가리키기만 한다: D 생활 소식의 &quot;프로그램&quot; 재료는 시드이고 프로그램 일정은 D의 다음 버전이며, 비서는 &quot;프로그램 일정은 제가 아직 몰라요&quot;라고 답한다 [사실: coverage review S27·S28 행, D <code>prd.md</code> 다음 버전, G copy 도구 밖 질문].
+<strong>Why alternatives fall short:</strong></p>
+<ul>
+<li>게시판 종이와 신청 명단: 정원과 대기 순서가 사람 손에 달려 있고, 프런트 전화 신청이 명단에 늦게 옮겨진다 [추정].</li>
+<li>아파트 관리 앱의 시설 예약·공지: 반복 프로그램, 정원·대기, 출석이 없다 [추정].</li>
+<li>해외 입주자 앱(Touchtown, LifeLoop): 활동 달력·신청·출석은 있으나 한국어·국내 시설 운영에 맞지 않는다 [사실: 기능은 R10·R11, 맞지 않음은 추정].
+<strong>What it costs them:</strong> 정원을 넘긴 신청, 같은 방에 겹친 모임, 단수 공지를 못 본 호실 [추정. NEED: 현장 직원 인터뷰의 실제 사례].
+<strong>Emotional tension:</strong> 회원은 &quot;가고 싶은데 자리가 있는지 모르겠다&quot;, 직원은 &quot;이 분이 공지를 들으셨는지 모르겠다&quot; 사이에 있다 [추정].</li>
+</ul>
+<p>근거의 한계: 이 모듈의 연결 근거인 고립·우울 통계(P-029 독거 32.8%, P-030 80세 이상 우울 위험군 11.3%)는 지역사회 전체의 숫자다 [사실: problem-bank]. 프로그램이 고립이나 우울을 줄인다는 근거는 이 워크스페이스에 없다. 카피에는 효과를 쓰지 않는다.</p>
+<h2 id="competitive-landscape">Competitive Landscape</h2>
+<p><strong>Direct:</strong> 해외 시니어 리빙 입주자 앱의 활동 달력·신청·출석·공지(Touchtown R10, LifeLoop R11) — 한국어와 국내 시설 운영 방식에 맞지 않는다 [추정].
+<strong>Secondary:</strong> 국내 아파트 관리 앱의 커뮤니티 시설 예약·공지 — 반복 프로그램, 정원·대기, 출석이 없다 [추정].
+<strong>Indirect:</strong> 1층 게시판, 신청 명단 종이, 프런트 전화, 단체 메신저 방 — 정원과 겹침을 사람이 맞춰야 하고 공지가 닿았는지 남지 않는다 [추정].</p>
+<h2 id="differentiation">Differentiation</h2>
+<p><strong>Key differentiators:</strong></p>
+<ul>
+<li>앱, 프런트 전화, 직원 대신 신청이 같은 정원과 같은 대기 순서를 쓴다. 먼저 들어온 신청이 먼저다.</li>
+<li>프로그램 회차와 시설 예약이 같은 방 일정을 쓴다. 수채화가 있는 시간에 모임방 예약이 들어가지 않는다.</li>
+<li>취소가 생기면 대기 첫 번째가 신청으로 올라가고 문자로 알린다. 마감 뒤에 난 자리는 직원이 대기 순서대로 전화한다 (사용자 &quot;모두 추천대로&quot; 2026-11-04).</li>
+<li>중요 공지는 &quot;읽었어요&quot; 확인을 받고, 확인 전 호실은 직원이 직접 전한 뒤 기록한다. 앱을 쓰지 않는 회원도 빠지지 않는다.</li>
+<li>출석은 운영 기록이다. 회원 평가, 참여율 순위, 신청 제한에 쓰지 않는다.
+<strong>How we do it differently:</strong> 화면보다 자원(방)과 회차, 정원, 대기 순서의 규칙을 먼저 정한다 [가설: 기획에서 설계].
+<strong>Why that&#39;s better:</strong> 신청 경로가 셋이어도 같은 자리, 같은 방 시간이 두 사람에게 가지 않는다 [추정].
+<strong>Why customers choose us:</strong> [NEED: 실제 도입 근거 없음. 포트폴리오에서는 설계 근거로 대신한다]</li>
+</ul>
+<h2 id="objections">Objections</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Objection</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>회원이 앱으로 신청을 못 한다</td>
+<td>앱은 여러 길 중 하나다. 프런트 전화와 지나가는 직원에게 말하면 직원이 대신 신청하고, 회원 화면에는 &quot;최민수 직원이 대신 신청했어요&quot;로 보인다</td>
+</tr>
+<tr>
+<td>출석 체크가 감시처럼 느껴진다</td>
+<td>출석은 다음 회차 준비와 보호자 생활 소식 재료로만 쓴다. 회원 화면과 보호자 화면에 횟수나 비율을 보이지 않고, 오지 않은 것을 회원에게 따로 알리지 않는다</td>
+</tr>
+<tr>
+<td>공지 &quot;읽었어요&quot;를 강요하나</td>
+<td>중요 공지에만 받는다. 누르지 않아도 불이익이 없고, 직원이 직접 전한 기록으로 대신한다</td>
+</tr>
+<tr>
+<td>찾는 분이 많은 프로그램 자리를 한 사람이 여러 회차 차지한다</td>
+<td>정원과 대기 순서만 둔다. 한 사람이 신청할 수 있는 수 제한은 두지 않는다. 사업장 설정으로 둘지는 기획에서 정한다 [가설]</td>
+</tr>
+<tr>
+<td><strong>Anti-persona:</strong> 강좌 수강료 결제, 강사 관리·급여, 외부 회원 모집까지 원하는 운영사. 이 모듈은 입주자 대상 무료 프로그램과 공용 시설만 다룬다. 재료비 청구는 다음 버전이다 (사용자 &quot;모두 추천대로&quot; 2026-11-04).</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h2 id="switching-dynamics">Switching Dynamics</h2>
+<p><strong>Push:</strong> 종이 명단 옮겨 적기, 겹친 방 예약, 공지를 못 들었다는 회원 [추정].
+<strong>Pull:</strong> 자리가 남았는지, 몇 번째로 기다리는지 회원이 직접 보는 일정표.
+<strong>Habit:</strong> 1층 게시판과 프런트 전화. 이 습관은 없애지 않는다. 게시판 공지는 그대로 붙이고 [가설], 전화 신청은 직원이 대신 넣는다.
+<strong>Anxiety:</strong> 직원 입장에서 &quot;출석까지 입력할 일이 는다&quot;, 회원 입장에서 &quot;앱으로만 신청하라고 하면 어쩌나&quot; [추정].</p>
+<h2 id="customer-language">Customer Language</h2>
+<p><strong>How they describe the problem:</strong> [NEED: 입주자·생활 지원 담당 인터뷰 원문]. 리서치와 기존 카피에서 바꿔 쓴 표현:</p>
+<ul>
+<li>입주자: &quot;오늘 무슨 프로그램 있어요?&quot;(G 카피 도구 밖 질문 예), &quot;목요일 그림 그리는 거 자리 있어요?&quot;, &quot;물 안 나오는 날이 언제라고요?&quot; [추정]</li>
+<li>직원: &quot;이번 주 수채화 몇 명이에요?&quot;, &quot;모임방 그 시간에 비어요?&quot; [추정]
+<strong>How they describe us:</strong> [NEED: 데모 피드백]
+<strong>Words to use:</strong></li>
+<li>직원용: 프로그램, 회차, 정원, 신청, 대기, 대기 순서, 출석, 공용 시설, 시설 예약, 이용 규칙, 공지, 중요 공지, 확인 전, 확인함, 직접 전함, 대신 신청, 대신 예약</li>
+<li>회원용: 프로그램, 신청하기, 자리, 기다리기, ○번째로 기다리고 계세요, 시설 예약, 비어 있는 시간, 공지, 꼭 보실 공지, 읽었어요
+<strong>Words to avoid:</strong> 모든 화면에서 &quot;고립&quot;, &quot;외로움 해소&quot;, &quot;치매 예방&quot;, &quot;건강 개선&quot;, &quot;활동량&quot;, &quot;참여율&quot;, &quot;적극적&quot;, &quot;소극적&quot;, &quot;결석&quot;, &quot;노쇼&quot;, &quot;불참자&quot;, &quot;미확인자&quot;, &quot;낙상&quot;, &quot;응급&quot;, &quot;위험&quot;, &quot;판정&quot;, &quot;노인&quot;. 회원 화면에서 &quot;커뮤니티&quot;, &quot;클래스&quot;, &quot;슬롯&quot;, &quot;웨이팅&quot;, &quot;RSVP&quot;. 버전을 말할 때 &quot;판&quot;을 쓰지 않는다. &quot;미확인&quot;은 근거 태그와 헷갈려 화면에 쓰지 않고 &quot;확인 전&quot;으로 쓴다.</li>
+</ul>
+<p><strong>Glossary (도메인 용어 → 직원 화면 → 회원 화면 → 보호자 화면):</strong> 코어 규칙을 그대로 따른다. 직원 화면은 &quot;입주자&quot;, 회원에게는 &quot;회원님&quot;, 보호자 화면은 &quot;○○○ 회원님&quot;이다. 직원 화면에서 &quot;회원&quot;은 쓰지 않는다 [사실: 코어 Glossary, 2026-11-03 확정]. 겹치는 말(입주자, 호실, 사업장, 대리인, 변경 이력)은 코어 표기를 그대로 쓴다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>도메인(코드)</th>
+<th>직원 화면</th>
+<th>회원 화면</th>
+<th>보호자 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Program (반복 모임의 틀)</td>
+<td>프로그램</td>
+<td>프로그램</td>
+<td>프로그램</td>
+</tr>
+<tr>
+<td>ProgramSession (한 번의 모임)</td>
+<td>회차</td>
+<td>(날짜와 시각으로만: &quot;11월 19일 목요일 오후 2시&quot;)</td>
+<td>같음</td>
+</tr>
+<tr>
+<td>Capacity</td>
+<td>정원</td>
+<td>자리 (&quot;자리 8개 중 2개 남았어요&quot;)</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>Enrollment</td>
+<td>신청</td>
+<td>신청</td>
+<td>(신청한 회차만 일정에 보임)</td>
+</tr>
+<tr>
+<td>Waitlist position</td>
+<td>대기 ○번</td>
+<td>○번째로 기다리고 계세요</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>Attendance</td>
+<td>출석 (참여 / 오지 않음)</td>
+<td>(참여한 회차만 &quot;함께하셨어요&quot;)</td>
+<td>(D 생활 소식 문장으로만)</td>
+</tr>
+<tr>
+<td>Facility (Resource)</td>
+<td>공용 시설</td>
+<td>시설</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>FacilityReservation</td>
+<td>시설 예약</td>
+<td>예약</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>FacilityRule</td>
+<td>이용 규칙</td>
+<td>이용 규칙</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>Notice</td>
+<td>공지</td>
+<td>공지</td>
+<td>공지 (직원이 보호자에게도 보이기를 고른 것만, 기본값 끔. 사용자 &quot;모두 추천대로&quot; 2026-11-04)</td>
+</tr>
+<tr>
+<td>Notice.requiresAck</td>
+<td>중요 공지 (확인 받기)</td>
+<td>꼭 보실 공지</td>
+<td>(확인 받지 않음)</td>
+</tr>
+<tr>
+<td>NoticeAck</td>
+<td>확인함 / 확인 전 / 직접 전함</td>
+<td>읽었어요</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>Audience</td>
+<td>대상 (전체, A동, B동, 층)</td>
+<td>(표시 안 함)</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>Representative (코어)</td>
+<td>대리인</td>
+<td>대신 처리하실 분</td>
+<td>대신 처리하실 분</td>
+</tr>
+<tr>
+<td>Guardian (D)</td>
+<td>보호자</td>
+<td>함께 보실 분</td>
+<td>(본인)</td>
+</tr>
+</tbody></table></div>
+<p>용어 메모</p>
+<ul>
+<li>&quot;커뮤니티&quot;는 slug와 문서 제목, 면접 자료에서만 쓴다. 화면에는 쓰지 않는다 [가설: <code>names.md</code> 1절].</li>
+<li>출석의 &quot;오지 않음&quot;은 직원 화면에만 있다. &quot;결석&quot;, &quot;불참&quot;은 학교·직장 평가처럼 읽혀 쓰지 않는다.</li>
+<li>공지를 회원이 열어 본 것(열람)과 &quot;읽었어요&quot;를 누른 것(확인)을 나눈다. 직원 화면에는 확인만 보인다 [가설: 열람 기록을 남길지 기획에서].</li>
+</ul>
+<h2 id="brand-voice">Brand Voice</h2>
+<p>코어 목소리(차분하다, 존중한다, 근거를 보인다, 기록이 남는다)를 그대로 쓴다 [사실: <code>senior-lab/03-copywriting/ideas/pms-core-billing/product-marketing.md</code>]. 이 모듈에서 더하는 것만 적는다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Means</th>
+<th>Doesn&#39;t mean</th>
+<th>Example line</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>고르는 사람은 회원님</td>
+<td>권하지 않고 일정과 자리만 알린다</td>
+<td>&quot;참여해 보세요!&quot;, &quot;놓치지 마세요&quot; 같은 재촉</td>
+<td>&quot;이번 주 프로그램이에요. 가고 싶으신 것을 누르세요.&quot;</td>
+</tr>
+<tr>
+<td>자리를 숫자로 말한다</td>
+<td>남은 자리와 대기 순서를 그대로 보인다</td>
+<td>&quot;인기 폭발&quot;, &quot;마감 임박&quot;</td>
+<td>&quot;자리가 다 찼어요. 기다리시면 첫 번째예요.&quot;</td>
+</tr>
+<tr>
+<td>출석은 기록일 뿐</td>
+<td>직원 화면에 참여·오지 않음만 남긴다</td>
+<td>회원에게 횟수, 비율, 칭찬, 걱정</td>
+<td>(회원 화면) &quot;11월 19일 수채화에 함께하셨어요.&quot;</td>
+</tr>
+<tr>
+<td>다른 길을 늘 둔다</td>
+<td>앱이 어려우면 프런트, 직원</td>
+<td>앱만 쓰라는 말</td>
+<td>&quot;전화로 신청하셔도 같은 명단에 들어가요.&quot;</td>
+</tr>
+</tbody></table></div>
+<p><strong>Tone by context:</strong></p>
+<ul>
+<li>회원 화면: 해요체, 한 화면에 한 가지 일, 큰 글씨 일정표. 요일과 시각을 &quot;목요일 오후 2시&quot;처럼 말로 쓴다.</li>
+<li>보호자 화면: 해요체, &quot;○○○ 회원님&quot;, 허락 범위 표시 한 줄을 위에 둔다(D와 같은 틀).</li>
+<li>직원 화면: 합쇼체·명사형 라벨. 숫자(정원, 대기, 확인 전)와 다음 행동을 함께.</li>
+<li>오류: 무엇이 안 됐는지 → 왜 → 무엇을 하면 되는지. 탓하지 않는다. 정원·겹침 오류는 다른 선택지(대기, 비어 있는 시간)를 함께 보인다.</li>
+<li>포트폴리오 소개: 문제 → 설계 판단 → 데모.
+<strong>Terms we own:</strong> Evenstay(운영), Evenstay 홈(회원), Evenstay 패밀리(보호자), Evenstay 홈 비서 [사실: 코어 <code>names.md</code> v4]. 모듈 이름은 <code>names.md</code> 1절.
+<strong>Never use (and why):</strong></li>
+<li>&quot;치매 예방&quot;, &quot;우울 해소&quot;, &quot;건강해지는 프로그램&quot; — 효과 근거가 없다(<a class="doc-ref" href="x-rules-03-copywriting.html"><code>03-copywriting/CLAUDE.md</code></a> 시니어 카피 원칙).</li>
+<li>&quot;○○명이 함께하고 있어요&quot;, &quot;인기 프로그램&quot; — 참여 인원은 지어내지 않는다. 화면의 신청 수는 데모 시드 숫자다.</li>
+<li>강사 이름·경력·자격 — 지어내지 않는다. 강사 칸은 &quot;진행: 생활 지원 담당 윤서연&quot;처럼 직원 이름만 쓴다 [가설].</li>
+<li>&quot;자주 참여하시네요&quot;, &quot;요즘 안 나오셨네요&quot; — 출석으로 회원을 평가하지 않는다.</li>
+</ul>
+<h2 id="proof-points">Proof Points</h2>
+<p><strong>Metrics:</strong> 없음(포트폴리오). 효과 수치를 주장하지 않는다.
+<strong>Customers / Testimonials:</strong> 없음.
+<strong>Value themes:</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Proof (데모에서 보일 것)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>세 길, 한 정원</td>
+<td>앱 신청과 프런트 대신 신청이 같은 정원과 대기 순서로 보임</td>
+</tr>
+<tr>
+<td>대기에서 신청으로</td>
+<td>취소 1건 → 대기 첫 번째가 신청으로 올라가고 문자 기록이 남음</td>
+</tr>
+<tr>
+<td>겹침 방지</td>
+<td>수채화 회차가 있는 모임방 시간에 예약하면 거절되고 비어 있는 시간이 제시됨. 프로그램 등록 때도 같은 규칙</td>
+</tr>
+<tr>
+<td>공지가 닿았는지</td>
+<td>중요 공지 확인함 / 확인 전 / 직접 전함 숫자와 호실 목록</td>
+</tr>
+<tr>
+<td>다른 모듈의 재료</td>
+<td>출석 기록 → D 생활 소식 &quot;프로그램&quot; 문장, 신청한 회차 → D 일정(허락 범위) [가설], 비서 프로그램 일정 도구는 다음 버전 [사실: 허브 G 4번]</td>
+</tr>
+</tbody></table></div>
+<h2 id="goals">Goals</h2>
+<p><strong>Business goal (포트폴리오):</strong> 면접관이 &quot;정원·대기와 자원 겹침을 이렇게 설계했다&quot;를 데모 3분 안에 본다 [가설].
+<strong>Conversion action:</strong> 데모에서 꽉 찬 프로그램에 대기 신청 → 다른 회원 취소 → 신청으로 올라감까지 따라가기.
+<strong>Current metrics:</strong> 없음.</p>
+<h2 id="learnings">Learnings</h2>
+<p><em>결정과 확인된 교훈. 최신이 위.</em></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Learning</th>
+<th>Evidence</th>
+<th>Applies to</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(비어 있음)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li>v2 (2026-11-04) — 사용자 결정 5건 반영(&quot;모두 추천대로&quot;): 모듈 이름, 보호자 일정 범위, 대기 승급 방식, 무료 프로그램만, 공지 보호자 공개 기본 끔. 한 사람 신청 수 제한은 [미정]에서 [가설]로.</li>
+<li>v1 (2026-11-04) — 첫 초안. N2 범위는 허브 보완 지시와 coverage review 4-1 N2 행, 용어는 코어 Glossary·names v4 기준, 프로그램 예시는 소개 사이트 SITE-LIFE-03과 D 생활 소식 예시에서.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-949" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-950" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-951" data-title="시설 예약"><p>저장은 자원 예약(<code>RESERVATION</code>)</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 시설 예약(community T2-1은 &quot;예약&quot;) / 회원: 예약</dd><dt>영문·코드 이름</dt><dd><code>FacilityReservation</code></dd><dt>출처</dt><dd>community T2-1, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-952" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-953" data-title="중요 공지"><p>확인을 받는 공지. 회원 버튼은 읽었어요 하나</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 중요 공지 · 확인 받기 / 회원: 꼭 보실 공지</dd><dt>영문·코드 이름</dt><dd><code>Notice.requiresAck</code></dd><dt>출처</dt><dd>community M, community N</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-954" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-955" data-title="이용 규칙"><p>규칙이 바뀌면 다음 예약 때 다시 보인다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원: 이용 규칙</dd><dt>영문·코드 이름</dt><dd><code>FacilityRule</code>, <code>Place.rules_text</code></dd><dt>출처</dt><dd>community M, community T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

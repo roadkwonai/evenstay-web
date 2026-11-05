@@ -128,7 +128,7 @@ flowchart TB
 
 ## 문서
 
-[전체 문서 지도 →](docs/README.md)
+[전체 문서 지도 →](docs/README.md) · [웹에서 읽기 →](https://roadkwonai.github.io/evenstay-web/home/research.html)
 
 | 목적 | 바로가기 |
 | --- | --- |

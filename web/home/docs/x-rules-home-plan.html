@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>프로토타입 메인 홈 기획 | Evenstay 문서</title>
+<meta name="description" content="프로토타입 메인 홈 기획. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>프로토타입 메인 홈 기획</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#목적">목적</a></li><li class="lv2"><a href="#주소">주소</a></li><li class="lv2"><a href="#정보-구조위-내비게이션-6칸">정보 구조(위 내비게이션 6칸)</a></li><li class="lv2"><a href="#앱-바로가기">앱 바로가기</a></li><li class="lv2"><a href="#설명-기능">설명 기능</a></li><li class="lv2"><a href="#문구와-숫자">문구와 숫자</a></li><li class="lv2"><a href="#만드는-순서">만드는 순서</a></li><li class="lv2"><a href="#시험-계획">시험 계획</a></li><li class="lv2"><a href="#넣지-않는-것">넣지 않는 것</a></li></ol></details></nav></aside>
+  <article class="doc"><h2 id="목적">목적</h2>
+<p>처음 온 사람이 이 프로토타입이 무엇이고 어디까지 만들었는지 한 번에 알고, 권한별 화면, 소개 사이트, 문서, 아트보드, 근거 자료로 바로 가게 한다.</p>
+<h2 id="주소">주소</h2>
+<ul>
+<li><code>/</code>(<code>design/prototype/index.html</code>): 메인 홈. 지금 앱 셸은 <code>app.html</code>로 옮긴다.</li>
+<li><code>home/*.html</code>: 홈의 다른 페이지. <code>home/docs/&lt;이름&gt;.html</code>: 문서 페이지. 모두 생성물이다. 원본은 고치지 않는다.</li>
+<li><code>site/</code>: 소개 사이트(그대로).</li>
+</ul>
+<h2 id="정보-구조위-내비게이션-6칸">정보 구조(위 내비게이션 6칸)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>칸</th>
+<th>페이지</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>홈</td>
+<td><code>index.html</code></td>
+<td>처음 보는 사람이 1분 안에 이해하게 한다: 어떤 문제를 푸는 서비스인지, 누가 쓰는지, 무엇을 설계했는지(권한별 화면, 기획 문서, 아트보드, 기술), 어디부터 보면 좋은지. 맨 위 한 줄에 &quot;이름, 사업장, 금액은 모두 가상입니다&quot;. 숫자는 파일에서 센다.</td>
+</tr>
+<tr>
+<td>권한별 화면</td>
+<td><code>home/roles.html</code></td>
+<td>회원, 대리인, 보호자, 프런트, 생활 지원, 간호, 야간 당번, 사업장 책임자, 경리, 본사, 소유주 11묶음. 묶음마다 볼 수 있는 것 설명과 대표 바로가기. 22개 계정 전체는 펼쳐서 본다</td>
+</tr>
+<tr>
+<td>화면 찾아보기</td>
+<td><code>home/screens.html</code></td>
+<td>페이지 75개를 서비스와 이용자로 거른다. 41개 시연 단계 목록도 탭으로 둔다</td>
+</tr>
+<tr>
+<td>문서</td>
+<td><code>home/docs.html</code> + <code>home/docs/*.html</code></td>
+<td>모듈 7개의 8종 문서, 화면 정의서, 프로젝트 개관, 용어집</td>
+</tr>
+<tr>
+<td>근거</td>
+<td><code>home/research.html</code> + 문서 페이지</td>
+<td>조사, 아이디어 평가, 구조 검토, 결정 기록</td>
+</tr>
+<tr>
+<td>아트보드</td>
+<td><code>home/artboards.html</code></td>
+<td>모듈별 데스크톱·모바일 보드</td>
+</tr>
+<tr>
+<td>기술과 스킬</td>
+<td><code>home/tech.html</code></td>
+<td>프로토타입에 쓴 것 / 설계만 한 것 두 칸. 스킬은 호출 기록이 있는 것만</td>
+</tr>
+<tr>
+<td>제작 히스토리</td>
+<td><code>home/history.html</code> 외 4쪽</td>
+<td>여정(단계별 입력, 스킬, 문서, 결정), 프롬프트 원문, 스킬, 설치한 것, 이미지와 영상. 기록의 범위와 가린 값은 밝히고 진행 관리 말투는 쓰지 않는다.</td>
+</tr>
+<tr>
+<td>소개 사이트</td>
+<td><code>site/index.html</code>로 가는 길</td>
+<td>홈과 권한별 화면 아래에 페이지별 바로가기</td>
+</tr>
+</tbody></table></div>
+<h2 id="앱-바로가기">앱 바로가기</h2>
+<ul>
+<li><code>app.html?as=&lt;계정&gt;&amp;go=&lt;화면&gt;</code>: 그 계정의 그 화면을 연다. 진행한 기록이 없으면 41단계를 마친 상태(<code>data/end-state.json</code>)를 불러온다.</li>
+<li><code>app.html?beat=&lt;순서&gt;</code>: 그 순서 앞까지 다시 눌러 진행하고 그 순서를 연다(화면이 그 시각에만 의미 있을 때). 최대 약 10초, 안내를 띄운다.</li>
+<li><code>app.html?x=&lt;번호&gt;</code>: 41장면 밖 화면을 마친 상태에서 연다.</li>
+<li>주소를 읽은 뒤 쿼리는 지운다. 새로 고침은 저장 상태를 쓴다.</li>
+<li>바로가기 목록은 <code>data/app-map.json</code>에 생성한다. 손으로 쓰지 않는다.</li>
+</ul>
+<h2 id="설명-기능">설명 기능</h2>
+<p><code>help.js</code>와 같은 방식(포커스 가두기, Esc, 복귀, 터치 시트)을 홈용으로 쓴다. 화면 설명은 <code>strings/help.json</code>을 그대로 쓰고, 권한 설명, 문서 종류, 기술, 용어 풀이는 <code>strings/home.json</code>과 용어집에서 읽는다.</p>
+<h2 id="문구와-숫자">문구와 숫자</h2>
+<ul>
+<li>문장은 <code>strings/home.json</code>. 생성기와 홈 스크립트에 한글을 두지 않는다.</li>
+<li>숫자(화면 수, 시연 단계, 키 수)는 파일에서 뽑는다. 시험 결과(<code>design/home/test-results.json</code>)는 기록으로만 남기고 화면에는 보이지 않는다. 남은 일 자료(<code>design/home/facts.json</code>의 remaining, undecided, mismatches)도 내부 기록이다.</li>
+</ul>
+<h2 id="만드는-순서">만드는 순서</h2>
+<ol>
+<li>앱 이동과 주소 바로가기, 지도와 끝 상태 생성(<code>design/home/build-map.mjs</code>)</li>
+<li>아트보드 이미지, 사실 자료(<code>design/home/facts.json</code>)</li>
+<li>문서 생성기와 페이지(<code>design/home/build.mjs</code>)</li>
+<li><code>test/visit-home.mjs</code>, 기존 시험 재실행, 새 컨텍스트 검수</li>
+</ol>
+<h2 id="시험-계획">시험 계획</h2>
+<p><code>test/visit-home.mjs</code> 폭 1440, 390: 모든 내부 링크, 권한별 바로가기가 맞는 계정과 화면을 여는지, 화면 75개 바로가기, 문서 페이지 전체와 문서 안 링크, 모달과 툴팁, 가로 넘침, 콘솔 오류.</p>
+<h2 id="넣지-않는-것">넣지 않는 것</h2>
+<p>, , <code>decisions-pending</code>, <code>supplement-orders</code>, <code>reapproval-bundle*</code>, 세션 공유 노트.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

@@ -76,7 +76,7 @@
 <li><strong>앱 밖 대안 경로</strong>: 모든 Evenstay 홈 화면에 &quot;프런트로 전화하기&quot;가 있다.</li>
 <li><strong>여러 사업장, 여러 자산 유형</strong>: 규칙을 코드가 아니라 사업장 설정으로 둔다.</li>
 </ul>
-<p>출처: <a class="doc-ref" href="core-strategy.html"><code>docs/core/strategy.md</code></a> 1·4절, 루트 <code>CLAUDE.md</code>.</p>
+<p>출처: <a class="doc-ref" href="core-strategy.html"><code>docs/core/strategy.md</code></a> 1·4절, 루트 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a>.</p>
 <h2 id="4-사용자-흐름">4. 사용자 흐름</h2>
 <p>회원은 첫 화면 타일 6개로 들어간다. 타일 순서는 <code>[가설]</code>이다.</p>
 <figure class="mermaid-box" tabindex="0" role="region" aria-label="흐름도. 옆으로 밀어서 봅니다"><pre class="mermaid">flowchart TD
@@ -351,7 +351,7 @@
 <li>구성안 3개와 0~5단계 확장 계획은 senior-lab <a class="doc-ref" href="lab-senior-housing-architecture-design.html"><code>01-research/outputs/senior-housing-architecture-design.md</code></a>에 있고, 웹에서는 <code>home/architecture.html</code>로 본다. 위 표의 &quot;1단계&quot;는 그 문서의 1단계, &quot;2단계&quot;는 2·3단계, &quot;3단계&quot;는 4·5단계에 해당한다. A안이 위 표의 설계안이고, 어느 구성안으로 갈지는 <code>[미정]</code>이다.</li>
 <li>월 고정비는 NAT와 퍼블릭 IPv4를 더한 값이다. 단계별 제안의 약 $207, 약 $439는 네트워크가 빠진 값이다. &quot;Modulith 이벤트 기록&quot;은 설계안에서 쓰지 않기로 바꿨고, Next.js는 16.4.1 이상으로 고정한다(2026-11-05 재검토).</li>
 <li>Bedrock 서울에서 리전 안 처리가 되는 모델은 Opus 5와 Sonnet 5다. 5.5 모델은 서울에서 global 추론만 된다(2026-11-05 조회).</li>
-<li>설계 기준 칸의 출처는 senior-lab <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 마지막 행과 루트 <code>CLAUDE.md</code>다. <a class="doc-ref" href="core-tech-design.html"><code>docs/core/tech-design.md</code></a> 12절과 루트 <code>CLAUDE.md</code> 기술 방향은 아직 이 결정을 반영하지 않았다.</li>
+<li>설계 기준 칸의 출처는 senior-lab <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 마지막 행과 루트 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a>다. <a class="doc-ref" href="core-tech-design.html"><code>docs/core/tech-design.md</code></a> 12절과 루트 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a> 기술 방향은 아직 이 결정을 반영하지 않았다.</li>
 </ul>
 <h2 id="8-앱-url-구조">8. 앱 URL 구조</h2>
 <p>브라우저 페이지 URL은 원본 문서에 없다 <code>[미정]</code>. 화면은 화면 ID로, 서버 경로는 아래 REST 접두어로 정해져 있다.</p>
@@ -642,7 +642,7 @@
 <li>진단명, 진료 결과, 처방 칸을 어느 모듈에도 두지 않는다. 주민번호를 받지 않는다.</li>
 <li>동의는 스위치나 미리 체크된 칸으로 받지 않는다.</li>
 </ul>
-<p><strong>화면</strong>: 큰 글씨와 터치 영역, 한 화면에 하나의 행동, 쉬운 말, 되돌리기, 앱 밖 대안 경로. 이모지를 쓰지 않는다. 디자인 값의 원본은 루트 <code>DESIGN.md</code>다.</p>
+<p><strong>화면</strong>: 큰 글씨와 터치 영역, 한 화면에 하나의 행동, 쉬운 말, 되돌리기, 앱 밖 대안 경로. 이모지를 쓰지 않는다. 디자인 값의 원본은 루트 <a class="doc-ref" href="x-design-design-system.html"><code>DESIGN.md</code></a>다.</p>
 <h2 id="12-이번-결과물-범위-밖">12. 이번 결과물 범위 밖</h2>
 <p>Next.js 화면, Spring 백엔드, 실제 DB, 배포는 만들지 않는다. 아래는 설계 범위에서도 뺀 것이다.</p>
 <div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
@@ -689,7 +689,7 @@
 <td>기획 전</td>
 </tr>
 </tbody></table></div>
-<p>출처: 각 <code>strategy.md</code> 5절, 모듈 <code>CLAUDE.md</code>, <code>handoff.md</code>, <code>prd.md</code> 6·14절.</p>
+<p>출처: 각 <code>strategy.md</code> 5절, 모듈 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a>, <code>handoff.md</code>, <code>prd.md</code> 6·14절.</p>
 <h2 id="13-문구-관리-규칙">13. 문구 관리 규칙</h2>
 <div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
 <thead>
@@ -761,7 +761,7 @@
 </tr>
 <tr>
 <td>디자인 값</td>
-<td><code>DESIGN.md</code></td>
+<td><a class="doc-ref" href="x-design-design-system.html"><code>DESIGN.md</code></a></td>
 </tr>
 <tr>
 <td>아키텍처 구성안과 단계</td>
@@ -773,7 +773,7 @@
 </tr>
 <tr>
 <td>다른 AI의 진행 확인과 검토 항목</td>
-<td>senior-lab <code>AGENTS.md</code></td>
+<td>senior-lab <a class="doc-ref" href="x-rules-evenstay-agents.html"><code>AGENTS.md</code></a></td>
 </tr>
 </tbody></table></div>
 </article>

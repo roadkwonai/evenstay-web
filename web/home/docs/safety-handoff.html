@@ -150,7 +150,7 @@
 <li>카피 반영 대기 (2026-11-03 <code>copy.md</code>와 대조, <code>tech-design.md</code> 14): 비상 연락처 버튼·목록(<code>copy.md</code> 2-9), 직원 휴대폰 패널(2-10), &quot;모두 호출&quot; 라벨(2-5), 호출벨·정문 보호자 문장 틀(3-2), 예시 호실·주인공 맞춤은 반영됨. 2차 대조로 기기 연결·동의 화면(2-12), 규칙·당번표 설정 화면(2-13), 인용 맞춤에서 따옴표를 뺀 버튼·필터·기록 줄 문구(2-6, 2-7, 2-11, 2-12, 2-14)도 반영됨. 남은 대기는 맡은 뒤 오래 머문 알림 안내(Next)뿐</li>
 </ul>
 <h2 id="상태판">상태판</h2>
-<p><code>senior-lab/shared/idea-board.md</code>의 이 아이디어 단계는 허브가 바꾼다. 지금은 &quot;기획(초안)&quot;이 맞고, 사용자 승인과 허브 검수 후 &quot;인계&quot;로 바꾼다.</p>
+<p><a class="doc-ref" href="x-process-idea-board.html"><code>senior-lab/shared/idea-board.md</code></a>의 이 아이디어 단계는 허브가 바꾼다. 지금은 &quot;기획(초안)&quot;이 맞고, 사용자 승인과 허브 검수 후 &quot;인계&quot;로 바꾼다.</p>
 <h2 id="변경-기록">변경 기록</h2>
 <ul>
 <li>2026-11-03 기획 문서 한국어 검수(허브 요청, 사용자 지정 korean-skills, 사용자 재승인 2026-11-03). 호출한 스킬: <code>grammar-checker</code>, <code>style-guide</code>, <code>humanizer</code>(Skill 도구). 코드·ID·태그·숫자·화면 문구 인용은 고치지 않았다.<ul>
@@ -166,7 +166,7 @@
 <li>2026-11-03 안전 서비스 보완(허브 요청, 사용자 선택 &quot;넓게(N1 포함)&quot;, 사용자 재승인 2026-11-04). 화면 목록, 인수 조건 범위(US-28까지), 하지 않을 것 2줄, 남은 것 4줄.</li>
 <li>2026-11-03 코어 장기 부재 확정 맞춤(허브 요청, 사용자 재승인 2026-11-04): 코어가 <code>ResidentAbsenceStarted</code>/<code>ResidentAbsenceEnded</code>(absenceId, residentId, unitId, startedOn/endedOn, expectedReturnOn)와 <code>AbsenceQuery</code>를 확정했다(코어 <code>tech-design.md</code> 2-2·3-4·8절). 모듈 경계 8번(다른 모듈 데이터를 복사해 두지 않고 매 요청 <code>api/</code>로 읽는다)에 따라 B는 부재를 저장하지 않고 신호를 평가할 때마다 <code>AbsenceQuery.absenceOf</code>로 읽는다(<code>tech-design.md</code> ADR-S7). 이벤트는 구독하지 않는다. <code>SafetyBoardQuery.boardOf</code> 반환 형태를 코어 운영 현황 카드에 맞췄다(가장 긴 시간, 당번 이름).</li>
 <li>2026-11-03 안전 서비스 보완 카피 반영(허브 요청, 사용자 재승인 2026-11-04): B 카피 세션이 <code>copy.md</code> 2-15 안부 방문, 2-16 병원 동행, 2-17 부재 중과 기존 표(2-1, 2-4, 2-7, 2-12, 2-13, 4-2)에 줄을 넣고 <code>names.md</code> 4절에 출처 &quot;안부 방문&quot;을 넣었다. 해당 [NEED: 카피]를 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨고, 안부 방문 결과 선택지는 카피대로 &quot;입주자가 방문을 원하지 않으셨습니다&quot;(직원 화면 호칭 규칙)로 맞췄다.</li>
-<li>2026-11-04 전체 리뷰 보완(허브 지시서 <code>00-hub/reviews/supplement-orders-2026-11-04.md</code> 안심 알림 1~4, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04). 목표는 모든 화면이 흐름대로 움직이는 클릭형 프로토타입(MVP 구현 없음).<ul>
+<li>2026-11-04 전체 리뷰 보완(허브 지시서 <a class="doc-ref" href="x-process-supplement-orders-2026-11-04.html"><code>00-hub/reviews/supplement-orders-2026-11-04.md</code></a> 안심 알림 1~4, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04). 목표는 모든 화면이 흐름대로 움직이는 클릭형 프로토타입(MVP 구현 없음).<ul>
 <li>handoff: 화면 목록, 엔티티, US 범위, 하지 않을 것, 남은 것.</li>
 </ul>
 </li>

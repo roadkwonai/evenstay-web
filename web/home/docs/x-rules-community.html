@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>community — 프로그램·시설·공지 | Evenstay 문서</title>
+<meta name="description" content="community — 프로그램·시설·공지. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>community — 프로그램·시설·공지</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#범위">범위</a></li><li class="lv2"><a href="#꼭-지킬-규칙">꼭 지킬 규칙</a></li><li class="lv2"><a href="#하지-않을-것">하지 않을 것</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1164" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-1165" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-1166" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-1167" data-tip="사업장에 없는 기간을 이유 없이 날짜로만 적은 기록.">장기 부재</button></li></ul></section></aside>
+  <article class="doc"><h2 id="범위">범위</h2>
+<ul>
+<li>프로그램과 회차: 반복 프로그램 등록, 4주 앞 회차 생성, 정원, 신청·대기, 마감(전날 18:00 [가설]) 전 자동 승급, 마감 뒤 직원 전화 승급, 취소, 출석 체크(온 분만). 이번 버전은 무료 프로그램만.</li>
+<li>공용 시설 예약: 예약 받는 방, 비어 있는 시간, 이용 규칙, 회원 예약·직원 대신 예약, 바꾸기, 시간 막기, 사업장 취소.</li>
+<li>공지: 쓰기·게시·예약 게시·내리기, 대상(전체·동·층), 중요 공지의 [읽었어요]와 직원의 직접 전함, 확인 현황, 보호자에게도 보이기(공지마다, 기본 끔).</li>
+<li>들어오는 길: Evenstay 홈(회원), 프런트·직원 대신 신청·예약·취소. 나가는 길: D 일정·레지던스 공지·생활 소식 재료 조회, 운영 현황 카드 후보 <code>CommunityBoardQuery.todayOf</code>.</li>
+</ul>
+<h2 id="꼭-지킬-규칙">꼭 지킬 규칙</h2>
+<ul>
+<li>스키마는 <code>community</code>만 쓴다. import는 <code>core/api</code>와 <code>platform</code>만. <code>community/api</code>도 다른 모듈 <code>api/</code>를 import하지 않는다(D가 <code>community/api</code>를 import한다). 정책은 <code>community.*</code>만 등록한다. <code>community.enrollment.view_as_guardian</code>(D가 SCHEDULE 허락으로 엶)과 <code>community.notice.view_as_guardian</code>(D가 보호자 관계만으로 엶)은 &quot;D 동의로 연다&quot;고 선언한다. N2 정책은 이 두 행동에 ALLOW를 주지 않는다(ADR-M6).</li>
+<li>입주자·호실·동·직원·장기 부재를 저장하지 않고 매 요청 코어 <code>api/</code>로 읽는다. 장기 부재 이벤트를 구독하지 않고 승급·명단 표시 때 <code>AbsenceQuery.absenceOf</code>를 읽는다. 부재로 신청을 자동 취소하지 않는다(ADR-M7).</li>
+<li>같은 장소의 회차·예약·막은 시간은 PlaceBooking 한 테이블에 있고 <code>EXCLUDE USING gist (place_id WITH =, period WITH &amp;&amp;) WHERE active</code>로 겹침을 막는다. 앱 검사로 대신하지 않는다(ADR-M1).</li>
+<li>한 회차의 쓰기(신청, 취소, 승급, 정원 바꾸기)는 회차 행을 <code>FOR UPDATE</code>로 먼저 잠근다. 대기 순서는 (queued_at, seq)이고 아무도 바꾸지 못한다(ADR-M2). 회원은 [기다리기]를 골라야 대기에 들어간다(신청 intent가 ENROLL인데 자리가 없으면 409 FULL, 행 없음). 대기가 있는 회차의 빈자리는 새 신청이 아니라 승급으로만 채운다.</li>
+<li>마감 전 취소·정원 늘림은 같은 트랜잭션에서 대기 맨 앞을 승급하고 문자를 아웃박스에 쓴다. 마감 뒤에는 승급하지 않고 진행 직원 알림, 직원 승급은 맨 앞 행만(아니면 409)(ADR-M3).</li>
+<li>출석은 ATTENDED·WALK_IN 행만 저장한다. &quot;오지 않음&quot; 행, 입주자별 참여 횟수·비율 조회를 만들지 않는다. 출석을 다른 모듈 신호로 보내지 않는다(ADR-M4).</li>
+<li>공지 대상은 게시 때 NoticeRecipient(ID만)로 정한다. 확인은 ACKED와 DELIVERED_IN_PERSON 두 길뿐이고 열람은 기록하지 않는다(ADR-M5).</li>
+<li>회차 화면 상태(신청 받는 중, 정원 참, 마감, 신청 없음, 마침)는 저장하지 않고 시계·숫자로 계산한다. 시드 행도 시계 기준으로 보인다(ADR-M8).</li>
+<li>모든 쓰기는 한 트랜잭션에 코어 <code>AuditWriter</code> WRITE 1줄(+ 필요하면 아웃박스 행). 모든 쓰기는 <code>Idempotency-Key</code>를 받는다.</li>
+<li>회원·보호자 DTO에 오지 않음, 출석 횟수, 장기 부재 표시, 직원 메모가 없다(대신 넣은 직원 이름은 copy 2-12대로 보인다). 보호자 일정 응답에는 확정 신청(과 쉬게 된 회차)만 있고 대기·시설 예약·출석이 없다.</li>
+<li>보호자에게 직접 문자를 보내지 않는다. 문자는 링크 없이 프런트 번호(<code>Notifier</code>).</li>
+<li>화면 용어: 직원 화면 &quot;입주자&quot;(합쇼체), 회원 &quot;회원님&quot;(해요체), 보호자 화면 &quot;이은숙 회원님&quot;. 금지어(고립, 외로움, 활동량, 참여율, 결석, 불참, 노쇼, 미확인자, 낙상, 쓰러짐, 응급, 위험, 배회, 미납, 연체, 퇴소, 판정, 노인, 직원 화면의 &quot;회원&quot;, &quot;마감 임박&quot;, &quot;인기&quot;)는 CI에서 검사한다. 문구는 <code>copy/copy.md</code>를 그대로 쓰고 없는 문구는 만들지 않는다(<code>prd.md</code> 12절 <code>[NEED: 카피]</code>).</li>
+<li>사업장마다 켜는 기능(<code>community_features</code>: 공지, 프로그램, 시설)을 설정으로 정한다. 자산 유형으로 분기하는 코드를 두지 않는다(ADR-M10).</li>
+<li>데모 초기화: <code>community/seed</code>의 <code>base()</code>는 COM-03 &quot;기본&quot;(처음 배포) 시드를 넣는다. 통합 데모는 이 초기화 한 번 뒤 시계만 옮기므로, 시드 행(신청 queued_at, 예약 created_at)은 시계보다 뒤면 조회에서 뺀다. <code>reset(state)</code>는 AFTER_SUCCESSION, G_START, C_AFTER_DISCHARGE마다 시작점을 정한다(<code>prd.md</code> 9절). 청구에 닿는 데이터는 없다(코어 골든 금액 불변).</li>
+</ul>
+<h2 id="하지-않을-것">하지 않을 것</h2>
+<ul>
+<li>프로그램 효과 주장, 참여 인원·참여율, 추천, 권유·전날 안내 문자</li>
+<li>출석으로 입주자 평가·순위·신청 제한, &quot;오지 않음&quot;을 회원·보호자에게 보이기, 노쇼 기록</li>
+<li>비용이 드는 프로그램과 코어 청구 연결(다음 버전), 강사 관리, 외부 회원 모집</li>
+<li>건강 상태를 짐작하게 하는 프로그램(재활, 치료, 인지 훈련)</li>
+<li>보호자의 신청·예약, 보호자 허락 저장, 보호자 문자(D)</li>
+<li>공지 열람 추적</li>
+<li>시설 관리 전체(정기 청소·점검은 <code>requests</code>)</li>
+<li>다른 모듈 데이터 복사</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1164" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1165" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1166" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1167" data-title="장기 부재"><p>사업장에 없는 기간을 이유 없이 날짜로만 적은 기록. 병명, 입원 여부, 메모 칸이 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 장기 부재, 부재 중 / 보호자: 자리를 비우셨어요(FAM-16)</dd><dt>영문·코드 이름</dt><dd><code>ResidentAbsence</code>: <code>OPEN</code>, <code>ENDED</code>, <code>CANCELLED</code></dd><dt>출처</dt><dd>core T2-1·2-2, safety T2-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

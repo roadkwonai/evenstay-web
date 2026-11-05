@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evenstay 로고 | Evenstay 문서</title>
+<meta name="description" content="Evenstay 로고. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>Evenstay 로고</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#구성">구성</a></li><li class="lv2"><a href="#파일">파일</a></li><li class="lv2"><a href="#규칙">규칙</a></li><li class="lv2"><a href="#바뀐-것">바뀐 것</a></li><li class="lv2"><a href="#다시-만들기">다시 만들기</a></li></ol></details></nav></aside>
+  <article class="doc"><h2 id="구성">구성</h2>
+<ul>
+<li><strong>심볼:</strong> 둥근 사각형 두 개(한 변 38, 선 6, 모서리 8, 18만큼 어긋남). 먹 선은 한 사람, 코발트 선은 다른 사람의 기록이다. 두 안쪽이 겹치는 14×14 칸만 노랑으로 채운다. 겹친 칸의 두 모서리는 사각형 안쪽 모서리와 같은 반지름 5로 둥글렸다.</li>
+<li><strong>워드마크:</strong> 소문자 &quot;evenstay&quot;, Pretendard Bold 700, 자간 -2%. 글자를 윤곽선으로 바꿔서 글꼴이 없어도 똑같이 보인다.</li>
+<li><strong>가로형:</strong> 심볼 높이는 x높이의 1.36배이고, 심볼 가운데를 x높이 가운데에 맞췄다. 심볼과 글자 사이는 심볼 높이의 0.39배다.</li>
+<li><strong>제품 이름:</strong> &quot;홈&quot;, &quot;패밀리&quot;는 Pretendard Bold 700, 자간 -1%, 보조 글자색이다. 크기는 워드마크의 88%로, 한글 높이가 x높이의 1.46배다. 기준선은 워드마크와 같다. 워드마크 글자 폭 끝에서 x높이의 0.66배 뒤에 두어, 보이는 간격이 약 39다. 글로 쓸 때는 &quot;Evenstay 홈&quot;, &quot;Evenstay 패밀리&quot;다.</li>
+</ul>
+<h2 id="파일">파일</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>파일</th>
+<th>쓰는 곳</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>evenstay-logo-{light,dark,black,white}.svg</code></td>
+<td>기본 가로형. 운영 화면 상단 바, 문서, 슬라이드</td>
+</tr>
+<tr>
+<td><code>evenstay-home-logo-*.svg</code>, <code>evenstay-family-logo-*.svg</code></td>
+<td>회원 앱, 보호자 화면</td>
+</tr>
+<tr>
+<td><code>evenstay-logo-stacked-*.svg</code></td>
+<td>첫 화면, 표지</td>
+</tr>
+<tr>
+<td><code>evenstay-symbol-*.svg</code></td>
+<td>공간이 좁을 때. 32px 이하는 <code>evenstay-symbol-small-light.svg</code>(선 8)</td>
+</tr>
+<tr>
+<td><code>favicon.svg</code></td>
+<td>브라우저 탭. 라이트·다크 설정을 따라 색이 바뀐다</td>
+</tr>
+<tr>
+<td><code>app-icon.svg</code>, <code>app-icon-rounded.svg</code></td>
+<td>앱 아이콘 원본(1024), 모서리 둥근 미리보기</td>
+</tr>
+<tr>
+<td><code>png/favicon-16.png</code>, <code>png/favicon-32.png</code></td>
+<td>구형 브라우저용 파비콘</td>
+</tr>
+<tr>
+<td><code>png/apple-touch-icon.png</code> (180)</td>
+<td>iOS 홈 화면</td>
+</tr>
+<tr>
+<td><code>png/icon-192.png</code>, <code>png/icon-512.png</code></td>
+<td>PWA 매니페스트. 심볼이 가운데 52% 안에 있어 maskable로도 쓸 수 있다</td>
+</tr>
+</tbody></table></div>
+<p>색: light는 먹 <code>#17191C</code>·코발트 <code>#2340A0</code>·노랑 <code>#F3D766</code>, dark는 <code>#F4F4F1</code>·<code>#8EA6F0</code>·<code>#F3D766</code>(DESIGN.md의 <code>fg-strong</code>, <code>primary</code>, <code>highlight</code>와 같은 값). 제품 이름 글자색은 light <code>#555A60</code>(<code>fg-secondary</code>), dark <code>#AEB2B8</code>(<code>dark-fg-secondary</code>)이고 black·white는 본색과 같다. 앱 아이콘은 코발트 바탕에 <code>#FAFAF7</code>과 노랑 선이다.</p>
+<h2 id="규칙">규칙</h2>
+<ul>
+<li>둘레 여백은 심볼 높이의 절반 이상.</li>
+<li>가장 작은 크기: 가로형 높이 24px, 심볼 16px. 32px 이하에서는 작은 심볼을 쓴다.</li>
+<li>색은 light, dark, black, white 네 가지만 쓴다. 노랑 겹침 칸은 컬러 로고에만 있다.</li>
+<li>늘이기, 기울이기, 그림자, 테두리, 그라디언트, 글자 다시 치기를 하지 않는다.</li>
+<li>[지원 회사] 이름이나 표지와 함께 묶지 않는다.</li>
+</ul>
+<h2 id="바뀐-것">바뀐 것</h2>
+<ul>
+<li>2026-11-03: 제품 이름을 &quot;Home&quot;, &quot;Family&quot;(Pretendard SemiBold)에서 &quot;홈&quot;, &quot;패밀리&quot;(Bold 88%)로 바꿨다(사용자 결정). 로고 높이는 예전과 같고(90.6 → 90.8), 파일 이름은 그대로다.</li>
+</ul>
+<h2 id="다시-만들기">다시 만들기</h2>
+<p>SVG는 <code>node design/brand/logo/src/build.cjs</code>로 다시 만든다(윤곽선 데이터 <code>src/glyphs.json</code> 포함). 윤곽선을 다시 뽑을 때만 공식 Pretendard v1.3.9 zip의 <code>public/static/Pretendard-Bold.otf</code>·<code>Pretendard-SemiBold.otf</code>와 opentype.js 1.3.4로 <code>src/glyphs.cjs</code>를 돌린다. PNG는 Chrome 헤드리스로 SVG를 해당 크기로 렌더해 만들었다.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

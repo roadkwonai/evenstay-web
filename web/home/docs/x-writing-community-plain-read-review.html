@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>쉬운 말 검수 전후 표 — community (회원·보호자 화면) | Evenstay 문서</title>
+<meta name="description" content="쉬운 말 검수 전후 표 — community (회원·보호자 화면). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>쉬운 말 검수 전후 표 — community (회원·보호자 화면)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#요약">요약</a></li><li class="lv2"><a href="#전후-표">전후 표</a></li><li class="lv2"><a href="#고치지-않고-남긴-애매한-문구">고치지 않고 남긴 애매한 문구</a></li><li class="lv2"><a href="#공용-용어-제안-혼자-바꾸지-않음">공용 용어 제안 (혼자 바꾸지 않음)</a></li><li class="lv2"><a href="#같은-문구가-남아-고쳐야-할-곳-이번에-고치지-않음">같은 문구가 남아 고쳐야 할 곳 (이번에 고치지 않음)</a></li><li class="lv2"><a href="#공용-문구-확정-반영-2026-11-04-사용자-추천대로">공용 문구 확정 반영 (2026-11-04, 사용자 &quot;추천대로&quot;)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-980" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-981" data-tip="사업장 운영을 맡고 운영 현황 카드를 본다">사업장 책임자</button></li><li><button class="term" type="button" data-modal="g-982" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-983" data-tip="저장은 자원 예약(RESERVATION)">시설 예약</button></li></ul></section></aside>
+  <article class="doc"><p>기준: 70대 회원과 그 자녀가 소리 내어 읽고 바로 뜻을 아는가. 뜻, 사실, 기능 범위, 책임 범위는 바꾸지 않았다.</p>
+<h2 id="요약">요약</h2>
+<ul>
+<li>읽은 문구: 152개 (2절 107, 3-1·3-2 11, 6절 10, 7절 19, 8-1 5)</li>
+<li>고친 수: 24곳</li>
+<li>버전의 뜻으로 쓴 &quot;판&quot;: 화면 문구 0곳. 기록 줄에만 있어 고치지 않았다.</li>
+<li>docs 차이: <code>copy.md</code>와 <code>evenstay/docs/community/copy/copy.md</code>의 차이 0줄(경로 줄 포함)</li>
+</ul>
+<h2 id="전후-표">전후 표</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>화면 ID</th>
+<th>전</th>
+<th>후</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CMN-03</td>
+<td>다음 회차(칸 이름)</td>
+<td>다음 모임</td>
+<td>&quot;회차&quot;는 직원 말이다</td>
+</tr>
+<tr>
+<td>CMN-04</td>
+<td>같은 시간에 신청하신 프로그램이 있어요: 산책 모임. 그래도 신청할까요?</td>
+<td>같은 시간에 산책 모임을 신청하셨어요. 그래도 신청할까요?</td>
+<td>쌍점으로 끊지 않고 바로 아래 시설 줄과 같은 꼴로</td>
+</tr>
+<tr>
+<td>CMN-05</td>
+<td>자리가 다 찼어요. 기다리실래요?</td>
+<td>자리가 다 찼어요. 기다리시겠어요?</td>
+<td>&quot;-실래요&quot;는 70대께 가벼운 말투다</td>
+</tr>
+<tr>
+<td>CMN-05</td>
+<td>기다리시면 첫 번째예요. 누가 취소하면 순서대로 신청이 돼요.</td>
+<td>지금 기다리시면 첫 번째예요. 취소하는 분이 생기면 기다리신 순서대로 자동으로 신청돼요.</td>
+<td>직접 누르지 않아도 된다는 뜻이 바로 오게</td>
+</tr>
+<tr>
+<td>CMN-05</td>
+<td>첫 번째로 기다리고 계세요. 자리가 나면 문자로 알려 드려요.</td>
+<td>첫 번째로 기다리고 계세요. 자리가 나면 자동으로 신청되고 문자로 알려 드려요.</td>
+<td>&quot;알려 드려요&quot;만 있으면 다시 눌러야 하는 것으로 읽힌다</td>
+</tr>
+<tr>
+<td>CMN-05</td>
+<td>기다리기 그만두기</td>
+<td>그만 기다릴게요</td>
+<td>명사를 이은 버튼 말을 사람 말로</td>
+</tr>
+<tr>
+<td>CMN-07</td>
+<td>11월 12일 목요일 · 수채화에 함께하셨어요</td>
+<td>11월 12일 목요일 · 수채화에 다녀오셨어요</td>
+<td>&quot;함께하셨어요&quot;는 누구와 함께인지 흐리다</td>
+</tr>
+<tr>
+<td>CMN-09</td>
+<td>예약이 취소됐어요. 이유: 방 점검. 다른 시간을</td>
+<td>방 점검으로 예약이 취소됐어요. 다른 시간을</td>
+<td>&quot;이유:&quot; 표기를 문장으로</td>
+</tr>
+<tr>
+<td>CMN-11</td>
+<td>점검 중 불편하신 일은 프런트로 말씀해 주세요.</td>
+<td>점검 중 불편하신 일은 프런트에 말씀해 주세요.</td>
+<td>&quot;말씀하다&quot;에는 &quot;에&quot;가 맞다</td>
+</tr>
+<tr>
+<td>CMN-11</td>
+<td>사업장 책임자 최영미 · 11월 18일</td>
+<td>센터장 최영미 · 11월 18일</td>
+<td>&quot;사업장 책임자&quot;는 직원 말이다. N-02와 같게</td>
+</tr>
+<tr>
+<td>CMN-11</td>
+<td>누르시면 직원이 회원님께 이 공지가 전해진 것을 알 수 있어요.</td>
+<td>누르시면 회원님이 공지를 읽으신 것을 직원이 알 수 있어요.</td>
+<td>문장이 꼬여 있었다</td>
+</tr>
+<tr>
+<td>CMN-02~11 대신 처리 안내</td>
+<td>회원님 전화를 받고 대신 신청했어요. 맞지 않으면 프런트에 말씀해 주세요.</td>
+<td>회원님 전화를 받고 대신 신청했어요. 내용이 다르면 프런트에 말씀해 주세요.</td>
+<td>&quot;맞지 않으면&quot;이 무엇을 가리키는지 흐리다</td>
+</tr>
+<tr>
+<td>CMN-02~11 대신 처리 안내</td>
+<td>회원님 전화를 받고 대신 예약했어요. 맞지 않으면 프런트에 말씀해 주세요.</td>
+<td>회원님 전화를 받고 대신 예약했어요. 내용이 다르면 프런트에 말씀해 주세요.</td>
+<td>같은 이유</td>
+</tr>
+<tr>
+<td>CMN-02~11 대신 처리 안내</td>
+<td>회원님 말씀을 직접 듣고 대신 신청했어요. 맞지 않으면 프런트에 말씀해 주세요.</td>
+<td>회원님 말씀을 직접 듣고 대신 신청했어요. 내용이 다르면 프런트에 말씀해 주세요.</td>
+<td>같은 이유</td>
+</tr>
+<tr>
+<td>CMN-02~11 대신 처리 안내</td>
+<td>회원님 말씀을 직접 듣고 대신 예약했어요. 맞지 않으면 프런트에 말씀해 주세요.</td>
+<td>회원님 말씀을 직접 듣고 대신 예약했어요. 내용이 다르면 프런트에 말씀해 주세요.</td>
+<td>같은 이유</td>
+</tr>
+<tr>
+<td>CMN-02~11 대신 처리 안내</td>
+<td>최민수 직원이 회원님 말씀대로 수채화 기다리기를 그만두었어요.</td>
+<td>최민수 직원이 회원님 말씀대로 기다리시던 수채화를 취소했어요.</td>
+<td>&quot;기다리기를 그만두었어요&quot;는 명사형이라 어색하다</td>
+</tr>
+<tr>
+<td>CMN-12</td>
+<td>기다리시는 프로그램과 시설 예약은 보이지 않아요.</td>
+<td>이은숙 회원님이 자리를 기다리시는 프로그램과 시설 예약은 보이지 않아요.</td>
+<td>자녀가 읽을 때 누가 기다리는지 흐리다</td>
+</tr>
+<tr>
+<td>CMN-12</td>
+<td>프로그램 신청은 이은숙 회원님이 앱이나 프런트로 하실 수 있어요.</td>
+<td>프로그램 신청은 이은숙 회원님이 앱이나 프런트에서 하실 수 있어요.</td>
+<td>조사</td>
+</tr>
+<tr>
+<td>6절 CMN-07</td>
+<td>다가오는 신청이 없어요. 지난 프로그램은 &quot;지난 프로그램&quot;에서 보실 수 있어요.</td>
+<td>앞으로 가실 프로그램이 없어요. 다녀오신 프로그램은 &quot;지난 프로그램&quot;에서 보세요.</td>
+<td>같은 말이 겹치고 &quot;다가오는 신청&quot;이 개념어다</td>
+</tr>
+<tr>
+<td>6절 CMN-07</td>
+<td>아직 함께하신 프로그램이 없어요.</td>
+<td>아직 다녀오신 프로그램이 없어요.</td>
+<td>2-7과 같은 말</td>
+</tr>
+<tr>
+<td>7절 CMN-03</td>
+<td></td>
+<td>신청이 끝났어요. 가고 싶으시면 프런트에 물어봐 주세요.</td>
+<td></td>
+</tr>
+<tr>
+<td>7절 CMN-08</td>
+<td></td>
+<td>이미 지난 시각이에요. 다른 시각을 골라 주세요.</td>
+<td></td>
+</tr>
+<tr>
+<td>7절 CMN-08</td>
+<td></td>
+<td>오늘부터 14일 앞까지 예약하실 수 있어요.</td>
+<td></td>
+</tr>
+<tr>
+<td>7절 CMN-11</td>
+<td></td>
+<td>아직 전해지지 않았어요. 연결이 잠시 끊겼어요. [다시 누르기]</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h2 id="고치지-않고-남긴-애매한-문구">고치지 않고 남긴 애매한 문구</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>화면</th>
+<th>문구</th>
+<th>남긴 이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CMN-02, CMN-03</td>
+<td>신청 없이 오시면 돼요</td>
+<td>조금 딱딱하지만 뜻은 바로 온다</td>
+</tr>
+<tr>
+<td>CMN-02, CMN-05, CMN-07</td>
+<td>첫 번째로 기다리고 계세요</td>
+<td>&quot;대기 1번&quot;보다 쉽고 뜻이 통한다</td>
+</tr>
+<tr>
+<td>CMN-01, CMN-10</td>
+<td>꼭 보실 공지</td>
+<td>N2 이름으로 확정된 말이다</td>
+</tr>
+<tr>
+<td>CMN-08</td>
+<td>이용 규칙 문장</td>
+<td>샘플이고 값은 운영이 정한다. <code>[미정]</code> 그대로</td>
+</tr>
+<tr>
+<td>CMN-10 N-02</td>
+<td>면회 시간 ○시</td>
+<td>운영이 정할 값이다. <code>[미정]</code> 그대로</td>
+</tr>
+<tr>
+<td>CMN-09, CMN-11, 7절</td>
+<td>[다시 예약], [다시 누르기], [다시 하기]</td>
+<td>명사형이지만 버튼이 짧아야 하고 뜻이 통한다</td>
+</tr>
+<tr>
+<td>CMN-01</td>
+<td>프로그램과 예약 <code>[가칭]</code></td>
+<td>말은 확정 용어라 두었다. <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a>에서 확정됐으므로 <code>[가칭]</code> 표시와 &quot;아직 가칭&quot; 문장은 따로 지워야 한다</td>
+</tr>
+</tbody></table></div>
+<h2 id="공용-용어-제안-혼자-바꾸지-않음">공용 용어 제안 (혼자 바꾸지 않음)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>말</th>
+<th>쓰는 곳</th>
+<th>제안</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>보여 주기로 한</td>
+<td>D, N2 3-1 상단 안내</td>
+<td>&quot;허락하신&quot;으로 맞춘다. 소개 사이트는 이미 이 말이다</td>
+</tr>
+<tr>
+<td>일정 보여 주기를 바꾸셨어요</td>
+<td>N2 7절 보호자, D 6절 같은 꼴</td>
+<td>&quot;일정을 보여 주지 않기로 하셨어요&quot;</td>
+</tr>
+<tr>
+<td>대신 처리하실 분</td>
+<td>코어, D, N2 3-1</td>
+<td>뜻이 조금 넓다. &quot;대신 맡아 주시는 분&quot;을 검토한다</td>
+</tr>
+</tbody></table></div>
+<h2 id="같은-문구가-남아-고쳐야-할-곳-이번에-고치지-않음">같은 문구가 남아 고쳐야 할 곳 (이번에 고치지 않음)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>문구</th>
+<th>파일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>기다리기 그만두기 (회원 버튼)</td>
+<td><code>04-planning/ideas/community/</code> prd, tech-design, user-stories, <code>evenstay/design/mvp-screens.md</code>, <code>evenstay/docs/community/</code> 같은 세 문서</td>
+</tr>
+<tr>
+<td>함께하셨어요</td>
+<td><code>04-planning/ideas/community/</code> user-stories, service-blueprint, <code>03-copywriting/ideas/community/</code> names(3-2), product-marketing, <code>evenstay/docs/community/</code> 같은 기획 문서</td>
+</tr>
+<tr>
+<td>다가오는 신청</td>
+<td><code>04-planning/ideas/community/tech-design.md</code>, 같은 docs</td>
+</tr>
+<tr>
+<td>기다리실래요</td>
+<td><code>04-planning/ideas/community/</code> user-stories, service-blueprint, <code>evenstay/design/mvp-screens.md</code>(CMN-05 제목), 같은 docs</td>
+</tr>
+<tr>
+<td>신청이 끝났어요</td>
+<td><code>04-planning/ideas/community/</code> user-stories, service-blueprint, <code>03-copywriting/ideas/community/names.md</code>, 같은 docs</td>
+</tr>
+<tr>
+<td>14일 앞까지</td>
+<td><code>04-planning/ideas/community/prd.md</code>, 같은 docs. 직원 칸 &quot;14일 앞까지만&quot;은 범위 밖이라 그대로</td>
+</tr>
+<tr>
+<td>사업장 책임자 최영미 (회원 화면)</td>
+<td><code>evenstay/design/mvp-screens.md</code></td>
+</tr>
+<tr>
+<td>맞지 않으면 프런트</td>
+<td><code>04-planning/ideas/community/</code> service-blueprint, user-stories, 같은 docs</td>
+</tr>
+<tr>
+<td>이 공지가 전해진</td>
+<td><code>04-planning/ideas/community/strategy.md</code>, 같은 docs</td>
+</tr>
+<tr>
+<td>누가 취소하면</td>
+<td><code>04-planning/ideas/community/service-blueprint.md</code>, 같은 docs</td>
+</tr>
+</tbody></table></div>
+<p>앱 캔버스 보드의 같은 문구도 이 표에 맞춰야 한다. 보드는 열어 보지 못했다.</p>
+<h2 id="공용-문구-확정-반영-2026-11-04-사용자-추천대로">공용 문구 확정 반영 (2026-11-04, 사용자 &quot;추천대로&quot;)</h2>
+<p>고친 줄: 커뮤니티 <code>copy.md</code> 7줄, <code>value-prop.md</code> 1줄, 소개 사이트 <code>copy.md</code> 10줄. <code>names.md</code>, <code>product-marketing.md</code>에는 같은 문장이 없었다. &quot;자리를 기다리시는 프로그램과 시설 예약&quot;은 앞 검수에서 이미 고쳤다.</p>
+<p>소개 사이트에서 바뀐 문구 ID: LND-13 단계 1, LND-06 설명 3, LND-08 길 2, C-22 프런트, SITE-LIFE-05 길 2, SITE-LIFE-05 길 3, SITE-LIFE-04 Evenstay 홈, SITE-SAFE-04 침대 센서, SITE-SAFE-04 안부 전화, SITE-CON-03 4</p>
+<p>기획 문서와 <code>mvp-screens.md</code>에 남은 곳 (행 번호):</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>문구</th>
+<th>파일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>잠시 연결이 끊겼어요</td>
+<td><code>evenstay/design/mvp-screens.md</code> 121</td>
+</tr>
+<tr>
+<td>연결이 잠시 끊겼어요</td>
+<td><code>senior-lab/04-planning/ideas/community/user-stories.md</code> 59,157; <code>evenstay/docs/community/user-stories.md</code> 59,157</td>
+</tr>
+<tr>
+<td>일정 보여 주기를</td>
+<td><code>senior-lab/04-planning/ideas/community/user-stories.md</code> 180; <code>evenstay/docs/community/user-stories.md</code> 180; <code>evenstay/design/mvp-screens.md</code> 288</td>
+</tr>
+<tr>
+<td>보여 주기로 한 일정</td>
+<td><code>senior-lab/04-planning/ideas/community/service-blueprint.md</code> 78; <code>evenstay/docs/community/service-blueprint.md</code> 78; <code>evenstay/design/mvp-screens.md</code> 288</td>
+</tr>
+<tr>
+<td>기다리시는 프로그램과</td>
+<td><code>senior-lab/04-planning/ideas/community/prd.md</code> 163; <code>senior-lab/04-planning/ideas/community/user-stories.md</code> 179; <code>senior-lab/04-planning/ideas/community/service-blueprint.md</code> 78; <code>evenstay/docs/community/prd.md</code> 163; <code>evenstay/docs/community/user-stories.md</code> 179; <code>evenstay/docs/community/service-blueprint.md</code> 78; <code>evenstay/design/mvp-screens.md</code> 489</td>
+</tr>
+<tr>
+<td>대신 올려 드려요</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>올릴 수도 있어요</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>입주를 기다리고 있어요</td>
+<td><a class="doc-ref" href="x-landing-screen-spec.html"><code>senior-lab/04-planning/ideas/evenstay-landing/screen-spec.md</code></a> 329</td>
+</tr>
+<tr>
+<td>바로 전해져요</td>
+<td><a class="doc-ref" href="x-landing-screen-spec.html"><code>senior-lab/04-planning/ideas/evenstay-landing/screen-spec.md</code></a> 203</td>
+</tr>
+<tr>
+<td>침대를 떠나신</td>
+<td><a class="doc-ref" href="x-landing-screen-spec.html"><code>senior-lab/04-planning/ideas/evenstay-landing/screen-spec.md</code></a> 651</td>
+</tr>
+<tr>
+<td>두 번 받지 않으시면</td>
+<td><a class="doc-ref" href="x-landing-prd.html"><code>senior-lab/04-planning/ideas/evenstay-landing/prd.md</code></a> 197; <a class="doc-ref" href="x-landing-screen-spec.html"><code>senior-lab/04-planning/ideas/evenstay-landing/screen-spec.md</code></a> 651</td>
+</tr>
+</tbody></table></div>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-980" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-981" data-title="사업장 책임자"><p>사업장 운영을 맡고 운영 현황 카드를 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 책임자 / 회원 공지: 센터장</dd><dt>영문·코드 이름</dt><dd><code>SITE_MANAGER</code></dd><dt>출처</dt><dd>core T6-1, requests N</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-982" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-983" data-title="시설 예약"><p>저장은 자원 예약(<code>RESERVATION</code>)</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 시설 예약(community T2-1은 &quot;예약&quot;) / 회원: 예약</dd><dt>영문·코드 이름</dt><dd><code>FacilityReservation</code></dd><dt>출처</dt><dd>community T2-1, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

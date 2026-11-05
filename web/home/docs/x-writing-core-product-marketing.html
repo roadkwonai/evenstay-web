@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product Marketing Context — pms-core-billing (플랫폼 코어) | Evenstay 문서</title>
+<meta name="description" content="Product Marketing Context — pms-core-billing (플랫폼 코어). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>Product Marketing Context — pms-core-billing (플랫폼 코어)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#product-overview">Product Overview</a></li><li class="lv2"><a href="#target-audience">Target Audience</a></li><li class="lv2"><a href="#personas-b2b">Personas (B2B)</a></li><li class="lv2"><a href="#problems-pain-points">Problems &amp; Pain Points</a></li><li class="lv2"><a href="#competitive-landscape">Competitive Landscape</a></li><li class="lv2"><a href="#differentiation">Differentiation</a></li><li class="lv2"><a href="#objections">Objections</a></li><li class="lv2"><a href="#switching-dynamics">Switching Dynamics</a></li><li class="lv2"><a href="#customer-language">Customer Language</a></li><li class="lv2"><a href="#brand-voice">Brand Voice</a></li><li class="lv2"><a href="#proof-points">Proof Points</a></li><li class="lv2"><a href="#goals">Goals</a></li><li class="lv2"><a href="#learnings">Learnings</a></li><li class="lv2"><a href="#changelog">Changelog</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-819" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-820" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-821" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-822" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li><li><button class="term" type="button" data-modal="g-823" data-tip="계약과 달마다 하나.">청구서</button></li><li><button class="term" type="button" data-modal="g-824" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-825" data-tip="수익이 아니라 맡긴 돈.">보증금</button></li><li><button class="term" type="button" data-modal="g-826" data-tip="호실과 입주자를 잇는 계약.">입주 계약</button></li><li><button class="term" type="button" data-modal="g-827" data-tip="대리인이 맡은 일의 범위">권한 범위</button></li><li><button class="term" type="button" data-modal="g-828" data-tip="기준일에 소유한 사업장의 합계만 본다.">소유주 계정</button></li><li><button class="term" type="button" data-modal="g-829" data-tip="청구서의 한 줄.">청구 항목</button></li></ul></section></aside>
+  <article class="doc"><p>근거: <a class="doc-ref" href="lab-shortlist.html"><code>senior-lab/02-ideation/outputs/shortlist.md</code></a>(A, 통합안), <a class="doc-ref" href="x-sources-value-propositions.html"><code>senior-lab/02-ideation/drafts/value-propositions.md</code></a>(A), <a class="doc-ref" href="lab-personas.html"><code>senior-lab/01-research/outputs/personas.md</code></a>, <code>problem-bank.md</code> v0.4.</p>
+<blockquote>
+<p>이 제품은 <strong>포트폴리오용 MVP</strong>다. 실제 고객, 실적, 후기는 없다. 아래의 고객 언어는 인터뷰 원문이 아니라 리서치 출처를 바꿔 쓴 것이다. 실제 원문이 필요한 곳은 <code>[NEED: ...]</code>로 표시했다.</p>
+</blockquote>
+<h2 id="product-overview">Product Overview</h2>
+<p><strong>One-liner:</strong> 소유주가 다른 여러 시니어하우징·임대 사이트의 계약과 청구를 한 기준으로 처리하고, 누가 무엇을 바꿨는지 모두 남기는 운영 코어.
+<strong>What it does:</strong> 운영사, 소유주, 사이트, 동, 호실 구조로 데이터를 나눈다. 입주 계약을 상태 전이로 관리한다(체결, 입주, 승계, 해지, 정산). 매달 생활비, 식비, 서비스 이용료, 공과금을 원장에 쌓아 청구서를 만들고, 식사 기록과 감면 규칙이 청구에 반영된다. 판단 능력이 흐려진 입주자를 위해 대리인(후견인 등)과 권한 범위를 기록한다.
+<strong>Product category:</strong> 시니어하우징 PMS(Property Management System). 고객이 찾는 말로는 &quot;실버타운 운영 프로그램&quot;, &quot;임대관리 시스템&quot; [추정].
+<strong>Product type:</strong> B2B SaaS(내부 운영 시스템). 입주자·보호자는 청구 명세만 본다.
+<strong>Business model:</strong> 포트폴리오에서는 해당 없음. 실제 상황이라면 위탁 운영사의 자체 시스템이다([지원 회사]는 자체 PMS를 구축 중. S2).</p>
+<h2 id="target-audience">Target Audience</h2>
+<p><strong>Target companies:</strong> 시니어하우징(노인복지주택)과 임대주택을 위탁 운영하는 회사. 여러 소유주(기업, 펀드)의 자산을 대신 운영하고 수수료를 받는다(S4, S6).
+<strong>Decision-makers:</strong> 운영사 본사 운영 책임자, 대표. 기술 판단은 Tech Lead.
+<strong>Primary use case:</strong> 사이트와 소유주가 늘어도 계약·청구를 같은 기준으로 처리하고 소유주별로 숫자를 설명한다.
+<strong>Jobs to be done:</strong></p>
+<ul>
+<li>소유주와 자산 유형이 다른 사이트를 한 기준으로 운영하고 성과를 증명한다(J6).</li>
+<li>사람이나 운영 주체가 바뀔 때 계약·돈·책임을 끊김 없이 넘긴다(J7).</li>
+<li>식사·서비스 이용을 틀림없이 청구에 반영한다(J5 일부).
+<strong>Use cases:</strong></li>
+<li>부부 입주 계약 체결 → 한 사람 사별 → 1인 계약으로 승계, 요금 변경</li>
+<li>매달 식사 기록(결식 포함)을 반영해 청구서 생성</li>
+<li>입주자 인지 저하 → 후견인 등록 → 이후 서명·결제·열람은 후견인 권한으로</li>
+<li>소유주 계정은 자기 사이트 데이터만 본다</li>
+</ul>
+<h2 id="personas-b2b">Personas (B2B)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Cares about</th>
+<th>Challenge</th>
+<th>Value we promise</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>사용자: 경리·현장 직원(U4)</td>
+<td>월말 청구가 틀리지 않는 것</td>
+<td>의무식·결식 감면, 선납, 공과금 별도 같은 규칙을 손으로 맞춘다 [추정]</td>
+<td>규칙대로 계산된 청구서와 항목별 근거</td>
+</tr>
+<tr>
+<td>챔피언: 운영 매니저(U5)</td>
+<td>사이트를 늘려도 같은 기준</td>
+<td>사이트마다 다른 도구와 수작업 정산(P-017, P-018)</td>
+<td>사이트를 추가해도 같은 코어로 운영</td>
+</tr>
+<tr>
+<td>결정권자: 운영사 대표</td>
+<td>위탁 계약 유지와 수익성</td>
+<td>업계 선두도 적자인 시장(P-012)</td>
+<td>소유주에게 설명할 수 있는 운영 숫자</td>
+</tr>
+<tr>
+<td>재무 이해관계자: 소유주(펀드)</td>
+<td>자기 자산의 입주율·수납</td>
+<td>운영사 보고에 의존</td>
+<td>자기 사이트만 보이는 소유주 계정</td>
+</tr>
+<tr>
+<td>기술 영향자: Tech Lead</td>
+<td>확장 가능한 데이터 모델</td>
+<td>자산 유형·사이트가 늘 때 구조가 무너짐</td>
+<td>계층·권한·이력을 처음부터 분리한 모델</td>
+</tr>
+<tr>
+<td>명세를 보는 사람: 입주자(U1)·보호자(U3)</td>
+<td>이번 달 돈이 왜 이만큼인지</td>
+<td>청구 내역을 이해·검증하기 어렵다(P-047)</td>
+<td>항목마다 근거가 붙은 쉬운 청구서</td>
+</tr>
+</tbody></table></div>
+<h2 id="problems-pain-points">Problems &amp; Pain Points</h2>
+<p><strong>Core problem:</strong> 시니어하우징 청구는 보증금, 월 생활비, 의무식과 결식 감면, 공과금, 선납, 중도 해지 몰취가 섞여 있고 시설마다 다르다(A6, A12, A16). 이걸 여러 소유주·사이트에 걸쳐 같은 기준으로 처리할 전용 도구가 국내에서 확인되지 않는다(P-017).
+<strong>Why alternatives fall short:</strong></p>
+<ul>
+<li>호텔 PMS: 숙박 단위라 장기 계약·보증금·식사 정산이 맞지 않는다 [추정].</li>
+<li>임대관리 SW: 시니어 고유 항목(식사, 케어 단계, 대리인)이 없다 [추정].</li>
+<li>해외 시니어리빙 스위트: 한국 제도와 계약 구조에 맞지 않는다 [추정].</li>
+<li>엑셀: 이력과 권한이 없다.
+<strong>What it costs them:</strong> 월말 정산 시간, 청구 분쟁, 사별·후견 상황에서의 처리 실수 [추정. NEED: 현장 직원 인터뷰의 실제 시간·빈도].
+<strong>Emotional tension:</strong> 입주자·보호자는 &quot;돈이 맞게 나갔나&quot;를 의심하고(P-008, P-047), 직원은 틀렸을 때의 책임이 부담스럽다 [추정].</li>
+</ul>
+<h2 id="competitive-landscape">Competitive Landscape</h2>
+<p><strong>Direct:</strong> 해외 시니어리빙 운영 스위트(Yardi Senior Living 등. B1) — 한국 계약·청구 제도와 언어에 맞지 않는다 [추정].
+<strong>Secondary:</strong> 국내 임대관리 SW(B31), 호텔 PMS(B30) — 시니어 고유 항목이 없다.
+<strong>Indirect:</strong> 엑셀과 회계 프로그램, 담당자 기억 — 이력·권한·소유주 분리가 없다.</p>
+<h2 id="differentiation">Differentiation</h2>
+<p><strong>Key differentiators:</strong></p>
+<ul>
+<li>운영사 → 소유주 → 사이트 → 동 → 호실 계층과 소유주 범위 권한을 처음부터 둔다.</li>
+<li>계약을 상태 전이로 다뤄서 승계·해지·정산에 이력이 남는다.</li>
+<li>청구 항목마다 근거(식사 기록, 감면 규칙, 계약 조건)가 연결된다.</li>
+<li>대리인(후견인, 위임)의 권한 범위가 서명·결제·열람 권한과 연결된다.
+<strong>How we do it differently:</strong> 화면부터가 아니라 도메인 모델(계약, 원장, 권한)부터 설계한다.
+<strong>Why that&#39;s better:</strong> 사이트와 자산 유형이 늘어도 같은 구조로 처리되고, 분쟁이 생기면 기록으로 설명할 수 있다.
+<strong>Why customers choose us:</strong> [NEED: 실제 도입 근거 없음. 포트폴리오에서는 &quot;설계 근거&quot;로 대신한다]</li>
+</ul>
+<h2 id="objections">Objections</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Objection</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>기성 SW를 쓰면 되지 않나</td>
+<td>회사가 이미 자체 구축을 결정했다(S2). 시니어 고유 규칙과 다자산 구조를 한 모델에 담는 것이 이유다</td>
+</tr>
+<tr>
+<td>시니어 청구 규칙은 시설마다 너무 다르다</td>
+<td>규칙을 코드가 아니라 사이트별 설정(요금 항목, 감면 규칙)으로 둔다. MVP는 생활비·식비·결식 감면 3개 규칙만 다룬다</td>
+</tr>
+<tr>
+<td>대리인·후견 처리는 법률 문제 아닌가</td>
+<td>법적 판단은 하지 않는다. 증빙(후견등기사항증명서 등)과 권한 범위, 유효기간을 기록하고 권한 검사에 쓴다</td>
+</tr>
+<tr>
+<td><strong>Anti-persona:</strong> 단일 시설만 운영하고 청구가 단순한 소규모 시설, 요양병원·장기요양기관(장기요양 급여 청구는 범위 밖).</td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h2 id="switching-dynamics">Switching Dynamics</h2>
+<p><strong>Push:</strong> 사이트마다 다른 도구, 수작업 정산, 사별·후견 때 처리 공백(P-017, P-018, P-049).
+<strong>Pull:</strong> 사이트를 추가해도 같은 기준, 근거가 붙은 청구서, 소유주별 리포트.
+<strong>Habit:</strong> 엑셀 정산표, 기존 호텔·임대 SW.
+<strong>Anxiety:</strong> 데이터 이관, 규칙 설정 부담, 금융 데이터 오류.</p>
+<h2 id="customer-language">Customer Language</h2>
+<p><strong>How they describe the problem:</strong> [NEED: 운영 매니저·경리 인터뷰 원문]. 리서치에서 바꿔 쓴 표현:</p>
+<ul>
+<li>입주자 쪽: &quot;안 먹은 밥값까지 나가는 것 같다&quot;(의무식. A16을 바꿔 씀), &quot;보증금은 돌려받을 수 있나&quot;(A14)</li>
+<li>보호자 쪽: &quot;아버지 통장에서 시설비를 낼 수가 없다&quot;(P-044)
+<strong>How they describe us:</strong> [NEED: 데모 피드백]
+<strong>Words to use:</strong></li>
+<li>직원용: 계약, 입주, 승계, 해지, 정산, 청구, 수납, 감면, 대리인</li>
+<li>입주자용: 이번 달 내실 돈, 드시지 않은 식사, 빼 드렸어요, 돌려드릴 보증금, 대신 처리하실 분
+<strong>Words to avoid:</strong> 회원 화면에서 &quot;결식&quot;, &quot;몰취&quot;, &quot;차감&quot;, &quot;미납&quot;, &quot;채권&quot;, &quot;케어&quot;, 영어 약어(PMS, RBAC). 모든 화면에서 &quot;노인&quot;, 공포 표현(&quot;이대로 두면 큰일&quot;).
+<strong>Glossary (도메인 용어 → 직원 화면 → 회원·보호자 화면):</strong> 직원 화면은 &quot;입주자&quot;, 회원·보호자 화면은 &quot;회원님&quot;으로 부른다(2026-11-03 확정). 직원 화면에서 &quot;회원&quot;은 쓰지 않는다.<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>도메인(코드)</th>
+<th>직원 화면</th>
+<th>회원·보호자 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Operator</td>
+<td>운영사</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>소유주</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>Site</td>
+<td>사업장</td>
+<td>레지던스 이름</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>호실</td>
+<td>○동 ○호</td>
+</tr>
+<tr>
+<td>Resident</td>
+<td>입주자</td>
+<td>회원님</td>
+</tr>
+<tr>
+<td>Contract</td>
+<td>입주 계약</td>
+<td>입주 계약</td>
+</tr>
+<tr>
+<td>ContractStatus: DRAFT / SIGNED / ACTIVE / SUCCEEDED / TERMINATING / SETTLED</td>
+<td>작성 중 / 입주 예정 / 거주 중 / 승계됨 / 퇴거 예정 / 정산 완료</td>
+<td>— / 아직 입주 전이에요 / 거주하고 계세요 / 계약이 바뀌었어요 / 퇴거 준비 중 / 정산이 끝났어요</td>
+</tr>
+<tr>
+<td>Charge</td>
+<td>청구 항목</td>
+<td>내실 돈 항목</td>
+</tr>
+<tr>
+<td>Invoice</td>
+<td>청구서</td>
+<td>이번 달 청구서</td>
+</tr>
+<tr>
+<td>Invoice.due_date (발행 때 정하고 바꾸지 않음)</td>
+<td>납부 기한</td>
+<td>&quot;○월 ○일까지 내시면 돼요&quot;</td>
+</tr>
+<tr>
+<td>BillingSchedule (사업장 설정, 계약에 고정하지 않음)</td>
+<td>청구 일정</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td>Charge type MEAL_SKIP_DISCOUNT (요금 규칙에 따른 감면)</td>
+<td>결식 감면</td>
+<td>드시지 않은 식사 빼 드림</td>
+</tr>
+<tr>
+<td>Charge type ADJUSTMENT (마감·발행 뒤 정정 전표)</td>
+<td>조정</td>
+<td>지난 청구서 바로잡음</td>
+</tr>
+<tr>
+<td>Deposit</td>
+<td>보증금</td>
+<td>맡기신 보증금</td>
+</tr>
+<tr>
+<td>Forfeiture (MVP 밖)</td>
+<td>몰취</td>
+<td>중도 퇴거 시 돌려드리지 않는 금액</td>
+</tr>
+<tr>
+<td>Representative</td>
+<td>대리인(성년·한정·특정·임의후견인, 위임받은 사람)</td>
+<td>대신 처리하실 분</td>
+</tr>
+<tr>
+<td>EmergencyContact (입주 계약에 딸림, 보호자 동의와 따로)</td>
+<td>비상 연락처</td>
+<td>급할 때 연락할 분 (보호자 화면은 &quot;비상 연락처에 적힌 분&quot;, 119 신고·병원 이송 기록에서만)</td>
+</tr>
+<tr>
+<td>AuthorityScope</td>
+<td>권한 범위</td>
+<td>대신 처리하실 수 있는 일</td>
+</tr>
+<tr>
+<td>AuditLog</td>
+<td>변경 이력</td>
+<td>바뀐 기록</td>
+</tr>
+</tbody></table></div>
+</li>
+</ul>
+<p>대리인 호칭: 직원 화면은 &quot;대리인&quot;, 회원 화면은 &quot;대신 처리하실 분&quot;이라 하고, 그분이 맡은 일은 &quot;대신 처리하실 수 있는 일&quot;이라 쓴다(허브 결정, 2026-11-03).</p>
+<h2 id="brand-voice">Brand Voice</h2>
+<p>기존 카피가 없어서 <a class="doc-ref" href="x-rules-03-copywriting.html"><code>03-copywriting/CLAUDE.md</code></a>의 시니어 카피 원칙과 공통 규칙에서 출발했다. 실제 문장이 쌓이면 다시 뽑는다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Means</th>
+<th>Doesn&#39;t mean</th>
+<th>Example line</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>차분하다</td>
+<td>사실을 짧고 정확하게 말한다</td>
+<td>딱딱한 공문체</td>
+<td>&quot;이번 달 청구서가 나왔어요. 지난달보다 12,000원 적어요.&quot;</td>
+</tr>
+<tr>
+<td>존중한다</td>
+<td>존댓말, 회원님 호칭, 선택을 묻는다</td>
+<td>아이 대하듯 쉬운 척, 과한 감탄</td>
+<td>&quot;대신 처리하실 분을 정해 두시겠어요?&quot;</td>
+</tr>
+<tr>
+<td>근거를 보인다</td>
+<td>숫자 옆에 이유를 붙인다</td>
+<td>설명 없는 숫자, 과장</td>
+<td>&quot;식사 3끼를 드시지 않아 27,000원을 빼 드렸어요.&quot;</td>
+</tr>
+<tr>
+<td>기록이 남는다 (직원용)</td>
+<td>누가 언제 무엇을 바꿨는지 보여준다</td>
+<td>감시하는 느낌</td>
+<td>&quot;김○○ 님이 3월 2일에 계약을 1인으로 바꿨습니다.&quot;</td>
+</tr>
+</tbody></table></div>
+<p><strong>Tone by context:</strong></p>
+<ul>
+<li>입주자·보호자 안내: 해요체, 한 문장에 하나의 사실, 숫자는 원 단위까지.</li>
+<li>직원 화면: 합쇼체·명사형 라벨, 업무 용어 허용, 상태와 다음 행동을 함께.</li>
+<li>오류: 무엇이 안 됐는지, 왜, 무엇을 하면 되는지 순서로. 사용자 탓을 하지 않는다.</li>
+<li>소유주 리포트: 숫자와 기간 중심, 해석은 짧게.</li>
+<li>포트폴리오 소개(면접관): 문제 → 설계 판단 → 데모 순서, 과장 없이.
+<strong>Terms we own:</strong> Evenstay(이븐스테이, 운영 플랫폼), Evenstay 홈(회원 앱), Evenstay 패밀리(보호자 화면). 2026-11-02 확정, 뒷말 한글 표기는 2026-11-03 사용자 결정(<code>names.md</code> v4). 회원 화면의 기능 이름은 우리말로 둔다(<code>names.md</code> v3).
+<strong>Never use (and why):</strong></li>
+<li>&quot;노인&quot;, &quot;독거노인&quot; — 비하 인상(공통 규칙)</li>
+<li>&quot;AI가 알아서&quot; — 판단 대행 오해, AI 기본법 고지 원칙과 충돌(G4)</li>
+<li>&quot;안심 보장&quot;, &quot;100%&quot; — 근거 없는 보장</li>
+<li>&quot;케어&quot; — 입주자 화면에서는 &quot;돌봄&quot;이나 구체 행동으로</li>
+</ul>
+<h2 id="proof-points">Proof Points</h2>
+<p><strong>Metrics:</strong> 없음(포트폴리오). 효과 수치를 주장하지 않는다. 대신 데모에서 보여줄 수 있는 사실만 쓴다(예: &quot;부부 계약이 1인으로 승계되면 요금과 이력이 같이 바뀐다&quot;).
+<strong>Customers / Testimonials:</strong> 없음.
+<strong>Value themes:</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Proof</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>다자산·다소유주 구조</td>
+<td>데모: 소유주 계정 전환 시 자기 사이트만 보임</td>
+</tr>
+<tr>
+<td>근거 있는 청구</td>
+<td>데모: 청구 항목 → 식사 기록 → 감면 규칙으로 따라가기</td>
+</tr>
+<tr>
+<td>끊김 없는 계약 변경</td>
+<td>데모: 사별 승계, 중도 해지 정산 이력</td>
+</tr>
+<tr>
+<td>대리인 권한</td>
+<td>데모: 후견인 등록 후 서명·결제 권한이 후견인에게 넘어감</td>
+</tr>
+</tbody></table></div>
+<h2 id="goals">Goals</h2>
+<p><strong>Business goal (포트폴리오):</strong> [지원 회사] 면접관이 &quot;PMS 코어를 이렇게 설계하겠다&quot;를 5분 안에 이해한다.
+<strong>Conversion action:</strong> 데모 링크 열기 → 시나리오 5단계 따라가기(<code>shortlist.md</code> A 데모).
+<strong>Current metrics:</strong> 없음.</p>
+<h2 id="learnings">Learnings</h2>
+<p>(비어 있음)</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li>v1 (2026-11-02): 숏리스트 A와 통합안(I-30 대리권, I-29 청구 설명) 기준으로 작성.</li>
+<li>v1.1 (2026-11-02): 브랜드명 Evenstay 확정 반영.</li>
+<li>v1.2 (2026-11-03): AuthorityScope 회원 말을 &quot;대신 처리하실 수 있는 일&quot;로 바꾸고 대리인 호칭 규칙 한 줄을 더함(허브 결정).</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-819" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-820" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-821" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-822" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-823" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-824" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-825" data-title="보증금"><p>수익이 아니라 맡긴 돈. 청구 원장과 나눈 별도 원장</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보증금 / 회원: 맡기신 보증금</dd><dt>영문·코드 이름</dt><dd><code>Deposit</code>, <code>DepositEntry</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-826" data-title="입주 계약"><p>호실과 입주자를 잇는 계약. 요금표 버전을 체결 때 고정한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원: 입주 계약</dd><dt>영문·코드 이름</dt><dd><code>Contract</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-827" data-title="권한 범위"><p>대리인이 맡은 일의 범위</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 권한 범위 / 회원: 대신 처리하실 수 있는 일</dd><dt>영문·코드 이름</dt><dd><code>AuthorityScope</code>: <code>SIGN_CONTRACT</code>, <code>VIEW_INVOICE</code>, <code>PAY</code>, <code>MANAGE_GUARDIAN_ACCESS</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-828" data-title="소유주 계정"><p>기준일에 소유한 사업장의 합계만 본다. 입주자 이름은 가린다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>OWNER_VIEWER</code></dd><dt>출처</dt><dd>core T6-1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-829" data-title="청구 항목"><p>청구서의 한 줄. 발행 뒤에는 추가만 한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구 항목 / 회원: 내실 돈 항목</dd><dt>영문·코드 이름</dt><dd><code>Charge</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

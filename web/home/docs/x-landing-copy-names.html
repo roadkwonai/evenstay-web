@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이름과 라벨 — evenstay-landing (Evenstay 소개 사이트) | Evenstay 문서</title>
+<meta name="description" content="이름과 라벨 — evenstay-landing (Evenstay 소개 사이트). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>이름과 라벨 — evenstay-landing (Evenstay 소개 사이트)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-페이지-이름과-메뉴-c-01-c-19">1. 페이지 이름과 메뉴 (C-01, C-19)</a></li><li class="lv2"><a href="#2-버튼과-반복-라벨">2. 버튼과 반복 라벨</a></li><li class="lv2"><a href="#3-ai가상-표기-c-06-c-17">3. AI·가상 표기 (C-06, C-17)</a></li><li class="lv2"><a href="#4-숙소-유형-c-24">4. 숙소 유형 (C-24)</a></li><li class="lv2"><a href="#5-사람-이름-c-21-c-22">5. 사람 이름 (C-21, C-22)</a></li><li class="lv2"><a href="#6-히어로-현재-영상-설명-c-05">6. 히어로 현재 영상 설명 (C-05)</a></li><li class="lv2"><a href="#7-가상-주소와-교통-c-29">7. 가상 주소와 교통 (C-29)</a></li><li class="lv2"><a href="#정한-것-2026-11-04-사용자-모두-추천대로-2026-11-04">정한 것 (2026-11-04, 사용자 &quot;모두 추천대로&quot; 2026-11-04)</a></li><li class="lv2"><a href="#교정-기록">교정 기록</a></li></ol></details></nav></aside>
+  <article class="doc"><h2 id="1-페이지-이름과-메뉴-c-01-c-19">1. 페이지 이름과 메뉴 (C-01, C-19)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>주소</th>
+<th>메뉴 이름</th>
+<th>페이지 제목(h1)</th>
+<th>고른 이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code></td>
+<td>(로고)</td>
+<td>Evenstay</td>
+<td>메인은 로고가 메뉴다</td>
+</tr>
+<tr>
+<td><code>/about</code></td>
+<td>소개</td>
+<td>Evenstay 소개</td>
+<td>짧은 메뉴, 제목에는 이름을 붙인다</td>
+</tr>
+<tr>
+<td><code>/facility</code></td>
+<td>시설</td>
+<td>시설 소개</td>
+<td>같은 방식</td>
+</tr>
+<tr>
+<td><code>/rooms</code></td>
+<td>숙소</td>
+<td>숙소 안내</td>
+<td>&quot;객실&quot;은 호텔 말, &quot;호실&quot;은 직원 말이라 &quot;숙소&quot;[사실: 기획 문서 낱말]</td>
+</tr>
+<tr>
+<td><code>/life</code></td>
+<td>생활</td>
+<td>생활·서비스</td>
+<td>하루 일과, 여가, 생활 요청을 담는다</td>
+</tr>
+<tr>
+<td><code>/dining</code></td>
+<td>식사</td>
+<td>식사</td>
+<td>최상위 메뉴(U-18)</td>
+</tr>
+<tr>
+<td><code>/safety</code></td>
+<td>안심·건강 지원</td>
+<td>안심·건강 지원</td>
+<td>기획 이름 그대로. &quot;응급&quot;, &quot;의료&quot;를 넣지 않는다</td>
+</tr>
+<tr>
+<td><code>/location</code></td>
+<td>오시는 길</td>
+<td>오시는 길</td>
+<td>익숙한 말</td>
+</tr>
+<tr>
+<td><code>/consult</code></td>
+<td>입주 상담</td>
+<td>입주 상담</td>
+<td>주 행동과 같은 말</td>
+</tr>
+<tr>
+<td><code>/privacy</code></td>
+<td>(푸터에만) 개인정보 처리방침</td>
+<td>개인정보 처리방침(데모)</td>
+<td>데모라는 것을 제목에</td>
+</tr>
+<tr>
+<td>404</td>
+<td>—</td>
+<td>페이지를 찾을 수 없어요</td>
+<td>탓하지 않는 말</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>1024px 이상 상단 바에 보이는 링크 4개는 <strong>숙소 · 생활 · 식사 · 오시는 길</strong>이다. 나머지 넷은 [전체 메뉴]에서 연다(정한 것 3, 사용자 &quot;모두 추천대로&quot; 2026-11-04). 처음 오신 분이 가장 먼저 찾을 것으로 골랐다 [가설].</li>
+<li>메뉴 순서(전체 메뉴): 소개 · 시설 · 숙소 · 생활 · 식사 · 안심·건강 지원 · 오시는 길 · 입주 상담 [사실: screen-spec LND-00].</li>
+</ul>
+<h2 id="2-버튼과-반복-라벨">2. 버튼과 반복 라벨</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>쓰임</th>
+<th>라벨</th>
+<th>후보와 고른 이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>주 버튼(상단 바, 히어로, 하단 띠) (C-04)</td>
+<td><strong>입주 상담 신청</strong></td>
+<td>후보: &quot;상담 신청하기&quot;(무엇을 상담하는지 흐림), &quot;입주 문의&quot;(신청 폼이라는 것이 안 보임). 무엇을 하는지가 보이는 &quot;입주 상담 신청&quot;</td>
+</tr>
+<tr>
+<td>상담 폼 보내기 버튼</td>
+<td><strong>신청 보내기</strong></td>
+<td>폼 안에서는 동작이 보이는 말</td>
+</tr>
+<tr>
+<td>전화 (C-01)</td>
+<td><strong>전화 상담</strong> + <code>02-000-0000</code> + 가상 번호</td>
+<td>앱 문구 &quot;프런트로 전화하기&quot;는 입주한 회원님 말이다. 사이트를 보는 분은 아직 입주 전이라 &quot;전화 상담&quot;이 맞다(정한 것 2, 사용자 &quot;모두 추천대로&quot; 2026-11-04)</td>
+</tr>
+<tr>
+<td>모바일 상단</td>
+<td>전화 · 메뉴</td>
+<td>아이콘과 글자를 함께 [사실: screen-spec LND-00]</td>
+</tr>
+<tr>
+<td>전체 메뉴 열기·닫기</td>
+<td>전체 메뉴 · 닫기</td>
+<td></td>
+</tr>
+<tr>
+<td>건너뛰기 링크</td>
+<td>본문으로</td>
+<td>[사실: screen-spec LND-00]</td>
+</tr>
+<tr>
+<td>섹션 끝 글자 링크</td>
+<td>○○ 자세히 보기</td>
+<td>예: 식사 자세히 보기, 안심·건강 지원 자세히 보기</td>
+</tr>
+<tr>
+<td>히어로 영상 버튼 (C-05)</td>
+<td>멈추기 · 다시 보기</td>
+<td>&quot;일시정지·재생&quot;보다 쉬운 말</td>
+</tr>
+<tr>
+<td>숙소 사진 넘기기</td>
+<td>이전 사진 · 다음 사진</td>
+<td>글자와 Lucide 아이콘 함께</td>
+</tr>
+<tr>
+<td>주소 복사</td>
+<td>주소 복사</td>
+<td></td>
+</tr>
+<tr>
+<td>맨 위로</td>
+<td>맨 위로</td>
+<td></td>
+</tr>
+<tr>
+<td>프로토타입 (C-16)</td>
+<td>프로토타입 열기</td>
+<td>[사실: screen-spec LND-11]</td>
+</tr>
+</tbody></table></div>
+<h2 id="3-ai가상-표기-c-06-c-17">3. AI·가상 표기 (C-06, C-17)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>쓰임</th>
+<th>표기</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>히어로 영상 아래</td>
+<td>영상은 AI로 만든 가상 장면이에요.</td>
+</tr>
+<tr>
+<td>사진 캡션 끝</td>
+<td>AI로 만든 가상 사진</td>
+</tr>
+<tr>
+<td>영상 자리 캡션 끝(영상과 포스터 모두)</td>
+<td>AI로 만든 가상 장면</td>
+</tr>
+<tr>
+<td>앱 화면 캡처 캡션</td>
+<td>데모 화면, 가상 데이터</td>
+</tr>
+<tr>
+<td>전화번호 옆</td>
+<td>가상 번호</td>
+</tr>
+<tr>
+<td>주소 옆</td>
+<td>가상 주소</td>
+</tr>
+<tr>
+<td>상담 폼 위</td>
+<td>데모라서 신청 내용을 보내거나 저장하지 않아요.</td>
+</tr>
+</tbody></table></div>
+<h2 id="4-숙소-유형-c-24">4. 숙소 유형 (C-24)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>정한 것</th>
+<th>고르지 않은 안</th>
+<th>버린 후보</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1인 숙소</strong>, <strong>2인 숙소</strong></td>
+<td>한 분 숙소, 두 분 숙소(높임이 들어가 부드럽지만 길다)</td>
+<td>1인실·2인실(병원·요양시설 병실처럼 읽힘), 스튜디오·스위트(외래어), 싱글·더블(호텔 말)</td>
+</tr>
+</tbody></table></div>
+<p>정한 것 8(사용자 &quot;모두 추천대로&quot; 2026-11-04). 시드의 1인 계약과 부부 계약에 맞춘 두 유형이다 [사실: U-13].</p>
+<h2 id="5-사람-이름-c-21-c-22">5. 사람 이름 (C-21, C-22)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>역할(사이트 직함)</th>
+<th>이름</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>센터장</td>
+<td>최영미</td>
+<td>[사실: U-11, 코어 시드 사업장 책임자]</td>
+</tr>
+<tr>
+<td>프런트</td>
+<td>최민수</td>
+<td>[사실: U-11]</td>
+</tr>
+<tr>
+<td>생활 지원</td>
+<td>김하진</td>
+<td>[사실: U-11]</td>
+</tr>
+<tr>
+<td>식당</td>
+<td><strong>송은주</strong></td>
+<td>이 문서가 처음 정한 가상 이름이다 [가설]. 다른 모듈 시드 이름(이은숙, 김지민, 김태호, 박영순, 박서준, 한도윤, 오수진, 정태영, 윤서연, 문해진, 박소연)과 겹치지 않게 골랐다</td>
+</tr>
+<tr>
+<td>(간호, 첫 버전에 없음)</td>
+<td>박서준</td>
+<td>카드를 두지 않는다(U-12). 사진 캡션에는 직무 이름 없이 &quot;직원&quot;</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>이름으로 외모를 정하지 않았다(인물 시트 PER-DINE은 그대로) [사실: asset-plan 4절].</li>
+</ul>
+<h2 id="6-히어로-현재-영상-설명-c-05">6. 히어로 현재 영상 설명 (C-05)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>영상</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VID-BLDG</td>
+<td>안뜰 정원을 사이에 둔 두 동의 건물이에요.</td>
+</tr>
+<tr>
+<td>VID-ROOM</td>
+<td>큰 창으로 햇살이 드는 1인 숙소예요.</td>
+</tr>
+<tr>
+<td>VID-H1</td>
+<td>아침에는 창가에 앉아 책을 읽어요.</td>
+</tr>
+<tr>
+<td>VID-H2</td>
+<td>오전에는 발코니에서 차를 마셔요.</td>
+</tr>
+<tr>
+<td>VID-H3</td>
+<td>오후에는 이웃과 함께 수채화를 그려요.</td>
+</tr>
+<tr>
+<td>VID-H4</td>
+<td>해 질 녘에는 안뜰 정원을 천천히 걸어요.</td>
+</tr>
+</tbody></table></div>
+<h2 id="7-가상-주소와-교통-c-29">7. 가상 주소와 교통 (C-29)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>표기</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>주소</td>
+<td>가상시 안뜰구 머묾로 12 (가상 주소)</td>
+<td>실존 지명과 겹치지 않게 &quot;가상&quot;을 지명 안에 넣었다 [가설]</td>
+</tr>
+<tr>
+<td>역</td>
+<td>가상선 안뜰역</td>
+<td>[가설]</td>
+</tr>
+<tr>
+<td>버스</td>
+<td>가상 버스 12번, 안뜰공원 정류장</td>
+<td>[가설]</td>
+</tr>
+</tbody></table></div>
+<h2 id="정한-것-2026-11-04-사용자-모두-추천대로-2026-11-04">정한 것 (2026-11-04, 사용자 &quot;모두 추천대로&quot; 2026-11-04)</h2>
+<p><code>copy.md</code> 끝 &quot;정한 것&quot; 표에 모았다. 이 파일의 이름은 정한 것 2(전화 상담), 3(상단 링크 4개), 8(1인 숙소·2인 숙소)이다.</p>
+<h2 id="교정-기록">교정 기록</h2>
+<p><strong>2026-11-04 소개 사이트 반영 검토 결정 반영 (허브 요청, 사용자 재승인 2026-11-04)</strong>: G-10에 따라 입력 줄의 기획 문서 상태를 &quot;초안&quot;에서 &quot;승인 2026-11-04&quot;로 고쳤다. 이름과 라벨은 바뀌지 않았다. 호출한 스킬: <code>copywriting</code>, <code>copy-editing</code>.</p>
+<p><strong>2026-11-04 공간 영상 3편 반영 (허브 요청, 사용자 재승인 2026-11-04)</strong>: 6절 장면 이름에 VID-BLDG &quot;안뜰에서 본 건물&quot;, VID-ROOM &quot;1인 숙소 안&quot;을 더했다. 후보 &quot;건물 전경&quot;, &quot;숙소&quot;는 쉬운 말과 구체성에서 뒤져 고르지 않았다. 호출한 스킬: <code>copywriting</code>, <code>copy-editing</code>, <code>grammar-checker</code>.</p>
+<p><strong>2026-11-04 메인 아트보드 지적 반영 (허브 요청, 사용자 재승인 2026-11-04)</strong>: 3절 영상 캡션 표기를 &quot;AI로 만든 가상 장면&quot;으로 바꿨다. 같은 자리에 정지 포스터가 놓여도 맞는 말이다. 호출한 스킬: <code>copywriting</code>, <code>copy-editing</code>, <code>grammar-checker</code>.</p>
+<p><strong>2026-11-04 korean-skills 다시 검수 (허브 요청, 사용자 재승인 2026-11-04)</strong>: 6절을 장면 버튼 이름에서 현재 영상 설명 한 줄로 바꿨다. 쉼표로 끊은 명사형을 해요체 문장으로 고쳤다. 나머지 이름과 라벨은 그대로 쓴다. 호출한 스킬: <code>grammar-checker</code>, <code>style-guide</code>, <code>humanizer</code>.</p>
+<p><strong>2026-11-04 문장 다시 쓰기 (허브 요청, 사용자 재승인 2026-11-04)</strong>: 6절 VID-BLDG 설명을 &quot;안뜰 정원을 사이에 둔 두 동의 건물이에요.&quot;로 고쳤다. 호출한 스킬: <code>humanize-korean:humanize-korean</code>(진단), <code>grammar-checker</code>.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

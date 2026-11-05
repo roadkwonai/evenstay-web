@@ -541,14 +541,14 @@
 </li>
 <li>2026-11-03 코어 장기 부재 확정 맞춤(허브 요청, 사용자 재승인 2026-11-04): 코어가 <code>ResidentAbsenceStarted</code>/<code>ResidentAbsenceEnded</code>(absenceId, residentId, unitId, startedOn/endedOn, expectedReturnOn)와 <code>AbsenceQuery</code>를 확정했다(코어 <code>tech-design.md</code> 2-2·3-4·8절). 모듈 경계 8번(다른 모듈 데이터를 복사해 두지 않고 매 요청 <code>api/</code>로 읽는다)에 따라 B는 부재를 저장하지 않고 신호를 평가할 때마다 <code>AbsenceQuery.absenceOf</code>로 읽는다(<code>tech-design.md</code> ADR-S7). 이벤트는 구독하지 않는다. <code>SafetyBoardQuery.boardOf</code> 반환 형태를 코어 운영 현황 카드에 맞췄다(가장 긴 시간, 당번 이름).</li>
 <li>2026-11-03 안전 서비스 보완 카피 반영(허브 요청, 사용자 재승인 2026-11-04): B 카피 세션이 <code>copy.md</code> 2-15 안부 방문, 2-16 병원 동행, 2-17 부재 중과 기존 표(2-1, 2-4, 2-7, 2-12, 2-13, 4-2)에 줄을 넣고 <code>names.md</code> 4절에 출처 &quot;안부 방문&quot;을 넣었다. 해당 [NEED: 카피]를 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨고, 안부 방문 결과 선택지는 카피대로 &quot;입주자가 방문을 원하지 않으셨습니다&quot;(직원 화면 호칭 규칙)로 맞췄다.</li>
-<li>2026-11-04 전체 리뷰 보완(허브 지시서 <code>00-hub/reviews/supplement-orders-2026-11-04.md</code> 안심 알림 1~4, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04). 목표는 모든 화면이 흐름대로 움직이는 클릭형 프로토타입(MVP 구현 없음).<ul>
+<li>2026-11-04 전체 리뷰 보완(허브 지시서 <a class="doc-ref" href="x-process-supplement-orders-2026-11-04.html"><code>00-hub/reviews/supplement-orders-2026-11-04.md</code></a> 안심 알림 1~4, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04). 목표는 모든 화면이 흐름대로 움직이는 클릭형 프로토타입(MVP 구현 없음).<ul>
 <li>user-stories: US-29(F17), US-30(F26), US-31(F27), US-32(F28), US-33(F29) 추가, 이용자 표. 호출한 스킬: <code>user-stories</code>.</li>
 </ul>
 </li>
 <li>2026-11-04 소유주 월 리포트 숫자 열기(허브 전달, 사용자 결정 H5 &quot;모두 추천대로&quot;, 사용자 재승인 2026-11-04): 코어 CORE-14에 안심 알림 그달 숫자를 연다. 조회 <code>SafetyBoardQuery.monthOf(siteId, period, actor)</code>, 행동 <code>safety.owner_report.view</code>(소유주는 자기 소유 사업장만). 이름·호실·입주자 ID·직원·메모와 119·병원 이송 수는 주지 않는다.</li>
 <li>2026-11-04 전체 리뷰 보완 카피 반영(허브 요청, 사용자 재승인 2026-11-04): B 카피 세션이 <code>copy.md</code> 2-18 호실 현황, 2-19 사고·학대 보고, 2-20 비상 때 재실 명단, 2-21 소유주 월 리포트의 안심 알림 묶음과 기존 표(2-1, 2-11, 2-12, 2-16, 4-1)에 줄을 넣고 <code>names.md</code> 4절에 출처 &quot;생활 요청에서 옮김&quot;을 넣었다. 해당 [NEED: 카피]를 &quot;반영됨(<code>copy.md</code> 절 번호)&quot;으로 바꿨다.</li>
 <li>2026-11-04 앱 호출 표현 정리(허브 요청, 사용자 결정 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 &quot;도움을 부르는 길은 호출벨·방 전화·119 셋, 앱은 부른 뒤 보는 곳&quot;, 사용자 재승인 2026-11-04): US-16 인수 조건 3을 <code>copy.md</code> 4-1의 방 전화 표기에 맞추고, US-19 설명을 고쳤다.</li>
-<li>2026-11-04 공용 문구 인용 맞춤(허브 요청, 사용자 &quot;추천대로&quot;, 근거 <code>03-copywriting/ideas/safety-signal-hub/plain-read-review-2026-11-04.md</code>와 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구 행, 사용자 재승인 2026-11-04): 인용만 바꿨고 기능·범위·정책·수치는 그대로다. US-09 인수 조건 6과 US-16 인수 조건 6의 인용을 고쳤다.</li>
+<li>2026-11-04 공용 문구 인용 맞춤(허브 요청, 사용자 &quot;추천대로&quot;, 근거 <a class="doc-ref" href="x-writing-safety-plain-read-review.html"><code>03-copywriting/ideas/safety-signal-hub/plain-read-review-2026-11-04.md</code></a>와 <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구 행, 사용자 재승인 2026-11-04): 인용만 바꿨고 기능·범위·정책·수치는 그대로다. US-09 인수 조건 6과 US-16 인수 조건 6의 인용을 고쳤다.</li>
 <li>2026-11-04 프로토타입 확인 보완(허브 지시, 사용자 &quot;추천대로&quot;, 근거 <code>evenstay/design/prototype/REPORT.md</code> 2·4·10번, 사용자 재승인 2026-11-04): US-32 인수 조건 3을 고치고 조건 6(대피 확인 정정)을 더했다.</li>
 </ul>
 </article>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stack-diagram 인프라 도식 5장 | Evenstay 문서</title>
+<meta name="description" content="stack-diagram 인프라 도식 5장. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>stack-diagram 인프라 도식 5장</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#다시-만드는-명령">다시 만드는 명령</a></li><li class="lv2"><a href="#문구와-배치를-고치는-곳">문구와 배치를 고치는 곳</a></li><li class="lv2"><a href="#아이콘">아이콘</a></li></ol></details></nav></aside>
+  <article class="doc"><p>만든 도식: stack-a1, stack-a2, stack-a5, stack-b, stack-c. 내용 원본은 설계안(<a class="doc-ref" href="lab-senior-housing-architecture-design.html"><code>senior-lab/01-research/outputs/senior-housing-architecture-design.md</code></a>)이고, 공통 규칙은 <code>../brief.md</code>다.</p>
+<h2 id="다시-만드는-명령">다시 만드는 명령</h2>
+<pre><code>cd evenstay/design/home/architecture/stack
+./build.sh              # 5장 모두
+./build.sh stack-b      # 한 장만</code></pre>
+<p><code>build.sh</code>는 <code>make.py</code>로 <code>&lt;id&gt;/draft.html</code>을 쓰고, 스킬의 <code>build.py</code>(아이콘 끼우기)로 <code>design/prototype/home/architecture/&lt;id&gt;.html</code>을 만든 뒤, 헤드리스 Chrome으로 <code>&lt;id&gt;.png</code>(배율 2)를 렌더한다. Playwright와 스킬의 공개 공유 기능(<code>share.py</code>)은 쓰지 않는다.</p>
+<h2 id="문구와-배치를-고치는-곳">문구와 배치를 고치는 곳</h2>
+<ul>
+<li>라벨, 좌표, 선: <code>make.py</code>의 <code>a1()</code>, <code>a2()</code>(a5와 바탕을 <code>a2_base()</code>로 공유), <code>a5()</code>, <code>b()</code>, <code>c()</code>. 노드는 <code>d.node(가운데 x, 위 y, 아이콘, 이름, 역할)</code>, 선은 <code>d.path(...)</code>.</li>
+<li>색, 글꼴(Pretendard, 상대 경로 <code>../../assets/fonts/PretendardVariable.woff2</code>), 그룹 모양: <code>make.py</code> 위쪽의 <code>CSS</code>.</li>
+<li>제목, 머리 글귀, 범례, 푸터: 각 함수 끝의 <code>d.html(...)</code> 인자.</li>
+<li><code>&lt;id&gt;/draft.html</code>은 생성물이다. 직접 고치지 않는다.</li>
+</ul>
+<h2 id="아이콘">아이콘</h2>
+<p><code>icons/</code>에 모아 두었고 목록과 출처는 <code>icons/manifest.json</code>이다. 다시 받을 때는 스킬의 <code>scripts/fetch_icons.py icons ...</code>를 쓴다.</p>
+<ul>
+<li>LangGraph는 LangChain 상표를 쓴다(svgl에 LangGraph 단독 로고가 없다).</li>
+<li>OpenTofu(공식 brand-artifacts 파비콘 PNG), LiteLLM(공식 사이트 파비콘 PNG), Dagster(공식 저장소 마크)는 <code>name=URL</code>로 받았다.</li>
+<li>Cloud Tasks, Secret Manager, Cloud Logging·Monitoring은 Google이 정한 분류 아이콘이다.</li>
+<li>추상 노드(브라우저, 업체 웹훅, 현장 어댑터, 외부 캐너리, 작업자, 모델 API, 컨테이너 작업자, CMS·PG, ERP, 알림톡)는 Lucide 그림이다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

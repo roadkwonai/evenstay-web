@@ -384,7 +384,7 @@
 <h3 id="us-26-서비스-사용-기록과-청구-p1-f20">US-26 서비스 사용 기록과 청구 (P1, F20)</h3>
 <p><strong>설명</strong>: 경리로서, 생활 요청에서 회원이 확인한 유료 서비스가 다음 청구서에 저절로 들어가고, 들어가기 전 목록을 보고 싶다. 그래야 따로 계산하지 않고 회원에게 안내한 금액 그대로 청구한다.
 <strong>대화</strong>: 생활 요청(N1)이 회원 확인 뒤 코어 명령으로 사용을 넘긴다. 코어가 넣을 달과 금액을 정한다. N1은 금액을 정하지 않는다(N1 ADR-R4). 이불 세탁 10,000원은 데모 자리값이다 [가설].
-<strong>디자인</strong>: <code>copy.md</code> 2-3 사용 기록 탭, 2-14 청구서 항목 이름 &quot;서비스 이용료&quot;(반영됨). 회원 화면의 서비스 이름은 N1 카피(<code>docs/requests/copy/names.md</code>)를 따른다.
+<strong>디자인</strong>: <code>copy.md</code> 2-3 사용 기록 탭, 2-14 청구서 항목 이름 &quot;서비스 이용료&quot;(반영됨). 회원 화면의 서비스 이름은 N1 카피(<a class="doc-ref" href="x-writing-requests-names.html"><code>docs/requests/copy/names.md</code></a>)를 따른다.
 <strong>인수 조건</strong></p>
 <ol>
 <li>N1이 같은 요청을 두 번 넘겨도 사용 기록은 1건이고, 두 번째에는 처음 결과(넣을 달, 금액)를 돌려준다.</li>
@@ -552,7 +552,7 @@
 <li>카피·N2 반영(같은 날, 허브 요청): 코어 카피 2-2·2-3·2-10·2-12·2-13·2-14·3절 보완 문구에 맞춰 <code>[NEED: 카피]</code>를 &quot;반영됨&quot;으로, 카드 이름 &quot;AI 생활 비서 사용량&quot;(G 확인), N2 커뮤니티 요청 N2-C1~C4 반영(카드 후보 [가설], 호실 층, 선언 행동 두 개, 켜는 기능은 N2 설정).</li>
 </ul>
 <h3 id="2026-11-04-쉬운-말-재검수공용-문구-반영-허브-요청-사용자-추천대로-사용자-재승인-2026-11-04">2026-11-04 쉬운 말 재검수·공용 문구 반영 (허브 요청, 사용자 &quot;추천대로&quot;, 사용자 재승인 2026-11-04)</h3>
-<p>근거: <code>03-copywriting/ideas/pms-core-billing/plain-read-review-2026-11-04.md</code>, <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구. 기능, 범위, 정책, 수치는 그대로다. 직원 화면과 업무 용어 &quot;퇴거&quot;도 그대로다.</p>
+<p>근거: <a class="doc-ref" href="x-writing-core-plain-read-review.html"><code>03-copywriting/ideas/pms-core-billing/plain-read-review-2026-11-04.md</code></a>, <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 공용 문구. 기능, 범위, 정책, 수치는 그대로다. 직원 화면과 업무 용어 &quot;퇴거&quot;도 그대로다.</p>
 <ul>
 <li>US-04 조건 1의 회원 문구를 &quot;아직 입주 전이에요&quot;로 맞췄다.</li>
 <li>US-12 조건 8에 억 단위 금액 표시 규칙을 더했다.</li>

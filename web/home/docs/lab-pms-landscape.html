@@ -87,7 +87,7 @@
 <tr>
 <td>입주자·가족 참여</td>
 <td>Caremerge → Icon</td>
-<td>가족 포털, eMAR, 약국 연동, API(목록상, Caremerge 이름 기준) [B28]. 참여·웰니스 사업은 2022-06 VoiceFriend 인수 후 Icon으로 개명, 검색요약(이력). 현재 제공 주체 [미확인]</td>
+<td>가족 포털, eMAR, 약국 연동, API(목록상, Caremerge 이름 기준) [B28]. 참여·웰니스 사업은 2022-06 VoiceFriend 인수 후 Icon으로 개명, 검색요약(<a href="x-sources-arch-global-platforms.html">이력</a>). 현재 제공 주체 [미확인]</td>
 <td>[미확인]</td>
 <td>API 주장 [B28]</td>
 <td>예</td>
@@ -211,10 +211,10 @@ Webhook/Event                                  ← Mews [B9], Cloudbeds [B21], O
 <li><strong>Mews 설계 힌트</strong>: Rate·제약이 Enterprise에서 Service 수준으로 내려왔다 [B10]. 청구가 예약이 아닌 Profile에 귀속되는 점은 입주자에게 여러 계약·서비스가 붙는 구조에 참고가 된다 [B8].</li>
 </ul>
 <h2 id="c-시니어하우징-pms에만-필요한-것">(c) 시니어하우징 PMS에만 필요한 것</h2>
-<p>다음은 해외 제품 목록의 모듈 [B1][B4][B28]과 우리 프로필 [shared/target-companies.md]을 합친 <strong>정리</strong>다. 국내 운영 실무 검증은 축 4가 맡는다.</p>
+<p>다음은 해외 제품 목록의 모듈 [B1][B4][B28]과 우리 프로필을 합친 <strong>정리</strong>다. 국내 운영 실무 검증은 축 4가 맡는다.</p>
 <ol>
 <li><strong>입주 영업 CRM → 입주 전환</strong>: 리드, 투어, 상담 이력이 계약으로 이어짐. Yardi는 CRM 데이터가 스위트로 흐른다고 주장 [B3]. 독립 CRM(WelcomeHome 등)은 API로 PMS/EHR에 붙인다 [B29].</li>
-<li><strong>케어 레벨 기반 요금</strong>: 해외 스위트는 케어 비용이 원장에 반영된다고 설명하나 산식 [미확인] [B1]. 국내 노인복지주택은 장기요양보험이 아닌 민간 계약이라 월 생활비·서비스 이용료·식사 정산이 계약에 들어간다 [target-companies.md, S6][추정].</li>
+<li><strong>케어 레벨 기반 요금</strong>: 해외 스위트는 케어 비용이 원장에 반영된다고 설명하나 산식 [미확인] [B1]. 국내 노인복지주택은 장기요양보험이 아닌 민간 계약이라 월 생활비·서비스 이용료·식사 정산이 계약에 들어간다 [S6][추정].</li>
 <li><strong>보호자(가족) 포털과 권한</strong>: Caremerge(참여·웰니스 사업은 2022-06 VoiceFriend 인수 후 Icon으로 개명, 검색요약)는 제3자 목록상 가족 포털/보안 메시징이다 [B28]. 현재 제공 주체 [미확인]. 입주자 본인과 다른 동의·열람 범위가 필요 [판단].</li>
 <li><strong>케어·복약 기록(eMAR)</strong>: 해외는 EHR/eMAR 모듈로 분리 [B1][B28]. 국내 민간 시니어주거에서 어디까지 PMS 범위인지는 [미확인]. MVP는 기록 자체보다 이벤트 연동 지점이 적절 [판단].</li>
 <li><strong>응급·안전 이벤트</strong>: 낙상 감지·호출벨(SafelyYou, Inspiren)과 직원 앱 알림 연동 [B26][B27]. 공개 API는 못 찾았으므로 어댑터+목업이 현실적 [판단].</li>
@@ -225,18 +225,18 @@ Webhook/Event                                  ← Mews [B9], Cloudbeds [B21], O
 <ul>
 <li>호텔 PMS는 WINGS가 강한 점유율을 주장 [B30]. 임대는 제온스·트러스테이 등 단지·임대관리 솔루션이 있다 [B31][B32]. 요양은 케어포 같은 장기요양기관 프로그램이 있다 [B33].</li>
 <li><strong>시니어 주거 전용(입주 CRM+계약+케어 레벨 청구+가족 포털) PMS는 이번 검색에서 발견하지 못했다.</strong> [사실: 발견 못함] &quot;국내에 없다&quot;는 확정이 아니다. 운영사 내부 개발·비공개 SW 가능성이 있다 [추정].</li>
-<li>호텔·임대·요양 제품은 각각 따로 있지만, [지원 회사]처럼 시니어하우징+임대주택+숙박을 한 PMS로 묶는 국내 사례는 못 찾았다 [사실: 발견 못함]. MGRV가 제온스를 도입한 것은 코리빙 운영 디지털화 선례로 의미가 있다 [B31]. ([지원 회사] 대표가 MGRV 출신이라는 프로필 [target-companies.md]과의 연결은 추정)</li>
+<li>호텔·임대·요양 제품은 각각 따로 있지만, [지원 회사]처럼 시니어하우징+임대주택+숙박을 한 PMS로 묶는 국내 사례는 못 찾았다 [사실: 발견 못함]. MGRV가 제온스를 도입한 것은 코리빙 운영 디지털화 선례로 의미가 있다 [B31]. ([지원 회사] 대표가 MGRV 출신이라는 프로필과의 연결은 추정)</li>
 </ul>
 <h2 id="e-포트폴리오-mvp에-주는-시사점-백엔드-설계-포인트">(e) 포트폴리오 MVP에 주는 시사점 (백엔드 설계 포인트)</h2>
 <ol>
-<li><strong>Tenant(운영사)–Owner–Site–Building–Unit 계층과 사업장 스코프 토큰</strong>: Mews의 Enterprise/Portfolio와 범위별 토큰 [B8], Cloudbeds 그룹 계정 [B21], OHIP 체인 단위 권한 [B20]. 수탁 운영이라 소유주별 데이터 분리·리포팅이 핵심 [target-companies.md]. RLS 또는 tenant_id 설계를 ADR로 남긴다.</li>
+<li><strong>Tenant(운영사)–Owner–Site–Building–Unit 계층과 사업장 스코프 토큰</strong>: Mews의 Enterprise/Portfolio와 범위별 토큰 [B8], Cloudbeds 그룹 계정 [B21], OHIP 체인 단위 권한 [B20]. 수탁 운영이라 소유주별 데이터 분리·리포팅이 핵심. RLS 또는 tenant_id 설계를 ADR로 남긴다.</li>
 <li><strong>Party 모델(입주자·보호자·법인)과 청구 귀속</strong>: Mews는 Bill을 Profile에 귀속 [B8]. 입주자 1명에 계약·서비스가 여러 개 붙는 구조, 보호자는 별도 Party와 관계로 표현.</li>
 <li><strong>Charge/Invoice/Payment 원장과 월 정산 배치</strong>: Mews AccountingItem(Order/Payment) [B8]. 케어 레벨 변경이 요금에 반영되는 규칙은 내 설계(해외 산식 [미확인] [B1])로 상태 전이와 소급 정산을 보여줄 수 있다. 소유주 명세서(owner statement) 산출은 AppFolio 사례 [B14].</li>
 <li><strong>계약(Lease/Contract) 상태 전이와 Unit 점유</strong>: Entrata의 lease가 property·customer·unit·기간으로 조회됨 [B11]. 입주 상담→계약→입주→퇴거 상태기계와 동시 예약 충돌 방지(이중 계약 방지).</li>
 <li><strong>이벤트·웹훅 수신과 멱등 어댑터</strong>: Mews는 폴링 대신 웹훅 권장 [B9], Cloudbeds·OHIP도 웹훅/이벤트 [B21][B20]. 출입통제/IoT/결제를 어댑터로 목업하고 중복 수신 멱등 처리, 재시도, 서명 검증 시연.</li>
 <li><strong>공개 API + 파트너 접근 철회 + 샌드박스</strong>: OHIP는 파트너 접근 철회, 역할별 접근, 샌드박스 [B20]. Cloudbeds도 샌드박스 [B21]. API Key/OAuth, 스코프, 감사 로그를 설계로 보여줌.</li>
 <li><strong>AI Agent를 도구 호출 계층으로</strong>: Yardi Virtuoso는 오픈 에이전트 구조와 마켓(회사 주장) [B18], RealPage Lumina는 에이전트들이 데이터 플랫폼 공유 [B19], EliseAI는 문의 응대·투어 예약 [B17]. 시니어 버전은 입주 문의 응대 에이전트가 PMS의 공실·요금 조회 API를 호출하고 직원 인계 지점과 개인정보 마스킹을 명시. 효과 수치는 모두 회사 주장이므로 MVP에서 &quot;측정 가능한 로그&quot; 설계로 대체.</li>
-<li><strong>RBAC·민감정보</strong>: 본사·사업장 직원·입주자·보호자·소유주 역할과 건강정보 열람 분리는 공통 요구 [target-companies.md]. 구현은 정책 테이블+감사 로그.</li>
+<li><strong>RBAC·민감정보</strong>: 본사·사업장 직원·입주자·보호자·소유주 역할과 건강정보 열람 분리는 공통 요구. 구현은 정책 테이블+감사 로그.</li>
 </ol>
 <h2 id="f-확인-못-한-것">(f) 확인 못 한 것</h2>
 <ul>

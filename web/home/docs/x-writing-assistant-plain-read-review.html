@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>쉬운 말 검수 — 홈 비서 회원 화면 (2026-11-04) | Evenstay 문서</title>
+<meta name="description" content="쉬운 말 검수 — 홈 비서 회원 화면 (2026-11-04). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>쉬운 말 검수 — 홈 비서 회원 화면 (2026-11-04)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#고친-문구">고친 문구</a></li><li class="lv2"><a href="#판-버전">&quot;판&quot; → &quot;버전&quot;</a></li><li class="lv2"><a href="#고치지-않고-남긴-애매한-문구">고치지 않고 남긴 애매한 문구</a></li><li class="lv2"><a href="#공용-용어-제안-고치지-않음">공용 용어 제안 (고치지 않음)</a></li><li class="lv2"><a href="#기획-문서에서-고쳐야-할-곳-고치지-않음">기획 문서에서 고쳐야 할 곳 (고치지 않음)</a></li><li class="lv2"><a href="#확인-결과">확인 결과</a></li><li class="lv2"><a href="#공용-문구-확정안-반영-2026-11-04-사용자-추천대로">공용 문구 확정안 반영 (2026-11-04, 사용자 &quot;추천대로&quot;)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-972" data-tip="계약과 달마다 하나.">청구서</button></li></ul></section></aside>
+  <article class="doc"><p>기준: 70대 회원과 그 자녀가 소리 내어 읽고 바로 뜻을 아는가. 뜻, 사실, 기능 범위, 책임 범위는 바꾸지 않았다.
+범위: <code>copy.md</code> 2·3·4절과 6절 회원 칸(보호자 화면은 최소 버전 비서에 없다). 직원 화면은 &quot;판&quot;만 봤다.</p>
+<ul>
+<li>읽은 문구: 119줄 (AST-01 19, AST-02 9, AST-03 4, AST-04 42, AST-05 13, AST-06 5, AST-07 9, AST-08 6, 답 표시 1, AST-12 회원 칸 11. 한 줄에 버튼이나 답이 여러 개인 곳은 한 줄로 셌다)</li>
+<li>고친 문구: 14줄</li>
+<li>&quot;판&quot; → &quot;버전&quot;: 3줄 (화면 문구가 아니라 문서 제목과 설명)</li>
+</ul>
+<h2 id="고친-문구">고친 문구</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>화면 ID</th>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AST-04</td>
+<td>2-3 낸 기록이 있을 때</td>
+<td>12월 청구서는 내신 기록이 있어요.</td>
+<td>12월 청구서는 내셨다고 기록돼 있어요.</td>
+<td>소리 내어 읽으면 &quot;내신&quot;이 학교 내신 성적으로 들린다</td>
+</tr>
+<tr>
+<td>AST-04</td>
+<td>2-3 낸 기록이 있을 때</td>
+<td>언제까지 내실지는 그 청구서가 나올 때 정해져요.</td>
+<td>언제까지 내시면 되는지는 그 청구서가 나올 때 정해져요.</td>
+<td>&quot;내실지&quot;는 회원이 정하는 일처럼 읽힌다</td>
+</tr>
+<tr>
+<td>AST-04</td>
+<td>2-3 일부를 낸 기록</td>
+<td>12월 청구서는 일부를 내신 기록이 있어요.</td>
+<td>12월 청구서는 일부를 내셨다고 기록돼 있어요.</td>
+<td>&quot;내신&quot; 같은 이유</td>
+</tr>
+<tr>
+<td>AST-04</td>
+<td>2-3 기한 지남, 기록 없음</td>
+<td>12월 청구서는 1월 10일까지였어요. 아직 내신 기록이 없어요.</td>
+<td>12월 청구서를 내실 기한은 1월 10일이었어요. 아직 내셨다는 기록이 없어요.</td>
+<td>&quot;까지였어요&quot;만으로는 무엇이 1월 10일까지인지 바로 오지 않는다</td>
+</tr>
+<tr>
+<td>AST-04</td>
+<td>2-3 기한 지남, 볼 수 없음</td>
+<td>12월 청구서는 1월 10일까지였어요. 내신 기록은 제가 볼 수 없어요.</td>
+<td>12월 청구서를 내실 기한은 1월 10일이었어요. 내셨는지는 제가 볼 수 없어요.</td>
+<td>같은 이유</td>
+</tr>
+<tr>
+<td>AST-04</td>
+<td>2-3 다른 청구서 더함</td>
+<td>아직 내신 기록이 없는 청구서가 더 있어요.</td>
+<td>아직 내셨다는 기록이 없는 청구서가 더 있어요.</td>
+<td>&quot;내신&quot; 같은 이유</td>
+</tr>
+<tr>
+<td>AST-04</td>
+<td>2-4 식비 설명</td>
+<td>12월은 31일이라 식사가 모두 93끼예요. 한 끼에 9,000원씩, 837,000원이에요.</td>
+<td>12월은 31일까지 있어서 식사가 모두 93끼예요. 한 끼에 9,000원씩 합쳐서 837,000원이에요.</td>
+<td>&quot;12월은 31일이라&quot;가 날짜를 말하는 듯 들린다. 쉼표로 끊긴 계산을 말로 이었다</td>
+</tr>
+<tr>
+<td>AST-04</td>
+<td>2-4 &quot;왜 3끼만 빼 줬어요?&quot;</td>
+<td>기록이 다르다고 생각하시면 직원이 확인해야 해요.</td>
+<td>기록이 실제와 다른 것 같으시면 직원이 확인해야 해요.</td>
+<td>무엇과 다른지 빠져 있었다</td>
+</tr>
+<tr>
+<td>AST-07</td>
+<td>3절 말을 지운 대화 한 줄</td>
+<td>나눈 말은 보관 기간이 지나 지웠어요</td>
+<td>나눈 이야기는 보관 기간이 지나 지웠어요</td>
+<td>&quot;나눈 말&quot;은 낯설다. 같은 화면 안내의 &quot;나눈 이야기&quot;와 맞췄다</td>
+</tr>
+<tr>
+<td>AST-07</td>
+<td>3절 보관 안내</td>
+<td>나눈 말은 대화가 끝난 날부터 1년 동안 보관한 뒤 지워요. 말로 물으신 목소리는 저장하지 않고, 글자로 바뀐 말만 남아요.</td>
+<td>나눈 이야기는 대화가 끝난 날부터 1년 동안 보관한 뒤 지워요. 말로 물으신 목소리는 저장하지 않아요. 물으신 말은 글자로만 남아요.</td>
+<td>한 문장에 두 뜻이 있었고 &quot;글자로 바뀐 말&quot;이 어렵다</td>
+</tr>
+<tr>
+<td>AST-07</td>
+<td>3절 말을 지운 대화를 열었을 때</td>
+<td>이 대화의 말은 보관 기간 1년이 지나 지웠어요.</td>
+<td>이 대화에서 나눈 이야기는 보관 기간 1년이 지나 지웠어요.</td>
+<td>&quot;대화의 말&quot;이 어색하다</td>
+</tr>
+<tr>
+<td>AST-12</td>
+<td>6절 코어 응답 실패</td>
+<td>지금은 청구서를 불러오지 못했어요.</td>
+<td>지금은 청구서를 보여 드리지 못했어요.</td>
+<td>&quot;불러오다&quot;는 컴퓨터 말이다</td>
+</tr>
+<tr>
+<td>AST-12</td>
+<td>6절 AI 답 만들기 실패</td>
+<td>지금은 답을 만들지 못했어요. 아래 큰 버튼으로 다시 보시거나</td>
+<td>지금은 답을 드리지 못했어요. 아래 큰 버튼으로 다시 물어보시거나</td>
+<td>&quot;답을 만들다&quot;는 회원이 쓰는 말이 아니고, 고지의 &quot;답은 AI가 쓰지 않고&quot;와도 부딪친다</td>
+</tr>
+<tr>
+<td>AST-12</td>
+<td>6절 마이크를 쓸 수 없을 때</td>
+<td>말로 묻기를 쓰려면 휴대폰에서 마이크를 허용해야 해요.</td>
+<td>말로 물으시려면 휴대폰에서 마이크를 쓸 수 있게 해 주셔야 해요.</td>
+<td>&quot;허용&quot;을 풀고 높임을 맞췄다</td>
+</tr>
+<tr>
+<td>AST-12</td>
+<td>6절 AI 사용 안내를 불러오지 못했을 때</td>
+<td>지금은 AI 사용 안내를 불러오지 못해 비서를 열 수 없어요.</td>
+<td>지금은 AI 사용 안내를 보여 드리지 못해 비서를 열 수 없어요.</td>
+<td>&quot;불러오다&quot; 같은 이유</td>
+</tr>
+</tbody></table></div>
+<p>2-3 낸 기록 줄은 한 줄에서 두 문장을 고쳐 표에는 두 칸으로 적었다. 그래서 표는 15칸, 고친 줄은 14줄이다.</p>
+<h2 id="판-버전">&quot;판&quot; → &quot;버전&quot;</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>copy.md</code> 제목</td>
+<td>Evenstay 홈 비서, 최소판</td>
+<td>Evenstay 홈 비서, 최소 버전</td>
+</tr>
+<tr>
+<td><code>copy.md</code> 범위 제목</td>
+<td>범위 (최소판)</td>
+<td>범위 (최소 버전)</td>
+</tr>
+<tr>
+<td><code>copy.md</code> 4절 보호자 화면 줄</td>
+<td>최소판 비서는</td>
+<td>최소 버전 비서는</td>
+</tr>
+</tbody></table></div>
+<p>직원 화면 문구에는 버전 뜻의 &quot;판&quot;이 없었다. 교정 기록의 &quot;판&quot;과 &quot;최소판&quot;은 고치지 않았다.</p>
+<h2 id="고치지-않고-남긴-애매한-문구">고치지 않고 남긴 애매한 문구</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>화면 ID</th>
+<th>문구</th>
+<th>왜 남겼나</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AST-02</td>
+<td>큰 버튼 &quot;계약·청구서 날짜&quot;</td>
+<td>소리 내어 읽으면 가운뎃점이 끊긴다. &quot;계약과 청구서 날짜&quot;가 쉽지만 <code>names.md</code>, 기획, 화면 설계가 같은 라벨을 쓴다</td>
+</tr>
+<tr>
+<td>AST-04</td>
+<td>확인한 곳: 레지던스가 정한 청구서 날짜</td>
+<td>조금 길지만 뜻은 온다. 줄이면 근거가 흐려진다</td>
+</tr>
+<tr>
+<td>AST-04</td>
+<td>퇴거하실 날</td>
+<td>코어 회원 용어 &quot;퇴거&quot;를 따랐다</td>
+</tr>
+<tr>
+<td>AST-04</td>
+<td>거래하시는 금융회사에 직접 물어봐 주세요.</td>
+<td>&quot;은행이나 증권회사&quot;가 더 쉽지만 투자 답의 책임 경계라 건드리지 않았다</td>
+</tr>
+<tr>
+<td>AST-08</td>
+<td>계약 날짜는 대신 처리하실 수 있는 일에 없어요.</td>
+<td>조금 딱딱하다. 허브가 &quot;대신 처리하실 수 있는 일&quot;을 유지하기로 했다</td>
+</tr>
+<tr>
+<td>AST-01</td>
+<td>비서 5 &quot;프런트 전화와 직원 안내는 그대로예요.&quot;</td>
+<td>사용자가 짚은 &quot;그대로&quot;와 같은 꼴이다. D 원문이라 고치지 않았다. 아래 제안 1</td>
+</tr>
+<tr>
+<td>AST-01</td>
+<td>비서 1 &quot;무엇을 물으셨는지 알아듣는 데 AI를 써요.&quot;</td>
+<td>뜻은 온다. D 원문이라 그대로 뒀다</td>
+</tr>
+</tbody></table></div>
+<h2 id="공용-용어-제안-고치지-않음">공용 용어 제안 (고치지 않음)</h2>
+<ol>
+<li>D 3-1 비서 5: &quot;프런트 전화와 직원 안내는 전처럼 쓰실 수 있어요.&quot; D가 고치면 G 4절을 다시 옮긴다.</li>
+<li>프런트 번호: G는 아직 <code>02-○○○-○○○○ [NEED: 프런트 전화번호]</code>다(2-1 큰 버튼 4). 확정 표기 &quot;02-000-0000 (가상 번호)&quot;와 다르다. 허브가 맞출지 정한다.</li>
+<li>&quot;내신 기록&quot;을 쓰는 다른 모듈이 있으면 같은 이유로 &quot;내셨다고 기록돼 있어요&quot;를 권한다. 코어와 D copy에는 없었다.</li>
+</ol>
+<h2 id="기획-문서에서-고쳐야-할-곳-고치지-않음">기획 문서에서 고쳐야 할 곳 (고치지 않음)</h2>
+<p><code>04-planning/ideas/senior-ai-assistant/</code></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>문서</th>
+<th>줄</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>prd.md</code></td>
+<td>179<del>183, 267</del>268, 278~281</td>
+<td>12절 납부 갈래 답 틀과 원문 일치 표(&quot;내신 기록&quot;, &quot;○월 ○일까지였어요&quot;)</td>
+</tr>
+<tr>
+<td><code>prd.md</code></td>
+<td>119</td>
+<td>&quot;지금은 답을 만들지 못했어요&quot; 인용</td>
+</tr>
+<tr>
+<td><code>tech-design.md</code></td>
+<td>152~157</td>
+<td>납부 갈래 답 틀 의사 코드</td>
+</tr>
+<tr>
+<td><code>user-stories.md</code></td>
+<td>50, 51</td>
+<td>납부 갈래 인수 조건</td>
+</tr>
+<tr>
+<td><code>user-stories.md</code></td>
+<td>61</td>
+<td>&quot;12월은 31일이라…&quot; 식비 답</td>
+</tr>
+<tr>
+<td><code>user-stories.md</code></td>
+<td>63</td>
+<td>&quot;지금은 청구서를 불러오지 못했어요.&quot;</td>
+</tr>
+<tr>
+<td><code>service-blueprint.md</code></td>
+<td>55</td>
+<td>&quot;지금은 청구서를 불러오지 못했어요&quot;</td>
+</tr>
+<tr>
+<td><code>handoff.md</code></td>
+<td>74, 107, 114</td>
+<td>&quot;내신 기록&quot; 인용</td>
+</tr>
+<tr>
+<td><code>strategy.md</code></td>
+<td>52, 137</td>
+<td>&quot;내신 기록&quot; 인용</td>
+</tr>
+</tbody></table></div>
+<p>G <code>prd.md</code>의 &quot;글자로 바뀐 말&quot;(160행)과 <code>tech-design.md</code> 399행은 D 3-3 고지 문구를 가리키므로 그대로 둬도 된다.</p>
+<h2 id="확인-결과">확인 결과</h2>
+<ul>
+<li><code>copy.md</code>와 <code>evenstay/docs/assistant/copy/copy.md</code>: 차이 0줄. 두 파일에 경로가 다른 줄이 없어 뺀 줄도 없다.</li>
+<li>4절 D 3-1 표와 D <code>copy.md</code>: 차이 0줄.</li>
+<li>금전, 건강 넘김 답(2-5)과 확인 버튼 [네, 전해 주세요]는 바꾸지 않았다.</li>
+</ul>
+<h2 id="공용-문구-확정안-반영-2026-11-04-사용자-추천대로">공용 문구 확정안 반영 (2026-11-04, 사용자 &quot;추천대로&quot;)</h2>
+<p>위 &quot;남긴 문구&quot;와 &quot;공용 용어 제안&quot;의 비서 5, 프런트 번호, 퇴거하실 날은 이 확정안으로 닫혔다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>파일</th>
+<th>줄</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>copy.md</code></td>
+<td>2-1 큰 버튼 4</td>
+<td>프런트로 전화하기 02-000-0000 (가상 번호)</td>
+</tr>
+<tr>
+<td><code>copy.md</code></td>
+<td>2-3 퇴거 예정일이 있을 때</td>
+<td>이사 나가실 날: ○○○○년 ○월 ○일</td>
+</tr>
+<tr>
+<td><code>copy.md</code></td>
+<td>4절 비서 2</td>
+<td>지금은 비서가 입주 계약의 날짜와 청구서만 볼 수 있어요.</td>
+</tr>
+<tr>
+<td><code>copy.md</code></td>
+<td>4절 비서 5</td>
+<td>프런트 전화와 직원 안내는 전처럼 쓰실 수 있어요.</td>
+</tr>
+<tr>
+<td><code>copy.md</code></td>
+<td>6절 연결 끊김 (회원)</td>
+<td>앱 연결이 잠시 끊겼어요.</td>
+</tr>
+<tr>
+<td><code>names.md</code></td>
+<td><code>moveOutDate</code> 회원 화면</td>
+<td>이사 나가실 날</td>
+</tr>
+<tr>
+<td><code>product-marketing.md</code></td>
+<td>용어집 keyDates 회원 화면</td>
+<td>이사 나가실 날 (v3.4)</td>
+</tr>
+</tbody></table></div>
+<p>고친 줄은 모두 7줄이다. <code>value-prop.md</code>에는 같은 문장이 없었다.</p>
+<p><strong>확인 결과</strong></p>
+<ul>
+<li><code>evenstay/docs/assistant/copy/</code>: 네 파일 모두 원본과 차이 0줄이다.</li>
+<li><code>copy.md</code> 4절과 D <code>copy.md</code> 3-1은 지금 2줄 다르다(비서 2, 비서 5). 허브가 G에서 먼저 고치라고 했고 D 원문은 아직 옛 문구다. D가 같은 확정안을 반영하면 다시 같아진다.</li>
+</ul>
+<p><strong>같은 문구가 남은 곳 (고치지 않음)</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>문서</th>
+<th>줄</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>04-planning/ideas/senior-ai-assistant/prd.md</code></td>
+<td>227, 252</td>
+<td><code>[NEED]</code> 프런트 전화번호. 가상 번호로 닫을 수 있다</td>
+</tr>
+<tr>
+<td><code>04-planning/ideas/senior-ai-assistant/handoff.md</code></td>
+<td>94</td>
+<td><code>[NEED]</code> 프런트 전화번호. 같은 이유</td>
+</tr>
+<tr>
+<td><code>evenstay/design/mvp-screens.md</code></td>
+<td>57</td>
+<td>&quot;프런트(02-○○○-○○○○)&quot; 표기</td>
+</tr>
+<tr>
+<td>D <code>family-consent-portal/copy.md</code></td>
+<td>232, 235, 377, 536</td>
+<td>비서 2, 비서 5, 퇴거하실 날, 연결 오류 회원 문구(D 세션 몫)</td>
+</tr>
+</tbody></table></div>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-972" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

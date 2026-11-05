@@ -222,7 +222,7 @@
 </li>
 <li>2026-11-03 안전 서비스 보완(허브 요청, 사용자 선택 &quot;넓게(N1 포함)&quot;, 사용자 재승인 2026-11-04). 호출한 스킬: <code>outcome-roadmap</code>. Now에 F20·F24(P0 확장)와 F21·F22·F23·F25(P1), Next에 호실 현황판, 사업장 대응 절차 연결, 협력 의료기관 연락처, 비상 때 재실 명단.</li>
 <li>2026-11-03 코어 장기 부재 확정 맞춤(허브 요청, 사용자 재승인 2026-11-04): 코어가 <code>ResidentAbsenceStarted</code>/<code>ResidentAbsenceEnded</code>(absenceId, residentId, unitId, startedOn/endedOn, expectedReturnOn)와 <code>AbsenceQuery</code>를 확정했다(코어 <code>tech-design.md</code> 2-2·3-4·8절). 모듈 경계 8번(다른 모듈 데이터를 복사해 두지 않고 매 요청 <code>api/</code>로 읽는다)에 따라 B는 부재를 저장하지 않고 신호를 평가할 때마다 <code>AbsenceQuery.absenceOf</code>로 읽는다(<code>tech-design.md</code> ADR-S7). 이벤트는 구독하지 않는다. <code>SafetyBoardQuery.boardOf</code> 반환 형태를 코어 운영 현황 카드에 맞췄다(가장 긴 시간, 당번 이름).</li>
-<li>2026-11-04 전체 리뷰 보완(허브 지시서 <code>00-hub/reviews/supplement-orders-2026-11-04.md</code> 안심 알림 1~4, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04). 목표는 모든 화면이 흐름대로 움직이는 클릭형 프로토타입(MVP 구현 없음).<ul>
+<li>2026-11-04 전체 리뷰 보완(허브 지시서 <a class="doc-ref" href="x-process-supplement-orders-2026-11-04.html"><code>00-hub/reviews/supplement-orders-2026-11-04.md</code></a> 안심 알림 1~4, 사용자 &quot;추천대로 시작&quot;, 사용자 재승인 2026-11-04). 목표는 모든 화면이 흐름대로 움직이는 클릭형 프로토타입(MVP 구현 없음).<ul>
 <li>roadmap: Now에 2026-11-04 보완 줄(F17 옮긴 호출, F26~F29). 호실 현황판과 비상 때 재실 명단은 Next에서 지우고 이번 버전으로 옮겼다. 호출한 스킬: <code>outcome-roadmap</code>.</li>
 </ul>
 </li>

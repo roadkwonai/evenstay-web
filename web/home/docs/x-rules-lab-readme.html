@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>senior-lab 사용 가이드 | Evenstay 문서</title>
+<meta name="description" content="senior-lab 사용 가이드. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>senior-lab 사용 가이드</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#핵심-사용법">핵심 사용법</a></li><li class="lv2"><a href="#단계별-요청-예시">단계별 요청 예시</a></li><li class="lv3"><a href="#01-research">01-research</a></li><li class="lv3"><a href="#02-ideation">02-ideation</a></li><li class="lv3"><a href="#03-copywriting-아이디어-하나씩">03-copywriting (아이디어 하나씩)</a></li><li class="lv3"><a href="#04-planning-아이디어-하나씩">04-planning (아이디어 하나씩)</a></li><li class="lv3"><a href="#mvp-프로젝트로-넘어갈-때">MVP 프로젝트로 넘어갈 때</a></li><li class="lv3"><a href="#05-portfolio">05-portfolio</a></li><li class="lv2"><a href="#스킬-관리">스킬 관리</a></li><li class="lv2"><a href="#나중에-추가를-검토할-스킬">나중에 추가를 검토할 스킬</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1150" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li></ul></section></aside>
+  <article class="doc"><p>시니어 하우징 회사 지원용 포트폴리오 MVP를 위해 리서치 → 아이디어 → 카피 → 기획 → 포트폴리오를 진행하는 워크스페이스.</p>
+<pre><code>01-research ──► 02-ideation ──► 03-copywriting ──► 04-planning ──► (MVP 개발: evenstay/&lt;모듈&gt;) ──► 05-portfolio
+ 문제 은행        숏리스트 3~5     아이디어별 이름·카피   아이디어별 PRD                           회사별 케이스 스터디
+        └──────────────── shared/ (지원 회사, 아이디어 상태판, 평가 기준, 결정 기록) ────────────────┘</code></pre>
+<h2 id="핵심-사용법">핵심 사용법</h2>
+<ul>
+<li><strong>허브는 <code>00-hub/</code>에서 연다.</strong> 허브는 <code>shared/</code>를 관리하고 단계 세션을 시작·확인하며, 단계 산출물은 직접 쓰지 않는다. 관리용 스킬은 <code>00-hub/.claude/skills/</code>에만 둔다. 상위 <code>senior-lab/.claude/skills/</code>에 두면 모든 단계 폴더에 섞여 보이므로 루트에는 스킬을 설치하지 않는다(2026-11-03 확인).</li>
+<li><strong>각 단계 폴더에서 Claude Code를 연다.</strong> 그래야 그 폴더의 <code>.claude/skills/</code>와 CLAUDE.md가 로드된다. 상위 <a class="doc-ref" href="x-rules-lab-claude.html"><code>senior-lab/CLAUDE.md</code></a>(공통 규칙)는 자동으로 함께 적용된다.</li>
+<li>전역 스킬(gstack, OMC 등)은 어느 폴더에서나 보인다. 폴더 분리는 &quot;추가 스킬 최소화 + 단계별 지침&quot;이고 완전한 격리는 아니다.</li>
+<li>03과 04는 <strong>한 세션에 아이디어 하나</strong>만 다룬다.</li>
+</ul>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>폴더</th>
+<th>로컬 스킬</th>
+<th>같이 쓰는 전역 스킬</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00-hub</td>
+<td>prioritization-frameworks, pre-mortem, strategy-red-team, sprint-plan, retro, stakeholder-map, summarize-meeting</td>
+<td>—</td>
+</tr>
+<tr>
+<td>01-research</td>
+<td>mom-test, jobs-to-be-done, customer-research, user-personas, competitor-analysis, interview-script, summarize-interview</td>
+<td>deep-research</td>
+</tr>
+<tr>
+<td>02-ideation</td>
+<td>opportunity-solution-tree, brainstorm-ideas-new, value-proposition, identify-assumptions-new</td>
+<td>office-hours</td>
+</tr>
+<tr>
+<td>03-copywriting</td>
+<td>product-marketing, product-name, value-prop-statements, copywriting, copy-editing</td>
+<td>humanizer, grammar-checker</td>
+</tr>
+<tr>
+<td>04-planning</td>
+<td>product-strategy, service-blueprint, create-prd, user-stories, outcome-roadmap, north-star-metric</td>
+<td>—</td>
+</tr>
+<tr>
+<td>05-portfolio</td>
+<td>case-study, presentation-deck, review-resume</td>
+<td>make-pdf, anthropic-skills:pptx</td>
+</tr>
+</tbody></table></div>
+<p>출처: wondelai/skills, coreyhaines31/marketingskills, phuryn/pm-skills, Owl-Listener/designer-skills. 설치 버전은 폴더별 <code>skills-lock.json</code>에 있다.</p>
+<h2 id="단계별-요청-예시">단계별 요청 예시</h2>
+<h3 id="01-research">01-research</h3>
+<pre><code>지원할 회사는 [회사명, 공고 링크]야. deep-research로 회사의 사업, 운영 시설, 서비스, 최근 뉴스를 조사해서 를 채워줘. 모든 사실에 출처와 날짜를 붙여줘.</code></pre>
+<pre><code>CLAUDE.md의 리서치 축 2~7을 하나씩 deep-research로 조사해줘. 축마다 sources/와 notes/에 저장하고, 끝나면 customer-research와 jobs-to-be-done으로 정리해서 outputs/problem-bank.md를 만들어줘. 시니어, 보호자, 운영사 직원의 문제가 고르게 들어가게 해줘.</code></pre>
+<pre><code>mom-test로 우리 부모님(70대)과 실버타운 직원에게 물어볼 인터뷰 질문을 각각 만들어줘.</code></pre>
+<h3 id="02-ideation">02-ideation</h3>
+<pre><code>../01-research/outputs/problem-bank.md를 입력으로 opportunity-solution-tree를 만들고, 상위 기회마다 brainstorm-ideas-new로 아이디어를 발산해줘. B2C와 운영사용 B2B 도구가 섞이게 해줘. 결과는 drafts/에 저장.</code></pre>
+<pre><code>롱리스트를 로 평가해서 outputs/scorecard.md를 만들고, 상위 후보는 value-proposition과 identify-assumptions-new로 정리한 뒤 숏리스트 5개를 제안해줘. 확정은 내가 할게.</code></pre>
+<h3 id="03-copywriting-아이디어-하나씩">03-copywriting (아이디어 하나씩)</h3>
+<pre><code>숏리스트의 [slug]로 작업할게. product-marketing으로 ideas/[slug]/product-marketing.md를 만들고, product-name으로 이름 후보 10개, value-prop-statements로 시니어/보호자/운영사별 가치 제안, copywriting으로 서비스 소개와 첫 화면 문구를 써줘.</code></pre>
+<h3 id="04-planning-아이디어-하나씩">04-planning (아이디어 하나씩)</h3>
+<pre><code>[slug]를 기획해줘. product-strategy → service-blueprint → create-prd → user-stories → outcome-roadmap 순서로 ideas/[slug]/에 저장하고, 단계마다 내가 확인한 뒤 다음으로 넘어가줘. PRD에는 CLAUDE.md의 필수 항목을 모두 넣어줘.</code></pre>
+<h3 id="mvp-프로젝트로-넘어갈-때">MVP 프로젝트로 넘어갈 때</h3>
+<p>MVP는 상위 저장소 하나(<code>evenstay/</code>)에 코어와 모듈을 하위 폴더로 두는 중첩 구조다(2026-11-02 확정). slug와 모듈 폴더 대응은 <a class="doc-ref" href="x-rules-04-planning.html"><code>04-planning/CLAUDE.md</code></a> &quot;개발 인계&quot;에 있다. 예: 코어(<code>pms-core-billing</code> → <code>core</code>)</p>
+<pre><code>mkdir -p evenstay/docs/core</code></pre>
+<pre><code>cp -R senior-lab/04-planning/ideas/pms-core-billing/. evenstay/docs/core/</code></pre>
+<p>MVP 폴더에서는 전역 스킬(superpowers의 brainstorming·writing-plans, impeccable, frontend-design, design-consultation)로 디자인과 개발을 진행한다. 시니어 접근성 점검이 더 필요하면 그 프로젝트에만 추가한다:</p>
+<pre><code>npx skills add Owl-Listener/designer-skills -a claude-code --skill accessibility-audit -y</code></pre>
+<h3 id="05-portfolio">05-portfolio</h3>
+<pre><code>[회사명] 지원용으로 [slug] MVP의 케이스 스터디를 case-study로 써줘. 회사 관심사는 를 참고해. 실제로 하지 않은 검증이나 성과는 쓰지 마.</code></pre>
+<h2 id="스킬-관리">스킬 관리</h2>
+<ul>
+<li>업데이트(해당 폴더에서): <code>npx skills update -p -y</code></li>
+<li>추가: <code>npx skills add &lt;owner/repo&gt; --list</code>로 이름을 확인한 뒤 <code>npx skills add &lt;owner/repo&gt; -a claude-code --skill &lt;이름&gt; -y</code></li>
+<li>제거: <code>npx skills remove &lt;이름&gt;</code></li>
+<li>스킬을 추가하기 전에 같은 역할의 스킬이 이미 있는지 위 표에서 확인한다.</li>
+</ul>
+<h2 id="나중에-추가를-검토할-스킬">나중에 추가를 검토할 스킬</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>필요해지는 시점</th>
+<th>후보</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AI 기능이 핵심인 아이디어</td>
+<td>RefoundAI/lenny-skills <code>ai-product-strategy</code> (02, 04)</td>
+</tr>
+<tr>
+<td>시장 규모를 회사에 설명해야 할 때</td>
+<td>phuryn/pm-skills <code>market-sizing</code> (01)</td>
+</tr>
+<tr>
+<td>시니어 대상 사용성 테스트</td>
+<td>Owl-Listener/designer-skills <code>usability-test-plan</code> (MVP 프로젝트)</td>
+</tr>
+</tbody></table></div>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1150" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

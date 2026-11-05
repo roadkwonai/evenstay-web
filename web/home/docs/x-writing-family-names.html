@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>화면 라벨 — family-consent-portal (Evenstay 패밀리) | Evenstay 문서</title>
+<meta name="description" content="화면 라벨 — family-consent-portal (Evenstay 패밀리). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>화면 라벨 — family-consent-portal (Evenstay 패밀리)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-보여-줄-항목-consentitem">1. 보여 줄 항목 (ConsentItem)</a></li><li class="lv3"><a href="#1-1-b-결과-알림의-자리-2026-11-03-허브-요청">1-1. B 결과 알림의 자리 (2026-11-03, 허브 요청)</a></li><li class="lv2"><a href="#2-사람과-관계">2. 사람과 관계</a></li><li class="lv2"><a href="#3-허락-상태-consentstatus">3. 허락 상태 (ConsentStatus)</a></li><li class="lv2"><a href="#4-기록과-ai">4. 기록과 AI</a></li><li class="lv2"><a href="#5-메뉴-이름">5. 메뉴 이름</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-845" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-846" data-tip="B, C가 올린 본문 스냅샷.">건강 소식</button></li><li><button class="term" type="button" data-modal="g-847" data-tip="계약과 달마다 하나.">청구서</button></li><li><button class="term" type="button" data-modal="g-848" data-tip="고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건.">생활 요청</button></li><li><button class="term" type="button" data-modal="g-849" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-850" data-tip="응급 때 직원이 누구에게 어떤 순서로 전화하는가.">비상 연락처</button></li><li><button class="term" type="button" data-modal="g-851" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li><li><button class="term" type="button" data-modal="g-852" data-tip="호실과 입주자를 잇는 계약.">입주 계약</button></li><li><button class="term" type="button" data-modal="g-853" data-tip="건강 소식을 켜기 전에 보호자마다 받는 동의">건강정보 별도 동의</button></li><li><button class="term" type="button" data-modal="g-854" data-tip="받는 도움의 양.">생활 지원 단계</button></li><li><button class="term" type="button" data-modal="g-855" data-tip="반복 모임의 틀.">프로그램</button></li></ul></section></aside>
+  <article class="doc"><p>이름은 확정되어 있어 <code>product-name</code> 스킬은 쓰지 않았다. 회원·보호자 화면은 <strong>Evenstay 패밀리</strong>(이븐스테이 패밀리), 직원 화면은 <strong>보호자 포털·동의</strong>다(<code>senior-lab/03-copywriting/ideas/pms-core-billing/names.md</code> v3 조합 1, 2026-11-02 확정, 2026-11-03 직원 화면 이름을 한글로 바꿈). 여기서는 화면 안 라벨만 정한다.</p>
+<p><strong>라벨 원칙</strong></p>
+<ul>
+<li>회원 화면의 주어는 회원이다. &quot;보여 주기&quot;처럼 회원이 하는 동작으로 쓴다.</li>
+<li>보호자 화면은 &quot;볼 수 있어요 / 볼 수 없어요&quot; 두 가지만 쓴다. 왜 볼 수 없는지(미허용인지, 거둔 것인지, 확인 대기인지)는 보호자에게 구분해 보이지 않는다. 회원이 거둔 사실이 드러나면 가족 사이에 부담이 생길 수 있다 [가설].</li>
+<li>직원 화면은 업무 용어(허용, 철회, 열람)를 쓴다.</li>
+<li>영문 이름은 앱 아이콘과 첫 화면에만 쓴다. 기능 이름은 우리말.</li>
+</ul>
+<h2 id="1-보여-줄-항목-consentitem">1. 보여 줄 항목 (ConsentItem)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>직원 화면</th>
+<th>회원 화면 (라벨 / 한 줄 설명)</th>
+<th>보호자 화면</th>
+<th>선정 이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>BILLING</code></td>
+<td>청구</td>
+<td><strong>청구서</strong> / 이번 달 내실 돈과 그 이유</td>
+<td>청구서</td>
+<td>코어 회원 화면의 &quot;이번 달 청구서&quot;와 같은 말</td>
+</tr>
+<tr>
+<td><code>SCHEDULE</code></td>
+<td>일정</td>
+<td><strong>일정</strong> / 계약이 끝나는 날, 청구서가 나오는 날처럼 입주 계약과 청구서에 적힌 날짜, 신청하신 프로그램. 병원 가시는 날과 시설 예약은 넣지 않음</td>
+<td>일정</td>
+<td>짧고 익숙하다. 무엇이 들어가는지는 설명 줄에서 보인다. MVP는 코어 keyDates와 회원이 신청을 확정한 N2 프로그램 회차를 보인다(2026-11-04 N2 결정 2. 기다리는 신청, 시설 예약은 넣지 않음). 병원 일정은 넣지 않는다(건강 소식의 별도 동의를 우회하지 않게). 면회 예약은 다음 버전이다(2026-11-03 확정)</td>
+</tr>
+<tr>
+<td><code>HEALTH_EVENT</code></td>
+<td>건강 소식</td>
+<td><strong>건강 소식</strong> / 밤에 직원이 방에 다녀간 일, 병원에 가신 일처럼 몸과 관련해 직원이 기록한 일. 생활 지원 단계가 바뀐 일, 다른 기관 돌봄이 시작된 일도 들어감</td>
+<td>건강 소식</td>
+<td>&quot;이벤트&quot;, &quot;건강정보&quot;는 딱딱하다. &quot;소식&quot;은 있었던 일을 전한다는 뜻이라 의료 판단으로 읽히지 않는다. B(안심 알림)의 결과 알림도 이 항목에 담는다(1-1). 직원 화면도 &quot;건강 소식&quot;으로 쓴다(2026-11-03). 같은 기록을 직원과 회원·보호자가 다른 이름으로 부르면 &quot;회원님 건강 소식에 올라갔어요&quot; 같은 안내가 어긋나고, &quot;이벤트&quot;는 외래어다</td>
+</tr>
+<tr>
+<td><code>LIFE_REPORT</code></td>
+<td>주간 생활 리포트</td>
+<td><strong>생활 소식</strong> / 한 주 동안의 식사, 프로그램, 요청을 모은 글</td>
+<td>생활 소식</td>
+<td>&quot;리포트&quot;는 외래어다. &quot;건강 소식&quot;과 짝을 이뤄 기억하기 쉽다. 직원 화면은 업무 용어 &quot;리포트&quot;를 유지한다</td>
+</tr>
+<tr>
+<td><code>LIFE_REQUEST</code> [가설: 코드 이름은 D 기획에서 확정]</td>
+<td>생활 요청</td>
+<td><strong>생활 요청</strong> / 고장, 청소, 세탁, 외출 차량 요청. 보여 주면 그분이 회원님 대신 요청할 수도 있음. 병원 동행 요청은 건강 소식도 보여 줄 때만 보임</td>
+<td>생활 요청</td>
+<td>N1 모듈 이름과 같다(<code>senior-lab/03-copywriting/ideas/life-requests/names.md</code> 1절). 보기와 대신 올리기를 한 항목으로 허락한다(N1 정한 것 1)</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>항목은 네 개로 고정한다(MVP). 순서는 회원 화면에서 부담이 적은 것부터: 생활 소식 → 일정 → 청구서 → 건강 소식. 건강 소식은 별도 동의가 붙어 맨 끝에 둔다. 2026-11-03 N1 결정으로 다섯째 항목 생활 요청을 건강 소식 뒤에 더했다(카피 2-3 항목 5). D 기획의 &quot;4개로 고정&quot;은 아직 바뀌지 않았다 [가설: D 기획 반영 전].</li>
+<li>생활 소식에는 회원이 오래 자리를 비우신 날과 돌아오신 날도 들어간다(F18, 카피 4-7). 이유, 종류, 가신 곳은 들어가지 않는다.</li>
+<li>생활 소식 글 제목은 &quot;○월 ○주 생활 소식&quot;(예: 11월 첫째 주 생활 소식).</li>
+<li><strong>일정 안의 날짜 라벨</strong> (코어 <code>ContractQuery.keyDates</code>. 회원·보호자 화면은 같은 라벨)<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>직원 화면</th>
+<th>회원·보호자 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>입주일</td>
+<td>입주일</td>
+<td>입주하신 날</td>
+</tr>
+<tr>
+<td>계약 만료일</td>
+<td>계약 만료일</td>
+<td>계약이 끝나는 날</td>
+</tr>
+<tr>
+<td>최근 청구 발행일</td>
+<td>최근 청구 발행일</td>
+<td>최근 청구서가 나온 날</td>
+</tr>
+<tr>
+<td>최근 납부 기한</td>
+<td>최근 납부 기한</td>
+<td>최근 청구서를 내실 날</td>
+</tr>
+<tr>
+<td>다음 청구 예정일</td>
+<td>다음 청구 예정일</td>
+<td>다음 청구서가 나올 날</td>
+</tr>
+<tr>
+<td>퇴거 예정일</td>
+<td>퇴거 예정일</td>
+<td>이사 나가실 날 (정해진 경우에만)</td>
+</tr>
+</tbody></table></div>
+</li>
+<li>검토했다가 쓰지 않은 말: &quot;건강 정보&quot;(민감정보 법률 용어와 겹쳐 무겁다), &quot;안부&quot;(B 모듈 &quot;안심 알림&quot;과 겹친다), &quot;안심 알림&quot;(1-1 참고), &quot;주간 리포트&quot;(외래어), &quot;건강 상태&quot;(상태를 평가하는 것처럼 읽힌다).</li>
+</ul>
+<h3 id="1-1-b-결과-알림의-자리-2026-11-03-허브-요청">1-1. B 결과 알림의 자리 (2026-11-03, 허브 요청)</h3>
+<p>B(안심 알림)는 직원이 조치를 기록한 뒤 보호자에게 결과를 알린다(예: 밤사이 침대를 떠났다 돌아오신 일, 119 신고와 병원 이송). 이 알림을 보낼지 회원이 어디서 정하는지를 정했다.</p>
+<p><strong>결정: 다섯째 항목을 만들지 않고 &quot;건강 소식&quot; 안에 둔다.</strong> 회원은 &quot;소식 함께 보기&quot;의 건강 소식 한 곳에서 정하고, B 화면에는 따로 정하는 곳을 두지 않는다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>선택지</th>
+<th>판단</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>건강 소식에 넣기</td>
+<td><strong>채택</strong></td>
+<td>결과 알림은 몸과 안전에 관한 기록이다. 119 신고, 병원 이송은 이미 건강 소식의 예(&quot;병원에 가신 일&quot;)와 같다. 민감정보로 다루고 별도 동의를 받는 쪽이 안전하다(G14) [추정. 법률 검토]. 회원이 정할 항목이 넷으로 유지된다</td>
+</tr>
+<tr>
+<td>다섯째 항목 &quot;안심 알림&quot; 추가</td>
+<td>제외</td>
+<td>119 이송 같은 일은 두 항목에 동시에 걸려 어느 동의를 따를지 모호하다. 내용이 건강정보라 이 항목도 별도 동의가 필요해져 80대 회원에게 비슷한 동의가 두 번 나온다. &quot;안심 알림&quot;은 B 회원 화면(호출벨, 침대 센서)의 이름이라, 서비스를 쓸지에 동의하는 것처럼 읽힌다. &quot;안부&quot;를 B와 겹친다고 뺀 판단과도 어긋난다</td>
+</tr>
+<tr>
+<td>생활 소식에 넣기</td>
+<td>제외</td>
+<td>생활 소식에는 건강 관련 문장을 넣지 않기로 했다(<code>copy.md</code> 4-2). 별도 동의 없이 건강 관련 기록이 나가게 된다</td>
+</tr>
+<tr>
+<td>다른 방식: 비상 연락처로만</td>
+<td>일부 채택</td>
+<td>119 신고나 병원 이송 때 직원이 전화하는 것은 동의 항목과 따로 둔다. 입주 계약의 &quot;급할 때 연락할 분&quot;(코어)에게 거는 전화다 [가설: 코어 계약에서 확정, 법률 검토]. 앱에 남는 기록은 건강 소식을 허락받은 보호자에게만 보인다</td>
+</tr>
+</tbody></table></div>
+<p><strong>건강 소식 안의 종류 표시</strong> (보호자 목록에서 한 줄 앞에 붙는 말)</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드 (출처)</th>
+<th>라벨</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SAFETY_SIGNAL</code> (B 결과 알림)</td>
+<td>직원이 다녀간 일</td>
+</tr>
+<tr>
+<td><code>HOSPITAL_TRANSFER</code> (B 또는 간호 기록)</td>
+<td>병원에 가신 일</td>
+</tr>
+<tr>
+<td><code>CARE_NOTE</code> (간호·생활지원 기록)</td>
+<td>그 밖의 건강 기록</td>
+</tr>
+<tr>
+<td><code>CARE_STAGE_CHANGE</code> (C 생활 지원 단계 결정)</td>
+<td>생활 지원 단계가 바뀐 일</td>
+</tr>
+<tr>
+<td><code>EXTERNAL_CARE_START</code> (C 다른 기관 돌봄 시작)</td>
+<td>다른 기관 돌봄이 시작된 일</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li><p>C 종류는 결정된 것만 들어온다. 평가 내용, 회원 의견, 결정 전 제안은 보호자에게 가지 않는다(C 카피 4절). 라벨은 C <code>names.md</code> 7절과 같다. 다른 기관 돌봄이 끝난 일(<code>EXTERNAL_CARE_END</code>)은 Next라 넣지 않았다.</p>
+</li>
+<li><p>보호자에게 가는 알림 문자에는 &quot;건강&quot;이라는 말과 내용을 넣지 않는다. 잠금 화면에 보일 수 있고, 그만 보여 주기가 문자에는 미치지 못하기 때문이다(<code>copy.md</code> 4-3).</p>
+</li>
+<li><p>발신 머리말은 D와 같게 **[Evenstay 패밀리]**로 한다. 보호자가 같은 회원의 소식을 두 가지 이름으로 받지 않게 하기 위해서다.</p>
+</li>
+</ul>
+<p><strong>비상 연락처 (EmergencyContact, 코어 입주 계약)</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>직원 화면</th>
+<th>회원 화면</th>
+<th>보호자 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>비상 연락처</td>
+<td>급할 때 연락할 분</td>
+<td>비상 연락처에 적힌 분 (119 신고·병원 이송 기록에서만)</td>
+</tr>
+</tbody></table></div>
+<h2 id="2-사람과-관계">2. 사람과 관계</h2>
+<p><strong>역할 이름</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>직원 화면</th>
+<th>회원 화면</th>
+<th>보호자 화면</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Resident</code></td>
+<td>입주자 (예: 302호 김○○ 입주자)</td>
+<td>(본인. &quot;회원님&quot;)</td>
+<td>○○○ 회원님</td>
+<td>2026-11-03 허브 확정: 직원 화면은 &quot;입주자&quot;, 회원 본인에게는 &quot;회원님&quot;, 보호자 화면은 &quot;○○○ 회원님&quot;. 코어 용어집·<code>copy.md</code>와 같다</td>
+</tr>
+<tr>
+<td><code>Guardian</code></td>
+<td>보호자</td>
+<td><strong>함께 보실 분</strong></td>
+<td>(본인)</td>
+<td>코어의 &quot;대신 처리하실 분&quot;과 짝. 보는 사람과 대신 처리하는 사람이 다르다는 것을 말 자체가 구분한다. &quot;보호자&quot;는 회원을 보호받는 대상으로 그릴 수 있어 회원 화면에서 쓰지 않는다</td>
+</tr>
+<tr>
+<td><code>Representative</code></td>
+<td>대리인</td>
+<td>대신 처리하실 분</td>
+<td>대신 처리하실 분</td>
+<td>코어 용어집 그대로</td>
+</tr>
+</tbody></table></div>
+<p><strong>관계 이름</strong> (회원·직원 화면 선택지. 보호자 화면에는 표시하지 않는다)</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>라벨</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SPOUSE</code></td>
+<td>배우자</td>
+</tr>
+<tr>
+<td><code>DAUGHTER</code></td>
+<td>딸</td>
+</tr>
+<tr>
+<td><code>SON</code></td>
+<td>아들</td>
+</tr>
+<tr>
+<td><code>DAUGHTER_IN_LAW</code></td>
+<td>며느리</td>
+</tr>
+<tr>
+<td><code>SON_IN_LAW</code></td>
+<td>사위</td>
+</tr>
+<tr>
+<td><code>GRANDCHILD</code></td>
+<td>손주</td>
+</tr>
+<tr>
+<td><code>SIBLING</code></td>
+<td>형제자매</td>
+</tr>
+<tr>
+<td><code>OTHER_RELATIVE</code></td>
+<td>그 밖의 가족</td>
+</tr>
+<tr>
+<td><code>NON_RELATIVE</code></td>
+<td>가족이 아닌 분 (지인, 이웃 등)</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>화면 표시는 &quot;이름(관계)&quot;: 김○○(딸).</li>
+<li>관계는 회원이 고른다. 법적 관계 증빙은 받지 않는다. 증빙이 필요한 것은 대리인뿐이다(코어 2-4) [사실: 코어 설계].</li>
+<li>&quot;가족이 아닌 분&quot;을 둔 이유: 자녀가 없거나 먼 회원이 지인에게 보여 줄 수 있어야 한다 [가설].</li>
+</ul>
+<h2 id="3-허락-상태-consentstatus">3. 허락 상태 (ConsentStatus)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>직원 화면</th>
+<th>회원 화면</th>
+<th>보호자 화면</th>
+<th>버튼 (회원 화면)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>NOT_GRANTED</code> (기본값)</td>
+<td>미허용</td>
+<td>안 보여요</td>
+<td>볼 수 없어요</td>
+<td>[보여 주기]</td>
+</tr>
+<tr>
+<td><code>PENDING_MEMBER_CONFIRMATION</code></td>
+<td>입주자 확인 대기</td>
+<td>회원님 확인을 기다려요</td>
+<td>볼 수 없어요</td>
+<td>[확인하기]</td>
+</tr>
+<tr>
+<td><code>GRANTED</code></td>
+<td>허용</td>
+<td>보여요</td>
+<td>볼 수 있어요</td>
+<td>[그만 보여 주기]</td>
+</tr>
+<tr>
+<td><code>REVOKED</code></td>
+<td>철회 (일시)</td>
+<td>안 보여요 (○월 ○일부터 그만 보여 줌)</td>
+<td>볼 수 없어요</td>
+<td>[다시 보여 주기]</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>켜고 끄는 스위치보다 글이 적힌 버튼을 쓴다. 스위치는 지금 켜진 상태인지 헷갈리기 쉽다 [추정. NEED: 회원 사용성 확인].</li>
+<li>직원이 대신 설정하면 <code>PENDING_MEMBER_CONFIRMATION</code>이 되고 회원이 확인해야 <code>GRANTED</code>가 된다. 확인 전에는 보호자에게 보이지 않는다.</li>
+<li>대리인이 설정한 경우 회원 화면에 &quot;대신 처리하실 분 ○○○ 님이 정했어요&quot;를 함께 쓴다.</li>
+</ul>
+<p><strong>건강 소식 별도 동의 상태 (SensitiveConsent: HEALTH)</strong></p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>직원 화면</th>
+<th>회원 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AGREED</code></td>
+<td>건강정보 별도 동의 완료 (일시)</td>
+<td>건강 소식을 나누는 데 따로 동의하셨어요</td>
+</tr>
+<tr>
+<td><code>NOT_AGREED</code></td>
+<td>건강정보 별도 동의 없음</td>
+<td>아직 따로 동의하지 않으셨어요</td>
+</tr>
+<tr>
+<td><code>WITHDRAWN</code></td>
+<td>건강정보 별도 동의 철회 (일시)</td>
+<td>동의를 거두셨어요</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>별도 동의는 보호자마다 받는다(누구에게 주는지가 동의 내용이기 때문) [추정. 법률 검토 필요].</li>
+</ul>
+<h2 id="4-기록과-ai">4. 기록과 AI</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>직원 화면</th>
+<th>회원 화면</th>
+<th>보호자 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AccessLog</code></td>
+<td>열람 기록</td>
+<td>내 소식을 본 기록</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td><code>AccessLog.result = DENIED</code></td>
+<td>열람 거부</td>
+<td>(표시 안 함)</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td><code>WeeklyReport.status</code> DRAFT / IN_REVIEW / SENT</td>
+<td>AI 초안 / 검토 중 / 발송 완료</td>
+<td>(발송된 것만 보임)</td>
+<td>(발송된 것만 보임)</td>
+</tr>
+<tr>
+<td><code>WeeklyReport.reviewedBy</code></td>
+<td>검토자</td>
+<td>확인한 직원</td>
+<td>확인한 직원</td>
+</tr>
+<tr>
+<td><code>AiNotice</code></td>
+<td>AI 사용 고지</td>
+<td>AI 사용 안내</td>
+<td>AI 사용 안내</td>
+</tr>
+<tr>
+<td><code>MoneyRequest</code></td>
+<td>금전 부탁</td>
+<td>(표시 안 함)</td>
+<td>(표시 안 함)</td>
+</tr>
+<tr>
+<td><code>MoneyRequest.category</code> ALLOWED / HANDOFF</td>
+<td>직원이 할 수 있는 일 / 넘길 일</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>회원에게는 열람 거부 기록을 보이지 않는다. 가족이 &quot;보려다 막혔다&quot;는 사실이 회원에게 부담이 될 수 있다 [가설]. 직원 화면에서만 보인다.</li>
+</ul>
+<h2 id="5-메뉴-이름">5. 메뉴 이름</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>화면</th>
+<th>메뉴</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>회원 (Evenstay 패밀리 설정, Evenstay 홈 안)</td>
+<td>함께 보실 분 · 보여 줄 것 정하기 · 내 소식을 본 기록 · AI 사용 안내</td>
+</tr>
+<tr>
+<td>보호자 (Evenstay 패밀리)</td>
+<td>생활 소식 · 일정 · 청구서 · 건강 소식 · 생활 요청 · 내가 볼 수 있는 것</td>
+</tr>
+<tr>
+<td>직원 (보호자 포털·동의)</td>
+<td>보호자 연결 · 열람 허용 · 주간 생활 리포트 · 열람 기록 · 금전 부탁 · AI 고지·동의</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>회원 화면의 설정은 별도 앱이 아니라 회원 앱(Evenstay 홈) 안의 메뉴로 둔다 [가설: 기획 단계에서 확정]. 보호자는 Evenstay 패밀리로 들어온다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-845" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-846" data-title="건강 소식"><p>B, C가 올린 본문 스냅샷. 건강 소식이 보호자에게 가는 길은 D 하나다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 건강 소식. 종류: 직원이 다녀간 일 / 병원에 가신 일 / 그 밖의 건강 기록 / 생활 지원 단계가 바뀐 일 / 다른 기관 돌봄이 시작된 일</dd><dt>영문·코드 이름</dt><dd><code>HealthEvent</code>: <code>SAFETY_SIGNAL</code>, <code>HOSPITAL_TRANSFER</code>, <code>CARE_NOTE</code>, <code>CARE_STAGE_CHANGE</code>, <code>EXTERNAL_CARE_START</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-847" data-title="청구서"><p>계약과 달마다 하나. 발행이 원장 확정 시점이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 청구서 / 회원: 이번 달 청구서</dd><dt>영문·코드 이름</dt><dd><code>Invoice</code>: <code>DRAFT</code>, <code>ISSUED</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-848" data-title="생활 요청"><p>고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건. 안전 신호가 아니다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 생활 요청(줄여 요청) / 회원·보호자: 요청</dd><dt>영문·코드 이름</dt><dd><code>ServiceRequest</code></dd><dt>출처</dt><dd>requests T2-2, requests M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-849" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-850" data-title="비상 연락처"><p>응급 때 직원이 누구에게 어떤 순서로 전화하는가. 계약에 딸리고 동의 항목과 무관하다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 비상 연락처 / 회원: 급할 때 연락할 분 / 보호자: 비상 연락처에 적힌 분(119 신고, 병원 이송 기록에서만)</dd><dt>영문·코드 이름</dt><dd><code>EmergencyContact</code></dd><dt>출처</dt><dd>core T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-851" data-title="대리인"><p>법적 근거로 회원의 일을 맡은 사람. 역할 코드가 아니라 대리인 행으로 판단한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 대리인 / 회원·보호자: 대신 처리하실 분</dd><dt>영문·코드 이름</dt><dd><code>Representative</code></dd><dt>출처</dt><dd>core T6-1, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-852" data-title="입주 계약"><p>호실과 입주자를 잇는 계약. 요금표 버전을 체결 때 고정한다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원: 입주 계약</dd><dt>영문·코드 이름</dt><dd><code>Contract</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-853" data-title="건강정보 별도 동의"><p>건강 소식을 켜기 전에 보호자마다 받는 동의</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 건강정보 별도 동의 완료 / 없음 / 철회. 회원: 건강 소식 따로 동의</dd><dt>영문·코드 이름</dt><dd><code>SensitiveConsent</code>: <code>AGREED</code>, <code>NOT_AGREED</code>, <code>WITHDRAWN</code></dd><dt>출처</dt><dd>family T2-1·2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-854" data-title="생활 지원 단계"><p>받는 도움의 양. 코드는 순서와 정렬에만 쓰고 화면에 번호가 없다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 기본 서비스 / 생활 지원 추가 / 외부 돌봄 병행 / 거처 상담. 회원: 기본 서비스 / 생활 지원 더하기 / 다른 기관 돌봄 함께 / 지낼 곳 함께 의논</dd><dt>영문·코드 이름</dt><dd><code>CareStage</code>: <code>BASIC</code>, <code>LIVING_SUPPORT</code>, <code>WITH_EXTERNAL_CARE</code>, <code>PLACE_CONSULT</code></dd><dt>출처</dt><dd>transitions T2-1, transitions N1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-855" data-title="프로그램"><p>반복 모임의 틀. 바꾸면 다음 회차부터</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원·회원·보호자: 프로그램</dd><dt>영문·코드 이름</dt><dd><code>Program</code></dd><dt>출처</dt><dd>community T2-2, community M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

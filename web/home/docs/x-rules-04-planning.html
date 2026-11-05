@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04-planning: 서비스 기획 → PRD → 개발 인계 | Evenstay 문서</title>
+<meta name="description" content="04-planning: 서비스 기획 → PRD → 개발 인계. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>04-planning: 서비스 기획 → PRD → 개발 인계</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#작업-단위">작업 단위</a></li><li class="lv2"><a href="#사용할-스킬과-순서">사용할 스킬과 순서</a></li><li class="lv2"><a href="#prd에-반드시-들어갈-것">PRD에 반드시 들어갈 것</a></li><li class="lv2"><a href="#코어-모듈-구조-2026-11-02-확정">코어 + 모듈 구조 (2026-11-02 확정)</a></li><li class="lv2"><a href="#기술-설계-지원-직무가-backendtech-lead이므로-필수">기술 설계 (지원 직무가 Backend/Tech Lead이므로 필수)</a></li><li class="lv2"><a href="#개발-인계">개발 인계</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1154" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-1155" data-tip="호실 계약이 걸린 사람.">입주자</button></li></ul></section></aside>
+  <article class="doc"><p>목적: 아이디어 하나를 디자인과 MVP 개발에 바로 넘길 수 있는 기획 문서 묶음으로 만든다.</p>
+<h2 id="작업-단위">작업 단위</h2>
+<ul>
+<li>한 세션에서 아이디어 하나만 다룬다. 폴더: <code>ideas/&lt;slug&gt;/</code></li>
+<li>입력: <code>../02-ideation/outputs/shortlist.md</code> 해당 항목, <code>../03-copywriting/ideas/&lt;slug&gt;/</code>, <code>../01-research/outputs/</code> (문제 은행, 페르소나)</li>
+</ul>
+<h2 id="사용할-스킬과-순서">사용할 스킬과 순서</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>순서</th>
+<th>스킬</th>
+<th>하는 일</th>
+<th>산출물</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>product-strategy</code></td>
+<td>대상 이용자, 차별점, 목표 결과, <strong>하지 않을 것</strong></td>
+<td><code>strategy.md</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>service-blueprint</code></td>
+<td>시니어, 보호자, 운영 직원의 행동, 화면 접점, 직원 업무, 시스템, 실패 대응</td>
+<td><code>service-blueprint.md</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>create-prd</code></td>
+<td>MVP 범위, 기능 요구사항, 권한, 오류, 성공 기준</td>
+<td><code>prd.md</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>user-stories</code></td>
+<td>이용자별 스토리와 인수 조건</td>
+<td><code>user-stories.md</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>outcome-roadmap</code></td>
+<td>MVP → 다음 버전, 결과와 가설 기준 순서</td>
+<td><code>roadmap.md</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="prd에-반드시-들어갈-것">PRD에 반드시 들어갈 것</h2>
+<ul>
+<li><strong>MVP 범위</strong>: 혼자 2<del>4주 안에 만들 수 있는 핵심 흐름 1</del>2개. 나머지는 &quot;다음 버전&quot;으로 뺀다.</li>
+<li><strong>데모 시나리오</strong>: 면접에서 3~5분 안에 보여줄 순서와 시드 데이터(가상 입주자, 가상 시설)</li>
+<li><strong>시니어 접근성</strong>: 큰 글씨와 터치 영역, 한 화면에 하나의 행동, 쉬운 말, 되돌리기, 음성·전화 대안, 보호자·직원 대행</li>
+<li><strong>역할과 권한</strong>: 시니어 본인, 보호자, 운영 직원, 관리자</li>
+<li><strong>개인정보와 안전</strong>: 민감정보(건강) 수집 범위, 동의, 응급 상황에서 사람이 개입하는 지점</li>
+<li><strong>기술 메모</strong>: 외부 연동이 필요한 부분은 MVP에서 목업으로 대체하는지 명시</li>
+</ul>
+<h2 id="코어-모듈-구조-2026-11-02-확정">코어 + 모듈 구조 (2026-11-02 확정)</h2>
+<ul>
+<li>숏리스트 MVP는 하나의 PMS 코어(<code>pms-core-billing</code>) 위에 모듈(<code>safety-signal-hub</code>, <code>family-consent-portal</code>, <code>senior-ai-assistant</code>, <code>care-stage-transition</code>, 예비 <code>move-in-crm-agent</code>)을 얹는 구조다.</li>
+<li>금융 기능은 별도 모듈이 아니다. 코어에 대리권·후견(I-30)과 청구 설명(I-29), 보호자 포털에 금전 업무 경계(I-31)와 AI 고지·동의·감사(I-42)를 넣는다.</li>
+<li><code>senior-ai-assistant</code>(G)는 새 데이터를 만들지 않고 다른 모듈 API를 도구로 호출하는 앞단이다. 건강·금전·계약 판단은 사람에게 넘기고, 투자 추천·주문은 하지 않는다. 증권 계좌 조회는 모의투자 서버와 가상 데이터 시연만 한다. 설계 출발점은 .</li>
+<li><strong>공통 도메인 모델의 기준은 <code>ideas/pms-core-billing/tech-design.md</code> 하나다.</strong> 다른 모듈은 코어 엔티티(운영사, 소유주, 사이트, 동, 호실, 입주자, 보호자 관계, 계약, 청구, 역할)를 참조하고 자기 확장 엔티티와 이벤트만 정의한다. 코어 모델을 바꿔야 하면 코어 문서를 먼저 고치고 이유를 <code>../shared/decisions.md</code>에 남긴다.</li>
+<li>기획 순서: 코어 → B → D → G → C. G 최소판(일정 조회 + 청구 설명)은 코어 직후에 붙이고 모듈이 늘 때마다 도구를 추가한다. 모듈 PRD에는 &quot;코어에 기대는 것&quot;과 &quot;코어 없이 단독 데모할 때 대체하는 것&quot;을 적는다.</li>
+<li>개발은 상위 저장소 하나(<code>evenstay/</code>)에 코어와 모듈을 하위 폴더로 두는 <strong>중첩 구조</strong>다(2026-11-02 확정). 하나의 백엔드 안에서 모듈 경계를 지키는 모듈형 모놀리스를 기본으로 한다. 모듈이 다른 모듈의 테이블을 직접 읽지 않고 코어 API나 이벤트로만 주고받는 경계 규칙, 패키지 분리 방식, 기술 스택은 코어 tech-design에서 ADR로 정한다.</li>
+<li>상위 <code>evenstay/CLAUDE.md</code>에는 공통 규칙(도메인 용어집, 권한 원칙)을, 모듈 폴더의 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a>에는 그 모듈의 범위와 하지 않을 것을 둔다. 병행 작업은 모듈별 브랜치·worktree로 나누고 코어 변경은 순서대로 한다.</li>
+</ul>
+<h2 id="기술-설계-지원-직무가-backendtech-lead이므로-필수">기술 설계 (지원 직무가 Backend/Tech Lead이므로 필수)</h2>
+<p>PRD 다음에 <code>ideas/&lt;slug&gt;/tech-design.md</code>를 쓴다. 기술 스택은 확정하지 말고 후보와 선택 기준만 적는다. 확정은 MVP 프로젝트에서 한다.</p>
+<ul>
+<li>도메인 모델과 ERD 초안: 공통 PMS 코어(사업장, 호실, 입주자, 계약, 청구)와 이 아이디어의 확장 엔티티를 구분</li>
+<li>Multi-site·자산 유형 확장 방식과 그 이유 (ADR 형식: 맥락, 선택지, 결정, 결과)</li>
+<li>주요 API 목록과 상태 전이(계약, 청구, 요청 처리)</li>
+<li>RBAC 역할표와 민감정보 처리(마스킹, 동의, 감사 로그)</li>
+<li>외부 연동 경계(결제, 출입, IoT, AI Agent): 어댑터, 멱등성, 실패 처리</li>
+<li>테스트·배포·모니터링 최소 기준</li>
+</ul>
+<h2 id="개발-인계">개발 인계</h2>
+<p>기획이 끝나면 <code>ideas/&lt;slug&gt;/handoff.md</code>에 아래 내용을 쓰고, 문서 묶음을 <code>evenstay/docs/&lt;모듈&gt;/</code>로 복사한다. <code>senior-lab</code> 안에 MVP 프로젝트를 만들지 않는다(기획용 CLAUDE.md가 개발에 적용되지 않게).</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>slug (기획)</th>
+<th>모듈 폴더 (개발)</th>
+<th>이름</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pms-core-billing</td>
+<td>core</td>
+<td>Evenstay Core</td>
+</tr>
+<tr>
+<td>safety-signal-hub</td>
+<td>safety</td>
+<td>안심 알림 (직원 화면, 2026-11-03 한글화)</td>
+</tr>
+<tr>
+<td>family-consent-portal</td>
+<td>family</td>
+<td>Evenstay 패밀리</td>
+</tr>
+<tr>
+<td>senior-ai-assistant</td>
+<td>assistant</td>
+<td>Evenstay 홈 비서</td>
+</tr>
+<tr>
+<td>care-stage-transition</td>
+<td>transitions</td>
+<td>생활 지원 단계 (직원 화면, 2026-11-03 한글화)</td>
+</tr>
+<tr>
+<td>life-requests</td>
+<td>requests</td>
+<td>생활 요청 (N1, 2026-11-03 추가)</td>
+</tr>
+<tr>
+<td>community</td>
+<td>community</td>
+<td>프로그램·시설·공지 (N2, 2026-11-04 추가)</td>
+</tr>
+<tr>
+<td>move-in-crm-agent</td>
+<td>leasing</td>
+<td>Evenstay Leasing</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>한 줄 요약, 대상, 핵심 흐름, 화면 목록, 데이터 모델 초안, 인수 조건 링크, 하지 않을 것</li>
+<li><code>../shared/idea-board.md</code> 단계를 <code>인계</code>로 바꾼다.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1154" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1155" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cloud 인프라, CI/CD, 모니터링, IoT·출입 이벤트 수집 (소규모 PMS, AWS 서울) | Evenstay 문서</title>
+<meta name="description" content="Cloud 인프라, CI/CD, 모니터링, IoT·출입 이벤트 수집 (소규모 PMS, AWS 서울). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>Cloud 인프라, CI/CD, 모니터링, IoT·출입 이벤트 수집 (소규모 PMS, AWS 서울)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-cicd-환경-구성-iac">1. CI/CD, 환경 구성, IaC</a></li><li class="lv3"><a href="#takeaway">Takeaway</a></li><li class="lv3"><a href="#cited-findings">Cited Findings</a></li><li class="lv3"><a href="#inferences">Inferences</a></li><li class="lv3"><a href="#gaps">Gaps</a></li><li class="lv2"><a href="#2-서울-리전-모니터링-로그-온콜-안전-경로-감시">2. 서울 리전 모니터링, 로그, 온콜, 안전 경로 감시</a></li><li class="lv3"><a href="#takeaway-2">Takeaway</a></li><li class="lv3"><a href="#cited-findings-2">Cited Findings</a></li><li class="lv3"><a href="#계산-서울-가격표-730시간-또는-30일">계산 (서울 가격표, 730시간 또는 30일)</a></li><li class="lv3"><a href="#inferences-2">Inferences</a></li><li class="lv3"><a href="#gaps-2">Gaps</a></li><li class="lv2"><a href="#3-네트워크보안-기본선-백업-재해-복구-인증">3. 네트워크·보안 기본선, 백업, 재해 복구, 인증</a></li><li class="lv3"><a href="#takeaway-3">Takeaway</a></li><li class="lv3"><a href="#cited-findings-3">Cited Findings</a></li><li class="lv3"><a href="#계산-서울-가격표">계산 (서울 가격표)</a></li><li class="lv3"><a href="#inferences-3">Inferences</a></li><li class="lv3"><a href="#gaps-3">Gaps</a></li><li class="lv2"><a href="#4-iot출입-이벤트-수집-건물-약-400세대-10곳-이상">4. IoT·출입 이벤트 수집 (건물 약 400세대, 10곳 이상)</a></li><li class="lv3"><a href="#takeaway-4">Takeaway</a></li><li class="lv3"><a href="#cited-findings-4">Cited Findings</a></li><li class="lv3"><a href="#계산-모든-입력은-가정-단가는-서울-가격표">계산 (모든 입력은 가정, 단가는 서울 가격표)</a></li><li class="lv3"><a href="#inferences-4">Inferences</a></li><li class="lv3"><a href="#gaps-4">Gaps</a></li><li class="lv2"><a href="#5-15명-팀을-위한-최소-플랫폼-참고-자료">5. 1~5명 팀을 위한 최소 플랫폼 참고 자료</a></li><li class="lv3"><a href="#takeaway-5">Takeaway</a></li><li class="lv3"><a href="#cited-findings-5">Cited Findings</a></li><li class="lv3"><a href="#inferences-5">Inferences</a></li><li class="lv3"><a href="#gaps-5">Gaps</a></li><li class="lv2"><a href="#6-요약-표-1단계-선택은-모두-판단">6. 요약 표 (1단계 선택은 모두 [판단])</a></li><li class="lv2"><a href="#못-찾은-것">못 찾은 것</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1010" data-tip="작업자와 현장 어댑터가 주기적으로 보내는 살아 있다는 신호.">하트비트</button></li><li><button class="term" type="button" data-modal="g-1011" data-tip="요청과 별도로 실행되는 백그라운드 처리 단위.">작업자</button></li><li><button class="term" type="button" data-modal="g-1012" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li></ul></section></aside>
+  <article class="doc"><p>표기: 줄마다 [사실] [추정] [가설] [미정] [미확인]. 확인 방법은 <strong>직접</strong>(본문 열람), <strong>검색요약</strong>(검색 결과 요약만, 본문 못 엶), <strong>제3자</strong>(공식 아님). 접근일은 모두 2026-11-04.
+가격 출처 약칭: <strong>서울 가격표</strong> = AWS 공식 Price List API의 <code>ap-northeast-2</code> 파일. 형식은 <code>https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/&lt;서비스코드&gt;/current/ap-northeast-2/index.json</code>이고 직접 내려받아 파싱했다. 게시일은 줄마다 적는다. 월 730시간 기준.</p>
+<hr>
+<h2 id="1-cicd-환경-구성-iac">1. CI/CD, 환경 구성, IaC</h2>
+<h3 id="takeaway">Takeaway</h3>
+<p>GitHub Actions OIDC로 정적 키 없이 AWS에 들어가고, ECS는 2025-07부터 내장 blue/green이 있어 CodeDeploy가 필수가 아니다. OpenTofu 상태는 S3 한 곳(네이티브 잠금)으로 충분하다. 다만 이미지 스캔, SBOM, Flyway 무중단 이행의 <strong>공식 문서</strong>는 이번에 열지 못했다.</p>
+<h3 id="cited-findings">Cited Findings</h3>
+<ul>
+<li>[사실] GitHub 공식 문서는 AWS OIDC에 공급자 URL <code>https://token.actions.githubusercontent.com</code>, 대상(audience) <code>sts.amazonaws.com</code>을 쓰고, 신뢰 정책에 <code>sub</code> 조건을 최소 하나 두라고 한다. 브랜치(<code>repo:ORG/REPO:ref:refs/heads/BRANCH</code>)나 환경(<code>repo:ORG/REPO:environment:prod</code>) 단위 범위를 권한다. 워크플로에는 <code>permissions: id-token: write</code>가 필요하다. 와일드카드 <code>repo:ORG/REPO:*</code>는 가장 넓은 범위다. — <a href="https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws" rel="noopener noreferrer" target="_blank">GitHub Docs: OIDC in AWS</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] 같은 페이지는 2026-07-15 이후 만든 저장소(또는 옵트인한 저장소)가 소유자·저장소 ID가 들어간 새 <code>sub</code> 형식(<code>repo:octo-org@123456/octo-repo@456789:...</code>)을 쓴다고 한다. 신뢰 정책을 예전 형식으로 쓰면 새 저장소에서 맞지 않을 수 있다. AWS는 사용자 지정 OIDC 클레임을 지원하지 않는다. — 위와 같음 · 직접</li>
+<li>[사실] 문서 예시는 <code>aws-actions/configure-aws-credentials</code>를 커밋 SHA로 고정한다. 페이지는 이 SHA가 어느 릴리스인지는 밝히지 않는다. — 위와 같음 · 직접</li>
+<li>[사실] ECS 내장 blue/green: 새 서비스 리비전을 테스트 트래픽으로 검증한 뒤 운영 트래픽을 옮기고, 베이크 타임 동안 이전(blue) 리비전을 살려 두어 롤백이 쉽다. 수명주기 훅은 Lambda 또는 일시정지 지점을 쓴다. 배포 중 리소스가 일시적으로 두 배가 될 수 있다. NLB를 쓰면 트래픽 이동 단계에 10분이 더 붙는다. 로드밸런서·Service Connect·VPC Lattice가 있는 서비스는 트래픽 이동을 ECS가 관리하고, 로드밸런서 없는(headless) 서비스는 작업만 교체하고 트래픽 이동은 관리하지 않는다. — <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-blue-green.html" rel="noopener noreferrer" target="_blank">ECS 개발자 가이드: blue/green</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] 내장 blue/green 발표일은 2025-07-17이고 ALB·NLB·Service Connect 서비스를 대상으로 한다. CloudWatch 경보와 배포 서킷 브레이커로 실패를 감시한다. 이전에는 CodeDeploy가 필요했다. — <a href="https://aws.amazon.com/about-aws/whats-new/2025/07/amazon-ecs-built-in-blue-green-deployments/" rel="noopener noreferrer" target="_blank">AWS What&#39;s New 2025-07</a> · 접근 2026-11-04 · 검색요약</li>
+<li>[미확인] CodeDeploy의 ECS 지원이 폐기 예정이라는 글이 있으나 AWS 공식 확인은 못 찾았다. — 위 검색 결과 · 제3자</li>
+<li>[사실] OpenTofu S3 백엔드는 <code>use_lockfile=true</code>로 DynamoDB 없이 S3 조건부 쓰기(<code>If-None-Match</code>)로 잠근다. 문서는 이를 권장 방식으로 설명하고, <code>dynamodb_table</code>은 폐기 예정이 아니며 둘 다 지원한다고 한다. S3 버전 관리를 켜라고 강하게 권한다. 도입 버전은 이 페이지에 없다. — <a href="https://opentofu.org/docs/language/settings/backends/s3/" rel="noopener noreferrer" target="_blank">OpenTofu S3 backend</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] Control Tower는 서울(ap-northeast-2)을 지원 리전에 포함한다. 홈 리전은 만든 뒤 바꿀 수 없다. 통제 중 예방형은 전역 동작하고 탐지형·사전형은 지원 리전에서만 동작한다. — <a href="https://docs.aws.amazon.com/controltower/latest/userguide/region-how.html" rel="noopener noreferrer" target="_blank">Control Tower: Regions</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] 비밀 저장 가격(서울): Secrets Manager 비밀 1개당 월 $0.40, API 1만 건당 $0.05. Systems Manager 고급 파라미터는 개당 월 $0.05, 고급 파라미터 API 1만 건당 $0.05. — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSSecretsManager/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">Secrets Manager 서울 가격표</a>(게시 2026-09-11), <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSSystemsManager/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">Systems Manager 서울 가격표</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] ECR 저장 $0.10/GB-월(서울). — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonECR/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">ECR 서울 가격표</a>(게시 2026-09-11) · 직접</li>
+<li>[사실] Spring Modulith 2.1.1 문서: <code>ApplicationModules.of(Application.class).verify()</code> 한 줄 호출이 순환 의존, 내부 패키지 접근, <code>allowedDependencies</code> 위반을 검사한다. <code>detectViolations()</code>로 걸러서 볼 수 있다. 문서는 CI 실행을 따로 말하지 않는다. — <a href="https://docs.spring.io/spring-modulith/reference/verification.html" rel="noopener noreferrer" target="_blank">Spring Modulith 검증</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] Spring Boot 4.1.2 문서: <code>PostgreSQLContainer</code>에 <code>@ServiceConnection</code>을 달면 JDBC·R2DBC 연결 정보가 자동 연결된다. 컨테이너를 <code>@Bean</code>으로 두면 캐시된 컨텍스트마다 한 번 만들어진다. <code>@Testcontainers</code>+<code>@Container</code> 방식은 컨텍스트 캐시를 깰 수 있다고 경고한다. — <a href="https://docs.spring.io/spring-boot/reference/testing/testcontainers.html" rel="noopener noreferrer" target="_blank">Spring Boot Testcontainers</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] 커뮤니티 글들은 Flyway를 파드 기동 때 실행하면 롤링 배포에서 경합이 생기니 별도 작업(Job)으로 먼저 돌리라고 하고, 확장→코드 배포→축소를 서로 다른 릴리스로 나누라고 한다. 공식 Flyway 문서는 못 열었다. — <a href="https://tech-holder.blogspot.com/2026/03/zero-downtime-database-migrations.html" rel="noopener noreferrer" target="_blank">예: tech-holder 블로그 2026-03</a> · 접근 2026-11-04 · 제3자(검색요약)</li>
+</ul>
+<h3 id="inferences">Inferences</h3>
+<ul>
+<li>[추정] 이 팀은 계정 3개(관리, 스테이지, 운영)에 OIDC 역할을 환경별로 두고, 운영 역할의 <code>sub</code>를 <code>environment:prod</code>로 좁히면 정적 키 없이 승인 게이트까지 걸 수 있다. GitHub 환경의 보호 규칙(승인자, 허용 브랜치)과 짝이다.</li>
+<li>[추정] 작업자(HTTP 없음) 서비스는 내장 blue/green이 트래픽을 옮기지 않으므로 사실상 롤링 교체다. 안심 타이머를 쥔 작업자는 교체 중 중복 실행·누락을 막는 설계(리스, 멱등)가 필요하다. 이 부분은 ECS 문서로 확인한 사실이 아니라 허브 설계 쪽 판단이다.</li>
+<li>[추정] 1단계 Single-AZ ALB 한 개로도 blue/green이 동작하지만, 배포 중 작업이 두 배라 Fargate 시간이 잠시 늘어난다(문서의 “리소스 두 배” 근거).</li>
+<li>[가설] 마이그레이션은 이미지 내 Flyway를 앱 기동 대신 CI에서 ECS 일회성 작업(run-task)으로 먼저 돌리고, 파괴적 변경은 두 릴리스로 나눈다.</li>
+<li>[가설] 프리뷰 환경은 PR마다 ECS 서비스를 만들기보다 스테이지 하나와 Testcontainers 통합 테스트로 대체한다. 이유는 ALB($0.0225/시간, 월 약 $16.43)와 DB 비용이다(계산: 0.0225 × 730).</li>
+</ul>
+<h3 id="gaps">Gaps</h3>
+<ul>
+<li>ECR 이미지 스캔·SBOM(Inspector, Syft, Trivy 등)의 서울 가용성과 가격: 서울 가격표에서 Inspector 파일을 못 받았다(404). 못 찾음.</li>
+<li>Flyway 공식 문서(<code>outOfOrder</code>, 락, 무중단 패턴), Liquibase 비교: 못 열었다.</li>
+<li>RLS가 걸린 PostgreSQL을 Testcontainers로 시험하는 공식 가이드: 못 찾음. [추정] RLS는 테이블 소유자·슈퍼유저에는 기본 적용되지 않으므로 시험 DB 접속 역할을 앱 역할로 따로 만들어야 한다. PostgreSQL 문서는 이번에 열지 않았다.</li>
+<li>Terraform 대 OpenTofu 대 CDK 비교의 공식 근거, OpenTofu 1.13 기준 라이선스·호환 조사: 못 함.</li>
+<li>Control Tower 자체 요금과 Organizations 비용: 가격표 404, 못 찾음.</li>
+</ul>
+<hr>
+<h2 id="2-서울-리전-모니터링-로그-온콜-안전-경로-감시">2. 서울 리전 모니터링, 로그, 온콜, 안전 경로 감시</h2>
+<h3 id="takeaway-2">Takeaway</h3>
+<p>Spring Boot 4.1 공식 경로는 Micrometer + OTLP이고 Java 에이전트·OTel 스타터는 커뮤니티 지원이다. 서울에는 CloudWatch(Application Signals 포함), Managed Prometheus, Managed Grafana의 서울 가격이 모두 있어 데이터를 서울 밖으로 보내지 않는 구성이 가능하다. Opsgenie는 2027-04-05 지원 종료라 새로 쓰면 안 된다.</p>
+<h3 id="cited-findings-2">Cited Findings</h3>
+<ul>
+<li>[사실] Spring Boot 4.1.2 문서는 OTel 지원 경로를 셋으로 나눈다. Java 에이전트와 OpenTelemetry Spring Boot 스타터는 OTel 커뮤니티 지원이고, Boot 자체의 Micrometer+OTLP 내장 지원이 “Spring 팀이 공식 지원”하는 방식이다. 트레이스는 Micrometer Tracing이 있을 때 OTLP로 자동 설정된다. 메트릭은 <code>OtlpMeterRegistry</code>(<code>management.otlp.metrics.export.*</code>)로 내보낸다. 로그는 <code>OtlpLoggingAutoConfiguration</code>으로 OTLP 내보내기가 가능하나 로그 브리지는 서드파티가 필요하다. 소개문은 Boot가 OTel 메트릭·로그를 자동 내보내지 않는다고 적어 본문과 어긋난다. — <a href="https://docs.spring.io/spring-boot/reference/actuator/observability.html" rel="noopener noreferrer" target="_blank">Spring Boot Observability</a> · 접근 2026-11-04 · 직접(요약기 경유, 문서 내부 모순 있음)</li>
+<li>[사실] 같은 문서에서 <code>management.opentelemetry.enabled=false</code>면 SDK가 no-op이 된다. 일부 <code>OTEL_*</code> 환경변수는 Boot 속성으로 매핑된다. — 위와 같음 · 직접</li>
+<li>[미확인] 이 페이지에는 <code>spring-boot-starter-opentelemetry</code>라는 이름이 나오지 않는다. 스타터 아티팩트의 존재 여부는 확인 못 했다. — 위와 같음</li>
+<li>[사실] CloudWatch Application Signals를 ECS에서 쓰려면 CloudWatch 에이전트와 ADOT를 직접 설치하는 맞춤 설정이다. Fargate는 사이드카 방식만 된다(daemon 방식은 Fargate 불가). ECS에서는 서비스 이름이 자동 발견되지 않아 직접 지정해야 한다. — <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Application-Signals-Enable-ECS.html" rel="noopener noreferrer" target="_blank">CloudWatch Application Signals on ECS</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] CloudWatch 서울 가격: Application Signals 수집 $0.35/GB(첫 10TB), 사용자 지정 로그 수집(표준 등급) $0.76/GB, 로그 저장 $0.0314/GB-월, Logs Insights 스캔 $0.0076/GB, 경보 $0.10/개·월, Synthetics 캐너리 실행 $0.0019/회(첫 100회 무료). — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">CloudWatch 서울 가격표</a>(접근 2026-11-04) · 직접</li>
+<li>[사실] Managed Prometheus 서울 가격: 샘플 4천만 건까지 무료 후 1천만 건당 $0.90(20억 건까지), 저장 10GB까지 무료 후 $0.03/GB-월, 쿼리 처리 10억 샘플당 $0.10. Managed Grafana 서울: 편집자 $9/월, 뷰어 $5/월, 엔터프라이즈 플러그인 $45/월. — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonPrometheus/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">Prometheus 서울 가격표</a>(게시 2026-10-14), <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonGrafana/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">Grafana 서울 가격표</a>(게시 2026-09-11) · 직접</li>
+<li>[추정] 두 서비스의 서울 가격 항목(<code>APN2-...</code>)이 있으므로 서울에서 제공된다고 본다. 공식 리전 가용성 목록 페이지는 열지 못했다(Regional Services API는 접속 실패, 마케팅 표 페이지는 스크립트 렌더링). — 위 가격표</li>
+<li>[사실] 자체 호스팅 Sentry 최소 사양: 4코어, RAM 16GB + 스왑 16GB(권장 32GB), 디스크 20GB 이상(고IOPS 권장), Docker 19.03.6+ / Compose 2.32.2+. Debian·Ubuntu 권장, Alpine 미지원. 보증·전담 지원 없음, Kafka 등 구성요소를 한 대에서 돌린다. 결제, 스파이크 보호, 데이터 위치 선택 같은 SaaS 기능은 없다. 이벤트 보존일은 <code>SENTRY_EVENT_RETENTION_DAYS</code>로 줄인다. — <a href="https://develop.sentry.dev/self-hosted/" rel="noopener noreferrer" target="_blank">Sentry 자체 호스팅 문서</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] Opsgenie: 신규 판매 종료 2025-06-04, 지원 종료 2027-04-05. Jira Service Management 또는 Compass로 이전할 수 있고, 지원 종료 시 미이전 데이터는 삭제된다는 설명이 있다. — <a href="https://support.atlassian.com/jira-service-management-cloud/docs/should-i-merge-opsgenie-with-jira-service-management/" rel="noopener noreferrer" target="_blank">Atlassian Opsgenie 이전 안내(검색 결과)</a> · 접근 2026-11-04 · 검색요약. 이전 시작 120일 뒤 종료 규칙은 제3자 글에만 있고 Atlassian 본문에서 확인 못 했다 [미확인].</li>
+<li>[사실] CloudTrail 서울 가격표에는 데이터 이벤트 기록 $0.000001/건, Lake 질의 스캔 $0.005/GB 항목이 있다. 관리 이벤트 기본 보존의 가격 행은 이 필터에서 못 봤다. — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSCloudTrail/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">CloudTrail 서울 가격표</a>(게시 2026-11-02) · 직접</li>
+</ul>
+<h3 id="계산-서울-가격표-730시간-또는-30일">계산 (서울 가격표, 730시간 또는 30일)</h3>
+<ul>
+<li>[가설] 합성 점검(캐너리) 1개를 5분마다: 30×24×12 = 8,640회 × $0.0019 = <strong>$16.42/월</strong>. 1분마다는 43,200회 × $0.0019 = $82.08/월이다. 실행 수 가정은 내 설정이다.</li>
+<li>[가설] Managed Prometheus: 시계열 3,000개, 30초 간격 = 분당 2샘플. 3,000 × 2 × 43,200분 = 259,200,000샘플/월. (259.2M − 40M 무료) ÷ 10M × $0.90 = <strong>$19.73/월</strong>. Grafana 편집자 2명이면 $18이 더해져 합계 약 $37.7. 시계열 수와 간격은 가정이다.</li>
+<li>[가설] CloudWatch 로그 월 10GB 수집이면 10 × $0.76 = $7.60, 연 저장 10GB×$0.0314 ≈ $0.31/월 수준. 로그량은 가정이다.</li>
+<li>[가설] 경보 20개 = 20 × $0.10 = $2.00/월.</li>
+</ul>
+<h3 id="inferences-2">Inferences</h3>
+<ul>
+<li>[추정] 개인정보를 서울 밖으로 못 보내는 제약에서는 CloudWatch(Application Signals 포함) 또는 Managed Prometheus/Grafana가 SaaS보다 먼저 후보다. 1명 운영이면 CloudWatch 하나가 부품이 가장 적다.</li>
+<li>[추정] 자체 호스팅 Sentry는 16GB+ 단일 서버와 Kafka·ClickHouse 운영이 따르므로 1~2명 팀의 1단계에는 맞지 않다. 오류 추적은 CloudWatch 로그와 Application Signals로 대체하는 쪽이 낫다.</li>
+<li>[가설] 안전 경로(넘김 타이머, 신호 끊김)의 “조용한 실패” 감시: ① 작업자가 분마다 찍는 하트비트 메트릭, ② 이 메트릭이 없으면 경보가 울리게(누락 데이터를 이상으로 처리) 하는 설정, ③ 앱과 다른 곳(예: 캐너리가 운영 URL의 <code>/health/safety</code>를 호출)에서 보는 독립 점검, ④ 경보 수신 경로를 두 갈래(문자·전화 + 메신저)로. 경보 누락 처리 옵션은 이번에 문서로 확인하지 않았다.</li>
+<li>[추정] Opsgenie 이후 온콜 후보는 PagerDuty, incident.io, Jira Service Management 등이 있으나 이번에 요금·한국 전화 수신·서울 데이터 보관을 공식 자료로 확인하지 못했다.</li>
+</ul>
+<h3 id="gaps-2">Gaps</h3>
+<ul>
+<li>자체 호스팅 Grafana LGTM(Loki·Tempo·Mimir)의 최소 사양과 운영 부담: 못 조사.</li>
+<li>OpenTelemetry Java 에이전트 현재 버전, Boot 4에서의 호환 이슈: 못 조사.</li>
+<li>PagerDuty·incident.io 요금, 카카오 알림톡을 호출 경보 수단으로 쓰는 법(알림톡은 사전 승인 템플릿이 필요하고 야간 도달 보장이 없음, 미확인): 못 조사.</li>
+<li>SLO 정의 사례(1~2명 팀): 못 찾음. CloudWatch Application Signals의 SLO 기능은 이번에 문서로 확인 못 했다.</li>
+<li>감사용 로그 보존 기간의 법정 기준(접속기록 보관 기간 등): 이번 범위 밖으로 못 확인.</li>
+</ul>
+<hr>
+<h2 id="3-네트워크보안-기본선-백업-재해-복구-인증">3. 네트워크·보안 기본선, 백업, 재해 복구, 인증</h2>
+<h3 id="takeaway-3">Takeaway</h3>
+<p>VPC 엔드포인트는 NAT보다 항상 싸지 않다. 엔드포인트 5개를 2개 AZ에 두면 월 $94.90으로 NAT 2대($86.14)보다 비싸다. 서울에는 다른 한국 리전을 찾지 못했으므로 “한국 안” DR은 같은 리전 안 계정·볼트 분리와 불변 백업으로 만들어야 한다. ISMS-P는 AWS 쪽 인증이 있고 고객 인증용 컨포먼스 팩이 있지만 2021 자료라 현행 기준과 맞는지 확인이 필요하다.</p>
+<h3 id="cited-findings-3">Cited Findings</h3>
+<ul>
+<li>[사실] NAT 게이트웨이 서울: 시간당 $0.059, 처리 GB당 $0.059. VPC 인터페이스 엔드포인트: 시간당 $0.013, 처리 1PB까지 GB당 $0.01. Site-to-Site VPN 연결: 시간당 $0.05. ALB 시간당 $0.0225, LCU 시간당 $0.008. — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">EC2 서울 가격표</a>(게시 2026-11-03), <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonVPC/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">VPC 서울 가격표</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] 리전형(Regional) NAT 게이트웨이 항목도 서울 가격표에 같은 시간당 $0.059로 있다. — EC2 서울 가격표 · 직접</li>
+<li>[사실] WAF 서울: 웹 ACL당 월 $5.00, Bot Control 관리형 규칙 그룹 월 $10(시간 비례). Shield 보호 대상 웹 ACL은 ACL당 $0. (표준 요청 단가는 필터에서 확정 못 함.) — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/awswaf/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">WAF 서울 가격표</a>(게시 2026-09-14) · 직접</li>
+<li>[사실] GuardDuty 서울: Fargate vCPU 월 $1.66(첫 500), RDS 로그인 모니터링 vCPU 월 $1.20 또는 ACU 월 $0.30, EBS 악성코드 스캔 $0.04/GB. — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonGuardDuty/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">GuardDuty 서울 가격표</a>(게시 2026-10-30) · 직접</li>
+<li>[사실] Security Hub 서울: 발견 항목 수집은 계정·리전당 월 1만 건까지 무료, 초과 건당 $0.00003. 로그 분석 $0.6325/GB(첫 1,000GB). (신규 “Essentials” 플랜 항목이 있어 요금 체계가 바뀐 상태다.) — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSSecurityHub/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">Security Hub 서울 가격표</a>(게시 2026-10-29) · 직접</li>
+<li>[사실] AWS Backup Vault Lock: 컴플라이언스 모드는 쿨링오프(grace time)가 최소 3일이고, 지나면 볼트와 잠금이 변경·삭제 불가이며 AWS도 못 푼다. 거버넌스 모드는 권한 있는 IAM 사용자가 해제할 수 있다. 보존 기간이 “Always”인 복구 지점은 영구 보관된다. 계정을 닫으면 90일 정지 뒤 잠금과 무관하게 볼트 내용이 삭제된다. Vault Lock 자체는 추가 요금이 없다. — <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/vault-lock.html" rel="noopener noreferrer" target="_blank">AWS Backup Vault Lock</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] 서울 AWS Backup 가격표에 논리적 에어갭(LAGV) 볼트의 EBS(GB-월 $0.0575)와 S3(GB-월 $0.0633) 웜 저장 항목이 있다. 일반 S3 웜 백업은 GB-월 $0.055. 서울에서 다른 리전(도쿄 등)으로의 교차 리전 복사 항목도 있다. — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSBackup/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">Backup 서울 가격표</a> · 직접(RDS 저장 단가는 확인 못 함)</li>
+<li>[사실] RDS는 트랜잭션 로그를 5분마다 S3에 올리고 보존 기간 안의 임의 시점으로 복원할 수 있다. 복원은 원본을 건드리지 않고 새 DB 인스턴스를 만든다. 복원 후 볼륨은 백그라운드로 S3에서 블록을 불러오므로 한동안 성능이 완전하지 않을 수 있다. — <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html" rel="noopener noreferrer" target="_blank">RDS 시점 복원</a> · 접근 2026-11-04 · 직접</li>
+<li>[검색요약 · 충돌] 서울 리전은 AWS 한국 블로그가 2020년에 4번째 가용 영역을 발표했다고 하고, 다른 요약은 가용 영역 2개라고 한다(오래된 자료로 보임). 서울 외의 두 번째 한국 리전이나 부산 로컬 존 발표는 이번 검색에서 찾지 못했다. 부산은 클라우드 혁신 센터 협약뿐이다. — <a href="https://aws.amazon.com/ko/blogs/korea/aws-renews-k-isms-certificate-for-the-asia-pacific" rel="noopener noreferrer" target="_blank">AWS 한국 블로그 ISMS 갱신</a>, <a href="https://aws.amazon.com/blogs/publicsector/new-amazon-busan-cloud-innovation-and-technology-centre" rel="noopener noreferrer" target="_blank">AWS Public Sector 블로그: 부산 센터</a> · 접근 2026-11-04 · 검색요약</li>
+<li>[사실] AWS 서울 리전의 ISMS-P 인증서는 2025-03-28~2030-03-27 유효하다고 한다. 범위는 서울 리전 인프라 운영이다. — <a href="https://aws.amazon.com/ko/blogs/korea/aws-renews-k-isms-certificate-for-the-asia-pacific" rel="noopener noreferrer" target="_blank">AWS 한국 블로그</a> · 접근 2026-11-04 · 검색요약</li>
+<li>[사실] AWS Config 컨포먼스 팩(K-ISMS-P)은 2021-01-13 글에서 소개됐고 AWS Config 관리형 규칙 115개를 쓴다. ISMS-P를 102개 항목(관리체계 16, 보호대책 64, 개인정보 처리 단계 22)으로 설명한다. 이 팩만으로 모든 요건을 점검할 수 없고, 쓰지 않는 서비스 규칙도 기본 배포되며 파라미터는 조직 정책에 맞게 고쳐야 한다고 밝힌다. — <a href="https://aws.amazon.com/ko/blogs/korea/aws-conformance-pack-for-k-isms-p-compliance" rel="noopener noreferrer" target="_blank">AWS 한국 블로그 2021-01-13</a> · 접근 2026-11-04 · 직접(작성 후 3년 이상 지난 자료)</li>
+<li>[사실] AWS는 CSAP(클라우드 보안인증) ‘하’ 등급을 2025-04-01 발표로 받았다고 보도된다. 이 등급은 공공 일부 시스템에 한정되고 평가 범위는 서울 리전의 컴퓨팅·스토리지·네트워킹·보안 서비스 등이다. — <a href="https://byline.network/2025/04/1-1292" rel="noopener noreferrer" target="_blank">Byline Network 2025-04</a> · 접근 2026-11-04 · 검색요약</li>
+<li>[사실] 전자금융감독규정 제14조의2는 금융회사의 클라우드 이용 절차(업무 중요도 평가, 클라우드 제공자 안전성 평가, 정보보호위원회 심의·의결)를 정하고, 2022년 개정으로 사전보고를 사후보고(계약 후 3개월 이내)로 바꿨다고 한다. — <a href="https://aws.amazon.com/ko/blogs/tech/financial-cloud-guide-a-to-z-part1/" rel="noopener noreferrer" target="_blank">AWS 기술 블로그: 금융 클라우드 가이드</a> 외 검색 결과 · 접근 2026-11-04 · 검색요약</li>
+<li>[미확인] 이 규정이 금융회사의 비금융 계열사([지원 회사] 같은 부동산 운영사)에 적용되는지는 근거를 못 찾았다. 계열사 보안 기준이 모회사 정책으로 별도 요구될 가능성은 있으나 조사 안 됨.</li>
+</ul>
+<h3 id="계산-서울-가격표">계산 (서울 가격표)</h3>
+<ul>
+<li>NAT 1대 월: 0.059 × 730 = <strong>$43.07</strong>. 2대(AZ 2개): $86.14. 처리 GB당 $0.059가 별도다.</li>
+<li>엔드포인트 1개 월(1 AZ 기준 가정): 0.013 × 730 = $9.49. ECR API, ECR 이미지, 로그, Secrets Manager, KMS 5개를 1 AZ에 두면 $47.45, 2 AZ면 $94.90. (S3는 게이트웨이 엔드포인트 사용을 가정하며 가격표 항목은 확인하지 않았다.) [가설: 엔드포인트가 AZ별 과금이라는 점은 가격표 문구에 AZ 언급이 없어 내 추정이다.]</li>
+<li>손익분기: 엔드포인트 5개×2AZ($94.90)가 NAT 1대($43.07)보다 $51.83 비싸고, 처리 단가 차이가 0.059 − 0.01 = $0.049/GB이므로 약 51.83 ÷ 0.049 = <strong>1,058GB/월</strong> 이상 통신이 있어야 엔드포인트가 이득이다. 1단계 규모는 이보다 작다고 [가설]로 본다.</li>
+<li>GuardDuty Fargate: 1단계 작업 2.5vCPU(허브 문서의 0.5+1+1) × $1.66 = $4.15/월. 2단계 7vCPU 가정이면 $11.62. RDS t4g.medium 2vCPU면 2 × $1.20 = $2.40(RDS 모니터링 대상 여부는 미확인).</li>
+<li>WAF 웹 ACL 1개 월 $5.00 + 규칙·요청 요금(미확정).</li>
+<li>Secrets Manager 비밀 20개: 20 × $0.40 = <strong>$8.00/월</strong>.</li>
+</ul>
+<h3 id="inferences-3">Inferences</h3>
+<ul>
+<li>[추정] 1단계는 NAT 1대(약 $43)로 시작하고 트래픽이 커지면 엔드포인트를 더한다. 다만 NAT를 한 AZ에 두면 그 AZ 장애 때 외부 호출이 끊기므로, 안전 경로가 외부 호출(알림 발송)에 의존하면 Multi-AZ 시점에 2대로 늘린다.</li>
+<li>[추정] “한국 안 DR”은 (a) 같은 서울 리전에서 별도 계정의 컴플라이언스 모드 백업 볼트(교차 계정 복사), (b) RDS PITR로 5분 단위 시점 복구, (c) IaC로 다른 AZ에서 재생성하는 순서가 된다. 이 방식은 리전 전체 장애를 막지 못한다 — 한국 안에 다른 리전을 못 찾았기 때문이다.</li>
+<li>[가설] RPO는 PITR 로그 업로드 주기를 근거로 약 5분 이내를 목표로 둘 수 있다. RTO는 복원이 새 인스턴스를 만들고 블록을 지연 로드하므로 AWS 문서에 숫자가 없다. 복원 훈련으로 직접 측정해야 한다 [미확인].</li>
+<li>[추정] 컴플라이언스 모드 볼트 락은 되돌릴 수 없고 계정 종료 시에도 90일 뒤 삭제되므로, 실제 데이터 이전에는 거버넌스 모드로 시작해 보존 기간을 확정한 뒤 올리는 편이 안전하다.</li>
+<li>[추정] CSAP는 공공기관이 클라우드 서비스를 도입할 때의 제도다. 민간 SaaS 사업자가 공공에 판매할 때 SaaS 자체의 CSAP 필요 여부는 이번에 확인 못 했다. [지원 회사] 같은 민간 운영사의 내부 PMS라면 직접 관련이 작을 것으로 보이나 근거는 없다.</li>
+</ul>
+<h3 id="gaps-3">Gaps</h3>
+<ul>
+<li>ISMS-P 인증기준 101개(또는 현행 개정) 중 인프라에 대응하는 항목 목록: KISA 원문을 못 열었다. 컨포먼스 팩 매핑표 원문도 열지 못했다.</li>
+<li>2027-07-01 의무화의 적용 대상 범위: 이번 범위 밖(허브에 이미 [미확인]).</li>
+<li>한국 내 두 번째 AWS 리전 부재의 공식 확인: 부재 증명이라 못 한다. AWS 글로벌 인프라 페이지는 열지 못했다.</li>
+<li>Shield Advanced 월 요금(약정), GuardDuty·Security Hub 소규모 실제 청구액: 못 계산.</li>
+<li>RDS 자동 백업 저장 단가, Backup 서울의 RDS 웜 저장 단가: 확인 못 함.</li>
+</ul>
+<hr>
+<h2 id="4-iot출입-이벤트-수집-건물-약-400세대-10곳-이상">4. IoT·출입 이벤트 수집 (건물 약 400세대, 10곳 이상)</h2>
+<h3 id="takeaway-4">Takeaway</h3>
+<p>서울에서 AWS IoT Core(MQTT, X.509 기기 인증서, 규칙)와 Greengrass가 모두 쓸 수 있다. 가격은 메시지 단위라서 센서 하나하나가 매분 직접 보내면 월 약 $30, 건물 게이트웨이가 묶어 보내면 약 $2 수준이다(가정 아래 계산). 업체 웹훅 수집은 이벤트가 적으면 API Gateway+SQS가 월 $2.5 내외로 더 단순하고, 기기 하트비트까지 받으면 IoT Core와 비용이 거의 같아진다. 건물마다 VPN을 두면 연결당 월 $36.50라 10곳이면 $365로 가장 비싸다.</p>
+<h3 id="cited-findings-4">Cited Findings</h3>
+<ul>
+<li>[사실] IoT Core는 서울(ap-northeast-2)의 제어 평면과 데이터 평면(<code>data-ats.iot.ap-northeast-2.amazonaws.com</code>, 계정별 엔드포인트)을 지원한다. 서울용 FIPS 엔드포인트는 목록에 없다. — <a href="https://docs.aws.amazon.com/general/latest/gr/iot-core.html" rel="noopener noreferrer" target="_blank">AWS General Reference: IoT Core</a> · 접근 2026-11-04 · 직접(앞 10만 자)</li>
+<li>[사실] Greengrass V2도 서울을 지원한다(<code>greengrass.ap-northeast-2.amazonaws.com</code>). 배포 문서 크기는 기기 배포 7KB, 그룹 배포 31KB(대용량 설정 지원 시 6MB). 컴포넌트 아티팩트 합계 2GB. — <a href="https://docs.aws.amazon.com/general/latest/gr/greengrassv2.html" rel="noopener noreferrer" target="_blank">AWS General Reference: Greengrass V2</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] IoT Core 기본 한도(서울은 예외 리전 목록에 없어 기본값): 계정당 동시 연결 500,000, 초당 연결 요청 3,000, 클라이언트 ID당 초당 연결 1회(조정 불가), 계정당 초당 인바운드 게시 20,000, 연결당 초당 게시 100, MQTT 페이로드 128KB, 유지 연결(keep-alive) 상한 1,200초, 규칙당 동작 최대 10, 계정당 규칙 1,000. — 위 General Reference · 직접</li>
+<li>[사실] 프로토콜: MQTT(X.509는 8883 또는 443+ALPN), MQTT over WebSocket(443, SigV4 또는 사용자 지정 인증), HTTPS는 <strong>게시 전용</strong>. HTTPS는 오프라인 중 메시지 수신, <code>clientId</code>, <strong>기기 연결 끊김 감지</strong>를 지원하지 않고 MQTT는 지원한다. MQTT QoS는 0과 1. X.509 연결은 보통 1~2주 유지되지만 보장되지 않아 재연결 구현이 필수다. — <a href="https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html" rel="noopener noreferrer" target="_blank">IoT Core 프로토콜</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] IoT Core 서울 가격: 연결 100만 분당 $0.096, 메시지 100만 건당 $1.20(첫 10억), 다이렉트 메시지 건당 $0.00000216, 규칙 발동 100만 건당 $0.18, 규칙 동작 실행 100만 건당 $0.18, 섀도·레지스트리 100만 건당 $1.50. 미터링 단위는 공식 가격 페이지 기준 메시지·규칙이 5KB 단위, 연결은 분 단위. — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSIoT/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">IoT 서울 가격표</a>(게시 2026-10-03), <a href="https://aws.amazon.com/iot-core/pricing/" rel="noopener noreferrer" target="_blank">IoT Core 가격 페이지</a> · 직접 (가격 페이지 자체는 서울 값을 표시하지 않고 다른 리전 예시만 있음)</li>
+<li>[사실] Greengrass 가격: 코어 기기당 월 $0.16, 첫 3대는 1년간 무료. 가격 페이지의 예시는 모두 미국 동부 기준이며 리전별 차이는 페이지가 밝히지 않는다. 서울 가격표 파일은 404라 서울 단가는 [미확인]. — <a href="https://aws.amazon.com/greengrass/pricing/" rel="noopener noreferrer" target="_blank">Greengrass 가격</a> · 접근 2026-11-04 · 직접</li>
+<li>[사실] API Gateway 서울: 데이터 평면 <code>execute-api.ap-northeast-2.amazonaws.com</code> 제공. HTTP API 요청 100만 건당 $1.23(첫 3억). 페이로드 한도 10MB(조정 불가), 통합 제한 시간 기본 29초. — <a href="https://docs.aws.amazon.com/general/latest/gr/apigateway.html" rel="noopener noreferrer" target="_blank">API Gateway 한도</a> · 접근 2026-11-04 · 직접, <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonApiGateway/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">API Gateway 서울 가격표</a> · 직접</li>
+<li>[사실] SQS 서울: 표준 큐 100만 건당 $0.40(매월 첫 100만 건 무료), FIFO $0.50. 메시지 최대 1MiB, 보존 최대 14일, 가시성 제한 시간 최대 12시간. 더 큰 페이로드는 S3 확장 클라이언트(최대 2GB). — <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html" rel="noopener noreferrer" target="_blank">SQS 메시지 한도</a> · 접근 2026-11-04 · 직접, <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSQueueService/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">SQS 서울 가격표</a>(게시 2026-09-11) · 직접</li>
+<li>[사실] EMQX는 5.9.0부터 Apache 2.0에서 BSL 1.1로 바뀌었고, 노드 둘 이상 클러스터는 라이선스 파일이 필요하다. 오픈소스판과 엔터프라이즈판이 합쳐졌다. MQTT 5.0·3.1.1·3.1을 지원한다. — <a href="https://github.com/emqx/emqx" rel="noopener noreferrer" target="_blank">EMQX GitHub</a> · 접근 2026-11-04 · 직접(요약기 경유)</li>
+<li>[사실] 사이트 간 VPN 서울: 연결당 시간 $0.05, Transit Gateway VPN 연결 시간당 $0.07, TGW 처리 $0.02/GB. 클라이언트 VPN 엔드포인트 연결 시간당 $0.10. — <a href="https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonVPC/current/ap-northeast-2/index.json" rel="noopener noreferrer" target="_blank">VPC 서울 가격표</a> · 직접</li>
+<li>[검색요약 · 제3자] Mender는 오픈소스 자체 호스팅이 무료이고, balena는 무료 10대 이하 또는 월 $159·$329 등 자료가 엇갈리며, Tailscale은 사용자당 월 약 $8~$18로 보도된다. 공식 가격 페이지는 열지 못했다. — <a href="https://www.ics.com/blog/choosing-right-iot-fleet-management-system-look-torizon-balena-and-mender" rel="noopener noreferrer" target="_blank">검색 결과</a> · 접근 2026-11-04 · 제3자 · 가격은 쓰지 않는다.</li>
+<li>[미확인] Mosquitto, ThingsBoard, Home Assistant, AWS IoT SiteWise의 라이선스·운영 요건·서울 가용성은 이번에 열어 보지 않았다.</li>
+</ul>
+<h3 id="계산-모든-입력은-가정-단가는-서울-가격표">계산 (모든 입력은 가정, 단가는 서울 가격표)</h3>
+<p>공통 가정 [가설]: 400세대 건물, 기기 400대(세대당 1대), 각 기기가 분당 1회 하트비트(월 43,200회), 이벤트는 기기당 하루 100건(월 3,000건), 메시지는 모두 5KB 이하, 30일.</p>
+<ul>
+<li>하트비트 400 × 43,200 = 17,280,000건. 이벤트 400 × 100 × 30 = 1,200,000건. 합계 <strong>18,480,000건</strong>.</li>
+</ul>
+<p><strong>A. 기기가 IoT Core에 직접 연결(MQTT)</strong> — 연결 400 × 43,200분 = 17,280,000분</p>
+<ul>
+<li>연결 17.28 × $0.096 = $1.66</li>
+<li>메시지 18.48 × $1.20 = $22.18</li>
+<li>규칙 발동 18.48 × $0.18 = $3.33, 동작 실행 18.48 × $0.18 = $3.33 (규칙 1개·동작 1개 가정)</li>
+<li>합계 <strong>약 $30.49/월</strong>. 구독자 배달 메시지(수신 쪽 과금)는 포함하지 않았다.</li>
+</ul>
+<p><strong>B. 건물 게이트웨이 2대가 묶어서 전송(MQTT)</strong> — 게이트웨이당 분당 1회 묶음 하트비트 + 이벤트는 개별 전송</p>
+<ul>
+<li>메시지 2 × 43,200 + 1,200,000 = 1,286,400건. 연결 2 × 43,200분 = 86,400분 → $0.008</li>
+<li>메시지 1.2864 × $1.20 = $1.54, 규칙 $0.23, 동작 $0.23</li>
+<li>합계 <strong>약 $2.02/월</strong>. Greengrass를 쓰면 코어 기기 2대 × $0.16 = $0.32 추가(서울 단가 미확인, 첫 3대 1년 무료).</li>
+<li>10곳(곳마다 게이트웨이 1대, 이벤트 같은 양)으로 늘리면 메시지 10 × (43,200 + 1,200,000) = 12,432,000건. 연결 10 × 43,200분 × $0.096/M = $0.04. 메시지·규칙·동작 12.432 × (1.20 + 0.18 + 0.18) = $19.40. 합계 <strong>약 $19.44/월</strong>.</li>
+</ul>
+<p><strong>C. 업체 웹훅 → API Gateway(HTTP API) → SQS → 작업자</strong> — 이벤트만(1,200,000건)</p>
+<ul>
+<li>API Gateway 1.2 × $1.23 = $1.48</li>
+<li>SQS: 이벤트당 전송·수신·삭제 3요청 가정 = 3,600,000건, 무료 100만 건 제외 2.6 × $0.40 = $1.04</li>
+<li>합계 <strong>약 $2.52/월</strong>. S3 원문 보관 PUT·저장 비용은 S3 서울 단가를 열지 않아 포함하지 않았다 [미확인].</li>
+<li>하트비트까지 HTTP로 받으면 요청 18.48M × $1.23 = <strong>$22.73</strong>(API Gateway만). A와 거의 같다.</li>
+</ul>
+<p><strong>D. 건물마다 Site-to-Site VPN</strong> — 연결 $0.05 × 730 = $36.50/월 × 10곳 = <strong>$365.00/월</strong>(데이터 전송 제외, 이중 터널 공유기·장비 별도).</p>
+<h3 id="inferences-4">Inferences</h3>
+<ul>
+<li>[추정] 가격 차이를 만드는 것은 프로토콜이 아니라 <strong>메시지 개수</strong>다. 건물 안에서 모아 보내거나 변화가 있을 때만 보내면 두 방식 모두 월 몇 달러 수준이다. 서울 단가 기준으로 소규모에서는 수집 비용이 고정비 중 의미 있는 항목이 아니다.</li>
+<li>[추정] 안전 경로(신호 끊김 감지)에는 MQTT가 유리하다. 문서가 HTTPS는 연결 끊김 감지가 없다고 밝히기 때문이다. 웹훅만으로는 “조용해진 기기”를 서버가 시간 기준으로 직접 세야 한다.</li>
+<li>[추정] 웹훅 수집은 외부 공급사 쪽이 이벤트를 밀어 주는 구조라서, 공급사가 재시도하지 않거나 서명 방식이 제각각일 때 원문 보관(S3)과 SQS 사이에 끼는 얇은 수신기가 필요하다. API Gateway의 29초 제한과 10MB, SQS 1MiB 한도 안에서는 문제가 없다.</li>
+<li>[추정] 사이트마다 VPN을 두는 방식은 비용도 크지만 장비·키 관리 부담이 크다. 바깥으로만 나가는 TLS MQTT(또는 WebSocket) 연결이 열린 인바운드 포트 없이 가능해서 건물 쪽 방화벽 협의가 쉽다. 이 방화벽 사정은 현장 확인 전에는 [가설]이다.</li>
+<li>[추정] EMQX를 직접 운영하면 BSL과 다중 노드 라이선스 파일을 따져야 한다. 1단계에서는 IoT Core 같은 관리형이 라이선스·운영 면에서 가볍다. 반대로 AWS에 묶이는 대가가 있다 — 장치 인증서·규칙·토픽 구조가 IoT Core 전용이다.</li>
+<li>[가설] 기기 군(群) 관리와 OTA는 Greengrass(AWS 안)나 Mender(자체 호스팅 오픈소스) 중 하나다. 1단계에는 사이트 게이트웨이가 없을 수 있으므로(허브: 조건부) 나중에 고르면 된다.</li>
+</ul>
+<h3 id="gaps-4">Gaps</h3>
+<ul>
+<li>Mosquitto, ThingsBoard, Home Assistant, balena, Mender, Tailscale 공식 요구사항과 가격: 못 열었다.</li>
+<li>AWS IoT SiteWise 불필요 여부: 조사 못 함(산업용 시계열 도구라는 점은 일반 지식이며 확인 안 함).</li>
+<li>Greengrass 서울 단가, S3 서울 저장·요청 단가, ALB 앞 웹훅 수신(ALB 직접 대상 그룹) 방식의 원문 보관 사례: 못 찾음.</li>
+<li>IoT Core 수명주기 이벤트(연결·끊김 알림)와 “마지막 유언(LWT)” 문서, Device Defender 가격(서울 가격표 404): 못 열었다.</li>
+<li>한국 출입통제·호출벨 업체의 실제 연동 방식(MQTT/웹훅/전용 프로토콜): 이번 범위에서 못 찾음.</li>
+</ul>
+<hr>
+<h2 id="5-15명-팀을-위한-최소-플랫폼-참고-자료">5. 1~5명 팀을 위한 최소 플랫폼 참고 자료</h2>
+<h3 id="takeaway-5">Takeaway</h3>
+<p>AWS Well-Architected SaaS Lens는 공식 참고지만 2023-04-04 문서라 3년 넘었다. 1~5명 팀의 실제 구성을 다룬 한국어 엔지니어링 글은 이번 조사에서 찾지 못했다.</p>
+<h3 id="cited-findings-5">Cited Findings</h3>
+<ul>
+<li>[사실] SaaS Lens 게시일은 2023-04-04. 다중 테넌트 SaaS를 Well-Architected 다섯 축으로 점검하는 AWS 공식 렌즈다. — <a href="https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/saas-lens.html" rel="noopener noreferrer" target="_blank">SaaS Lens</a> · 접근 2026-11-04 · 직접(소개부만 열람, 세부 질문은 안 읽음)</li>
+</ul>
+<h3 id="inferences-5">Inferences</h3>
+<ul>
+<li>[추정] 이 렌즈는 테넌트 격리와 테넌트별 운영 가시성 점검에 쓸 수 있다. 사업장 단위 RLS 설계를 설명할 때 근거로 들 수 있으나, 3년 넘은 자료임을 같이 적어야 한다.</li>
+</ul>
+<h3 id="gaps-5">Gaps</h3>
+<ul>
+<li>Startups 가이드, 우아한형제들·토스·당근 등 한국어 기술 블로그의 소규모 플랫폼 사례: 검색하지 못했다.</li>
+<li>1~5명 팀이 ECS Fargate와 IaC로 운영한 사례: 못 찾음.</li>
+</ul>
+<hr>
+<h2 id="6-요약-표-1단계-선택은-모두-판단">6. 요약 표 (1단계 선택은 모두 [판단])</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>층</th>
+<th>후보</th>
+<th>1단계 선택 [판단]</th>
+<th>언제 바꾸나</th>
+<th>대가</th>
+<th>근거 수준</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CI 인증</td>
+<td>정적 키 / GitHub OIDC</td>
+<td>OIDC, 환경별 역할, 운영은 <code>environment:prod</code></td>
+<td>2026-07-15 이후 저장소의 새 <code>sub</code> 형식 확인 후 정책 갱신</td>
+<td>신뢰 정책 관리</td>
+<td>직접(공식)</td>
+</tr>
+<tr>
+<td>배포</td>
+<td>CodeDeploy / ECS 내장 blue/green / 롤링</td>
+<td>ECS 내장 blue/green(API·화면), 작업자는 롤링</td>
+<td>작업자 이중 실행이 문제되면 리스 설계</td>
+<td>배포 중 작업 약 2배, NLB는 +10분</td>
+<td>직접(문서), 날짜는 검색요약</td>
+</tr>
+<tr>
+<td>DB 이행</td>
+<td>Flyway / Liquibase</td>
+<td>Flyway를 CI의 일회성 작업으로 선실행, 확장·축소 분리</td>
+<td>파괴적 변경이 잦아지면</td>
+<td>릴리스 2회 필요</td>
+<td>제3자(공식 미확인)</td>
+</tr>
+<tr>
+<td>IaC</td>
+<td>OpenTofu / Terraform / CDK</td>
+<td>OpenTofu + S3 상태(<code>use_lockfile</code>)</td>
+<td>팀이 늘어 계정·상태가 나뉠 때</td>
+<td>문서상 둘 다 지원하나 도입 버전 미확인</td>
+<td>직접(공식)</td>
+</tr>
+<tr>
+<td>계정</td>
+<td>단일 / Organizations+Control Tower</td>
+<td>실제 데이터 전에 계정 분리</td>
+<td>실제 입주자 데이터 도입 전</td>
+<td>Control Tower 비용 미확인</td>
+<td>직접(서울 지원)</td>
+</tr>
+<tr>
+<td>비밀</td>
+<td>Secrets Manager / Parameter Store</td>
+<td>비밀은 Secrets Manager($0.40/개), 설정은 Parameter Store</td>
+<td>비밀 수가 많아지면 비용 재계산</td>
+<td>20개면 월 $8.00</td>
+<td>직접(가격표)</td>
+</tr>
+<tr>
+<td>관측</td>
+<td>CloudWatch+Application Signals / AMP+AMG / 자체 LGTM / 자체 Sentry</td>
+<td>CloudWatch(로그·경보·캐너리) 우선, 계측은 Micrometer+OTLP</td>
+<td>대시보드·장기 지표가 필요하면 AMP+AMG</td>
+<td>App Signals는 사이드카·서비스명 수동</td>
+<td>직접(문서·가격표)</td>
+</tr>
+<tr>
+<td>온콜</td>
+<td>Opsgenie / PagerDuty / incident.io / JSM</td>
+<td>Opsgenie는 제외. 나머지는 미결정</td>
+<td>2027-04-05 이전에 결정</td>
+<td>요금·한국 전화 수신 미확인</td>
+<td>검색요약</td>
+</tr>
+<tr>
+<td>안전 경로 감시</td>
+<td>앱 내부 / 독립 하트비트</td>
+<td>하트비트 메트릭+누락 경보+외부 캐너리</td>
+<td>신호 끊김 임계 확정 시</td>
+<td>캐너리 5분 간격 월 $16.42</td>
+<td>가설</td>
+</tr>
+<tr>
+<td>네트워크</td>
+<td>NAT / VPC 엔드포인트</td>
+<td>NAT 1대로 시작(월 $43.07)</td>
+<td>Multi-AZ 때 NAT 2대, 통신 약 1,058GB/월 초과 시 엔드포인트</td>
+<td>단일 AZ 장애 지점</td>
+<td>직접(가격표), 계산</td>
+</tr>
+<tr>
+<td>보안 서비스</td>
+<td>WAF, Shield, GuardDuty, Security Hub</td>
+<td>GuardDuty와 WAF 웹 ACL부터</td>
+<td>실제 데이터 도입, 공공 판매 시</td>
+<td>Security Hub 요금 체계 변경 중</td>
+<td>직접(가격표)</td>
+</tr>
+<tr>
+<td>백업·DR</td>
+<td>RDS PITR / AWS Backup 볼트 락 / 교차 리전</td>
+<td>PITR + 별도 계정 볼트(거버넌스 모드로 시작)</td>
+<td>보존 기간 확정 후 컴플라이언스 모드</td>
+<td>되돌릴 수 없음, 계정 종료 90일 뒤 삭제</td>
+<td>직접(공식)</td>
+</tr>
+<tr>
+<td>한국 내 DR</td>
+<td>서울 단일 / 다른 리전</td>
+<td>서울 안 계정·AZ 분리</td>
+<td>한국 내 추가 리전이 생기면</td>
+<td>리전 장애 미대비</td>
+<td>검색요약(부재)</td>
+</tr>
+<tr>
+<td>인증</td>
+<td>ISMS-P / CSAP / 금융 규정</td>
+<td>AWS 서울 인증 활용, 컨포먼스 팩 참고</td>
+<td>2027-07-01 범위 확정, 공공 판매 시 CSAP</td>
+<td>2021 팩이 현행과 맞는지 미확인</td>
+<td>검색요약·직접 혼합</td>
+</tr>
+<tr>
+<td>장치 수집</td>
+<td>IoT Core MQTT / 업체 웹훅(API Gateway+SQS) / 자체 EMQX</td>
+<td>업체가 웹훅이면 웹훅, 기기를 직접 다루면 IoT Core MQTT</td>
+<td>하트비트 감시 필요, 장치 수 증가</td>
+<td>월 $2~$30 수준(가정), AWS 종속</td>
+<td>직접(가격표·문서), 사용량은 가설</td>
+</tr>
+<tr>
+<td>건물 연결</td>
+<td>사이트 VPN / 외부로만 나가는 TLS MQTT / Tailscale</td>
+<td>외부로만 나가는 TLS MQTT</td>
+<td>사이트 내부 장비 원격 관리가 필요하면</td>
+<td>VPN 10곳 월 $365</td>
+<td>직접(가격표), 방화벽 사정은 가설</td>
+</tr>
+<tr>
+<td>기기 관리·OTA</td>
+<td>Greengrass / Mender / balena</td>
+<td>보류(게이트웨이 조건부)</td>
+<td>게이트웨이가 필요하다고 확인될 때</td>
+<td>Greengrass 코어당 월 $0.16(서울 단가 미확인)</td>
+<td>직접(Greengrass), 나머지 제3자</td>
+</tr>
+<tr>
+<td>브로커</td>
+<td>IoT Core / EMQX / Mosquitto</td>
+<td>IoT Core</td>
+<td>벤더 종속이 부담이면 EMQX(BSL, 클러스터 라이선스)</td>
+<td>인증서·규칙이 AWS 전용</td>
+<td>직접(EMQX 라이선스)</td>
+</tr>
+<tr>
+<td>참고 틀</td>
+<td>Well-Architected SaaS Lens</td>
+<td>격리·운영 점검표로 참고</td>
+<td>—</td>
+<td>2023-04 자료</td>
+<td>직접</td>
+</tr>
+</tbody></table></div>
+<h2 id="못-찾은-것">못 찾은 것</h2>
+<ul>
+<li>Spring Boot 4의 <code>spring-boot-starter-opentelemetry</code> 존재 여부, OTel Java 에이전트 최신 버전.</li>
+<li>Flyway·Liquibase 공식 무중단 가이드, RLS를 Testcontainers로 검증하는 공식 사례.</li>
+<li>ECR 스캔·SBOM 도구의 서울 가용성(Inspector 가격표 404), GitHub Actions 쪽 SBOM 생성 방법.</li>
+<li>프리뷰 환경, Control Tower·Organizations 비용.</li>
+<li>자체 LGTM, PagerDuty, incident.io, 카카오 알림톡 경보 수단의 요금·요건. SLO 소규모 팀 사례.</li>
+<li>AWS 공식 리전 가용성 표(서비스 x 서울) 직접 열람. 이번에는 서울 가격표 항목의 존재로 간접 확인했다. 서울 외 한국 리전 부재의 공식 확인.</li>
+<li>ISMS-P 인증기준 항목과 인프라 매핑, 컨포먼스 팩 현행성, CSAP SaaS 필요 여부, 전자금융감독규정의 비금융 계열사 적용 여부.</li>
+<li>Mosquitto, ThingsBoard, Home Assistant, balena, Mender, Tailscale 공식 자료. SiteWise 필요성. IoT Core 수명주기 이벤트·LWT·Device Defender.</li>
+<li>S3·RDS 백업·Shield Advanced 서울 단가. RTO 실측치.</li>
+<li>한국어 소규모 플랫폼 엔지니어링 사례, Startups 가이드.</li>
+<li>한국 출입통제·호출벨 업체의 실제 연동 방식.</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-1010" data-title="하트비트"><p>작업자와 현장 어댑터가 주기적으로 보내는 살아 있다는 신호. 끊기면 앱 밖 점검이 경보를 낸다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>heartbeat</dd><dt>출처</dt><dd>설계안 6.1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1011" data-title="작업자"><p>요청과 별도로 실행되는 백그라운드 처리 단위. 타이머, 월 청구, 알림 발송, 문서 처리를 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>Worker</dd><dt>출처</dt><dd>설계안 4</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1012" data-title="에이전트"><p>다음 단계를 스스로 고르며 도구를 호출하는 실행. Evenstay에서는 직원용 초안과 제안까지 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>agent</dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

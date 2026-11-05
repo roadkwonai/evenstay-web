@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>화면 라벨 — safety-signal-hub (안심 알림) | Evenstay 문서</title>
+<meta name="description" content="화면 라벨 — safety-signal-hub (안심 알림). Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>화면 라벨 — safety-signal-hub (안심 알림)</h1>
+  
+  
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#라벨을-고른-기준">라벨을 고른 기준</a></li><li class="lv2"><a href="#1-알림-등급-severity">1. 알림 등급 (Severity)</a></li><li class="lv2"><a href="#2-알림-상태-alertstatus">2. 알림 상태 (AlertStatus)</a></li><li class="lv2"><a href="#3-신호-처리-표시">3. 신호 처리 표시</a></li><li class="lv2"><a href="#4-신호-출처-device">4. 신호 출처 (Device)</a></li><li class="lv2"><a href="#5-조치-기록-선택지-actionrecord">5. 조치 기록 선택지 (ActionRecord)</a></li><li class="lv2"><a href="#6-보호자-알림-머리말">6. 보호자 알림 머리말</a></li><li class="lv2"><a href="#바뀔-수-있는-것-미정">바뀔 수 있는 것 [미정]</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-833" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-834" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li></ul></section></aside>
+  <article class="doc"><p>모듈 이름은 이미 확정됐다(<code>senior-lab/03-copywriting/ideas/pms-core-billing/names.md</code> v3): 직원 화면과 회원 화면 모두 <strong>안심 알림</strong>(직원 화면 이름은 Evenstay Safety에서 2026-11-03 한글로 바꿈). 보호자에게 가는 결과는 Evenstay 패밀리의 <strong>건강 소식</strong>으로 들어간다(D와 맞춤, 2026-11-03). 그래서 <code>product-name</code> 스킬은 쓰지 않았다. 이 파일은 화면 안의 작은 라벨(알림 등급, 상태, 결과 선택지)만 정한다.</p>
+<h2 id="라벨을-고른-기준">라벨을 고른 기준</h2>
+<ol>
+<li><strong>판단하지 않는다.</strong> 등급 이름이 입주자의 상태를 말하면 안 된다(&quot;응급&quot;, &quot;위험&quot;, &quot;낙상&quot;). 등급은 &quot;직원이 얼마나 빨리 봐야 하는지&quot;만 말한다.</li>
+<li><strong>직원 화면은 짧은 업무 명사</strong>(코어와 같은 합쇼체·명사형 라벨). 회원·보호자 화면은 해요체 문장.</li>
+<li><strong>외래어는 직원 화면에서도 줄인다.</strong> &quot;에스컬레이션&quot;은 코드와 면접 자료에서만 쓴다.</li>
+<li>코어 용어집과 겹치는 말(입주자, 사업장, 변경 이력)은 코어 표기를 그대로 쓴다. 직원 화면에서는 &quot;입주자&quot;로 부르고(&quot;302호 김○○ 입주자&quot;) &quot;회원&quot;을 쓰지 않는다. 회원 본인에게는 &quot;회원님&quot;, 보호자 알림에서는 &quot;○○○ 회원님&quot;이다(2026-11-03 확정).</li>
+</ol>
+<h2 id="1-알림-등급-severity">1. 알림 등급 (Severity)</h2>
+<p>규칙이 붙이는 등급이다. 입주자의 상태를 판단한 결과가 아니다.</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>직원 화면</th>
+<th>색·모양</th>
+<th>알림 방식</th>
+<th>고른 이유</th>
+<th>버린 후보</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IMMEDIATE</td>
+<td><strong>즉시 확인</strong></td>
+<td>진한 빨강 + 원 안 느낌표 아이콘</td>
+<td>당번 휴대폰 알림, 5분 타이머 시작</td>
+<td>해야 할 행동만 말한다</td>
+<td>응급(판단), 위험(판단), 긴급(공포감), 1등급(뜻이 안 보임)</td>
+</tr>
+<tr>
+<td>CHECK</td>
+<td><strong>확인 필요</strong></td>
+<td>주황 + 삼각형</td>
+<td>당번 알림, 15분 타이머 [가설: 기획 제안값, 2026-11-03 사용자 확정]</td>
+<td>즉시 확인과 한눈에 구분되면서 가볍다</td>
+<td>주의(입주자 상태처럼 읽힘), 경고</td>
+</tr>
+<tr>
+<td>LOG_ONLY</td>
+<td><strong>기록만</strong></td>
+<td>회색, 아이콘 없음</td>
+<td>알림 없이 목록에만 남음</td>
+<td>알림 홍수를 줄이는 등급이라는 것이 이름에 드러난다</td>
+<td>참고(무엇을 하라는지 모호), 정보</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>색만으로 구분하지 않는다. 아이콘과 글자를 같이 둔다(색각 이상, 야간 화면 밝기).</li>
+<li>회원·보호자 화면에는 등급을 보이지 않는다. 회원에게 &quot;즉시 확인&quot;은 불안만 키운다.</li>
+</ul>
+<h2 id="2-알림-상태-alertstatus">2. 알림 상태 (AlertStatus)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>직원 화면</th>
+<th>회원 화면</th>
+<th>고른 이유</th>
+<th>버린 후보</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OPEN</td>
+<td><strong>접수</strong></td>
+<td>직원에게 알렸어요</td>
+<td>신호가 들어와 담당자에게 간 상태. 짧고 익숙하다</td>
+<td>신규, 미처리(탓하는 느낌)</td>
+</tr>
+<tr>
+<td>ACKNOWLEDGED</td>
+<td><strong>확인 중</strong> · 담당자 이름</td>
+<td>직원이 가고 있어요</td>
+<td>누군가 맡았다는 것을 이름과 함께 보인다</td>
+<td>처리 중(범위가 넓음), 수락</td>
+</tr>
+<tr>
+<td>ESCALATED</td>
+<td><strong>2차 호출</strong> · <strong>3차 호출</strong> · <strong>모두 호출</strong></td>
+<td>다른 직원에게도 알렸어요</td>
+<td>몇 번째 사람에게 넘어갔는지가 숫자로 보인다. 3차 뒤에는 당번 모두를 부른다는 것이 말 그대로 보인다. 응답하지 않은 직원을 탓하지 않는다</td>
+<td>에스컬레이션(외래어), 미응답(탓함), 상향(뜻이 흐림)</td>
+</tr>
+<tr>
+<td>RESOLVED</td>
+<td><strong>조치 완료</strong></td>
+<td>직원이 다녀갔어요</td>
+<td>직원이 조치를 기록해야만 이 상태가 된다</td>
+<td>해결(결과를 단정), 종료, 이상 없음(결과는 상태가 아니라 조치 기록에 둔다)</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>2차 호출 뒤 누가 확인하면 상태는 다시 <strong>확인 중</strong>이 되고, 넘긴 이력은 기록에 남는다.</li>
+<li>회원 화면의 &quot;직원이 가고 있어요&quot;는 직원이 [확인하러 갑니다]를 누른 뒤에만 보인다. 누르기 전에는 &quot;직원에게 알렸어요&quot;다. 지키지 못할 말을 먼저 하지 않는다.</li>
+<li>3차 호출 대상은 당번표 셋째 자리의 당직 책임자(없으면 사업장 책임자)다. 3차도 확인하지 않으면 <strong>모두 호출</strong>: 오늘 밤 당번 모두에게 다시 알리고, 누가 맡을 때까지 같은 간격으로 다시 알린다 [가설: 기획 제안값, 2026-11-03 사용자 확정]. 시스템은 119에 신고하지 않는다.</li>
+</ul>
+<h2 id="3-신호-처리-표시">3. 신호 처리 표시</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>직원 화면</th>
+<th>고른 이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DuplicateEvent</td>
+<td><strong>중복 수신</strong> n건</td>
+<td>같은 이벤트가 다시 왔다는 사실만 말한다. &quot;오류&quot;가 아니다</td>
+</tr>
+<tr>
+<td>RelatedSignals</td>
+<td><strong>같은 입주자 신호</strong> n건</td>
+<td>같은 입주자에게서 30분 안에 다른 신호가 오면 한 카드 아래 묶어 보인다 [미정: 묶는 시간 범위]</td>
+</tr>
+<tr>
+<td>DeviceSilent</td>
+<td><strong>신호 끊김</strong></td>
+<td>기기에서 정해진 시간 동안 아무 신호가 없을 때. &quot;이상 없음&quot;으로 보이지 않게 따로 표시한다</td>
+</tr>
+</tbody></table></div>
+<h2 id="4-신호-출처-device">4. 신호 출처 (Device)</h2>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>코드</th>
+<th>직원 화면</th>
+<th>회원 화면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BED_SENSOR</td>
+<td>침대 센서</td>
+<td>침대 센서 (처음 한 번 &quot;침대에 계신지 알려 주는 장치&quot;로 풀어 쓴다)</td>
+</tr>
+<tr>
+<td>CALL_BELL</td>
+<td>호출벨</td>
+<td>호출벨</td>
+</tr>
+<tr>
+<td>ACCESS_LOG</td>
+<td>출입 기록</td>
+<td>출입 기록</td>
+</tr>
+<tr>
+<td>CHECK_IN_CALL</td>
+<td>안부 전화(외부)</td>
+<td>안부 전화</td>
+</tr>
+<tr>
+<td>FRONT_CALL</td>
+<td>프런트 전화</td>
+<td>(표시 안 함, 회원 화면은 호출 상태만)</td>
+</tr>
+<tr>
+<td>VISIT</td>
+<td>안부 방문</td>
+<td>안부 방문</td>
+</tr>
+<tr>
+<td>REQUESTS (생활 요청에서 옮긴 호출)</td>
+<td>생활 요청에서 옮김</td>
+<td>(표시 안 함, 회원 화면은 호출 상태만)</td>
+</tr>
+</tbody></table></div>
+<h2 id="5-조치-기록-선택지-actionrecord">5. 조치 기록 선택지 (ActionRecord)</h2>
+<p>직원이 한 일만 고른다. 입주자의 진단명이나 상태 판단은 선택지에 두지 않는다.</p>
+<p><strong>만남</strong></p>
+<ul>
+<li>입주자를 만났습니다</li>
+<li>아직 만나지 못했습니다 (찾는 중)</li>
+</ul>
+<p><strong>한 일</strong> (여러 개 선택)</p>
+<ul>
+<li>이상 없음을 직접 확인</li>
+<li>직원이 도와 드림</li>
+<li>간호 담당에게 연락</li>
+<li>119에 신고함</li>
+<li>병원으로 가심</li>
+<li>비상 연락처에 전화함</li>
+<li>기기 점검 요청</li>
+</ul>
+<p><strong>보호자 알림</strong> (조치 완료 직전)</p>
+<ul>
+<li>보내기</li>
+<li>올리지 않기: 이유는 두 가지만 고른다(직접 적기 없음). 운영 매니저가 매주 확인한다.<ul>
+<li>① 입주자(또는 대리인)가 이번 일은 알리지 말아 달라고 함: 들은 직원과 시각 필수, 입주자 화면에 표시</li>
+<li>② 건강과 무관한 신호: 다른 입주자의 신호가 잘못 붙음 · 같은 일이 이미 올라감 · 기기 시험</li>
+<li>119 신고나 병원 이송이 기록된 일은 ①만 고를 수 있다.</li>
+</ul>
+</li>
+<li>건강 소식을 보여 주기로 한 보호자가 없으면 직원이 고르기 전에 자동으로 보내지 않고 기록한다(<code>copy.md</code> 2-8).</li>
+</ul>
+<h2 id="6-보호자-알림-머리말">6. 보호자 알림 머리말</h2>
+<ul>
+<li>문자·알림톡 첫 줄: <strong>[Evenstay 패밀리]</strong></li>
+<li>이유: 보호자가 같은 회원의 소식을 두 이름으로 받지 않게 한다(D와 통일, 2026-11-03). 사칭 문자와 구분하는 것은 링크와 내용을 넣지 않고 프런트 번호를 적는 방식으로 한다(보이스피싱 P-039).</li>
+</ul>
+<h2 id="바뀔-수-있는-것-미정">바뀔 수 있는 것 [미정]</h2>
+<ul>
+<li>등급별 넘김 시간: 즉시 확인 5분, 확인 필요 15분으로 정했다 [가설: 기획 제안값, 2026-11-03 사용자 확정]. 현장 검토로 바뀔 수 있다.</li>
+<li>같은 입주자 신호를 묶는 시간 범위(30분은 임시값).</li>
+</ul>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-833" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-834" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>
