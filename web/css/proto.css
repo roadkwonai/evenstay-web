@@ -91,7 +91,7 @@ svg.i { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none;
 /* surfaces */
 .card { background: var(--bg-surface); color: var(--fg-default); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
 .card.tight { padding: 16px 20px; gap: 8px; }
-.band { padding: 16px; border-radius: 8px; background: var(--bg-subtle); }
+.band { color: var(--fg-default); padding: 16px; border-radius: 8px; background: var(--bg-subtle); }
 .band > * + * { margin-top: 8px; }
 .card > .band { margin: 0 -24px; padding: 20px 24px; border-radius: 0; }
 .card > .band:last-child { margin-bottom: -24px; border-radius: 0 0 15px 15px; }
@@ -233,7 +233,7 @@ textarea.input { min-height: 120px; resize: vertical; }
   .grid2, .grid3 { grid-template-columns: minmax(0, 1fr); }
   .kv { grid-template-columns: minmax(0, 1fr); }
   .record { grid-template-columns: minmax(0, 1fr); }
-  .band { margin: 0 -16px; padding: 16px; }
+  .band { color: var(--fg-default); margin: 0 -16px; padding: 16px; }
   .card { padding: 20px 16px; }
   .t-title1 { font-size: 1.75rem; }
 }
@@ -618,7 +618,7 @@ textarea.input { field-sizing: content; }
 /* Screen rules moved out of artboard helmets (decision 15). */
 .with-panel { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; align-items: start; }
 .with-panel > .stack { min-width: 0; }
-.side-panel { display: flex; flex-direction: column; gap: 16px; padding: 24px; border: 1px solid var(--border-subtle); border-radius: 16px; background: var(--bg-elevated); position: sticky; top: 88px; min-width: 0; }
+.side-panel { color: var(--fg-default); display: flex; flex-direction: column; gap: 16px; padding: 24px; border: 1px solid var(--border-subtle); border-radius: 16px; background: var(--bg-elevated); position: sticky; top: 88px; min-width: 0; }
 .side-panel h2 { margin: 0; }
 .side-panel .grab { display: none; color: var(--bg-surface); }
 .side-panel .record { grid-template-columns: minmax(0, 1fr); }
@@ -820,7 +820,7 @@ section.state ~ section.state .appbar { position:static }
 @container (min-width:800px) { .queue{grid-template-columns:minmax(0,1fr) 320px} }
 .queue.one .col { max-width:760px;margin-inline:auto;width:100% }
 .col { display:flex;flex-direction:column;gap:16px;min-width:0 }
-.panel-s { display:flex;flex-direction:column;gap:16px;min-width:0;padding:24px;border:1px solid var(--border-subtle);border-radius:16px;background:var(--bg-elevated) }
+.panel-s { color: var(--fg-default); display:flex;flex-direction:column;gap:16px;min-width:0;padding:24px;border:1px solid var(--border-subtle);border-radius:16px;background:var(--bg-elevated) }
 .panel-s::before { content:none }
 .pick { position:relative;transition:background-color 160ms var(--ease-out) }
 .pick .stretch { color:inherit;text-decoration:none }
@@ -839,7 +839,7 @@ section.state ~ section.state .appbar { position:static }
 .kv.inline > div { display:flex;align-items:baseline;gap:8px;min-width:0 }
 .kv.inline dt { white-space:nowrap }
 .kv.inline dd { margin:0;min-width:0 }
-.panelbox { border:1px solid var(--border-subtle);border-radius:12px;background:var(--bg-surface);overflow:hidden }
+.panelbox { color: var(--fg-default); border:1px solid var(--border-subtle);border-radius:12px;background:var(--bg-surface);overflow:hidden }
 .chk { list-style:none;margin:0;padding:0 }
 .chk > li + li { border-top:1px solid var(--border-subtle) }
 .chk-row { position:relative;display:flex;align-items:center;gap:16px;width:100%;min-height:64px;padding:12px 16px;border:0;background:transparent;color:var(--fg-default);font:inherit;text-align:left }
@@ -987,7 +987,7 @@ button.chk-row:active { background-image:linear-gradient(var(--state-active),var
 .rsheet { width:480px;max-width:100%;min-height:100%;display:flex;flex-direction:column;background:var(--bg-elevated);box-shadow:var(--shadow-3);border-radius:24px 0 0 24px }
 .rsheet>header { display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:24px 24px 16px;border-bottom:1px solid var(--border-subtle) }
 .rsheet>.body { flex:1;display:flex;flex-direction:column;gap:16px;padding:16px 24px 24px }
-.rsheet>footer { display:flex;justify-content:flex-end;gap:12px;padding:16px 24px;border-top:1px solid var(--border-subtle);background:var(--bg-elevated);border-radius:0 0 0 24px }
+.rsheet>footer { color: var(--fg-default); display:flex;justify-content:flex-end;gap:12px;padding:16px 24px;border-top:1px solid var(--border-subtle);background:var(--bg-elevated);border-radius:0 0 0 24px }
 .rsheet .pair2 { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px }
 .rsheet .input { min-width:0 }
 @media (max-width:639.98px) { .rsheet { width:100%;border-radius:0 } }
@@ -1053,7 +1053,7 @@ div.nl-row { cursor:default }
 @media (max-width:639.98px) { .ops .sticky-act.desk { margin-inline:-16px;padding-inline:16px } }
 /* OPSN: tokens only. Closed menus take no room, drawer footers wrap on phones, a dialog over a drawer does not catch clicks outside itself. */
 .more:not([open]) .menu { display:none }
-.rsheet>footer { flex-wrap:wrap }
+.rsheet>footer { color: var(--fg-default); flex-wrap:wrap }
 .screen.has-ovl>.ovl.top { pointer-events:none }
 .screen.has-ovl>.ovl.top .dialog { pointer-events:auto }
 /* OPSSAF: tokens only. Disabled fields keep a visible edge, the phone stepper shows focus on the radio that drives it, sticky action labels do not wrap. */

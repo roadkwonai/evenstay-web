@@ -2,7 +2,7 @@
   <a href="https://roadkwonai.github.io/evenstay-web/"><img src="docs/assets/brand/banner.svg" alt="Evenstay, 시니어 레지던스 운영 플랫폼 프로토타입" width="900"></a>
 </p>
 
-<p align="center"><a href="https://github.com/roadkwonai/evenstay-web/releases/tag/v0.1.2"><img src="https://img.shields.io/badge/release-v0.1.2-2340A0?style=flat-square" alt="릴리즈 v0.1.2"></a></p>
+<p align="center"><a href="https://github.com/roadkwonai/evenstay-web/releases/tag/v0.1.3"><img src="https://img.shields.io/badge/release-v0.1.3-2340A0?style=flat-square" alt="릴리즈 v0.1.3"></a></p>
 
 <a id="evenstay"></a>
 <h1 align="center">Evenstay</h1>
@@ -197,7 +197,7 @@ flowchart LR
 
 ## 릴리즈
 
-현재 버전은 **0.1.2**입니다. [날짜·시각별 릴리즈 기록](release/README.md), [변경 이력](CHANGELOG.md), [GitHub Releases](https://github.com/roadkwonai/evenstay-web/releases)를 함께 관리합니다. `0.1.0`은 보완 전 기준본이고 `0.1.1`은 아키텍처 처리 규칙을 보완한 버전이며, `0.1.2`는 Archify 3.2.0 적용과 로컬 글꼴 자체 검증을 마친 버전입니다.
+현재 버전은 **0.1.3**입니다. [날짜·시각별 릴리즈 기록](release/README.md), [변경 이력](CHANGELOG.md), [GitHub Releases](https://github.com/roadkwonai/evenstay-web/releases)를 함께 관리합니다. `0.1.0`은 보완 전 기준본이고 `0.1.1`은 아키텍처 처리 규칙을 보완한 버전이며, `0.1.2`는 도식 도구·글꼴 검증, `0.1.3`은 공통 CSS 경고와 상단 영역을 보완한 버전입니다.
 
 ## 저장소 구조
 

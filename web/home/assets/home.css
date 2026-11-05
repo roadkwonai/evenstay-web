@@ -87,7 +87,7 @@ h3 { font-size: 1.125rem; line-height: 1.45; font-weight: 600; }
 .notices strong { color: var(--fg-strong); font-size: 1.125rem; }
 .notices span { color: var(--fg-default); }
 .hero-act { display: flex; flex-wrap: wrap; gap: 12px; }
-.hero-facts { padding: 20px; border: 1px solid var(--border-default); border-radius: 12px; background: var(--bg-surface); display: flex; flex-direction: column; gap: 12px; }
+.hero-facts { color: var(--fg-default); padding: 20px; border: 1px solid var(--border-default); border-radius: 12px; background: var(--bg-surface); display: flex; flex-direction: column; gap: 12px; }
 .hero-facts h2 { font-size: 1.125rem; }
 .facts { display: grid; gap: 0; margin: 0; }
 .facts div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 8px 0; border-top: 1px solid var(--border-subtle); }

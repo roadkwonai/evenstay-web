@@ -32,6 +32,14 @@
 }
 @media (max-width: 1679.98px) { .bar-tools .tb-gh { padding: 0 8px; } .bar-tools .tb-gh span { display: none; } }
 @media (max-width: 1679.98px) { .tb-role .tb-long { display: none; } .tb-role .tb-short { display: inline; } }
+@media (min-width: 768px) and (max-width: 1919.98px) {
+  .devbar .tb-mark { display: none; }
+  .devbar .tb-role .tb-long { display: none; }
+  .devbar .tb-role .tb-short { display: inline; }
+  .devbar .tb-theme { min-width: 44px; min-height: 44px; padding-inline: 8px; }
+  .devbar .tb-theme span { display: none; }
+  .devbar .bar-tools .btn-sm { padding-inline: 8px; }
+}
 @media (max-width: 767.98px) {
   .tb-long, .tb-mark { display: none; }
   .tb-short { display: inline; }

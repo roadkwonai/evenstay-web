@@ -113,4 +113,7 @@ export async function initTopbar(options = {}) {
 export async function mountTopbar(el, options) {
   await initTopbar(options);
   el.className = 'tb-bar'; el.innerHTML = topbarHtml() + githubLink;
+  new ResizeObserver(() => {
+    document.documentElement.style.setProperty('--bar-h', `${el.offsetHeight}px`);
+  }).observe(el);
 }
