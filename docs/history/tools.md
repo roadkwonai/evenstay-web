@@ -24,6 +24,7 @@
 | 이름 | 버전 | 마켓 |
 | --- | --- | --- |
 | humanize-korean | 2.3.2 | im-not-ai |
+| oh-my-claudecode | 5.7.31 | omc |
 | ponytail | 5.3.3 | ponytail |
 | anthropic-skills |  |  |
 
@@ -31,9 +32,9 @@
 
 | 서버 | 하는 일 | 호출 |
 | --- | --- | --- |
-| ccd_turn | 작업 목록과 마무리 표시 | 1561 |
-| Claude_Browser | 내장 브라우저 창(미리보기 서버 시작, 화면 확인) | 149 |
-| ccd_session_mgmt | 세션 목록·조회·메시지 보내기 | 112 |
+| ccd_turn | 작업 목록과 마무리 표시 | 1704 |
+| Claude_Browser | 내장 브라우저 창(미리보기 서버 시작, 화면 확인) | 174 |
+| ccd_session_mgmt | 세션 목록·조회·메시지 보내기 | 132 |
 | ccd_session | 세션 시작과 장 표시(허브가 단계 세션을 여는 데 씀) | 33 |
 | claude-in-chrome | Chrome 확장 | 4 |
 | a343fe1a-0efe-4725-adf6-f16d0507dbb8 | 이름만 기록에 있음 | 4 |
@@ -43,19 +44,19 @@
 
 | 이름 | 하는 일 | 사용 |
 | --- | --- | --- |
-| puppeteer-core | 화면 방문 시험과 캡처(헤드리스 Chrome 제어) | 252 |
-| @google/design.md | DESIGN.md 린트와 토큰 내보내기 | 50 |
-| hallmark sloplint | hallmark 화면 점검 스크립트(sloplint) | 240 |
+| puppeteer-core | 화면 방문 시험과 캡처(헤드리스 Chrome 제어) | 319 |
+| @google/design.md | DESIGN.md 린트와 토큰 내보내기 | 51 |
+| hallmark sloplint | hallmark 화면 점검 스크립트(sloplint) | 283 |
 | @tailwindcss/cli | Tailwind v4 컴파일 확인(shadcn 변수 매핑) | 4 |
 | headless Chrome | 헤드리스 Chrome 캡처 | 30 |
-| ffmpeg / ffprobe | 영상 소리 트랙 제거, 첫 장면 추출, 정보 확인 | 68 |
-| cwebp | WebP 변환 | 14 |
-| sips | 이미지 변환·크기 확인(macOS) | 53 |
+| ffmpeg / ffprobe | 영상 소리 트랙 제거, 첫 장면 추출, 정보 확인 | 72 |
+| cwebp | WebP 변환 | 17 |
+| sips | 이미지 변환·크기 확인(macOS) | 63 |
 | acorn | JS 구문 분석(문구 추출 도구) | 4 |
-| lucide-static | Lucide 아이콘 가져오기 | 11 |
-| higgsfield CLI | Higgsfield 영상 생성·크레딧 확인 | 38 |
-| node 시험 스크립트 | 프로토타입 시험 스크립트 | 159 |
-| python3 http.server | 프로토타입 로컬 서버 | 28 |
+| lucide-static | Lucide 아이콘 가져오기 | 19 |
+| higgsfield CLI | Higgsfield 영상 생성·크레딧 확인 | 50 |
+| node 시험 스크립트 | 프로토타입 시험 스크립트 | 254 |
+| python3 http.server | 프로토타입 로컬 서버 | 40 |
 
 ## 화면 라이브러리와 글꼴
 

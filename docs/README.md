@@ -69,6 +69,9 @@
 - [아키텍처 설계안 논리 검토 (2026-11-05)](architecture/reviews/arch-review-logic-2026-11-05.md)
 - [출처: 시니어·돌봄·주거 소프트웨어 실제 기술 스택 (공개 자료 기준)](architecture/sources/arch-tech-stacks.md)
 - [[지원 회사] PMS · AI 네이티브 아키텍처 및 기술스택 종합 리서치](architecture/sources/gpt-architecture-research.md)
+- [archify 도식 5장 (arch-system, arch-signal, arch-payment, arch-agent, arch-doc)](architecture/drafts/archify.md)
+- [dd 도식 (diagram-design)](architecture/drafts/dd.md)
+- [stack-diagram 인프라 도식 5장](architecture/drafts/stack.md)
 
 ## 조사와 아이디어
 
@@ -96,10 +99,59 @@
 - [아이디어 롱리스트](research/ideation/idea-longlist.md)
 - [기회 솔루션 트리 (OST)](research/ideation/ost.md)
 - [가치 제안 (숏리스트 후보)](research/ideation/value-propositions.md)
+- [핵심 가정 (숏리스트 후보)](research/ideation/assumptions.md)
+- [G. 시니어 AI 생활 비서 + AI 자산관리 확장안](research/ideation/ai-assistant.md)
 
 ## 결정 기록
 
 - [결정 기록](decisions/decisions.md)
+
+## 지원 준비
+
+- [출처: [지원 회사]([지원 회사])와 [지원 회사] 시니어 사업](application/company-research.md)
+- [지원 회사 프로필](application/target-companies.md)
+- [Red-Team: Evenstay 포트폴리오 전략 ([지원 회사] Tech Lead / Senior Backend 지원)](application/red-team.md)
+- [Pre-Mortem: Evenstay Core v1.1 (포트폴리오 MVP)](application/pre-mortem-core.md)
+- [Pre-Mortem: 확장된 Evenstay MVP (서비스 보완 뒤)](application/pre-mortem-mvp.md)
+
+## 진행 기록
+
+- [사용자 결정 모음 (2026-11-04)](process/decisions-pending-2026-11-04.md)
+- [문서끼리 어긋난 용어 (2026-11-04)](process/glossary-mismatches-2026-11-04.md)
+- [소개 사이트 문구 전후 표 (2026-11-04)](process/landing-copy-before-after-2026-11-04.md)
+- [소개 사이트 기획·카피의 앱 구성·기획 반영 검토 (2026-11-04)](process/landing-reflection-review-2026-11-04.md)
+- [재승인 묶음 (2026-11-04)](process/reapproval-bundle-2026-11-04.md)
+- [재승인 묶음: 코어 배치 전송 시간 초과](process/reapproval-bundle-core-batch-2026-11-05.md)
+- [재승인 묶음: 코어 결제 문구](process/reapproval-bundle-core-copy-2026-11-05.md)
+- [재승인 묶음: 입주자·대리인 결제 화면](process/reapproval-bundle-core-payment-2026-11-05.md)
+- [재승인 묶음: 프로토타입 확인 보완](process/reapproval-bundle-prototype-2026-11-04.md)
+- [재승인 묶음: 시니어 하우징 조사 반영](process/reapproval-bundle-research-2026-11-04.md)
+- [보완 지시서 (2026-11-04)](process/supplement-orders-2026-11-04.md)
+- [아이디어 상태판](process/idea-board.md)
+- [아이디어 평가 기준](process/evaluation-rubric.md)
+
+## 작업 규칙
+
+- [senior-lab 공통 규칙](rules/senior-lab/CLAUDE.md)
+- [다른 AI와 함께 작업하는 지침](rules/senior-lab/AGENTS.md)
+- [senior-lab 사용 가이드](rules/senior-lab/README.md)
+- [00-hub: 프로젝트 관리 (허브)](rules/senior-lab/00-hub/CLAUDE.md)
+- [01-research: 리서치 → 문제 은행](rules/senior-lab/01-research/CLAUDE.md)
+- [02-ideation: 아이디어 발산 → 평가 → 숏리스트](rules/senior-lab/02-ideation/CLAUDE.md)
+- [03-copywriting: 서비스 이름 · 가치 제안 · 소개 카피](rules/senior-lab/03-copywriting/CLAUDE.md)
+- [04-planning: 서비스 기획 → PRD → 개발 인계](rules/senior-lab/04-planning/CLAUDE.md)
+- [05-portfolio: 케이스 스터디 · 발표자료 · 이력서](rules/senior-lab/05-portfolio/CLAUDE.md)
+- [Evenstay — 시니어 레지던스 PMS (코어 + 모듈)](rules/evenstay/CLAUDE.md)
+- [다른 AI와 함께 작업하는 지침 (evenstay)](rules/evenstay/AGENTS.md)
+- [core — 계약·청구 코어 (Evenstay Core)](rules/evenstay/core/CLAUDE.md)
+- [safety — 안심 알림 (Evenstay Safety)](rules/evenstay/safety/CLAUDE.md)
+- [family — 보호자 포털·동의 (Evenstay 패밀리)](rules/evenstay/family/CLAUDE.md)
+- [assistant — 생활 비서 최소판 (Evenstay 홈 비서)](rules/evenstay/assistant/CLAUDE.md)
+- [transitions — 생활 지원 단계 (Evenstay Transitions)](rules/evenstay/transitions/CLAUDE.md)
+- [requests — 생활 요청](rules/evenstay/requests/CLAUDE.md)
+- [community — 프로그램·시설·공지](rules/evenstay/community/CLAUDE.md)
+- [프로토타입 메인 홈 기획](rules/evenstay/home/plan.md)
+- [프로토타입 안내 기획](rules/evenstay/home/tour-plan.md)
 
 ## 제작 이력
 

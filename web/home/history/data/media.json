@@ -26,8 +26,8 @@
   },
   "generation_commands_in_session_records": {
    "gpt-image(구독 경로) 스크립트 명령": 11,
-   "gpt-image-api 확인(--check, 비용 없음) 포함 명령": 4,
-   "higgsfield generate create 명령": 6
+   "gpt-image-api 확인(--check, 비용 없음) 포함 명령": 5,
+   "higgsfield generate create 명령": 8
   },
   "excluded_from_media": {
    "design/site/web/cap-*.webp": {

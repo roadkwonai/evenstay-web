@@ -6,11 +6,11 @@ Skill 도구 호출(tool_use)을 id로 중복 제거해 센다. 이어받은 세
 
 | 항목 | 값 |
 | --- | --- |
-| 호출 | 770 |
-| 성공 | 766 |
+| 호출 | 841 |
+| 성공 | 837 |
 | 실패 | 4 |
-| 호출한 스킬 종류 | 50 |
-| 설치한 스킬 종류 | 97 |
+| 호출한 스킬 종류 | 54 |
+| 설치한 스킬 종류 | 101 |
 
 ## 리서치
 
@@ -23,9 +23,9 @@ Skill 도구 호출(tool_use)을 id로 중복 제거해 센다. 이어받은 세
 
 | 스킬 | 호출 | 성공 | 실패 | 처음 | 마지막 | 출처 |
 | --- | --- | --- | --- | --- | --- | --- |
-| `create-prd` | 58 | 58 | 0 | 2026-11-03 00:44 | 2026-11-04 21:02 | phuryn/pm-skills |
-| `user-stories` | 47 | 47 | 0 | 2026-11-03 00:44 | 2026-11-04 15:30 | phuryn/pm-skills |
-| `service-blueprint` | 36 | 36 | 0 | 2026-11-03 00:45 | 2026-11-04 15:30 | Owl-Listener/designer-skills |
+| `create-prd` | 59 | 59 | 0 | 2026-11-03 00:44 | 2026-11-05 03:22 | phuryn/pm-skills |
+| `user-stories` | 48 | 48 | 0 | 2026-11-03 00:44 | 2026-11-05 03:22 | phuryn/pm-skills |
+| `service-blueprint` | 37 | 37 | 0 | 2026-11-03 00:45 | 2026-11-05 03:22 | Owl-Listener/designer-skills |
 | `outcome-roadmap` | 28 | 28 | 0 | 2026-11-03 01:12 | 2026-11-04 01:02 | phuryn/pm-skills |
 | `product-strategy` | 17 | 17 | 0 | 2026-11-03 01:03 | 2026-11-04 00:32 | phuryn/pm-skills |
 | `prioritization-frameworks` | 5 | 5 | 0 | 2026-11-03 22:36 | 2026-11-04 18:12 | phuryn/pm-skills |
@@ -38,7 +38,7 @@ Skill 도구 호출(tool_use)을 id로 중복 제거해 센다. 이어받은 세
 
 | 스킬 | 호출 | 성공 | 실패 | 처음 | 마지막 | 출처 |
 | --- | --- | --- | --- | --- | --- | --- |
-| `copywriting` | 52 | 52 | 0 | 2026-11-02 23:47 | 2026-11-04 13:41 | coreyhaines31/marketingskills |
+| `copywriting` | 54 | 54 | 0 | 2026-11-02 23:47 | 2026-11-05 04:20 | coreyhaines31/marketingskills |
 | `copy-editing` | 51 | 51 | 0 | 2026-11-02 23:50 | 2026-11-04 15:06 | coreyhaines31/marketingskills |
 | `product-marketing` | 7 | 7 | 0 | 2026-11-02 23:44 | 2026-11-04 00:11 | coreyhaines31/marketingskills |
 | `value-prop-statements` | 6 | 6 | 0 | 2026-11-02 23:47 | 2026-11-04 00:15 | phuryn/pm-skills |
@@ -48,7 +48,7 @@ Skill 도구 호출(tool_use)을 id로 중복 제거해 센다. 이어받은 세
 
 | 스킬 | 호출 | 성공 | 실패 | 처음 | 마지막 | 출처 |
 | --- | --- | --- | --- | --- | --- | --- |
-| `hallmark` | 29 | 26 | 3 | 2026-11-03 12:59 | 2026-11-04 21:57 | Nutlope/hallmark |
+| `hallmark` | 31 | 28 | 3 | 2026-11-03 12:59 | 2026-11-05 00:34 | Nutlope/hallmark |
 | `responsive-design` | 16 | 16 | 0 | 2026-11-03 16:48 | 2026-11-04 01:31 | Owl-Listener/designer-skills |
 | `web-design-engineer` | 12 | 12 | 0 | 2026-11-03 14:43 | 2026-11-04 21:57 | ConardLi/garden-skills |
 | `platform-conventions` | 9 | 9 | 0 | 2026-11-03 16:48 | 2026-11-04 01:31 | Owl-Listener/designer-skills |
@@ -67,14 +67,14 @@ Skill 도구 호출(tool_use)을 id로 중복 제거해 센다. 이어받은 세
 
 | 스킬 | 호출 | 성공 | 실패 | 처음 | 마지막 | 출처 |
 | --- | --- | --- | --- | --- | --- | --- |
-| `grammar-checker` | 101 | 101 | 0 | 2026-11-02 23:09 | 2026-11-04 21:40 | DaleSeo/korean-skills |
-| `humanizer` | 52 | 52 | 0 | 2026-11-03 20:35 | 2026-11-04 15:07 | DaleSeo/korean-skills |
-| `style-guide` | 50 | 50 | 0 | 2026-11-03 20:34 | 2026-11-04 21:40 | DaleSeo/korean-skills |
-| `critique-visual-hierarchy` | 36 | 36 | 0 | 2026-11-03 13:05 | 2026-11-04 21:40 | Owl-Listener/designer-skills |
-| `critique-information-density` | 25 | 25 | 0 | 2026-11-03 15:53 | 2026-11-04 21:40 | Owl-Listener/designer-skills |
-| `critique-affordance` | 22 | 22 | 0 | 2026-11-03 15:53 | 2026-11-04 21:40 | Owl-Listener/designer-skills |
-| `critique-typography` | 16 | 16 | 0 | 2026-11-03 13:06 | 2026-11-04 15:11 | Owl-Listener/designer-skills |
-| `critique-composition` | 15 | 15 | 0 | 2026-11-03 16:48 | 2026-11-04 15:11 | Owl-Listener/designer-skills |
+| `grammar-checker` | 117 | 117 | 0 | 2026-11-02 23:09 | 2026-11-05 04:20 | DaleSeo/korean-skills |
+| `humanizer` | 68 | 68 | 0 | 2026-11-03 20:35 | 2026-11-05 04:20 | DaleSeo/korean-skills |
+| `style-guide` | 66 | 66 | 0 | 2026-11-03 20:34 | 2026-11-05 04:20 | DaleSeo/korean-skills |
+| `critique-visual-hierarchy` | 40 | 40 | 0 | 2026-11-03 13:05 | 2026-11-05 00:08 | Owl-Listener/designer-skills |
+| `critique-information-density` | 28 | 28 | 0 | 2026-11-03 15:53 | 2026-11-05 00:08 | Owl-Listener/designer-skills |
+| `critique-affordance` | 25 | 25 | 0 | 2026-11-03 15:53 | 2026-11-04 23:56 | Owl-Listener/designer-skills |
+| `critique-typography` | 17 | 17 | 0 | 2026-11-03 13:06 | 2026-11-04 23:56 | Owl-Listener/designer-skills |
+| `critique-composition` | 16 | 16 | 0 | 2026-11-03 16:48 | 2026-11-04 23:56 | Owl-Listener/designer-skills |
 | `critique-brand-consistency` | 9 | 9 | 0 | 2026-11-03 14:36 | 2026-11-03 20:51 | Owl-Listener/designer-skills |
 | `critique-color` | 9 | 9 | 0 | 2026-11-03 13:06 | 2026-11-03 18:11 | Owl-Listener/designer-skills |
 | `ego-browser` | 1 | 1 | 0 | 2026-11-04 16:21 | 2026-11-04 16:21 |  |
@@ -91,6 +91,15 @@ Skill 도구 호출(tool_use)을 id로 중복 제거해 센다. 이어받은 세
 | `gpt-image` | 4 | 4 | 0 | 2026-11-04 10:21 | 2026-11-04 15:03 |  |
 | `higgsfield-generate` | 1 | 1 | 0 | 2026-11-04 13:00 | 2026-11-04 13:00 |  |
 | `higgsfield-soul-id` | 1 | 1 | 0 | 2026-11-04 11:01 | 2026-11-04 11:01 |  |
+
+## 기타
+
+| 스킬 | 호출 | 성공 | 실패 | 처음 | 마지막 | 출처 |
+| --- | --- | --- | --- | --- | --- | --- |
+| `archify` | 1 | 1 | 0 | 2026-11-05 00:34 | 2026-11-05 00:34 |  |
+| `diagram-design` | 1 | 1 | 0 | 2026-11-05 00:34 | 2026-11-05 00:34 |  |
+| `oh-my-claudecode:minimal-prose-discipline` | 1 | 1 | 0 | 2026-11-05 01:55 | 2026-11-05 01:55 | 플러그인(omc/oh-my-claudecode/5.7.31) |
+| `stack-diagram` | 1 | 1 | 0 | 2026-11-05 00:33 | 2026-11-05 00:33 |  |
 
 ## 설치했지만 호출하지 않은 스킬
 

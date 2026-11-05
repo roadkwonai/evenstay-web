@@ -14,7 +14,7 @@
   <a href="https://roadkwonai.github.io/evenstay-web/home/roles.html"><img src="https://img.shields.io/badge/accounts-22-17191C?style=flat-square" alt="계정 22개"></a>
   <a href="#modules"><img src="https://img.shields.io/badge/modules-7-17191C?style=flat-square" alt="서비스 7개"></a>
   <a href="docs/README.md"><img src="https://img.shields.io/badge/docs-Korean-17191C?style=flat-square" alt="한국어 문서"></a>
-  <a href="docs/history/README.md"><img src="https://img.shields.io/badge/prompts-814-17191C?style=flat-square" alt="프롬프트 기록 814건"></a>
+  <a href="docs/history/README.md"><img src="https://img.shields.io/badge/prompts-945-17191C?style=flat-square" alt="프롬프트 기록 945건"></a>
 </p>
 
 <p align="center">
@@ -141,17 +141,20 @@ flowchart TB
 | 조사 | [경쟁 지형](docs/research/competitive-landscape.md) · [PMS 지형](docs/research/pms-landscape.md) · [페르소나](docs/research/personas.md) · [JTBD](docs/research/jtbd.md) · [문제 은행](docs/research/problem-bank.md) |
 | 아이디어 평가 | [숏리스트](docs/research/ideation/shortlist.md) · [평가표](docs/research/ideation/scorecard.md) |
 | 결정 기록 | [결정 기록](docs/decisions/decisions.md) |
+| 지원 준비 | [지원 회사 조사](docs/application/target-companies.md) · [레드팀](docs/application/red-team.md) · [코어 사전 부검](docs/application/pre-mortem-core.md) · [MVP 사전 부검](docs/application/pre-mortem-mvp.md) |
+| 진행 기록 | [아이디어 보드](docs/process/idea-board.md) · [평가 기준](docs/process/evaluation-rubric.md) · [전체 목록](docs/README.md#진행-기록) |
+| 작업 규칙 | [기획 규칙](docs/rules/senior-lab/CLAUDE.md) · [프로젝트 규칙](docs/rules/evenstay/CLAUDE.md) · [검토 안내](docs/rules/senior-lab/AGENTS.md) |
 
 <a id="toc-5"></a>
 
 ## 제작 이력
 
-기획부터 프로토타입까지 Claude Code로 진행했습니다. 프롬프트 원문, 스킬 호출, 설치한 도구, 이미지 생성 기록을 공개합니다. 2026-11-02 21:39부터 2026-11-04 21:59까지(KST)의 세션 기록이며 이후 작업은 들어 있지 않습니다.
+기획부터 프로토타입까지 Claude Code로 진행했습니다. 프롬프트 원문, 스킬 호출, 설치한 도구, 이미지 생성 기록을 공개합니다. 2026-11-02 21:39부터 2026-11-05 13:39까지(KST)의 세션 기록입니다.
 
 | 기록 | 규모 | 문서 | 웹 |
 | --- | --- | --- | --- |
-| 프롬프트 | 814건(사용자 255, 허브 지시 372, 에이전트 지시 187) | [단계별 기록](docs/history/README.md) | [보기](https://roadkwonai.github.io/evenstay-web/home/history-prompts.html) |
-| 스킬 | 호출 770회, 50종 | [사용 이력](docs/history/skills.md) | [보기](https://roadkwonai.github.io/evenstay-web/home/history-skills.html) |
+| 프롬프트 | 945건(사용자 314, 허브 지시 405, 에이전트 지시 226) | [단계별 기록](docs/history/README.md) | [보기](https://roadkwonai.github.io/evenstay-web/home/history-prompts.html) |
+| 스킬 | 호출 841회, 54종 | [사용 이력](docs/history/skills.md) | [보기](https://roadkwonai.github.io/evenstay-web/home/history-skills.html) |
 | 설치와 도구 | 스킬 저장소 12곳 | [설치한 것](docs/history/tools.md) | [보기](https://roadkwonai.github.io/evenstay-web/home/history-installed.html) |
 | 이미지와 영상 | 81개 | [생성 기록](docs/history/media.md) | [보기](https://roadkwonai.github.io/evenstay-web/home/history-media.html) |
 
@@ -166,6 +169,7 @@ flowchart LR
   D --> E[디자인]
   E --> F[프로토타입]
   F --> G[검수]
+  G --> H[보완과 공개]
 ```
 
 </details>
@@ -198,6 +202,9 @@ evenstay-web/
 │   ├── architecture/     # 구성안, 확장 단계, 검토
 │   ├── research/         # 조사, 아이디어 평가
 │   ├── decisions/        # 결정 기록
+│   ├── application/      # 지원 회사 조사, 레드팀, 사전 부검
+│   ├── process/          # 재승인 묶음, 보드, 검토 기록
+│   ├── rules/            # 에이전트 작업 규칙
 │   └── history/          # 프롬프트, 스킬, 도구, 생성물 기록
 ├── web/                  # GitHub Pages로 배포하는 정적 사이트
 │   ├── index.html        # 통합 웹
