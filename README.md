@@ -2,6 +2,8 @@
   <a href="https://roadkwonai.github.io/evenstay-web/"><img src="docs/assets/brand/banner.svg" alt="Evenstay, 시니어 레지던스 운영 플랫폼 프로토타입" width="900"></a>
 </p>
 
+<p align="center"><a href="https://github.com/roadkwonai/evenstay-web/releases/tag/v0.1.1"><img src="https://img.shields.io/badge/release-v0.1.1-2340A0?style=flat-square" alt="릴리즈 v0.1.1"></a></p>
+
 <a id="evenstay"></a>
 <h1 align="center">Evenstay</h1>
 
@@ -178,22 +180,32 @@ flowchart LR
 
 ## 아키텍처 제안
 
-구현하지 않은 제안입니다. 근거와 비교는 [단계별 확장](docs/architecture/architecture-staged.md)에 있습니다.
+구현하지 않은 설계안입니다. 최신 기준은 [아키텍처 설계안](docs/architecture/senior-housing-architecture-design.md)이며, [재검토와 보완 기록](docs/architecture/reviews/architecture-codex-rereview-2026-11-05.md)을 함께 공개합니다.
 
 | 단계 | 구성 |
 | --- | --- |
-| 1단계 | Next.js, Spring Boot 모듈형 모놀리스, PostgreSQL 하나, AWS 서울, Bedrock 직접 호출 |
-| 2단계 | FastAPI AI 서비스, Valkey, Taskiq |
-| 3단계 | EKS, AI Gateway, 데이터 파이프라인 |
+| 0단계 | HTML·JS 클릭형 프로토타입(현재 결과물) |
+| 1단계 | Next.js 화면, Spring Boot 모듈형 코어, PostgreSQL, AWS 서울(기준안) |
+| 2단계 | 실제 데이터 전환을 위한 가용성·권한·복구·연동 조건 |
+| 3단계 | 문서 추출·근거 검색·평가, 필요할 때 Python 작업자 |
+| 4단계 | 승인 대기·재검증·DB 상태기계, 실행기는 조건부 |
+| 5단계 | 측정된 병목만 분리, Kubernetes와 전용 검색은 조건부 |
 
 프로토타입은 빌드 없는 HTML, CSS, JavaScript(ES 모듈)이고 상태는 브라우저에만 저장합니다. 서버와 데이터베이스는 없습니다.
 
 <a id="toc-7"></a>
 
+## 릴리즈
+
+현재 버전은 **0.1.1**입니다. [날짜·시각별 릴리즈 기록](release/README.md), [변경 이력](CHANGELOG.md), [GitHub Releases](https://github.com/roadkwonai/evenstay-web/releases)를 함께 관리합니다. `0.1.0`은 보완 전 기준본이고 `0.1.1`은 아키텍처 처리 규칙과 웹 문서를 맞춘 버전입니다.
+
 ## 저장소 구조
 
 ```text
 evenstay-web/
+├── VERSION               # 현재 버전
+├── CHANGELOG.md          # 변경 이력
+├── release/              # 한국 시간 YYYYMMDDHHMM-title별 릴리즈 기록
 ├── docs/                 # 문서
 │   ├── overview/         # 서비스 개관, 용어집
 │   ├── planning/         # 모듈 7개와 소개 사이트의 기획, 문구

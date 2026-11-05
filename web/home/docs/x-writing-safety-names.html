@@ -26,11 +26,11 @@
 <header class="doc-head">
   <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
   <h1>화면 라벨 — safety-signal-hub (안심 알림)</h1>
-  
-  
+
+
 </header>
 <div class="doc-cols">
-  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#라벨을-고른-기준">라벨을 고른 기준</a></li><li class="lv2"><a href="#1-알림-등급-severity">1. 알림 등급 (Severity)</a></li><li class="lv2"><a href="#2-알림-상태-alertstatus">2. 알림 상태 (AlertStatus)</a></li><li class="lv2"><a href="#3-신호-처리-표시">3. 신호 처리 표시</a></li><li class="lv2"><a href="#4-신호-출처-device">4. 신호 출처 (Device)</a></li><li class="lv2"><a href="#5-조치-기록-선택지-actionrecord">5. 조치 기록 선택지 (ActionRecord)</a></li><li class="lv2"><a href="#6-보호자-알림-머리말">6. 보호자 알림 머리말</a></li><li class="lv2"><a href="#바뀔-수-있는-것-미정">바뀔 수 있는 것 [미정]</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-833" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-834" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li></ul></section></aside>
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#라벨을-고른-기준">라벨을 고른 기준</a></li><li class="lv2"><a href="#1-알림-등급-severity">1. 알림 등급 (Severity)</a></li><li class="lv2"><a href="#2-알림-상태-alertstatus">2. 알림 상태 (AlertStatus)</a></li><li class="lv2"><a href="#3-신호-처리-표시">3. 신호 처리 표시</a></li><li class="lv2"><a href="#4-신호-출처-device">4. 신호 출처 (Device)</a></li><li class="lv2"><a href="#5-조치-기록-선택지-actionrecord">5. 조치 기록 선택지 (ActionRecord)</a></li><li class="lv2"><a href="#6-보호자-알림-머리말">6. 보호자 알림 머리말</a></li><li class="lv2"><a href="#바뀔-수-있는-것-미정">바뀔 수 있는 것 [미정]</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-841" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-842" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li></ul></section></aside>
   <article class="doc"><p>모듈 이름은 이미 확정됐다(<code>senior-lab/03-copywriting/ideas/pms-core-billing/names.md</code> v3): 직원 화면과 회원 화면 모두 <strong>안심 알림</strong>(직원 화면 이름은 Evenstay Safety에서 2026-11-03 한글로 바꿈). 보호자에게 가는 결과는 Evenstay 패밀리의 <strong>건강 소식</strong>으로 들어간다(D와 맞춤, 2026-11-03). 그래서 <code>product-name</code> 스킬은 쓰지 않았다. 이 파일은 화면 안의 작은 라벨(알림 등급, 상태, 결과 선택지)만 정한다.</p>
 <h2 id="라벨을-고른-기준">라벨을 고른 기준</h2>
 <ol>
@@ -250,8 +250,8 @@
 </footer>
 <dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
 <div id="tip" class="tip" role="tooltip" hidden></div>
-<template id="g-833" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
-<template id="g-834" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-841" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-842" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
 <script src="../../home/assets/home.js" defer></script>
 </body>
 </html>

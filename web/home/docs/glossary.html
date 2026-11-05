@@ -26,8 +26,8 @@
 <header class="doc-head">
   <p class="hm-crumb"><a href="../docs.html">문서</a></p>
   <h1>용어집</h1>
-  
-  
+
+
 </header>
 <div class="doc-cols">
   <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#액터">액터</a></li><li class="lv2"><a href="#핵심-도메인-운영사소유주사업장호실입주자">핵심 도메인 (운영사·소유주·사업장·호실·입주자)</a></li><li class="lv2"><a href="#계약청구수납">계약·청구·수납</a></li><li class="lv2"><a href="#안심-알림">안심 알림</a></li><li class="lv2"><a href="#보호자동의대리">보호자·동의·대리</a></li><li class="lv2"><a href="#ai-생활-비서">AI 생활 비서</a></li><li class="lv2"><a href="#생활-지원-단계">생활 지원 단계</a></li><li class="lv2"><a href="#생활-요청">생활 요청</a></li><li class="lv2"><a href="#프로그램시설공지">프로그램·시설·공지</a></li><li class="lv2"><a href="#운영-대시보드">운영 대시보드</a></li><li class="lv2"><a href="#기술-용어">기술 용어</a></li><li class="lv2"><a href="#아키텍처-용어">아키텍처 용어</a></li><li class="lv2"><a href="#공용-문구">공용 문구</a></li><li class="lv2"><a href="#쓰지-않는-말">쓰지 않는 말</a></li></ol></details></nav></aside>
@@ -1730,9 +1730,9 @@
 <td>행 수준 보안</td>
 <td>화면에 없음</td>
 <td>RLS</td>
-<td><code>site_id</code>로 사업장 데이터를 DB에서도 가른다</td>
+<td><code>operator_id</code>로 운영사를 구분하고 사업장에 속한 행에는 <code>site_id</code> 조건도 적용한다</td>
 <td>—</td>
-<td>core T ADR-1</td>
+<td>core T ADR-1, 설계안 6.5</td>
 </tr>
 <tr>
 <td>배제 제약</td>

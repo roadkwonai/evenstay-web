@@ -24,7 +24,7 @@
 | 입주 상담(예비) | `leasing/` | 기획 전 |
 
 ## 기술 방향
-- 프로토타입은 HTML·JS, MVP는 Next.js, DB는 PostgreSQL. 나머지(언어 세부, ORM, 배포처)는 [미정]이다. 정할 때 기준은 `docs/core/tech-design.md` 12절.
+- 프로토타입은 HTML·JS이고 MVP는 만들지 않는다. 설계 기준안은 화면 Next.js, 코어 Java 25·Spring Boot 4.1·Spring Modulith 2.1, PostgreSQL과 AWS 서울이다. 구성안 확정, ORM과 인증 제품은 [미정]이다. Next.js는 도입 시 보안 공지를 확인하고 지원되는 정확한 패치를 고정한다. 기준은 senior-lab 아키텍처 설계안이다.
 - Next.js는 `app/`·`ui/`에만 들어온다. `core/`와 모듈의 domain·application은 프레임워크를 import하지 않는다.
 - 금액은 원 단위 정수. DB 64비트 정수를 읽는 방식(문자열 또는 BigInt)은 [미정].
 

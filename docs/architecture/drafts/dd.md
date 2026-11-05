@@ -23,4 +23,4 @@ python3 build.py dd-timing  # 한 장만
 제목, 부제, 접근성 설명은 각 파일 위쪽 `TITLE`, `SUBTITLE`, `DESC`. 색, 글꼴, 글자 폭 검사, 페이지 틀은 `lib.py`. 글자가 칸을 넘치면 빌드가 AssertionError로 멈춘다.
 
 ## 검사
-`python3 senior-lab/01-research/.claude/skills/diagram-design/scripts/self_check.py <html>`은 로컬 글꼴 `url()`만 "non-fragment CSS url()"로 실패한다. 지시서가 로컬 Pretendard를 요구하므로 의도한 결과다. 나머지 항목은 통과한다.
+`python3 .agents/skills/diagram-design/scripts/self_check.py <html>`은 로컬 글꼴 `url()`만 "non-fragment CSS url()"로 실패한다. 지시서가 로컬 Pretendard를 요구하므로 의도한 결과다. 나머지 항목은 통과한다.

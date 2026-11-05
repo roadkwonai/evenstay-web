@@ -258,7 +258,7 @@
 | 아웃박스 | 화면에 없음 | `OutboxEvent` | 상태 변경과 같은 트랜잭션에 쓰는 이벤트 행. 모듈마다 자기 스키마에 같은 열로 둔다 | `core.[미정]` 외 모듈별 `[미정]` | core T2-2 |
 | 도메인 이벤트 | 화면에 없음 | `ContractActivated`, `InvoiceIssued`, `ResidentAbsenceStarted` 등 | 모듈 사이 변화를 전한다. 소비자는 이벤트 ID로 멱등 처리한다 | — | core T8-3, 루트 |
 | 멱등 키 | 화면에 없음 | `Idempotency-Key` | 모든 쓰기 요청이 받는 헤더 | — | core T8-1 |
-| 행 수준 보안 | 화면에 없음 | RLS | `site_id`로 사업장 데이터를 DB에서도 가른다 | — | core T ADR-1 |
+| 행 수준 보안 | 화면에 없음 | RLS | `operator_id`로 운영사를 구분하고 사업장에 속한 행에는 `site_id` 조건도 적용한다 | — | core T ADR-1, 설계안 6.5 |
 | 배제 제약 | 화면에 없음 | `EXCLUDE` | 기간이나 시간 겹침을 DB가 거부한다 | — | core T12, community ADR-M1 |
 | 낙관적 잠금 | 화면에 없음 | `row_version` | 동시 수정을 행 버전으로 막는다 | — | core T2-2, requests T3-1 |
 | 멈춘 시계 | 직원: 데모 시계(COM-02) | `Clock`, `/demo/clock` | 진행자가 옮길 때만 시간이 간다 | — | core T8-1·8-2 |

@@ -5000,7 +5000,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="pulse-dot"></div>
         <h1>문서 파이프라인</h1>
       </div>
-      <p class="subtitle">설계안, 구현 아님. 지우라는 신호는 원본뿐 아니라 파생물까지 따라간다</p>
+      <p class="subtitle">설계안, 구현 아님. 공유 철회는 접근을 막고 파기는 보존 정책에 따른다</p>
     </div>
 
 
@@ -5010,7 +5010,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
          data-preset-badge-editorial-plate="ARCHIFY / PLATE 04">
       <svg viewBox="0 0 1085 700" role="img" lang="ko" aria-labelledby="archify-diagram-title archify-diagram-description" data-animation="trace" data-preset="classic" data-quality-profile="showcase">
         <title id="archify-diagram-title">문서 파이프라인</title>
-        <desc id="archify-diagram-description">설계안, 구현 아님. 지우라는 신호는 원본뿐 아니라 파생물까지 따라간다</desc>
+        <desc id="archify-diagram-description">설계안, 구현 아님. 공유 철회는 접근을 막고 파기는 보존 정책에 따른다</desc>
         <!-- Definitions -->
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
@@ -5055,11 +5055,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <path data-edge-from="chunk" data-edge-to="embed" data-edge-label="색인" data-edge-key="2" data-edge-id="f-embed" data-composition-points="590,137;685,137" d="M 590 137 L 685 137" class="a-default" data-animate="edge" style="--step:2" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="embed" data-edge-to="verify" data-edge-label="검증" data-edge-key="3" data-edge-id="f-verify" data-composition-points="805,137;900,137" d="M 805 137 L 900 137" class="a-default" data-animate="edge" style="--step:3" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <path data-edge-from="verify" data-edge-to="search" data-edge-label="활성 버전만" data-edge-key="4" data-edge-id="f-search" data-composition-points="960,166;960,222" d="M 960 166 L 960 222" class="a-emphasis" data-animate="edge" style="--step:4" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="events" data-edge-to="t-src" data-edge-label="원본 삭제" data-edge-key="5" data-edge-id="d-src" data-composition-points="530,394;530,480;100,480;100,564" d="M 530 394 L 530 480 L 100 480 L 100 564" class="a-security" data-animate="edge" style="--step:5" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
-        <path data-edge-from="events" data-edge-to="t-index" data-edge-label="인덱스 삭제" data-edge-key="6" data-edge-id="d-index" data-composition-points="530,394;530,480;745,480;745,564" d="M 530 394 L 530 480 L 745 480 L 745 564" class="a-security" data-animate="edge" style="--step:6" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <path data-edge-from="events" data-edge-to="t-src" data-edge-label="보존 정책" data-edge-key="5" data-edge-id="d-src" data-composition-points="530,394;530,480;100,480;100,564" d="M 530 394 L 530 480 L 100 480 L 100 564" class="a-security" data-animate="edge" style="--step:5" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <path data-edge-from="events" data-edge-to="t-index" data-edge-label="접근 차단" data-edge-key="6" data-edge-id="d-index" data-composition-points="530,394;530,480;745,480;745,564" d="M 530 394 L 530 480 L 745 480 L 745 564" class="a-security" data-animate="edge" style="--step:6" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
         <path data-edge-from="events" data-edge-to="t-cache" data-edge-label="캐시 비움" data-edge-key="7" data-edge-id="d-cache" data-composition-points="530,394;530,480;960,480;960,564" d="M 530 394 L 530 480 L 960 480 L 960 564" class="a-security" data-animate="edge" style="--step:7" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
-        <path data-edge-from="events" data-edge-to="t-summary" data-edge-label="요약 삭제" data-edge-key="8" data-edge-id="d-summary" data-composition-points="530,394;530,480;315,480;315,564" d="M 530 394 L 530 480 L 315 480 L 315 564" class="a-security" data-animate="edge" style="--step:8" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
-        <path data-edge-from="events" data-edge-to="t-check" data-edge-label="체크포인트 삭제" data-edge-key="9" data-edge-id="d-check" data-composition-points="530,394;530,564" d="M 530 394 L 530 564" class="a-security" data-animate="edge" style="--step:9" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <path data-edge-from="events" data-edge-to="t-summary" data-edge-label="정책별 처리" data-edge-key="8" data-edge-id="d-summary" data-composition-points="530,394;530,480;315,480;315,564" d="M 530 394 L 530 480 L 315 480 L 315 564" class="a-security" data-animate="edge" style="--step:8" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <path data-edge-from="events" data-edge-to="t-check" data-edge-label="정책별 처리" data-edge-key="9" data-edge-id="d-check" data-composition-points="530,394;530,564" d="M 530 394 L 530 564" class="a-security" data-animate="edge" style="--step:9" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
 
         <!-- Nodes -->
         <g id="node-src" data-node-id="src" data-node-label="원본 보관" tabindex="0" role="button" aria-label="원본 보관 보기, 문서 ID, 버전, 01 / 원본·버전" aria-pressed="false" data-node-kind="database" data-node-sublabel="문서 ID, 버전" data-node-context="01 / 원본·버전">
@@ -5134,8 +5134,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <text data-detail="context" x="960" y="259" class="t-muted" font-size="7" text-anchor="middle">직원용</text>
         </g>
 
-        <g id="node-events" data-node-id="events" data-node-label="삭제 이벤트" tabindex="0" role="button" aria-label="삭제 이벤트 보기, 권한 회수, 허락 철회, 03 / 청크" aria-pressed="false" data-node-kind="messagebus" data-node-sublabel="권한 회수, 허락 철회" data-node-context="03 / 청크">
-          <title>삭제 이벤트 · 권한 회수, 허락 철회 · 03 / 청크</title>
+        <g id="node-events" data-node-id="events" data-node-label="정책 변경" tabindex="0" role="button" aria-label="정책 변경 보기, 공유 철회, 파기, 03 / 청크" aria-pressed="false" data-node-kind="messagebus" data-node-sublabel="공유 철회, 파기" data-node-context="03 / 청크">
+          <title>정책 변경 · 공유 철회, 파기 · 03 / 청크</title>
           <rect x="470" y="336" width="120" height="58" rx="6" class="c-mask"/>
           <rect x="470" y="336" width="120" height="58" rx="6" class="c-messagebus" data-animate="node" style="--step:5" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="messagebus" class="semantic-sigil s-messagebus" transform="translate(476 342) scale(0.6875)">
@@ -5144,12 +5144,12 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             <circle cx="10.5" cy="8" r="1" class="sigil-fill"/>
             <circle cx="7" cy="11.5" r="1" class="sigil-fill"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="530" y="357" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">삭제 이벤트</text>
-          <text data-detail="context" x="530" y="373" class="t-muted" font-size="7" text-anchor="middle">권한 회수, 허락 철회</text>
+          <text data-node-label="" data-detail-anchor="" x="530" y="357" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">정책 변경</text>
+          <text data-detail="context" x="530" y="373" class="t-muted" font-size="7" text-anchor="middle">공유 철회, 파기</text>
         </g>
 
-        <g id="node-t-src" data-node-id="t-src" data-node-label="원본" tabindex="0" role="button" aria-label="원본 보기, 삭제 완료 추적, 01 / 원본·버전" aria-pressed="false" data-node-kind="database" data-node-sublabel="삭제 완료 추적" data-node-context="01 / 원본·버전">
-          <title>원본 · 삭제 완료 추적 · 01 / 원본·버전</title>
+        <g id="node-t-src" data-node-id="t-src" data-node-label="원본" tabindex="0" role="button" aria-label="원본 보기, 보존 정책 확인, 01 / 원본·버전" aria-pressed="false" data-node-kind="database" data-node-sublabel="보존 정책 확인" data-node-context="01 / 원본·버전">
+          <title>원본 · 보존 정책 확인 · 01 / 원본·버전</title>
           <rect x="40" y="564" width="120" height="58" rx="6" class="c-mask"/>
           <rect x="40" y="564" width="120" height="58" rx="6" class="c-database" data-animate="node" style="--step:6" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(46 570) scale(0.6875)">
@@ -5157,11 +5157,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="100" y="585" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">원본</text>
-          <text data-detail="context" x="100" y="601" class="t-muted" font-size="7" text-anchor="middle">삭제 완료 추적</text>
+          <text data-detail="context" x="100" y="601" class="t-muted" font-size="7" text-anchor="middle">보존 정책 확인</text>
         </g>
 
-        <g id="node-t-index" data-node-id="t-index" data-node-label="인덱스" tabindex="0" role="button" aria-label="인덱스 보기, 삭제 완료 추적, 04 / 임베딩·인덱스" aria-pressed="false" data-node-kind="database" data-node-sublabel="삭제 완료 추적" data-node-context="04 / 임베딩·인덱스">
-          <title>인덱스 · 삭제 완료 추적 · 04 / 임베딩·인덱스</title>
+        <g id="node-t-index" data-node-id="t-index" data-node-label="인덱스" tabindex="0" role="button" aria-label="인덱스 보기, 접근·파기 확인, 04 / 임베딩·인덱스" aria-pressed="false" data-node-kind="database" data-node-sublabel="접근·파기 확인" data-node-context="04 / 임베딩·인덱스">
+          <title>인덱스 · 접근·파기 확인 · 04 / 임베딩·인덱스</title>
           <rect x="685" y="564" width="120" height="58" rx="6" class="c-mask"/>
           <rect x="685" y="564" width="120" height="58" rx="6" class="c-database" data-animate="node" style="--step:7" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(691 570) scale(0.6875)">
@@ -5169,11 +5169,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="745" y="585" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">인덱스</text>
-          <text data-detail="context" x="745" y="601" class="t-muted" font-size="7" text-anchor="middle">삭제 완료 추적</text>
+          <text data-detail="context" x="745" y="601" class="t-muted" font-size="7" text-anchor="middle">접근·파기 확인</text>
         </g>
 
-        <g id="node-t-cache" data-node-id="t-cache" data-node-label="캐시" tabindex="0" role="button" aria-label="캐시 보기, 삭제 완료 추적, 05 / 검증·활성 전환" aria-pressed="false" data-node-kind="database" data-node-sublabel="삭제 완료 추적" data-node-context="05 / 검증·활성 전환">
-          <title>캐시 · 삭제 완료 추적 · 05 / 검증·활성 전환</title>
+        <g id="node-t-cache" data-node-id="t-cache" data-node-label="캐시" tabindex="0" role="button" aria-label="캐시 보기, 접근·파기 확인, 05 / 검증·활성 전환" aria-pressed="false" data-node-kind="database" data-node-sublabel="접근·파기 확인" data-node-context="05 / 검증·활성 전환">
+          <title>캐시 · 접근·파기 확인 · 05 / 검증·활성 전환</title>
           <rect x="900" y="564" width="120" height="58" rx="6" class="c-mask"/>
           <rect x="900" y="564" width="120" height="58" rx="6" class="c-database" data-animate="node" style="--step:8" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(906 570) scale(0.6875)">
@@ -5181,11 +5181,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="960" y="585" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">캐시</text>
-          <text data-detail="context" x="960" y="601" class="t-muted" font-size="7" text-anchor="middle">삭제 완료 추적</text>
+          <text data-detail="context" x="960" y="601" class="t-muted" font-size="7" text-anchor="middle">접근·파기 확인</text>
         </g>
 
-        <g id="node-t-summary" data-node-id="t-summary" data-node-label="파생 요약" tabindex="0" role="button" aria-label="파생 요약 보기, 삭제 완료 추적, 02 / 파싱·OCR" aria-pressed="false" data-node-kind="database" data-node-sublabel="삭제 완료 추적" data-node-context="02 / 파싱·OCR">
-          <title>파생 요약 · 삭제 완료 추적 · 02 / 파싱·OCR</title>
+        <g id="node-t-summary" data-node-id="t-summary" data-node-label="파생 요약" tabindex="0" role="button" aria-label="파생 요약 보기, 접근·파기 확인, 02 / 파싱·OCR" aria-pressed="false" data-node-kind="database" data-node-sublabel="접근·파기 확인" data-node-context="02 / 파싱·OCR">
+          <title>파생 요약 · 접근·파기 확인 · 02 / 파싱·OCR</title>
           <rect x="255" y="564" width="120" height="58" rx="6" class="c-mask"/>
           <rect x="255" y="564" width="120" height="58" rx="6" class="c-database" data-animate="node" style="--step:9" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(261 570) scale(0.6875)">
@@ -5193,11 +5193,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="315" y="585" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">파생 요약</text>
-          <text data-detail="context" x="315" y="601" class="t-muted" font-size="7" text-anchor="middle">삭제 완료 추적</text>
+          <text data-detail="context" x="315" y="601" class="t-muted" font-size="7" text-anchor="middle">접근·파기 확인</text>
         </g>
 
-        <g id="node-t-check" data-node-id="t-check" data-node-label="체크포인트" tabindex="0" role="button" aria-label="체크포인트 보기, 에이전트, 삭제 완료 추적, 03 / 청크" aria-pressed="false" data-node-kind="database" data-node-sublabel="에이전트, 삭제 완료 추적" data-node-context="03 / 청크">
-          <title>체크포인트 · 에이전트, 삭제 완료 추적 · 03 / 청크</title>
+        <g id="node-t-check" data-node-id="t-check" data-node-label="체크포인트" tabindex="0" role="button" aria-label="체크포인트 보기, 접근·파기 확인, 03 / 청크" aria-pressed="false" data-node-kind="database" data-node-sublabel="접근·파기 확인" data-node-context="03 / 청크">
+          <title>체크포인트 · 접근·파기 확인 · 03 / 청크</title>
           <rect x="470" y="564" width="120" height="58" rx="6" class="c-mask"/>
           <rect x="470" y="564" width="120" height="58" rx="6" class="c-database" data-animate="node" style="--step:10" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(476 570) scale(0.6875)">
@@ -5205,7 +5205,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="530" y="585" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">체크포인트</text>
-          <text data-detail="context" x="530" y="601" class="t-muted" font-size="7" text-anchor="middle">에이전트, 삭제 완료 추적</text>
+          <text data-detail="context" x="530" y="601" class="t-muted" font-size="7" text-anchor="middle">접근·파기 확인</text>
         </g>
 
         <!-- Flow labels -->
@@ -5229,25 +5229,25 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <rect x="968.05" y="183" width="65.9" height="16" rx="4" class="c-mask"/>
           <text x="1001" y="194" class="t-edge-emphasis" font-size="8" text-anchor="middle">활성 버전만</text>
         </g>
-        <g data-detail="context" data-edge-from="events" data-edge-to="t-src" data-edge-label="원본 삭제" data-edge-key="5" data-edge-id="d-src">
+        <g data-detail="context" data-edge-from="events" data-edge-to="t-src" data-edge-label="보존 정책" data-edge-key="5" data-edge-id="d-src">
           <rect x="71.95" y="527" width="56.1" height="16" rx="4" class="c-mask"/>
-          <text x="100" y="538" class="t-edge-security" font-size="8" text-anchor="middle">원본 삭제</text>
+          <text x="100" y="538" class="t-edge-security" font-size="8" text-anchor="middle">보존 정책</text>
         </g>
-        <g data-detail="context" data-edge-from="events" data-edge-to="t-index" data-edge-label="인덱스 삭제" data-edge-key="6" data-edge-id="d-index">
-          <rect x="712.05" y="527" width="65.9" height="16" rx="4" class="c-mask"/>
-          <text x="745" y="538" class="t-edge-security" font-size="8" text-anchor="middle">인덱스 삭제</text>
+        <g data-detail="context" data-edge-from="events" data-edge-to="t-index" data-edge-label="접근 차단" data-edge-key="6" data-edge-id="d-index">
+          <rect x="716.95" y="527" width="56.1" height="16" rx="4" class="c-mask"/>
+          <text x="745" y="538" class="t-edge-security" font-size="8" text-anchor="middle">접근 차단</text>
         </g>
         <g data-detail="context" data-edge-from="events" data-edge-to="t-cache" data-edge-label="캐시 비움" data-edge-key="7" data-edge-id="d-cache">
           <rect x="931.95" y="527" width="56.1" height="16" rx="4" class="c-mask"/>
           <text x="960" y="538" class="t-edge-security" font-size="8" text-anchor="middle">캐시 비움</text>
         </g>
-        <g data-detail="context" data-edge-from="events" data-edge-to="t-summary" data-edge-label="요약 삭제" data-edge-key="8" data-edge-id="d-summary">
-          <rect x="286.95" y="527" width="56.1" height="16" rx="4" class="c-mask"/>
-          <text x="315" y="538" class="t-edge-security" font-size="8" text-anchor="middle">요약 삭제</text>
+        <g data-detail="context" data-edge-from="events" data-edge-to="t-summary" data-edge-label="정책별 처리" data-edge-key="8" data-edge-id="d-summary">
+          <rect x="282.05" y="527" width="65.9" height="16" rx="4" class="c-mask"/>
+          <text x="315" y="538" class="t-edge-security" font-size="8" text-anchor="middle">정책별 처리</text>
         </g>
-        <g data-detail="context" data-edge-from="events" data-edge-to="t-check" data-edge-label="체크포인트 삭제" data-edge-key="9" data-edge-id="d-check">
-          <rect x="487.25" y="527" width="85.5" height="16" rx="4" class="c-mask"/>
-          <text x="530" y="538" class="t-edge-security" font-size="8" text-anchor="middle">체크포인트 삭제</text>
+        <g data-detail="context" data-edge-from="events" data-edge-to="t-check" data-edge-label="정책별 처리" data-edge-key="9" data-edge-id="d-check">
+          <rect x="497.05" y="527" width="65.9" height="16" rx="4" class="c-mask"/>
+          <text x="530" y="538" class="t-edge-security" font-size="8" text-anchor="middle">정책별 처리</text>
         </g>
 
         <!-- Legend -->
@@ -5259,7 +5259,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           </g>
           <g data-legend-semantic-kind="security" data-legend-x="190" data-legend-baseline="664" data-legend-width="113">
             <path d="M 190 661 L 224 661" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
-            <text x="233" y="664" class="t-muted" font-size="10" font-weight="500">삭제 전파 흐름</text>
+            <text x="233" y="664" class="t-muted" font-size="10" font-weight="500">권한·파기 정책</text>
           </g>
           <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="저장소" data-legend-x="325" data-legend-baseline="664" data-legend-width="73">
             <rect x="325" y="656" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
@@ -5461,11 +5461,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       <div class="card">
         <div class="card-header">
           <div class="card-dot amber"></div>
-          <h3>지우라는 신호</h3>
+          <h3>공유 철회와 파기</h3>
         </div>
         <ul>
-          <li>삭제, 보존, 권한 회수, 보호자 허락 철회 이벤트가 원본부터 아웃박스 본문, 에이전트 체크포인트까지 전파된다</li>
-          <li>저장소별 삭제 완료를 추적한다</li>
+          <li>공유 철회는 해당 보호자의 열람과 예정 발송을 막고 캐시를 비운다</li>
+          <li>원본과 파생물은 처리 근거와 보존 정책에 따라 별도로 파기한다</li>
         </ul>
       </div>
 

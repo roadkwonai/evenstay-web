@@ -6,7 +6,7 @@
 ```
 bash design/home/architecture/archify/build.sh
 ```
-- `~/.claude/skills/archify`를 임시 폴더로 복사하고 `patch-template.py`로 색 토큰, Pretendard, 밝은 화면 기본값을 입힌 뒤 다섯 도식을 `finalize`(검증, 전달, 구조 검사, 브라우저 검사)로 만든다. 원본 스킬 폴더는 고치지 않는다.
+- 프로젝트의 `.agents/skills/archify`를 임시 폴더로 복사하고 `patch-template.py`로 색 토큰, Pretendard, 밝은 화면 기본값을 입힌 뒤 다섯 도식을 `finalize`(검증, 전달, 구조 검사, 브라우저 검사)로 만든다. 원본 스킬 폴더는 고치지 않는다.
 - 결과: `design/prototype/home/architecture/<id>.html`, `<id>.png`(폭 2100px). 검사 영수증은 `<id>/evidence/`.
 - Chrome이 있어야 한다(`/Applications/Google Chrome.app`).
 

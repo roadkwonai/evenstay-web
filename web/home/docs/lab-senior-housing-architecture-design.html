@@ -26,11 +26,11 @@
 <header class="doc-head">
   <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
   <h1>아키텍처 설계안</h1>
-  
-  
+
+
 </header>
 <div class="doc-cols">
-  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-결론">1. 결론</a></li><li class="lv2"><a href="#2-자료-비교-결과">2. 자료 비교 결과</a></li><li class="lv3"><a href="#21-다른-점과-이-설계의-판단">2.1 다른 점과 이 설계의 판단</a></li><li class="lv3"><a href="#22-gpt-문서에서-가져온-것">2.2 GPT 문서에서 가져온 것</a></li><li class="lv3"><a href="#23-그대로-쓰지-않는-것">2.3 그대로 쓰지 않는 것</a></li><li class="lv2"><a href="#3-구성안-세-가지">3. 구성안 세 가지</a></li><li class="lv2"><a href="#4-확장-단계">4. 확장 단계</a></li><li class="lv3"><a href="#41-단계별-구성">4.1 단계별 구성</a></li><li class="lv3"><a href="#42-단계별-구성-a안-기준">4.2 단계별 구성 (A안 기준)</a></li><li class="lv3"><a href="#43-b안c안의-대응">4.3 B안·C안의 대응</a></li><li class="lv2"><a href="#5-처음부터-지킬-규칙">5. 처음부터 지킬 규칙</a></li><li class="lv2"><a href="#6-흐름별-설계">6. 흐름별 설계</a></li><li class="lv3"><a href="#61-호출과-안심-신호">6.1 호출과 안심 신호</a></li><li class="lv3"><a href="#62-청구와-결제">6.2 청구와 결제</a></li><li class="lv3"><a href="#63-ai-경로">6.3 AI 경로</a></li><li class="lv3"><a href="#64-문서-파이프라인">6.4 문서 파이프라인</a></li><li class="lv3"><a href="#65-데이터베이스">6.5 데이터베이스</a></li><li class="lv3"><a href="#66-데이터-위치">6.6 데이터 위치</a></li><li class="lv3"><a href="#67-캐시-관측-평가-테스트">6.7 캐시, 관측, 평가, 테스트</a></li><li class="lv3"><a href="#68-개인정보-동의-대리-권한">6.8 개인정보, 동의, 대리 권한</a></li><li class="lv3"><a href="#69-법령인증-대응">6.9 법령·인증 대응</a></li><li class="lv3"><a href="#610-장애와-사고-대응">6.10 장애와 사고 대응</a></li><li class="lv3"><a href="#611-비동기-처리와-소유-모듈">6.11 비동기 처리와 소유 모듈</a></li><li class="lv2"><a href="#7-비용">7. 비용</a></li><li class="lv2"><a href="#8-도입-기준">8. 도입 기준</a></li><li class="lv2"><a href="#9-미결정-사항과-확인할-것">9. 미결정 사항과 확인할 것</a></li><li class="lv2"><a href="#10-로드맵">10. 로드맵</a></li><li class="lv3"><a href="#101-마일스톤">10.1 마일스톤</a></li><li class="lv3"><a href="#102-영역별-로드맵">10.2 영역별 로드맵</a></li><li class="lv3"><a href="#103-모듈-도입-순서">10.3 모듈 도입 순서</a></li><li class="lv3"><a href="#104-구성안-변경-시점">10.4 구성안 변경 시점</a></li><li class="lv3"><a href="#105-법제도-점검">10.5 법·제도 점검</a></li><li class="lv3"><a href="#106-현장-전환">10.6 현장 전환</a></li><li class="lv2"><a href="#11-출처">11. 출처</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-713" data-tip="요청과 별도로 실행되는 백그라운드 처리 단위.">작업자</button></li><li><button class="term" type="button" data-modal="g-714" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-715" data-tip="외부 연동 경계.">어댑터</button></li><li><button class="term" type="button" data-modal="g-716" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li><li><button class="term" type="button" data-modal="g-717" data-tip="상태 변경과 같은 트랜잭션에 쓰는 이벤트 행.">아웃박스</button></li><li><button class="term" type="button" data-modal="g-718" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-719" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-720" data-tip="마일스톤을 마쳤다고 볼 기준.">완료 기준</button></li><li><button class="term" type="button" data-modal="g-721" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-722" data-tip="시스템이 멈출 때 직원이 읽기 전용 스냅샷과 기록으로 이어받는 절차">대체 절차</button></li><li><button class="term" type="button" data-modal="g-723" data-tip="에이전트 실행의 상태, 범위, 버전, 승인 대상, 비용을 남기는 표">실행 기록</button></li><li><button class="term" type="button" data-modal="g-724" data-tip="읽기 부하를 나누는 DB 사본.">읽기 복제본</button></li></ul></section></aside>
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-결론">1. 결론</a></li><li class="lv2"><a href="#2-자료-비교-결과">2. 자료 비교 결과</a></li><li class="lv3"><a href="#21-다른-점과-이-설계의-판단">2.1 다른 점과 이 설계의 판단</a></li><li class="lv3"><a href="#22-gpt-문서에서-가져온-것">2.2 GPT 문서에서 가져온 것</a></li><li class="lv3"><a href="#23-그대로-쓰지-않는-것">2.3 그대로 쓰지 않는 것</a></li><li class="lv2"><a href="#3-구성안-세-가지">3. 구성안 세 가지</a></li><li class="lv2"><a href="#4-확장-단계">4. 확장 단계</a></li><li class="lv3"><a href="#41-단계별-구성">4.1 단계별 구성</a></li><li class="lv3"><a href="#42-단계별-구성-a안-기준">4.2 단계별 구성 (A안 기준)</a></li><li class="lv3"><a href="#43-b안c안의-대응">4.3 B안·C안의 대응</a></li><li class="lv2"><a href="#5-처음부터-지킬-규칙">5. 처음부터 지킬 규칙</a></li><li class="lv2"><a href="#6-흐름별-설계">6. 흐름별 설계</a></li><li class="lv3"><a href="#61-호출과-안심-신호">6.1 호출과 안심 신호</a></li><li class="lv3"><a href="#62-청구와-결제">6.2 청구와 결제</a></li><li class="lv3"><a href="#63-ai-경로">6.3 AI 경로</a></li><li class="lv3"><a href="#64-문서-파이프라인">6.4 문서 파이프라인</a></li><li class="lv3"><a href="#65-데이터베이스">6.5 데이터베이스</a></li><li class="lv3"><a href="#66-데이터-위치">6.6 데이터 위치</a></li><li class="lv3"><a href="#67-캐시-관측-평가-테스트">6.7 캐시, 관측, 평가, 테스트</a></li><li class="lv3"><a href="#68-개인정보-동의-대리-권한">6.8 개인정보, 동의, 대리 권한</a></li><li class="lv3"><a href="#69-법령인증-대응">6.9 법령·인증 대응</a></li><li class="lv3"><a href="#610-장애와-사고-대응">6.10 장애와 사고 대응</a></li><li class="lv3"><a href="#611-비동기-처리와-소유-모듈">6.11 비동기 처리와 소유 모듈</a></li><li class="lv2"><a href="#7-비용">7. 비용</a></li><li class="lv2"><a href="#8-도입-기준">8. 도입 기준</a></li><li class="lv2"><a href="#9-미결정-사항과-확인할-것">9. 미결정 사항과 확인할 것</a></li><li class="lv2"><a href="#10-로드맵">10. 로드맵</a></li><li class="lv3"><a href="#101-마일스톤">10.1 마일스톤</a></li><li class="lv3"><a href="#102-영역별-로드맵">10.2 영역별 로드맵</a></li><li class="lv3"><a href="#103-모듈-도입-순서">10.3 모듈 도입 순서</a></li><li class="lv3"><a href="#104-구성안-변경-시점">10.4 구성안 변경 시점</a></li><li class="lv3"><a href="#105-법제도-점검">10.5 법·제도 점검</a></li><li class="lv3"><a href="#106-현장-전환">10.6 현장 전환</a></li><li class="lv2"><a href="#11-출처">11. 출처</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-713" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-714" data-tip="요청과 별도로 실행되는 백그라운드 처리 단위.">작업자</button></li><li><button class="term" type="button" data-modal="g-715" data-tip="외부 연동 경계.">어댑터</button></li><li><button class="term" type="button" data-modal="g-716" data-tip="다음 단계를 스스로 고르며 도구를 호출하는 실행.">에이전트</button></li><li><button class="term" type="button" data-modal="g-717" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-718" data-tip="상태 변경과 같은 트랜잭션에 쓰는 이벤트 행.">아웃박스</button></li><li><button class="term" type="button" data-modal="g-719" data-tip="마일스톤을 마쳤다고 볼 기준.">완료 기준</button></li><li><button class="term" type="button" data-modal="g-720" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-721" data-tip="소유주를 대신해 사업장을 운영하는 회사.">운영사</button></li><li><button class="term" type="button" data-modal="g-722" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-723" data-tip="시스템이 멈출 때 직원이 읽기 전용 스냅샷과 기록으로 이어받는 절차">대체 절차</button></li><li><button class="term" type="button" data-modal="g-724" data-tip="에이전트 실행의 상태, 범위, 버전, 승인 대상, 비용을 남기는 표">실행 기록</button></li></ul></section></aside>
   <article class="doc"><p>웹: <code>evenstay/design/prototype/home/architecture.html</code>. 용어는 <code>evenstay/docs/glossary.md</code>의 &quot;아키텍처 용어&quot;를 따른다.
 대조: GPT 문서의 핵심 주장 14건과 앞선 문서의 판단 2건을 공식 문서와 대조했다(<code>sources/arch-gpt-crosscheck.md</code>). 재검토에서 버전, 서울 단가, 네트워크, AI 처리 위치를 다시 대조했고(<code>sources/arch-review-facts-2026-11-05.md</code>), 법령과 운영 요건의 빠진 곳을 찾았다(<code>sources/arch-review-gaps-2026-11-05.md</code>). 설계 논리는 별도 검토에서 25건을 지적받아 반영했다(<code>sources/arch-review-logic-2026-11-05.md</code>). [사실]</p>
 <p>이 문서는 구현 계획이 아니라 설계안이다. 결과물은 아트보드와 클릭형 프로토타입까지이고, 아래 &quot;단계&quot;는 일정이 아니라 기술이 쌓이는 순서다. [사실]</p>
@@ -69,7 +69,7 @@
 <td>표준이 없으면 GCP 1순위, AWS 기반이 있으면 AWS</td>
 <td>AWS 서울 하나</td>
 <td>A안은 AWS 서울. GCP는 B안의 선택지</td>
-<td>GCP 서울에서 처리 보장이 표시된 모델은 Gemini 2.5 Flash 하나였고 Claude 표에는 서울 열이 없었다. Bedrock 서울은 Opus 5와 Sonnet 5만 리전 안 처리가 된다(대조 10b, 11번)</td>
+<td>GCP 서울에서 처리 보장이 표시된 모델은 Gemini 2.5 Flash 하나였고 Claude 표에는 서울 열이 없었다. 비교한 Claude 모델 중 Bedrock 서울의 Opus 5와 Sonnet 5는 리전 안 처리가 된다(대조 10b, 11번)</td>
 </tr>
 <tr>
 <td>비동기</td>
@@ -153,7 +153,7 @@
 <tr>
 <td>문서 수명주기(활성 버전 전환, 삭제 전파)</td>
 <td>6.4절</td>
-<td>동의 철회와 보존 기간을 삭제 이벤트와 연결한다</td>
+<td>동의 목적별 접근 차단과 보존 정책에 따른 파기를 구분한다</td>
 </tr>
 <tr>
 <td>파싱한 문서는 신뢰하지 않는 입력</td>
@@ -206,9 +206,9 @@
 </thead>
 <tbody><tr>
 <td>화면</td>
-<td>Next.js 16.4.1 이상</td>
-<td>Next.js 16.4.1 이상</td>
-<td>Next.js 16.4.1 이상 (Vercel)</td>
+<td>Next.js 16, 도입 시 보안 공지를 확인한 지원 패치 고정</td>
+<td>Next.js 16, 도입 시 보안 공지를 확인한 지원 패치 고정</td>
+<td>Next.js 16, 도입 시 보안 공지를 확인한 지원 패치 고정 (Vercel)</td>
 </tr>
 <tr>
 <td>업무 코어</td>
@@ -230,7 +230,7 @@
 </tr>
 <tr>
 <td>비동기</td>
-<td>코어 아웃박스 + JobRunr</td>
+<td>모듈별 아웃박스 + JobRunr</td>
 <td>아웃박스 + SQS 또는 Cloud Tasks</td>
 <td>아웃박스 + 외부 작업자</td>
 </tr>
@@ -260,9 +260,9 @@
 </tr>
 </tbody></table></div>
 <ul>
-<li>Next.js는 16.0.0~16.4.0에 인증 없는 원격 코드 실행 취약점 2건이 공지됐다. 16.4.1 이상으로 고정한다(대조 F4, 2026-10-22 공지). [사실]</li>
+<li>Next.js는 16.0.0~16.4.0의 원격 코드 실행 취약점 외에 2026-11-03 캐시 관련 보안 공지도 나왔다. 중첩 캐시 문제의 수정 버전은 16.4.2이고, 별도 바이너리 인자 캐시 공지는 조회 당시 수정 버전이 표시되지 않았다. 도입할 때 각 공지와 지원 상태를 다시 확인하고 검증한 정확한 패치 버전을 고정한다. [사실·가설]</li>
 <li>C안의 코어를 Next.js 서버 코드 안에 쓰면 &quot;Next.js는 <code>app/</code>·<code>ui/</code>에만&quot;이라는 <code>evenstay/CLAUDE.md</code> 규칙과 어긋난다. 그래서 프레임워크 없는 패키지로 둔다. [가설]</li>
-<li>RDS PostgreSQL 18의 서울 제공은 공식 페이지에서 명시를 찾지 못했다. M0에서 <code>aws rds describe-db-engine-versions</code>로 확인한다. [미확인]</li>
+<li>AWS는 서울의 PostgreSQL 18 Multi-AZ DB 클러스터 지원을 명시한다. 7절 견적의 <code>db.t4g.medium</code> Single-AZ·Multi-AZ DB 인스턴스 조합은 별도다. M0에서 <code>describe-orderable-db-instance-options</code>로 서울 리전의 엔진 세부 버전, 클래스, 스토리지와 Multi-AZ 가능 여부를 함께 확인하고 비용을 다시 계산한다. 실제 주문 가능 조합은 [미확인]이다.</li>
 </ul>
 <p><strong>평가 기준</strong>은 GPT 문서 1.3절에서 가져오고 안전 경로와 데이터 위치를 더했다. GPT 문서의 &quot;실제 성능&quot;은 측정값이 없어 뺐다. 숫자 점수를 매기지 않고 상대 판단만 적는다. [가설]</p>
 <div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
@@ -434,7 +434,7 @@
 <li>완료 기준:<ul>
 <li>가상 데이터만 쓴다.</li>
 <li>다른 사업장 ID를 직접 요청해도 막힌다. 정책 테스트 세 가지(다른 사업장 행이 안 보인다, 변수가 없으면 0행이다, <code>WITH CHECK</code>가 쓰기를 막는다)가 API와 작업자 경로 모두 통과한다.</li>
-<li>운영 역할이 테이블 소유자나 BYPASSRLS가 아님을 CI가 확인한다.</li>
+<li>운영사 문맥 누락·다른 운영사·사업장 없는 행과 연결 풀 재사용을 API와 작업자에서 시험한다. 운영 역할이 테이블 소유자나 BYPASSRLS가 아님을 CI가 확인한다.</li>
 <li>같은 결제 이벤트가 여러 번 와도 수납은 한 번 반영된다. 원장은 추가만 된다.</li>
 <li>복원 절차를 한 번 돌려 봤다.</li>
 </ul>
@@ -444,11 +444,12 @@
 <p><strong>2단계. 운영 전환</strong> [가설]</p>
 <ul>
 <li>추가 구성: Multi-AZ, 화면, API, 작업자 2개씩, 무중단 배포, Valkey 공유 캐시, OpenTofu, 계정 분리, OpenTelemetry, 외부 상태 점검, 봉투 암호화(KMS), 접속기록 점검, 비밀 순환.</li>
-<li>실제 어댑터: CMS, PG, ERP 배치, 알림톡, 출입 조회, 전자서명, 본인확인. 허용목록에 등록할 고정 송신 IP는 NAT로 만든다.</li>
-<li>안심 경로 격리: 넘김 타이머는 JobRunr 공용 작업과 분리된 스레드와 DB 연결 풀로 돌린다. 월 청구가 넘김을 늦추는지 측정하고, 한도를 넘으면 전담 작업자로 나눈다(8절). JobRunr 우선순위 큐와 동적 큐는 Pro 기능이다(대조 F2). 그래서 업무별로 나누려면 작업자 프로세스 분리, Pro, SQS 중에서 고른다. [추정]</li>
+<li>실제 어댑터: 도입하기로 한 CMS, PG, ERP 배치, 알림톡, 출입 조회, 전자서명, 본인확인. CMS의 미결정 조건은 아래 완료 기준에서 확인한다. 허용목록에 등록할 고정 송신 IP는 NAT로 만든다.</li>
+<li>안심 경로 격리: 넘김 타이머는 JobRunr 공용 작업과 분리된 스레드와 DB 연결 풀로 돌린다. 월 청구가 넘김을 늦추는지 측정하고, 한도를 넘으면 전담 작업자로 나눈다(8절). JobRunr 우선순위 큐와 동적 큐는 Pro 기능이다(대조 F2). 프로세스만 나누고 같은 작업 저장소를 읽으면 업무별 소비가 분리되는 것은 아니므로 저장소나 지원되는 큐 라우팅 등 할당 경계를 확인한다. [추정]</li>
 <li>시작 전: 법률 검토 묶음(10.5절). C안이면 A안이나 B안으로 옮기는 일을 끝낸다.</li>
 <li>완료 기준(실제 입주자 데이터 투입 조건):<ul>
 <li>M0에서 정한 RPO·RTO를 복원 훈련으로 확인했다. 복원 뒤 동의 철회와 삭제를 다시 적용했다.</li>
+<li>CMS를 켜는 사업장은 결과 대기 중 수동 수납·승계의 코어 확인할 것 32를 결정하고 상태 조합 시험을 마쳤다. 결정하지 못했다면 해당 사업장의 CMS는 끈다.</li>
 <li>외부 API 시간 초과를 실패로 단정하지 않고 결과 조회와 대사로 넘긴다.</li>
 <li>작업자나 어댑터의 하트비트가 끊기면 앱 밖 경로로 알림이 가고, 접수자가 확인 응답한다.</li>
 <li>개별 알림이 전달되지 않으면 다음 수단으로 넘어간다.</li>
@@ -565,8 +566,8 @@
 </ul>
 <p><strong>멈춤 감시.</strong> 멈춘 구성요소는 스스로 멈췄다고 알리지 못한다. 그래서 작업자와 어댑터가 하트비트를 보내고, 앱 밖 점검이 시간을 세어 끊기면 경보를 낸다. URL 점검만으로는 API가 살아 있고 작업자만 멈춘 상태를 못 본다. 수신은 메신저와 문자·전화 두 갈래로 둔다. 건물 인터넷이 끊기면 어댑터 하트비트도 끊기므로 같은 경보로 알 수 있고, 건물 안에는 어댑터의 단절 표시등을 둔다. 주기, 제공자, 받는 사람은 [미정]이고 Opsgenie는 2027-04-05에 종료된다(조사 문서 8절). [가설]</p>
 <p><strong>알림 전달.</strong> 생성 → 발송 요청 → 전달 확인 → 사람 확인 → 확인이 없으면 다음 수단 → 다음 당번 순서로 상태를 둔다. 채널 순서(앱 알림, 알림톡, 문자, 음성 전화, 현장 단말)는 사업장 설정이다. 알림톡과 문자의 발송 성공은 읽음이 아니다. 같은 알림이 여러 채널로 나가므로 알림 멱등 키와 확인 뒤 취소를 둔다. 건강 소식의 보호자 채널은 <code>family</code> 동의를 지난 것만 쓴다. [가설]</p>
-<p><strong>늦게 온 신호.</strong> 단절 뒤 쌓인 신호가 한꺼번에 오면 이미 끝난 호출로 넘김이 돌 수 있다. 사업장이 정한 시간보다 오래된 신호는 기록만 하고 알림을 내지 않는다. 이벤트 번호가 없는 접점 출구는 어댑터가 번호를 발급하고 재시작해도 이어 쓴다. 대체 키는 <code>(기기, 신호 종류, 생긴 시각)</code>이다(조사 문서 6.4절). [가설]</p>
-<p><strong>단절 시 대체 절차.</strong> L2 이상이 멈춰도 L1은 계속 동작해야 한다. 직원은 ① 연락처, 알레르기, 비상 연락처, 진행 중 요청을 담은 읽기 전용 스냅샷을 쓰고 ② 복구 뒤 재입력할 때 발생 시각과 입력 시각을 나눠 적고 ③ 장애 구간을 기록에 표시한다. 전환 시간은 사업장 설정값이다. [가설]</p>
+<p><strong>늦게 온 신호.</strong> 단절 뒤 쌓인 신호는 건물 안 설비의 현재 상태와 대조해 종료·확인 증거가 있는 호출, 진행 중인 호출, 상태 미확인으로 나눈다. 종료·확인이 증명된 경우에만 기록으로 남기고 넘김을 생략한다. 진행 중과 미확인은 현장 상태를 확인하고, 미확인은 직원 확인 목록에 둔다. 시간만으로 종료를 판정하거나 모두 새 호출로 다시 보내지 않는다. 벤더가 현재 상태와 안정적인 이벤트 번호를 제공하는지는 [미확인]이다. 이벤트 번호가 없는 경우의 식별과 중복 방지 방식은 벤더 규격을 확인해 정한다. [가설]</p>
+<p><strong>단절 시 대체 절차.</strong> L2 이상이 멈춰도 L1은 계속 동작해야 한다. 직원은 ① 기존에 수집한 연락처, 비상 연락처, 진행 중 요청 중 필요한 항목만 담은 읽기 전용 스냅샷을 쓰고 ② 복구 뒤 재입력할 때 발생 시각과 입력 시각을 나눠 적고 ③ 장애 구간을 기록에 표시한다. 사본의 생성 시각·만료·허용 열람자·오프라인 열람 기록·암호화 보관·복구 후 회수와 파기를 정한다. 단절 중에는 최신성과 권한 회수를 온라인처럼 보장하지 못한다. 보관 위치, 유효 기간과 전환 시간은 [미정]이다. [가설]</p>
 <h3 id="62-청구와-결제">6.2 청구와 결제</h3>
 <ul>
 <li>월 청구는 코어 트랜잭션이고, 발행이 확정 시점이다. 발행 뒤 정정은 조정 전표로만 한다. [가설]</li>
@@ -727,14 +728,14 @@
 <ul>
 <li>시작은 S3 + 작업 상태 테이블 + 큐 + 작업자다. Dagster는 원천이 셋을 넘거나 백필이 운영 문제가 될 때 검토한다.</li>
 <li>재처리는 새 버전을 만들어 검증한 뒤 활성 버전을 바꾼다. 일부 청크만 활성화되지 않게 한다.</li>
-<li>삭제, 보존, 권한 회수, 보호자 허락 철회 이벤트는 원본, 인덱스, 캐시, 파생 요약, 아웃박스 본문, 작업 인자, 에이전트 체크포인트까지 전파한다. 저장소별 삭제 완료를 추적한다.</li>
+<li>보호자 공유 허락 철회는 해당 보호자의 조회와 예정 발송을 차단하고 관련 캐시를 무효화한다. 한 보호자의 철회만으로 직원이나 다른 보호자에게 필요한 원본을 삭제하지 않는다. 모델 투입 동의 철회는 새 투입과 대기 작업을 막고 파생물 처리는 별도 정책으로 정한다. 원본 처리 근거 소멸이나 보존 기간 만료에 따른 파기는 법적 보존 의무를 확인하고 원본, 인덱스, 파생 요약, 아웃박스 본문, 작업 인자와 체크포인트에 정책별로 전파해 저장소별 완료를 추적한다.</li>
 <li>파서, 청커, 임베딩 모델 버전을 컬럼으로 둔다.</li>
 <li>올린 파일은 악성코드 검사를 지난 뒤 파싱한다. 파싱한 문서는 신뢰하지 않는 입력이다. 권한 밖 자료를 모델에 넣고 출력에서 가리는 방식은 쓰지 않는다.</li>
 <li>원장 값과 수납 기록은 임베딩하지 않는다. 계약서 본문은 검색해야 하므로 넣되, 이름과 계좌 같은 개인정보는 청크에서 가리고 금액은 원문 쪽 번호로 찾아 사람이 확인한다.</li>
 </ul>
 <h3 id="65-데이터베이스">6.5 데이터베이스</h3>
 <p><strong>확장 순서.</strong> 스키마, 쿼리, 인덱스 → 트랜잭션 → 연결과 동시성 → 수직 확장 → 읽기 분산 → 부하 분리 → 파티셔닝 → 샤딩. 사업장 수나 행 수의 고정 기준은 두지 않는다. [가설]</p>
-<p><strong>사업장 범위.</strong> 격리 경계는 운영사이고 사업장은 범위 축이다. <code>role_assignment(주체, 역할, 범위 유형, 범위 ID, 유효기간)</code>를 허용 <code>site_id</code> 배열로 바꿔 트랜잭션 안 세션 변수에 넣고, 변수가 없으면 0행이 나오게 한다. 시스템 작업은 사업장마다 <code>runAs</code>로 범위를 넣고 돈다. 아웃박스에 <code>site_id</code>와 <code>actor_id</code>를 저장해 재처리 때도 같은 범위를 쓴다. 사업장을 넘는 집계는 읽기 전용 역할과 뷰로 한다. 모듈별 DB 역할은 역할별 연결과 <code>SET ROLE</code> 중에서 M1에 정한다(코어 확인할 것 35, 조사 문서 5절). [가설]</p>
+<p><strong>사업장 범위.</strong> 격리 경계는 운영사이고 사업장은 범위 축이다. 서버가 주체와 역할에서 <code>operator_id</code>, 허용 <code>site_id</code> 배열, 주체 ID를 정해 트랜잭션 안 세션 문맥에 넣는다. 모든 행은 운영사 일치를 확인하고 사업장에 속한 행은 사업장 포함 조건도 확인한다. 운영사 문맥이 없으면 거부한다. 시스템 작업도 운영사 범위에서 사업장을 열거하고 사업장마다 <code>runAs</code>로 처리한다. 연결 풀 재사용 때 이전 문맥이 남지 않게 한다. 아웃박스에 <code>site_id</code>와 <code>actor_id</code>를 저장해 재처리 때도 같은 범위를 쓴다. 사업장을 넘는 집계는 읽기 전용 역할과 뷰로 한다. 모듈별 DB 역할은 역할별 연결과 <code>SET ROLE</code> 중에서 M1에 정한다(코어 확인할 것 35, 조사 문서 5절). [가설]</p>
 <p><strong>소유주 범위.</strong> 소유주는 읽기와 집계 이용자이고 데이터 생산자가 아니다. 입주자 개인정보가 아니라 집계와 명세서만 준다. 소유주는 정보주체가 아니어서 집계 제공이 개인정보 제공에 해당하는지는 법률 검토 사항이다. <code>site_ownership</code>은 기간 겹침을 막고, 소유가 바뀌면 명세서는 그 시점의 소유 관계로 계산한다. 설치자(소유)와 위탁운영자는 따로 둔다(코어 <code>ManagementContract</code>). [가설]</p>
 <p><strong>DB 연결 한도.</strong> 합계 = (API 최대 개수 + 배포 겹침) × API 풀 + (작업자 최대 개수 + 배포 겹침) × 작업자 풀 + JobRunr, 폴러, 배치, 마이그레이션 여유. 모듈별 DB 역할을 연결로 나누면 역할 수만큼 곱해진다. 자동 확장 상한은 이 합계와 모델, ERP 한도에서 정한다. 지금 단계에는 풀러가 없고 앱 풀만 쓴다. RDS Proxy나 PgBouncer를 도입하면 RLS 변수 주입이 고정(pinning)을 일으키는지 그때 실측한다. [가설]</p>
 <p><strong>읽기 복제본에 보내지 않는 조회.</strong> [가설]</p>
@@ -747,7 +748,7 @@
 <li>안심 알림의 넘김 판단</li>
 </ul>
 <p><strong>파티션 함정.</strong> 파티션 테이블의 유일성 제약에는 파티션 키가 들어가야 한다. 날짜로 나눈 표에서 <code>event_id</code> 단독 유일성을 선언할 수 없고, 날짜를 넣으면 날짜가 다른 같은 이벤트를 막지 못한다. [사실] <code>SignalEvent</code>, 아웃박스, 변경 이력을 나눌 때는 별도 중복 방지 테이블을 먼저 정한다. [가설]</p>
-<p><strong>복구.</strong> HA, 읽기 복제본, PITR, 복원 훈련은 푸는 문제가 다르다. Multi-AZ가 곧 읽기 분산은 아니고, PITR이 외부 시스템까지 같은 시점으로 되돌려 주지는 않는다. 복원 뒤에는 결제와 ERP를 대사하고, 복원 시점 이후의 동의 철회와 삭제를 다시 적용한다. 그러지 않으면 &quot;그만 보여 주기&quot;가 철회 전으로 돌아가 보호자에게 다시 보인다. 철회와 삭제 이벤트는 복원 범위 밖의 별도 기록으로 남긴다. [가설]</p>
+<p><strong>복구.</strong> HA, 읽기 복제본, PITR, 복원 훈련은 푸는 문제가 다르다. Multi-AZ가 곧 읽기 분산은 아니고, PITR이 외부 시스템까지 같은 시점으로 되돌려 주지는 않는다. 복원 뒤에는 결제와 ERP를 대사하고, 복원 시점 이후의 동의 철회와 삭제를 목적과 보존 정책에 맞게 다시 적용한다. 철회와 삭제 이벤트는 복원 범위 밖의 별도 기록으로 남기고, 재적용과 검증이 끝날 때까지 관련 보호자 조회와 발송을 열지 않는다. [가설]</p>
 <p><strong>리전 장애.</strong> 서울 밖 한국 리전은 찾지 못했다(조사 문서 8절). 그래서 리전 전체 장애를 막지 못한다. 이때 이 시스템은 멈출 수 있고, 호출은 건물 안에서 계속되며, 직원은 대체 절차로 운영한다. 서울 밖 백업은 국외 보관이 될 수 있어 법률 검토 전에는 두지 않는다. 복원 훈련은 별도 계정의 백업 볼트에서 한다. [가설]</p>
 <h3 id="66-데이터-위치">6.6 데이터 위치</h3>
 <p>DB를 서울에 뒀다고 전 경로가 서울인 것은 아니다. 아래 경로마다 위치를 따로 확인한다. 법적 허용 여부와 기술 지원은 다른 문제이고, 법적 결론은 이 문서에서 내리지 않는다. [사실]</p>
@@ -807,7 +808,7 @@
 </tbody></table></div>
 <p><strong>위탁·이전 대장.</strong> 수탁자, 업무, 항목, 처리 위치, 이전 근거, 재위탁 여부를 코드가 읽는 설정 파일로 둔다. 처리방침 게시 문안을 여기서 만들고, 대장에 없는 경로로 나가는 배포를 막는다. <code>global.</code> 차단과 같은 위치에 둔다. 국외 이전 요건은 개인정보위 안내를 따른다(gaps L-4). [가설]</p>
 <h3 id="67-캐시-관측-평가-테스트">6.7 캐시, 관측, 평가, 테스트</h3>
-<p><strong>캐시.</strong> Valkey는 Next.js를 2개 이상 띄우거나 Taskiq를 쓸 때 더한다. 키에 사업장, 권한 버전, 데이터 버전을 넣고, 결제와 계약 확정 전에는 원장으로 다시 확인한다. 전체 장애나 빈 캐시에서 DB를 지키는 동작을 테스트한다. 체크포인트와 승인 기록은 캐시에 두지 않는다. Valkey는 강한 일관성을 주지 않는다(대조 14번). [가설]</p>
+<p><strong>캐시.</strong> Valkey는 Next.js를 2개 이상 띄우거나 Taskiq를 쓸 때 더한다. 회원·보호자·청구·권한 응답은 공유 캐시에서 제외하는 것이 기본이다. 캐시를 쓰는 자료에는 사업장, 권한 버전, 데이터 버전을 반영하고, 결제와 계약 확정 전에는 원장으로 다시 확인한다. 다중 화면 인스턴스는 동일 빌드, 배포 버전 구분, 캐시 핸들러와 무효화 전파를 정한다. Server Actions를 쓴다면 인스턴스 간 암호화 키도 관리한다. 전체 장애나 빈 캐시에서 DB를 지키는 동작을 테스트한다. 체크포인트와 승인 기록은 캐시에 두지 않는다. Valkey는 강한 일관성을 주지 않는다(대조 14번). [가설]</p>
 <p><strong>관측.</strong> 구조화 로그, 지표, 추적을 쓰고 업무 요청과 비동기 실행을 하나의 추적으로 잇는다. AI는 <code>run_id</code>, 모델, 프롬프트 버전, 근거 문서, 도구 결과, 토큰, 비용, 승인 결과를 남긴다. 큐는 길이보다 가장 오래된 작업의 대기 시간을 본다. [가설]</p>
 <p><strong>평가.</strong> 답변 정확성, 근거, 최신성, 권한, 도구 선택, 실행 정확성, 복구, 비용을 축으로 둔다. 금액, 권한, 중복 수납은 채점 모델이 아니라 코드와 실제 데이터로 검증한다. 모델과 프롬프트를 바꾸면 평가 뒤 일부에 먼저 적용한다. [가설]</p>
 <p><strong>테스트.</strong> 단계마다 돌릴 테스트를 정한다. [가설]</p>
@@ -820,11 +821,11 @@
 </thead>
 <tbody><tr>
 <td>1</td>
-<td>정책 테스트 세 가지(API와 작업자 경로), 이벤트 중복·순서 역전·시간 초과, 카드 번호 패턴 검사, 복원</td>
+<td>운영사·사업장 격리와 연결 풀 문맥 누수(API와 작업자), 이벤트 중복·순서 역전·소비자별 재시도·시간 초과, 사업장별 작업 실패 격리, 카드 번호 패턴 검사, 복원</td>
 </tr>
 <tr>
 <td>2</td>
-<td>알림 전달 실패, 월 청구 중 넘김 지연, 하트비트 끊김, 침해 범위 산출, 복원 뒤 철회 재적용, 대체 절차 훈련</td>
+<td>알림 전달 실패와 늦은 신호 상태 대조, 월 청구 중 넘김 지연, 하트비트 끊김, 침해 범위 산출, 복원 뒤 철회 재적용, 대체 절차 훈련. CMS 사용 시 결과 대기와 수동 수납·건별 결제·승계, 늦은 성공과 승계 뒤 되돌림 조합</td>
 </tr>
 <tr>
 <td>3</td>
@@ -885,7 +886,7 @@
 </tr>
 </tbody></table></div>
 <p><strong>데이터 분류와 암호화.</strong> M0 산출물이다. 컬럼마다 분류(일반, 민감, 고유식별, 금융, 신호 원본), 암호화 여부, 보존 기간, 모델 투입 가능 여부를 적는다. 건강, 돌봄, 호출, 재실, 출입 신호는 개인정보이고 건강정보로 해석되면 민감정보다. 민감 컬럼은 동의 근거가 비면 저장되지 않게 한다. 암호화 컨텍스트에는 개인정보를 넣지 않는다. [가설]</p>
-<p><strong>동의.</strong> 목적(정보성, 광고성, 보호자 공유, 건강정보 처리, 모델 투입), 범위, 방식(서면, 전자, 구두와 직원 입회), 증빙, 유효기간, 철회 이력을 기록한다. 철회는 6.4절 삭제 전파와 6.5절 복제본 제외 조회로 이어진다. 건강 소식이 보호자에게 가는 경로는 <code>family</code> 하나이고 <code>authorize()</code> 정책으로 강제한다. [가설]</p>
+<p><strong>동의.</strong> 목적(정보성, 광고성, 보호자 공유, 건강정보 처리, 모델 투입), 범위, 방식(서면, 전자, 구두와 직원 입회), 증빙, 유효기간, 철회 이력을 기록한다. 목적별 철회 효과와 원본 보존·파기는 6.4절에 따르고 철회 확인은 6.5절의 원본 조회로 한다. 건강 소식이 보호자에게 가는 경로는 <code>family</code> 하나이고 <code>authorize()</code> 정책으로 강제한다. [가설]</p>
 <p><strong>대리와 긴급 열람.</strong> 위임장 대리인, 후견인, 신원인수인은 보호자와 다른 역할로 둔다. 대리 서명은 서명 방식 합의, 서명자 식별, 대리 근거 문서, 문서 해시를 남긴다. 효력은 근거를 못 찾았다. [미확인] 긴급 열람은 사유, 승인자, 만료, 사후 통지를 둔다. 상시 관리자 권한은 두지 않는다. [가설]</p>
 <p><strong>접속기록.</strong> 대상은 직원만이 아니라 보호자, 소유주 이용자, 파트너 토큰, 시스템 주체, 에이전트 실행까지다. 고시가 &quot;접속한 자(정보주체 제외)&quot;로 넓어졌다는 해설이 있기 때문이다(gaps L-1). 보관은 2년을 하한으로, 점검 주기는 설정값으로 두고 기본은 월 1회다. 어느 해석에서도 안전한 쪽이다. 내보내기에는 사유와 건수를 남기고, 대량 조회 이상 탐지 규칙을 둔다. 기록에는 평문 개인정보를 넣지 않고, 파기 의무와 Object Lock 보존이 충돌하지 않게 한다. 현행 고시 본문은 읽지 못했다. [미확인]</p>
 <p><strong>보존과 파기.</strong> 분류, 근거, 기간, 파기 방식을 담은 보존 정책 테이블과 파기 배치를 둔다. 법정 장부(운영일지, 입소자 관리카드, 총계정원장, 보증금 장부)는 분리 저장한다. 키 폐기를 복원 불가 파기로 볼 수 있는지는 법률 검토 사항이라 키 폐기와 원본 삭제를 모두 지원한다. 사업장 단위 반출과 파기도 가능해야 한다. [가설]</p>
@@ -988,9 +989,9 @@
 </thead>
 <tbody><tr>
 <td>모듈 사이 이벤트, 외부 전달</td>
-<td>코어 아웃박스 + 디스패처</td>
+<td>소유 모듈별 아웃박스 + 공통 디스패처</td>
 <td>아웃박스 <code>attempts</code> 한 곳</td>
-<td>상태 변경과 같은 트랜잭션에 쓴다. 어댑터는 재시도하지 않는다</td>
+<td>각 모듈 스키마에 상태 변경과 같은 트랜잭션으로 쓰고 <code>platform</code> 구현을 공유한다. 어댑터는 재시도하지 않는다</td>
 </tr>
 <tr>
 <td>지연·반복 작업(월 청구, 일일 배치)</td>
@@ -1017,7 +1018,7 @@
 <td>이벤트 기록은 쓰지 않는다</td>
 </tr>
 </tbody></table></div>
-<p>JobRunr 무료판은 반복 작업이 100개까지이고, 9.0은 하위 호환이 깨지는 메이저 변경이 있었다(대조 F2). [사실] 그래서 사업장별로 반복 작업을 만들지 않고, 작업 하나가 사업장을 돌며 <code>runAs</code>로 처리한다. [가설]</p>
+<p>JobRunr 무료판은 반복 작업이 100개까지이고, 9.0은 하위 호환이 깨지는 메이저 변경이 있었다(대조 F2). [사실] 그래서 사업장별 반복 작업을 만들지 않고, 작업 하나가 사업장을 돌며 <code>runAs</code>로 처리한다. 한 사업장의 실패는 기록하고 나머지는 계속하며 실패한 사업장만 재시도한다. 업무 명령은 사업장과 기간에 맞는 멱등 키를 쓴다. 상태 스냅샷 이벤트는 해당 출처 revision을 비교하고 정본 조회가 필요한 이벤트는 소유 모듈 API를 다시 읽는다. 소비자 하나의 실패를 다른 소비자의 완료와 구분해 재시도한다. [가설]</p>
 <p><strong>소유 모듈.</strong> 코어는 어떤 모듈도 모른다는 ADR-2를 지킨다. [가설]</p>
 <div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
 <thead>
@@ -1097,6 +1098,7 @@
 </tbody></table></div>
 <ul>
 <li>컴퓨트·DB 항목은 재계산해도 일치했다(대조 3.1절, $206.9, $418.2, $439.0). 네트워크 항목은 재검토에서 더했고 ALB 주소가 AZ당 1개라는 가정이 들어 있다(대조 3.2절). [추정]</li>
+<li>위 금액은 견적 조합이 제공된다고 가정한 계산값이다. 서울 PostgreSQL 18과 <code>db.t4g.medium</code>, 스토리지, Single-AZ·Multi-AZ DB 인스턴스의 주문 가능 조합을 확인한 견적은 아니다(9절 4번). [미확인]</li>
 <li>단계별 제안의 약 $207, 약 $439는 네트워크가 빠진 값이고 단계 구분도 다르다. [사실]</li>
 <li>빠진 항목: NAT 처리 요금 $0.059/GB, 로그 $0.76/GB, 백업 초과분, 전송, Bedrock 호출료, 스테이징 환경, 외부 상태 점검. Secrets Manager는 비밀 10개면 $4, KMS는 키 하나에 $1이다. [사실] 외부 상태 점검을 5분 주기로 1개 돌리면 약 $16.42이고(조사 문서 8절, 실행 수는 가정), 작업 크기는 추정이다. [가설]</li>
 <li>Fargate ARM으로 바꾸면 컴퓨트·DB 항목이 1단계 $186.2, 2단계 $376.8이 된다. ARM 이미지 사용 가능 여부는 [미확인]이다.</li>
@@ -1124,8 +1126,8 @@
 <tr>
 <td>실제 어댑터(CMS, PG, ERP 배치, 알림톡, 출입 조회, 전자서명, 본인확인)</td>
 <td>2</td>
-<td>필수</td>
-<td>계약한 제공자의 사양을 받았을 때</td>
+<td>도입 기능에 필수</td>
+<td>계약한 제공자의 사양을 받았을 때. CMS는 확인할 것 32를 닫지 못하면 끈다</td>
 </tr>
 <tr>
 <td>Valkey</td>
@@ -1306,9 +1308,9 @@
 </tr>
 <tr>
 <td>4</td>
-<td>RDS PostgreSQL 18 서울 제공</td>
+<td>RDS PostgreSQL 18 서울 견적 조합</td>
 <td>[미확인]</td>
-<td>CLI로 확인한다</td>
+<td><code>describe-orderable-db-instance-options</code>로 리전·엔진 세부 버전·클래스·스토리지·Multi-AZ 가능 여부를 확인하고 7절을 재산정한다</td>
 <td>M0</td>
 </tr>
 <tr>
@@ -1414,8 +1416,8 @@
 <tbody><tr>
 <td>M0 범위 확정</td>
 <td>프로토타입 시연 41단계가 동작한다</td>
-<td>① 끝까지 만들 업무 흐름 하나 고르기 ② 데이터 분류표 ③ 회사 표준 확인 ④ 벤더 문의 1건 ⑤ 구성안 확정 ⑥ RPO·RTO 값 정하기</td>
-<td>첫 흐름과 복구 목표에 합의했다</td>
+<td>① 끝까지 만들 업무 흐름 하나 고르기 ② 데이터 분류표 ③ 회사 표준 확인 ④ 벤더 문의 1건 ⑤ 구성안 확정 ⑥ RPO·RTO 값 정하기 ⑦ A안이면 RDS 주문 가능 조합과 비용 확인</td>
+<td>첫 흐름과 복구 목표에 합의했다. A안은 사용할 DB 조합과 비용을 확인했다</td>
 <td>해당 없음</td>
 <td>구성안, 복구 목표, 건물 층 범위</td>
 </tr>
@@ -1674,6 +1676,7 @@
 <li>단계별 제안: <a class="doc-ref" href="lab-architecture-staged.html"><code>00-hub/reviews/architecture-staged-2026-11-04.md</code></a>(2026-11-04).</li>
 <li>승인 문서: <code>evenstay/docs/core/tech-design.md</code>(3-5절, 확인할 것 35), <code>evenstay/docs/safety/tech-design.md</code>(확인할 것 8, 27), <code>evenstay/docs/assistant/tech-design.md</code>(ADR-G3).</li>
 <li>기준 결정: <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 행, <code>evenstay/CLAUDE.md</code>.</li>
+<li>2026-11-05 보완 근거: <a href="https://github.com/vercel/next.js/security/advisories/GHSA-vc7v-qv4w-wrv8" rel="noopener noreferrer" target="_blank">Next.js 중첩 캐시 보안 공지</a>, <a href="https://github.com/vercel/next.js/security/advisories/GHSA-rhh4-g77r-r9qj" rel="noopener noreferrer" target="_blank">바이너리 인자 캐시 보안 공지</a>, <a href="https://nextjs.org/docs/app/guides/self-hosting" rel="noopener noreferrer" target="_blank">Next.js 자체 호스팅</a>, <a href="https://docs.aws.amazon.com/cli/latest/reference/rds/describe-orderable-db-instance-options.html" rel="noopener noreferrer" target="_blank">RDS 주문 옵션 조회</a>. 조회일 2026-11-05.</li>
 </ul>
 </article>
 </div>
@@ -1691,18 +1694,18 @@
 </footer>
 <dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
 <div id="tip" class="tip" role="tooltip" hidden></div>
-<template id="g-713" data-title="작업자"><p>요청과 별도로 실행되는 백그라운드 처리 단위. 타이머, 월 청구, 알림 발송, 문서 처리를 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>Worker</dd><dt>출처</dt><dd>설계안 4</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
-<template id="g-714" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-713" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-714" data-title="작업자"><p>요청과 별도로 실행되는 백그라운드 처리 단위. 타이머, 월 청구, 알림 발송, 문서 처리를 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>Worker</dd><dt>출처</dt><dd>설계안 4</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
 <template id="g-715" data-title="어댑터"><p>외부 연동 경계. MVP는 목업이다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>결제, ERP, 알림, 파일 저장, LLM</dd><dt>출처</dt><dd>core T1·9</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
 <template id="g-716" data-title="에이전트"><p>다음 단계를 스스로 고르며 도구를 호출하는 실행. Evenstay에서는 직원용 초안과 제안까지 맡는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>agent</dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
-<template id="g-717" data-title="아웃박스"><p>상태 변경과 같은 트랜잭션에 쓰는 이벤트 행. 모듈마다 자기 스키마에 같은 열로 둔다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd><code>OutboxEvent</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
-<template id="g-718" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
-<template id="g-719" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
-<template id="g-720" data-title="완료 기준"><p>마일스톤을 마쳤다고 볼 기준. 채우지 못하면 다음 단계로 진행하지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>exit criteria</dd><dt>출처</dt><dd>설계안 10.1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
-<template id="g-721" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
-<template id="g-722" data-title="대체 절차"><p>시스템이 멈출 때 직원이 읽기 전용 스냅샷과 기록으로 이어받는 절차</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>downtime procedure</dd><dt>출처</dt><dd>설계안 6.1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
-<template id="g-723" data-title="실행 기록"><p>에이전트 실행의 상태, 범위, 버전, 승인 대상, 비용을 남기는 표</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd><code>AgentRun</code> <code>[가설]</code></dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
-<template id="g-724" data-title="읽기 복제본"><p>읽기 부하를 나누는 DB 사본. 지연이 있어 돈과 권한 판단에 쓰지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>read replica</dd><dt>출처</dt><dd>설계안 6.5</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-717" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-718" data-title="아웃박스"><p>상태 변경과 같은 트랜잭션에 쓰는 이벤트 행. 모듈마다 자기 스키마에 같은 열로 둔다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd><code>OutboxEvent</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-719" data-title="완료 기준"><p>마일스톤을 마쳤다고 볼 기준. 채우지 못하면 다음 단계로 진행하지 않는다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>exit criteria</dd><dt>출처</dt><dd>설계안 10.1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-720" data-title="입주자(회원)"><p>호실 계약이 걸린 사람. 70~80대. Evenstay 홈을 쓴다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 입주자 / 회원: 회원님 / 보호자: ○○○ 회원님</dd><dt>영문·코드 이름</dt><dd><code>MEMBER</code> 역할, <code>Resident</code></dd><dt>출처</dt><dd>루트, core M, 화면정의 1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-721" data-title="운영사"><p>소유주를 대신해 사업장을 운영하는 회사. MVP는 1곳</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 운영사</dd><dt>영문·코드 이름</dt><dd><code>Operator</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-722" data-title="소유주"><p>사업장 자산을 가진 쪽</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 소유주</dd><dt>영문·코드 이름</dt><dd><code>Owner</code>: <code>FUND</code>, <code>REIT</code>, <code>CORP</code></dd><dt>출처</dt><dd>core T2-2</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-723" data-title="대체 절차"><p>시스템이 멈출 때 직원이 읽기 전용 스냅샷과 기록으로 이어받는 절차</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd>downtime procedure</dd><dt>출처</dt><dd>설계안 6.1</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-724" data-title="실행 기록"><p>에이전트 실행의 상태, 범위, 버전, 승인 대상, 비용을 남기는 표</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>화면에 없음</dd><dt>영문·코드 이름</dt><dd><code>AgentRun</code> <code>[가설]</code></dd><dt>출처</dt><dd>설계안 6.3</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
 <script src="../../home/assets/home.js" defer></script>
 </body>
 </html>

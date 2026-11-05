@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>v0.1.1 — 아키텍처 처리 규칙 보완 | Evenstay 문서</title>
+<meta name="description" content="v0.1.1 — 아키텍처 처리 규칙 보완. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>v0.1.1 — 아키텍처 처리 규칙 보완</h1>
+
+
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#변경-내용">변경 내용</a></li><li class="lv2"><a href="#영향과-호환성">영향과 호환성</a></li><li class="lv2"><a href="#검증과-한계">검증과 한계</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-776" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-777" data-tip="운영 단위.">사업장</button></li></ul></section></aside>
+  <article class="doc"><p>기록 시각: 2026-11-05 16:06 KST</p>
+<p>보호자 공유 철회와 원본 파기를 구분하고, 운영사·사업장 격리와 장애 뒤 신호 처리를 명확히 했다. 문서와 도식 16장, 통합 웹과 공개 문서를 같은 기준으로 맞춘다.</p>
+<h2 id="변경-내용">변경 내용</h2>
+<ul>
+<li>보호자 공유 철회는 해당 보호자의 조회·예정 발송·캐시를 차단한다. 원본 파기는 처리 근거와 보존 정책으로 따로 판단한다. 복원 뒤 철회 재적용이 끝나기 전에는 공유 조회와 관련 발송을 재개하지 않는다.</li>
+<li>RLS 문맥에 운영사·허용 사업장·주체를 함께 명시한다. 늦은 호출은 현장 종료·진행·확인 전 상태를 대사한다.</li>
+<li>한 사업장 실패가 다른 사업장 반복 작업을 중단하지 않도록 한다. 기존 업무별 멱등과 정본 재조회를 사용하며 범용 실행 테이블이나 모든 이벤트의 버전 필드를 새로 요구하지 않는다.</li>
+<li>CMS의 결과 대기 중 수납·승계 미결정을 닫거나 해당 기능을 끈 뒤 운영 전환 조건을 확인한다.</li>
+<li>Next.js는 도입 시점의 공식 보안 공지를 확인한 지원 패치를 정확히 고정한다. 회원·보호자·청구·권한 응답은 공유 캐시 제외를 기본으로 둔다.</li>
+<li>RDS의 서울·엔진·인스턴스·스토리지·Multi-AZ 주문 조합을 확인한 뒤 비용을 재산정하도록 한다. 현재 비용은 기존 전제의 계산값이다.</li>
+<li>오프라인 사본은 기존 최소 수집 항목만 담고 생성 시각·만료·열람 범위·복구 후 파기를 정한다. 수집 설계가 없는 알레르기 항목은 뺀다.</li>
+<li>개관과 공통 지침의 옛 기술표를 최신 0~5단계 설계와 맞추고 프로젝트 로컬 도식 스킬 3종을 사용한다.</li>
+</ul>
+<h2 id="영향과-호환성">영향과 호환성</h2>
+<p>문서와 클릭형 프로토타입의 설계 보완 버전이다. 실제 서비스·결제·장비 연동은 구현하지 않는다. 기존 데모 데이터와 화면 흐름은 유지한다. 기존 승인 기록은 보존하며 보완분을 새 승인으로 표시하지 않는다.</p>
+<h2 id="검증과-한계">검증과 한계</h2>
+<p>최종 검사 결과와 산출물 해시는 같은 릴리즈의 <code>VERIFICATION.md</code>와 GitHub Release 첨부 체크섬에 남긴다. AWS 주문 가능 조합, 현장 장비 규격과 법률 적용은 실제로 확인한 것이 아니다.</p>
+<p><a href="https://github.com/roadkwonai/evenstay-web/releases/tag/v0.1.0" rel="noopener noreferrer" target="_blank">이전 버전</a> · <a href="https://github.com/roadkwonai/evenstay-web/compare/v0.1.0...v0.1.1" rel="noopener noreferrer" target="_blank">변경 비교</a></p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-776" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-777" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

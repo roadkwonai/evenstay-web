@@ -57,6 +57,8 @@
 - [Evenstay 단계별 아키텍처 제안](architecture/architecture-staged.md)
 - [Pre-Mortem: Evenstay 아키텍처 안 2](architecture/reviews/pre-mortem.md)
 - [시니어 하우징 조사 반영 검토](architecture/reviews/research-reflection.md)
+- [아키텍처·기술 스택 검토 — Codex](architecture/reviews/architecture-codex-2026-11-05.md)
+- [아키텍처 보완안 재검토와 0.1.1 반영](architecture/reviews/architecture-codex-rereview-2026-11-05.md)
 - [아키텍처 보강 조사: PMS에 AI 에이전트를 붙이는 기술과 구조 (2026-11 기준)](architecture/sources/arch-ai-agent.md)
 - [콜(호출) 시스템 기술 구조: 정전·인터넷 단절 시 자립성과 외부 소프트웨어로의 신호 전달](architecture/sources/arch-call-system-mechanics.md)
 - [Cloud 인프라, CI/CD, 모니터링, IoT·출입 이벤트 수집 (소규모 PMS, AWS 서울)](architecture/sources/arch-cloud-cicd-iot-ingest.md)
@@ -72,6 +74,12 @@
 - [archify 도식 5장 (arch-system, arch-signal, arch-payment, arch-agent, arch-doc)](architecture/drafts/archify.md)
 - [dd 도식 (diagram-design)](architecture/drafts/dd.md)
 - [stack-diagram 인프라 도식 5장](architecture/drafts/stack.md)
+
+## 릴리즈
+
+- [릴리즈 기록](releases/README.md)
+- [v0.1.0 — 아키텍처 기준본](releases/202611051600-v0.1.0-baseline/RELEASE.md)
+- [v0.1.1 — 아키텍처 처리 규칙 보완](releases/202611051606-v0.1.1-architecture-hardening/RELEASE.md)
 
 ## 조사와 아이디어
 
@@ -108,7 +116,7 @@
 
 ## 지원 준비
 
-- [출처: [지원 회사]([지원 회사])와 [지원 회사] 시니어 사업](application/company-research.md)
+- [출처: [지원 회사]와 [지원 회사] 시니어 사업](application/company-research.md)
 - [지원 회사 프로필](application/target-companies.md)
 - [Red-Team: Evenstay 포트폴리오 전략 ([지원 회사] Tech Lead / Senior Backend 지원)](application/red-team.md)
 - [Pre-Mortem: Evenstay Core v1.1 (포트폴리오 MVP)](application/pre-mortem-core.md)

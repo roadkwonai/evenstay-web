@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>아키텍처 보완안 재검토와 0.1.1 반영 | Evenstay 문서</title>
+<meta name="description" content="아키텍처 보완안 재검토와 0.1.1 반영. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>아키텍처 보완안 재검토와 0.1.1 반영</h1>
+
+
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#기준과-사용자-지시">기준과 사용자 지시</a></li><li class="lv2"><a href="#재검토-결과">재검토 결과</a></li><li class="lv2"><a href="#스킬과-환경">스킬과 환경</a></li><li class="lv2"><a href="#검증-경계">검증 경계</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-783" data-tip="운영 단위.">사업장</button></li></ul></section></aside>
+  <article class="doc"><h2 id="기준과-사용자-지시">기준과 사용자 지시</h2>
+<p>사용자 지시: “보완할 내용은 다시한번 검토해서 반영해줘”, “아키텍처 도식화스킬들도 모두 설치해서 진행해야해 환경확인하고 보완할 내용도 다시 한번 검토해줘”.</p>
+<p>기준 문서는 <code>architecture-codex-2026-11-05.md</code>와 아키텍처 설계안이다. 원래 검토는 수정 전 문서의 해시와 행 번호를 가진 과거 기록으로 보존한다. 보완 전 공개 상태는 v0.1.0으로 기록하고 보완분은 v0.1.1에 넣는다. 기존 승인 표시를 보완분 승인으로 바꾸지 않는다. [사실]</p>
+<h2 id="재검토-결과">재검토 결과</h2>
+<p>초기 제안 전부를 그대로 반영하지 않는다. 기존 정본 API 조회·업무별 멱등·모듈별 처리 완료 표가 해결하는 일에는 새 공통 테이블이나 전역 버전 필드를 더하지 않는다. [가설]</p>
+<div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>재검토 판정</th>
+<th>반영 범위</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Next.js 보안</td>
+<td>특정 새 버전으로 단순 치환하지 않는다</td>
+<td>도입 시 공식 공지를 확인한 지원 패치 고정, 민감 응답 공유 캐시 제외, 다중 인스턴스 배포·캐시 규칙</td>
+</tr>
+<tr>
+<td>공유 철회</td>
+<td>원본 파기와 분리한다</td>
+<td>해당 보호자 조회·예정 발송·캐시 차단. 모델 투입 철회와 보존 만료의 처리는 목적별로 구분</td>
+</tr>
+<tr>
+<td>RLS</td>
+<td>기존 운영사 격리 결정을 구체화한다</td>
+<td>운영사·허용 사업장·주체 문맥과 문맥 누락 거부, API·작업자·연결 풀 시험</td>
+</tr>
+<tr>
+<td>늦은 신호</td>
+<td>오래됐다는 이유로 종료했다고 보지 않는다</td>
+<td>현장 종료·진행·확인 전 상태를 대사. 벤더 규격은 미정 유지</td>
+</tr>
+<tr>
+<td>사업장 반복 작업</td>
+<td>범용 실행 결과 테이블은 추가하지 않는다</td>
+<td>한 사업장 실패 후 나머지 계속 처리, 실패한 사업장만 재시도, 기존 업무 명령 멱등</td>
+</tr>
+<tr>
+<td>자동이체</td>
+<td>최신 코어의 잠금·늦은 결과·예외 처리를 중복 작성하지 않는다</td>
+<td>확인할 것 32를 닫거나 CMS를 비활성화하는 운영 전환 조건과 상태 조합 시험</td>
+</tr>
+<tr>
+<td>이벤트 순서</td>
+<td>모든 이벤트의 <code>aggregate_version</code>을 강제하지 않는다</td>
+<td>정본 재조회 유지. 상태 스냅샷의 기존 revision과 소비자별 재시도 시험</td>
+</tr>
+<tr>
+<td>RDS 견적</td>
+<td>엔진 지원과 주문 가능한 조합을 구분한다</td>
+<td>서울·엔진·클래스·스토리지·Multi-AZ 주문 옵션 확인 뒤 비용 재산정. 기존 계산값은 미검증 전제로 유지</td>
+</tr>
+<tr>
+<td>오프라인 사본</td>
+<td>새로운 민감정보 수집을 추가하지 않는다</td>
+<td>수집 설계가 없는 알레르기 제외. 기존 최소 항목, 생성 시각·만료·열람 범위·복구 후 파기</td>
+</tr>
+<tr>
+<td>문서 일치</td>
+<td>최신 0~5단계와 모듈 소유권을 기준으로 맞춘다</td>
+<td>개관·공통 지침·모듈 원본과 사본·웹 문장·도식 원본·생성 웹 동기화</td>
+</tr>
+</tbody></table></div>
+<p>위 표는 설계 변경의 범위이며 실제 운영 기능을 구현했다는 뜻이 아니다. [사실]</p>
+<h2 id="스킬과-환경">스킬과 환경</h2>
+<ul>
+<li>검토 스킬: <code>00-hub/.agents/skills/architecture-patterns</code>, <code>pre-mortem</code>.</li>
+<li>도식 스킬: <code>evenstay/.agents/skills/archify</code>, <code>stack-diagram</code>, <code>diagram-design</code>. 기존 설치본을 프로젝트 범위에 복사하고 파일별 SHA-256과 출처를 기록했다.</li>
+<li>Node 26.13.0, Python 3.15.2, Chrome 156.0.8078.81, 로컬 Pretendard를 확인했다. 도식 빌드는 전역 Claude 스킬 경로 대신 프로젝트 로컬 스킬을 사용한다.</li>
+<li>Archify 설치본은 3.0.1이며 업데이트 알림은 3.2.0을 가리켰다. 이번 작업에서는 업데이트하지 않았다.</li>
+<li><code>diagram-design</code> 자체 검사에는 로컬 글꼴 CSS URL을 외부 URL과 구분하지 못하는 기존 제한이 있다. 이를 통과로 기록하지 않고, 프로젝트가 요구한 로컬 Pretendard를 유지한 채 브라우저 렌더와 넘침 검사로 보완한다.</li>
+</ul>
+<h2 id="검증-경계">검증 경계</h2>
+<p>릴리즈별 실행 명령·관측 결과는 <code>release/</code>의 해당 버전 <code>VERIFICATION.md</code>에 기록한다. 문서 구문·용어·링크·도식 렌더 검증과, 실제 데이터·장비·은행·클라우드의 운영 시험은 구분한다. 실제 AWS 주문 조합, 현장 벤더의 현재 상태 조회와 법률 적용은 미확인으로 남긴다.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<template id="g-783" data-title="사업장"><p>운영 단위. 자산 유형은 <code>SENIOR_RESIDENCE</code>, <code>RENTAL_HOUSING</code>이고 요금 규칙 조합만 바꾼다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 사업장 / 회원·보호자: 레지던스 이름</dd><dt>영문·코드 이름</dt><dd><code>Site</code></dd><dt>출처</dt><dd>core T2-2, core M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>

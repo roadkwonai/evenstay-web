@@ -160,20 +160,20 @@ flowchart TD
 | 구조 | 모듈형 모놀리스, 모듈별 스키마, 한 번에 배포 | 컨테이너 3개(화면, API, 작업자)와 DB 하나 |
 | DB | PostgreSQL | RDS PostgreSQL 18, Single-AZ, 가상 데이터 |
 | 금액 | 원 단위 정수 | DB 64비트 정수를 읽는 방식은 `[미정]` |
-| 작업·이벤트 | 아직 고르지 않음. 비교 전까지 JobRunr 안을 기본으로 본다 | 코어 아웃박스 유지, JobRunr(PostgreSQL), Modulith 이벤트 기록 |
-| AI | LLM은 질문의 뜻을 고르는 데만 쓴다(ADR-G1) | 1단계는 Python 없이 API가 어댑터로 Bedrock 서울 호출(Sonnet 5). 데모 기본은 녹화 응답. 2단계 FastAPI, Pydantic v2, PydanticAI, Taskiq |
-| 검색 | — | PostgreSQL 전문 검색 또는 없음. 2단계 pgvector |
-| 클라우드·실행 | — | AWS 서울, ECS Express Mode(화면, API), 작업자는 일반 ECS. Kubernetes는 3단계 |
+| 작업·이벤트 | 아직 고르지 않음. 비교 전까지 JobRunr 안을 기본으로 본다 | 모듈별 아웃박스와 공통 디스패처, JobRunr(PostgreSQL). Modulith 이벤트 기록은 쓰지 않는다 |
+| AI | 회원 답은 기록을 틀에 채워 만들고, LLM은 질문의 뜻을 고르는 데만 쓴다(ADR-G1) | 1단계는 모델 어댑터와 녹화 응답이 기본. 문서 AI는 3단계이며 Python 서비스와 Taskiq는 필요할 때 도입 |
+| 검색 | — | PostgreSQL 전문 검색 또는 없음. pgvector는 3단계에서 필요할 때 도입 |
+| 클라우드·실행 | — | AWS 서울, ECS Express Mode(화면, API), 작업자는 일반 ECS. Kubernetes는 5단계에 도입 기준을 채울 때만 검토 |
 | 관측 | — | 구조화 로그, CloudWatch, 평가 JSON |
 | 월 고정비 | — | 1단계 약 $261, 2단계 약 $546, 3단계 약 $567(계산값, 설계안 단계 기준) |
 | ORM, 인증 | `[미정]` | — |
 
-- 설계안 칸의 출처는 senior-lab `00-hub/reviews/architecture-staged-2026-11-04.md`다. 구현 계획이 아니라 설계안이고, 그 문서의 "1단계 MVP"도 설계 단계 이름으로 읽는다.
+- 설계안 칸의 기준은 senior-lab `01-research/outputs/senior-housing-architecture-design.md`다. 구현 계획이 아닌 0~5단계 설계다.
 - 건물 층(호출벨 연동)은 호출벨 동작을 확인한 뒤 정한다.
-- 구성안 3개와 0~5단계 확장 계획은 senior-lab `01-research/outputs/senior-housing-architecture-design.md`에 있고, 웹에서는 `home/architecture.html`로 본다. 위 표의 "1단계"는 그 문서의 1단계, "2단계"는 2·3단계, "3단계"는 4·5단계에 해당한다. A안이 위 표의 설계안이고, 어느 구성안으로 갈지는 `[미정]`이다.
-- 월 고정비는 NAT와 퍼블릭 IPv4를 더한 값이다. 단계별 제안의 약 $207, 약 $439는 네트워크가 빠진 값이다. "Modulith 이벤트 기록"은 설계안에서 쓰지 않기로 바꿨고, Next.js는 16.4.1 이상으로 고정한다(2026-11-05 재검토).
-- Bedrock 서울에서 리전 안 처리가 되는 모델은 Opus 5와 Sonnet 5다. 5.5 모델은 서울에서 global 추론만 된다(2026-11-05 조회).
-- 설계 기준 칸의 출처는 senior-lab `shared/decisions.md` 2026-11-04 마지막 행과 루트 `CLAUDE.md`다. `docs/core/tech-design.md` 12절과 루트 `CLAUDE.md` 기술 방향은 아직 이 결정을 반영하지 않았다.
+- 구성안 3개와 확장 계획은 설계안에 있고, 웹에서는 `home/architecture.html`로 본다. A안이 위 표의 기준안이고, 어느 구성안으로 갈지는 `[미정]`이다.
+- 월 고정비는 NAT와 퍼블릭 IPv4를 더한 계산값이다. RDS 인스턴스 클래스와 엔진의 실제 주문 가능 조합은 `[미확인]`이다. Next.js는 도입 시 보안 공지를 확인하고 지원되는 정확한 패치 버전을 고정한다.
+- 비교한 Claude 모델 중 Opus 5와 Sonnet 5는 Bedrock 서울에서 리전 안 처리가 된다. 5.5 모델은 서울에서 global 추론만 된다(2026-11-05 조회).
+- 설계 기준의 출처는 senior-lab `shared/decisions.md`와 아키텍처 설계안이다. 코어 `tech-design.md` 12절은 기존 기획 기준이며 구현할 때 다시 대조한다.
 
 ## 8. 앱 URL 구조
 
@@ -213,7 +213,7 @@ flowchart TD
 
 ## 9. 데이터 모델 요약
 
-모든 테이블은 `id`, `operator_id`, `created_at`, `created_by`를 갖고, 사업장에 속한 테이블은 `site_id`로 RLS를 건다. 스키마 사이에 외래 키가 없고 ID만 보관한다. 실제 테이블 이름은 아직 없다.
+모든 테이블은 `id`, `operator_id`, `created_at`, `created_by`를 갖고 RLS로 운영사를 구분한다. 사업장에 속한 테이블은 `site_id` 조건도 적용한다. 스키마 사이에 외래 키가 없고 ID만 보관한다. 실제 테이블 이름은 아직 없다.
 
 | 스키마 | 핵심 엔티티 |
 |---|---|

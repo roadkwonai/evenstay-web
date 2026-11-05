@@ -26,8 +26,8 @@
 <header class="doc-head">
   <p class="hm-crumb"><a href="../docs.html">문서</a></p>
   <h1>프로젝트 개관</h1>
-  
-  
+
+
 </header>
 <div class="doc-cols">
   <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#1-서비스-한-줄-요약">1. 서비스 한 줄 요약</a></li><li class="lv2"><a href="#2-타겟-사용자">2. 타겟 사용자</a></li><li class="lv2"><a href="#3-핵심-가치">3. 핵심 가치</a></li><li class="lv2"><a href="#4-사용자-흐름">4. 사용자 흐름</a></li><li class="lv2"><a href="#5-직원관리자-흐름">5. 직원·관리자 흐름</a></li><li class="lv2"><a href="#6-통합-데모-흐름-요약">6. 통합 데모 흐름 요약</a></li><li class="lv2"><a href="#7-기술-스택-설계-기준">7. 기술 스택 (설계 기준)</a></li><li class="lv2"><a href="#8-앱-url-구조">8. 앱 URL 구조</a></li><li class="lv2"><a href="#9-데이터-모델-요약">9. 데이터 모델 요약</a></li><li class="lv2"><a href="#10-모듈-요약">10. 모듈 요약</a></li><li class="lv2"><a href="#11-설계-원칙">11. 설계 원칙</a></li><li class="lv2"><a href="#12-이번-결과물-범위-밖">12. 이번 결과물 범위 밖</a></li><li class="lv2"><a href="#13-문구-관리-규칙">13. 문구 관리 규칙</a></li><li class="lv2"><a href="#14-더-볼-곳">14. 더 볼 곳</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-650" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li><li><button class="term" type="button" data-modal="g-651" data-tip="반복 모임의 틀.">프로그램</button></li><li><button class="term" type="button" data-modal="g-652" data-tip="계약과 달마다 하나.">청구서</button></li><li><button class="term" type="button" data-modal="g-653" data-tip="고장, 청소, 세탁, 외출 차량, 병원 동행, 불편을 받는 한 건.">생활 요청</button></li><li><button class="term" type="button" data-modal="g-654" data-tip="호실 계약이 걸린 사람.">입주자</button></li><li><button class="term" type="button" data-modal="g-655" data-tip="운영 단위.">사업장</button></li><li><button class="term" type="button" data-modal="g-656" data-tip="사업장 자산을 가진 쪽">소유주</button></li><li><button class="term" type="button" data-modal="g-657" data-tip="B, C가 올린 본문 스냅샷.">건강 소식</button></li><li><button class="term" type="button" data-modal="g-658" data-tip="받는 도움의 양.">생활 지원 단계</button></li><li><button class="term" type="button" data-modal="g-659" data-tip="법적 근거로 회원의 일을 맡은 사람.">대리인</button></li><li><button class="term" type="button" data-modal="g-660" data-tip="옛 계약을 닫고 새 계약을 여는 일.">사별 승계</button></li><li><button class="term" type="button" data-modal="g-661" data-tip="저장은 자원 예약(RESERVATION)">시설 예약</button></li></ul></section></aside>
@@ -312,22 +312,22 @@
 <tr>
 <td>작업·이벤트</td>
 <td>아직 고르지 않음. 비교 전까지 JobRunr 안을 기본으로 본다</td>
-<td>코어 아웃박스 유지, JobRunr(PostgreSQL), Modulith 이벤트 기록</td>
+<td>모듈별 아웃박스와 공통 디스패처, JobRunr(PostgreSQL). Modulith 이벤트 기록은 쓰지 않는다</td>
 </tr>
 <tr>
 <td>AI</td>
-<td>LLM은 질문의 뜻을 고르는 데만 쓴다(ADR-G1)</td>
-<td>1단계는 Python 없이 API가 어댑터로 Bedrock 서울 호출(Sonnet 5). 데모 기본은 녹화 응답. 2단계 FastAPI, Pydantic v2, PydanticAI, Taskiq</td>
+<td>회원 답은 기록을 틀에 채워 만들고, LLM은 질문의 뜻을 고르는 데만 쓴다(ADR-G1)</td>
+<td>1단계는 모델 어댑터와 녹화 응답이 기본. 문서 AI는 3단계이며 Python 서비스와 Taskiq는 필요할 때 도입</td>
 </tr>
 <tr>
 <td>검색</td>
 <td>—</td>
-<td>PostgreSQL 전문 검색 또는 없음. 2단계 pgvector</td>
+<td>PostgreSQL 전문 검색 또는 없음. pgvector는 3단계에서 필요할 때 도입</td>
 </tr>
 <tr>
 <td>클라우드·실행</td>
 <td>—</td>
-<td>AWS 서울, ECS Express Mode(화면, API), 작업자는 일반 ECS. Kubernetes는 3단계</td>
+<td>AWS 서울, ECS Express Mode(화면, API), 작업자는 일반 ECS. Kubernetes는 5단계에 도입 기준을 채울 때만 검토</td>
 </tr>
 <tr>
 <td>관측</td>
@@ -346,12 +346,12 @@
 </tr>
 </tbody></table></div>
 <ul>
-<li>설계안 칸의 출처는 senior-lab <a class="doc-ref" href="lab-architecture-staged.html"><code>00-hub/reviews/architecture-staged-2026-11-04.md</code></a>다. 구현 계획이 아니라 설계안이고, 그 문서의 &quot;1단계 MVP&quot;도 설계 단계 이름으로 읽는다.</li>
+<li>설계안 칸의 기준은 senior-lab <a class="doc-ref" href="lab-senior-housing-architecture-design.html"><code>01-research/outputs/senior-housing-architecture-design.md</code></a>다. 구현 계획이 아닌 0~5단계 설계다.</li>
 <li>건물 층(호출벨 연동)은 호출벨 동작을 확인한 뒤 정한다.</li>
-<li>구성안 3개와 0~5단계 확장 계획은 senior-lab <a class="doc-ref" href="lab-senior-housing-architecture-design.html"><code>01-research/outputs/senior-housing-architecture-design.md</code></a>에 있고, 웹에서는 <code>home/architecture.html</code>로 본다. 위 표의 &quot;1단계&quot;는 그 문서의 1단계, &quot;2단계&quot;는 2·3단계, &quot;3단계&quot;는 4·5단계에 해당한다. A안이 위 표의 설계안이고, 어느 구성안으로 갈지는 <code>[미정]</code>이다.</li>
-<li>월 고정비는 NAT와 퍼블릭 IPv4를 더한 값이다. 단계별 제안의 약 $207, 약 $439는 네트워크가 빠진 값이다. &quot;Modulith 이벤트 기록&quot;은 설계안에서 쓰지 않기로 바꿨고, Next.js는 16.4.1 이상으로 고정한다(2026-11-05 재검토).</li>
-<li>Bedrock 서울에서 리전 안 처리가 되는 모델은 Opus 5와 Sonnet 5다. 5.5 모델은 서울에서 global 추론만 된다(2026-11-05 조회).</li>
-<li>설계 기준 칸의 출처는 senior-lab <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a> 2026-11-04 마지막 행과 루트 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a>다. <a class="doc-ref" href="core-tech-design.html"><code>docs/core/tech-design.md</code></a> 12절과 루트 <a class="doc-ref" href="x-rules-evenstay-claude.html"><code>CLAUDE.md</code></a> 기술 방향은 아직 이 결정을 반영하지 않았다.</li>
+<li>구성안 3개와 확장 계획은 설계안에 있고, 웹에서는 <code>home/architecture.html</code>로 본다. A안이 위 표의 기준안이고, 어느 구성안으로 갈지는 <code>[미정]</code>이다.</li>
+<li>월 고정비는 NAT와 퍼블릭 IPv4를 더한 계산값이다. RDS 인스턴스 클래스와 엔진의 실제 주문 가능 조합은 <code>[미확인]</code>이다. Next.js는 도입 시 보안 공지를 확인하고 지원되는 정확한 패치 버전을 고정한다.</li>
+<li>비교한 Claude 모델 중 Opus 5와 Sonnet 5는 Bedrock 서울에서 리전 안 처리가 된다. 5.5 모델은 서울에서 global 추론만 된다(2026-11-05 조회).</li>
+<li>설계 기준의 출처는 senior-lab <a class="doc-ref" href="lab-decisions.html"><code>shared/decisions.md</code></a>와 아키텍처 설계안이다. 코어 <code>tech-design.md</code> 12절은 기존 기획 기준이며 구현할 때 다시 대조한다.</li>
 </ul>
 <h2 id="8-앱-url-구조">8. 앱 URL 구조</h2>
 <p>브라우저 페이지 URL은 원본 문서에 없다 <code>[미정]</code>. 화면은 화면 ID로, 서버 경로는 아래 REST 접두어로 정해져 있다.</p>
@@ -486,7 +486,7 @@
 </tbody></table></div>
 <p>모든 쓰기는 <code>Idempotency-Key</code>를 받는다. 전체 표는 각 <code>tech-design.md</code> 8-1절이다.</p>
 <h2 id="9-데이터-모델-요약">9. 데이터 모델 요약</h2>
-<p>모든 테이블은 <code>id</code>, <code>operator_id</code>, <code>created_at</code>, <code>created_by</code>를 갖고, 사업장에 속한 테이블은 <code>site_id</code>로 RLS를 건다. 스키마 사이에 외래 키가 없고 ID만 보관한다. 실제 테이블 이름은 아직 없다.</p>
+<p>모든 테이블은 <code>id</code>, <code>operator_id</code>, <code>created_at</code>, <code>created_by</code>를 갖고 RLS로 운영사를 구분한다. 사업장에 속한 테이블은 <code>site_id</code> 조건도 적용한다. 스키마 사이에 외래 키가 없고 ID만 보관한다. 실제 테이블 이름은 아직 없다.</p>
 <div class="tbl-wrap" tabindex="0" role="region" aria-label="표. 옆으로 밀어서 봅니다"><table>
 <thead>
 <tr>

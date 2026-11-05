@@ -26,11 +26,11 @@
 <header class="doc-head">
   <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
   <h1>Evenstay — 시니어 레지던스 PMS (코어 + 모듈)</h1>
-  
-  
+
+
 </header>
 <div class="doc-cols">
-  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#먼저-읽을-문서-2026-11-04-사용자-지시">먼저 읽을 문서 (2026-11-04 사용자 지시)</a></li><li class="lv2"><a href="#구조-docscoretech-designmd-adr-3">구조 (docs/core/tech-design.md ADR-3)</a></li><li class="lv2"><a href="#기술-방향">기술 방향</a></li><li class="lv2"><a href="#모듈-경계-adr-2-어기면-안-됨">모듈 경계 (ADR-2, 어기면 안 됨)</a></li><li class="lv2"><a href="#용어와-호칭">용어와 호칭</a></li><li class="lv2"><a href="#시니어-서비스-원칙-화면을-만들-때">시니어 서비스 원칙 (화면을 만들 때)</a></li><li class="lv2"><a href="#디자인-작업-규칙-2026-11-03-사용자-지시">디자인 작업 규칙 (2026-11-03 사용자 지시)</a></li><li class="lv2"><a href="#디자인-스킬-사용-지침-2026-11-03-사용자-지시">디자인 스킬 사용 지침 (2026-11-03 사용자 지시)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1156" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li></ul></section></aside>
+  <aside class="doc-side"><nav class="toc" aria-label="목차"><details class="toc-d" open><summary>목차</summary><ol><li class="lv2"><a href="#먼저-읽을-문서-2026-11-04-사용자-지시">먼저 읽을 문서 (2026-11-04 사용자 지시)</a></li><li class="lv2"><a href="#구조-docscoretech-designmd-adr-3">구조 (docs/core/tech-design.md ADR-3)</a></li><li class="lv2"><a href="#기술-방향">기술 방향</a></li><li class="lv2"><a href="#모듈-경계-adr-2-어기면-안-됨">모듈 경계 (ADR-2, 어기면 안 됨)</a></li><li class="lv2"><a href="#용어와-호칭">용어와 호칭</a></li><li class="lv2"><a href="#시니어-서비스-원칙-화면을-만들-때">시니어 서비스 원칙 (화면을 만들 때)</a></li><li class="lv2"><a href="#디자인-작업-규칙-2026-11-03-사용자-지시">디자인 작업 규칙 (2026-11-03 사용자 지시)</a></li><li class="lv2"><a href="#디자인-스킬-사용-지침-2026-11-03-사용자-지시">디자인 스킬 사용 지침 (2026-11-03 사용자 지시)</a></li></ol></details></nav><section class="terms" aria-labelledby="terms-h"><h2 id="terms-h">이 문서에 나오는 용어</h2><p class="muted">누르면 용어집의 풀이가 열립니다.</p><ul><li><button class="term" type="button" data-modal="g-1164" data-tip="활성 보호자 관계가 있는 사람.">보호자</button></li></ul></section></aside>
   <article class="doc"><h2 id="먼저-읽을-문서-2026-11-04-사용자-지시">먼저 읽을 문서 (2026-11-04 사용자 지시)</h2>
 <ul>
 <li>전체 그림은 <a class="doc-ref" href="project.html"><code>docs/project.md</code></a>, 용어와 공용 문구, 쓰지 않는 말은 <a class="doc-ref" href="glossary.html"><code>docs/glossary.md</code></a>를 먼저 읽는다. 긴 기획 문서는 필요한 절만 찾아 읽는다.</li>
@@ -92,7 +92,7 @@
 </tbody></table></div>
 <h2 id="기술-방향">기술 방향</h2>
 <ul>
-<li>프로토타입은 HTML·JS, MVP는 Next.js, DB는 PostgreSQL. 나머지(언어 세부, ORM, 배포처)는 [미정]이다. 정할 때 기준은 <a class="doc-ref" href="core-tech-design.html"><code>docs/core/tech-design.md</code></a> 12절.</li>
+<li>프로토타입은 HTML·JS이고 MVP는 만들지 않는다. 설계 기준안은 화면 Next.js, 코어 Java 25·Spring Boot 4.1·Spring Modulith 2.1, PostgreSQL과 AWS 서울이다. 구성안 확정, ORM과 인증 제품은 [미정]이다. Next.js는 도입 시 보안 공지를 확인하고 지원되는 정확한 패치를 고정한다. 기준은 senior-lab 아키텍처 설계안이다.</li>
 <li>Next.js는 <code>app/</code>·<code>ui/</code>에만 들어온다. <code>core/</code>와 모듈의 domain·application은 프레임워크를 import하지 않는다.</li>
 <li>금액은 원 단위 정수. DB 64비트 정수를 읽는 방식(문자열 또는 BigInt)은 [미정].</li>
 </ul>
@@ -196,7 +196,7 @@
 </footer>
 <dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
 <div id="tip" class="tip" role="tooltip" hidden></div>
-<template id="g-1156" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
+<template id="g-1164" data-title="보호자"><p>활성 보호자 관계가 있는 사람. 회원이 허락한 것만 Evenstay 패밀리로 본다</p><dl class="hm-kv"><dt>화면에 쓰는 말</dt><dd>직원: 보호자 / 회원: 함께 보실 분</dd><dt>영문·코드 이름</dt><dd><code>GUARDIAN</code> 역할, <code>Guardian</code></dd><dt>출처</dt><dd>core T6-1, family M</dd></dl><p class="hm-links"><a href="glossary.html">용어집 전체 보기</a></p></template>
 <script src="../../home/assets/home.js" defer></script>
 </body>
 </html>
