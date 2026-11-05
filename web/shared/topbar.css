@@ -29,16 +29,18 @@
   .tb-role:hover { background: color-mix(in srgb, var(--fg-on-inverse) 10%, transparent); }
   .tb-item:hover { background: var(--state-hover); }
 }
+@media (max-width: 1679.98px) { .bar-tools .tb-gh { padding: 0 8px; } .bar-tools .tb-gh span { display: none; } }
 @media (max-width: 1439.98px) { .tb-role .tb-long { display: none; } .tb-role .tb-short { display: inline; } }
 @media (max-width: 767.98px) {
   .tb-long, .tb-mark { display: none; }
   .tb-short { display: inline; }
   .tb-bar { padding: 4px 8px; }
-  .tb-nav { flex: 1 1 100%; gap: 4px; }
+  .tb-nav { flex: 1 1 0; gap: 4px; }
+  .tb-gh span { display: none; }
   .tb-link, .tb-role { min-height: 44px; padding: 0 8px; }
   .tb-role { flex: 1 1 auto; justify-content: space-between; }
   .tb-role .tb-short { overflow: hidden; text-overflow: ellipsis; }
   .tb-pop { left: 8px; width: calc(100% - 16px); }
 }
-@media (max-width: 359.98px) { .tb-link svg.i { display: none; } }
+@media (max-width: 359.98px) { .tb-link:not(.tb-gh) svg.i { display: none; } .bar-tools .tb-gh { display: none; } }
 @media (prefers-reduced-motion: reduce) { .tb-pop { transition: opacity 120ms linear; } }

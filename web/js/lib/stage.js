@@ -2,7 +2,7 @@
 import { loadData, tx } from './text.js';
 import { commit, db, esc, fmt, go, hooks, me, modules, replaceDb, reset, setClock, setPersona, toast } from './kit.js';
 import { PERSONAS } from './people.js';
-import { initTopbar, topbarHtml } from '../../shared/topbar.js';
+import { initTopbar, topbarHtml, githubLink } from '../../shared/topbar.js';
 import { SCENES } from './scenes.js';
 import { firstScreen, frameDoc, render } from './app.js';
 import { closeModal, currentId, decorate, explainOn, hideTip, hx, mountHelp, openScreen, setExplain } from './help.js';
@@ -133,6 +133,7 @@ function barHtml() {
     <button class="btn btn-sm" type="button" data-do="explain" data-tip="tip.explain" aria-pressed="${explainOn()}">${explainOn() ? hx('bar.explain.off') : hx('bar.explain.on')}</button>
     <button class="btn btn-sm" type="button" data-do="guide" data-tip="tip.guide">${ui.guide ? tx('common.barHtml.text.2') : tx('common.barHtml.text')}</button>
     <button class="btn btn-sm" type="button" data-pop="tools" data-tip="tip.tools" aria-haspopup="dialog" aria-expanded="${ui.pop === 'tools'}">${hx('bar.tools')}</button>
+    ${githubLink}
   </div>
 </div>`;
 }
