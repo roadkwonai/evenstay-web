@@ -175,7 +175,7 @@ DRAFT ──(discard)──► (삭제 표시, 이력만 남음)
 | move_in | SIGNED, 입주일 있음 | SIGNED → ACTIVE. billing_start = 입주일이 속한 달 1일(일할 없음, 2026-11-03 확정) | ContractActivated |
 | succeed | ACTIVE, 2인 계약, 사별 증빙 확인 기록 있음 | 옛 계약 billing_end = 이번 달 말일. 새 계약(1인, 새 요금 플랜, billing_start = 다음 달 1일, end_date = 옛 계약 end_date [가설], succeeded_from_id). 보증금 TRANSFER_OUT/IN. 남는 입주자의 비상 연락처를 새 계약으로 복사(사별한 분은 비상 연락처에서도 뺀다). 실연동 때 옛 계약의 자동이체 동의 REVOKED(3-5, 2026-11-04, 사용자 재승인 2026-11-04) | ContractSucceeded |
 | request_termination | ACTIVE, 요청자 = 본인 또는 SIGN_CONTRACT 대리인 | move_out_date, billing_end = 퇴거일이 속한 달 말일 | ContractTerminationRequested |
-| settle | TERMINATING, Settlement APPROVED(승인자 = 본사). 실연동 때 열린 예상 수납 없음 [가설](3-5, 2026-11-04, 사용자 재승인 2026-11-04). REQUESTED 결제 시도 없음 가설 (2026-11-05, 사용자 재승인 2026-11-05, 결제 화면) | DepositEntry OFFSET/REFUND, 이후 원장 쓰기 금지. 실연동 때 자동이체 동의 REVOKED(2026-11-04, 사용자 재승인 2026-11-04) | ContractSettled |
+| settle | TERMINATING, Settlement APPROVED(승인자 = 본사). 실연동 때 열린 예상 수납 없음 [가설](3-5, 2026-11-04, 사용자 재승인 2026-11-04). REQUESTED 결제 시도 없음 [가설](3-6) (2026-11-05, 사용자 재승인 2026-11-05, 결제 화면) | DepositEntry OFFSET/REFUND, 이후 원장 쓰기 금지. 실연동 때 자동이체 동의 REVOKED(2026-11-04, 사용자 재승인 2026-11-04) | ContractSettled |
 - 허용되지 않은 전이는 모두 409로 거부한다. 동시 수정은 `row_version`으로 막는다(낙관적 잠금).
 - **입주 월 청구(2026-11-03 확정)**: 입주일과 상관없이 그 달 1개월분이다. 일할 계산은 하지 않고, 데모 시드의 입주일은 모두 1일이다.
 - SIGNED 상태에서 입주 전에 계약을 거두는 전이(입주 전 해지)는 MVP에 없다. 필요하면 다음 버전에서 SIGNED → 취소를 더한다.

@@ -1,0 +1,22 @@
+:root {
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.8125rem; --text-body: 1.0625rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
+  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem); --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --text-section: clamp(2rem, 2.5vw + 1rem, 3.5rem); --text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.625rem); --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.375rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --color-error: oklch(52% 0.19 27); --color-success: oklch(50% 0.12 150);
+  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+  --color-paper: #F5F5F3; --color-paper-2: #EBECE8; --color-paper-3: #DFE1DC;
+  --color-ink: #1A1C1E; --color-ink-2: #2E3236; --color-muted: #555A5F;
+  --color-rule: #CDD0CC;
+  --color-accent: #1A1C1E; --color-accent-ink: #F7F8F6; --color-focus: #2340A0; --color-mark: #C8A24A;
+  --font-display: "Pretendard", ui-sans-serif, system-ui, sans-serif; --font-body: "Pretendard", ui-sans-serif, system-ui, sans-serif; --font-outlier: var(--font-body);
+  --radius-card: 4px; --radius-pill: 999px; --rule-hair: 1px; --shadow-card: none;
+  --tracking-display: -0.02em;
+}
+/* concept theme blocks: each concept redeclares the colour tokens it owns */
+.c-a { --color-paper: #F2F4F3; --color-paper-2: #E3E8E8; --color-ink: #16232F; --color-muted: #4E5B64; --color-rule: #B8C2C6; --color-accent: #1D4E5F; --color-accent-ink: #F6F9F9; --color-mark: #C8A24A; --radius: 2px; --weight-head: 700; }
+.c-b { --color-paper: #F6F0E8; --color-paper-2: #ECE1D3; --color-ink: #2B1F27; --color-muted: #65555E; --color-rule: #D6C6B6; --color-accent: #6A2E55; --color-accent-ink: #FBF7F4; --color-mark: #E2A65A; --radius: 20px; --weight-head: 600; }
+.c-c { --color-paper: #FAFAF7; --color-paper-2: #EEEFEA; --color-ink: #17191C; --color-muted: #555A60; --color-rule: #D2D4CE; --color-accent: #2340A0; --color-accent-ink: #F8F9FC; --color-mark: #F3D766; --radius: 8px; --weight-head: 700; }

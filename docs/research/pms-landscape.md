@@ -12,7 +12,7 @@
 | 시니어 | MatrixCare Senior Living | 청구·EHR 계열(목록상) [B5][B6] | [미확인] | API 유무 출처 간 상충 [B5] | 예 |
 | 시니어 | Eldermark | 임상·청구·분석·운영 올인원(목록상), API 있음으로 표기 [B6] | [미확인] | [B6] | 예 |
 | 시니어 CRM | WelcomeHome / Sherpa / Enquire | 영업 CRM(리드·투어·입주). WelcomeHome은 open API 주장, PointClickCare 등 연동 예 [B29]. Sherpa·Enquire 세부 [미확인] | [미확인] | WelcomeHome API [B29] | 예(영업) |
-| 입주자·가족 참여 | Caremerge → Icon | 가족 포털, eMAR, 약국 연동, API(목록상, Caremerge 이름 기준) [B28]. 참여·웰니스 사업은 2022-06 VoiceFriend 인수 후 Icon으로 개명, 검색요약(이력). 현재 제공 주체 [미확인] | [미확인] | API 주장 [B28] | 예 |
+| 입주자·가족 참여 | Caremerge → Icon | 가족 포털, eMAR, 약국 연동, API(목록상, Caremerge 이름 기준) [B28]. 참여·웰니스 사업은 2022-06 VoiceFriend 인수 후 Icon으로 개명, 검색요약([이력](../architecture/sources/arch-global-platforms.md)). 현재 제공 주체 [미확인] | [미확인] | API 주장 [B28] | 예 |
 | IoT·안전 | SafelyYou, Inspiren, K4Connect | 낙상 감지 AI(SafelyYou), 안전·케어·인력 AI(Inspiren), 통합 허브 FusionOS 50+ 연결(K4Connect) [B25][B26][B27] | 해당 없음 | EHR 연동 주장은 있으나 공개 API 문서 못 찾음 [B26] | 예 |
 | 임대 PMS | Yardi Voyager | 다자산 GL, 투자·분배 모듈(리뷰) [B16] | 멀티엔티티가 강점이라고 설명 [B16] | 스마트 액세스 업체들이 연동 주장 [B23] | 아니오 |
 | 임대 PMS | AppFolio | 오너 명세서, 재무제표, 오너 포털(리뷰) [B14] | 오너별 통합 명세서 가능하나 사용성 불만 [B14][B15] | [미확인] | 아니오 |

@@ -1,0 +1,160 @@
+# 콜(호출) 시스템 기술 구조: 정전·인터넷 단절 시 자립성과 외부 소프트웨어로의 신호 전달
+
+조사일: 2026-11-04 (모든 "접속일"은 이 날짜). 대상: 병원/요양/시니어 주거의 nurse call / resident call 시스템.
+목적: Evenstay(시니어 레지던스 PMS 설계, 포트폴리오, MVP 없음)의 건물 층 세 갈래 (a) 콜 시스템 자립 + 단절 감지/직원 대체 절차만, (b) 소형 store-and-forward 게이트웨이, (c) 우리 SW가 라우팅/에스컬레이션 소유 + 로컬 타이머 게이트웨이 중 근거가 가리키는 쪽 찾기.
+
+표기: [사실] [추정] [가설] [미정] [미확인]. 검증 방식: 직접(본문 열람) / 검색요약(본문 못 엶, 검색 결과 요약만) / 제3자(2차 출처). "회사 주장"은 제조사 자료. 직접(본문)은 PDF를 내려받아 텍스트를 뽑아 읽은 경우, 직접(WebFetch)는 페이지를 열었으나 도구가 요약해 준 경우.
+인용은 짧게 요약만 했고 원문을 길게 옮기지 않았다.
+
+---
+
+## Q1. 전형적 토폴로지와 에스컬레이션 로직의 위치, WAN/온사이트 서버 장애 시 동작
+
+### Takeaway
+호출점 → 건물 안 제어기/서버 → 간호사실 표시기·복도등·직원 핸드셋이 기본형이며, 표준(UL 2560의 central notification station, VDE 0834의 독립 전송망)은 호출 처리가 건물 안에서 끝나도록 요구하는 쪽이다. 클라우드는 보고서·원격 접근용 부가층으로 붙는 사례가 확인된다. 단, 에스컬레이션 타이머가 정확히 제어기 안에서 도는지 클라우드에서 도는지 명시한 1차 문서는 못 찾았다.
+
+### 인용 사실
+- [사실] UL 2560(자립 거주·보조거주용)의 기본 구성은 건물 내 고정 위치의 central notification station(모든 호출이 처리되는 곳)과 거주실/세대마다 고정 호출 스테이션 1개 이상이다. 전원이 끊겨도 시스템 동작이 유지되도록 backup power가 필요하다. 호출은 notification station에 60초 안에 접수되어야 하고, 호출 취소는 호출을 일으킨 스테이션에서만 가능하다. [직접(본문), UL 백서 2012, 접속 2026-11-04](https://code-authorities.ul.com/wp-content/uploads/sites/40/2015/02/UL_WP_Draft_UL-2560-and-Emergency-Call-Systems_v4_HR.pdf) (PDF 레이아웃이 2단으로 섞여 있어 문장 일부는 재조립해서 읽음)
+- [사실] 같은 UL 백서에 따르면 UL 2560 시스템은 마이크로컨트롤러가 있으면 고장을 90초 안에 식별/보고하는 메커니즘이 필요하다. UL 1069는 일반적으로 고장 발생~복구 또는 고장 신호 생성까지 최대 90초이고, UL 2560은 고장 원점에 따라 시간이 다르며 무선 호출 개시 스테이션은 최대 24시간까지 허용된다. [직접(본문), UL 백서 2012](https://code-authorities.ul.com/wp-content/uploads/sites/40/2015/02/UL_WP_Draft_UL-2560-and-Emergency-Call-Systems_v4_HR.pdf)
+- [사실] UL 1069는 portable nurse control station이 감시하는 호출점은 primary nurse control station도 감시하도록 요구해 포터블 장치 고장이나 범위 이탈로 호출이 사라지는 "orphan call"을 막는다. UL 2560은 이 문제를 다루지 않는다. [직접(본문), UL 백서 2012](https://code-authorities.ul.com/wp-content/uploads/sites/40/2015/02/UL_WP_Draft_UL-2560-and-Emergency-Call-Systems_v4_HR.pdf)
+- [사실] RF Technologies 백서(2020-01, Rev B)는 UL 1069 시스템의 핵심으로 간호사실 표시, dome light(무선 시스템도 복도등으로 중복 시각 알림), 호출 스테이션에서만 리셋, 시스템 문제를 90초 안에 직원에게 알림을 든다. UL 2560은 dome light 불필요, 비배터리 장비 backup power 필수, 소리 출력 시험이 있다고 설명한다. 회사(제조사) 자료이며 표준 해설이다. [직접(본문), 회사 주장](https://www.rft.com/wp-content/uploads/2020/01/LIT-32400-Wireless-Call-Standards-White-Paper-2020.pdf)
+- [사실] 독일 DIN VDE 0834 계열: ZVEI Merkblatt 33021(2023-09, 3판, 문서 일자 2023-10-23)은 호출 시스템이 외부 시스템과 독립된 자체 배선·전송망을 가져야 하고, 그 망을 호출 시스템 장치가 감시·제어해야 하며, 호출 기능이 최우선이고 항상 보장되어야 한다고 적는다. 전화교환기 꺼짐, TV 고장, 침대 조명 단락이 호출 기능에 영향을 주면 안 된다(Rückwirkungsfreiheit). [직접(본문), 업계단체 문서](https://www.zvei.org/fileadmin/user_upload/Presse_und_Medien/Publikationen/2023/Oktober/Merkblatt_33021_2023-09__Rufanlagen_nach_DIN_VDE_0834_und_IP-Vernetzung/Merkblatt_330212023-09_Rufanlagen_nach_DIN_VDE_0834_und_IP-Vernetzung.pdf)
+- [사실] 같은 Merkblatt: 호출 시스템이 건물 일반 IT 인프라로 연결되는 구성(예 4)은 QoS/VLAN/managed service로 안전해 보여도 "어떤 경우에도" 규격 부적합이라고 한다. 조직 그룹 간 외부 전송망 사용(예 3a)은 위험분석 등 조건부로만 적합. 부가서비스(스트리밍, TV, 전화, 조명)는 호출 시스템 제조사가 제공/승인한 시스템 인터페이스로만 데이터 교환한다. 호출 시스템에 쓰는 활성 네트워크 장비는 호출 시스템 전용, 별도 회로, 비상전원이다. [직접(본문), 업계단체 문서](https://www.zvei.org/fileadmin/user_upload/Presse_und_Medien/Publikationen/2023/Oktober/Merkblatt_33021_2023-09__Rufanlagen_nach_DIN_VDE_0834_und_IP-Vernetzung/Merkblatt_330212023-09_Rufanlagen_nach_DIN_VDE_0834_und_IP-Vernetzung.pdf) (VDE 0834 본문 자체는 유료라 못 읽음, ZVEI 해설을 통한 제3자 성격)
+- [사실] Televic Healthcare 특허 EP2976992A1(우선일 2014-07-25, 출원인 Televic Healthcare NV, 현재 lapsed)는 배경에서 VDE 0834 같은 규정이 네트워크 연결을 잃으면 networked 모드에서 local 모드로 fall back 해야 한다고 적는다. 구현은 벽 부착 beacon 장치가 서버 연결 여부(keep-alive 부재 등)로 모드를 전환하고, 같은 그룹 beacon끼리 무선으로 호출 목록을 공유하며, 고립된 beacon은 단독 local 모드로 시청각 알림을 낸다. [직접(WebFetch), 특허 문서 = 설계 의도이며 출하 제품 동작의 증거는 아님](https://patents.google.com/patent/EP2976992A1/de)
+- [사실] Televic 특허 EP2978164A1(출원 2014-07-25): 유선 백본에 국소 결함이 있으면 beacon이 라디오로 서버에 우회 전송하여 local 모드로의 전면 fallback 빈도를 줄이려는 설계. VDE 0834가 시스템이 시스템 외 요소와 완전히 독립이어야 한다고 요구한다고 배경에 인용. [직접(WebFetch), 특허 문서](https://data.epo.org/publication-server/rest/v1.2/patents/EP2978164NWA1/document.html)
+- [사실] Austco Tacera 브로셔: 시스템은 시설 네트워크와 완전히 분리된 네트워크에 있고, 각 방은 patient station이 방 내 모든 것의 controller이며, 소프트웨어(통합, 웹서비스, 리포트)는 가상화 서버에서 돈다. 장치 교체는 해당 방만 영향. [직접(본문), 회사 주장, 발행일 미표기(IHEEM 호스팅, 2021-11 업로드)](https://www.iheem.org.uk/wp-content/uploads/2021/11/Tacera-ip-nurse-call_A4.pdf)
+- [사실] Austco는 Tacera가 스스로 고장을 감시하고 문제 발견 시 위치를 표시한 Maintenance 호출을 올린다고 주장. [검색요약, 회사 주장](https://austcopublicwebsite-fall18.azurewebsites.net/a-nurse-call-system-that-helps-maintenance-teams)
+- [사실] Honeywell Systevo Control IP+ 데이터시트에는 system master controller 고장 시의 local emergency operation mode가 나열되고 컨트롤러끼리 ETH-LAN으로 통신. [검색요약, 회사 주장, 제품 페이지 본문 못 엶(재조회 시 404)](https://buildings.honeywell.com/au/en/products/by-category/connected-life-solutions/nurse-call-systems/72800a-systevo-control-ip-plus)
+- [사실] Ascom Telligence 7 브로셔(03443-01, 2024-08)는 클라우드 기반 SQL 서버에 설치 가능(온사이트 시간·서버 비용 절감, 다기관 확장)하다고 홍보한다. 방 gateway는 dome light 형태로 4개 방을 하나로 서비스하며, Hillrom/Rauland 케이블 재사용을 지원한다고 한다. WAN 단절 또는 서버 장애 시 방/복도 장치가 어떻게 동작하는지는 브로셔에 없다. [직접(본문), 회사 주장](https://www.ascom.com/globalassets/assets/regions/north-america/products-and-services/nurse-call-and-monitors/brochure---03443-01-en-na-telligence-7---2024-aug-1.pdf)
+- [사실] Inovonics(UL 2560 무선 호출) 백서(2018-03-22): 경영진 기대로 "시스템 가동률 100%", 시설/캠퍼스 전역 커버리지를 든다. 같은 회사의 EchoStream은 repeater 20분, transmitter 최소 60분 단위 check-in으로 감시된다고 검색 요약에 나온다. [직접(본문), 회사 주장](https://www.inovonics.com/wp-content/uploads/2018/12/PendantWhitePaper.pdf); [검색요약, 회사 주장](https://www.inovonics.com/inovonics-echostream-wireless-emergency-call-devices-receive-ansiul-2560-certification-assisted-independent-living-facilities/)
+- [사실] Inovonics Cloud 설치 가이드 요약: 현장 장치 → EchoStream → gateway → 클라우드 업로드(처리/저장). 기존 온프렘 시스템에 gateway를 추가할 수 있고 로컬/주 알람은 온프렘 네트워크로 계속한다. [검색요약(원문은 403), 회사 주장](https://manuals.plus/m/4ca6a9eb144991e97c9d1b22467992bb97804f9e0227f7b2eef57ab464aaa9d5)
+- [사실] Legrand D-SERVER는 인터넷 없는 기존 로컬 네트워크에 설치 가능하고 SIP 서버 옵션이 있다고 한다. [검색요약, 회사 주장](https://www.medicalexpo.com/prod/legrand-care/product-84271-2798522.html)
+- [사실] 미국 NFPA 99/전기코드 해설 및 주 규정(텍사스 요양시설, 일리노이)은 nurse call을 emergency system의 critical branch 등 비상전원 부하로 둔다. 보조거주 규정이 아니라 요양/일반 의료시설 규정이다. [검색요약, 제3자](https://law.cornell.edu/regulations/texas/26-Tex-Admin-Code-SS-554-303)
+
+### 추론
+- [추정] 위 표준들(UL 2560 central station + backup power, VDE 0834 독립 망)은 호출 접수·표시·장애 표시가 건물 안에서 인터넷 없이 끝나는 구조를 강제하는 쪽으로 읽힌다. 서버/제어기가 건물 안에 있는지가 핵심이고 클라우드는 부가층이다.
+- [추정] "에스컬레이션 로직이 온사이트 제어기에 있다"는 직접 문서는 이 조사에서 Honeywell Systevo 쪽(DECT 모듈의 call type group별 escalation/repetition time 설정, Q2 참고)만 확인되었다. 다른 벤더는 [미확인].
+- [가설] 클라우드 우선 신규 업체는 로컬 알람을 온프렘(gateway, 현장 장치)에 두고 클라우드를 기록·원격 접근에 쓰는 하이브리드일 가능성이 높다 (Inovonics Cloud 사례 기반, 일반화 근거는 약함).
+
+### Gaps
+- 온사이트 서버 고장 시 각 벤더(Rauland, Ascom, Austco, Tunstall 등)의 대체 동작에 대한 1차 문서는 열람하지 못함.
+- VDE 0834 본문, UL 2560/1069 본문, FGI Guidelines, NFPA 99 본문은 유료/제한으로 열람하지 못함.
+
+---
+
+## Q2. 연동 인터페이스(실제 문서 기준)와 단방향/양방향
+
+### Takeaway
+ESPA 4.4.4와 TAP는 구식 직렬/모뎀 계열로 호출을 페이저·DECT·미들웨어로 밀어내는 용도가 주이고, 확인 응답(ack)은 프로토콜상 정의가 있어도 구현은 벤더마다 다르며 실무 사례에서는 전화(SIP) 쪽 다이얼백으로 처리되기도 한다. HL7은 EMR/미들웨어와 양방향 이벤트 교환 사례가 있고, Austco는 웹서비스 API로 alarm 주입/ack/reject/escalate와 WebSocket 피드를 문서화한다. 이 조사에서 직접 확인한 것 중 가장 개방적인 것은 Austco API다.
+
+### 인용 사실
+- [사실] ESPA 4.4.4 명세(1984-11)는 페이징 장비용 직렬 데이터 인터페이스로 ISO 1745 기본 모드 제어 절차를 따르며 half-duplex에 모뎀 사용 가능, 300~9600 baud, ACK/NAK 핸드셰이크와 블록 단위 확인, ENQ 기반 poll/select를 정의한다. [직접(본문), 제3자 호스팅 PDF(wiki.nicksoft.com)](https://wiki.nicksoft.com/_media/espa-444.pdf)
+- [사실] ESPA 4.4.4 레코드 정의에는 Call type(1=reset/cancel call, 2=speech call, 3=standard call), Priority(1=alarm/emergency), Call Status(1=busy, 2=in queue, 3=paged, 4=absent, 5=call terminated, 6=Ack. from called party, 7=speech channel open 등), System Status(fault 지시)가 있다. 즉 프로토콜 정의상 취소와 수신자 확인 상태가 표현 가능하다. [직접(본문)](https://wiki.nicksoft.com/_media/espa-444.pdf)
+- [미확인] 위 Call Status 6(수신자 ack)을 실제 간호 호출 벤더가 호출 시스템 쪽으로 되돌려 구현하는지는 확인 못함.
+- [사실] Honeywell 83WE140 소프트웨어 모듈 페이지: Systevo Workstation과 DECT 같은 외부 시스템을 연결, 펌웨어 ESPA 4.4.4 또는 대체 프로토콜, RS232/RS422 직렬, 호출 시스템에서 외부 시스템으로 호출 메시지 전달, call type group별 escalation과 반복 시간 설정이 가능. 단종 제품이며 데이터 방향·ack 서술 없음. [직접(WebFetch), 회사 주장](https://buildings.honeywell.com/us/en/products/by-category/connected-life-solutions/nurse-call-systems/83we140-software-module-for-dect-paging-system)
+- [사실] evalink ESPA 4.4.4 페이지: ESPA 4.4.4 pager 알람을 evalink 플랫폼으로 라우팅하는 통합, 하드웨어는 ipTNA4i(USB-RS232 어댑터) 또는 TNA Connect. 전송 방식(TCP 여부)·방향·ack은 페이지에 없음. 검색 요약에는 TNA가 수신 메시지의 체크섬만 검증한다는 문서 서술이 있음. [직접(WebFetch)](https://www.evalink.io/marketplace/espa444); [검색요약](https://documentation.evalink.io/devices/overview/integrations/espa-4.4.4/)
+- [사실] Rauland HAN0083 응용노트(2012-08-31): Responder 5의 환자 호출이 TAP 알림으로 Emergin Orchestrator 미들웨어로 가고, 미들웨어가 Vocera 배지 호출 명령으로 변환. 직원이 응답하면 미들웨어가 PBX를 통해 VoIP 게이트웨이(Patton)에 다이얼백 전화를 걸어 병실/침상 번호를 들려주고, 게이트웨이가 SIP INVITE를 Brekeke SIP 서버로 보내고, Responder 5가 200 OK 후 RTP 음성을 시작한다. 즉 이 구성에서 "응답"은 TAP의 구조화 ack가 아니라 텔레포니(SIP/음성) 경로다. 호출 표시 응답시간 5초, 응답 연결 7초는 제조사 연구실 시험값(실환경과 다르다고 문서가 밝힘). [직접(본문), 회사 주장](https://www.patton.com/manuals/Emergin_Vocera_HAN0083_Rauland%20Patton%20Application.pdf)
+- [사실] Spok Go의 nurse call 연동은 TAP를 사용하며 Ascom Telligence의 multi-field TAP 메시지 프로파일과 Rauland IV 프로파일이 있다. 프로파일이 수용하는 메시지가 하류 워크플로 오류를 낼 수 있다고 경고. 본문은 SSO 로그인 벽으로 못 열었음. [검색요약, 회사 주장](https://knowledge.spok.com/Spok_Products/Spok_Go/Implementation/Creating_the_On-Premises_Gateway_and_Spok_Go_Integrations/Integrating_Nurse_Call_with_Spok_Go)
+- [사실] TAP는 모뎀으로 페이징 사업자에 짧은 메시지를 보내는 ASCII, half-duplex 프로토콜이다. 응용 수준 단방향/양방향 서술은 못 찾음. [제3자: 위키/표준 해설 검색요약](https://en.wikipedia.org/wiki/Telocator_Alphanumeric_Protocol)
+- [사실] Connexall–Rauland Responder All Touch(2017-02-15 보도자료): HL7로 이벤트/상태를 양방향 교환하며 Connexall이 간호 호출 시스템에 등/톤을 트리거하는 이벤트도 되돌려 보낼 수 있다. 메시지 유형·필드는 미공개. [직접(WebFetch), 회사 주장](https://www.prweb.com/releases/new_connexall_integration_with_rauland_responder_all_touch_/prweb14070603.htm)
+- [사실] Rauland Responder 서버 레벨에서 HL7 서비스가 있다는 서술은 특허 US20090217080A1 언급과 Becker's 기사(양방향 EMR 공유)에서만 확인. [검색요약, 제3자](https://www.beckershospitalreview.com/healthcare-information-technology/rauland-borg-launches-system-with-two-way-sharing-between-emr-and-nurse-call-network/)
+- [사실] Austco Tacera 브로셔의 API: "Input Alarms"(Fire, Security, Wander, Duress 등 외부 시스템 알람을 위치, 유형, 시작/종료 시각으로 주입), "Export Alarms"(개별 알람 acknowledge, reject, escalate, 활성 알람을 WebSocket 피드로 수신), "Signal Events"(핸드셋 버튼 → BMS 제어), 미들웨어 없이 표준 통신 프로토콜 웹서비스, RTLS/알림 장치/EMR 등 호환 시스템, Pulse Reports(필터·내보내기·자동 이메일 보고서, 리포팅 DB는 온사이트/데이터센터/클라우드). 회사 주장이며 방향은 양방향에 해당. [직접(본문), 회사 주장](https://www.iheem.org.uk/wp-content/uploads/2021/11/Tacera-ip-nurse-call_A4.pdf)
+- [사실] Ascom Telligence 7: PBX와 SIP 연동 페이징, HL7로 EHR/EMR 문서화·갱신, Ascom Healthcare Platform으로 화이트보드 연동. 방향 서술 없음. [직접(본문), 회사 주장](https://www.ascom.com/globalassets/assets/regions/north-america/products-and-services/nurse-call-and-monitors/brochure---03443-01-en-na-telligence-7---2024-aug-1.pdf)
+- [사실] Rauland Responder 5에는 dry-contact 출력 모듈이 있어 호출 시 외부 장치를 접점으로 구동한다(재판매업체 페이지). 접점은 사실상 단방향(출력). [검색요약, 제3자](https://becintegrated.com/rauland-responder-5-output-module-dry-contact-pre-owned)
+- [사실] IHE PCD ACM 프로파일(Alert Communication Management, 구 Alarm): PCD-04(Report Alarm/Alert)가 HL7 v2 ORU^R40, 상태 보고 PCD-05(ORA 계열; Rev1.2와 Rev1.3 사이 메시지 코드 표기 상이), 전달 PCD-06/07은 WCTP. 의료기기 알람용 프레임워크이며 간호 호출 벤더가 ACM을 구현한다는 근거는 이 조사에서 못 찾음. [검색요약, 표준 문서 목록](https://wiki.ihe.net/index.php/PCD_Profile_Alarm_Communication_Management_Overview)
+- [사실] Vocera HL7 어댑터는 유효 메시지 수신 시 HL7 수준 ACK를 송신 시스템에 돌려준다(메시지 수신 확인이며 간호사 응답이 아님). [검색요약, 회사 주장](https://pubs.vocera.com/vcts/vcts_2.5.1/help/vcts_config_help/topics/vcts_ack_message.html)
+- [사실] Tunstall(Flamenco IP, CareCom), Jeron(Provider 790 "단일 통합점"), Cornell(PI-9064U paging interface)의 인터페이스 명세서는 열람하지 못했다. [미확인]
+
+### 추론
+- [추정] 방향 정리(근거 한도 내): 접점(dry contact)은 출력만, TAP는 호출을 밀어내는 쪽(응답은 별 경로), ESPA는 정의상 상태 되돌림 가능하나 구현 [미확인], HL7은 사례상 양방향(Connexall), 웹서비스 API(Austco)는 ack/cancel 포함 양방향. 이 서술은 모두 회사 자료이며 독립 검증이 없다.
+- [추정] 병원 쪽은 호출 시스템 + 미들웨어(Emergin, Connexall, Spok) + PBX/DECT/SIP 구성이 표준이라, 호출 시스템 소유 벤더의 인터페이스 서버를 거치지 않는 직접 접속(예: 우리 SW가 호출점 신호를 직접 받음)은 제조사 승인 인터페이스 원칙(Merkblatt)과 충돌한다.
+- [가설] Evenstay가 상용 호출 시스템 옆에서 이벤트를 받는다면 현실적 수신 수단은 (1) 제조사 API/webhook이 있으면 그것, (2) 없으면 TAP/ESPA/접점 → 현장 변환 장치다. 어느 쪽이든 제조사별 확인이 필요.
+
+### Gaps
+- MQTT, SNMP를 호출 시스템이 제공하는지에 대한 1차 문서 못 찾음. [미확인]
+- Hillrom/Baxter, Wescom, Sonamed, SpliceCom Medic Call, Legrand/Televic의 인터페이스 명세서 열람 못함.
+- IHE ACM이 실제 간호 호출 제품에 구현되었는지 [미확인].
+
+---
+
+## Q3. 호출 이벤트가 시니어 주거 SW(로그, 응답시간, EHR)에 도달하는 방식: 실시간 vs 배치
+
+### Takeaway
+열람한 근거에서 "호출 로그를 외부 SW에 실시간 스트림으로 주는" 문서화된 사례는 Austco의 WebSocket 활성 알람 피드(회사 주장)와 Connexall–Rauland HL7뿐이다. 시니어 주거 쪽 사례(Arial, BEC)는 자체 보고서·대시보드가 주이고 외부 EHR 연동은 선택 기능이며 상세는 불명이다.
+
+### 인용 사실
+- [사실] BEC Integrated의 WNC-SCA(MV400 콘솔용) 통계 보고서 패키지: 호출 활동 로깅, 응답시간 계산, CSV/PDF 내보내기(명세서에 XLSX 언급도). 배치성 파일 내보내기. [검색요약, 재판매업체 자료](https://becintegrated.com/statistical-reports-wnc-sca-for-mv400-console)
+- [사실] BEC Cloud Reports II: 웹 대시보드로 활성/완료 호출을 "실시간 가시성"으로 보여 주고 응답시간, 에스컬레이션 보고서를 제공한다고 한다. 현장→클라우드 전송 방식·주기·인터넷 단절 시 동작은 페이지에 없고, "No on-site servers"라고만 적혀 있다. API/원시 로그 내보내기 문서는 못 찾음. [직접(WebFetch), 회사 주장](https://becintegrated.com/nurse-call-system/wireless/cloud-reports)
+- [사실] Securitas Arial Caregiver(앱스토어 설명): 직원별 평균 응답시간, 도움 소요 시간, 완료율 로컬 보고서 제공. 케어 활동 기록은 PointClickCare 또는 ALIS로 선택적으로 전달 가능(v11.2.1에 ALIS로 호출 완료 데이터 전송 언급). 오프라인 시 앱에서 메모 작성 후 시설 Wi-Fi에 복귀하면 자동 동기화. 로컬/클라우드 구조는 설명 없음. [직접(WebFetch), 회사 주장](https://apps.apple.com/us/app/-/id6504114172)
+- [사실] Austco Pulse Reports: 필터·내보내기·예약 이메일, 대시보드 KPI, 리포팅 DB가 온사이트/데이터센터/클라우드에 위치 가능. [직접(본문), 회사 주장](https://www.iheem.org.uk/wp-content/uploads/2021/11/Tacera-ip-nurse-call_A4.pdf)
+- [사실] Connexall 병원 사례 연구: 맞춤 에스컬레이션과 SQL 리포팅으로 acknowledgement/응답시간 지표 수집(병원 사례). [검색요약, 제3자/회사 사례](https://www.casestudies.com/company/connexall/case-study/the-mount-sinai-medical-center-enterprise-solution-delivers-results)
+
+### 추론
+- [추정] 응답시간 통계는 보통 호출 시스템 자체 또는 그 벤더 보고 도구에서 만들어지고, 외부 SW는 그 결과나 이벤트를 받는 구조일 가능성이 높다. 우리가 원시 이벤트(발생, 접수, 응답, 종료 시각)를 얻으려면 벤더가 해당 필드를 내보내는지가 선결 조건.
+- [미정] 로그 내보내기가 실시간 푸시인지 폴링/배치인지는 벤더 확인 필요.
+
+### Gaps
+- Rauland, Cornell, Silversphere, Tunstall의 로그 내보내기 포맷·주기 문서 못 찾음.
+- PointClickCare 연동의 메커니즘(실시간인지) 미확인.
+
+---
+
+## Q4. 표준·규정 중 온사이트 자립을 강제하는 항목
+
+### Takeaway
+UL 2560(central notification station, backup power, 60초 접수, 고장 보고), UL 1069(90초 고장 신호), VDE 0834(독립 전송망, 호출 기능 최우선, 외부 시스템 비영향)가 가장 직접적인 근거다. 한국 법규는 이 조사 범위 밖이다.
+
+### 인용 사실
+- [사실] UL 2560은 2011-09 발행, 비급성(보조/독립 거주) 시설용, 호출 1차 대상은 무선 포함. 채택 여부는 주/관할(AHJ)마다 다름. RFT 백서는 일부 주만 UL 1069를 skilled nursing에 의무화하고 대부분 주는 아니라고 설명. [직접(본문)](https://www.rft.com/wp-content/uploads/2020/01/LIT-32400-Wireless-Call-Standards-White-Paper-2020.pdf); [직접(본문)](https://code-authorities.ul.com/wp-content/uploads/sites/40/2015/02/UL_WP_Draft_UL-2560-and-Emergency-Call-Systems_v4_HR.pdf)
+- [사실] Intertek의 UL 1069 개정 안내(2024, 시행 2026-02-08)에 비평가 Class 2 전원으로 UL 1069 구성품에 전력을 공급하는 경우 최소 하나의 trouble 신호 장치는 그 전원과 독립적으로 동작해야 한다는 요건이 추가됨. [검색요약, 제3자](https://w3prep.intertek-ar.com/siteassets/resources/sun/2024/ul-1069-sun-rev-2-8-2024-ed-2-8-2026.pdf)
+- [사실] VDE 0834-1:2016-06은 DIN 사이트에서 withdrawn(철회) 목록에 표시되며 후속 규격 확인은 못 했다. 그래서 현행 판은 [미확인]. 호출 시스템 전용 신호 경로·감시 요건은 ZVEI 2023 해설(Q1)에 현행 규격 기준으로 서술됨. [검색요약](https://din.de/en/wdc-beuth:din21:252222564)
+- [사실] 제조사 광고: 모든 장치 30초 내 감시, 호출 5초 내 표시(독일 TeleAlarm 브로셔 요약에 VDE 0834 안전 특성으로 언급). 규격 원문은 아님. [검색요약, 회사 주장](https://www.telealarm.com/wp-content/uploads/TeleAlarm_NurseCall8_brochure_GER_2024_web.pdf)
+- [사실] EN 50134-7:2017(소셜 알람 적용 지침)이 현행, EN 50134-5(2004)는 2021-07-20 철회, CLC/TS 50134-9:2018이 IP 통신 프로토콜. 감시/통신 장애 조항 본문은 못 읽음. [검색요약, 제3자](https://www.evs.ee/en/evs-en-50134-7-2017)
+- [사실] 미국 NFPA 99/전기 해설: nurse call은 critical branch 부하. [검색요약, 제3자](https://www.ecmweb.com/content/article/20891697/nfpa-99-and-the-nec-the-basis-for-a-healthy-electrical-system)
+
+### 추론
+- [추정] 가장 일관된 규범 방향은 "호출 경로는 일반 IT/인터넷과 분리되고, 고장은 수십~90초 단위로 직원에게 보이게 한다"이다. 이는 Evenstay 설계에서 호출 안전 경로를 인터넷에 의존시키지 말라는 근거로 쓸 수 있다.
+- [미정] IEC 60601-1-8, FGI Guidelines의 호출 관련 조항은 열람하지 못해 평가하지 않음.
+
+### Gaps
+- 한국 법규(소방, 노인복지법 시설 기준, 응급안전안심서비스 규격 등) 미조사.
+- VDE 0834 현행판 번호, FGI 2022 조항, UL 2560 본문 못 읽음.
+
+---
+
+## Q5. 클라우드 우선 신규 업체의 오프라인 동작 주장
+
+### Takeaway
+오프라인 동작을 구체적으로 설명한 1차 문서는 못 찾았다. 확인된 것은 하이브리드(로컬 알람 유지 + 클라우드 부가)와 직원 앱의 오프라인 동기화 서술뿐이다.
+
+### 인용 사실
+- [사실] Inovonics Cloud: gateway가 메시지를 클라우드로 올리고 온프렘 시스템이 로컬/주 알람을 유지(Q1). 블루투스 locator로 펜던트 위치를 클라우드가 추정. 완전 기능은 클라우드 필요하다고 회사가 말함. 오프라인 버퍼링 서술은 못 찾음. [검색요약, 회사 주장](https://manuals.plus/m/4ca6a9eb144991e97c9d1b22467992bb97804f9e0227f7b2eef57ab464aaa9d5)
+- [사실] Panasonic DCC: 온프렘 또는 클라우드 제공이라고 한다. 오프라인 펜던트 동작은 언급 없음. [검색요약, 회사 주장](https://na.panasonic.com/ca/long-term-care)
+- [사실] Eldermark Notify(모바일 기반 호출 앱)는 온라인/오프라인 모두 동작하고 근무 중 모든 직원 기기로 페이지한다고 홍보. 오프라인 메커니즘과 호출 시스템 연동 방식은 서술 없음. 별개 사이트 notifync.com의 Notify Overlay는 기존 호출 시스템을 교체하지 않고 연결한다고 하나 인터페이스 종류를 공개하지 않음. 동일 제품인지 불확실. [검색요약, 회사 주장](https://www.healthcarefacilitiestoday.com/posts/Eldermark-leap-frogs-other-nurse-call-and-communication-systems-with-Notify--9620); [직접(WebFetch), 회사 주장](https://notifync.com/blog/wil-notify-work-with-my-nurse-call-system/)
+- [사실] 한 시니어 주거 사업자 도입 후기: Wi-Fi로 동작하고 커뮤니티 밖에서는 문자/전화 불가(Notify 검색 요약 내 서술, 원문 재확인 안 함). [검색요약, 제3자](https://iadvanceseniorcare.com/?p=10183)
+
+### 추론
+- [추정] 클라우드 신규 업체도 현장 장치(무선 펜던트, 게이트웨이)가 알람을 현장에서 처리해야 UL 2560 같은 인증과 양립하므로 "클라우드 단독 호출"은 안전 경로로 주장하기 어렵다.
+
+### Gaps
+- 클라우드 업체가 WAN 단절 시 이벤트를 큐잉(store-and-forward)하는지 서술한 문서는 못 찾음.
+
+---
+
+## 못 찾은 것
+- 벤더별 온사이트 서버 고장/WAN 단절 시 대체 동작의 1차 문서: Ascom Telligence(브로셔에 없음), Baxter/Hillrom, Rauland Responder, Jeron, Tunstall, Legrand/Televic 제품(특허만), Cornell, Status Solutions, Vitalcare, Wescom, Sonamed, SpliceCom Medic Call. Austco는 격리망/자기 감시 서술만 있음.
+- ESPA/TAP 확인 응답이 실제 간호 호출 제품에서 호출 시스템으로 되돌아오는지. TAP 응용 수준 방향성.
+- MQTT, SNMP, REST/webhook을 제공하는 호출 시스템(Austco 웹서비스 API 외)의 공식 문서. Austco API 문서 본문(브로셔만 열람).
+- 호출 시스템이 store-and-forward를 하는지 또는 외부 게이트웨이가 하는지에 대한 명시 서술.
+- 호출 로그 내보내기가 실시간인지 배치인지(벤더별).
+- VDE 0834 현행판 본문, UL 2560/1069 본문, NFPA 99, FGI, IEC 60601-1-8 본문. 한국 법규.
+- ARIAL(Securitas)의 내부 구조(로컬 서버/클라우드), Spok Go 문서 본문(로그인 필요), Ascom Telligence의 TAP/HL7 필드 명세, Honeywell Systevo IP+ 데이터시트 본문.
+
+---
+
+## Evenstay 건물 층 세 갈래에 주는 근거
+
+- (a) 호출 시스템이 현장에서 자립하고 우리는 단절 감지 + 직원 대체 절차만 둔다: 근거가 가장 강하게 지지한다 (강도: 중상). UL 2560의 central notification station + backup power + 고장 보고, ZVEI가 설명하는 VDE 0834의 독립 전송망과 호출 기능 최우선 원칙, Televic 특허가 말하는 networked→local fallback 요구는 모두 호출 접수·표시가 인터넷 없이 건물 안에서 완결되는 쪽을 가리킨다. 한계: 표준 본문과 벤더별 장애 동작 문서는 직접 못 읽었고(제3자/회사 자료 중심), 한국 규정은 조사하지 않았다.
+- (b) 신호가 클라우드로 나갈 때 유실되므로 소형 store-and-forward 게이트웨이: 부분 지지 (강도: 중하). 현장 이벤트를 밖으로 내보내는 부가층(Inovonics gateway→cloud, BEC Cloud Reports, Austco API/Pulse Reports, TAP/ESPA 직렬 → 미들웨어)이 실제 패턴이라는 점은 확인됐다. 그러나 벤더 제품이 단절 시 이벤트를 큐잉해 재전송한다는 서술은 하나도 못 찾았으므로(Gap), 유실 방지는 우리 쪽 설계 몫이라는 [추정]이 남는다. 이는 안전 경로가 아니라 기록/알림/PMS 연동 경로에 한정된다.
+- (c) 우리 SW가 호출 라우팅/에스컬레이션을 소유하고 게이트웨이에 로컬 타이머: 근거가 반대 방향이다 (강도: 약, 안전 경로에는 불리). VDE 0834 해설은 호출 기능을 외부 시스템과 분리·최우선으로 두라 하고 승인된 인터페이스로만 부가서비스를 붙이라 한다. 에스컬레이션을 호출 시스템 밖 SW가 갖는 것이 허용되는 사례는 미들웨어(Emergin, Connexall, Spok) 쪽의 2차 알림 계층뿐이며, 이는 호출 시스템의 접수/표시를 대체하지 않는다. Honeywell DECT 모듈의 escalation/repeat 설정도 호출 시스템 계열 모듈이다.
+- 종합: [추정] (a)를 안전 경로의 기본으로 두고, (b)를 PMS 이벤트/로그 수신용 얇은 현장 변환·버퍼 계층으로 한정하며, (c)는 2차 알림(보호자·직원 앱) 범위로 제한하는 구성이 근거와 가장 맞는다. 이 결론은 간접 근거에 기반하므로 포트폴리오에는 "벤더 문서로 확인하지 못한 가정"을 명시하는 편이 안전하다.

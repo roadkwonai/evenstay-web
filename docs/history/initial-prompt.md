@@ -1,0 +1,73 @@
+디자인 시스템은 아래의 조건을 적용해서 만들어야돼
+
+무엇보다 그 전에 브랜드를 만들려고 하는데 세가지 포지셔닝이 다른 브랜드 컨셉과 로고 시안을 짧게 html로 보여줄래? 그리고 폰트는 pretendard로 해줘. 웹앱, 슬라이드, 로고, 브랜드 가이드라인을 만들거야.
+
+https://github.com/Nutlope/hallmark 스킬을 사용해서 초기 디자인 구성을 진행할 예정이야
+
+랜딩페이지에는 landing-page-design 이 스킬을 이용해야해
+그외 web-design-engineer, build-awwwards-quality-sites 스킬들도 참고하면서 MVP 구성을 진행해야되고
+검증 및 디자인 개선에는 visual-critique, visual-critique 도 활용해야해
+
+만약 일러스트, 아이콘, 마스코트등 이미지 생성이 필요하다면 gpt-image 로 모두 생성해서 사용하고, 어떤 UI 요소에도 이모지는 쓰지마.
+고품질의 이미지 생성이 필요하면 gpt-image-api 로 gpt-image-2.5-pro 모델로 고품질 이미지를 생성해서 higgsfield 로 영상을 생성하도록 해줘
+영상생성이 필요하면 higgsfields cli 를 사용해서 영상을 생성해
+
+shadcn-ui, tawindcss, Lucide 아이콘을 구성해서 UI/UX 를 구성하고 디자인하고 싶어
+
+Pretendard: https://cactus.tistory.com/306?ref=noonnu.cc 폰트를 다운받아서 사용하고 https://github.com/google-labs-code/design.md 원칙대로 디자인 시스템을 만들고 DESIGN.md 도 생성해줘
+
+---
+
+먼저 원티드 디자인 시스템을 참고해서 이정도 퀄리티로 부족한 부분을 검토해서 모두 보완해줘
+
+https://github.com/emilkowalski/skills 그리고 이 스킬도 설치해서 hallmack 으로 MVP 초기구성이 끝나면 각 페이지 디테일 구현을 진행할떄 사용할 수 있도록 해줘
+
+---
+
+종합 브랜드 가이드라인 문서 만들어줘.
+evenstay의 컨셉과 같이 이 제품의 중요한 부분들을 모두 잘 포함하고 검토해서 가이드라인에는 브랜드 미션 및 철학도 포함시켜줘
+
+---
+
+Evenstay 서비스를 구현하기 위한 PRD는 만들어져 있는지 검토해주고 브랜드 가이드라인과 디자인 시스템 사용해서
+MVP를 위해 필요한 화면 정의도 별도 문서로 해줘. md파일 형식으로 만들어줘.
+
+---
+
+이렇게 지침 정해놓고 디자인 스킬들 적재적소에 사용할 수 있도록 지침 설정해줘
+
+MVP 제작 기본 상시사용 스킬: hallmark
+랜딩페이지: landing-page-design
+레퍼런스 적용: tastemaker
+애니메이션: emil-design-eng, animate, improve-animations, apple-design, animation-vocabulary
+디자인 원칙 및 기본 지침: web-design-engineer, build-awwwards-quality-sites
+디자인 검수: visual-critique, ui-design
+
+---
+
+랜딩페이지를 먼저 기획하고 PRD 와 화면정의서부터 만들고 landing-page-design 스킬로 랜딩페이지 프로토타입을 제작하고 랜딩페이지의 애니메이션 적용과 검수는 emil design skill 들을 활용해서 적용해줘
+랜딩페이지 상단 메인화면에는 브랜드와 서비스에 어울리는 시니어가 안전하고 편안하게 Evenstay 시설을 이용하고
+뷰가 좋고 깨끗하고 깔끔한 Evenstay 시니어 숙소에서 편안하게 책을 보거나 여가를 보내면서 휴식을 취하고 있는 시니어 영상도 포함되면 좋겠어
+하나의 영상만 나오는게 아니라 여러개의 영상들이 순차 적으로 나오게 만들어줘
+따뜻하고 친절하게 대응하는 이븐스테이 직원들의 이미지들을 gpt-image 로 생성하고 higgsfields 영상으로 제작해서 배치해
+
+그외 필요한  일러스트, 아이콘, 마스코트등 이미지들을 모두 gpt-image 로 제작하도록 먼저 기획 하고 모두 생성해서 배치할 수 있도록 해줘
+
+만약 이미지 생성이 필요하다면 gpt-image 로 모두 생성해서 사용하고, 어떤 UI 요소에도 이모지는 쓰지마.
+고품질의 이미지 생성이 필요하면 gpt-image-api 로 gpt-image-2.5-pro 모델로 고품질 이미지를 생성해서 higgsfield 로 영상을 생성하도록 해줘
+영상생성이 필요하면 higgsfields cli 를 사용해서 영상을 생성해 영상 모델은 Kling 4.0 으로 제작해
+
+
+---
+
+그리고 현재 프로토타입에 evenstay 직원, 센터장, 오시는길, 시설사진, 전경사진, 숙소사진 등등 이런 부분들이 빠진거같은데 이런부분들 기획, PRD, 화면정의서에 모두 빠져있어?
+Evenstay 소개 페이지, 시설 소개 등등도 모두 빠져 있는 것 같아
+
+---
+
+빠져 있는 페이지들 검토해서 추가할 수 있게 기획하고 브랜드 이미지에 맞게 키 이미지를 만들고 일관된 이미지들을 생성해서 배치해야될 것 같아
+건물, 시설, 숙소등등 사진마다 다르면 안되고 직원 유니폼이나 이런 부분들 일관성을 보장하도록 키 이미지를 만들고 나머지 이미지들의 일관성을 보장하면서 생성해야될 것 같아
+
+---
+
+그리고 시니어들의 안전을 위해 긴급 경보로 즉시 출동하거나 진단, 응급처치, 긴급치료, 병원이송, 긴급벨 알람 출동, 숙소 체크나 시니어들을 수시로 모니터링해야되는 이런 서비스나 페이지도 부족한거 같은데 다시 한번 검토해줘 이런 부분들 랜딩페이지에도 모두 포함되어야 될거같은데

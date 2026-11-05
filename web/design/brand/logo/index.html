@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evenstay 로고</title>
+<meta name="description" content="Evenstay 확정 로고: 심볼, 가로형, 세로형, 제품별 로고, 앱 아이콘, 파비콘.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+/* Hallmark · component: logo sheet · genre: modern-minimal · theme: custom (DESIGN.md v2) · states: 8 · contrast: pass · v2.0.0
+ * shape: app screen · paper: #FAFAF7 · accent: #2340A0 · display: Pretendard · body: Pretendard · signature: the overlap of two records, the logo itself */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R5 V3 · weakest: V, a logo sheet is a grid of tiles; the tiles sit on the grounds each file is for */
+/* Hallmark · waive 37 · tokens.css lists --font-weight-* 700, 600, 500, 400 · those are Pretendard weights from the DESIGN.md export, the page sets one family */
+@import url("../../system/tokens.css");
+@font-face { font-family: "Pretendard"; src: url("../../fonts/pretendard/PretendardVariable.woff2") format("woff2-variations"); font-weight: 45 920; font-display: swap; }
+:root { --font-sans: "Pretendard", ui-sans-serif, system-ui, sans-serif; }
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+body { margin: 0; background: var(--bg-canvas); color: var(--fg-default); font-family: var(--font-sans); font-size: var(--text-body-md); line-height: var(--text-body-md--line-height); word-break: keep-all; -webkit-font-smoothing: antialiased; }
+h1, h2, p { margin: 0; overflow-wrap: break-word; min-width: 0; }
+h1, h2 { color: var(--fg-strong); text-wrap: balance; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.wrap { max-width: 1200px; margin-inline: auto; padding-inline: var(--spacing-6); }
+header { padding-block: var(--spacing-16) var(--spacing-12); }
+header img { height: 48px; width: auto; }
+h1 { margin-top: var(--spacing-8); font-size: var(--text-title1); font-weight: 700; letter-spacing: var(--tracking-title1); line-height: var(--text-title1--line-height); }
+header p { margin-top: var(--spacing-3); font-size: var(--text-body-lg); color: var(--fg-secondary); max-width: 36em; }
+section { padding-block: var(--spacing-12); border-top: 1px solid var(--border-subtle); }
+h2 { font-size: var(--text-heading1); font-weight: 700; letter-spacing: var(--tracking-heading1); line-height: var(--text-heading1--line-height); }
+.sub { margin-top: var(--spacing-2); color: var(--fg-secondary); max-width: 40em; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: var(--spacing-4); margin-top: var(--spacing-6); }
+figure { margin: 0; display: grid; gap: var(--spacing-2); }
+.tile { display: grid; place-items: center; min-height: 200px; padding: var(--spacing-10); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); background: var(--color-bg-surface); forced-color-adjust: none; }
+.tile.dark { color: var(--color-dark-fg-default); background: var(--color-dark-bg-canvas); border-color: var(--color-dark-bg-canvas); }
+.tile.brand { background: var(--color-primary); border-color: var(--color-primary); }
+.tile img { max-width: 100%; height: 64px; width: auto; }
+.tile img.sym { height: 96px; }
+.tile img.stk { height: 140px; }
+.tile img.icon { height: 160px; }
+figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--spacing-2); font-size: var(--text-body-sm); color: var(--fg-secondary); }
+figcaption a { color: var(--fg-brand); text-underline-offset: 0.16em; }
+figcaption a:hover { text-decoration-thickness: 2px; }
+figcaption a:active { color: var(--fg-strong); }
+.sizes { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--spacing-8); }
+.sizes span { display: grid; justify-items: center; gap: var(--spacing-2); font-size: var(--text-body-sm); color: var(--fg-secondary); }
+.rules { margin: var(--spacing-6) 0 0; padding-left: 1.2em; display: grid; gap: var(--spacing-2); max-width: 44em; }
+.clear { position: relative; display: inline-block; padding: 36px; outline: 1px dashed var(--fg-tertiary); outline-offset: -36px; background: repeating-linear-gradient(45deg, var(--bg-muted) 0 6px, transparent 6px 12px); }
+.clear img { display: block; height: 72px; width: auto; background: var(--color-bg-surface); }
+@media (max-width: 40rem) { .wrap { padding-inline: var(--spacing-4); } .tile { padding: var(--spacing-6); min-height: 160px; } .tile img { height: 44px; } }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <img src="evenstay-logo-light.svg" alt="Evenstay">
+  <h1>Evenstay 로고</h1>
+  <p>겹친 두 칸은 회원님과 가족이 함께 보는 기록입니다. 겹친 곳만 근거의 노랑으로 채웁니다.</p>
+</header>
+<main>
+  <section class="wrap" aria-labelledby="s1">
+    <h2 id="s1">가로형</h2>
+    <p class="sub">기본 로고입니다. 앱 상단 바, 문서, 슬라이드에 씁니다. 밝은 바탕은 light, 어두운 바탕은 dark, 한 색만 쓸 수 있으면 black 또는 white를 씁니다.</p>
+    <div class="tiles">
+      <figure><div class="tile"><img src="evenstay-logo-light.svg" alt="Evenstay 가로형, 밝은 바탕용"></div><figcaption><span>light</span><a href="evenstay-logo-light.svg" download>SVG 받기</a></figcaption></figure>
+      <figure><div class="tile dark"><img src="evenstay-logo-dark.svg" alt="Evenstay 가로형, 어두운 바탕용"></div><figcaption><span>dark</span><a href="evenstay-logo-dark.svg" download>SVG 받기</a></figcaption></figure>
+      <figure><div class="tile"><img src="evenstay-logo-black.svg" alt="Evenstay 가로형, 검정 한 색"></div><figcaption><span>black, 한 색 인쇄</span><a href="evenstay-logo-black.svg" download>SVG 받기</a></figcaption></figure>
+      <figure><div class="tile brand"><img src="evenstay-logo-white.svg" alt="Evenstay 가로형, 흰색 한 색"></div><figcaption><span>white, 색 바탕 위</span><a href="evenstay-logo-white.svg" download>SVG 받기</a></figcaption></figure>
+    </div>
+  </section>
+  <section class="wrap" aria-labelledby="s2">
+    <h2 id="s2">제품별 로고</h2>
+    <p class="sub">Evenstay 홈은 회원 앱, Evenstay 패밀리는 보호자 화면입니다. 운영 화면은 가로형 기본 로고를 씁니다.</p>
+    <div class="tiles">
+      <figure><div class="tile"><img src="evenstay-home-logo-light.svg" alt="Evenstay 홈, 밝은 바탕용"></div><figcaption><span>홈 light</span><a href="evenstay-home-logo-light.svg" download>SVG 받기</a></figcaption></figure>
+      <figure><div class="tile dark"><img src="evenstay-home-logo-dark.svg" alt="Evenstay 홈, 어두운 바탕용"></div><figcaption><span>홈 dark</span><a href="evenstay-home-logo-dark.svg" download>SVG 받기</a></figcaption></figure>
+      <figure><div class="tile"><img src="evenstay-family-logo-light.svg" alt="Evenstay 패밀리, 밝은 바탕용"></div><figcaption><span>패밀리 light</span><a href="evenstay-family-logo-light.svg" download>SVG 받기</a></figcaption></figure>
+      <figure><div class="tile dark"><img src="evenstay-family-logo-dark.svg" alt="Evenstay 패밀리, 어두운 바탕용"></div><figcaption><span>패밀리 dark</span><a href="evenstay-family-logo-dark.svg" download>SVG 받기</a></figcaption></figure>
+    </div>
+  </section>
+  <section class="wrap" aria-labelledby="s3">
+    <h2 id="s3">심볼과 세로형</h2>
+    <p class="sub">심볼은 공간이 좁을 때, 세로형은 첫 화면과 표지에 씁니다. 32px 이하에서는 선이 두꺼운 작은 심볼을 씁니다.</p>
+    <div class="tiles">
+      <figure><div class="tile"><img class="sym" src="evenstay-symbol-light.svg" alt="Evenstay 심볼, 밝은 바탕용"></div><figcaption><span>심볼 light</span><a href="evenstay-symbol-light.svg" download>SVG 받기</a></figcaption></figure>
+      <figure><div class="tile dark"><img class="sym" src="evenstay-symbol-dark.svg" alt="Evenstay 심볼, 어두운 바탕용"></div><figcaption><span>심볼 dark</span><a href="evenstay-symbol-dark.svg" download>SVG 받기</a></figcaption></figure>
+      <figure><div class="tile"><img class="stk" src="evenstay-logo-stacked-light.svg" alt="Evenstay 세로형, 밝은 바탕용"></div><figcaption><span>세로형 light</span><a href="evenstay-logo-stacked-light.svg" download>SVG 받기</a></figcaption></figure>
+      <figure><div class="tile dark"><img class="stk" src="evenstay-logo-stacked-dark.svg" alt="Evenstay 세로형, 어두운 바탕용"></div><figcaption><span>세로형 dark</span><a href="evenstay-logo-stacked-dark.svg" download>SVG 받기</a></figcaption></figure>
+    </div>
+  </section>
+  <section class="wrap" aria-labelledby="s4">
+    <h2 id="s4">앱 아이콘과 파비콘</h2>
+    <p class="sub">앱 아이콘은 코발트 바탕에 종이색과 노랑 선입니다. 파비콘은 브라우저의 라이트·다크 설정을 따라 색이 바뀝니다.</p>
+    <div class="tiles">
+      <figure><div class="tile"><img class="icon" src="app-icon-rounded.svg" alt="Evenstay 홈 앱 아이콘"></div><figcaption><span>앱 아이콘 1024</span><a href="app-icon.svg" download>SVG 받기</a></figcaption></figure>
+      <figure><div class="tile"><div class="sizes">
+        <span><img src="png/icon-512.png" alt="" width="96" height="96">96</span>
+        <span><img src="png/apple-touch-icon.png" alt="" width="60" height="60">60</span>
+        <span><img src="png/favicon-32.png" alt="" width="32" height="32">32</span>
+        <span><img src="png/favicon-16.png" alt="" width="16" height="16">16</span>
+      </div></div><figcaption><span>작은 크기 확인</span><a href="png/icon-512.png" download>PNG 받기</a></figcaption></figure>
+    </div>
+  </section>
+  <section class="wrap" aria-labelledby="s5">
+    <h2 id="s5">쓰는 규칙</h2>
+    <div class="clear" aria-label="여백 예시"><img src="evenstay-logo-light.svg" alt="Evenstay, 둘레 여백 예시"></div>
+    <ul class="rules">
+      <li>둘레 여백은 심볼 높이의 절반 이상입니다(빗금 영역).</li>
+      <li>가장 작은 크기: 가로형 높이 24px, 심볼 16px. 32px 이하에서는 작은 심볼을 씁니다.</li>
+      <li>로고 색을 바꾸지 않습니다. light, dark, black, white 네 가지만 씁니다.</li>
+      <li>노랑 겹침 칸은 컬러 로고에만 있습니다. 한 색 로고에서는 비웁니다.</li>
+      <li>늘이거나 기울이거나 그림자, 테두리, 그라디언트를 더하지 않습니다.</li>
+      <li>워드마크는 글자를 윤곽선으로 바꾼 파일입니다. 글자를 다시 쳐서 만들지 않습니다.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

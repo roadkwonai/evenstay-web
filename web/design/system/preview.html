@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="ko" class="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evenstay 디자인 시스템</title>
+<meta name="description" content="DESIGN.md v2의 토큰과 컴포넌트를 세 밀도, 라이트와 다크로 확인하는 페이지.">
+<style>
+/* Hallmark · component: design system preview · genre: modern-minimal · theme: custom (DESIGN.md v2, concept 3 "함께 보는 기록") · states: 8 · contrast: pass · v2.0.0
+ * shape: app screen · paper: #FAFAF7 · accent: #2340A0 · display: Pretendard · body: Pretendard · signature: the same invoice fact seen by member, family and staff */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, a component sheet; every specimen uses the demo resident's real facts instead of lorem */
+/* Hallmark · waive 37 · tokens.css lists --font-weight-* 700, 600, 500, 400 · those are Pretendard weights from the DESIGN.md export, the page sets one family */
+/* Hallmark · dismissed F4 · .btn.secondary, .tertiary and .ghost are outline, muted and text variants beside the one cobalt primary per specimen */
+@import url("./tokens.css");
+
+@font-face { font-family: "Pretendard"; src: url("../fonts/pretendard/PretendardVariable.woff2") format("woff2-variations"); font-weight: 45 920; font-display: swap; }
+:root {
+  --font-sans: "Pretendard", ui-sans-serif, system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1); --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-press: 120ms; --duration-fast: 160ms; --duration-base: 200ms; --duration-slow: 280ms;
+  --shadow-1: 0 1px 2px #17191C0F, 0 1px 3px #17191C0A; --shadow-2: 0 4px 12px #17191C14, 0 1px 3px #17191C0F; --shadow-3: 0 12px 32px #17191C1F, 0 4px 8px #17191C0F;
+}
+.dark { --shadow-1: 0 0 0 1px var(--color-dark-border-default); --shadow-2: 0 0 0 1px var(--color-dark-border-default); --shadow-3: 0 0 0 1px var(--color-dark-border-default); color-scheme: dark; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+body { margin: 0; background: var(--bg-canvas); color: var(--fg-default); font-family: var(--font-sans); font-size: var(--text-body-md); line-height: var(--text-body-md--line-height); word-break: keep-all; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, p, figure { margin: 0; overflow-wrap: break-word; min-width: 0; }
+h1, h2 { text-wrap: balance; color: var(--fg-strong); }
+p { text-wrap: pretty; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.wrap { max-width: 1200px; margin-inline: auto; padding-inline: var(--spacing-6); }
+section { padding-block: var(--spacing-16); border-top: 1px solid var(--border-subtle); }
+h2 { font-size: var(--text-title2); font-weight: 700; letter-spacing: var(--tracking-title2); line-height: var(--text-title2--line-height); }
+h3 { font-size: var(--text-headline); font-weight: 600; color: var(--fg-strong); line-height: var(--text-headline--line-height); }
+.sub { margin-top: var(--spacing-2); color: var(--fg-secondary); max-width: 40em; }
+.cap { font-size: var(--text-body-sm); color: var(--fg-secondary); }
+.num { font-variant-numeric: tabular-nums; }
+.grid { display: grid; gap: var(--spacing-6); margin-top: var(--spacing-8); }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.stack { display: grid; gap: var(--spacing-3); align-content: start; justify-items: start; }
+.row-flex { display: flex; flex-wrap: wrap; gap: var(--spacing-3); align-items: center; }
+.lucide { width: 20px; height: 20px; flex: none; }
+
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--spacing-6); padding-block: var(--spacing-16) var(--spacing-12); }
+.top h1 { margin-top: var(--spacing-6); font-size: var(--text-display2); font-weight: 700; letter-spacing: var(--tracking-display2); line-height: var(--text-display2--line-height); }
+.top p { margin-top: var(--spacing-3); font-size: var(--text-body-lg); color: var(--fg-secondary); max-width: 36em; }
+.logo { display: flex; align-items: center; gap: var(--spacing-2); font-weight: 700; font-size: var(--text-heading2); color: var(--fg-strong); }
+.logo svg { width: 32px; height: 32px; flex: none; forced-color-adjust: none; }
+
+.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-2); height: 56px; padding: 0 var(--spacing-6); border: 2px solid transparent; border-radius: var(--radius-md); background: var(--primary); color: var(--on-primary); font: inherit; font-size: var(--text-label-lg); font-weight: 600; line-height: var(--text-label-lg--line-height); cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out), transform var(--duration-press) var(--ease-out); }
+.btn::after { content: ""; position: absolute; inset: -4px; }
+.btn.is-hover { background: var(--primary-hover); }
+.btn:active, .btn.is-active { background: var(--primary-active); transform: scale(0.97); }
+.btn.is-focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+.btn.md { height: 48px; padding: 0 var(--spacing-5); }
+.btn.sm { height: 40px; padding: 0 var(--spacing-4); font-size: var(--text-label); }
+.btn.secondary { background: var(--bg-surface); color: var(--fg-strong); border-color: var(--border-strong); }
+.btn.tertiary { background: var(--bg-muted); color: var(--fg-strong); }
+.btn.ghost { background: transparent; color: var(--fg-brand); }
+.btn.secondary, .btn.tertiary, .btn.ghost { isolation: isolate; }
+.btn.secondary::before, .btn.tertiary::before, .btn.ghost::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: var(--state-hover); opacity: 0; pointer-events: none; transition: opacity var(--duration-fast) var(--ease-out); }
+.btn.secondary.is-hover::before { opacity: 1; }
+.btn.secondary:active::before, .btn.tertiary:active::before, .btn.ghost:active::before { background: var(--state-active); opacity: 1; }
+.btn:disabled::before { display: none; }
+.btn.danger { background: var(--danger); color: var(--on-danger); }
+.btn:disabled { background: var(--bg-muted); color: var(--fg-disabled); border-color: transparent; cursor: not-allowed; transform: none; background-image: none; }
+.btn.is-loading { cursor: progress; }
+.btn.is-loading .lucide { animation: spin 800ms linear infinite; }
+.btn.block { width: 100%; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.icon-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: var(--radius-full); background: transparent; color: var(--fg-default); cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out); }
+.icon-btn:active { background: var(--state-active); }
+.err-note { display: flex; gap: var(--spacing-1); align-items: center; color: var(--fg-danger); font-size: var(--text-body-sm); font-weight: 600; }
+.err-note .lucide { width: 16px; height: 16px; }
+
+.card { background: var(--bg-surface); color: var(--fg-default); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: var(--spacing-6); display: grid; gap: var(--spacing-4); align-content: start; }
+.hl { background: linear-gradient(transparent 55%, var(--highlight) 55%); color: var(--on-highlight); forced-color-adjust: none; }
+/* dark: ink text needs the full yellow behind it, a half underline leaves its top on the dark ground */
+.dark .hl { background: var(--highlight); padding: 0 var(--spacing-1); border-radius: var(--radius-sm); }
+.money { display: flex; justify-content: space-between; align-items: baseline; gap: var(--spacing-3); padding-block: var(--spacing-3); border-bottom: 1px solid var(--border-subtle); }
+.money:last-child { border-bottom: 0; }
+.money b { font-size: var(--text-number); font-weight: 700; color: var(--fg-strong); font-variant-numeric: tabular-nums; }
+.scope { display: flex; gap: var(--spacing-2); align-items: flex-start; padding: var(--spacing-3) var(--spacing-4); border-radius: var(--radius-md); background: var(--bg-muted); color: var(--fg-default); }
+.scope .lucide { margin-top: var(--spacing-1); }
+.record { display: grid; gap: var(--spacing-1); padding-block: var(--spacing-3); border-bottom: 1px solid var(--border-subtle); font-size: var(--text-body-sm); color: var(--fg-secondary); }
+.record b { color: var(--fg-strong); font-weight: 600; }
+.record .chg { display: flex; flex-wrap: wrap; gap: var(--spacing-1); align-items: center; color: var(--fg-default); }
+.record .chg .lucide { width: 16px; height: 16px; }
+
+.densities { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 4fr) minmax(0, 6fr); gap: var(--spacing-6); margin-top: var(--spacing-8); align-items: start; }
+.home { font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height); }
+.home .hello { font-size: var(--text-title3); font-weight: 700; letter-spacing: var(--tracking-title3); color: var(--fg-strong); line-height: var(--text-title3--line-height); }
+.home .why { color: var(--fg-secondary); }
+.mini-logo { display: flex; align-items: center; gap: var(--spacing-2); font-weight: 600; color: var(--fg-strong); font-size: var(--text-body-md); }
+.mini-logo svg { width: 28px; height: 28px; forced-color-adjust: none; }
+
+.ops { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); overflow: hidden; font-size: var(--text-body-sm); }
+.ops-bar { display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-3); height: 56px; padding: 0 var(--spacing-4); border-bottom: 1px solid var(--border-subtle); }
+.ops-bar nav { display: flex; gap: var(--spacing-1); }
+.nav-item { display: inline-flex; align-items: center; height: 36px; padding: 0 var(--spacing-3); border-radius: var(--radius-md); color: var(--fg-secondary); font-weight: 600; text-decoration: none; }
+.nav-item[aria-current="page"] { background: var(--primary-subtle); color: var(--fg-brand); }
+.ops-head { display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-3); padding: var(--spacing-4); }
+.ops-foot { padding: 0 var(--spacing-4) var(--spacing-2); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { height: 52px; padding: 0 var(--spacing-4); text-align: left; border-bottom: 1px solid var(--border-subtle); white-space: nowrap; }
+th { height: 44px; background: var(--bg-subtle); color: var(--fg-secondary); font-weight: 600; font-size: var(--text-label); border-bottom-color: var(--border-default); }
+td.r, th.r { text-align: right; }
+tbody tr[aria-selected="true"] { background: var(--primary-subtle); }
+.badge { display: inline-flex; align-items: center; height: 24px; padding: 0 var(--spacing-2); border-radius: var(--radius-sm); background: var(--bg-muted); color: var(--fg-default); font-size: var(--text-label); font-weight: 600; line-height: 1; }
+.badge.brand { background: var(--primary-subtle); color: var(--fg-brand); }
+.badge.success { background: var(--success-subtle); color: var(--fg-success); }
+.badge.warning { background: var(--warning-subtle); color: var(--fg-warning); }
+.badge.danger { background: var(--danger-subtle); color: var(--fg-danger); }
+
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: var(--spacing-4); margin-top: var(--spacing-8); padding: 0; list-style: none; }
+.swatches li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: var(--spacing-3); align-items: center; }
+.sw { width: 48px; height: 48px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); forced-color-adjust: none; }
+.swatches b { display: block; font-weight: 600; color: var(--fg-strong); }
+.swatches code, .ramp code { font-family: var(--font-sans); font-size: var(--text-body-sm); color: var(--fg-secondary); }
+.ramps { display: grid; gap: var(--spacing-2); margin-top: var(--spacing-6); }
+.ramp { display: grid; grid-template-columns: 72px repeat(11, minmax(0, 1fr)); gap: var(--spacing-1); align-items: center; }
+.ramp span { height: 32px; border-radius: var(--radius-sm); forced-color-adjust: none; }
+.type-table { margin-top: var(--spacing-8); }
+.type-row { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: var(--spacing-4); align-items: baseline; padding-block: var(--spacing-3); border-bottom: 1px solid var(--border-subtle); }
+.type-row .s { color: var(--fg-strong); }
+
+.field { display: grid; gap: var(--spacing-2); width: 100%; max-width: 420px; }
+.field label { font-size: var(--text-label-lg); font-weight: 600; color: var(--fg-strong); }
+.field .help { font-size: var(--text-body-sm); color: var(--fg-secondary); }
+.input { width: 100%; height: 56px; padding: 0 var(--spacing-4); border: 2px solid var(--border-strong); border-radius: var(--radius-md); background: var(--bg-surface); color: var(--fg-strong); font: inherit; font-size: var(--text-body-lg); transition: border-color var(--duration-fast) var(--ease-out); }
+.input::placeholder { color: var(--fg-tertiary); }
+.input:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.input[aria-invalid="true"] { border-color: var(--danger); }
+.input:disabled { background: var(--bg-muted); color: var(--fg-disabled); border-color: var(--bg-muted); }
+.input.sm { height: 44px; font-size: var(--text-body-sm); padding: 0 var(--spacing-3); }
+.check { display: flex; gap: var(--spacing-3); align-items: center; min-height: 48px; cursor: pointer; font-size: var(--text-body-md); color: var(--fg-strong); }
+.check input { appearance: none; margin: 0; width: 24px; height: 24px; flex: none; border: 2px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--bg-surface); display: grid; place-items: center; cursor: pointer; }
+.check input[type="radio"] { border-radius: var(--radius-full); }
+.check input:checked { background: var(--primary); border-color: var(--primary); }
+.check input[type="checkbox"]:checked::after { content: ""; width: 12px; height: 7px; border-left: 2.5px solid var(--on-primary); border-bottom: 2.5px solid var(--on-primary); transform: translateY(-2px) rotate(-45deg); }
+.check input[type="radio"]:checked { background: var(--bg-surface); border-width: 7px; }
+.check input:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.check input:disabled { background: var(--bg-muted); border-color: var(--bg-muted); cursor: not-allowed; }
+.check:has(input:disabled) { color: var(--fg-disabled); cursor: not-allowed; }
+.switch { position: relative; width: 52px; height: 32px; flex: none; appearance: none; margin: 0; border-radius: var(--radius-full); background: var(--border-strong); cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out); }
+.switch::before { content: ""; position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: var(--radius-full); background: var(--bg-surface); box-shadow: var(--shadow-1); transition: transform var(--duration-base) var(--ease-out); }
+.switch:checked { background: var(--primary); }
+.switch:checked::before { transform: translateX(20px); }
+.switch:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.chip { display: inline-flex; align-items: center; height: 44px; padding: 0 var(--spacing-4); border: 1px solid var(--border-strong); border-radius: var(--radius-full); background: var(--bg-surface); color: var(--fg-default); font: inherit; font-size: var(--text-label); font-weight: 600; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--fg-strong); color: var(--bg-canvas); border-color: var(--fg-strong); }
+.seg { display: inline-flex; padding: var(--spacing-1); border-radius: var(--radius-lg); background: var(--bg-muted); }
+.seg button { height: 40px; padding: 0 var(--spacing-4); border: 0; border-radius: var(--radius-md); background: transparent; color: var(--fg-secondary); font: inherit; font-size: var(--text-label); font-weight: 600; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--bg-surface); color: var(--fg-strong); box-shadow: var(--shadow-1); }
+.tabs { display: flex; gap: var(--spacing-2); border-bottom: 1px solid var(--border-subtle); }
+.tabs button { height: 48px; padding: 0 var(--spacing-3); border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; background: transparent; color: var(--fg-secondary); font: inherit; font-size: var(--text-label-lg); font-weight: 600; cursor: pointer; }
+.tabs button[aria-selected="true"] { color: var(--fg-strong); border-bottom-color: var(--fg-strong); }
+
+.alert { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--spacing-1) var(--spacing-3); padding: var(--spacing-4); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); background: var(--bg-subtle); }
+.alert .lucide { grid-row: span 2; margin-top: 2px; }
+.alert b { color: var(--fg-strong); font-size: var(--text-label-lg); }
+.alert.info .lucide { color: var(--fg-brand); } .alert.success .lucide { color: var(--fg-success); } .alert.warning .lucide { color: var(--fg-warning); } .alert.danger .lucide { color: var(--fg-danger); }
+.toast { display: flex; align-items: center; gap: var(--spacing-3); width: 100%; max-width: 420px; padding: var(--spacing-4) var(--spacing-5); border-radius: var(--radius-lg); background: var(--bg-inverse); color: var(--fg-on-inverse); box-shadow: var(--shadow-2); transition: transform var(--duration-base) var(--ease-out), opacity var(--duration-base) var(--ease-out); @starting-style { transform: translateY(100%); opacity: 0; } }
+.toast .act { margin-left: auto; padding: 0; border: 0; background: none; color: var(--fg-brand-on-inverse); font: inherit; font-weight: 700; cursor: pointer; }
+.tooltip { display: inline-block; padding: var(--spacing-2) var(--spacing-3); border-radius: var(--radius-md); background: var(--bg-inverse); color: var(--fg-on-inverse); font-size: var(--text-body-sm); box-shadow: var(--shadow-2); }
+.scrim-box { display: grid; place-items: center; padding: var(--spacing-8) var(--spacing-4); border-radius: var(--radius-xl); background: var(--scrim); }
+.dialog { width: 100%; max-width: 440px; display: grid; gap: var(--spacing-3); padding: var(--spacing-6); border-radius: var(--radius-2xl); background: var(--bg-elevated); box-shadow: var(--shadow-3); }
+.dialog h3 { font-size: var(--text-heading1); font-weight: 700; }
+.dialog .actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--spacing-2); margin-top: var(--spacing-3); }
+dialog.dialog { border: 0; color: var(--fg-default); }
+dialog.dialog:not([open]) { display: none; }
+dialog.dialog::backdrop { background: var(--scrim); }
+dialog.dialog[open] { animation: pop var(--duration-slow) var(--ease-out); }
+@keyframes pop { from { opacity: 0; transform: scale(0.95); } }
+.empty { display: grid; justify-items: center; gap: var(--spacing-2); padding: var(--spacing-12) var(--spacing-6); text-align: center; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); background: var(--bg-surface); }
+.empty .ic { display: grid; place-items: center; width: 56px; height: 56px; border-radius: var(--radius-full); background: var(--bg-muted); color: var(--fg-secondary); }
+.empty .ic .lucide { width: 28px; height: 28px; }
+.empty h3 { margin-top: var(--spacing-2); font-size: var(--text-heading2); }
+.empty p { color: var(--fg-secondary); max-width: 24em; }
+.empty .btn { margin-top: var(--spacing-3); }
+.sk { display: block; height: 16px; border-radius: var(--radius-sm); background: var(--bg-muted); }
+.sk.w60 { width: 60%; } .sk.w80 { width: 80%; } .sk.h40 { height: 40px; }
+.spinner { width: 24px; height: 24px; border: 3px solid var(--bg-muted); border-top-color: var(--primary); border-radius: var(--radius-full); animation: spin 800ms linear infinite; }
+.loading { display: inline-flex; align-items: center; gap: var(--spacing-2); color: var(--fg-secondary); font-size: var(--text-body-sm); }
+.progress { width: 100%; height: 8px; border-radius: var(--radius-full); background: var(--bg-muted); overflow: hidden; }
+.progress span { display: block; width: 66%; height: 100%; border-radius: inherit; background: var(--primary); }
+
+.list { width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); background: var(--bg-surface); overflow: hidden; }
+.cell { display: flex; align-items: center; gap: var(--spacing-3); padding-left: var(--spacing-4); color: var(--fg-strong); text-decoration: none; }
+.cell + .cell .body { border-top: 1px solid var(--border-subtle); }
+.cell .body { flex: 1; display: flex; align-items: center; gap: var(--spacing-3); min-height: 72px; padding-right: var(--spacing-4); }
+.cell .t { flex: 1; display: grid; }
+.cell .t b { font-size: var(--text-headline); font-weight: 600; }
+.cell .t span { font-size: var(--text-body-sm); color: var(--fg-secondary); }
+.cell .lucide { color: var(--fg-secondary); }
+.crumb { display: flex; flex-wrap: wrap; gap: var(--spacing-1); align-items: center; padding: 0; margin: 0; list-style: none; font-size: var(--text-body-sm); }
+.crumb li { display: flex; align-items: center; }
+.crumb a { color: var(--fg-secondary); }
+.crumb .lucide { width: 16px; height: 16px; color: var(--fg-tertiary); }
+.crumb [aria-current] { color: var(--fg-strong); font-weight: 600; }
+.pager { display: flex; gap: var(--spacing-1); }
+.pager button { display: inline-grid; place-items: center; min-width: 40px; height: 40px; padding: 0 var(--spacing-2); border: 0; border-radius: var(--radius-md); background: transparent; color: var(--fg-secondary); font: inherit; font-weight: 600; font-variant-numeric: tabular-nums; cursor: pointer; }
+.pager button[aria-current="page"] { background: var(--fg-strong); color: var(--bg-canvas); }
+.pager button:disabled { color: var(--fg-disabled); cursor: not-allowed; background: transparent; }
+.menu { width: 220px; padding: var(--spacing-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); background: var(--bg-elevated); box-shadow: var(--shadow-2); transform-origin: top left; transition: transform var(--duration-base) var(--ease-out), opacity var(--duration-base) var(--ease-out); @starting-style { transform: scale(0.95); opacity: 0; } }
+.menu button { display: flex; align-items: center; gap: var(--spacing-2); width: 100%; height: 44px; padding: 0 var(--spacing-3); border: 0; border-radius: var(--radius-md); background: transparent; color: var(--fg-default); font: inherit; font-size: var(--text-body-sm); text-align: left; cursor: pointer; }
+.menu hr { margin: var(--spacing-1) 0; border: 0; border-top: 1px solid var(--border-subtle); }
+.menu .danger { color: var(--fg-danger); }
+details.acc { width: 100%; border-bottom: 1px solid var(--border-subtle); }
+details.acc summary { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-3); min-height: 56px; font-size: var(--text-headline); font-weight: 600; color: var(--fg-strong); cursor: pointer; list-style: none; }
+details.acc summary::-webkit-details-marker { display: none; }
+details.acc summary .lucide { transition: transform var(--duration-base) var(--ease-out); }
+details.acc[open] summary .lucide { transform: rotate(180deg); }
+details.acc p { padding-bottom: var(--spacing-4); color: var(--fg-default); }
+
+.tok { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); gap: var(--spacing-4); margin-top: var(--spacing-6); }
+.tok div { display: grid; gap: var(--spacing-2); justify-items: start; }
+.tok .box { width: 72px; height: 72px; background: var(--bg-surface); border: 1px solid var(--border-default); }
+
+footer { padding-block: var(--spacing-12); border-top: 1px solid var(--border-subtle); }
+footer p + p { margin-top: var(--spacing-1); }
+
+@media (max-width: 60rem) { .densities { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 40rem) {
+  .wrap { padding-inline: var(--spacing-4); }
+  .type-row { grid-template-columns: minmax(0, 1fr); gap: var(--spacing-1); }
+  .ramp { grid-template-columns: repeat(11, minmax(0, 1fr)); }
+  .ramp code { grid-column: 1 / -1; }
+  .ops-bar nav { display: none; }
+  .top h1 { font-size: var(--text-title1); }
+}
+@media (hover: hover) and (pointer: fine) {
+  /* :not() keeps the variant, disabled and error rules that sit earlier in the file */
+  .btn:not(:disabled, .secondary, .tertiary, .ghost, .danger):hover { background: var(--primary-hover); }
+  .btn.secondary:hover::before, .btn.tertiary:hover::before, .btn.ghost:hover::before { opacity: 1; }
+  .btn.danger:not(:disabled):hover { background: var(--danger-hover); }
+  .icon-btn:hover { background: var(--state-hover); }
+  tbody tr:hover { background: var(--bg-subtle); }
+  .input:not(:disabled, [aria-invalid="true"]):hover { border-color: var(--fg-strong); }
+  .chip:hover { background-image: linear-gradient(var(--state-hover), var(--state-hover)); }
+  .cell:hover { background: var(--bg-subtle); }
+  .pager button:not(:disabled):hover { background: var(--state-hover); }
+  .menu button:hover { background: var(--state-hover); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-property: opacity, color, background-color, border-color, box-shadow !important; transition-duration: var(--duration-fast) !important; }
+  .spinner, .btn.is-loading .lucide { animation: es-pulse 1.2s ease-in-out infinite !important; }
+  .btn:active, .btn.is-active { transform: none; }
+}
+@keyframes es-pulse { 50% { opacity: 0.4; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 80 80"><rect x="12" y="12" width="38" height="38" rx="8" fill="none" stroke="var(--fg-strong)" stroke-width="6"/><rect x="30" y="30" width="38" height="38" rx="8" fill="none" stroke="var(--primary)" stroke-width="6"/></symbol>
+</svg>
+
+<header class="wrap top">
+  <div>
+    <p class="logo"><svg aria-hidden="true"><use href="#mark"/></svg>evenstay</p>
+    <h1>Evenstay 디자인 시스템</h1>
+    <p>DESIGN.md v2의 토큰과 컴포넌트를 회원, 보호자, 직원 화면에 칠해 본 확인 페이지입니다.</p>
+  </div>
+  <button class="btn secondary md" type="button" id="theme" aria-pressed="false"><i data-lucide="moon" aria-hidden="true"></i><span>다크로 보기</span></button>
+</header>
+
+<main>
+<section aria-labelledby="t-density">
+  <div class="wrap">
+    <h2 id="t-density">같은 사실, 세 화면</h2>
+    <p class="sub">이번 달 청구서 하나를 회원님, 보호자, 직원이 각자의 밀도로 봅니다. 색과 모양은 같고 글자 크기와 버튼 높이만 다릅니다.</p>
+    <div class="densities">
+      <div class="card home">
+        <p class="mini-logo"><svg aria-hidden="true"><use href="#mark"/></svg>Evenstay 홈</p>
+        <p class="hello">이은숙 회원님</p>
+        <p>12월 청구서가 나왔어요. 이번 달 내실 돈 <span class="hl num">2,910,000원</span></p>
+        <p class="why">드시지 않은 식사 3끼, 27,000원을 빼 드렸어요.</p>
+        <button class="btn block" type="button">청구서 보기</button>
+        <button class="btn secondary block" type="button"><i data-lucide="phone" aria-hidden="true"></i>프런트에 전화하기</button>
+      </div>
+      <div class="card">
+        <p class="mini-logo"><svg aria-hidden="true"><use href="#mark"/></svg>Evenstay 패밀리</p>
+        <p class="scope"><i data-lucide="eye" aria-hidden="true"></i>이은숙 님이 청구서 열람을 허락하셨어요.</p>
+        <div>
+          <div class="money"><span>12월 청구 금액</span><b>2,910,000원</b></div>
+          <div class="money"><span>드시지 않은 식사 3끼</span><span class="num"><span class="hl">27,000원 빼 드림</span></span></div>
+        </div>
+        <button class="btn block" type="button">청구서 자세히 보기</button>
+      </div>
+      <div>
+        <div class="ops">
+          <div class="ops-bar">
+            <span class="mini-logo"><svg aria-hidden="true"><use href="#mark"/></svg>Evenstay</span>
+            <nav aria-label="운영 메뉴"><a class="nav-item" href="#t-density" aria-current="page">청구</a><a class="nav-item" href="#t-density">계약</a><a class="nav-item" href="#t-density">입주자</a></nav>
+          </div>
+          <div class="ops-head"><h3>A동 201호 이은숙 입주자 청구서</h3><button class="btn sm" type="button">근거 보기</button></div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>청구 월</th><th>계약</th><th class="r">청구 금액</th><th class="r">결식 감면</th></tr></thead>
+            <tbody>
+              <tr><td>10월</td><td><span class="badge">2인</span></td><td class="r">4,947,000원</td><td class="r">27,000원</td></tr>
+              <tr><td>11월</td><td><span class="badge">2인</span></td><td class="r">4,893,000원</td><td class="r">27,000원</td></tr>
+              <tr><td>12월</td><td><span class="badge">1인</span></td><td class="r">2,910,000원</td><td class="r">27,000원</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ops-foot"><div class="record"><span><b>박소연 경리</b> 2026. 11. 10.</span><span class="chg">계약 인원 2인 <i data-lucide="arrow-right" aria-label="에서"></i> 1인, 사별 승계</span></div></div>
+        </div>
+        <p class="cap" style="margin-top: var(--spacing-2)">이름, 호실, 금액, 기록은 모두 가상 데모 데이터입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-color">
+  <div class="wrap">
+    <h2 id="t-color">색</h2>
+    <p class="sub">화면은 의미 색만 부릅니다. 다크로 바꾸면 같은 이름이 다크 값으로 바뀝니다.</p>
+    <ul class="swatches">
+      <li><span class="sw" style="background: var(--primary)"></span><span><b>primary</b><code>행동, 선택, 링크, 포커스</code></span></li>
+      <li><span class="sw" style="background: var(--primary-subtle)"></span><span><b>primary-subtle</b><code>선택된 메뉴, 브랜드 배지</code></span></li>
+      <li><span class="sw" style="background: var(--highlight)"></span><span><b>highlight</b><code>근거 밑줄, 한 화면 한 곳</code></span></li>
+      <li><span class="sw" style="background: var(--fg-strong)"></span><span><b>fg-strong</b><code>제목, 금액</code></span></li>
+      <li><span class="sw" style="background: var(--fg-default)"></span><span><b>fg-default</b><code>본문</code></span></li>
+      <li><span class="sw" style="background: var(--fg-secondary)"></span><span><b>fg-secondary</b><code>라벨, 캡션</code></span></li>
+      <li><span class="sw" style="background: var(--fg-tertiary)"></span><span><b>fg-tertiary, fg-disabled</b><code>자리표시, 비활성</code></span></li>
+      <li><span class="sw" style="background: var(--border-strong)"></span><span><b>border-strong</b><code>입력, 보조 버튼 경계</code></span></li>
+      <li><span class="sw" style="background: var(--border-default)"></span><span><b>border-default</b><code>강한 구분선</code></span></li>
+      <li><span class="sw" style="background: var(--border-subtle)"></span><span><b>border-subtle</b><code>카드, 구분선</code></span></li>
+      <li><span class="sw" style="background: var(--bg-canvas)"></span><span><b>bg-canvas</b><code>페이지</code></span></li>
+      <li><span class="sw" style="background: var(--bg-surface)"></span><span><b>bg-surface</b><code>카드, 입력</code></span></li>
+      <li><span class="sw" style="background: var(--bg-subtle)"></span><span><b>bg-subtle</b><code>표 머리, 알림</code></span></li>
+      <li><span class="sw" style="background: var(--bg-muted)"></span><span><b>bg-muted</b><code>배지, 트랙, 비활성</code></span></li>
+      <li><span class="sw" style="background: var(--bg-inverse)"></span><span><b>bg-inverse</b><code>토스트, 툴팁</code></span></li>
+      <li><span class="sw" style="background: var(--danger)"></span><span><b>danger</b><code>되돌릴 수 없는 행동, 오류</code></span></li>
+      <li><span class="sw" style="background: var(--fg-success)"></span><span><b>fg-success</b><code>시스템 결과만</code></span></li>
+      <li><span class="sw" style="background: var(--fg-warning)"></span><span><b>fg-warning</b><code>시스템 결과만</code></span></li>
+    </ul>
+    <h3 style="margin-top: var(--spacing-12)">원자 램프</h3>
+    <div class="ramps" id="ramps"></div>
+  </div>
+</section>
+
+<section aria-labelledby="t-type">
+  <div class="wrap">
+    <h2 id="t-type">글자</h2>
+    <p class="sub">Pretendard 하나, 18단계. 18px 이상은 자간을 조이고 17px 이하는 0 또는 넓힙니다. Home의 가장 작은 글자는 17px입니다.</p>
+    <div class="type-table" id="types"></div>
+  </div>
+</section>
+
+<section aria-labelledby="t-btn">
+  <div class="wrap">
+    <h2 id="t-btn">버튼</h2>
+    <p class="sub">변형 다섯, 크기 셋. 화면당 채운 버튼은 하나입니다. 누르면 0.97로 줄어듭니다.</p>
+    <div class="grid g3">
+      <div class="stack"><span class="cap">primary, lg 56</span><button class="btn" type="button">청구서 보기</button></div>
+      <div class="stack"><span class="cap">secondary, 앱 밖 경로</span><button class="btn secondary" type="button"><i data-lucide="phone" aria-hidden="true"></i>프런트에 전화하기</button></div>
+      <div class="stack"><span class="cap">tertiary</span><button class="btn tertiary" type="button">나중에 하기</button></div>
+      <div class="stack"><span class="cap">ghost</span><button class="btn ghost" type="button">기록 더 보기</button></div>
+      <div class="stack"><span class="cap">danger, 확인 대화상자와 함께</span><button class="btn danger" type="button" data-open="dlg">동의 철회하기</button></div>
+      <div class="stack"><span class="cap">md 48, sm 40</span><div class="row-flex"><button class="btn md" type="button">저장하기</button><button class="btn sm" type="button">발행하기</button></div></div>
+      <div class="stack"><span class="cap">icon-button 44, 운영만</span><div class="row-flex"><button class="icon-btn" type="button" aria-label="더 보기"><i data-lucide="ellipsis" aria-hidden="true"></i></button><button class="icon-btn" type="button" aria-label="인쇄하기"><i data-lucide="printer" aria-hidden="true"></i></button></div></div>
+    </div>
+    <h3 style="margin-top: var(--spacing-12)">여덟 상태</h3>
+    <div class="grid g3">
+      <div class="stack"><span class="cap">기본</span><button class="btn" type="button">보내기</button></div>
+      <div class="stack"><span class="cap">hover</span><button class="btn is-hover" type="button">보내기</button></div>
+      <div class="stack"><span class="cap">focus-visible</span><button class="btn is-focus" type="button">보내기</button></div>
+      <div class="stack"><span class="cap">active</span><button class="btn is-active" type="button">보내기</button></div>
+      <div class="stack"><span class="cap">비활성, 이유와 함께</span><button class="btn" type="button" disabled>결제하기</button><span class="cap">대리인 김태호 님만 결제할 수 있어요.</span></div>
+      <div class="stack"><span class="cap">처리 중</span><button class="btn is-loading" type="button" aria-busy="true"><i data-lucide="loader" aria-hidden="true"></i>보내는 중</button></div>
+      <div class="stack"><span class="cap">오류</span><button class="btn" type="button" aria-describedby="e1"><i data-lucide="rotate-cw" aria-hidden="true"></i>다시 보내기</button><span class="err-note" id="e1"><i data-lucide="circle-alert" aria-hidden="true"></i>연결이 끊겨 보내지 못했어요.</span></div>
+      <div class="stack"><span class="cap">완료</span><button class="btn secondary" type="button"><i data-lucide="check" aria-hidden="true"></i>보냈어요</button></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-input">
+  <div class="wrap">
+    <h2 id="t-input">입력과 선택</h2>
+    <p class="sub">라벨은 위, 도움말과 오류는 아래. 입력 테두리는 border-strong 2px입니다. 동의는 스위치가 아니라 체크박스로 받습니다.</p>
+    <div class="grid g2">
+      <div class="field"><label for="i1">보호자 휴대전화 (필수)</label><input class="input" id="i1" inputmode="tel" placeholder="010-0000-0000"><span class="help">알림 문자를 받을 번호예요.</span></div>
+      <div class="field"><label for="i2">보호자 휴대전화 (필수)</label><input class="input" id="i2" inputmode="tel" value="010-1234" aria-invalid="true" aria-describedby="i2e"><span class="err-note" id="i2e"><i data-lucide="circle-alert" aria-hidden="true"></i>번호가 짧아요. 11자리를 넣어 주세요.</span></div>
+      <div class="field"><label for="i3">계약 번호</label><input class="input" id="i3" value="C-2026-0201" disabled><span class="help">계약 번호는 바꿀 수 없어요.</span></div>
+      <div class="field"><label for="i4" style="font-size: var(--text-label)">입주자 검색 (운영, 44)</label><input class="input sm" id="i4" placeholder="이름 또는 호실"></div>
+    </div>
+    <div class="grid g3">
+      <div class="stack">
+        <span class="cap">체크박스</span>
+        <label class="check"><input type="checkbox" checked>청구서를 보호자와 함께 봅니다</label>
+        <label class="check"><input type="checkbox">건강 소식을 보호자에게 알립니다</label>
+        <label class="check"><input type="checkbox" disabled>대리 결제 (대리인만)</label>
+      </div>
+      <div class="stack">
+        <span class="cap">라디오</span>
+        <label class="check"><input type="radio" name="r" checked>문자로 받기</label>
+        <label class="check"><input type="radio" name="r">전화로 받기</label>
+        <label class="check"><input type="radio" name="r">받지 않기</label>
+      </div>
+      <div class="stack">
+        <span class="cap">스위치, 상태를 글자로도</span>
+        <label class="check"><input class="switch" type="checkbox" checked role="switch">식단 알림 받음</label>
+        <label class="check"><input class="switch" type="checkbox" role="switch">행사 알림 받지 않음</label>
+      </div>
+      <div class="stack">
+        <span class="cap">칩, 필터에만</span>
+        <div class="row-flex"><button class="chip" type="button" aria-pressed="true">전체</button><button class="chip" type="button" aria-pressed="false">청구</button><button class="chip" type="button" aria-pressed="false">계약</button></div>
+      </div>
+      <div class="stack">
+        <span class="cap">세그먼트</span>
+        <div class="seg" role="group" aria-label="기간"><button type="button" aria-pressed="true">이번 달</button><button type="button" aria-pressed="false">지난달</button><button type="button" aria-pressed="false">올해</button></div>
+      </div>
+      <div class="stack" style="justify-items: stretch">
+        <span class="cap">탭</span>
+        <div class="tabs" role="tablist"><button role="tab" type="button" aria-selected="true">청구서</button><button role="tab" type="button" aria-selected="false">납부 기록</button><button role="tab" type="button" aria-selected="false">변경 기록</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-feedback">
+  <div class="wrap">
+    <h2 id="t-feedback">피드백과 로딩</h2>
+    <p class="sub">상태 색은 아이콘에만 씁니다. 성공, 경고, 오류 색은 시스템이 한 일의 결과에만 쓰고 입주자 상태에는 쓰지 않습니다.</p>
+    <div class="grid g2">
+      <div class="alert info"><i data-lucide="info" aria-hidden="true"></i><b>청구서가 발행됐어요</b><span>11월 3일에 회원님과 보호자에게 함께 보냈어요.</span></div>
+      <div class="alert success"><i data-lucide="circle-check" aria-hidden="true"></i><b>저장했어요</b><span>보호자 연락처를 바꿨어요. 변경 기록에 남았어요.</span></div>
+      <div class="alert warning"><i data-lucide="triangle-alert" aria-hidden="true"></i><b>동의 기간이 곧 끝나요</b><span>12월 1일까지 다시 동의를 받아야 보호자가 청구서를 볼 수 있어요.</span></div>
+      <div class="alert danger"><i data-lucide="circle-x" aria-hidden="true"></i><b>문자를 보내지 못했어요</b><span>번호를 확인한 뒤 다시 보내 주세요.</span></div>
+    </div>
+    <div class="grid g2">
+      <div class="stack" style="justify-items: stretch">
+        <span class="cap">토스트 (Sonner, 6초, 운영·Family)</span>
+        <div class="toast" role="status"><i data-lucide="circle-check" aria-hidden="true"></i>청구서를 발행했어요<button class="act" type="button">되돌리기</button></div>
+        <span class="cap" style="margin-top: var(--spacing-3)">툴팁 (운영만)</span>
+        <span><span class="tooltip">인쇄용 청구서를 엽니다</span></span>
+      </div>
+      <div class="stack" style="justify-items: stretch">
+        <span class="cap">대화상자 (가림막 위, 위험 확인)</span>
+        <div class="scrim-box">
+          <div class="dialog" role="group" aria-label="대화상자 예시">
+            <h3>보호자 열람 동의를 철회할까요?</h3>
+            <p>철회하면 김지민 님은 오늘부터 청구서를 볼 수 없어요. 다시 동의하면 다시 볼 수 있어요.</p>
+            <div class="actions"><button class="btn secondary md" type="button">취소</button><button class="btn danger md" type="button">동의 철회하기</button></div>
+          </div>
+        </div>
+        <button class="btn secondary sm" type="button" data-open="dlg" style="justify-self: start">실제 대화상자 열기</button>
+      </div>
+    </div>
+    <div class="grid g3">
+      <div class="empty"><span class="ic"><i data-lucide="receipt-text" aria-hidden="true"></i></span><h3>아직 발행한 청구서가 없어요</h3><p>청구 일정을 확인하면 언제 발행되는지 볼 수 있어요.</p><button class="btn md" type="button">청구 일정 보기</button></div>
+      <div class="card" aria-busy="true"><span class="cap">불러오는 중 (스켈레톤)</span><span class="sk w60"></span><span class="sk h40"></span><span class="sk w80"></span><span class="sk"></span></div>
+      <div class="card"><span class="cap">스피너와 진행 막대</span><span class="loading" role="status"><span class="spinner" aria-hidden="true"></span>불러오는 중</span><div class="progress" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="3" aria-label="동의 절차"><span></span></div><span class="cap">2/3 단계, 보호자 확인</span></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-content">
+  <div class="wrap">
+    <h2 id="t-content">내용과 이동</h2>
+    <p class="sub">배지는 언제나 글자가 있습니다. 변경 기록은 누가, 언제, 무엇을 바꿨는지 글자로 보입니다.</p>
+    <div class="grid g2">
+      <div class="stack" style="justify-items: stretch">
+        <span class="cap">목록 행 (Home 72)</span>
+        <div class="list">
+          <a class="cell" href="#t-content"><i data-lucide="receipt-text" aria-hidden="true"></i><span class="body"><span class="t"><b>이번 달 청구서</b><span>11월 3일 발행</span></span><i data-lucide="chevron-right" aria-hidden="true"></i></span></a>
+          <a class="cell" href="#t-content"><i data-lucide="calendar-days" aria-hidden="true"></i><span class="body"><span class="t"><b>이번 주 일정</b><span>목요일 오후 2시 건강 체조</span></span><i data-lucide="chevron-right" aria-hidden="true"></i></span></a>
+          <a class="cell" href="#t-content"><i data-lucide="users" aria-hidden="true"></i><span class="body"><span class="t"><b>가족과 함께 보기</b><span>김지민, 김태호</span></span><i data-lucide="chevron-right" aria-hidden="true"></i></span></a>
+        </div>
+      </div>
+      <div class="stack" style="justify-items: stretch">
+        <span class="cap">배지</span>
+        <div class="row-flex"><span class="badge">동의함</span><span class="badge brand">지금 할 일</span><span class="badge success">보냄</span><span class="badge warning">다시 확인</span><span class="badge danger">보내지 못함</span></div>
+        <span class="cap" style="margin-top: var(--spacing-4)">변경 기록</span>
+        <div>
+          <div class="record"><span><b>김○○ 직원</b> 2026. 11. 2. 14:05</span><span class="chg">계약 인원 2인 <i data-lucide="arrow-right" aria-label="에서"></i> 1인, 사별 승계</span></div>
+          <div class="record"><span><b>김태호 님 (대리인)</b> 2026. 11. 3. 09:12</span><span class="chg">11월 청구서 확인</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid g3">
+      <div class="stack">
+        <span class="cap">경로 표시</span>
+        <ol class="crumb"><li><a href="#t-content">입주자</a></li><li><i data-lucide="chevron-right" aria-hidden="true"></i></li><li><a href="#t-content">A동 201호</a></li><li><i data-lucide="chevron-right" aria-hidden="true"></i></li><li aria-current="page">청구서</li></ol>
+        <span class="cap" style="margin-top: var(--spacing-4)">쪽 넘김</span>
+        <nav class="pager" aria-label="쪽"><button type="button" disabled aria-label="이전 쪽"><i data-lucide="chevron-left" aria-hidden="true"></i></button><button type="button" aria-current="page">1</button><button type="button">2</button><button type="button">3</button><button type="button" aria-label="다음 쪽"><i data-lucide="chevron-right" aria-hidden="true"></i></button></nav>
+      </div>
+      <div class="stack">
+        <span class="cap">드롭다운 메뉴</span>
+        <div class="menu" role="menu" aria-label="청구서 메뉴">
+          <button role="menuitem" type="button"><i data-lucide="printer" aria-hidden="true"></i>인쇄하기</button>
+          <button role="menuitem" type="button"><i data-lucide="send" aria-hidden="true"></i>다시 보내기</button>
+          <hr>
+          <button role="menuitem" type="button" class="danger"><i data-lucide="file-x" aria-hidden="true"></i>발행 취소하기</button>
+        </div>
+      </div>
+      <div class="stack" style="justify-items: stretch">
+        <span class="cap">아코디언 (Family·운영)</span>
+        <details class="acc" open><summary>식사 감면은 어떻게 계산하나요?<i data-lucide="chevron-down" aria-hidden="true"></i></summary><p>미리 알린 식사 한 끼마다 9,000원을 빼요. 다음 달 청구서에 반영돼요.</p></details>
+        <details class="acc"><summary>청구서는 누가 볼 수 있나요?<i data-lucide="chevron-down" aria-hidden="true"></i></summary><p>회원님과, 회원님이 허락한 가족만 볼 수 있어요.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-tok">
+  <div class="wrap">
+    <h2 id="t-tok">모서리, 그림자, 모션</h2>
+    <p class="sub">카드는 그림자 없이 선으로, 떠야 하는 것만 두 겹 그림자로. 모션은 ease-out, 300ms 이하입니다.</p>
+    <div class="tok">
+      <div><span class="box" style="border-radius: var(--radius-sm)"></span><span class="cap">sm 4, 배지</span></div>
+      <div><span class="box" style="border-radius: var(--radius-md)"></span><span class="cap">md 8, 버튼·입력</span></div>
+      <div><span class="box" style="border-radius: var(--radius-lg)"></span><span class="cap">lg 12, 알림·메뉴</span></div>
+      <div><span class="box" style="border-radius: var(--radius-xl)"></span><span class="cap">xl 16, 카드</span></div>
+      <div><span class="box" style="border-radius: var(--radius-2xl)"></span><span class="cap">2xl 20, 대화상자</span></div>
+      <div><span class="box" style="border-radius: var(--radius-3xl) var(--radius-3xl) 0 0"></span><span class="cap">3xl 24, 시트 위</span></div>
+      <div><span class="box" style="border: 0; border-radius: var(--radius-lg); box-shadow: var(--shadow-1)"></span><span class="cap">shadow-1</span></div>
+      <div><span class="box" style="border: 0; border-radius: var(--radius-lg); box-shadow: var(--shadow-2)"></span><span class="cap">shadow-2</span></div>
+      <div><span class="box" style="border: 0; border-radius: var(--radius-lg); box-shadow: var(--shadow-3)"></span><span class="cap">shadow-3</span></div>
+    </div>
+    <p class="cap" style="margin-top: var(--spacing-6)">누름 120ms, 색과 툴팁 160ms, 메뉴와 토스트 200ms, 대화상자와 시트 280ms. 곡선은 cubic-bezier(0.23, 1, 0.32, 1)입니다.</p>
+  </div>
+</section>
+</main>
+
+<dialog class="dialog" id="dlg" aria-labelledby="dlg-t">
+  <h3 id="dlg-t">보호자 열람 동의를 철회할까요?</h3>
+  <p>철회하면 김지민 님은 오늘부터 청구서를 볼 수 없어요. 다시 동의하면 다시 볼 수 있어요.</p>
+  <form method="dialog" class="actions"><button class="btn secondary md" value="cancel">취소</button><button class="btn danger md" value="ok">동의 철회하기</button></form>
+</dialog>
+
+<footer class="wrap">
+  <p class="cap">원본은 DESIGN.md v2이고, Tailwind v4 테마(theme.css)와 shadcn/ui 변수(globals.css)로 내보냅니다.</p>
+  <p class="cap">글꼴 Pretendard 1.3.9(SIL OFL 1.1), 아이콘 Lucide(ISC). 이름, 호실, 금액은 가상 데모 데이터입니다.</p>
+</footer>
+
+<script>
+  const RAMPS = {"cobalt":{"50":"#F4F7FE","100":"#E8EDF8","200":"#D2DBEF","300":"#B2C1E3","400":"#8BA1D4","500":"#6681C3","600":"#4664B3","700":"#2340A0","800":"#183083","900":"#0C1D60","950":"#040D43"},"ink":{"50":"#F6F7F8","100":"#ECEDEE","200":"#D9DBDD","300":"#BFC1C4","400":"#9FA2A6","500":"#808488","600":"#65696F","700":"#555A60","800":"#373B3F","900":"#24272A","950":"#17191C"},"yellow":{"50":"#FFF7D9","100":"#FFEDA8","200":"#F3D766","300":"#D8C060","400":"#B4A158","500":"#90834F","600":"#726946","700":"#55503C","800":"#3D3B33","900":"#28261F","950":"#18160F"},"red":{"50":"#FEF4F2","100":"#FEE7E3","200":"#FFCDC5","300":"#F4ACA1","400":"#E18476","500":"#CD5B4C","600":"#B42318","700":"#94170E","800":"#710A05","900":"#4F0100","950":"#320000"},"green":{"50":"#EBFCEF","100":"#DEF3E3","200":"#C6E3CE","300":"#A5CCB0","400":"#7BB08B","500":"#509467","600":"#1E7A46","700":"#125F34","800":"#064725","900":"#003016","950":"#001C0A"},"amber":{"50":"#FEF5EC","100":"#FEE9D5","200":"#F1D5BB","300":"#DEB997","400":"#C6976A","500":"#AD753A","600":"#9A5B00","700":"#724303","800":"#563000","900":"#3A1F00","950":"#231100"},"paper":{"0":"#FEFEFC","25":"#FAFAF7","50":"#F4F4F0","100":"#EEEFEA","200":"#E3E4DF","300":"#D2D4CE"}};
+  // names only; sizes, weights and line-heights are read from tokens.css so this page always shows DESIGN.md's values
+  const TYPES = ['display1','display2','title1','title2','title3','heading1','heading2','headline','body-lg','body-md','body-md-read','body-sm','label-lg','label','caption','number-lg','number','number-sm'];
+  const css = getComputedStyle(document.documentElement), v = (n) => css.getPropertyValue(n).trim();
+  document.getElementById('ramps').innerHTML = Object.entries(RAMPS).map(([name, steps]) =>
+    `<div class="ramp"><code>${name}</code>${Object.entries(steps).map(([s, h]) => `<span title="${name} ${s} ${h}" style="background:${h}"></span>`).join('')}</div>`).join('');
+  document.getElementById('types').innerHTML = TYPES.map((n) => {
+    const num = n.startsWith('number'), size = parseFloat(v(`--text-${n}`)) * 16;
+    const sample = num ? '2,910,000원' : n.startsWith('caption') || n.startsWith('label') ? '청구서 보기' : '함께 보는 기록, 이은숙 회원님';
+    return `<div class="type-row"><span class="cap">${n} ${size}/${v(`--font-weight-${n}`)}/${v(`--text-${n}--line-height`)}</span><span class="s" style="font-size:var(--text-${n});font-weight:var(--font-weight-${n});line-height:var(--text-${n}--line-height);letter-spacing:var(--tracking-${n}, 0em)${num ? ';font-variant-numeric:tabular-nums' : ''}">${sample}</span></div>`;
+  }).join('');
+  const root = document.documentElement, tb = document.getElementById('theme');
+  tb.addEventListener('click', () => {
+    const dark = root.classList.toggle('dark'); root.classList.toggle('light', !dark);
+    tb.setAttribute('aria-pressed', String(dark)); tb.querySelector('span').textContent = dark ? '라이트로 보기' : '다크로 보기';
+  });
+  document.querySelectorAll('[data-open]').forEach((b) => b.addEventListener('click', () => document.getElementById(b.dataset.open).showModal()));
+  document.querySelectorAll('.chip, .seg button').forEach((b) => b.addEventListener('click', () => {
+    b.parentElement.querySelectorAll('[aria-pressed]').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+  }));
+  document.querySelectorAll('[role="tab"]').forEach((b) => b.addEventListener('click', () => {
+    b.parentElement.querySelectorAll('[role="tab"]').forEach((o) => o.setAttribute('aria-selected', String(o === b)));
+  }));
+</script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<script>window.lucide && lucide.createIcons({ attrs: { 'stroke-width': 2 } });</script>
+</body>
+</html>

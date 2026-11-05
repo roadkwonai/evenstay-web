@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evenstay 브랜드 컨셉</title>
+<meta name="description" content="Evenstay 브랜드 컨셉 3안과 로고 시안. 사용자가 하나를 고르기 위한 초안.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* Hallmark · shape: concept board, three stacked directions · genre: editorial · theme: custom · job: pick (a choice between three) · idea: "one name, three promises: the same Evenstay seen by the operator, the member and the family" · vibe: "calm, respectful, shows its evidence"
+ * paper: #F5F5F3 board, each concept its own block · accent: per concept · display: Pretendard · body: Pretendard · hero: title, one sentence, jump links · nav: three anchors · footer: what to choose · imagery: none, inline SVG logos and built previews · signature: each concept's logo beside its own working screens
+ * axes: light/grotesk-sans/neutral · posture: restrained, accent on actions and marks only · contrast: pass (body 13:1 or more, muted 5.4:1 or more) · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, three palettes alone read as swatches; each concept also changes its shape language (square, arch, overlap) and its radius */
+/* waive 58: a decision board, not a landing page; each concept needs promise, keywords, palette and two previews to be judged side by side */
+/* waive 13: Pretendard only, set by the user (CLAUDE.md design rules) */
+@import url("./tokens.css");
+@import url("./base.css");
+
+:root { --container: 1200px; }
+
+body { font-size: var(--text-body); word-break: keep-all; }
+.top { padding-block: var(--space-2xl) var(--space-xl); }
+.top h1 { font-size: var(--text-display-s); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+.top p { margin-top: var(--space-md); font-size: var(--text-lead); color: var(--color-muted); max-width: 40ch; }
+.status { display: inline-block; margin-bottom: var(--space-md); font-size: var(--text-sm); color: var(--color-muted); }
+.jump { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-xl); padding: 0; list-style: none; }
+.jump a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--space-lg); border: 1px solid var(--color-muted); border-radius: var(--radius-pill); text-decoration: none; font-weight: 600; background: var(--color-paper); transition: background-color var(--dur-short) var(--ease-out); }
+.jump a:hover { background: var(--color-paper-2); }
+.jump a:active { background: var(--color-paper-3); }
+
+.concept { background: var(--color-paper); color: var(--color-ink); padding-block: var(--space-3xl); border-top: 1px solid var(--color-rule); }
+.concept-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-xl) var(--gap-columns); align-items: start; }
+.concept .num { font-size: var(--text-md); color: var(--color-muted); }
+.concept h2 { margin-top: var(--space-xs); font-size: var(--text-section); font-weight: var(--weight-head); letter-spacing: -0.02em; line-height: 1.15; }
+.position { margin-top: var(--space-lg); font-size: var(--text-title); font-weight: 600; line-height: 1.45; max-width: 26ch; }
+.facts { display: grid; gap: var(--space-lg); margin: 0; }
+.facts dt { font-size: var(--text-sm); color: var(--color-muted); }
+.facts dd { margin: var(--space-2xs) 0 0; font-size: var(--text-lg); line-height: 1.5; }
+.keys { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin: var(--space-xs) 0 0; padding: 0; list-style: none; }
+.keys li { padding: var(--space-xs) var(--space-md); border: 1px solid var(--color-rule); border-radius: var(--radius-pill); font-size: var(--text-md); }
+
+.swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-sm); margin-top: var(--space-xl); padding: 0; list-style: none; }
+.swatches li { font-size: var(--text-sm); }
+.chip { height: 72px; border-radius: var(--radius); border: 1px solid var(--color-rule); }
+.swatches b { display: block; margin-top: var(--space-xs); font-weight: 600; font-size: var(--text-md); }
+.swatches code { font-family: var(--font-body); font-variant-numeric: tabular-nums; color: var(--color-muted); }
+
+.row-title { margin-top: var(--space-2xl); font-size: var(--text-title); font-weight: 600; }
+.logos { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--gap-columns); margin-top: var(--space-md); }
+.logo { display: grid; place-items: center; min-height: 200px; padding: var(--space-xl); border-radius: var(--radius); background: var(--color-paper-2); }
+.logo.on-ink { background: var(--color-ink); color: var(--color-paper); }
+.logo svg { width: 100%; max-width: 360px; height: auto; }
+.logo.mark svg { max-width: 120px; }
+.logo figcaption { margin-top: var(--space-md); font-size: var(--text-sm); color: var(--color-muted); text-align: center; }
+.logo.on-ink figcaption { color: var(--color-paper-2); }
+.wm { font-family: var(--font-display); }
+.chip, .logo svg, .brand svg { forced-color-adjust: none; }
+
+.previews { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--gap-columns); margin-top: var(--space-md); align-items: start; }
+.pv-label { margin-bottom: var(--space-xs); font-size: var(--text-sm); color: var(--color-muted); }
+.screen { border: 1px solid var(--color-rule); border-radius: var(--radius); background: var(--color-paper); overflow: hidden; }
+.home { padding: var(--space-lg); display: grid; gap: var(--space-md); }
+.home .brand { display: flex; align-items: center; gap: var(--space-xs); font-weight: 600; font-size: var(--text-md); }
+.home .brand svg { width: 28px; height: 28px; }
+.home .hello { font-size: var(--text-xl); font-weight: var(--weight-head); line-height: 1.3; }
+.home .line { font-size: var(--text-lg); line-height: 1.5; }
+.home .why { font-size: var(--text-lead); color: var(--color-muted); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 var(--space-lg); border: 0; border-radius: var(--radius); background: var(--color-accent); color: var(--color-accent-ink); font-size: var(--text-lg); font-weight: 600; cursor: pointer; transition: opacity var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.btn:hover { opacity: 0.9; }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn.ghost { background: transparent; color: var(--color-ink); border: 2px solid var(--color-muted); }
+.c-c .hl { background: linear-gradient(transparent 55%, var(--color-mark) 55%); }
+
+.ops-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding: var(--space-md) var(--space-lg); border-bottom: 1px solid var(--color-rule); background: var(--color-paper-2); }
+.ops-bar .brand { display: flex; align-items: center; gap: var(--space-xs); font-weight: 700; }
+.ops-bar .brand svg { width: 24px; height: 24px; }
+.ops-bar span { font-size: var(--text-sm); color: var(--color-muted); }
+.ops-title { padding: var(--space-lg) var(--space-lg) var(--space-xs); font-size: var(--text-lg); font-weight: 700; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: var(--text-md); font-variant-numeric: tabular-nums; }
+th, td { padding: var(--space-sm) var(--space-lg); text-align: left; border-bottom: 1px solid var(--color-rule); white-space: nowrap; }
+th { font-weight: 600; font-size: var(--text-sm); color: var(--color-muted); }
+tr:last-child td { border-bottom: 0; }
+.tag { display: inline-block; padding: var(--space-3xs) var(--space-sm); border-radius: var(--radius); background: var(--color-paper-2); font-size: var(--text-sm); }
+.tag.now { background: var(--color-accent); color: var(--color-accent-ink); }
+.demo-note { margin-top: var(--space-xs); font-size: var(--text-sm); color: var(--color-muted); }
+
+.choose { padding-block: var(--space-3xl); border-top: 1px solid var(--color-rule); }
+.choose h2 { font-size: var(--text-section); font-weight: 700; letter-spacing: -0.02em; }
+.choose ol { margin: var(--space-lg) 0 0; padding-left: 1.4em; display: grid; gap: var(--space-md); font-size: var(--text-lg); max-width: 60ch; }
+.choose p { margin-top: var(--space-xl); color: var(--color-muted); }
+
+@media (max-width: 60rem) {
+  .concept-head, .logos, .previews { grid-template-columns: minmax(0, 1fr); }
+  .swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 40rem) {
+  .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .logo { min-height: 160px; padding: var(--space-lg); }
+}
+</style>
+</head>
+<body>
+
+<header class="container top">
+  <span class="status">상태: 승인(2026-11-03), 3안 함께 보는 기록 선택</span>
+  <h1>Evenstay 브랜드 컨셉 3안</h1>
+  <p>같은 이름을 운영사, 회원, 보호자 중 누구의 눈으로 세울지 고르는 판입니다.</p>
+  <ul class="jump" aria-label="컨셉 바로가기">
+    <li><a href="#a">1안 기준선</a></li>
+    <li><a href="#b">2안 저녁이 있는 집</a></li>
+    <li><a href="#c">3안 함께 보는 기록</a></li>
+  </ul>
+</header>
+
+<main>
+
+<!-- 1안 -->
+<section class="concept c-a" id="a" aria-labelledby="a-title">
+  <div class="container">
+    <div class="concept-head">
+      <div>
+        <span class="num">1안</span>
+        <h2 id="a-title">기준선</h2>
+        <p class="position">사업장이 늘어도 계약, 청구, 기록이 한 기준으로 맞는 레지던스 운영.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>누구에게</dt><dd>운영사와 소유주, 직원</dd></div>
+        <div><dt>무엇을 약속하나</dt><dd>어느 사업장, 어느 직원이 처리해도 같은 결과가 나오고, 누가 언제 바꿨는지 남습니다.</dd></div>
+        <div><dt>성격</dt><dd><ul class="keys"><li>단정함</li><li>일관됨</li><li>기록이 남음</li></ul></dd></div>
+      </dl>
+    </div>
+
+    <h3 class="row-title">로고 시안</h3>
+    <div class="logos">
+      <figure class="logo">
+        <svg viewBox="0 0 360 80" role="img" aria-label="Evenstay 워드마크, 이름 아래 한 줄 기준선">
+          <rect x="4" y="18" width="34" height="6" fill="var(--color-ink)"/>
+          <rect x="4" y="35" width="34" height="6" fill="var(--color-ink)"/>
+          <rect x="4" y="52" width="34" height="6" fill="var(--color-accent)"/>
+          <text x="56" y="56" class="wm" font-size="44" font-weight="700" letter-spacing="-1" fill="var(--color-ink)">evenstay</text>
+        </svg>
+        <figcaption>같은 길이의 세 줄. 맨 아래 줄이 "기준선"입니다. 밝은 바탕에선 청록, 어두운 바탕에선 놋쇠.</figcaption>
+      </figure>
+      <figure class="logo on-ink mark">
+        <svg viewBox="0 0 80 80" role="img" aria-label="세 줄로 된 E 심볼">
+          <rect x="16" y="16" width="48" height="10" fill="currentColor"/>
+          <rect x="16" y="35" width="48" height="10" fill="currentColor"/>
+          <rect x="16" y="54" width="48" height="10" fill="var(--color-mark)"/>
+        </svg>
+        <figcaption>앱 아이콘과 파비콘용 심볼</figcaption>
+      </figure>
+    </div>
+
+    <ul class="swatches" aria-label="1안 색">
+      <li><div class="chip" style="background:var(--color-ink)"></div><b>먹청</b><code>#16232F</code></li>
+      <li><div class="chip" style="background:var(--color-accent)"></div><b>짙은 청록</b><code>#1D4E5F</code></li>
+      <li><div class="chip" style="background:var(--color-mark)"></div><b>놋쇠</b><code>#C8A24A</code></li>
+      <li><div class="chip" style="background:var(--color-paper-2)"></div><b>옅은 회청</b><code>#E3E8E8</code></li>
+      <li><div class="chip" style="background:var(--color-paper)"></div><b>바탕</b><code>#F2F4F3</code></li>
+    </ul>
+
+    <h3 class="row-title">화면에 적용하면</h3>
+    <div class="previews">
+      <div>
+        <p class="pv-label">Evenstay Home (회원 앱)</p>
+        <div class="screen home">
+          <div class="brand"><svg viewBox="0 0 80 80" aria-hidden="true"><rect x="16" y="16" width="48" height="10" fill="var(--color-ink)"/><rect x="16" y="35" width="48" height="10" fill="var(--color-ink)"/><rect x="16" y="54" width="48" height="10" fill="var(--color-accent)"/></svg>Evenstay Home</div>
+          <p class="hello">이은숙 회원님</p>
+          <p class="line">12월 청구서가 나왔어요. 이번 달 내실 돈 2,910,000원</p>
+          <p class="why">드시지 않은 식사 3끼, 27,000원을 빼 드렸어요.</p>
+          <button class="btn" type="button">청구서 보기</button>
+          <button class="btn ghost" type="button">프런트에 전화하기</button>
+        </div>
+      </div>
+      <div>
+        <p class="pv-label">Evenstay (운영 화면)</p>
+        <div class="screen">
+          <div class="ops-bar"><span class="brand"><svg viewBox="0 0 80 80" aria-hidden="true"><rect x="16" y="16" width="48" height="10" fill="var(--color-ink)"/><rect x="16" y="35" width="48" height="10" fill="var(--color-ink)"/><rect x="16" y="54" width="48" height="10" fill="var(--color-accent)"/></svg>Evenstay</span><span>A사업장 전체</span></div>
+          <p class="ops-title">확인할 일</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>호실</th><th>입주자</th><th>할 일</th><th>상태</th></tr></thead>
+            <tbody>
+              <tr><td>A동 201호</td><td>이은숙</td><td>1인 계약 승계 뒤 첫 청구 확인</td><td><span class="tag now">오늘</span></td></tr>
+              <tr><td>A동 301호</td><td>김정희</td><td>보호자 동의 갱신</td><td><span class="tag">이번 주</span></td></tr>
+              <tr><td>B동 302호</td><td>김말순</td><td>식사 감면 반영 검토</td><td><span class="tag">이번 주</span></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <p class="demo-note">이름과 호실은 가상 데모 데이터입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2안 -->
+<section class="concept c-b" id="b" aria-labelledby="b-title">
+  <div class="container">
+    <div class="concept-head">
+      <div>
+        <span class="num">2안</span>
+        <h2 id="b-title">저녁이 있는 집</h2>
+        <p class="position">하루를 마칠 때 걱정 없이 쉬는, 회원님이 주인인 집.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>누구에게</dt><dd>70~80대 입주 회원</dd></div>
+        <div><dt>무엇을 약속하나</dt><dd>청구서, 일정, 부탁을 회원님 말로 쉽게 확인하고, 정하는 사람은 언제나 회원님입니다.</dd></div>
+        <div><dt>성격</dt><dd><ul class="keys"><li>편안함</li><li>존중</li><li>여유</li></ul></dd></div>
+      </dl>
+    </div>
+
+    <h3 class="row-title">로고 시안</h3>
+    <div class="logos">
+      <figure class="logo">
+        <svg viewBox="0 0 400 80" role="img" aria-label="Evenstay Home 워드마크와 문 모양 심볼">
+          <path d="M8 72 V36 a22 22 0 0 1 44 0 V72 Z" fill="var(--color-accent)"/>
+          <path d="M18 72 V52 h24 V72 Z" fill="var(--color-mark)"/>
+          <text x="68" y="54" class="wm" font-size="38" font-weight="600" letter-spacing="-0.5" fill="var(--color-ink)">Evenstay Home</text>
+        </svg>
+        <figcaption>둥근 문. 문틈의 노을빛이 저녁(even)을 뜻합니다.</figcaption>
+      </figure>
+      <figure class="logo on-ink mark">
+        <svg viewBox="0 0 80 80" role="img" aria-label="둥근 창 안에 지평선이 있는 심볼">
+          <circle cx="40" cy="40" r="28" fill="none" stroke="currentColor" stroke-width="6"/>
+          <path d="M16 46 H64 A28 28 0 0 1 16 46 Z" fill="var(--color-mark)"/>
+        </svg>
+        <figcaption>둥근 창과 지평선, 앱 아이콘용</figcaption>
+      </figure>
+    </div>
+
+    <ul class="swatches" aria-label="2안 색">
+      <li><div class="chip" style="background:var(--color-ink)"></div><b>밤 갈색</b><code>#2B1F27</code></li>
+      <li><div class="chip" style="background:var(--color-accent)"></div><b>자두</b><code>#6A2E55</code></li>
+      <li><div class="chip" style="background:var(--color-mark)"></div><b>노을</b><code>#E2A65A</code></li>
+      <li><div class="chip" style="background:var(--color-paper-2)"></div><b>삼베</b><code>#ECE1D3</code></li>
+      <li><div class="chip" style="background:var(--color-paper)"></div><b>바탕</b><code>#F6F0E8</code></li>
+    </ul>
+
+    <h3 class="row-title">화면에 적용하면</h3>
+    <div class="previews">
+      <div>
+        <p class="pv-label">Evenstay Home (회원 앱)</p>
+        <div class="screen home">
+          <div class="brand"><svg viewBox="0 0 60 80" aria-hidden="true"><path d="M8 72 V36 a22 22 0 0 1 44 0 V72 Z" fill="var(--color-accent)"/><path d="M18 72 V52 h24 V72 Z" fill="var(--color-mark)"/></svg>Evenstay Home</div>
+          <p class="hello">이은숙 회원님, 편안한 저녁이에요</p>
+          <p class="line">12월 청구서가 나왔어요. 이번 달 내실 돈 2,910,000원</p>
+          <p class="why">드시지 않은 식사 3끼, 27,000원을 빼 드렸어요.</p>
+          <button class="btn" type="button">청구서 보기</button>
+          <button class="btn ghost" type="button">프런트에 전화하기</button>
+        </div>
+      </div>
+      <div>
+        <p class="pv-label">Evenstay (운영 화면)</p>
+        <div class="screen">
+          <div class="ops-bar"><span class="brand"><svg viewBox="0 0 60 80" aria-hidden="true"><path d="M8 72 V36 a22 22 0 0 1 44 0 V72 Z" fill="var(--color-accent)"/><path d="M18 72 V52 h24 V72 Z" fill="var(--color-mark)"/></svg>Evenstay</span><span>A사업장 전체</span></div>
+          <p class="ops-title">확인할 일</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>호실</th><th>입주자</th><th>할 일</th><th>상태</th></tr></thead>
+            <tbody>
+              <tr><td>A동 201호</td><td>이은숙</td><td>1인 계약 승계 뒤 첫 청구 확인</td><td><span class="tag now">오늘</span></td></tr>
+              <tr><td>A동 301호</td><td>김정희</td><td>보호자 동의 갱신</td><td><span class="tag">이번 주</span></td></tr>
+              <tr><td>B동 302호</td><td>김말순</td><td>식사 감면 반영 검토</td><td><span class="tag">이번 주</span></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <p class="demo-note">이름과 호실은 가상 데모 데이터입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3안 -->
+<section class="concept c-c" id="c" aria-labelledby="c-title">
+  <div class="container">
+    <div class="concept-head">
+      <div>
+        <span class="num">3안</span>
+        <h2 id="c-title">함께 보는 기록</h2>
+        <p class="position">회원과 가족이 같은 사실을 같은 때에, 근거와 함께 보는 레지던스.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>누구에게</dt><dd>보호자 자녀와 회원</dd></div>
+        <div><dt>무엇을 약속하나</dt><dd>회원님이 허락한 만큼만, 숫자마다 이유를 붙여 보여 드립니다. 판단은 사람이 합니다.</dd></div>
+        <div><dt>성격</dt><dd><ul class="keys"><li>투명함</li><li>정확함</li><li>차분함</li></ul></dd></div>
+      </dl>
+    </div>
+
+    <h3 class="row-title">로고 시안</h3>
+    <div class="logos">
+      <figure class="logo">
+        <svg viewBox="0 0 360 80" role="img" aria-label="Evenstay 워드마크와 겹친 두 사각형 심볼">
+          <rect x="6" y="14" width="40" height="40" rx="8" fill="none" stroke="var(--color-ink)" stroke-width="5"/>
+          <rect x="24" y="30" width="40" height="40" rx="8" fill="none" stroke="var(--color-accent)" stroke-width="5"/>
+          <path d="M26.5 32.5 H43.5 V51.5 H26.5 Z" fill="var(--color-mark)"/>
+          <text x="80" y="56" class="wm" font-size="42" font-weight="700" letter-spacing="-1" fill="var(--color-ink)">evenstay</text>
+        </svg>
+        <figcaption>두 사람이 보는 두 칸. 겹치는 곳이 같이 보는 기록입니다.</figcaption>
+      </figure>
+      <figure class="logo on-ink mark">
+        <svg viewBox="0 0 80 80" role="img" aria-label="겹친 두 사각형 심볼">
+          <rect x="12" y="12" width="38" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="5"/>
+          <rect x="30" y="30" width="38" height="38" rx="8" fill="none" stroke="var(--color-mark)" stroke-width="5"/>
+        </svg>
+        <figcaption>앱 아이콘과 Evenstay Family 표지용</figcaption>
+      </figure>
+    </div>
+
+    <ul class="swatches" aria-label="3안 색">
+      <li><div class="chip" style="background:var(--color-ink)"></div><b>먹</b><code>#17191C</code></li>
+      <li><div class="chip" style="background:var(--color-accent)"></div><b>코발트</b><code>#2340A0</code></li>
+      <li><div class="chip" style="background:var(--color-mark)"></div><b>형광 밑줄</b><code>#F3D766</code></li>
+      <li><div class="chip" style="background:var(--color-paper-2)"></div><b>옅은 회색</b><code>#EEEFEA</code></li>
+      <li><div class="chip" style="background:var(--color-paper)"></div><b>바탕</b><code>#FAFAF7</code></li>
+    </ul>
+
+    <h3 class="row-title">화면에 적용하면</h3>
+    <div class="previews">
+      <div>
+        <p class="pv-label">Evenstay Home (회원 앱)</p>
+        <div class="screen home">
+          <div class="brand"><svg viewBox="0 0 80 80" aria-hidden="true"><rect x="12" y="12" width="38" height="38" rx="8" fill="none" stroke="var(--color-ink)" stroke-width="6"/><rect x="30" y="30" width="38" height="38" rx="8" fill="none" stroke="var(--color-accent)" stroke-width="6"/></svg>Evenstay Home</div>
+          <p class="hello">이은숙 회원님</p>
+          <p class="line">12월 청구서가 나왔어요. 이번 달 내실 돈 <span class="hl">2,910,000원</span></p>
+          <p class="why">드시지 않은 식사 3끼, 27,000원을 빼 드렸어요. 김태호 님도 같은 청구서를 봅니다.</p>
+          <button class="btn" type="button">청구서 보기</button>
+          <button class="btn ghost" type="button">프런트에 전화하기</button>
+        </div>
+      </div>
+      <div>
+        <p class="pv-label">Evenstay (운영 화면)</p>
+        <div class="screen">
+          <div class="ops-bar"><span class="brand"><svg viewBox="0 0 80 80" aria-hidden="true"><rect x="12" y="12" width="38" height="38" rx="8" fill="none" stroke="var(--color-ink)" stroke-width="6"/><rect x="30" y="30" width="38" height="38" rx="8" fill="none" stroke="var(--color-accent)" stroke-width="6"/></svg>Evenstay</span><span>A사업장 전체</span></div>
+          <p class="ops-title">확인할 일</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>호실</th><th>입주자</th><th>할 일</th><th>보호자 공개</th></tr></thead>
+            <tbody>
+              <tr><td>A동 201호</td><td>이은숙</td><td>1인 계약 승계 뒤 첫 청구 확인</td><td><span class="tag now">동의함</span></td></tr>
+              <tr><td>A동 301호</td><td>김정희</td><td>보호자 동의 갱신</td><td><span class="tag">갱신 필요</span></td></tr>
+              <tr><td>B동 302호</td><td>김말순</td><td>식사 감면 반영 검토</td><td><span class="tag">공개 안 함</span></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <p class="demo-note">이름과 호실은 가상 데모 데이터입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container choose" aria-labelledby="choose-title">
+  <h2 id="choose-title">고르실 것</h2>
+  <ol>
+    <li>세 안 중 하나. 디자인 시스템과 DESIGN.md는 고른 안으로만 만듭니다.</li>
+    <li>로고는 워드마크와 심볼 중 어느 쪽을 앞에 둘지.</li>
+    <li>다른 안에서 빌려 올 것이 있다면 한 가지(예: 1안 구조에 3안 형광 밑줄).</li>
+  </ol>
+  <p>모든 글자는 Pretendard입니다. 색 대비는 본문 13:1, 보조 글자 5.4:1 이상입니다.</p>
+</section>
+
+</main>
+</body>
+</html>

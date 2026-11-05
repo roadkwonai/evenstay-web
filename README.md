@@ -134,8 +134,9 @@ flowchart TB
 | --- | --- |
 | 전체 그림 | [서비스 개관](docs/overview/project.md) · [용어집](docs/overview/glossary.md) |
 | 기획서 | [코어 전략](docs/planning/core/strategy.md) · [서비스 블루프린트](docs/planning/core/service-blueprint.md) · [로드맵](docs/planning/core/roadmap.md) · [개발 인계](docs/planning/core/handoff.md) |
-| 화면 정의서 | [MVP 화면 정의서](docs/screens/mvp-screens.md) |
-| 디자인 | [디자인 시스템](docs/design/DESIGN.md) |
+| 화면 정의서 | [서비스 화면 정의서](docs/screens/mvp-screens.md) · [소개 사이트 화면 정의서](docs/planning/landing/screen-spec.md) · [화면 필요성 검토](docs/screens/screen-necessity-review.md) |
+| 소개 사이트 기획 | [PRD](docs/planning/landing/prd.md) · [이미지 계획](docs/planning/landing/asset-plan.md) · [문구](docs/planning/landing/copy/copy.md) · [개발 인계](docs/planning/landing/handoff.md) |
+| 디자인 | [디자인 시스템](docs/design/DESIGN.md) · [브랜드 가이드라인](https://roadkwonai.github.io/evenstay-web/design/brand/guidelines.html) · [프로토타입 안내](docs/design/prototype/README.md) · [검수 보고](docs/design/prototype/REPORT.md) |
 | 아키텍처 | [구성안 비교](docs/architecture/architecture-options.md) · [기술 지형](docs/architecture/architecture-landscape.md) · [단계별 확장](docs/architecture/architecture-staged.md) · [사전 부검](docs/architecture/reviews/pre-mortem.md) |
 | 조사 | [경쟁 지형](docs/research/competitive-landscape.md) · [PMS 지형](docs/research/pms-landscape.md) · [페르소나](docs/research/personas.md) · [JTBD](docs/research/jtbd.md) · [문제 은행](docs/research/problem-bank.md) |
 | 아이디어 평가 | [숏리스트](docs/research/ideation/shortlist.md) · [평가표](docs/research/ideation/scorecard.md) |
@@ -191,7 +192,7 @@ flowchart LR
 evenstay-web/
 ├── docs/                 # 문서
 │   ├── overview/         # 서비스 개관, 용어집
-│   ├── planning/         # 모듈 7개의 전략, PRD, 스토리, 기술 설계, 로드맵, 인계, 문구
+│   ├── planning/         # 모듈 7개와 소개 사이트의 기획, 문구
 │   ├── screens/          # 화면 정의서
 │   ├── design/           # 디자인 시스템
 │   ├── architecture/     # 구성안, 확장 단계, 검토
@@ -202,7 +203,8 @@ evenstay-web/
 │   ├── index.html        # 통합 웹
 │   ├── app.html          # 프로토타입
 │   ├── home/             # 문서, 아키텍처, 아트보드, 제작 히스토리
-│   └── site/             # 소개 사이트
+│   ├── site/             # 소개 사이트
+│   └── design/           # 브랜드 가이드라인, 디자인 시스템
 └── .github/workflows/    # Pages 배포
 ```
 
@@ -211,6 +213,3 @@ evenstay-web/
 ```bash
 python3 -m http.server 4173 --directory web
 ```
-
-> [!NOTE]
-> 문서의 일부 내부 링크는 비공개 작업 폴더를 가리켜서 글자로만 남겼습니다. 공개본에서 지원 회사 이름은 `[지원 회사]`로 가렸습니다.

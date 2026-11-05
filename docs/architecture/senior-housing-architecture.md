@@ -298,4 +298,4 @@ L2나 L3 이상이 멈춰도 L1은 계속 동작해야 한다. 이때 2차 알�
 - [사실] 검색에서 '일진메가텍 너스콜 전문업체'로 나온 nursecall.co.kr은 2026-11-04에 열어 보니 도박성 사이트라 뺐다. 야놀자 EKS 주장은 근거 기사에 없어 뺐다. 산하IT WINGS 국내 점유율 70% 이상은 회사 주장이고 재검증하지 않았다.
 - [미확인] landscape의 "Spring 인력 근거"는 이 조사에서도 닫히지 않았다.
 
-**원문 요약(10개).** global-platforms, japan-systems, tech-stacks, design-requirements, call-system-mechanics, korea-call-access-vendors, erp-payment-crm, multisite-rbac-privacy, cloud-cicd-iot-ingest, ai-agent.
+**원문 요약(10개).** [global-platforms](sources/arch-global-platforms.md), [japan-systems](sources/arch-japan-systems.md), [tech-stacks](sources/arch-tech-stacks.md), [design-requirements](sources/arch-design-requirements.md), [call-system-mechanics](sources/arch-call-system-mechanics.md), [korea-call-access-vendors](sources/arch-korea-call-access-vendors.md), [erp-payment-crm](sources/arch-erp-payment-crm.md), [multisite-rbac-privacy](sources/arch-multisite-rbac-privacy.md), [cloud-cicd-iot-ingest](sources/arch-cloud-cicd-iot-ingest.md), [ai-agent](sources/arch-ai-agent.md).

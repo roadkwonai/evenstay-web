@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evenstay 브랜드 가이드라인</title>
+<meta name="description" content="Evenstay의 미션, 철학, 포지셔닝, 목소리, 로고, 색, 글꼴, 화면 적용 규칙을 한곳에 모은 브랜드 가이드라인.">
+<link rel="icon" href="logo/favicon.svg" type="image/svg+xml">
+<style>
+/* Hallmark · component: brand guideline · genre: editorial · theme: custom (DESIGN.md v2) · shape: long document · states: 8 · contrast: pass · v2.0.0
+ * paper: #FAFAF7 · accent: #2340A0 · display: Pretendard · body: Pretendard · signature: the yellow evidence underline, used once per section as the rule it describes */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R5 V4 · weakest: S, a reference document is long by job; sections are short and each opens with its one rule */
+/* Hallmark · waive 37 · tokens.css lists --font-weight-* 700, 600, 500, 400 · those are Pretendard weights from the DESIGN.md export, the page sets one family */
+@import url("../system/tokens.css");
+@font-face { font-family: "Pretendard"; src: url("../fonts/pretendard/PretendardVariable.woff2") format("woff2-variations"); font-weight: 45 920; font-display: swap; }
+:root { --font-sans: "Pretendard", ui-sans-serif, system-ui, sans-serif; --toc-w: 220px; }
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { scroll-padding-top: var(--spacing-6); }
+html.dark { color-scheme: dark; }
+body { margin: 0; background: var(--bg-canvas); color: var(--fg-default); font-family: var(--font-sans); font-size: var(--text-body-md); line-height: var(--text-body-md--line-height); word-break: keep-all; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ul, ol, dl, dd, figure, blockquote { margin: 0; overflow-wrap: break-word; min-width: 0; }
+h1, h2, h3 { color: var(--fg-strong); text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+a { color: var(--fg-brand); text-underline-offset: 0.18em; }
+a:active { color: var(--fg-strong); }
+code { font-family: var(--font-sans); font-size: 0.94em; padding: 0 var(--spacing-1); border-radius: var(--radius-sm); background: var(--bg-muted); color: var(--fg-strong); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* evidence underline: the brand's one emphasis */
+.hl { background: linear-gradient(transparent 58%, var(--highlight) 58%); color: var(--on-highlight); padding-inline: 2px; forced-color-adjust: none; }
+html.dark .hl { background: var(--highlight); border-radius: var(--radius-sm); }
+
+.skip { position: absolute; left: var(--spacing-4); top: -100px; padding: var(--spacing-2) var(--spacing-4); background: var(--primary); color: var(--on-primary); border-radius: var(--radius-md); }
+.skip:focus-visible { top: var(--spacing-4); }
+
+.shell { max-width: 1200px; margin-inline: auto; padding-inline: var(--spacing-6); display: grid; grid-template-columns: var(--toc-w) minmax(0, 1fr); gap: var(--spacing-12); }
+.toc { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; padding-block: var(--spacing-12); }
+.toc img { height: 28px; width: auto; display: block; }
+.toc ol { list-style: none; padding: 0; margin-top: var(--spacing-20); display: grid; gap: var(--spacing-1); counter-reset: toc; }
+.toc a { display: flex; gap: var(--spacing-2); padding: var(--spacing-2) var(--spacing-3); border-radius: var(--radius-md); color: var(--fg-secondary); text-decoration: none; font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height); }
+.toc a::before { counter-increment: toc; content: counter(toc); min-width: 1.4em; color: var(--fg-tertiary); font-variant-numeric: tabular-nums; }
+.toc a:active { background: var(--state-active); }
+.toc a[aria-current="true"] { background: var(--primary-subtle); color: var(--fg-brand); }
+
+main { min-width: 0; padding-bottom: var(--spacing-24); }
+.cover { padding-block: var(--spacing-16) var(--spacing-12); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--spacing-8); align-items: end; }
+.cover-mark { width: 200px; height: auto; forced-color-adjust: none; }
+.cover-logo { display: block; height: 48px; width: auto; margin-bottom: var(--spacing-8); }
+.cover-top { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-3); }
+.theme { display: inline-flex; align-items: center; gap: var(--spacing-2); min-height: 44px; padding: 0 var(--spacing-4); border: 1px solid var(--border-strong); border-radius: var(--radius-full); background: var(--bg-surface); color: var(--fg-strong); font: inherit; font-size: var(--text-body-sm); font-weight: 600; cursor: pointer; transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 120ms cubic-bezier(0.23, 1, 0.32, 1); }
+.theme:active { transform: scale(0.97); }
+.theme svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cover .status { display: inline-block; font-size: var(--text-body-sm); color: var(--fg-secondary); padding: var(--spacing-1) var(--spacing-3); border-radius: var(--radius-full); background: var(--bg-muted); }
+.cover h1 { margin-top: var(--spacing-6); font-size: var(--text-display1); line-height: var(--text-display1--line-height); letter-spacing: var(--tracking-display1); font-weight: 700; }
+.cover .lede { margin-top: var(--spacing-5); max-width: 30em; font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height); color: var(--fg-secondary); }
+
+section { padding-block: var(--spacing-16); border-top: 1px solid var(--border-subtle); }
+section > h2 { font-size: var(--text-title2); line-height: var(--text-title2--line-height); letter-spacing: var(--tracking-title2); font-weight: 700; }
+section > .rule { margin-top: var(--spacing-4); max-width: 34em; font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height); color: var(--fg-strong); }
+section h3 { margin-top: var(--spacing-12); font-size: var(--text-heading1); line-height: var(--text-heading1--line-height); letter-spacing: var(--tracking-heading1); font-weight: 700; }
+.prose { margin-top: var(--spacing-4); max-width: 36em; display: grid; gap: var(--spacing-3); }
+.prose ul, ul.list { padding-left: 1.2em; display: grid; gap: var(--spacing-2); }
+.note { margin-top: var(--spacing-4); font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height); color: var(--fg-secondary); max-width: 40em; }
+
+/* mission statement */
+.mission { margin-top: var(--spacing-8); max-width: 26em; font-size: var(--text-title1); line-height: var(--text-title1--line-height); letter-spacing: var(--tracking-title1); font-weight: 700; color: var(--fg-strong); }
+.pair { margin-top: var(--spacing-10); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-6); }
+.pair > div { padding-top: var(--spacing-4); border-top: 1px solid var(--border-strong); }
+.pair dt, .k { font-size: var(--text-label); line-height: var(--text-label--line-height); font-weight: 600; color: var(--fg-secondary); }
+.pair dd { margin-top: var(--spacing-2); font-size: var(--text-heading2); line-height: var(--text-heading2--line-height); font-weight: 600; color: var(--fg-strong); }
+.pair dd small { display: block; margin-top: var(--spacing-2); font-size: var(--text-body-md); line-height: var(--text-body-md--line-height); font-weight: 400; color: var(--fg-secondary); }
+
+/* principles */
+.principles { margin-top: var(--spacing-10); list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-10) var(--spacing-6); counter-reset: p; }
+.principles li { counter-increment: p; display: grid; gap: var(--spacing-2); align-content: start; }
+.principles li::before { content: counter(p, decimal-leading-zero); font-size: var(--text-number); line-height: var(--text-number--line-height); font-weight: 700; color: var(--fg-secondary); font-variant-numeric: tabular-nums; }
+.principles h3 { margin: 0; font-size: var(--text-heading2); line-height: var(--text-heading2--line-height); letter-spacing: var(--tracking-heading2); font-weight: 600; }
+.principles p { color: var(--fg-default); }
+.principles .where { font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height); color: var(--fg-secondary); }
+
+/* tables */
+.tbl { margin-top: var(--spacing-6); overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); background: var(--bg-surface); }
+table { width: 100%; border-collapse: collapse; font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height); }
+th, td { text-align: left; vertical-align: top; padding: var(--spacing-3) var(--spacing-4); border-bottom: 1px solid var(--border-subtle); }
+thead th { background: var(--bg-subtle); color: var(--fg-secondary); font-weight: 600; border-bottom-color: var(--border-default); white-space: nowrap; }
+tbody tr:last-child > * { border-bottom: 0; }
+tbody th { color: var(--fg-strong); font-weight: 600; white-space: nowrap; }
+td.num { text-align: right; white-space: nowrap; }
+
+/* positioning */
+.position { margin-top: var(--spacing-8); padding: var(--spacing-10); border-radius: var(--radius-xl); background: var(--bg-inverse); color: var(--fg-on-inverse); }
+.position p:first-child { font-size: var(--text-title2); line-height: var(--text-title2--line-height); letter-spacing: var(--tracking-title2); font-weight: 700; max-width: 22em; }
+.position p + p { margin-top: var(--spacing-4); font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height); max-width: 30em; }
+.keys { margin-top: var(--spacing-8); list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--spacing-4); }
+.keys li { padding: var(--spacing-6); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); background: var(--bg-surface); }
+.keys b { display: block; font-size: var(--text-heading2); line-height: var(--text-heading2--line-height); letter-spacing: var(--tracking-heading2); font-weight: 600; color: var(--fg-strong); }
+.keys span { display: block; margin-top: var(--spacing-2); color: var(--fg-secondary); }
+
+/* brand architecture */
+.arch { margin-top: var(--spacing-8); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--spacing-4); }
+.arch article { display: grid; gap: var(--spacing-3); align-content: start; padding: var(--spacing-6); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); background: var(--bg-surface); }
+.arch img { height: 30px; width: auto; justify-self: start; }
+.arch dl { display: grid; gap: var(--spacing-2); font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height); }
+.arch dl div { display: grid; grid-template-columns: 4.5em minmax(0, 1fr); gap: var(--spacing-2); }
+.arch dt { color: var(--fg-secondary); }
+.arch dd { color: var(--fg-default); }
+
+/* voice: say / do not say */
+.says { margin-top: var(--spacing-6); display: grid; gap: var(--spacing-3); }
+.say { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); background: var(--bg-surface); overflow: hidden; }
+.say > div { padding: var(--spacing-5) var(--spacing-6); display: grid; gap: var(--spacing-2); align-content: start; }
+.say > div + div { border-left: 1px solid var(--border-subtle); }
+.say .k { display: flex; align-items: center; gap: var(--spacing-2); }
+.say .no .k { color: var(--fg-secondary); }
+.say .yes .k { color: var(--fg-strong); }
+.say svg { width: 18px; height: 18px; flex: none; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.say q { quotes: none; color: var(--fg-strong); font-size: var(--text-body-md); }
+.say .why { font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height); color: var(--fg-secondary); }
+.words { margin-top: var(--spacing-6); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-4); }
+.words > div { padding: var(--spacing-6); border-radius: var(--radius-xl); background: var(--bg-subtle); }
+.words ul { margin-top: var(--spacing-3); list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--spacing-2); }
+.words li { padding: var(--spacing-1) var(--spacing-3); border-radius: var(--radius-full); background: var(--bg-surface); border: 1px solid var(--border-subtle); color: var(--fg-strong); font-size: var(--text-body-sm); }
+
+/* logo */
+.tiles { margin-top: var(--spacing-6); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-4); }
+.tile { display: grid; place-items: center; min-height: 200px; padding: var(--spacing-10); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); background: var(--color-bg-surface); forced-color-adjust: none; }
+.tile.dark { color: var(--color-dark-fg-default); background: var(--color-dark-bg-canvas); border-color: var(--color-dark-bg-canvas); }
+.tile.brand { background: var(--color-primary); border-color: var(--color-primary); }
+.tile img { height: 56px; width: auto; max-width: 100%; }
+.tile img.sym { height: 96px; }
+.tile img.icon { height: 128px; }
+figcaption { margin-top: var(--spacing-2); font-size: var(--text-body-sm); color: var(--fg-secondary); }
+.anatomy { margin-top: var(--spacing-6); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--spacing-6); align-items: center; }
+.anatomy .tile img { height: 140px; }
+.clear { display: inline-block; padding: 36px; outline: 1px dashed var(--fg-tertiary); outline-offset: -36px; background: repeating-linear-gradient(45deg, var(--bg-muted) 0 6px, transparent 6px 12px); forced-color-adjust: none; }
+.clear img { display: block; height: 72px; width: auto; background: var(--color-bg-surface); }
+
+/* colour */
+.swatches { margin-top: var(--spacing-6); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--spacing-3); }
+.sw { border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); overflow: hidden; background: var(--bg-surface); }
+.sw i { display: block; height: 96px; forced-color-adjust: none; }
+.sw div { padding: var(--spacing-3) var(--spacing-4); display: grid; gap: var(--spacing-1); font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height); }
+.sw b { color: var(--fg-strong); }
+.sw span { color: var(--fg-secondary); }
+
+/* type */
+.specimen { margin-top: var(--spacing-6); padding: var(--spacing-10); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); background: var(--bg-surface); display: grid; gap: var(--spacing-6); }
+.specimen .big { font-size: var(--text-display2); line-height: var(--text-display2--line-height); letter-spacing: var(--tracking-display2); font-weight: 700; color: var(--fg-strong); }
+.weights { display: flex; flex-wrap: wrap; gap: var(--spacing-8); font-size: var(--text-heading1); line-height: var(--text-heading1--line-height); color: var(--fg-strong); }
+.weights span small { display: block; font-size: var(--text-body-sm); font-weight: 400; color: var(--fg-secondary); }
+
+/* screens */
+.screens { margin-top: var(--spacing-8); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr); gap: var(--spacing-4); align-items: start; }
+.screen { border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); background: var(--bg-surface); overflow: hidden; }
+.screen header { display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-3); padding: var(--spacing-4) var(--spacing-6); border-bottom: 1px solid var(--border-subtle); }
+.screen header img { height: 22px; width: auto; }
+.screen header span { font-size: var(--text-body-sm); color: var(--fg-secondary); }
+.screen .body { padding: var(--spacing-6); display: grid; gap: var(--spacing-4); }
+.home .greet { font-size: var(--text-title3); line-height: var(--text-title3--line-height); letter-spacing: var(--tracking-title3); font-weight: 700; color: var(--fg-strong); }
+.home .card { margin-inline: calc(var(--spacing-6) * -1); padding: var(--spacing-6); border-radius: 0; background: var(--bg-subtle); color: var(--fg-default); display: grid; gap: var(--spacing-2); }
+.home .card .k { font-size: var(--text-label-lg); }
+.home .amount { font-size: var(--text-number-lg); line-height: var(--text-number-lg--line-height); letter-spacing: var(--tracking-number-lg); font-weight: 700; color: var(--fg-strong); font-variant-numeric: tabular-nums; }
+.home p.why { font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height); color: var(--fg-default); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-2); min-height: 56px; padding: 0 var(--spacing-6); border-radius: var(--radius-md); border: 2px solid transparent; font: inherit; font-size: var(--text-label-lg); font-weight: 600; cursor: pointer; transition: transform var(--duration-press, 120ms) cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1); }
+.btn:active { transform: scale(0.97); }
+.btn.primary { background: var(--primary); color: var(--on-primary); }
+.btn.primary:active { background: var(--primary-active); }
+.btn.secondary { background: var(--bg-surface); color: var(--fg-strong); border-color: var(--border-strong); }
+.btn.secondary:active { background: var(--state-active); }
+.btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
+.home .actions { display: grid; gap: var(--spacing-3); }
+.side { display: grid; gap: var(--spacing-4); }
+.family .scope { font-size: var(--text-body-md); color: var(--fg-secondary); }
+.family .row { display: flex; justify-content: space-between; gap: var(--spacing-4); align-items: baseline; padding-top: var(--spacing-3); border-top: 1px solid var(--border-subtle); }
+.family .row b { font-size: var(--text-number); line-height: var(--text-number--line-height); color: var(--fg-strong); font-variant-numeric: tabular-nums; }
+.ops .body { gap: var(--spacing-3); font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height); }
+.ops .log { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--spacing-1) var(--spacing-3); }
+.ops .log dt { color: var(--fg-secondary); font-variant-numeric: tabular-nums; }
+.ops .log dd { color: var(--fg-default); }
+.ops .badge { justify-self: start; padding: var(--spacing-1) var(--spacing-2); border-radius: var(--radius-sm); background: var(--bg-muted); color: var(--fg-strong); font-size: var(--text-label); font-weight: 600; }
+.demo { margin-top: var(--spacing-3); font-size: var(--text-body-sm); color: var(--fg-secondary); }
+
+.links { margin-top: var(--spacing-6); }
+.btn.secondary { text-decoration: none; }
+.never { margin-top: var(--spacing-6); list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-3); }
+.never li { display: flex; gap: var(--spacing-3); padding: var(--spacing-4) var(--spacing-5); border-radius: var(--radius-lg); background: var(--bg-subtle); }
+.never svg { width: 20px; height: 20px; flex: none; margin-top: var(--spacing-1); stroke: var(--fg-secondary); fill: none; stroke-width: 2; stroke-linecap: round; }
+
+footer.end { padding-top: var(--spacing-12); border-top: 1px solid var(--border-subtle); font-size: var(--text-body-sm); color: var(--fg-secondary); display: grid; gap: var(--spacing-2); }
+
+@media (max-width: 64rem) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .toc { display: none; }
+  .swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .screens { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  .shell { padding-inline: var(--spacing-4); }
+  .cover { padding-block: var(--spacing-10) var(--spacing-8); grid-template-columns: minmax(0, 1fr); }
+  .cover-mark { width: 96px; grid-row: 1; }
+  .cover h1 { font-size: var(--text-title1); line-height: var(--text-title1--line-height); letter-spacing: var(--tracking-title1); }
+  .mission { font-size: var(--text-title3); line-height: var(--text-title3--line-height); letter-spacing: var(--tracking-title3); }
+  section { padding-block: var(--spacing-12); }
+  .pair, .principles, .keys, .arch, .say, .words, .tiles, .anatomy, .never { grid-template-columns: minmax(0, 1fr); }
+  .say > div + div { border-left: 0; border-top: 1px solid var(--border-subtle); }
+  .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .position, .specimen { padding: var(--spacing-6); }
+  .tile { min-height: 160px; padding: var(--spacing-6); }
+  .tile img { height: 40px; }
+  .clear { padding: 20px; outline-offset: -20px; justify-self: start; }
+  .clear img { height: 40px; }
+}
+@media (hover: hover) and (pointer: fine) {
+  a:hover { text-decoration-thickness: 2px; }
+  .toc a:hover { background: var(--state-hover); color: var(--fg-strong); }
+  .btn.primary:hover { background: var(--primary-hover); }
+  .btn.secondary:hover { background: var(--state-hover); }
+  .theme:hover { background: var(--state-hover); }
+}
+@media (prefers-reduced-motion: reduce) { .btn { transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .btn:active { transform: none; } }
+@media print { .toc, .skip { display: none; } .shell { grid-template-columns: minmax(0, 1fr); } section { break-inside: avoid-page; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="shell">
+  <nav class="toc" aria-label="목차">
+    <ol>
+      <li><a href="#mission">미션과 비전</a></li>
+      <li><a href="#philosophy">철학</a></li>
+      <li><a href="#position">포지셔닝과 약속</a></li>
+      <li><a href="#architecture">브랜드 구조</a></li>
+      <li><a href="#voice">목소리와 말</a></li>
+      <li><a href="#logo">로고</a></li>
+      <li><a href="#color">색</a></li>
+      <li><a href="#type">글꼴</a></li>
+      <li><a href="#form">모양, 아이콘, 이미지, 모션</a></li>
+      <li><a href="#apply">화면에 적용</a></li>
+      <li><a href="#a11y">접근성</a></li>
+      <li><a href="#never">하지 않는 것</a></li>
+    </ol>
+  </nav>
+
+  <main id="main">
+    <header class="cover">
+      <div>
+      <img class="cover-logo" src="logo/evenstay-logo-light.svg" alt="Evenstay">
+      <div class="cover-top"><p class="status">상태: 초안 v1(2026-11-03), 사용자 검토 전</p><button class="theme" type="button" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg><span>어두운 화면으로 보기</span></button></div>
+      <h1>Evenstay 브랜드 가이드라인</h1>
+      <p class="lede">Evenstay가 무엇을 믿고, 어떻게 말하고, 어떻게 보이는지 정리한 문서입니다. 화면, 문서, 슬라이드를 만드는 사람 모두가 이 문서에서 시작합니다.</p>
+      </div>
+      <img class="cover-mark" src="logo/evenstay-symbol-light.svg" alt="">
+    </header>
+
+    <section id="mission" aria-labelledby="h-mission">
+      <h2 id="h-mission">미션과 비전</h2>
+      <p class="mission">Evenstay는 레지던스의 계약과 돈, 밤사이의 일, 생활의 변화를 회원님이 허락한 범위 안에서 가족과 직원이 같은 근거로 확인하도록 돕습니다.</p>
+      <div class="prose">
+        <p>시니어 레지던스의 청구서에는 보증금, 생활비, 식비, 감면, 공과금이 섞여 있고 사업장마다 규칙이 다릅니다. 회원님과 가족은 “돈이 맞게 나갔나”를 의심하고, 직원은 틀렸을 때의 책임을 혼자 집니다. 밤에 들어온 신호는 누가 맡았는지 흐려지기 쉽고, 건강이 바뀌면 회원님은 여기서 계속 지낼 수 있을지 혼자 짐작합니다. Evenstay는 이 의심과 부담을 기록으로 풉니다. 숫자에는 이유를 붙이고, 결정에는 정한 사람의 이름을 붙입니다.</p>
+        <p>운영사에게 Evenstay는 소유주와 자산 유형이 다른 사업장을 한 기준으로 운영하는 코어입니다. 소유주는 자기 사업장만 보고, 대리인은 정해진 범위까지만 대신 처리합니다.</p>
+      </div>
+      <dl class="pair">
+        <div><dt>비전</dt><dd>어느 사업장에서 누가 처리해도 같은 기준으로 설명할 수 있는 시니어 레지던스<small>사업장과 소유주가 늘어도 계약, 청구, 기록이 한 기준으로 맞습니다.</small></dd></div>
+        <div><dt>이름</dt><dd>Evenstay(이븐스테이) = even + stay<small>even은 고르고 공정하다는 뜻, stay는 머문다는 뜻입니다. 누구에게나 같은 기준이 적용되는 곳에서 머문다는 이름입니다.</small></dd></div>
+      </dl>
+    </section>
+
+    <section id="philosophy" aria-labelledby="h-phil">
+      <h2 id="h-phil">철학</h2>
+      <p class="rule">여섯 가지 믿음이 기능, 문구, 화면의 기준입니다. DESIGN.md의 원칙 세 가지와 각 모듈 전략의 “지키는 가치”를 한데 묶었습니다.</p>
+      <ol class="principles">
+        <li><h3>근거를 먼저 보입니다</h3><p>숫자 옆에는 언제나 이유가 있습니다. 이유를 댈 수 없는 숫자는 화면에 내지 않습니다.</p><p class="where">청구 항목마다 식사 기록, 감면 규칙, 계약 조건이 연결됩니다(계약·청구 코어).</p></li>
+        <li><h3>정하는 사람은 회원님입니다</h3><p>무엇을 누구에게 얼마나 보여 줄지는 회원님이 정하고, 언제든 거둘 수 있습니다.</p><p class="where">항목별 동의와 즉시 철회, 매 요청마다 범위를 다시 확인합니다(보호자 포털·동의).</p></li>
+        <li><h3>판단은 사람이 합니다</h3><p>시스템은 관찰된 사실과 시각만 전합니다. 건강, 돈, 계약, 생활 지원 단계는 사람이 정하고 그 이름이 남습니다.</p><p class="where">신호는 사람이 맡고(안심 알림), 단계는 사람이 정하고(생활 지원 단계), AI는 질문의 뜻만 고릅니다(AI 생활 비서).</p></li>
+        <li><h3>바뀐 것은 모두 남깁니다</h3><p>누가 언제 무엇을 바꿨는지 하나의 변경 이력에 남깁니다. 나중에 누구에게든 설명할 수 있도록 남깁니다.</p><p class="where">모든 모듈이 코어의 변경 이력 하나에 씁니다.</p></li>
+        <li><h3>앱 밖의 길을 열어 둡니다</h3><p>화면이 어려운 날에도 일이 멈추지 않게, 회원 앱의 모든 화면에 전화와 프런트로 가는 길을 둡니다.</p><p class="where">Evenstay 홈의 모든 화면에 “프런트에 전화하기”가 있습니다.</p></li>
+        <li><h3>지킬 수 있는 약속만 합니다</h3><p>“안심 보장”, “100%” 같은 말을 쓰지 않습니다. 지어낸 수치, 후기, 로고도 쓰지 않습니다.</p><p class="where">데모의 사람과 숫자는 모두 가상이며, 화면에 그렇게 밝힙니다.</p></li>
+      </ol>
+    </section>
+
+    <section id="position" aria-labelledby="h-pos">
+      <h2 id="h-pos">포지셔닝과 약속</h2>
+      <p class="rule">Evenstay는 “함께 보는 기록”입니다. 브랜드 컨셉 3안 가운데 보호자와 회원의 눈으로 세운 안을 골랐습니다(2026-11-03).</p>
+      <div class="position">
+        <p>회원과 가족이 같은 사실을 같은 때에, 근거와 함께 보는 레지던스.</p>
+        <p>회원님이 허락한 만큼만, 숫자마다 이유를 붙여 보여 드립니다. 판단은 사람이 합니다.</p>
+      </div>
+      <ul class="keys" aria-label="성격 키워드">
+        <li><b>투명함</b><span>무엇을 근거로 했는지, 누가 볼 수 있는지 숨기지 않습니다.</span></li>
+        <li><b>정확함</b><span>금액은 원 단위까지, 날짜와 사람은 정확한 이름으로 씁니다.</span></li>
+        <li><b>차분함</b><span>불안을 키우는 말과 장식 없이, 사실을 짧게 전합니다.</span></li>
+      </ul>
+      <p class="note">성격 키워드(브랜드 컨셉 3안)는 브랜드가 어떤 인상으로 기억될지를, 5절의 목소리(차분하다, 존중한다, 근거를 보인다)는 문장을 어떻게 쓸지를 정합니다.</p>
+      <h3>누구에게 무엇을 약속하나</h3>
+      <div class="tbl"><table>
+        <thead><tr><th scope="col">누구</th><th scope="col">걱정하는 것</th><th scope="col">Evenstay의 약속</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">입주 회원(70~80대)</th><td>이번 달 돈이 왜 이만큼인지, 내 소식을 누가 보는지</td><td>쉬운 말로 된 청구서와 이유, 내가 정한 만큼만 보이는 소식</td></tr>
+          <tr><th scope="row">보호자(자녀)</th><td>멀리서 부모님 생활과 돈이 괜찮은지</td><td>회원님이 허락한 범위의 소식과 청구서를 한곳에서, 직원이 한 일과 함께</td></tr>
+          <tr><th scope="row">대리인(후견인 등)</th><td>대신 처리해도 되는 일이 어디까지인지</td><td>권한 범위가 서명, 결제, 열람 권한과 그대로 이어짐</td></tr>
+          <tr><th scope="row">운영사 직원</th><td>틀렸을 때의 책임, 사업장마다 다른 방식</td><td>규칙대로 계산된 청구서, 혼자 떠안지 않는 알림, 남는 기록</td></tr>
+          <tr><th scope="row">소유주</th><td>자기 자산의 입주와 수납</td><td>자기 사업장만 보이는 계정과 설명할 수 있는 숫자</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="architecture" aria-labelledby="h-arch">
+      <h2 id="h-arch">브랜드 구조</h2>
+      <p class="rule">이름은 하나, Evenstay입니다. 누가 보느냐에 따라 우리말 제품 이름 홈과 패밀리를 붙이고, 세 화면은 색과 모양이 같고 글자 크기와 밀도만 다릅니다.</p>
+      <div class="arch">
+        <article><img src="logo/evenstay-logo-light.svg" alt="Evenstay"><dl><div><dt>누가</dt><dd>운영사 직원, 소유주</dd></div><div><dt>밀도</dt><dd>본문 15px, 버튼 40px, 터치 44px</dd></div><div><dt>말투</dt><dd>합쇼체, 명사형 라벨, “입주자”</dd></div></dl></article>
+        <article><img src="logo/evenstay-home-logo-light.svg" alt="Evenstay 홈"><dl><div><dt>누가</dt><dd>입주 회원(70~80대)</dd></div><div><dt>밀도</dt><dd>본문 20px, 버튼 56px, 터치 56px</dd></div><div><dt>말투</dt><dd>해요체, “회원님”</dd></div></dl></article>
+        <article><img src="logo/evenstay-family-logo-light.svg" alt="Evenstay 패밀리"><dl><div><dt>누가</dt><dd>보호자, 대리인</dd></div><div><dt>밀도</dt><dd>본문 17px, 버튼 56·48px, 터치 48px</dd></div><div><dt>말투</dt><dd>해요체, “○○○ 회원님”</dd></div></dl></article>
+      </div>
+      <h3>기능 이름</h3>
+      <div class="prose"><p>직원 화면의 모듈 이름은 우리말로 쓰고(코어와 입주 상담만 Evenstay Core, Evenstay Leasing), 회원과 보호자 화면은 하는 일을 우리말로 씁니다. 70~80대 회원이 영문 이름을 소리 내어 말해야 하는 상황을 만들지 않습니다. 영문으로 남는 이름은 모브랜드 Evenstay 하나이고, 앱 아이콘과 첫 화면에만 한글 읽기와 함께 둡니다. 뒤에 붙는 제품 이름 홈과 패밀리는 우리말로 씁니다.</p></div>
+      <div class="tbl"><table>
+        <thead><tr><th scope="col">모듈</th><th scope="col">직원 화면</th><th scope="col">회원·보호자 화면</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">계약·청구 코어</th><td>Evenstay Core</td><td>이번 달 청구서</td></tr>
+          <tr><th scope="row">안심 알림</th><td>안심 알림</td><td>안심 알림(회원 화면만). 보호자에게는 “건강 소식” 안에 들어갑니다</td></tr>
+          <tr><th scope="row">보호자 포털·동의</th><td>보호자 포털·동의</td><td>Evenstay 패밀리</td></tr>
+          <tr><th scope="row">AI 생활 비서</th><td>AI 생활 비서</td><td>Evenstay 홈 비서</td></tr>
+          <tr><th scope="row">생활 지원 단계</th><td>생활 지원 단계</td><td>생활 지원 단계</td></tr>
+          <tr><th scope="row">입주 상담(예비)</th><td>Evenstay Leasing</td><td>입주 상담</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="voice" aria-labelledby="h-voice">
+      <h2 id="h-voice">목소리와 말</h2>
+      <p class="rule">차분하게, 존중하며, 근거를 보이며 말합니다. 한 문장에는 사실 하나만 담습니다.</p>
+      <div class="tbl"><table>
+        <thead><tr><th scope="col">목소리</th><th scope="col">이런 뜻</th><th scope="col">피할 것</th><th scope="col">예</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">차분하다</th><td>사실을 짧고 정확하게</td><td>딱딱한 공문체</td><td>이번 달 청구서가 나왔어요.</td></tr>
+          <tr><th scope="row">존중한다</th><td>존댓말, 호칭, 선택을 묻기</td><td>아이 대하듯 쉬운 척, 과한 감탄</td><td>대신 처리하실 분을 정해 두시겠어요?</td></tr>
+          <tr><th scope="row">근거를 보인다</th><td>숫자 옆에 이유</td><td>설명 없는 숫자, 과장</td><td>식사 3끼를 드시지 않아 27,000원을 빼 드렸어요.</td></tr>
+          <tr><th scope="row">기록이 남는다(직원)</th><td>누가 언제 무엇을 바꿨는지</td><td>감시하는 느낌</td><td>박소연 님이 11월 10일에 계약을 1인으로 승계했습니다.</td></tr>
+        </tbody>
+      </table></div>
+      <h3>상황별 말투</h3>
+      <ul class="list prose">
+        <li><b>회원·보호자 안내:</b> 해요체, 숫자는 원 단위까지, 다음에 할 일을 함께.</li>
+        <li><b>직원 화면:</b> 합쇼체와 명사형 라벨, 업무 용어 허용, 상태와 다음 행동을 함께.</li>
+        <li><b>오류:</b> 무엇이 안 됐는지, 무엇을 하면 되는지 순서로. 사용자 탓을 하지 않습니다.</li>
+        <li><b>사람이 정한 일:</b> 주어는 언제나 사람입니다. 정한 사람과 직무를 이름으로 씁니다.</li>
+        <li><b>AI 비서의 답:</b> 기록을 틀에 채워 만들고, 어디서 확인했는지 함께 보입니다.</li>
+      </ul>
+      <h3>이렇게 말합니다</h3>
+      <div class="says">
+        <div class="say"><div class="no"><span class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>쓰지 않는 말</span><q>단계가 변경되었습니다.</q><span class="why">주어가 없어 시스템이 정한 것처럼 읽힙니다.</span></div><div class="yes"><span class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>쓰는 말</span><q>최영미 책임자가 정했어요.</q><span class="why">정한 사람이 보입니다(Transitions).</span></div></div>
+        <div class="say"><div class="no"><span class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>쓰지 않는 말</span><q>AI가 알아서 처리해 드려요.</q><span class="why">판단을 대신한다는 오해를 줍니다.</span></div><div class="yes"><span class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>쓰는 말</span><q>다음 청구서는 1월 31일에 나올 예정이에요. 확인한 곳: 레지던스가 정한 청구서 날짜</q><span class="why">기록에서 읽은 것만, 출처와 함께(Assistant).</span></div></div>
+        <div class="say"><div class="no"><span class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>쓰지 않는 말</span><q>보증금은 퇴거하실 때 돌려드려요.</q><span class="why">정산 결과를 미리 약속합니다.</span></div><div class="yes"><span class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>쓰는 말</span><q>계약서 ○조에 따라 정산해서 돌려드려요.</q><span class="why">지킬 수 있는 만큼만 말합니다(Core).</span></div></div>
+      </div>
+      <div class="words">
+        <div><p class="k">회원·보호자에게 쓰는 말</p><ul><li>이번 달 내실 돈</li><li>드시지 않은 식사</li><li>빼 드렸어요</li><li>맡기신 보증금</li><li>대신 처리하실 분</li><li>대신 하실 수 있는 일</li><li>바뀐 기록</li></ul></div>
+        <div><p class="k">어느 화면에서도 쓰지 않는 말</p><ul><li>노인</li><li>입소자</li><li>낙상</li><li>쓰러짐</li><li>응급</li><li>위험</li><li>배회</li><li>안심 보장</li><li>100%</li><li>AI가 알아서</li></ul></div>
+      </div>
+      <p class="note">회원 화면에서는 “결식”, “몰취”, “차감”, “미납”, “채권”, “케어”와 영어 약어도 쓰지 않습니다. 직원 화면은 “입주자”, 회원과 보호자 화면은 “회원님”입니다. 전체 용어집: <code>docs/core/copy/product-marketing.md</code>.</p>
+    </section>
+
+    <section id="logo" aria-labelledby="h-logo">
+      <h2 id="h-logo">로고</h2>
+      <p class="rule">먹 선과 코발트 선의 두 칸은 각자의 기록이고, 겹친 곳이 함께 보는 기록입니다. <span class="hl">그 칸만 근거의 노랑으로 채웁니다.</span></p>
+      <div class="anatomy">
+        <div class="tile"><img src="logo/evenstay-symbol-light.svg" alt="Evenstay 심볼"></div>
+        <ul class="list prose">
+          <li>먹 선과 코발트 선의 둥근 사각형 두 개(한 변 38, 선 6, 모서리 8, 18만큼 어긋남).</li>
+          <li>두 안쪽이 겹치는 14×14 칸만 노랑으로 채웁니다.</li>
+          <li>워드마크는 소문자 “evenstay”, Pretendard Bold, 자간 -2%를 윤곽선으로 바꾼 파일입니다.</li>
+          <li>제품 이름 “홈”과 “패밀리”는 Pretendard Bold를 윤곽선으로 바꿔 보조 글자색으로 붙입니다. 크기는 워드마크의 88%이고, 기준선은 워드마크와 같습니다.</li>
+          <li>글로 쓸 때는 “Evenstay 홈”, “Evenstay 패밀리”, “Evenstay 홈 비서”처럼 Evenstay 뒤를 한 칸 띄웁니다. 제품 이름을 영문으로 바꿔 쓰지 않습니다.</li>
+        </ul>
+      </div>
+      <div class="tiles">
+        <figure><div class="tile"><img src="logo/evenstay-logo-light.svg" alt="Evenstay 가로형, 밝은 바탕용"></div><figcaption>가로형 light. 기본 로고</figcaption></figure>
+        <figure><div class="tile dark"><img src="logo/evenstay-logo-dark.svg" alt="Evenstay 가로형, 어두운 바탕용"></div><figcaption>가로형 dark</figcaption></figure>
+        <figure><div class="tile brand"><img src="logo/evenstay-logo-white.svg" alt="Evenstay 가로형, 흰색 한 색"></div><figcaption>white. 색 바탕 위, 노랑 칸 없음</figcaption></figure>
+        <figure><div class="tile"><img class="icon" src="logo/app-icon-rounded.svg" alt="Evenstay 홈 앱 아이콘"></div><figcaption>앱 아이콘. 코발트 바탕, 심볼 52%</figcaption></figure>
+      </div>
+      <h3>쓰는 규칙</h3>
+      <div class="anatomy">
+        <div class="clear" role="img" aria-label="로고 둘레 여백 예시"><img src="logo/evenstay-logo-light.svg" alt=""></div>
+        <ul class="list prose">
+          <li>둘레 여백은 심볼 높이의 절반 이상입니다(빗금 영역).</li>
+          <li>가장 작은 크기는 가로형 높이 24px, 심볼 16px입니다. 32px 이하에서는 선이 두꺼운 작은 심볼을 씁니다.</li>
+          <li>색은 light, dark, black, white 네 가지만 씁니다.</li>
+          <li>늘이기, 기울이기, 그림자, 테두리, 그라디언트, 글자 다시 치기를 하지 않습니다.</li>
+          <li>[지원 회사] 이름이나 표지와 함께 묶지 않습니다.</li>
+        </ul>
+      </div>
+      <p class="links"><a class="btn secondary" href="logo/index.html">로고 시트에서 파일 받기</a></p>
+      <p class="note">규칙 원본: <code>design/brand/logo/README.md</code>. 시안 원본: <a href="concepts.html">브랜드 컨셉 3안</a>.</p>
+    </section>
+
+    <section id="color" aria-labelledby="h-color">
+      <h2 id="h-color">색</h2>
+      <p class="rule">밝은 종이 바탕, 먹색 글자, 행동을 뜻하는 코발트 하나, <span class="hl">근거를 표시하는 노랑 하나.</span> 강조색은 이 두 곳에만 씁니다.</p>
+      <div class="swatches">
+        <div class="sw"><i style="background: var(--color-bg-canvas)"></i><div><b>Paper</b><span class="num">#fafaf7</span><span>페이지 바탕</span></div></div>
+        <div class="sw"><i style="background: var(--color-bg-muted)"></i><div><b>Paper muted</b><span class="num">#eeefea</span><span>배지, 트랙</span></div></div>
+        <div class="sw"><i style="background: var(--color-fg-strong)"></i><div><b>Ink</b><span class="num">#17191c</span><span>제목, 금액, 반전 바탕</span></div></div>
+        <div class="sw"><i style="background: var(--color-primary)"></i><div><b>Cobalt</b><span class="num">#2340a0</span><span>행동, 링크, 포커스</span></div></div>
+        <div class="sw"><i style="background: var(--color-highlight)"></i><div><b>Evidence</b><span class="num">#f3d766</span><span>근거 밑줄, 화면에 한 곳</span></div></div>
+      </div>
+      <h3>지키는 규칙</h3>
+      <ul class="list prose">
+        <li>빨강, 초록, 주황은 저장됨, 보내지 못함, 입력 오류처럼 <b>시스템이 한 일의 결과</b>에만 씁니다.</li>
+        <li>입주자의 건강, 생활, 단계, 계약 상태를 신호등 색으로 칠하지 않습니다. 중립 배지와 글자로 씁니다.</li>
+        <li>코발트를 넓은 면이나 장식에 쓰지 않습니다(앱 아이콘과 white 로고를 보여 주는 바탕은 예외). 노랑을 바탕 면으로 쓰지 않습니다.</li>
+        <li>다크 모드는 바탕 <span class="num">#121316</span>, 주 버튼 <span class="num">#8ea6f0</span>입니다. 근거 노랑은 같은 값입니다.</li>
+        <li>본문 대비 14.4:1, 보조 글자 6.7:1, 버튼 글자 8.6:1. Home 본문은 7:1(AAA) 이상입니다.</li>
+      </ul>
+      <p class="note">의미 색 36개와 다크 짝, 원자 램프 7개는 <code>DESIGN.md</code> Colors 절이 원본입니다. 화면 코드는 의미 색만 부릅니다.</p>
+    </section>
+
+    <section id="type" aria-labelledby="h-type">
+      <h2 id="h-type">글꼴</h2>
+      <p class="rule">글꼴은 Pretendard 하나입니다. 굵기 400, 500, 600, 700 네 단계만 쓰고, 기울임과 대문자 자간 라벨은 쓰지 않습니다.</p>
+      <div class="specimen">
+        <p class="big">같은 사실을 같은 때에</p>
+        <div class="weights">
+          <span style="font-weight: 400">기록<small>400 본문</small></span>
+          <span style="font-weight: 500">기록<small>500 캡션</small></span>
+          <span style="font-weight: 600">기록<small>600 라벨, 버튼</small></span>
+          <span style="font-weight: 700">기록<small>700 제목, 금액</small></span>
+        </div>
+        <p class="num" style="font-size: var(--text-number-lg); line-height: var(--text-number-lg--line-height); font-weight: 700; color: var(--fg-strong)">2,910,000원</p>
+      </div>
+      <ul class="list prose">
+        <li>18단계 크기 가운데 Home은 17px 미만을 쓰지 않습니다. 본문은 20px입니다.</li>
+        <li>18px 이상은 음수 자간으로 조이고, 17px 이하는 0 또는 양수 자간으로 숨을 줍니다.</li>
+        <li>금액은 원 단위까지, 고정폭 숫자로 세로 정렬합니다.</li>
+        <li>한글은 낱말 단위로 줄을 바꾸고(<code>keep-all</code>), 본문 한 줄은 약 40자입니다.</li>
+      </ul>
+      <p class="note">파일: <code>design/fonts/pretendard/PretendardVariable.woff2</code>(v1.3.9, SIL OFL 1.1). 사용자가 지정한 배포처(cactus.tistory.com/306)의 안내로 받았고 CDN을 쓰지 않습니다.</p>
+    </section>
+
+    <section id="form" aria-labelledby="h-form">
+      <h2 id="h-form">모양, 아이콘, 이미지, 모션</h2>
+      <p class="rule">평면이 기본입니다. 깊이는 바탕 단계와 1px 구분선으로 만들고, 장식으로 마음을 끌지 않습니다.</p>
+      <div class="tbl"><table>
+        <thead><tr><th scope="col">요소</th><th scope="col">규칙</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">모서리</th><td>크기가 클수록 커집니다. 배지 4px, 버튼 8px, 카드 16px, 대화상자 20px. 카드 안에 카드를 넣지 않습니다.</td></tr>
+          <tr><th scope="row">그림자</th><td>카드에는 쓰지 않습니다. 메뉴, 토스트, 대화상자처럼 위에 뜨는 것에만 먹색 두 겹으로 씁니다.</td></tr>
+          <tr><th scope="row">UI 구현</th><td>컴포넌트는 shadcn/ui, 스타일은 Tailwind CSS v4, 아이콘은 Lucide입니다. 색, 글자, 간격은 <code>DESIGN.md</code> 토큰에서 만든 <code>design/system/globals.css</code>로만 칠하고, 다른 UI 라이브러리나 아이콘 세트를 섞지 않습니다.</td></tr>
+          <tr><th scope="row">아이콘</th><td>Lucide, 선 2px(Home 2.25px), 16·20·24px. Home에는 글자 없는 아이콘 버튼이 없습니다. 이모지와 유니코드 화살표는 쓰지 않습니다.</td></tr>
+          <tr><th scope="row">일러스트</th><td>빈 상태와 첫 사용 안내에만, 평면 기하 형태로 코발트와 종이 색 안에서 만듭니다. 사람 얼굴, 노화를 과장한 모습, 의료 장면은 그리지 않습니다.</td></tr>
+          <tr><th scope="row">사진</th><td>쓰지 않는 것이 기본입니다. 쓴다면 실제 장소와 사람을 지어내지 않고, <code>alt</code>에 사실을 씁니다.</td></tr>
+          <tr><th scope="row">모션</th><td>300ms 이하, <code>transform</code>과 <code>opacity</code>만. 누름은 0.97배, 나타남은 0.95배에서. 튕김, 시차, 자동 재생은 쓰지 않고, 움직임 줄이기 설정에서는 모두 즉시 끝납니다.</td></tr>
+          <tr><th scope="row">금지</th><td>그라디언트, 빛 번짐, 유리 효과, 질감, 색 있는 왼쪽 띠 카드.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="apply" aria-labelledby="h-apply">
+      <h2 id="h-apply">화면에 적용</h2>
+      <p class="rule">같은 12월 청구서를 회원님, 대신 처리하실 분, 직원이 각자의 화면에서 봅니다. 사실은 같고, 글자 크기와 말투만 다릅니다.</p>
+      <div class="screens">
+        <div class="screen home">
+          <header><img src="logo/evenstay-home-logo-light.svg" alt="Evenstay 홈"><span>A동 201호</span></header>
+          <div class="body">
+            <p class="greet">이은숙 회원님, 12월 청구서가 나왔어요</p>
+            <div class="card">
+              <p class="k">이번 달 내실 돈</p>
+              <p class="amount">2,910,000원</p>
+              <p class="why"><span class="hl">식사 3끼를 드시지 않아 27,000원을 빼 드렸어요.</span></p>
+            </div>
+            <div class="actions">
+              <button class="btn primary" type="button">청구서 자세히 보기</button>
+              <button class="btn secondary" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>프런트에 전화하기</button>
+            </div>
+          </div>
+        </div>
+        <div class="side">
+          <div class="screen family">
+            <header><img src="logo/evenstay-family-logo-light.svg" alt="Evenstay 패밀리"><span>김태호 님</span></header>
+            <div class="body">
+              <p class="scope">이은숙 회원님 대신 하실 수 있는 일: 청구서 확인, 결제</p>
+              <div class="row"><span>12월 청구서</span><b>2,910,000원</b></div>
+              <p>식사 3끼를 드시지 않아 27,000원을 뺐어요.</p>
+            </div>
+          </div>
+          <div class="screen ops">
+            <header><img src="logo/evenstay-logo-light.svg" alt="Evenstay"><span>변경 이력</span></header>
+            <div class="body">
+              <span class="badge">1인 계약</span>
+              <dl class="log"><dt>11월 10일</dt><dd>박소연 님이 계약을 1인으로 승계했습니다.</dd><dt>12월 31일</dt><dd>박소연 님이 12월 청구서 2,910,000원을 발행했습니다. 결식 감면 3끼 27,000원.</dd></dl>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="demo">이름, 호실, 금액은 가상 데모 데이터입니다(<code>docs/core/prd.md</code> 9절 시드).</p>
+      <h3>한 화면의 규칙</h3>
+      <ul class="list prose">
+        <li>채운 버튼은 화면에 하나입니다. Home은 여기에 앱 밖 경로 하나를 더합니다.</li>
+        <li>근거 밑줄은 화면에 한 곳, 그 화면에서 가장 중요한 이유에 씁니다.</li>
+        <li>보호자에게 보이는 정보 위에는 회원님이 허락한 범위를 밝힙니다.</li>
+        <li>동의는 스위치나 미리 체크된 칸으로 받지 않습니다.</li>
+      </ul>
+    </section>
+
+    <section id="a11y" aria-labelledby="h-a11y">
+      <h2 id="h-a11y">접근성</h2>
+      <p class="rule">70~80대 회원님이 혼자 쓸 수 있어야 완성입니다. 목표는 WCAG 2.2 AA, Home 본문은 AAA 대비입니다.</p>
+      <ul class="list prose">
+        <li>터치 영역은 Home 56px, Family 48px, 운영 화면 44px 이상입니다.</li>
+        <li>색만으로 뜻을 전하지 않습니다. 오류는 아이콘, 글자, 화면 읽기 프로그램용 표시를 함께 씁니다.</li>
+        <li>모든 기능은 키보드로 쓸 수 있고, 포커스 링을 지우지 않습니다.</li>
+        <li>글자를 200%로 키워도 가로로 밀지 않고 읽힙니다.</li>
+        <li>시간 제한이 있는 화면에는 연장 버튼을 둡니다.</li>
+        <li>건강과 돌봄 정보는 민감정보입니다. 따로 동의받지 않으면 저장하거나 보여 주지 않습니다.</li>
+      </ul>
+      <p class="note">크기, 대비, 터치 영역은 기준과 내부 원칙으로 정한 가설입니다. 실제 70~80대 이용자 시험은 아직 하지 않았습니다.</p>
+    </section>
+
+    <section id="never" aria-labelledby="h-never">
+      <h2 id="h-never">하지 않는 것</h2>
+      <p class="rule">Evenstay가 하지 않는 일도 브랜드입니다.</p>
+      <ul class="never">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.7 5.7l12.6 12.6"/></svg><span>건강, 돈, 계약, 생활 지원 단계를 시스템이 판정하거나 점수, 등급, 추천으로 보여 주지 않습니다.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.7 5.7l12.6 12.6"/></svg><span>건강 소식은 보호자 화면(Evenstay 패밀리) 한 길로만 가족에게 갑니다. 다른 기능이 보호자에게 직접 보내지 않습니다.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.7 5.7l12.6 12.6"/></svg><span>투자를 권하거나 주문하지 않고, 운영사가 회원님의 돈을 대신 다루지 않습니다.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.7 5.7l12.6 12.6"/></svg><span>AI 비서를 말벗으로 만들지 않습니다. 기록에 있는 것만 답하고 모르면 사람에게 넘깁니다.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.7 5.7l12.6 12.6"/></svg><span>지어낸 수치, 후기, 고객 로고, 실제 사람과 시설을 쓰지 않습니다.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.7 5.7l12.6 12.6"/></svg><span>[지원 회사]을 비롯한 다른 회사의 이름, 표지, 색, 서체를 쓰지 않습니다.</span></li>
+      </ul>
+    </section>
+
+    <footer class="end">
+      <p>원본 문서: <code>DESIGN.md</code>(디자인 시스템 v2), <code>design/brand/logo/README.md</code>(로고), <code>design/brand/concepts.html</code>(컨셉 3안), <code>docs/core/copy/product-marketing.md</code>와 <code>names.md</code>(목소리, 용어, 이름), 각 모듈 <code>docs/&lt;모듈&gt;/strategy.md</code>(비전).</p>
+      <p>값이 다르면 원본 문서가 맞습니다. 이 문서를 고칠 때는 원본을 먼저 고칩니다. “Evenstay” 상표는 아직 확인하지 않았습니다.</p>
+    </footer>
+  </main>
+</div>
+<script>
+(() => {
+  const root = document.documentElement, btn = document.querySelector('.theme');
+  const swap = (dark) => document.querySelectorAll('main img[src*="-light.svg"], main img[src*="-dark.svg"]').forEach((img) => {
+    if (img.closest('.tile, .clear')) return; // specimens sit on fixed grounds
+    img.src = img.getAttribute('src').replace(dark ? '-light.svg' : '-dark.svg', dark ? '-dark.svg' : '-light.svg');
+  });
+  const apply = (dark) => {
+    root.classList.toggle('dark', dark);
+    btn.setAttribute('aria-pressed', String(dark));
+    btn.querySelector('span').textContent = dark ? '밝은 화면으로 보기' : '어두운 화면으로 보기';
+    swap(dark);
+  };
+  let saved = null;
+  try { saved = localStorage.getItem('es-guide-theme'); } catch (e) {}
+  apply(saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches);
+  btn.hidden = false;
+  btn.addEventListener('click', () => {
+    const dark = !root.classList.contains('dark');
+    apply(dark);
+    try { localStorage.setItem('es-guide-theme', dark ? 'dark' : 'light'); } catch (e) {}
+  });
+})();
+// highlight the TOC entry for the section in view; the page works without it
+(() => {
+  const links = [...document.querySelectorAll('.toc a')];
+  const sections = links.map((a) => document.getElementById(a.hash.slice(1)));
+  const update = () => {
+    let i = -1;
+    sections.forEach((s, n) => { if (s && s.getBoundingClientRect().top < innerHeight * 0.3) i = n; });
+    links.forEach((a, n) => (n === i ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
+  };
+  addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>
