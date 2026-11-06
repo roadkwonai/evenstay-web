@@ -540,6 +540,8 @@ pre.pt.full { padding: 12px; border-radius: 8px; background: var(--bg-subtle); m
   .billing-relations-mobile dd { margin: 4px 0 0; color: var(--fg-default); overflow-wrap: anywhere; }
   .billing-figure > a, .billing-relations-mobile + .tbl-wrap { display: none; }
   .billing-figure { margin-top: 16px; }
+  .billing-figure figcaption { justify-content: flex-start; }
+  .billing-figure figcaption span { display: none; }
   .billing-steps { gap: 20px; }
   .billing-steps li { overflow-wrap: anywhere; }
   .billing-steps li + li { border-top: 1px solid var(--border-subtle); padding-top: 16px; }
