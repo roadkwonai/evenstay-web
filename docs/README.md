@@ -71,7 +71,7 @@
 - [아키텍처 설계안 논리 검토 (2026-11-05)](architecture/reviews/arch-review-logic-2026-11-05.md)
 - [출처: 시니어·돌봄·주거 소프트웨어 실제 기술 스택 (공개 자료 기준)](architecture/sources/arch-tech-stacks.md)
 - [[지원 회사] PMS · AI 네이티브 아키텍처 및 기술스택 종합 리서치](architecture/sources/gpt-architecture-research.md)
-- [archify 도식 5장 (arch-system, arch-signal, arch-payment, arch-agent, arch-doc)](architecture/drafts/archify.md)
+- [archify 도식 6장 (arch-system, arch-signal, arch-payment, arch-agent, arch-doc, arch-core-relations)](architecture/drafts/archify.md)
 - [dd 도식 (diagram-design)](architecture/drafts/dd.md)
 - [stack-diagram 인프라 도식 5장](architecture/drafts/stack.md)
 
@@ -84,6 +84,7 @@
 - [v0.1.3 — 공통 CSS 경고와 상단 영역 보완](releases/202611051817-v0.1.3-common-css-validation/RELEASE.md)
 - [v0.1.4 — 계약·월 청구·수납 설계 흐름](releases/202611061909-v0.1.4-contract-billing-flow/RELEASE.md)
 - [v0.1.5 — 계약·청구·수납 설계 판단 재검토](releases/202611061925-v0.1.5-billing-design-review/RELEASE.md)
+- [v0.1.6 — 핵심 데이터 관계와 설계 흐름 재검토](releases/202611061933-v0.1.6-core-model-clarity/RELEASE.md)
 
 ## 조사와 아이디어
 

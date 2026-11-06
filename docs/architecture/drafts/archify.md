@@ -1,12 +1,12 @@
-# archify 도식 5장 (arch-system, arch-signal, arch-payment, arch-agent, arch-doc)
+# archify 도식 6장 (arch-system, arch-signal, arch-payment, arch-agent, arch-doc, arch-core-relations)
 
-작성: 2026-11-05. 내용 원본은 `../brief.md`와 `senior-lab/01-research/outputs/senior-housing-architecture-design.md`.
+작성: 2026-11-05. 내용 원본은 `../brief.md`와 `senior-lab/01-research/outputs/senior-housing-architecture-design.md`. 핵심 관계 축약도 `arch-core-relations`는 `evenstay/docs/core/tech-design.md` 2-2·2-3절을 따른다. 전체 물리 ERD는 아니다.
 
 ## 다시 만드는 명령
 ```
 bash design/home/architecture/archify/build.sh
 ```
-- 프로젝트의 `.agents/skills/archify`를 임시 폴더로 복사하고 `patch-template.py`로 색 토큰, Pretendard, 밝은 화면 기본값을 입힌 뒤 다섯 도식을 `finalize`(검증, 전달, 구조 검사, 브라우저 검사)로 만든다. 원본 스킬 폴더는 고치지 않는다.
+- 프로젝트의 `.agents/skills/archify`를 임시 폴더로 복사하고 `patch-template.py`로 색 토큰, Pretendard, 밝은 화면 기본값을 입힌 뒤 여섯 도식을 `finalize`(검증, 전달, 구조 검사, 브라우저 검사)로 만든다. 원본 스킬 폴더는 고치지 않는다.
 - 결과: `design/prototype/home/architecture/<id>.html`, `<id>.png`(폭 2100px). 검사 영수증은 `<id>/evidence/`.
 - Chrome이 있어야 한다(`/Applications/Google Chrome.app`).
 
