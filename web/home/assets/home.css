@@ -532,6 +532,21 @@ pre.pt.full { padding: 12px; border-radius: 8px; background: var(--bg-subtle); m
 .arch-mods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 24px; margin: 0; padding-left: 20px; }
 .arch-mods strong { display: block; color: var(--fg-strong); }
 .arch-mods span { display: block; font-size: 0.9375rem; color: var(--fg-secondary); }
+.billing-relations-mobile { display: none; }
+@media (max-width: 639.98px) {
+  .billing-relations-mobile { display: block; margin: 0; }
+  .billing-relations-mobile > div { padding: 12px 0; border-bottom: 1px solid var(--border-subtle); }
+  .billing-relations-mobile dt { color: var(--fg-strong); font-weight: 700; overflow-wrap: anywhere; }
+  .billing-relations-mobile dd { margin: 4px 0 0; color: var(--fg-default); overflow-wrap: anywhere; }
+  .billing-figure > a, .billing-relations-mobile + .tbl-wrap { display: none; }
+  .billing-figure { margin-top: 16px; }
+  .billing-steps { gap: 20px; }
+  .billing-steps li { overflow-wrap: anywhere; }
+  .billing-steps li + li { border-top: 1px solid var(--border-subtle); padding-top: 16px; }
+  .billing-steps span { font-size: 1.0625rem; color: var(--fg-default); }
+  .billing-steps .billing-why { margin-top: 8px; }
+  .billing-steps a { display: inline-flex; align-items: center; min-height: 44px; }
+}
 @media (max-width: 860px) {
   .arch-stage, .arch-two, .arch-budget, .arch-road > li, .arch-mods { grid-template-columns: minmax(0, 1fr); }
 }

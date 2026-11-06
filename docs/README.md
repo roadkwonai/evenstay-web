@@ -85,6 +85,7 @@
 - [v0.1.4 — 계약·월 청구·수납 설계 흐름](releases/202611061909-v0.1.4-contract-billing-flow/RELEASE.md)
 - [v0.1.5 — 계약·청구·수납 설계 판단 재검토](releases/202611061925-v0.1.5-billing-design-review/RELEASE.md)
 - [v0.1.6 — 핵심 데이터 관계와 설계 흐름 재검토](releases/202611061933-v0.1.6-core-model-clarity/RELEASE.md)
+- [v0.1.7 — 모바일 아키텍처 가독성](releases/202611061948-v0.1.7-mobile-architecture-readability/RELEASE.md)
 
 ## 조사와 아이디어
 
