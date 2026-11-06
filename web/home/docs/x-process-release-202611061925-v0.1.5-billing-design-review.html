@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light dark">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../shared/theme.js?v=3"></script>
+<title>v0.1.5 — 계약·청구·수납 설계 판단 재검토 | Evenstay 문서</title>
+<meta name="description" content="v0.1.5 — 계약·청구·수납 설계 판단 재검토. Evenstay 기획과 설계 문서입니다.">
+<link rel="icon" href="../../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../../css/proto.css">
+<link rel="stylesheet" href="../../shared/topbar.css">
+<link rel="stylesheet" href="../../home/assets/home.css">
+<link rel="stylesheet" href="../../shared/theme.css">
+</head>
+<body data-close="닫기">
+<div id="topbar" data-base="../../"></div>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="note-bar"><div class="hm-wrap hm-wide"><p>이름, 사업장, 금액은 모두 가상입니다.</p></div></div>
+<header class="hm-top">
+  <div class="hm-wrap top-in">
+    <nav class="main-nav" aria-label="홈 메뉴"><ul><li><a href="../../index.html">홈</a></li><li><a href="../../home/roles.html">권한별 화면</a></li><li><a href="../../home/screens.html">화면 찾아보기</a></li><li><a href="../../home/docs.html">문서</a></li><li><a href="../../home/research.html" aria-current="page">조사와 결정</a></li><li><a href="../../home/architecture.html">아키텍처</a></li><li><a href="../../home/artboards.html">아트보드</a></li><li><a href="../../home/tech.html">기술과 스킬</a></li><li><a href="../../home/history.html">제작 히스토리</a></li></ul></nav>
+    <a class="btn btn-primary btn-sm open-app" href="../../app.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>프로토타입 열기</a>
+  </div>
+</header>
+<main id="main" class="hm-wrap hm-wide">
+
+<div class="doc-wrap">
+<header class="doc-head">
+  <p class="hm-crumb"><a href="../research.html">조사와 결정</a></p>
+  <h1>v0.1.5 — 계약·청구·수납 설계 판단 재검토</h1>
+
+
+</header>
+<div class="doc-cols">
+  <aside class="doc-side"></aside>
+  <article class="doc"><p>기록 시각: 2026-11-06 19:25 KST</p>
+<p>계약부터 월 청구와 수납까지의 설계 판단을 재검토하고 한 흐름에서 확인하도록 보완한다.</p>
+<ul>
+<li>계약·청구·수납의 상태 경계와 각 선택의 이유, 단계별 예외를 연결한다.</li>
+<li>핵심 데이터 관계, 상태 전이, 권한, 다사업장, 외부 연동과 초기 범위를 찾아볼 수 있도록 기존 상세 근거와 연결한다.</li>
+<li>향후 구현 시 검증할 조건과 제공자 규격·운영 정책의 미정 사항을 구분한다.</li>
+</ul>
+<p>검증 결과는 <code>VERIFICATION.md</code>에 기록한다.</p>
+<p><a href="https://github.com/roadkwonai/evenstay-web/releases/tag/v0.1.4" rel="noopener noreferrer" target="_blank">이전 버전</a> · <a href="https://github.com/roadkwonai/evenstay-web/compare/v0.1.4...v0.1.5" rel="noopener noreferrer" target="_blank">변경 비교</a></p>
+</article>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <div class="hm-wrap hm-wide foot-in">
+    <ul>
+      <li><a href="../../index.html">홈</a></li>
+      <li><a href="../../site/index.html">소개 사이트</a></li>
+      <li><a href="../../app.html">프로토타입 열기</a></li>
+      <li><a href="https://github.com/roadkwonai/evenstay-web" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<dialog id="hm" class="hm" aria-labelledby="hm-t"><div class="hm-head"><h2 id="hm-t"></h2><button class="btn btn-ghost btn-sm" type="button" data-hm-close aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="hm-body"></div></dialog>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+
+<script src="../../home/assets/home.js" defer></script>
+</body>
+</html>
